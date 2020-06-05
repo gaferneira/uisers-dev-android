@@ -2,6 +2,7 @@ package co.tuister.data.repositories
 
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
+import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.domain.entities.SubjectClass
 import co.tuister.domain.repositories.SubjectRepository
@@ -47,6 +48,18 @@ class SubjectRepositoryImpl : SubjectRepository {
             listOf(
                 SubjectClass(Subject("Calculo I", "", 0f), "08:00", "10:00", "CT 301"),
                 SubjectClass(Subject("Quimica", "", 0f), "10:00", "12:00", "LP 310")
+            )
+        )
+    }
+
+    override suspend fun getNotes(subject: Subject): Either<Failure, List<Note>> {
+        delay(1000)
+        return Either.Right(
+            listOf(
+                Note("Parcial I", 3.8f, 20f, 0.76f),
+                Note("Parcial II", 3.0f, 20f, 0.60f),
+                Note("Parcial III", 2.0f, 20f, 0.40f),
+                Note("Quices", 4.0f, 20f, 0.80f)
             )
         )
     }

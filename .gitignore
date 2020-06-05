@@ -50,12 +50,12 @@ captures/
 .idea/modules.xml
 # Comment next line if keeping position of elements in Navigation Editor is relevant for you
 .idea/navEditor.xml
-/.idea/sonarlint
-/.idea/.name
-/.idea/jarRepositories.xml
-/.idea/misc.xml
-/.idea/runConfigurations.xml
-/.idea/codeStyles/Project.xml
+.idea/sonarlint
+.idea/.name
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+.idea/codeStyles/Project.xml
 
 
 # Keystore files

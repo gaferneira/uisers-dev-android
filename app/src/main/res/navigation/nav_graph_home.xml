@@ -96,7 +96,13 @@
         android:id="@+id/subject_details_fragment_dest"
         android:name="co.tuister.uisers.modules.my_career.subject_details.SubjectDetailsFragment"
         android:label="SubjectDetailsFragment"
-        tools:layout="@layout/fragment_subject_details" />
+        tools:layout="@layout/fragment_subject_details">
+
+        <argument
+            android:name="subject"
+            app:argType="co.tuister.domain.entities.Subject" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/wheels_fragment_dest"

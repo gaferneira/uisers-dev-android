@@ -1,8 +1,8 @@
 package co.tuister.uisers
 
-import android.app.Application
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.multidex.MultiDexApplication
 import co.tuister.uisers.di.dataModule
 import co.tuister.uisers.di.domainModule
 import co.tuister.uisers.di.viewModelModule
@@ -11,7 +11,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class UisersApplication : Application(), LifecycleObserver {
+class UisersApplication : MultiDexApplication(), LifecycleObserver {
 
     override fun onCreate() {
         super.onCreate()
