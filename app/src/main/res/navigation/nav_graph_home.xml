@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/home_fragment_dest">
+
+    <fragment
+        android:id="@+id/home_fragment_dest"
+        android:name="co.tuister.uisers.modules.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/subjects_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.SubjectsFragment"
+        android:label="SubjectsFragment"
+        tools:layout="@layout/fragment_subjects">
+        <action
+            android:id="@+id/action_subjects_to_semesters"
+            app:destination="@id/semesters_fragment_dest" />
+        <action
+            android:id="@+id/action_subjects_to_subject_details"
+            app:destination="@id/subject_details_fragment_dest" />
+        <action
+            android:id="@+id/action_subjects_to_subject_add"
+            app:destination="@id/subject_add_fragment_dest" />
+        <action
+            android:id="@+id/action_subjects_to_schedule"
+            app:destination="@id/schedule_fragment_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tasks_fragment_dest"
+        android:name="co.tuister.uisers.modules.task_manager.TasksFragment"
+        android:label="TasksFragment"
+        tools:layout="@layout/fragment_tasks">
+        <action
+            android:id="@+id/action_tasks_to_tasks_add"
+            app:destination="@id/tasks_add_fragment_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/institutional_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.InstitutionalFragment"
+        android:label="InstitutionalFragment"
+        tools:layout="@layout/fragment_institutional">
+        <action
+            android:id="@+id/action_institutional_to_map"
+            app:destination="@id/map_fragment_dest" />
+        <action
+            android:id="@+id/action_institutional_to_calendar"
+            app:destination="@id/calendar_fragment_dest" />
+        <action
+            android:id="@+id/action_institutional_to_wheels"
+            app:destination="@id/wheels_fragment_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_fragment_dest"
+        android:name="co.tuister.uisers.modules.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/map_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.map.MapFragment"
+        android:label="MapFragment"
+        tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/calendar_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.calendar.CalendarFragment"
+        android:label="CalendarFragment"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/subject_add_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.add_subject.AddSubjectFragment"
+        android:label="AddSubjectFragment"
+        tools:layout="@layout/fragment_subject_add" />
+
+    <fragment
+        android:id="@+id/tasks_add_fragment_dest"
+        android:name="co.tuister.uisers.modules.task_manager.add_task.AddTaskFragment"
+        android:label="AddTaskFragment"
+        tools:layout="@layout/fragment_tasks" />
+
+    <fragment
+        android:id="@+id/schedule_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.schedule.ScheduleFragment"
+        android:label="ScheduleFragment"
+        tools:layout="@layout/fragment_schedule" />
+
+    <fragment
+        android:id="@+id/subject_details_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.subject_details.SubjectDetailsFragment"
+        android:label="SubjectDetailsFragment"
+        tools:layout="@layout/fragment_subject_details" />
+
+    <fragment
+        android:id="@+id/wheels_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.wheels.WheelsFragment"
+        android:label="WheelsFragment"
+        tools:layout="@layout/fragment_wheels" />
+
+    <fragment
+        android:id="@+id/semesters_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.semesters.SemestersFragment"
+        android:label="SemestersFragment"
+        tools:layout="@layout/fragment_semesters" />
+
+
+</navigation>

@@ -1,0 +1,105 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/screen_horizontal_margin"
+    android:paddingVertical="@dimen/screen_vertical_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_header"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?colorPrimary"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_margin_extra_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_view_header_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
+            android:gravity="end"
+            android:text="@string/subject_list_header_total"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_header_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/details"
+            android:textAlignment="center"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/text_view_header_grade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_header_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding_margin_normal"
+            android:gravity="end"
+            android:text="@string/label_grade"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/text_view_header_total"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/container_footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_header" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_margin_extra_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/text_view_average_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/final_grade_subject"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_view_average"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_average"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_average"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
+            android:textAppearance="?textAppearanceHeadline6"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="3,5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

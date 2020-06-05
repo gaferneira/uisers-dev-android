@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="co.tuister.uisers.modules.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_300"
+        android:padding="10dp">
+
+        <com.androdocs.circleimagelibrary.CircleImageView
+            android:id="@+id/circle_image_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/avatar"
+            app:border_color="@color/red"
+            app:border_width="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_hi"
+            style="@style/TextAppearance.MyTheme.Headline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:maxLength="15"
+            android:text="@string/welcome_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/circle_image_photo" />
+
+        <TextView
+            android:id="@+id/text_view_name"
+            style="@style/TextAppearance.MyTheme.Headline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="7"
+            android:text="@{viewModel.name}"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_hi"
+            tools:text="vidaljramirez@dasdad.com" />
+
+        <TextView
+            android:id="@+id/text_view_email"
+            style="@style/TextAppearance.MyTheme.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.email}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circle_image_photo"
+            tools:text="asdasd@dasdad.com" />
+
+        <TextView
+            android:id="@+id/text_view_career"
+            style="@style/TextAppearance.MyTheme.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{viewModel.career}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_email"
+            tools:text="Ingenieria de Sistemas" />
+
+        <TextView
+            android:id="@+id/text_view_semester"
+            style="@style/TextAppearance.MyTheme.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{viewModel.semester}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_career"
+            tools:text="Ingenieria de Sistemas" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="@dimen/padding_margin_extra_large"
+        app:cardCornerRadius="@dimen/round_corner_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_institutional"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?colorSecondaryVariant"
+            android:paddingStart="@dimen/padding_margin_small"
+            android:paddingTop="@dimen/padding_margin_extra_small"
+            android:paddingEnd="@dimen/padding_margin_small"
+            android:paddingBottom="@dimen/padding_margin_extra_small">
+
+            <ImageView
+                android:id="@+id/image_view_institutional_menu"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/padding_margin_extra_small"
+                android:scaleType="fitXY"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/text_view_institutional_menu"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/icon_add" />
+
+
+            <TextView
+                android:id="@+id/text_view_institutional_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Calendario" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

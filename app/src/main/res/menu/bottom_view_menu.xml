@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_fragment_dest"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@color/green_600"
+        android:title="@string/title_menu_home" />
+    <item
+        android:id="@+id/subjects_fragment_dest"
+        android:icon="@drawable/ic_subject"
+        android:iconTint="@color/green_600"
+        android:title="@string/title_menu_subjects" />
+    <item
+        android:id="@+id/tasks_fragment_dest"
+        android:icon="@drawable/ic_task"
+        android:iconTint="@color/green_600"
+        android:title="@string/title_menu_task" />
+    <item
+        android:id="@+id/institutional_fragment_dest"
+        android:icon="@drawable/ic_semester"
+        android:iconTint="@color/green_600"
+        android:title="@string/title_menu_institution" />
+</menu>

@@ -1,0 +1,239 @@
+<resources>
+    <string name="app_name">UISers</string>
+    <string name="action_sign_in_register" translatable="false">Ingresar</string>
+    <string name="action_go_register" translatable="false">Registrarse</string>
+    <string name="olvidar_pass" translatable="false"><u>¿Olvidaste tu contraseña?</u></string>
+
+
+    <string name="label_home_no_subjects" translatable="false">No hay materias para hoy</string>
+    <string name="label_home_no_tasks" translatable="false">No hay tareas para hoy</string>
+
+
+    <string name="monday">MON</string>
+    <string name="tuesday">TUE</string>
+    <string name="wednesday">WED</string>
+    <string name="thursday">THU</string>
+    <string name="friday">FRI</string>
+    <string name="saturday">SAT</string>
+    <string name="sunday">SUN</string>
+
+    <string name="title_fragment_today">Today</string>
+    <string name="title_fragment_subjects">Subjects</string>
+    <string name="title_fragment_schedule">Schedule</string>
+    <string name="title_fragment_calendar">Calendar</string>
+    <string name="title_fragment_publish">Publish</string>
+    <string name="title_fragment_wheels">Wheels</string>
+    <string name="title_fragment_semester">Semester</string>
+    <string name="title_fragment_tasks">Tasks</string>
+    <string name="title_fragment_map">Map</string>
+    <string name="title_fragment_add_subject">Add subject</string>
+    <string name="title_fragment_add_semester">Add semester</string>
+    <string name="title_fragment_add_task">Add task</string>
+    <string name="title_fragment_details_subject">Details subject</string>
+    <string name="title_settings">Settings </string>
+    <string name="title_dialog_add_grade">Add grade</string>
+    <string name="title_dialog_add_block">Add block</string>
+    <string name="title_dialog_edit_grade">Edit grade</string>
+    <string name="title_dialog_view_events">View events</string>
+    <string name="title_dialog_view_register">Register</string>
+
+    <!-- ACTIONS -->
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="drawer_open">Menu</string>
+    <string name="drawer_close">Closed menu</string>
+    <string name="ok">Ok</string>
+
+    <!-- LOGIN AND REGISTER -->
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_student_code">Student code</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm password</string>
+    <string name="action_register">Register</string>
+    <string name="action_forgot_password">Recover lost password</string>
+    <string name="login_progress_signing_in">Signing in&#8230;</string>
+    <string name="register_progress_register_in">Signing in&#8230;</string>
+    <string name="register_init_period">Start period</string>
+    <string name="register_period_I">I</string>
+    <string name="register_period_II">II</string>
+    <string name="start_progress">Starting app...</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_invalid_match_password">The password is different</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_title_required">Title required</string>
+    <string name="error_date_required">Date required</string>
+    <string name="error_length_semesters">Can not delete, there must be at least one semeter</string>
+    <string name="error_semester_already_exists">Semester already created</string>
+    <string name="error_subject_not_found">Subject not found, please chose one of those who appeared as you were writting</string>
+    <string name="error_subject_duplicate">"Subject duplicate, please chose other.</string>
+    <string name="title_forget_title">Recover</string>
+    <string name="title_login">Login</string>
+    <string name="error_result_login_message">We are sorry we could not find and account linked to that email.</string>
+    <string name="success_result_forget_message">We have sent you and email to recover your password.</string>
+    <string name="error_result_forget_message">We are sorry we could not find and account linked to that email.</string>
+
+
+    <!-- TEXTVIEWS -->
+    <string name="block_place">Place</string>
+    <string name="init_block">Init</string>
+    <string name="finish_block">Finish</string>
+    <string name="grade">Grade</string>
+
+    <string name="percentage">%</string>
+    <string name="grade_total">Total</string>
+    <string name="final_grade_subject">Final grade</string>
+    <string name="note_subject">Note subject</string>
+    <string name="details">Details</string>
+    <string name="tasks_for_today">Tasks for today</string>
+    <string name="subjects_for_today">Subjects today</string>
+    <string name="select_a_semester">Select a semester</string>
+    <string name="semester_set_current">Set like current</string>
+
+    <string name="prompt_details_grade">Details</string>
+    <string name="prompt_name_subject">Name subject</string>
+    <string name="prompt_name_teacher">Name teacher</string>
+
+    <string name="subjects_title_schedule">Schedule</string>
+    <string name="subject_list_header_total">Total</string>
+    <string name="tasks_hint_add_task">Title</string>
+    <string name="add_task_day">Day</string>
+    <string name="add_task_init">Init</string>
+    <string name="add_task_finish">Finish</string>
+    <string name="add_task_description">Description</string>
+    <string name="add_task_set_date">Set date</string>
+    <string name="add_task_set_alarm">Poner Alarma</string>
+
+    <string name="empty_list_tasks">There are no tasks to show. To add tasks use the "+" placed on the top right</string>
+    <string name="empty_list_subjects">To add subjects use the "+" placed on the top right</string>
+    <string name="empty_schedule">To create your schedule you must add each block per subject. If the subject is already added you can edit it by a long press over the name in the Subjects menu</string>
+
+    <!-- Varios -->
+    <string name="text_without_date">No date</string>
+    <string name="text_task">Task</string>
+    <string name="text_final_grade">Final grade</string>
+    <string name="text_grade">Grade</string>
+    <string name="text_with">with</string>
+    <string name="text_semester_average">Semestal average</string>
+    <string name="text_update_subjects">Subjects up to date</string>
+
+    <!-- ALERTS -->
+    <string name="alert">Alert</string>
+    <string name="alert_check_internet">Check your internet connection</string>
+    <string name="alert_error_server">"Server error, please try again later"</string>
+    <string name="alert_select_semester">In order to add a subject you must chose the current semester</string>
+    <string name="confirm_are_you_sure">Are you sure?</string>
+    <string name="confirm_update_calendar">Would you like to update the calendar?</string>
+    <string name="confirm_update_pensul">Would you like to search for new updates on your curriculum?</string>
+    <string name="toast_press_again_to_exit">Press again to exit</string>
+    <string name="toast_shared_success">Successfully shared</string>
+    <string name="toast_updating_events">Updating events</string>
+    <string name="toast_events_updated">Events up to date</string>
+    <string name="toast_updating_subjects">Updating subjects</string>
+
+    <array name="weekDays">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </array>
+
+    <!-- SETTINGS -->
+    <string name="settings_btn_logout">BtnLogout</string>
+    <string name="logout_confirm_message">Are you sure to log out?</string>
+    <string name="intent_send_email">Send email</string>
+    <string name="settings_about">About</string>
+    <string name="settings_about_summary">Tuister S.A.S - tuister.com.co</string>
+    <string name="settings_about_title">Follow us on Facebook</string>
+    <string name="settings_about_write_summary">We value your suggestions. Email: soporte@tuister.com.co - Whatsapp: +57 318 879 9237</string>
+    <string name="settings_about_write_title">Write to us</string>
+    <string name="settings_logout">Logout</string>
+    <string name="settings_logout_summary">If you logout your data might be lost and you won\'t be able to retrieve it</string>
+
+    <array name="lugaresMapa">
+        <item>PORTERIA CARRERA 27</item>
+        <item>AUDITORIO LUIS A. CALVO</item>
+        <item>ADMINISTRACIÓN</item>
+        <item>INSED</item>
+        <item>TEATRO AIRE LIBRE</item>
+        <item>ADMINISTRACION 2</item>
+        <item>BIENESTAR UNIVERSITARIO</item>
+        <item>LA PERLA</item>
+        <item>MANTEN. Y PLANTA FISICA</item>
+        <item>IM-INGENIERIA MECANICA</item>
+        <item>AULA MAX. MECANICA</item>
+        <item>BIBLIOTECA</item>
+        <item>PLANTA TELEFONICA</item>
+        <item>IL-LANGUAGE INSTITUE</item>
+        <item>II-INGENIERIA INDUSTRIAL</item>
+        <item>CARACT. DE MAT.</item>
+        <item>LL-LAB. LIVIANOS</item>
+        <item>CT-CAMILO TORRES</item>
+        <item>CENTIC</item>
+        <item>CAPRUIS Y FAVUIS</item>
+        <item>DISEÑO INDUSTRIAL</item>
+        <item>IE-ING. ELECTRICA</item>
+        <item>LAB. DE POSGRADO</item>
+        <item>IQ-ING. QUIMICA</item>
+        <item>AULA MAXIMA DE FISICA</item>
+        <item>CEIAM</item>
+        <item>LAB. ALTA TENSION</item>
+        <item>LAB. DE HIDRAULICA.</item>
+        <item>TALLERES DISEÑO</item>
+        <item>PLANTA DE ACEROS</item>
+        <item>JORGE BAUTISTA V.</item>
+        <item>LP-LABORATORIOS PESADOS</item>
+        <item>DC -DANIEL CASAS</item>
+        <item>RESIDENCIAS UNIV.</item>
+        <item>PORTERIA CRA 30</item>
+        <item>KIOSKO RESIDENCIAS</item>
+        <item>CH-CIENCIAS HUMANAS</item>
+        <item>JARDINERIA</item>
+        <item>CANCHAS DE TENIS</item>
+        <item>CANCHA 1. DE MARZO</item>
+        <item>CANCHA FUTBOL SUR</item>
+        <item>CANCHAS MULTIPLES</item>
+        <item>COLISEO</item>
+        <item>DIAMANTE DE SOFTBOL</item>
+        <item>CENIVAM</item>
+        <item>CAFETERIA</item>
+        <item>PORTERIA CRA 25</item>
+        <item>INVERNADERO</item>
+    </array>
+    <string name="empty_information">No information available</string>
+    <string name="action_save">Guardar</string>
+
+    <!-- Bottom Menu -->
+    <string name="title_menu_home">Inicio</string>
+    <string name="title_menu_subjects">Materias</string>
+    <string name="title_menu_task">Tareas</string>
+    <string name="title_menu_institution">Institucion</string>
+
+    <!-- Left side menu -->
+    <string name="welcome_message">Hola,</string>
+    <string name="close_session"><u>Cerrar sesión</u></string>
+    <string name="version_label">Versión %s</string>
+    <string name="empty_calendar">Aún no se han registrado eventos para este año en nuestro servidor, intentalo nuevamente más tarde.</string>
+    <string name="institutional_map_uis">UIS</string>
+    <string name="institutional_map_neighbors">Vecinos</string>
+    <string name="title_menu_profile">Profile</string>
+    <string name="title_menu_about">About</string>
+    <string name="my_career_semesters_average">Promedio ponderado</string>
+    <string name="institutional_wheels_title">Con Wheels podremos promover el uso sostenible de los medios de transporte y ayudar al medio ambiente</string>
+    <string name="institutional_wheels_description">Para crear la cuenta usa el correo institucional <b>@correo.uis.edu.co</b> y así verás las rutas de todos los usuarios de la UIS></string>
+    <string name="institutional_wheels_details" translatable="false">Podrás realizar lo siguiente: \n
+        \n•Comparte tus vehículos o servicios de taxi para ir a la universidad o para volver a casa.
+        \n\n• Si eres PASAJERO puedes cambiar la incomodidad e inseguridad del servicio público por la comodidad de los vehículos o servicios de taxi en el que se transportan tus compañeros UIS o allegados.
+        \n\n• Si eres CONDUCTOR o COMPARTIDOR DE TAXI puedes compartir tus trayectos y recibir apoyo monetario de tus acompañantes para pagar la gasolina, el estacionamiento o la tarifa misma del servicio de taxi.</string>
+    <string name="institutional_wheels_open">ABRIR WHEELS</string>
+    <string name="label_grade">Grade</string>
+    <string name="prompt_credits">Numero de cŕeditos</string>
+
+
+</resources>

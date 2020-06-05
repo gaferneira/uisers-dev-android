@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="screen_horizontal_margin">16dp</dimen>
+    <dimen name="screen_vertical_margin">16dp</dimen>
+
+    <dimen name="first_day_margin">10dp</dimen>
+    <dimen name="day_margin">24dp</dimen>
+    <dimen name="text_height_width">30dp</dimen>
+    <dimen name="min_cell_height">50dp</dimen>
+    <dimen name="min_cell_width">50dp</dimen>
+
+    <!-- generic dimens -->
+    <dimen name="padding_margin_micro">2dp</dimen>
+    <dimen name="padding_margin_extra_small">4dp</dimen>
+    <dimen name="padding_margin_small">8dp</dimen>
+    <dimen name="padding_margin_normal_smaller">12dp</dimen>
+    <dimen name="padding_margin_normal">16dp</dimen>
+    <dimen name="padding_margin_normal_larger">20dp</dimen>
+    <dimen name="padding_margin_large">24dp</dimen>
+    <dimen name="padding_margin_extra_large">36dp</dimen>
+    <dimen name="padding_margin_huge">48dp</dimen>
+
+    <!-- icon sizes -->
+    <dimen name="icon_size_extra_small">12dp</dimen>
+    <dimen name="icon_size_small">16dp</dimen>
+    <dimen name="icon_size_normal">24dp</dimen>
+    <dimen name="icon_size_large">36dp</dimen>
+    <dimen name="icon_size_extra_large">48dp</dimen>
+    <dimen name="icon_size_huge">56dp</dimen>
+
+    <!-- icon sizes -->
+    <dimen name="image_size_small">64dp</dimen>
+    <dimen name="image_size_medium">96dp</dimen>
+    <dimen name="image_size_large">128dp</dimen>
+
+
+    <dimen name="round_corner_small">2dp</dimen>
+    <dimen name="round_corner_normal">4dp</dimen>
+    <dimen name="round_corner_large">8dp</dimen>
+
+</resources>

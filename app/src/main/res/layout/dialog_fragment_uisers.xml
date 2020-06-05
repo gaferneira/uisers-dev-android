@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_layout_login"
+        android:paddingHorizontal="@dimen/screen_horizontal_margin"
+        android:paddingVertical="@dimen/screen_vertical_margin">
+
+        <ImageView
+            android:id="@+id/image_view_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_splash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="?textAppearanceHeadline6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_view_icon"
+            tools:text="Titulo Me" />
+
+        <TextView
+            android:id="@+id/text_view_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="?textAppearanceBody1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_title"
+            tools:text="Message" />
+
+        <Button
+            android:id="@+id/button_negative"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_positive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_message"
+            app:layout_constraintWidth_max="wrap"
+            app:layout_constraintWidth_percent="0.45"
+            tools:text="Negativo" />
+
+        <Button
+            android:id="@+id/button_positive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_negative"
+            app:layout_constraintTop_toBottomOf="@id/text_view_message"
+            app:layout_constraintWidth_max="wrap"
+            app:layout_constraintWidth_percent="0.45"
+            tools:text="Positivo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/screen_horizontal_margin"
+    android:paddingVertical="@dimen/screen_vertical_margin">
+
+    <RadioButton
+        android:id="@+id/radio_button_uis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
+        android:text="@string/institutional_map_uis"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_places"
+        app:layout_constraintEnd_toStartOf="@+id/radio_button_neighbours"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radio_button_neighbours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/institutional_map_neighbors"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_places"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radio_button_uis" />
+
+
+    <Spinner
+        android:id="@+id/spinner_places"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_margin_normal_smaller"
+        app:layout_constraintBottom_toTopOf="@+id/map_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_button_uis" />
+
+    <View
+        android:id="@+id/map_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/spinner_places"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_places" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
