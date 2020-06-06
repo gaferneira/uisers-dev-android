@@ -18,7 +18,8 @@ import co.tuister.uisers.modules.my_career.FooterAdapter
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener {
+class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
+    AddNoteDialogFragment.AddNoteDialogListener {
 
     private lateinit var adapter: NotesAdapter
     private lateinit var footerAdapter: FooterAdapter
@@ -58,7 +59,7 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener {
             adapter = MergeAdapter(this@SubjectDetailsFragment.adapter, footerAdapter)
         }
         binding.buttonAdd.setOnClickListener {
-            // show alert
+            showNoteDialog()
         }
     }
 
@@ -75,6 +76,7 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener {
     private fun update(state: BaseState<Any>?) {
         when (state) {
             is SubjectDetailsState.LoadItems -> loadItems(state)
+            is SubjectDetailsState.SaveNote -> resultSaveNote(state)
         }
     }
 
@@ -96,12 +98,28 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener {
         }
     }
 
+    private fun resultSaveNote(state: SubjectDetailsState.SaveNote) {
+        if (state.isSuccess()) {
+            viewModel.refresh()
+        }
+    }
+
+
     override fun onClickNote(note: Note) {
-        // show dialog
+        showNoteDialog(note)
+    }
+
+    private fun showNoteDialog(note: Note? = null) {
+        AddNoteDialogFragment.create(subject, note, this)
+            .show(parentFragmentManager, AddNoteDialogFragment.TAG)
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.refresh()
+    }
+
+    override fun onSaveNote(note: Note) {
+        viewModel.saveNote(note)
     }
 }

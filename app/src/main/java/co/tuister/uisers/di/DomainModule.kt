@@ -25,6 +25,7 @@ val domainModule = module {
     single { GetScheduleByDateUseCase(get()) }
     single { GetMySubjectsUseCase(get()) }
     single { GetNotesUseCase(get()) }
+    single { SaveNoteUseCase(get()) }
     single { GetAllSubjectsUseCase(get()) }
     single { SaveSubjectUseCase(get()) }
 

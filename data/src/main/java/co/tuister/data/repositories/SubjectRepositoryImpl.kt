@@ -64,4 +64,9 @@ class SubjectRepositoryImpl : SubjectRepository {
         )
     }
 
+    override suspend fun saveNote(note: Note, subject: Subject): Either<Failure, Note> {
+        delay(1000)
+        return Either.Right(note)
+    }
+
 }

@@ -13,7 +13,6 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectsBinding
-import co.tuister.uisers.modules.my_career.add_subject.AddSubjectFragment
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -89,7 +88,7 @@ class SubjectsFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
     }
 
     override fun onClickSubject(subject: Subject) {
-        val args = Bundle().apply { putParcelable(AddSubjectFragment.SUBJECT_ARG, subject) }
-        findNavController().navigate(R.id.action_subjects_to_subject_add, args)
+        val action = SubjectsFragmentDirections.actionSubjectsToSubjectDetails(subject)
+        findNavController().navigate(action)
     }
 }
