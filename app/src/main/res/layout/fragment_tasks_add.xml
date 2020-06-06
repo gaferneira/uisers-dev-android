@@ -1,143 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingHorizontal="@dimen/screen_horizontal_margin"
-    android:paddingVertical="@dimen/screen_vertical_margin">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <data>
+
+        <variable
+            name="taskBinding"
+            type="co.tuister.domain.entities.Task" />
+
+        <import type="co.tuister.uisers.utils.DateConverter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/button_save"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/screen_horizontal_margin"
+        android:paddingVertical="@dimen/screen_vertical_margin">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_title_task"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/tasks_hint_add_task"
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/padding_margin_normal">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_text_description_task"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/add_task_description"
-                    android:inputType="textMultiLine" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <CheckBox
-                android:id="@+id/check_box_set_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:enabled="true"
-                android:text="@string/add_task_set_date" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/button_save"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/container_set_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_title_task"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/tasks_hint_add_task"
+                        android:inputType="text"
+                        android:text="@={taskBinding.title}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_description_task"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/add_task_description"
+                        android:inputType="textMultiLine"
+                        android:text="@={taskBinding.description}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditTextDayTask"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/edit_text_date"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="8"
+                        android:focusable="false"
                         android:hint="@string/add_task_day"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:text="@={DateConverter.dateToString(taskBinding.dueDate)}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/EditTextStartTask"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/edit_text_reminder"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ems="8"
-                        android:hint="@string/add_task_init"
-                        android:inputType="time" />
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/prompt_reminder"
+                        android:textColor="@android:color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edit_text_finish_task"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="8"
-                        android:hint="@string/add_task_finish"
-                        android:inputType="time" />
-
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <CheckBox
-                    android:id="@+id/CheckBoxWithAlarm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:enabled="true"
-                    android:text="@string/add_task_set_alarm"
-                    android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/TextViewTimeAlarm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Horas antes para alarma"
-                    android:textAlignment="center"
-                    android:visibility="gone" />
+                    android:layout_marginTop="@dimen/padding_margin_normal"
+                    android:text="@string/task_label_status"
+                    android:textAppearance="?textAppearanceSubtitle1"
+                    android:textColor="?colorOnSurface" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextTimeAlarm"
-                    android:layout_width="wrap_content"
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="8"
-                    android:inputType="time"
-                    android:visibility="gone" />
+                    android:layout_marginTop="@dimen/padding_margin_normal">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_status_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/task_status_todo"
+                        android:textAppearance="?textAppearanceSubtitle2"
+                        app:chipBackgroundColor="@color/grey_200"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_status_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/task_status_in_progress"
+                        android:textAppearance="?textAppearanceSubtitle2"
+                        app:chipBackgroundColor="@color/green_200"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_status_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/task_status_done"
+                        android:textAppearance="?textAppearanceSubtitle2"
+                        app:chipBackgroundColor="@color/green"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <SeekBar
+                    android:id="@+id/seek_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_margin_normal"
+                    android:max="2"
+                    android:progress="@={taskBinding.status}"
+                    android:thumb="@drawable/ic_home"
+                    android:thumbTint="@color/blue_grey_600" />
+
             </LinearLayout>
-        </LinearLayout>
 
-    </ScrollView>
+        </ScrollView>
 
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/action_save"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/action_save"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

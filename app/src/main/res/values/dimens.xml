@@ -44,6 +44,7 @@
     <dimen name="my_career_note_width_grade">50dp</dimen>
     <dimen name="my_career_note_width_percentage">40dp</dimen>
     <dimen name="my_career_note_width_total">50dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 
 </resources>
