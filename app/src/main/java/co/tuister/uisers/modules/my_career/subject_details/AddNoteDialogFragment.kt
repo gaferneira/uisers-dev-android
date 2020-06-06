@@ -123,8 +123,8 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
                 }
                 editText.setSelection(editText.text.length)
             } catch (e: NumberFormatException) {
-                //textViewValueTotal.setText("");
-                //textViewValueDefinitelyGrade.setText("");
+                // textViewValueTotal.setText("");
+                // textViewValueDefinitelyGrade.setText("");
             }
         }
     }
@@ -148,7 +148,5 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
             dialog.listener = listener
             return dialog
         }
-
     }
-
 }

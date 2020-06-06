@@ -104,7 +104,6 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
         }
     }
 
-
     override fun onClickNote(note: Note) {
         showNoteDialog(note)
     }

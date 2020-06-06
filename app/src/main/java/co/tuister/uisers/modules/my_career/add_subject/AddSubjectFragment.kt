@@ -61,7 +61,6 @@ class AddSubjectFragment : BaseFragment() {
                 viewModel.saveSubject(subject)
             }
         }
-
     }
 
     private fun initViewModel() {
