@@ -48,11 +48,9 @@ open class BaseFragment : Fragment() {
                     success = false
                     it.requestFocus()
                 }
-
             }
         }
 
         return success
     }
-
 }

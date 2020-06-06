@@ -39,4 +39,11 @@
     <dimen name="round_corner_normal">4dp</dimen>
     <dimen name="round_corner_large">8dp</dimen>
 
+
+    <!-- My Career -->
+    <dimen name="my_career_note_width_grade">50dp</dimen>
+    <dimen name="my_career_note_width_percentage">40dp</dimen>
+    <dimen name="my_career_note_width_total">50dp</dimen>
+
+
 </resources>
