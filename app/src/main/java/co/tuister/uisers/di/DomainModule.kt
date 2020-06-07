@@ -22,10 +22,16 @@ val domainModule = module {
     single { RegisterUseCase(get()) }
 
     // My Career
+
     single { GetCurrentSemesterUseCase(get()) }
+    single { SaveSemesterUseCase(get()) }
+    single { GetAllSemestersUseCase(get()) }
+    single { ChangeCurrentSemesterUseCase(get()) }
+
     single { GetScheduleUseCase(get()) }
     single { SaveSchedulePeriodUseCase(get()) }
     single { GetScheduleByDateUseCase(get()) }
+
     single { GetMySubjectsUseCase(get()) }
     single { GetNotesUseCase(get()) }
     single { SaveNoteUseCase(get()) }

@@ -76,7 +76,7 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
             when (currentPosition) {
                 0 -> findNavController().navigate(R.id.action_subjects_to_subject_add)
                 1 -> scheduleFragment?.addNewItem()
-                else -> findNavController().navigate(R.id.action_subjects_to_subject_add)
+                else -> semestersFragment?.showSemesterDialog()
             }
         }
     }

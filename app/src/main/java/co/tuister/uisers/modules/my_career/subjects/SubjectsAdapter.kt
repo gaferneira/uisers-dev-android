@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.utils.format
-import kotlinx.android.synthetic.main.item_subjects_subject.view.*
+import kotlinx.android.synthetic.main.item_my_career_subject.view.*
 
 class SubjectsAdapter(
   private val listener: SubjectListener?
@@ -23,7 +23,7 @@ class SubjectsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_subjects_subject, parent, false)
+            .inflate(R.layout.item_my_career_subject, parent, false)
         return SubjectViewHolder(view)
     }
 

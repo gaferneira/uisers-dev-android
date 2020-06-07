@@ -12,9 +12,9 @@ import co.tuister.uisers.modules.login.splash.SplashViewModel
 import co.tuister.uisers.modules.main.MainViewModel
 import co.tuister.uisers.modules.my_career.MyCareerViewModel
 import co.tuister.uisers.modules.my_career.schedule.ScheduleViewModel
+import co.tuister.uisers.modules.my_career.semesters.SemestersViewModel
 import co.tuister.uisers.modules.my_career.subjects.SubjectsViewModel
 import co.tuister.uisers.modules.my_career.subjects.add_subject.AddSubjectViewModel
-import co.tuister.uisers.modules.my_career.subjects.subject_details.SemestersViewModel
 import co.tuister.uisers.modules.my_career.subjects.subject_details.SubjectDetailsViewModel
 import co.tuister.uisers.modules.profile.ProfileViewModel
 import co.tuister.uisers.modules.task_manager.TasksViewModel
@@ -41,7 +41,7 @@ val viewModelModule = module {
     viewModel { SubjectDetailsViewModel(get(), get()) }
     viewModel { AddSubjectViewModel(get(), get()) }
     viewModel { ScheduleViewModel(get(), get()) }
-    viewModel { SemestersViewModel() }
+    viewModel { SemestersViewModel(get(), get(), get()) }
 
     // Tasks
     viewModel { TasksViewModel(get()) }
