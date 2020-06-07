@@ -18,6 +18,8 @@ val domainModule = module {
     single { RecoverPasswordUseCase(get()) }
     single { RegisterUseCase(get()) }
     single { CareersUseCase(get()) }
+    single { UploadImageUseCase(get()) }
+    single { DownloadImageUseCase(get()) }
 
     // My Career
 

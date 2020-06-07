@@ -11,10 +11,10 @@ val dataModule = module {
     single { FirebaseAuth.getInstance() }
     single { FirebaseFirestore.getInstance() }
     single { FirebaseStorage.getInstance() }
-    single<LoginRepository> { LoginRepositoryImpl(get(), get()) }
+    single<LoginRepository> { LoginRepositoryImpl(get(), get(), get()) }
     single<SemesterRepository> { SemesterRepositoryImpl() }
     single<SubjectRepository> { SubjectRepositoryImpl() }
     single<TasksRepository> { TasksRepositoryImpl() }
-    single<UserRepository> { UserRepositoryImpl(get(), get()) }
+    single<UserRepository> { UserRepositoryImpl(get(), get(),get()) }
     single<ScheduleRepository> { ScheduleRepositoryImpl() }
 }

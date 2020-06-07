@@ -1,5 +1,8 @@
 package co.tuister.uisers.modules.login.register
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.content.Intent.ACTION_GET_CONTENT
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,20 +19,27 @@ import co.tuister.uisers.databinding.FragmentRegisterBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
 import co.tuister.uisers.utils.Result
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.Calendar.YEAR
 import java.util.Calendar.getInstance
 
+
 class RegisterFragment : BaseFragment() {
+
+    companion object {
+        const val RESULT_LOAD_IMAGE = 11
+    }
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var viewModel: RegisterViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRegisterBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -54,6 +64,10 @@ class RegisterFragment : BaseFragment() {
 
         binding.editTextYear.setOnClickListener {
             showYearOptions()
+        }
+
+        binding.circleImagePhoto.setOnClickListener {
+            launchImagePicker()
         }
     }
 
@@ -145,10 +159,12 @@ class RegisterFragment : BaseFragment() {
             state.isSuccess() -> {
                 binding.loginStatus.isVisible = false
                 showDialog(
-                    "Te hemos enviado un correo para que confirmes tu correo y puedas acceder a la aplicación a" + viewModel.userLive.value?.email,
+                    "Te hemos enviado un correo para que confirmes tu correo y puedas acceder a la aplicación a " + viewModel.userLive.value?.email,
                     requireContext().getString(R.string.title_dialog_view_register)
                 ) {
-                    goToLogin()
+                    viewModel.doLogout {
+                        goToLogin()
+                    }
                 }
             }
         }
@@ -158,6 +174,26 @@ class RegisterFragment : BaseFragment() {
         activity?.let {
             LoginActivity.start(requireContext())
             it.finish()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                RESULT_LOAD_IMAGE -> {
+                    val uri = data?.data
+                    CropImage.activity(uri)
+                        .setAspectRatio(1, 1)
+                        .setFixAspectRatio(true)
+                        .start(requireContext(), this)
+                }
+                CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                    val result = CropImage.getActivityResult(data)
+                    binding.circleImagePhoto.setImageURI(result.uri)
+                    viewModel.setImageUri(result.uri)
+                }
+            }
         }
     }
 }

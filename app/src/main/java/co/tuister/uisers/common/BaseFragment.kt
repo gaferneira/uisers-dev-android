@@ -1,10 +1,12 @@
 package co.tuister.uisers.common
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import co.tuister.uisers.R
+import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.utils.UisersDialogFragment
 
 open class BaseFragment : Fragment() {
@@ -31,5 +33,15 @@ open class BaseFragment : Fragment() {
                 unit?.invoke()
             })
             .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
+    }
+
+    protected fun launchImagePicker() {
+        val photoPickerIntent = Intent(Intent.ACTION_GET_CONTENT)
+        photoPickerIntent.type = "image/*"
+
+        startActivityForResult(
+            Intent.createChooser(photoPickerIntent, "Select Picture"),
+            RegisterFragment.RESULT_LOAD_IMAGE
+        )
     }
 }
