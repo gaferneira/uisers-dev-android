@@ -58,6 +58,7 @@ class AddSubjectFragment : BaseFragment() {
         binding.buttonSave.setOnClickListener {
             hideKeyboard()
             if (checkRequireFormFields(binding.autocompleteSubject, binding.editTextCredits)) {
+                it.isEnabled = false
                 viewModel.saveSubject(subject)
             }
         }
@@ -70,13 +71,12 @@ class AddSubjectFragment : BaseFragment() {
                 update(it)
             }
         }
-        binding.viewModel = viewModel
         viewModel.initialize()
     }
 
     private fun update(status: BaseState<Any>?) {
         when (status) {
-            is AddSubjectsState.Save -> findNavController().popBackStack()
+            is AddSubjectsState.Save -> onSaveSubject(status)
             is AddSubjectsState.LoadDefaultSubjects -> loadDefaultSubjects(status)
         }
     }
@@ -85,6 +85,21 @@ class AddSubjectFragment : BaseFragment() {
         if (status.isSuccess()) {
             val adapter = AutoCompleteSubjectsAdapter(requireContext(), status.data)
             binding.autocompleteSubject.setAdapter(adapter)
+        }
+    }
+
+    private fun onSaveSubject(state: AddSubjectsState.Save) {
+        when {
+            state.inProgress() -> {
+                // show loading }
+            }
+            state.isFailure() -> {
+                // show error
+                binding.buttonSave.isEnabled = true
+            }
+            else -> {
+                findNavController().popBackStack()
+            }
         }
     }
 

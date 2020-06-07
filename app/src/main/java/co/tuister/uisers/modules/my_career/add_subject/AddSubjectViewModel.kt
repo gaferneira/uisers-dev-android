@@ -32,6 +32,7 @@ class AddSubjectViewModel(
     }
 
     fun saveSubject(subject: Subject) {
+        setState(AddSubjectsState.Save(Result.InProgress))
         viewModelScope.launch {
             setState(AddSubjectsState.Save(Result.InProgress))
             val result = withContext(Dispatchers.IO) { saveSubject.run(subject) }

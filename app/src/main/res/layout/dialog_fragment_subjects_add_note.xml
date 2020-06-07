@@ -12,8 +12,6 @@
             name="subjectBinding"
             type="co.tuister.domain.entities.Subject" />
 
-        <import type="android.text.TextUtils" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

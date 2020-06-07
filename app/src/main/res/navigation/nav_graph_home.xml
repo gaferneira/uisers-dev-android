@@ -84,7 +84,14 @@
         android:id="@+id/tasks_add_fragment_dest"
         android:name="co.tuister.uisers.modules.task_manager.add_task.AddTaskFragment"
         android:label="AddTaskFragment"
-        tools:layout="@layout/fragment_tasks" />
+        tools:layout="@layout/fragment_tasks">
+
+        <argument
+            android:name="task"
+            app:argType="co.tuister.domain.entities.Task"
+            app:nullable="true" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/schedule_fragment_dest"

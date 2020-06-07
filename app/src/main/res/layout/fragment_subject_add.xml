@@ -3,14 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="subjectBinding"
             type="co.tuister.domain.entities.Subject" />
-
-        <variable
-            name="viewModel"
-            type="co.tuister.uisers.modules.my_career.add_subject.AddSubjectViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <AutoCompleteTextView
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/autocomplete_subject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

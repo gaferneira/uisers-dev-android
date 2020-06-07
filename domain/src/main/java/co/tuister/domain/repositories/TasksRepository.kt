@@ -8,4 +8,5 @@ import java.util.*
 interface TasksRepository {
     suspend fun getTasks(): Either<Failure, List<Task>>
     suspend fun getTasksByDate(date: Date): Either<Failure, List<Task>>
+    suspend fun save(task: Task): Either<Failure, Task>
 }

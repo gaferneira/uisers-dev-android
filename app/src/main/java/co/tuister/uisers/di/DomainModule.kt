@@ -8,6 +8,7 @@ import co.tuister.domain.usecases.login.RegisterUseCase
 import co.tuister.domain.usecases.my_career.*
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
 import co.tuister.domain.usecases.tasks.GetTasksByDateUseCase
+import co.tuister.domain.usecases.tasks.SaveTaskUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -32,4 +33,5 @@ val domainModule = module {
     // Tasks
     single { GetTasksByDateUseCase(get()) }
     single { GetMyTasksUseCase(get()) }
+    single { SaveTaskUseCase(get()) }
 }

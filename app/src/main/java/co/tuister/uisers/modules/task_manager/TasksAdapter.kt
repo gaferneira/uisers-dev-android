@@ -9,7 +9,7 @@ import co.tuister.uisers.R
 import kotlinx.android.synthetic.main.item_tasks_task.view.*
 
 class TasksAdapter(
-    private val listener: TasksListener
+    private val listener: TasksListener?
 ) : RecyclerView.Adapter<TasksAdapter.TasksViewHolder>() {
 
     var list = listOf<Task>()
@@ -47,12 +47,15 @@ class TasksAdapter(
         fun bind(
             position: Int,
             task: Task,
-            listener: TasksListener,
+            listener: TasksListener?,
             isLastIndex: Boolean
         ) {
             itemView.apply {
                 text_view_task_name.text = task.title
                 text_view_task_desc.text = task.description
+                setOnClickListener {
+                    listener?.onClickTask(task)
+                }
             }
         }
     }

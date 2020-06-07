@@ -8,8 +8,10 @@ import co.tuister.uisers.R
 import co.tuister.uisers.modules.home.HomeAdapter
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeTasks
+import co.tuister.uisers.utils.DateUtils
 import kotlinx.android.synthetic.main.item_home_subjects.view.*
 import kotlinx.android.synthetic.main.item_home_task.view.*
+import java.util.*
 
 class TasksViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
@@ -50,7 +52,7 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
     private fun configChildView(view: View, task: Task): View {
         return view.apply {
             text_view_task_name.text = task.title
-            text_view_task_hour.text = task.initialHour + "-" + task.finalHour
+            text_view_task_hour.text = task.dueDate?.let { DateUtils.dateToString(Date(it)) }
             text_view_task_desc.text = task.description
         }
     }

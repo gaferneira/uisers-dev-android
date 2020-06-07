@@ -4,21 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import co.tuister.domain.entities.Task
+import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.getViewModel
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
 
-    private lateinit var adapter: TasksAdapter
-
     private lateinit var binding: FragmentTasksBinding
-    private lateinit var viewModel: TasksViewModel
+    private val viewModel by sharedViewModel<TasksViewModel>(from = { requireActivity() })
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,15 +35,26 @@ class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
     }
 
     private fun initViews() {
-        adapter = TasksAdapter(this)
-        binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = this@TasksFragment.adapter
+        binding.pager.apply {
+            offscreenPageLimit = 2
+            adapter = TasksPagerAdapter(requireActivity())
+        }
+        TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
+            tab.text = when (position) {
+                0 -> resources.getString(R.string.task_status_todo).toUpperCase()
+                1 -> resources.getString(R.string.task_status_in_progress).toUpperCase()
+                2 -> resources.getString(R.string.task_status_done).toUpperCase()
+                else -> ""
+            }
+        }.attach()
+
+        binding.buttonAdd.setOnClickListener {
+            val action = TasksFragmentDirections.actionTasksToTasksAdd(null)
+            findNavController().navigate(action)
         }
     }
 
     private fun initViewModel() {
-        viewModel = getViewModel()
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect {
                 update(it)
@@ -50,25 +64,7 @@ class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
     }
 
     private fun update(state: BaseState<Any>?) {
-        when (state) {
-            is TasksState.LoadItems -> loadItems(state)
-        }
-    }
 
-    private fun loadItems(state: TasksState.LoadItems) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    adapter.setItems(this)
-                }
-            }
-        }
     }
 
     override fun onResume() {
@@ -77,5 +73,16 @@ class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
     }
 
     override fun onClickTask(task: Task) {
+        val action = TasksFragmentDirections.actionTasksToTasksAdd(task)
+        findNavController().navigate(action)
+    }
+
+    private inner class TasksPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+        override fun getItemCount(): Int = 3
+
+        override fun createFragment(position: Int): Fragment =
+            TasksListFragment.newInstance(position).apply {
+                listener = this@TasksFragment
+            }
     }
 }

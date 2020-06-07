@@ -234,6 +234,27 @@
     <string name="institutional_wheels_open">ABRIR WHEELS</string>
     <string name="label_grade">Grade</string>
     <string name="prompt_credits">Numero de cŕeditos</string>
+    <string name="prompt_due_date">Due date</string>
+    <string name="prompt_reminder">Set reminder</string>
+    <string name="task_status_todo">To do</string>
+    <string name="task_status_in_progress">In progress</string>
+    <string name="task_status_done">Done</string>
+    <string name="task_label_status">Status</string>
+
+    <plurals name="minutes">
+        <item quantity="one">1 minute</item>
+        <item quantity="other">%d minutes</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">1 hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+
+    <plurals name="days">
+        <item quantity="one">1 day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
 
 
 </resources>
