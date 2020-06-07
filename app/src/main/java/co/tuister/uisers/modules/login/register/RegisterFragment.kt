@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import co.tuister.domain.base.Failure.FormError
+import co.tuister.domain.entities.Career
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
@@ -16,6 +18,8 @@ import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
 import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
+import java.util.Calendar.YEAR
+import java.util.Calendar.getInstance
 
 class RegisterFragment : BaseFragment() {
 
@@ -40,6 +44,57 @@ class RegisterFragment : BaseFragment() {
             hideKeyboard()
             viewModel.doRegister()
         }
+
+        binding.editTextCareer.setOnClickListener {
+            viewModel.getCareers {
+                binding.loginStatus.isVisible = false
+                showCareerOptions()
+            }
+        }
+
+        binding.editTextYear.setOnClickListener {
+            showYearOptions()
+        }
+    }
+
+    private fun showCareerOptions() {
+        val options = viewModel.listCareers.map { careerOption(it) }.toTypedArray()
+        // setup the alert builder
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle("Pick a career")
+            .setItems(options) { _, which ->
+                binding.editTextCareer.setText(options[which])
+                viewModel.pickCareer(which)
+            }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun showYearOptions() {
+        val currentYear = getInstance().get(YEAR) + 1
+        val valuesList = List(20) {
+            currentYear - (it)
+        }
+        val options = valuesList.map { yearOption(it) }.toTypedArray()
+        // setup the alert builder
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle("Pick your entry year")
+            .setItems(options) { _, which ->
+                binding.editTextYear.setText(options[which])
+                viewModel.pickYear(options[which])
+            }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun yearOption(value: Int): String {
+        return value.toString()
+    }
+
+    private fun careerOption(value: Career): String {
+        return value.codigo + " - " + value.name
     }
 
     private fun initViewModel() {
@@ -61,6 +116,13 @@ class RegisterFragment : BaseFragment() {
     private fun validateRegister(state: ValidateRegister) {
         when {
             state.inProgress() -> {
+                binding.loginStatusMessage.text =
+                    context?.getString(R.string.login_progress_signing_in)
+                binding.loginStatus.isVisible = true
+            }
+            state.isDownloading() -> {
+                binding.loginStatusMessage.text =
+                    context?.getString(R.string.progress_downloading_data)
                 binding.loginStatus.isVisible = true
             }
             state.isFailure() -> {

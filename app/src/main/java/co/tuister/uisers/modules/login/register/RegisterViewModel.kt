@@ -3,25 +3,28 @@ package co.tuister.uisers.modules.login.register
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure.FormError
+import co.tuister.domain.entities.Career
 import co.tuister.domain.entities.User
+import co.tuister.domain.usecases.login.CareersUseCase
 import co.tuister.domain.usecases.login.RegisterUseCase
+import co.tuister.domain.usecases.login.RegisterUseCase.Params
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
-import co.tuister.uisers.utils.Result
-import co.tuister.uisers.utils.Result.Error
-import co.tuister.uisers.utils.Result.Success
+import co.tuister.uisers.utils.Result.*
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RegisterViewModel(val registerUseCase: RegisterUseCase) : BaseViewModel() {
+class RegisterViewModel(val registerUseCase: RegisterUseCase, val careersUseCase: CareersUseCase) :
+    BaseViewModel() {
     val userLive = MutableLiveData(User())
     val password1 = MutableLiveData<String>()
     val password2 = MutableLiveData<String>()
+    val listCareers = mutableListOf<Career>()
 
     fun doRegister() {
-        setState(ValidateRegister(Result.InProgress))
+        setState(ValidateRegister(InProgress))
         val pass1 = password1.value
         val pass2 = password2.value
         val user = userLive.value
@@ -40,12 +43,19 @@ class RegisterViewModel(val registerUseCase: RegisterUseCase) : BaseViewModel() 
                 pass1 != pass2 -> {
                     errorMessage = "Passwords do not match"
                 }
+                it.career.isEmpty() -> {
+                    errorMessage = "You need to pick a career"
+                }
+                it.semester.isEmpty() -> {
+                    errorMessage = "You need to pick an entry year"
+                }
             }
+
             if (errorMessage.isEmpty()) {
                 viewModelScope.launch {
                     withContext(Dispatchers.Main) {
                         val result =
-                            registerUseCase.run(RegisterUseCase.Params(userLive.value!!, pass1!!))
+                            registerUseCase.run(Params(userLive.value!!, pass1!!))
                         result.fold({ fail ->
                             if (fail.error is FirebaseAuthWeakPasswordException) {
                                 setState(ValidateRegister(Error(FormError(Exception("Password is to weak to create a account")))))
@@ -62,6 +72,41 @@ class RegisterViewModel(val registerUseCase: RegisterUseCase) : BaseViewModel() 
             } else {
                 setState(ValidateRegister(Error(FormError(Exception(errorMessage)))))
             }
+        }
+    }
+
+    fun pickCareer(pos: Int) {
+        userLive.value?.apply {
+            listCareers[pos].let {
+                career = it.name
+                idCareer = it.codigo
+            }
+        }
+    }
+
+    fun pickYear(year: String) {
+        userLive.value?.apply {
+            semester = year
+        }
+    }
+
+    fun getCareers(unit: () -> Unit) {
+        if (listCareers.isEmpty()) {
+            setState(ValidateRegister(Downloading))
+            viewModelScope.launch {
+                withContext(Dispatchers.Main) {
+                    val result =
+                        careersUseCase.run()
+                    result.fold({ fail ->
+                        setState(ValidateRegister(Error(fail)))
+                    }, { res ->
+                        listCareers.addAll(res)
+                        unit.invoke()
+                    })
+                }
+            }
+        } else {
+            unit.invoke()
         }
     }
 }
