@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AddTaskViewModel(
-    private val saveTask: SaveTaskUseCase
+  private val saveTask: SaveTaskUseCase
 ) : BaseViewModel() {
 
     fun initialize() {

@@ -12,9 +12,9 @@ import kotlinx.coroutines.withContext
 import java.util.*
 
 class HomeViewModel(
-    private val getCurrentSemesterCase: GetCurrentSemesterUseCase,
-    private val getTasksByDateUseCase: GetTasksByDateUseCase,
-    private val scheduleByUseCase: GetScheduleByDateUseCase
+  private val getCurrentSemesterCase: GetCurrentSemesterUseCase,
+  private val getTasksByDateUseCase: GetTasksByDateUseCase,
+  private val scheduleByUseCase: GetScheduleByDateUseCase
 ) : BaseViewModel() {
 
     fun initialize() {

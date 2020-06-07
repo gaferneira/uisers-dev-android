@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.add_subject
+package co.tuister.uisers.modules.my_career.subjects.add_subject
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectAddBinding
+import co.tuister.uisers.utils.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -30,9 +31,9 @@ class AddSubjectFragment : BaseFragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSubjectAddBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -57,7 +58,7 @@ class AddSubjectFragment : BaseFragment() {
 
         binding.buttonSave.setOnClickListener {
             hideKeyboard()
-            if (checkRequireFormFields(binding.autocompleteSubject, binding.editTextCredits)) {
+            if (requireContext().checkRequireFormFields(binding.autocompleteSubject, binding.editTextCredits)) {
                 it.isEnabled = false
                 viewModel.saveSubject(subject)
             }

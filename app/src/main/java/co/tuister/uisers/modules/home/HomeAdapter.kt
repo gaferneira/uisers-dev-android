@@ -4,35 +4,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.tuister.domain.entities.Subject
+import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.modules.home.viewholders.HeaderViewHolder
 import co.tuister.uisers.modules.home.viewholders.HomeViewHolder
-import co.tuister.uisers.modules.home.viewholders.SubjectsViewHolder
+import co.tuister.uisers.modules.home.viewholders.ScheduleViewHolder
 import co.tuister.uisers.modules.home.viewholders.TasksViewHolder
 
 class HomeAdapter(
-    private val listener: HomeListener
+  private val listener: HomeListener
 ) : RecyclerView.Adapter<HomeViewHolder>() {
 
     var list = mutableListOf<HomeData>()
 
     interface HomeListener {
         fun onClickRow(position: Int)
-        fun onClickSubject(subject: Subject)
+        fun onClickSchedulePeriod(period: SchedulePeriod)
         fun onClickTask(task: Task)
     }
 
     enum class HomeEnum {
         HEADER,
-        SUBJECT,
+        SCHEDULE,
         TASKS;
 
         fun getLayoutId(): Int {
             return when (this) {
                 HEADER -> R.layout.item_home_header
-                SUBJECT -> R.layout.item_home_subjects
+                SCHEDULE -> R.layout.item_home_schedule
                 TASKS -> R.layout.item_home_tasks
             }
         }
@@ -40,7 +40,7 @@ class HomeAdapter(
         fun createViewHolder(view: View): HomeViewHolder {
             return when (this) {
                 HEADER -> HeaderViewHolder(view)
-                SUBJECT -> SubjectsViewHolder(view)
+                SCHEDULE -> ScheduleViewHolder(view)
                 TASKS -> TasksViewHolder(view)
             }
         }

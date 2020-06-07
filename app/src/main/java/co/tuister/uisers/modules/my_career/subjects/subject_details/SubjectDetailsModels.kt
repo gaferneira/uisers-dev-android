@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.subject_details
+package co.tuister.uisers.modules.my_career.subjects.subject_details
 
 import co.tuister.domain.entities.Note
 import co.tuister.uisers.common.BaseState

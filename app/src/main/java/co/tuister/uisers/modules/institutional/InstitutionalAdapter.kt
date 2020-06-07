@@ -8,7 +8,7 @@ import co.tuister.uisers.R
 import kotlinx.android.synthetic.main.item_institutional_menu.view.*
 
 class InstitutionalAdapter(
-    private val listener: InstitutionalListener
+  private val listener: InstitutionalListener
 ) : RecyclerView.Adapter<InstitutionalAdapter.InstitutionalViewHolder>() {
 
     var list = listOf<InstitutionalMenu>()
@@ -43,9 +43,9 @@ class InstitutionalAdapter(
 
     class InstitutionalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(
-            position: Int,
-            menu: InstitutionalMenu,
-            listener: InstitutionalListener
+          position: Int,
+          menu: InstitutionalMenu,
+          listener: InstitutionalListener
         ) {
             itemView.apply {
                 text_view_institutional_menu.setText(menu.title)

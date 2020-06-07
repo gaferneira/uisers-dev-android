@@ -21,9 +21,9 @@ class SplashFragment : BaseFragment() {
     private lateinit var splashViewModel: SplashViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSplashBinding.inflate(inflater)
         binding.lifecycleOwner = this

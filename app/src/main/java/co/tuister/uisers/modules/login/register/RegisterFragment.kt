@@ -23,9 +23,9 @@ class RegisterFragment : BaseFragment() {
     private lateinit var viewModel: RegisterViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRegisterBinding.inflate(inflater)
         binding.lifecycleOwner = this

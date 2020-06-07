@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ForgotPasswordViewModel(
-    private val recoverPassword: RecoverPasswordUseCase
+  private val recoverPassword: RecoverPasswordUseCase
 ) : BaseViewModel() {
 
     val email: MutableLiveData<String> = MutableLiveData("")

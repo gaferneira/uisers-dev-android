@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.subject_details
+package co.tuister.uisers.modules.my_career.subjects.subject_details
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +12,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_my_career_note.*
 
 class NotesAdapter(
-    private val listener: NoteListener
+  private val listener: NoteListener
 ) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
     var list = listOf<Note>()
@@ -45,8 +45,8 @@ class NotesAdapter(
             get() = itemView
 
         fun bind(
-            note: Note,
-            listener: NoteListener
+          note: Note,
+          listener: NoteListener
         ) {
             text_view_note_desc.text = note.title
             text_view_note_grade.text = note.grade.format()

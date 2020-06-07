@@ -3,6 +3,8 @@ package co.tuister.uisers.utils
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.widget.TextView
+import co.tuister.uisers.R
 import java.util.*
 
 fun Context.pickDateTime(calendar: Calendar, onSelectDateTime: ((calendar: Calendar) -> Unit)) {
@@ -19,4 +21,34 @@ fun Context.pickDateTime(calendar: Calendar, onSelectDateTime: ((calendar: Calen
             onSelectDateTime(pickedDateTime)
         }, startHour, startMinute, false).show()
     }, startYear, startMonth, startDay).show()
+}
+
+fun Context.pickTime(hours: Int, minutes: Int, onSelectTime: ((hours: Int, minutes: Int) -> Unit)) {
+    TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+        onSelectTime(hour, minute)
+    }, hours, minutes, false).show()
+}
+
+fun Context.checkRequireFormFields(vararg fields: TextView, showError: Boolean = true): Boolean {
+
+    fields.forEach {
+        it.error = null
+    }
+
+    var success = true
+    fields.forEach {
+        if (it.text.isNullOrEmpty()) {
+            if (showError) {
+                it.error = getString(R.string.error_field_required)
+            }
+            if (success) {
+                success = false
+                if (showError) {
+                    it.requestFocus()
+                }
+            }
+        }
+    }
+
+    return success
 }

@@ -10,11 +10,12 @@ import co.tuister.uisers.modules.login.forgot_password.ForgotPasswordViewModel
 import co.tuister.uisers.modules.login.register.RegisterViewModel
 import co.tuister.uisers.modules.login.splash.SplashViewModel
 import co.tuister.uisers.modules.main.MainViewModel
-import co.tuister.uisers.modules.my_career.SubjectsViewModel
-import co.tuister.uisers.modules.my_career.add_subject.AddSubjectViewModel
+import co.tuister.uisers.modules.my_career.MyCareerViewModel
 import co.tuister.uisers.modules.my_career.schedule.ScheduleViewModel
-import co.tuister.uisers.modules.my_career.subject_details.SemestersViewModel
-import co.tuister.uisers.modules.my_career.subject_details.SubjectDetailsViewModel
+import co.tuister.uisers.modules.my_career.subjects.SubjectsViewModel
+import co.tuister.uisers.modules.my_career.subjects.add_subject.AddSubjectViewModel
+import co.tuister.uisers.modules.my_career.subjects.subject_details.SemestersViewModel
+import co.tuister.uisers.modules.my_career.subjects.subject_details.SubjectDetailsViewModel
 import co.tuister.uisers.modules.profile.ProfileViewModel
 import co.tuister.uisers.modules.task_manager.TasksViewModel
 import co.tuister.uisers.modules.task_manager.add_task.AddTaskViewModel
@@ -22,22 +23,33 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
+
+    // login
     viewModel { LoginViewModel(get(), get()) }
     viewModel { SplashViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { ForgotPasswordViewModel(get()) }
-    viewModel { HomeViewModel(get(), get(), get()) }
-    viewModel { InstitutionalViewModel() }
-    viewModel { SubjectsViewModel(get(), get()) }
-    viewModel { ProfileViewModel() }
-    viewModel { TasksViewModel(get()) }
+
+    // Main
     viewModel { MainViewModel(get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
+    viewModel { ProfileViewModel() }
+
+    // My Career
+    viewModel { MyCareerViewModel(get()) }
+    viewModel { SubjectsViewModel(get()) }
+    viewModel { SubjectDetailsViewModel(get(), get()) }
+    viewModel { AddSubjectViewModel(get(), get()) }
+    viewModel { ScheduleViewModel(get(), get()) }
+    viewModel { SemestersViewModel() }
+
+    // Tasks
+    viewModel { TasksViewModel(get()) }
     viewModel { AddTaskViewModel(get()) }
+
+    // Institutional
+    viewModel { InstitutionalViewModel() }
     viewModel { CalendarViewModel() }
     viewModel { MapViewModel() }
     viewModel { WheelsViewModel() }
-    viewModel { AddSubjectViewModel(get(), get()) }
-    viewModel { ScheduleViewModel() }
-    viewModel { SemestersViewModel() }
-    viewModel { SubjectDetailsViewModel(get(), get()) }
 }

@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.subject_details
+package co.tuister.uisers.modules.my_career.subjects.subject_details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -41,9 +41,9 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSubjectDetailsBinding.inflate(inflater)
         initViews()

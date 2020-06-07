@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.subject_details
+package co.tuister.uisers.modules.my_career.subjects.subject_details
 
 import android.app.Dialog
 import android.os.Bundle
@@ -37,9 +37,9 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
@@ -100,9 +100,9 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
     }
 
     internal class EditorTextWatcher(
-        private var editText: EditText,
-        private var max: Int,
-        private val updateValues: (() -> Unit)?
+      private var editText: EditText,
+      private var max: Int,
+      private val updateValues: (() -> Unit)?
     ) : TextWatcher {
 
         override fun afterTextChanged(s: Editable) {
@@ -136,9 +136,9 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
         private const val ARGUMENT_NOTE = "ARGUMENT_NOTE"
 
         fun create(
-            subject: Subject,
-            note: Note?,
-            listener: AddNoteDialogListener
+          subject: Subject,
+          note: Note?,
+          listener: AddNoteDialogListener
         ): AddNoteDialogFragment {
             val dialog = AddNoteDialogFragment()
             dialog.arguments = bundleOf(

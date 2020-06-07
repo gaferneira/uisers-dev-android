@@ -17,9 +17,9 @@ class CalendarFragment : BaseFragment() {
     private lateinit var viewModel: CalendarViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCalendarBinding.inflate(inflater)
         initViews()

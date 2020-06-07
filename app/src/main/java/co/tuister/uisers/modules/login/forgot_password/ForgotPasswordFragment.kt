@@ -20,9 +20,9 @@ class ForgotPasswordFragment : BaseFragment() {
     private lateinit var viewModel: ForgotPasswordViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentForgotPasswordBinding.inflate(inflater)
         binding.lifecycleOwner = this

@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.tuister.domain.entities.Subject
-import co.tuister.domain.entities.SubjectClass
+import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
@@ -23,9 +22,9 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     private lateinit var adapter: HomeAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
         initViews()
@@ -69,8 +68,8 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
         viewModel.refresh()
     }
 
-    private fun updateListSubjects(list: List<SubjectClass>?) {
-        adapter.addItem(HomeSubjects(list))
+    private fun updateListSubjects(list: List<SchedulePeriod>?) {
+        adapter.addItem(HomeSchedule(list))
     }
 
     private fun updateListTasks(list: List<Task>) {
@@ -80,7 +79,7 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     override fun onClickRow(position: Int) {
     }
 
-    override fun onClickSubject(subject: Subject) {
+    override fun onClickSchedulePeriod(schedulePeriod: SchedulePeriod) {
     }
 
     override fun onClickTask(task: Task) {
