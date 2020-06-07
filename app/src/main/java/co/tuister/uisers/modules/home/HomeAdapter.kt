@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.tuister.domain.entities.Subject
+import co.tuister.domain.entities.SubjectClass
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.modules.home.viewholders.HeaderViewHolder
@@ -13,14 +13,14 @@ import co.tuister.uisers.modules.home.viewholders.SubjectsViewHolder
 import co.tuister.uisers.modules.home.viewholders.TasksViewHolder
 
 class HomeAdapter(
-    private val listener: HomeListener
+  private val listener: HomeListener
 ) : RecyclerView.Adapter<HomeViewHolder>() {
 
     var list = mutableListOf<HomeData>()
 
     interface HomeListener {
         fun onClickRow(position: Int)
-        fun onClickSubject(subject: Subject)
+        fun onClickSubjectClass(subjectClass: SubjectClass)
         fun onClickTask(task: Task)
     }
 

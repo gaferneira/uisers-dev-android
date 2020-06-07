@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.item_home_subjects.view.*
 
 class SubjectsViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
-        position: Int,
-        homeData: HomeData,
-        listener: HomeAdapter.HomeListener,
-        isLastIndex: Boolean
+      position: Int,
+      homeData: HomeData,
+      listener: HomeAdapter.HomeListener,
+      isLastIndex: Boolean
     ) {
         super.bind(position, homeData, listener, isLastIndex)
 
@@ -42,7 +42,7 @@ class SubjectsViewHolder(view: View) : HomeViewHolder(view) {
         data.list?.forEachIndexed { i, timeTable ->
             container.addView(configChildView(viewsList[i], timeTable).apply {
                 setOnClickListener {
-                    listener.onClickSubject(timeTable.subject)
+                    listener.onClickSubjectClass(timeTable)
                 }
             })
         }
@@ -50,7 +50,7 @@ class SubjectsViewHolder(view: View) : HomeViewHolder(view) {
 
     private fun configChildView(view: View, timeTable: SubjectClass): View {
         return view.apply {
-            text_view_subject_name.text = timeTable.subject.name
+            text_view_subject_name.text = timeTable.subjectName
             text_view_subject_hour.text = timeTable.initialHour + "-" + timeTable.finalHour
             text_view_subject_desc.text = timeTable.place
         }

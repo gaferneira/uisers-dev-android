@@ -37,9 +37,9 @@ class AddTaskFragment : BaseFragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTasksAddBinding.inflate(inflater)
         binding.taskBinding = task

@@ -14,8 +14,8 @@ sealed class HomeState<out T : Any>(result: Result<T>) : BaseState<T>(result) {
 open class HomeData(val template: HomeAdapter.HomeEnum)
 
 data class HomeHeader(
-    var career: String?,
-    var period: String?
+  var career: String?,
+  var period: String?
 ) : HomeData(HomeAdapter.HomeEnum.HEADER)
 
 data class HomeSubjects(var list: List<SubjectClass>?) : HomeData(HomeAdapter.HomeEnum.SUBJECT)

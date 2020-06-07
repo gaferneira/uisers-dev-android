@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class TasksViewModel(
-    private val getMyTasks: GetMyTasksUseCase
+  private val getMyTasks: GetMyTasksUseCase
 ) : BaseViewModel() {
 
     fun initialize() {

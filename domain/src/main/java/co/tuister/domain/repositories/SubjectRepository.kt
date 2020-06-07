@@ -12,6 +12,7 @@ interface SubjectRepository {
     suspend fun getAll(): Either<Failure, List<Subject>>
     suspend fun getMySubjects(): Either<Failure, List<Subject>>
     suspend fun getScheduleByDate(date: Date): Either<Failure, List<SubjectClass>>
+    suspend fun getSchedule(): Either<Failure, List<SubjectClass>>
     suspend fun getNotes(subject: Subject): Either<Failure, List<Note>>
     suspend fun saveNote(note: Note, subject: Subject): Either<Failure, Note>
 }

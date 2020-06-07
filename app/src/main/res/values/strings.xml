@@ -241,6 +241,10 @@
     <string name="task_status_done">Done</string>
     <string name="task_label_status">Status</string>
 
+    <string name="title_my_career_subjects">Subjects</string>
+    <string name="title_my_career_schedule">Schedule</string>
+    <string name="title_my_career_semesters">Semesters</string>
+
     <plurals name="minutes">
         <item quantity="one">1 minute</item>
         <item quantity="other">%d minutes</item>

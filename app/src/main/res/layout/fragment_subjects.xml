@@ -33,13 +33,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_subjects_subject" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_margin_small"
-        android:src="@drawable/icon_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

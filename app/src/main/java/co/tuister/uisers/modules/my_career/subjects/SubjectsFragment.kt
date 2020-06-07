@@ -1,22 +1,21 @@
-package co.tuister.uisers.modules.my_career
+package co.tuister.uisers.modules.my_career.subjects
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.MergeAdapter
-import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectsBinding
+import co.tuister.uisers.modules.my_career.FooterAdapter
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class SubjectsFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
+class SubjectsFragment : BaseFragment() {
 
     private lateinit var adapter: SubjectsAdapter
     private lateinit var footerAdapter: FooterAdapter
@@ -24,10 +23,12 @@ class SubjectsFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
     private lateinit var binding: FragmentSubjectsBinding
     private lateinit var viewModel: SubjectsViewModel
 
+    var listener: SubjectsAdapter.SubjectListener? = null
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSubjectsBinding.inflate(inflater)
         initViews()
@@ -37,13 +38,11 @@ class SubjectsFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
 
     private fun initViews() {
         footerAdapter = FooterAdapter()
-        adapter = SubjectsAdapter(this)
+        adapter =
+            SubjectsAdapter(listener)
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = MergeAdapter(this@SubjectsFragment.adapter, footerAdapter)
-        }
-        binding.buttonAdd.setOnClickListener {
-            findNavController().navigate(R.id.action_subjects_to_subject_add)
         }
     }
 
@@ -85,10 +84,5 @@ class SubjectsFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
     override fun onResume() {
         super.onResume()
         viewModel.refresh()
-    }
-
-    override fun onClickSubject(subject: Subject) {
-        val action = SubjectsFragmentDirections.actionSubjectsToSubjectDetails(subject)
-        findNavController().navigate(action)
     }
 }

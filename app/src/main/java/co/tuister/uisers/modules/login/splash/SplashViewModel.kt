@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 import kotlin.system.measureTimeMillis
 
 class SplashViewModel(
-    private val userUseCase: UserUseCase
+  private val userUseCase: UserUseCase
 ) : ViewModel() {
 
     val message: MutableLiveData<String> = MutableLiveData("")

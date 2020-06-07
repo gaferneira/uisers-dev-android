@@ -10,10 +10,10 @@ import java.util.*
 
 class HeaderViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
-        position: Int,
-        homeData: HomeData,
-        listener: HomeAdapter.HomeListener,
-        isLastIndex: Boolean
+      position: Int,
+      homeData: HomeData,
+      listener: HomeAdapter.HomeListener,
+      isLastIndex: Boolean
     ) {
         super.bind(position, homeData, listener, isLastIndex)
 

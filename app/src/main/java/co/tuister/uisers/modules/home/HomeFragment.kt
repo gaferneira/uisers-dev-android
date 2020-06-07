@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import co.tuister.domain.entities.Subject
 import co.tuister.domain.entities.SubjectClass
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.common.BaseFragment
@@ -23,9 +22,9 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     private lateinit var adapter: HomeAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
         initViews()
@@ -80,7 +79,7 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     override fun onClickRow(position: Int) {
     }
 
-    override fun onClickSubject(subject: Subject) {
+    override fun onClickSubjectClass(subjectClass: SubjectClass) {
     }
 
     override fun onClickTask(task: Task) {

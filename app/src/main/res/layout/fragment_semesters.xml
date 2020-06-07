@@ -25,56 +25,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/padding_margin_normal"
-        android:layout_marginBottom="@dimen/padding_margin_large"
-        app:layout_constraintBottom_toTopOf="@+id/container_average"
+        android:layout_marginBottom="@dimen/padding_margin_normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_subjects_subject" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_average"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_margin_extra_small"
-        android:background="?colorPrimary"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_view">
-
-        <TextView
-            android:id="@+id/text_view_average"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
-            android:textAppearance="?textAppearanceHeadline6"
-            android:textColor="?colorOnPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="0,0" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/my_career_semesters_average"
-            android:textAppearance="?textAppearanceHeadline6"
-            android:textColor="?colorOnPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/padding_margin_normal"
-        android:padding="15dp"
-        android:src="@drawable/icon_add"
-        app:layout_constraintBottom_toTopOf="@id/container_average"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

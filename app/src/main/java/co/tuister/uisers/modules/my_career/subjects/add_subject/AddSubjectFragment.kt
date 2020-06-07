@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.add_subject
+package co.tuister.uisers.modules.my_career.subjects.add_subject
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,9 +30,9 @@ class AddSubjectFragment : BaseFragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSubjectAddBinding.inflate(inflater)
         binding.lifecycleOwner = this

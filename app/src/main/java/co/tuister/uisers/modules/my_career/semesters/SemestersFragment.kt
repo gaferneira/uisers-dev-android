@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSemestersBinding
-import co.tuister.uisers.modules.my_career.subject_details.SemestersViewModel
+import co.tuister.uisers.modules.my_career.subjects.subject_details.SemestersViewModel
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -18,9 +18,9 @@ class SemestersFragment : BaseFragment() {
     private lateinit var viewModel: SemestersViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSemestersBinding.inflate(inflater)
         initViews()

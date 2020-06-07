@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career
+package co.tuister.uisers.modules.my_career.subjects
 
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.usecases.my_career.GetCurrentSemesterUseCase
@@ -10,8 +10,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SubjectsViewModel(
-    private val getMySubjects: GetMySubjectsUseCase,
-    private val getCurrentSemester: GetCurrentSemesterUseCase
+  private val getMySubjects: GetMySubjectsUseCase,
+  private val getCurrentSemester: GetCurrentSemesterUseCase
 ) : BaseViewModel() {
 
     fun initialize() {
@@ -27,9 +27,12 @@ class SubjectsViewModel(
             setState(SubjectsState.LoadItems(Result.InProgress))
             val result = withContext(Dispatchers.IO) { getMySubjects.run() }
             result.fold({
-                setState(SubjectsState.LoadItems(Result.Error(it)))
+                setState(
+                    SubjectsState.LoadItems(Result.Error(it))
+                )
             }, {
-                setState(SubjectsState.LoadItems(Result.Success(it)))
+                setState(SubjectsState.LoadItems(Result.Success(it))
+                )
             })
         }
     }
@@ -40,7 +43,9 @@ class SubjectsViewModel(
             result.fold({
                 setState(SubjectsState.LoadSemesterAverage(Result.Error(it)))
             }, {
-                setState(SubjectsState.LoadSemesterAverage(Result.Success(it.average)))
+                setState(
+                    SubjectsState.LoadSemesterAverage(Result.Success(it.average))
+                )
             })
         }
     }

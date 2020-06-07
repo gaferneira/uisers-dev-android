@@ -46,8 +46,26 @@ class SubjectRepositoryImpl : SubjectRepository {
         delay(1000)
         return Either.Right(
             listOf(
-                SubjectClass(Subject("Calculo I", "", 0f), "08:00", "10:00", "CT 301"),
-                SubjectClass(Subject("Quimica", "", 0f), "10:00", "12:00", "LP 310")
+                SubjectClass("Calculo I", "",  1,"08:00", "10:00", "CT 301"),
+                SubjectClass("Quimica", "",1, "10:00", "12:00", "LP 310")
+            )
+        )
+    }
+
+    override suspend fun getSchedule(): Either<Failure, List<SubjectClass>> {
+
+        delay(1000)
+        return Either.Right(
+            listOf(
+                SubjectClass("Calculo I", "", 2, "10:00", "12:00", "LP 310"),
+                SubjectClass("Fisica I", "", 2, "12:00", "14:00", "LP 310"),
+                SubjectClass("Biologia", "", 2, "08:00", "9:00", "LP 310"),
+                SubjectClass("Quimica", "", 3, "10:00", "12:00", "LP 310"),
+                SubjectClass("Quimica", "", 3, "10:00", "12:00", "LP 310"),
+                SubjectClass("Fisica I", "", 4, "10:00", "12:00", "LP 310"),
+                SubjectClass("Quimica", "", 5, "10:00", "12:00", "LP 310"),
+                SubjectClass("Calculo I", "", 5, "08:00", "10:00", "CT 301"),
+                SubjectClass("Fundamentos", "", 6, "10:00", "12:00", "LP 310")
             )
         )
     }

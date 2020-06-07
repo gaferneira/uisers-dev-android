@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.add_subject
+package co.tuister.uisers.modules.my_career.subjects.add_subject
 
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.Subject
@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AddSubjectViewModel(
-    private val getAllSubject: GetAllSubjectsUseCase,
-    private val saveSubject: SaveSubjectUseCase
+  private val getAllSubject: GetAllSubjectsUseCase,
+  private val saveSubject: SaveSubjectUseCase
 ) : BaseViewModel() {
 
     fun initialize() {
