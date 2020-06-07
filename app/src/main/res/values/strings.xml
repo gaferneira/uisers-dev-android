@@ -247,6 +247,7 @@
     <string name="prompt_schedule_details">Subject / Activity</string>
     <string name="prompt_place">Place</string>
     <string name="home_title_tasks">Tasks</string>
+    <string name="confirm_change_current_semester">Are you sure to change the current semester?</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>

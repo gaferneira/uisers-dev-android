@@ -31,6 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_subjects_subject" />
+        tools:listitem="@layout/item_my_career_subject" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

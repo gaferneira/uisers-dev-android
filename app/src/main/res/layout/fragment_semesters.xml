@@ -30,7 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_subjects_subject" />
+        tools:listitem="@layout/item_my_career_subject" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

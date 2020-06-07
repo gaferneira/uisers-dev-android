@@ -6,4 +6,7 @@ import co.tuister.domain.entities.Semester
 
 interface SemesterRepository {
     suspend fun getCurrent(): Either<Failure, Semester>
+    suspend fun getAll(): Either<Failure, List<Semester>>
+    suspend fun save(semester: Semester): Either<Failure, Semester>
+    suspend fun changeCurrentSemester(semester: Semester): Either<Failure, Semester>
 }
