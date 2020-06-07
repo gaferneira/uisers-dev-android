@@ -244,6 +244,9 @@
     <string name="title_my_career_subjects">Subjects</string>
     <string name="title_my_career_schedule">Schedule</string>
     <string name="title_my_career_semesters">Semesters</string>
+    <string name="prompt_schedule_details">Subject / Activity</string>
+    <string name="prompt_place">Place</string>
+    <string name="home_title_tasks">Tasks</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>

@@ -3,7 +3,6 @@ package co.tuister.uisers.common
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import co.tuister.uisers.R
 import co.tuister.uisers.utils.UisersDialogFragment
@@ -32,25 +31,5 @@ open class BaseFragment : Fragment() {
                 unit?.invoke()
             })
             .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
-    }
-
-    protected fun checkRequireFormFields(vararg fields: TextView): Boolean {
-
-        fields.forEach {
-            it.error = null
-        }
-
-        var success = true
-        fields.forEach {
-            if (it.text.isNullOrEmpty()) {
-                it.error = getString(R.string.error_field_required)
-                if (success) {
-                    success = false
-                    it.requestFocus()
-                }
-            }
-        }
-
-        return success
     }
 }

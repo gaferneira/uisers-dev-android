@@ -10,6 +10,7 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectAddBinding
+import co.tuister.uisers.utils.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -57,7 +58,7 @@ class AddSubjectFragment : BaseFragment() {
 
         binding.buttonSave.setOnClickListener {
             hideKeyboard()
-            if (checkRequireFormFields(binding.autocompleteSubject, binding.editTextCredits)) {
+            if (requireContext().checkRequireFormFields(binding.autocompleteSubject, binding.editTextCredits)) {
                 it.isEnabled = false
                 viewModel.saveSubject(subject)
             }

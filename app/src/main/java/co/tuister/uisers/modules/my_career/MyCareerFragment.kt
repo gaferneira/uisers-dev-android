@@ -28,7 +28,12 @@ import java.util.*
 class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
 
     private lateinit var binding: FragmentMyCareerBinding
+
     private val viewModel by sharedViewModel<MyCareerViewModel>(from = { requireActivity() })
+
+    private var subjectFragment: SubjectsFragment? = null
+    private var scheduleFragment: ScheduleFragment? = null
+    private var semestersFragment: SemestersFragment? = null
 
     private var currentPosition = 0
 
@@ -70,7 +75,7 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
         binding.buttonAdd.setOnClickListener {
             when (currentPosition) {
                 0 -> findNavController().navigate(R.id.action_subjects_to_subject_add)
-                1 -> findNavController().navigate(R.id.action_subjects_to_subject_add)
+                1 -> scheduleFragment?.addNewItem()
                 else -> findNavController().navigate(R.id.action_subjects_to_subject_add)
             }
         }
@@ -86,6 +91,8 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
     }
 
     private fun update(state: BaseState<Any>?) {
+        // Log.d("GABRIEL", "update state MyCareerFragment")
+        // Log.d("GABRIEL", state?.toString() ?: "")
     }
 
     override fun onClickSubject(subject: Subject) {
@@ -103,10 +110,21 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
             return when (position) {
                 0 -> SubjectsFragment().apply {
                     listener = this@MyCareerFragment
+                    }.also {
+                        subjectFragment = it
+                    }
+                1 -> ScheduleFragment().also {
+                    scheduleFragment = it
                 }
-                1 -> ScheduleFragment()
-                else -> SemestersFragment()
+                else -> SemestersFragment().also {
+                    semestersFragment = it
+                }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
     }
 }

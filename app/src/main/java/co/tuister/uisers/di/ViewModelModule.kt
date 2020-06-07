@@ -23,23 +23,33 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
+
+    // login
     viewModel { LoginViewModel(get(), get()) }
     viewModel { SplashViewModel(get()) }
     viewModel { RegisterViewModel(get()) }
     viewModel { ForgotPasswordViewModel(get()) }
-    viewModel { HomeViewModel(get(), get(), get()) }
-    viewModel { InstitutionalViewModel() }
-    viewModel { MyCareerViewModel() }
-    viewModel { SubjectsViewModel(get(), get()) }
-    viewModel { ProfileViewModel() }
-    viewModel { TasksViewModel(get()) }
+
+    // Main
     viewModel { MainViewModel(get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
+    viewModel { ProfileViewModel() }
+
+    // My Career
+    viewModel { MyCareerViewModel(get()) }
+    viewModel { SubjectsViewModel(get()) }
+    viewModel { SubjectDetailsViewModel(get(), get()) }
+    viewModel { AddSubjectViewModel(get(), get()) }
+    viewModel { ScheduleViewModel(get(), get()) }
+    viewModel { SemestersViewModel() }
+
+    // Tasks
+    viewModel { TasksViewModel(get()) }
     viewModel { AddTaskViewModel(get()) }
+
+    // Institutional
+    viewModel { InstitutionalViewModel() }
     viewModel { CalendarViewModel() }
     viewModel { MapViewModel() }
     viewModel { WheelsViewModel() }
-    viewModel { AddSubjectViewModel(get(), get()) }
-    viewModel { ScheduleViewModel(get()) }
-    viewModel { SemestersViewModel() }
-    viewModel { SubjectDetailsViewModel(get(), get()) }
 }

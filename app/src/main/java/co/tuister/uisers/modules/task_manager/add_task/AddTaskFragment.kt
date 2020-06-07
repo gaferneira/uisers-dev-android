@@ -13,6 +13,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksAddBinding
 import co.tuister.uisers.utils.DateUtils
+import co.tuister.uisers.utils.checkRequireFormFields
 import co.tuister.uisers.utils.pickDateTime
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -115,7 +116,7 @@ class AddTaskFragment : BaseFragment() {
 
         binding.buttonSave.setOnClickListener {
             hideKeyboard()
-            if (checkRequireFormFields(binding.editTextTitleTask)) {
+            if (requireContext().checkRequireFormFields(binding.editTextTitleTask)) {
                 it.isEnabled = false
                 viewModel.saveTask(task)
             }

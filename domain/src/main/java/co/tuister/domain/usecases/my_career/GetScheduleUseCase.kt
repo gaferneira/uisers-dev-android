@@ -3,13 +3,13 @@ package co.tuister.domain.usecases.my_career
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.NoParamsUseCase
-import co.tuister.domain.entities.SubjectClass
-import co.tuister.domain.repositories.SubjectRepository
+import co.tuister.domain.entities.SchedulePeriod
+import co.tuister.domain.repositories.ScheduleRepository
 
 class GetScheduleUseCase(
-    private val repository: SubjectRepository
-) : NoParamsUseCase<List<SubjectClass>>() {
-    override suspend fun run(): Either<Failure, List<SubjectClass>> {
+    private val repository: ScheduleRepository
+) : NoParamsUseCase<List<SchedulePeriod>>() {
+    override suspend fun run(): Either<Failure, List<SchedulePeriod>> {
         return repository.getSchedule()
     }
 }

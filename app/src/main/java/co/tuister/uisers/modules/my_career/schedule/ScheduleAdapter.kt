@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import co.tuister.domain.entities.SubjectClass
+import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.uisers.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_my_career_schedule.*
@@ -17,10 +17,10 @@ class ScheduleAdapter(
   private val listener: ScheduleListener?
 ) : RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
 
-    var list = listOf<Pair<Int?, SubjectClass?>>()
+    var list = listOf<Pair<Int?, SchedulePeriod?>>()
 
     interface ScheduleListener {
-        fun onClickClass(subjectClass: SubjectClass)
+        fun onClickPeriod(period: SchedulePeriod)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -49,7 +49,7 @@ class ScheduleAdapter(
         holder.bind(item, showDivider, listener)
     }
 
-    fun setItems(items: List<Pair<Int?, SubjectClass?>>) {
+    fun setItems(items: List<Pair<Int?, SchedulePeriod?>>) {
         list = items
         notifyDataSetChanged()
     }
@@ -60,7 +60,7 @@ class ScheduleAdapter(
             get() = itemView
 
         open fun bind(
-          pair: Pair<Int?, SubjectClass?>,
+          pair: Pair<Int?, SchedulePeriod?>,
           showDivider: Boolean = true,
           listener: ScheduleListener?
         ) {
@@ -75,11 +75,11 @@ class ScheduleAdapter(
             } ?: run {
                 pair.second?.let {
                     divider.isVisible = showDivider
-                    text_view_class_name.text = it.subjectName
+                    text_view_class_name.text = it.description
                     text_view_description.text = it.place
                     text_view_hour.text = it.initialHour + "-" + it.finalHour
                     itemView.setOnClickListener { _ ->
-                        listener?.onClickClass(it)
+                        listener?.onClickPeriod(it)
                     }
                 }
             }
