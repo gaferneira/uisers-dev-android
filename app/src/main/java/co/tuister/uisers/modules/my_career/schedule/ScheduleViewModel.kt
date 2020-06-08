@@ -25,7 +25,7 @@ class ScheduleViewModel(
     private fun updateClasses() {
         viewModelScope.launch {
             setState(
-                ScheduleState.LoadItems(Result.InProgress)
+                ScheduleState.LoadItems(Result.InProgress())
             )
             val result = withContext(Dispatchers.IO) { getSchedule.run() }
             result.fold({
@@ -37,7 +37,7 @@ class ScheduleViewModel(
     }
 
     fun savePeriod(period: SchedulePeriod) {
-        setState(ScheduleState.SavePeriod(Result.InProgress))
+        setState(ScheduleState.SavePeriod(Result.InProgress()))
         viewModelScope.launch {
             savePeriod.run(period).fold({
                 setState(ScheduleState.SavePeriod(Result.Error(it)))

@@ -21,7 +21,7 @@ class MyCareerViewModel(
 
     fun updateSubjects() {
         viewModelScope.launch {
-            setState(MyCareerState.LoadSubjects(Result.InProgress))
+            setState(MyCareerState.LoadSubjects(Result.InProgress()))
             val result = withContext(Dispatchers.IO) { getMySubjects.run() }
             result.fold({
                 setState(

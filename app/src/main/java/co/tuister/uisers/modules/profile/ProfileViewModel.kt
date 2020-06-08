@@ -7,7 +7,6 @@ import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.login.DownloadImageUseCase
 import co.tuister.domain.usecases.login.UploadImageUseCase
 import co.tuister.uisers.common.BaseViewModel
-import co.tuister.uisers.modules.main.MainState
 import co.tuister.uisers.modules.main.MainState.DownloadedImage
 import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.Dispatchers

@@ -13,6 +13,7 @@ import co.tuister.domain.usecases.login.RegisterUseCase.Params
 import co.tuister.domain.usecases.login.UploadImageUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
+import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
 import co.tuister.uisers.utils.Result.*
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +34,7 @@ class RegisterViewModel(
     private var uri: Uri? = null
 
     fun doRegister() {
-        setState(ValidateRegister(InProgress))
+        setState(ValidateRegister(InProgress()))
         val pass1 = password1.value
         val pass2 = password2.value
         val user = userLive.value
@@ -129,7 +130,7 @@ class RegisterViewModel(
 
     fun getCareers(unit: () -> Unit) {
         if (listCareers.isEmpty()) {
-            setState(ValidateRegister(Downloading))
+            setState(ValidateRegister(InProgress(DOWNLOADING)))
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =

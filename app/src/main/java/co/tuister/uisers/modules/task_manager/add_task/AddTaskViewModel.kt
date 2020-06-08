@@ -5,6 +5,7 @@ import co.tuister.domain.entities.Task
 import co.tuister.domain.usecases.tasks.SaveTaskUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
+import co.tuister.uisers.utils.Result.InProgress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,9 +18,9 @@ class AddTaskViewModel(
     }
 
     fun saveTask(task: Task) {
-        setState(AddTaskState.Save(Result.InProgress))
+        setState(AddTaskState.Save(InProgress()))
         viewModelScope.launch {
-            setState(AddTaskState.Save(Result.InProgress))
+            setState(AddTaskState.Save(InProgress()))
             val result = withContext(Dispatchers.IO) { saveTask.run(task) }
             result.fold({
                 setState(AddTaskState.Save(Result.Error(it)))

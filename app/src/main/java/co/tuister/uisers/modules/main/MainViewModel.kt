@@ -51,7 +51,7 @@ class MainViewModel(
     }
 
     fun doLogOut() {
-        setState(ValidateLogout(InProgress))
+        setState(ValidateLogout(InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 logoutUseCase.run()

@@ -2,7 +2,6 @@ package co.tuister.uisers.modules.login.register
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.content.Intent.ACTION_GET_CONTENT
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +17,8 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentRegisterBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
+import co.tuister.uisers.utils.PROGESS_TYPE
+import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
@@ -130,13 +131,14 @@ class RegisterFragment : BaseFragment() {
     private fun validateRegister(state: ValidateRegister) {
         when {
             state.inProgress() -> {
-                binding.loginStatusMessage.text =
-                    context?.getString(R.string.login_progress_signing_in)
-                binding.loginStatus.isVisible = true
-            }
-            state.isDownloading() -> {
-                binding.loginStatusMessage.text =
-                    context?.getString(R.string.progress_downloading_data)
+                val st = state as Result.InProgress
+                if (st.type == DOWNLOADING) {
+                    binding.loginStatusMessage.text =
+                        context?.getString(R.string.progress_downloading_data)
+                } else {
+                    binding.loginStatusMessage.text =
+                        context?.getString(R.string.login_progress_signing_in)
+                }
                 binding.loginStatus.isVisible = true
             }
             state.isFailure() -> {

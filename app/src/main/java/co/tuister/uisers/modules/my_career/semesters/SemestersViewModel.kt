@@ -27,7 +27,7 @@ class SemestersViewModel(
     private fun updateSemesters() {
         viewModelScope.launch {
             setState(
-                SemestersState.LoadItems(Result.InProgress)
+                SemestersState.LoadItems(Result.InProgress())
             )
             val result = withContext(Dispatchers.IO) { getAllSemesters.run() }
             result.fold({
@@ -39,7 +39,7 @@ class SemestersViewModel(
     }
 
     fun saveSemester(semester: Semester) {
-        setState(SemestersState.SaveSemester(Result.InProgress))
+        setState(SemestersState.SaveSemester(Result.InProgress()))
         viewModelScope.launch {
             saveSemester.run(semester).fold({
                 setState(SemestersState.SaveSemester(Result.Error(it)))
@@ -50,7 +50,7 @@ class SemestersViewModel(
     }
 
     fun changeCurrentSemester(semester: Semester) {
-        setState(SemestersState.ChangeCurrentSemester(Result.InProgress))
+        setState(SemestersState.ChangeCurrentSemester(Result.InProgress()))
         viewModelScope.launch {
             changeCurrentSemester.run(semester).fold({
                 setState(SemestersState.ChangeCurrentSemester(Result.Error(it)))
