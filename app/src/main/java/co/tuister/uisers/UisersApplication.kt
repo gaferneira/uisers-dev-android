@@ -5,6 +5,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
 import co.tuister.uisers.di.dataModule
 import co.tuister.uisers.di.domainModule
+import co.tuister.uisers.di.presentationModule
 import co.tuister.uisers.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -32,7 +33,8 @@ class UisersApplication : MultiDexApplication(), LifecycleObserver {
                 listOf(
                     dataModule,
                     domainModule,
-                    viewModelModule
+                    viewModelModule,
+                    presentationModule
                 )
             )
         }

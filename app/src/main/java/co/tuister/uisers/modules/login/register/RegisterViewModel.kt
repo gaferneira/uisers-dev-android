@@ -21,10 +21,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class RegisterViewModel(
-    val registerUseCase: RegisterUseCase,
-    val careersUseCase: CareersUseCase,
-    val logoutUseCase: LogoutUseCase,
-    val uploadImageUseCase: UploadImageUseCase
+  val registerUseCase: RegisterUseCase,
+  val careersUseCase: CareersUseCase,
+  val logoutUseCase: LogoutUseCase,
+  val uploadImageUseCase: UploadImageUseCase
 ) :
     BaseViewModel() {
     val userLive = MutableLiveData(User())

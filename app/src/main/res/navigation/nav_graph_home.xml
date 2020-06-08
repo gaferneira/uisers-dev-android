@@ -66,7 +66,7 @@
         android:id="@+id/map_fragment_dest"
         android:name="co.tuister.uisers.modules.institutional.map.MapFragment"
         android:label="MapFragment"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_institutional_map" />
 
     <fragment
         android:id="@+id/calendar_fragment_dest"

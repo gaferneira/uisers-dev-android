@@ -250,6 +250,8 @@
     <string name="prompt_place">Place</string>
     <string name="home_title_tasks">Tasks</string>
     <string name="confirm_change_current_semester">Are you sure to change the current semester?</string>
+    <string name="institutional_map_hint_sites">Select a site</string>
+    <string name="institutional_map_hint_place">Select a place</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>

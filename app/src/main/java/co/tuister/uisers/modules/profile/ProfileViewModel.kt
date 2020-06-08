@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ProfileViewModel(
-    val uploadImageUseCase: UploadImageUseCase,
-    private val downloadImageUseCase: DownloadImageUseCase
+  val uploadImageUseCase: UploadImageUseCase,
+  private val downloadImageUseCase: DownloadImageUseCase
 ) : BaseViewModel() {
 
     private val _user: MutableLiveData<User> = MutableLiveData()
@@ -40,7 +40,6 @@ class ProfileViewModel(
                 val resultData =
                     downloadImageUseCase.run(DownloadImageUseCase.Params(user.value!!.email))
                 resultData.fold({ failure ->
-
                 }, {
                     setState(DownloadedImage(Result.Success(it)))
                 })

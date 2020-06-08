@@ -19,6 +19,8 @@ import co.tuister.uisers.modules.my_career.subjects.subject_details.SubjectDetai
 import co.tuister.uisers.modules.profile.ProfileViewModel
 import co.tuister.uisers.modules.task_manager.TasksViewModel
 import co.tuister.uisers.modules.task_manager.add_task.AddTaskViewModel
+import co.tuister.uisers.utils.maps.GoogleMapsController
+import co.tuister.uisers.utils.maps.MapController
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -50,6 +52,10 @@ val viewModelModule = module {
     // Institutional
     viewModel { InstitutionalViewModel() }
     viewModel { CalendarViewModel() }
-    viewModel { MapViewModel() }
+    viewModel { MapViewModel(get(), get()) }
     viewModel { WheelsViewModel() }
+}
+
+val presentationModule = module {
+    single<MapController> { GoogleMapsController() }
 }

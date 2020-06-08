@@ -94,3 +94,4 @@ lint/tmp/
 
 # google services
 /app/google-services.json
+/app/secure.properties

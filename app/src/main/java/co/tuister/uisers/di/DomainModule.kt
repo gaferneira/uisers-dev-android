@@ -1,6 +1,8 @@
 package co.tuister.uisers.di
 
 import co.tuister.domain.usecases.UserUseCase
+import co.tuister.domain.usecases.institutional.GetPlacesUseCase
+import co.tuister.domain.usecases.institutional.GetSitesUseCase
 import co.tuister.domain.usecases.login.*
 import co.tuister.domain.usecases.my_career.*
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
@@ -42,4 +44,8 @@ val domainModule = module {
     single { GetTasksByDateUseCase(get()) }
     single { GetMyTasksUseCase(get()) }
     single { SaveTaskUseCase(get()) }
+
+    // Institutional
+    single { GetPlacesUseCase(get()) }
+    single { GetSitesUseCase(get()) }
 }
