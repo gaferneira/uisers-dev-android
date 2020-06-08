@@ -70,6 +70,21 @@ class UserRepositoryImpl(
         }
     }
 
+    override suspend fun getCampus(): Either<Failure, List<String>> {
+        val data = firebaseFirestore
+            .collection("data_base")
+            .document("uis")
+            .get()
+            .await()
+
+        return try {
+            val result = data?.get("sedes") as MutableList<String>
+            Either.Right(result)
+        } catch (exception: Exception) {
+            Either.Left(Failure.ServerError(exception))
+        }
+    }
+
     override suspend fun downloadImage(email: String): Either<Failure, Uri> {
         return try {
             val url = firebaseStorage.reference.child("$email/profile.jpg").downloadUrl.await()
