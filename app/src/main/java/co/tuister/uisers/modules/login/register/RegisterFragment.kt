@@ -17,7 +17,6 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentRegisterBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
-import co.tuister.uisers.utils.PROGESS_TYPE
 import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
@@ -26,7 +25,6 @@ import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.Calendar.YEAR
 import java.util.Calendar.getInstance
-
 
 class RegisterFragment : BaseFragment() {
 
@@ -38,9 +36,9 @@ class RegisterFragment : BaseFragment() {
     private lateinit var viewModel: RegisterViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRegisterBinding.inflate(inflater)
         binding.lifecycleOwner = this

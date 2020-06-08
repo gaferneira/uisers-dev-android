@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInstitutionalBinding
@@ -71,5 +73,12 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
     }
 
     override fun onClickMenu(position: Int) {
+        val action = when (position) {
+            0 -> R.id.action_institutional_to_map
+            1 -> R.id.action_institutional_to_calendar
+            2 -> R.id.action_institutional_to_wheels
+            else -> R.id.action_institutional_to_map
+        }
+        findNavController().navigate(action)
     }
 }
