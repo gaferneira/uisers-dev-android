@@ -45,10 +45,11 @@
     <string name="ok">Ok</string>
 
     <!-- LOGIN AND REGISTER -->
-
     <string name="prompt_email">Email</string>
     <string name="prompt_student_code">Student code</string>
     <string name="prompt_name">Name</string>
+    <string name="prompt_career">Career</string>
+    <string name="prompt_year">Year</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_confirm_password">Confirm password</string>
     <string name="action_register">Register</string>
@@ -59,6 +60,7 @@
     <string name="register_period_I">I</string>
     <string name="register_period_II">II</string>
     <string name="start_progress">Starting app...</string>
+    <string name="progress_downloading_data">Downloading&#8230;</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_invalid_match_password">The password is different</string>
@@ -216,9 +218,9 @@
     <string name="title_menu_institution">Institucion</string>
 
     <!-- Left side menu -->
-    <string name="welcome_message">Hola,</string>
-    <string name="close_session"><u>Cerrar sesión</u></string>
-    <string name="version_label">Versión %s</string>
+    <string name="welcome_message">Hi,</string>
+    <string name="close_session"><u>Exit</u></string>
+    <string name="version_label">Version %s</string>
     <string name="empty_calendar">Aún no se han registrado eventos para este año en nuestro servidor, intentalo nuevamente más tarde.</string>
     <string name="institutional_map_uis">UIS</string>
     <string name="institutional_map_neighbors">Vecinos</string>

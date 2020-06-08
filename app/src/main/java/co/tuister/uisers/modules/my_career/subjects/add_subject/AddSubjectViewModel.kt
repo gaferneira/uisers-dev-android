@@ -6,6 +6,7 @@ import co.tuister.domain.usecases.my_career.GetAllSubjectsUseCase
 import co.tuister.domain.usecases.my_career.SaveSubjectUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
+import co.tuister.uisers.utils.Result.InProgress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,7 +22,7 @@ class AddSubjectViewModel(
 
     private fun getDefaultsSubjects() {
         viewModelScope.launch {
-            setState(AddSubjectsState.LoadDefaultSubjects(Result.InProgress))
+            setState(AddSubjectsState.LoadDefaultSubjects(InProgress()))
             val result = withContext(Dispatchers.IO) { getAllSubject.run() }
             result.fold({
                 setState(AddSubjectsState.LoadDefaultSubjects(Result.Error(it)))
@@ -32,9 +33,9 @@ class AddSubjectViewModel(
     }
 
     fun saveSubject(subject: Subject) {
-        setState(AddSubjectsState.Save(Result.InProgress))
+        setState(AddSubjectsState.Save(InProgress()))
         viewModelScope.launch {
-            setState(AddSubjectsState.Save(Result.InProgress))
+            setState(AddSubjectsState.Save(InProgress()))
             val result = withContext(Dispatchers.IO) { saveSubject.run(subject) }
             result.fold({
                 setState(AddSubjectsState.Save(Result.Error(it)))

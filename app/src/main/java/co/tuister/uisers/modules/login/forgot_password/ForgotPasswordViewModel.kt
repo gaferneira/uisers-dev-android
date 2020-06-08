@@ -17,7 +17,7 @@ class ForgotPasswordViewModel(
     val email: MutableLiveData<String> = MutableLiveData("")
 
     fun doRecover() {
-        setState(ForgotPasswordState.ValidateEmail(Result.InProgress))
+        setState(ForgotPasswordState.ValidateEmail(Result.InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val sentRecover = recoverPassword.run(email.value!!)

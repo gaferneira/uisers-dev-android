@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
+import co.tuister.uisers.utils.Result.InProgress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,7 +22,7 @@ class TasksViewModel(
 
     private fun updateTasks() {
         viewModelScope.launch {
-            setState(TasksState.LoadItems(Result.InProgress))
+            setState(TasksState.LoadItems(InProgress()))
             val result = withContext(Dispatchers.IO) { getMyTasks.run() }
             result.fold({
                 setState(TasksState.LoadItems(Result.Error(it)))

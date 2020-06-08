@@ -18,7 +18,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase, private val userUse
     val password: MutableLiveData<String> = MutableLiveData("")
 
     fun doLogIn() {
-        setState(LoginState.ValidateLogin(Result.InProgress))
+        setState(LoginState.ValidateLogin(Result.InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val emailText = email.value!!

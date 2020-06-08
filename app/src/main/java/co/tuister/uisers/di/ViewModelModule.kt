@@ -27,13 +27,13 @@ val viewModelModule = module {
     // login
     viewModel { LoginViewModel(get(), get()) }
     viewModel { SplashViewModel(get()) }
-    viewModel { RegisterViewModel(get()) }
+    viewModel { RegisterViewModel(get(), get(), get(), get()) }
     viewModel { ForgotPasswordViewModel(get()) }
 
     // Main
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
     viewModel { HomeViewModel(get(), get(), get()) }
-    viewModel { ProfileViewModel() }
+    viewModel { ProfileViewModel(get(), get()) }
 
     // My Career
     viewModel { MyCareerViewModel(get()) }

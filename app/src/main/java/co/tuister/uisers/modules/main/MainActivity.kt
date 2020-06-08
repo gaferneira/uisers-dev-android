@@ -17,8 +17,10 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.ActivityMainBinding
 import co.tuister.uisers.databinding.LeftHomeMenuHeaderLayoutBinding
 import co.tuister.uisers.modules.login.LoginActivity
+import co.tuister.uisers.modules.main.MainState.DownloadedImage
 import co.tuister.uisers.modules.main.MainState.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
+import co.tuister.uisers.utils.ImagesUtils.Companion.downloadImageInto
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -50,6 +52,11 @@ class MainActivity : BaseActivity() {
         bindingMenu.viewModel = viewModel
         navController = findNavController(R.id.fragment_nav_host_home)
         initViews()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.downloadImage()
     }
 
     private fun initViews() {
@@ -91,6 +98,16 @@ class MainActivity : BaseActivity() {
     private fun update(state: BaseState<Any>) {
         when (state) {
             is ValidateLogout -> validateLogout(state)
+            is DownloadedImage -> downloadImage(state)
+        }
+    }
+
+    private fun downloadImage(state: DownloadedImage) {
+        when {
+            state.isSuccess() -> {
+                downloadImageInto(this, state.result.data, binding.circleImagePhoto)
+                downloadImageInto(this, state.result.data, bindingMenu.circleImagePhoto)
+            }
         }
     }
 

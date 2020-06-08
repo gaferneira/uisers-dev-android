@@ -7,6 +7,7 @@ import co.tuister.domain.usecases.my_career.GetNotesUseCase
 import co.tuister.domain.usecases.my_career.SaveNoteUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
+import co.tuister.uisers.utils.Result.InProgress
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -28,7 +29,7 @@ class SubjectDetailsViewModel(
 
     private fun updateNotes() {
         viewModelScope.launch {
-            setState(SubjectDetailsState.LoadItems(Result.InProgress))
+            setState(SubjectDetailsState.LoadItems(InProgress()))
             val result = withContext(Dispatchers.IO) { getNotes.run(subject) }
             result.fold({
                 setState(SubjectDetailsState.LoadItems(Result.Error(it)))

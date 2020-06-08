@@ -1,10 +1,7 @@
 package co.tuister.uisers.di
 
 import co.tuister.domain.usecases.UserUseCase
-import co.tuister.domain.usecases.login.LoginUseCase
-import co.tuister.domain.usecases.login.LogoutUseCase
-import co.tuister.domain.usecases.login.RecoverPasswordUseCase
-import co.tuister.domain.usecases.login.RegisterUseCase
+import co.tuister.domain.usecases.login.*
 import co.tuister.domain.usecases.my_career.*
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
 import co.tuister.domain.usecases.tasks.GetTasksByDateUseCase
@@ -20,6 +17,9 @@ val domainModule = module {
     single { LogoutUseCase(get()) }
     single { RecoverPasswordUseCase(get()) }
     single { RegisterUseCase(get()) }
+    single { CareersUseCase(get()) }
+    single { UploadImageUseCase(get()) }
+    single { DownloadImageUseCase(get()) }
 
     // My Career
 
