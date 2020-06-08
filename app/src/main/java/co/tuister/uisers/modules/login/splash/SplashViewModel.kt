@@ -11,11 +11,11 @@ import co.tuister.uisers.common.SingleLiveEvent
 import co.tuister.uisers.modules.login.LoginEvent
 import co.tuister.uisers.modules.login.LoginEvent.GoToLogin
 import co.tuister.uisers.modules.login.LoginEvent.GoToMain
+import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.system.measureTimeMillis
 
 class SplashViewModel(
   private val userUseCase: UserUseCase

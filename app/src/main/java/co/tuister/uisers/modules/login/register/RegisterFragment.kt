@@ -21,10 +21,10 @@ import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.Calendar.YEAR
 import java.util.Calendar.getInstance
+import kotlinx.coroutines.flow.collect
+import org.koin.android.viewmodel.ext.android.getViewModel
 
 class RegisterFragment : BaseFragment() {
 

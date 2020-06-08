@@ -8,10 +8,10 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.uisers.R
+import java.util.*
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_my_career_schedule.*
 import kotlinx.android.synthetic.main.item_my_career_schedule_title.*
-import java.util.*
 
 class ScheduleAdapter(
   private val listener: ScheduleListener?
