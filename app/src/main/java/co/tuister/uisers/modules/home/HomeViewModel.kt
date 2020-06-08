@@ -6,10 +6,10 @@ import co.tuister.domain.usecases.my_career.GetScheduleByDateUseCase
 import co.tuister.domain.usecases.tasks.GetTasksByDateUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
+import java.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 
 class HomeViewModel(
   private val getCurrentSemesterCase: GetCurrentSemesterUseCase,

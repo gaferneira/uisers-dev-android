@@ -6,11 +6,8 @@ import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure.FormError
 import co.tuister.domain.entities.Career
 import co.tuister.domain.entities.User
-import co.tuister.domain.usecases.login.CareersUseCase
-import co.tuister.domain.usecases.login.LogoutUseCase
-import co.tuister.domain.usecases.login.RegisterUseCase
+import co.tuister.domain.usecases.login.*
 import co.tuister.domain.usecases.login.RegisterUseCase.Params
-import co.tuister.domain.usecases.login.UploadImageUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
 import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
@@ -24,6 +21,7 @@ class RegisterViewModel(
   val registerUseCase: RegisterUseCase,
   val careersUseCase: CareersUseCase,
   val logoutUseCase: LogoutUseCase,
+  val campusUseCase: CampusUseCase,
   val uploadImageUseCase: UploadImageUseCase
 ) :
     BaseViewModel() {
@@ -31,6 +29,7 @@ class RegisterViewModel(
     val password1 = MutableLiveData<String>()
     val password2 = MutableLiveData<String>()
     val listCareers = mutableListOf<Career>()
+    val listCampus = mutableListOf<String>()
     private var uri: Uri? = null
 
     fun doRegister() {
@@ -122,6 +121,12 @@ class RegisterViewModel(
         }
     }
 
+    fun pickCampus(pos: Int) {
+        userLive.value?.apply {
+            campus = listCampus[pos]
+        }
+    }
+
     fun pickYear(year: String) {
         userLive.value?.apply {
             semester = year
@@ -139,6 +144,26 @@ class RegisterViewModel(
                         setState(ValidateRegister(Error(fail)))
                     }, { res ->
                         listCareers.addAll(res)
+                        unit.invoke()
+                    })
+                }
+            }
+        } else {
+            unit.invoke()
+        }
+    }
+
+    fun getCampus(unit: () -> Unit) {
+        if (listCampus.isEmpty()) {
+            setState(ValidateRegister(InProgress(DOWNLOADING)))
+            viewModelScope.launch {
+                withContext(Dispatchers.Main) {
+                    val result =
+                        campusUseCase.run()
+                    result.fold({ fail ->
+                        setState(ValidateRegister(Error(fail)))
+                    }, { res ->
+                        listCampus.addAll(res)
                         unit.invoke()
                     })
                 }

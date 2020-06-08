@@ -21,9 +21,9 @@ import co.tuister.uisers.modules.my_career.semesters.SemestersFragment
 import co.tuister.uisers.modules.my_career.subjects.SubjectsAdapter
 import co.tuister.uisers.modules.my_career.subjects.SubjectsFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import java.util.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import java.util.*
 
 class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
 

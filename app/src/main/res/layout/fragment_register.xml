@@ -99,6 +99,42 @@
                     android:layout_marginTop="10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_career"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/prompt_career"
+                        android:lines="1"
+                        android:textColor="@android:color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit_text_campus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/prompt_campus"
+                        android:lines="1"
+                        android:textColor="@android:color/black" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_register_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -127,24 +163,6 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="@={registerViewModel.password2}" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edit_text_career"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:ems="10"
-                        android:focusable="false"
-                        android:hint="@string/prompt_career"
-                        android:lines="1"
-                        android:textColor="@android:color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

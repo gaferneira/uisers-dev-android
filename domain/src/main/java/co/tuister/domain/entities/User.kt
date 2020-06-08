@@ -7,6 +7,7 @@ data class User(
     var email: String = "",
     var career: String = "",
     var idCareer: String = "",
+    var campus: String = "",
     var semester: String = "",
     var period: String = "",
     var fcmId: String = "",

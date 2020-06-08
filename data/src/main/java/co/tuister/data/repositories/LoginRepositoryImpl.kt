@@ -66,6 +66,8 @@ class LoginRepositoryImpl(
                 val us = UserDataDto(
                     user.name,
                     user.career,
+                    user.idCareer,
+                    user.campus,
                     user.email,
                     user.semester,
                     user.period,

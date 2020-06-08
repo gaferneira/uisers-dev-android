@@ -21,10 +21,10 @@ import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.Calendar.YEAR
 import java.util.Calendar.getInstance
+import kotlinx.coroutines.flow.collect
+import org.koin.android.viewmodel.ext.android.getViewModel
 
 class RegisterFragment : BaseFragment() {
 
@@ -61,6 +61,13 @@ class RegisterFragment : BaseFragment() {
             }
         }
 
+        binding.editTextCampus.setOnClickListener {
+            viewModel.getCampus {
+                binding.loginStatus.isVisible = false
+                showCampusOptions()
+            }
+        }
+
         binding.editTextYear.setOnClickListener {
             showYearOptions()
         }
@@ -78,6 +85,20 @@ class RegisterFragment : BaseFragment() {
             .setItems(options) { _, which ->
                 binding.editTextCareer.setText(options[which])
                 viewModel.pickCareer(which)
+            }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun showCampusOptions() {
+        val options = viewModel.listCampus.toTypedArray()
+        // setup the alert builder
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle("Pick a campus")
+            .setItems(options) { _, which ->
+                binding.editTextCampus.setText(options[which])
+                viewModel.pickCampus(which)
             }
             .create()
 
@@ -129,7 +150,7 @@ class RegisterFragment : BaseFragment() {
     private fun validateRegister(state: ValidateRegister) {
         when {
             state.inProgress() -> {
-                val st = state as Result.InProgress
+                val st = state.result as Result.InProgress
                 if (st.type == DOWNLOADING) {
                     binding.loginStatusMessage.text =
                         context?.getString(R.string.progress_downloading_data)

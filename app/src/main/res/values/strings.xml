@@ -49,6 +49,7 @@
     <string name="prompt_student_code">Student code</string>
     <string name="prompt_name">Name</string>
     <string name="prompt_career">Career</string>
+    <string name="prompt_campus">Campus</string>
     <string name="prompt_year">Year</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_confirm_password">Confirm password</string>
