@@ -2,7 +2,9 @@ package co.tuister.data.repositories
 
 import android.net.Uri
 import co.tuister.data.await
-import co.tuister.data.dto.UserDataDto
+import co.tuister.data.dto.toDTO
+import co.tuister.data.utils.COLLECTION_USERS
+import co.tuister.data.utils.FIELD_USER_EMAIL
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.AuthenticationError
@@ -30,8 +32,8 @@ class LoginRepositoryImpl(
             }
 
             val dataUser = firebaseFirestore
-                .collection("data_users")
-                .whereEqualTo("correo", email)
+                .collection(COLLECTION_USERS)
+                .whereEqualTo(FIELD_USER_EMAIL, email)
                 .get()
                 .await()
             val user = dataUser!!.documents[0].toObject(User::class.java)
@@ -63,17 +65,7 @@ class LoginRepositoryImpl(
                 .await()
             data?.user?.let {
                 it.sendEmailVerification().await()
-                val us = UserDataDto(
-                    user.name,
-                    user.career,
-                    user.idCareer,
-                    user.campus,
-                    user.email,
-                    user.semester,
-                    user.period,
-                    user.code
-                )
-                firebaseFirestore.collection("data_users").add(us).await()
+                firebaseFirestore.collection(COLLECTION_USERS).add(user.toDTO()).await()
             }
             Either.Right(true)
         } catch (e: Exception) {

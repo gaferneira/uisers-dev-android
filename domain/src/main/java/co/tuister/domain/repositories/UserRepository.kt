@@ -10,5 +10,7 @@ interface UserRepository {
     suspend fun getUser(): Either<Failure, User>
     suspend fun getCareers(): Either<Failure, List<Career>>
     suspend fun getCampus(): Either<Failure, List<String>>
-    suspend fun downloadImage(email:String): Either<Failure, Uri>
+    suspend fun downloadImage(email: String): Either<Failure, Uri>
+    suspend fun updateUser(user: User): Either<Failure, Boolean>
+    suspend fun updateFCMToken(): Boolean
 }
