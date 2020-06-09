@@ -56,7 +56,8 @@
     <string name="action_register">Register</string>
     <string name="action_forgot_password">Recover lost password</string>
     <string name="login_progress_signing_in">Signing in&#8230;</string>
-    <string name="register_progress_register_in">Signing in&#8230;</string>
+    <string name="register_progress_register_in">Registering&#8230;</string>
+    <string name="profile_progress_updating">Updating profile&#8230;</string>
     <string name="register_init_period">Start period</string>
     <string name="register_period_I">I</string>
     <string name="register_period_II">II</string>

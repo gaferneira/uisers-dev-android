@@ -33,9 +33,9 @@ val viewModelModule = module {
     viewModel { ForgotPasswordViewModel(get()) }
 
     // Main
-    viewModel { MainViewModel(get(), get()) }
+    viewModel { MainViewModel(get(), get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get()) }
-    viewModel { ProfileViewModel(get(), get()) }
+    viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
 
     // My Career
     viewModel { MyCareerViewModel(get()) }

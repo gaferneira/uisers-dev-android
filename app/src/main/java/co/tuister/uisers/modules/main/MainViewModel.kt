@@ -3,7 +3,9 @@ package co.tuister.uisers.modules.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.User
+import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.DownloadImageUseCase
+import co.tuister.domain.usecases.login.FCMUpdateUseCase
 import co.tuister.domain.usecases.login.LogoutUseCase
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.main.MainState.DownloadedImage
@@ -15,8 +17,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(
-  private val logoutUseCase: LogoutUseCase,
-  private val downloadImageUseCase: DownloadImageUseCase
+    private val logoutUseCase: LogoutUseCase,
+    private val downloadImageUseCase: DownloadImageUseCase,
+    private val userUseCase: UserUseCase,
+    private val fcmUpdateUseCase: FCMUpdateUseCase
 ) : BaseViewModel() {
     val title: MutableLiveData<String> = MutableLiveData("Inicio")
     val name: MutableLiveData<String> = MutableLiveData("")
@@ -25,6 +29,14 @@ class MainViewModel(
     val semester: MutableLiveData<String> = MutableLiveData("")
     val version: MutableLiveData<String> = MutableLiveData("")
     lateinit var user: User
+
+    init {
+        viewModelScope.launch {
+            withContext(Dispatchers.Default) {
+                fcmUpdateUseCase.run()
+            }
+        }
+    }
 
     fun setUserData(user: User?) {
         user?.let {
@@ -40,9 +52,20 @@ class MainViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData = downloadImageUseCase.run(DownloadImageUseCase.Params(user.email))
+                resultData.fold({}, {
+                    setState(DownloadedImage(Success(it)))
+                })
+            }
+        }
+    }
+
+    fun downloadUserData() {
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                val resultData = userUseCase.run()
                 resultData.fold({ failure ->
                 }, {
-                    setState(DownloadedImage(Success(it)))
+                    setUserData(it)
                 })
             }
         }

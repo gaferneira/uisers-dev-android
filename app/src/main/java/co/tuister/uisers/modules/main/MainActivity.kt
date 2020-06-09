@@ -57,6 +57,7 @@ class MainActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.downloadImage()
+        viewModel.downloadUserData()
     }
 
     private fun initViews() {

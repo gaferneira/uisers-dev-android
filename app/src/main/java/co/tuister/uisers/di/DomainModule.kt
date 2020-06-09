@@ -5,6 +5,7 @@ import co.tuister.domain.usecases.institutional.GetPlacesUseCase
 import co.tuister.domain.usecases.institutional.GetSitesUseCase
 import co.tuister.domain.usecases.login.*
 import co.tuister.domain.usecases.my_career.*
+import co.tuister.domain.usecases.profile.ProfileUseCase
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
 import co.tuister.domain.usecases.tasks.GetTasksByDateUseCase
 import co.tuister.domain.usecases.tasks.SaveTaskUseCase
@@ -49,4 +50,8 @@ val domainModule = module {
     // Institutional
     single { GetPlacesUseCase(get()) }
     single { GetSitesUseCase(get()) }
+
+    // Profile
+    single { ProfileUseCase(get()) }
+    single { FCMUpdateUseCase(get()) }
 }
