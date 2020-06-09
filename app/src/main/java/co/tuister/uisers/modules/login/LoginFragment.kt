@@ -14,7 +14,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentLoginBinding
 import co.tuister.uisers.modules.main.MainActivity
-import co.tuister.uisers.utils.Result.Error
+import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -69,13 +69,13 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun validateLogin(state: LoginState.ValidateLogin) {
-        when {
-            state.inProgress() -> {
+        when (val result = state.result){
+             is Result.InProgress-> {
                 binding.loginStatus.isVisible = true
             }
-            state.isFailure() -> {
+            is Result.Error -> {
                 binding.loginStatus.isVisible = false
-                when ((state as Error).exception) {
+                when (result.exception) {
                     is EmailNotVerifiedError -> {
                         showDialog(
                             R.string.error_result_login_message_not_verified_email,
@@ -91,9 +91,9 @@ class LoginFragment : BaseFragment() {
                     }
                 }
             }
-            state.isSuccess() -> {
+            is Result.Success -> {
                 binding.loginStatus.isVisible = false
-                goToMain(state.result.data)
+                goToMain(result.data)
             }
         }
     }
