@@ -54,6 +54,7 @@
     <string name="prompt_password">Password</string>
     <string name="prompt_confirm_password">Confirm password</string>
     <string name="action_register">Register</string>
+    <string name="action_resend">Re send</string>
     <string name="action_forgot_password">Recover lost password</string>
     <string name="login_progress_signing_in">Signing in&#8230;</string>
     <string name="register_progress_register_in">Registering&#8230;</string>
@@ -77,6 +78,7 @@
     <string name="title_forget_title">Recover</string>
     <string name="title_login">Login</string>
     <string name="error_result_login_message">We are sorry we could not find and account linked to that email.</string>
+    <string name="error_result_login_message_not_verified_email">We have found that your email has not been verified, go to your email and click in the link we have sent you.</string>
     <string name="success_result_forget_message">We have sent you and email to recover your password.</string>
     <string name="error_result_forget_message">We are sorry we could not find and account linked to that email.</string>
 

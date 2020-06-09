@@ -54,4 +54,5 @@ val domainModule = module {
     // Profile
     single { ProfileUseCase(get()) }
     single { FCMUpdateUseCase(get()) }
+    single { SendVerifyLinkUseCase(get()) }
 }

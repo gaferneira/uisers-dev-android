@@ -104,6 +104,17 @@ class UserRepositoryImpl(
         }
     }
 
+    override suspend fun reSendVerifyEmail(): Boolean {
+        val current = firebaseAuth.currentUser ?: return false
+
+        return try {
+            current.sendEmailVerification().await()
+            true
+        } catch (exception: Exception) {
+            false
+        }
+    }
+
     private fun objectToMap(obj: Any): Map<String, Any> {
         val map: MutableMap<String, Any> = HashMap()
         for (field in obj.javaClass.declaredFields) {

@@ -7,7 +7,7 @@ import co.tuister.data.utils.COLLECTION_USERS
 import co.tuister.data.utils.FIELD_USER_EMAIL
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
-import co.tuister.domain.base.Failure.AuthenticationError
+import co.tuister.domain.base.Failure.EmailNotVerifiedError
 import co.tuister.domain.entities.User
 import co.tuister.domain.repositories.LoginRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -28,7 +28,7 @@ class LoginRepositoryImpl(
                 .await()
 
             if (firebaseAuth.currentUser?.isEmailVerified != true) {
-                return Either.Left(AuthenticationError())
+                return Either.Left(EmailNotVerifiedError())
             }
 
             val dataUser = firebaseFirestore

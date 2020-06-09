@@ -2,38 +2,57 @@ package co.tuister.uisers.modules.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import co.tuister.domain.base.Failure
+import co.tuister.domain.base.Failure.AuthenticationError
 import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.LoginUseCase
+import co.tuister.domain.usecases.login.LoginUseCase.Params
+import co.tuister.domain.usecases.login.LogoutUseCase
+import co.tuister.domain.usecases.login.SendVerifyLinkUseCase
 import co.tuister.uisers.common.BaseViewModel
+import co.tuister.uisers.modules.login.LoginState.ValidateLogin
 import co.tuister.uisers.utils.Result
+import co.tuister.uisers.utils.Result.Error
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class LoginViewModel(private val loginUseCase: LoginUseCase, private val userUseCase: UserUseCase) :
+class LoginViewModel(
+    private val loginUseCase: LoginUseCase,
+    private val userUseCase: UserUseCase,
+    private val logoutUseCase: LogoutUseCase,
+    private val sendVerifyLinkUseCase: SendVerifyLinkUseCase
+) :
     BaseViewModel() {
     val email: MutableLiveData<String> = MutableLiveData("")
     val password: MutableLiveData<String> = MutableLiveData("")
 
     fun doLogIn() {
-        setState(LoginState.ValidateLogin(Result.InProgress()))
+        setState(ValidateLogin(Result.InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val emailText = email.value!!
-                val result = loginUseCase.run(LoginUseCase.Params(emailText, password.value!!))
+                val result = loginUseCase.run(Params(emailText, password.value!!))
                 result.fold({
                     // manage error
-                    setState(LoginState.ValidateLogin(Result.Error(it)))
+                    setState(ValidateLogin(Error(it)))
                 }, {
                     if (it) {
                         doLoadUserData(emailText)
                     } else {
                         // password incorrect
-                        setState(LoginState.ValidateLogin(Result.Error(Failure.AuthenticationError())))
+                        setState(ValidateLogin(Error(AuthenticationError())))
                     }
                 })
+            }
+        }
+    }
+
+    fun reSendConfirmEmail() {
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                sendVerifyLinkUseCase.run()
+                logoutUseCase.run()
             }
         }
     }
@@ -44,7 +63,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase, private val userUse
                 val resultData = userUseCase.run()
                 resultData.fold({ failure ->
                     setState(
-                        LoginState.ValidateLogin(
+                        ValidateLogin(
                             Result.Success(
                                 User(
                                     emailText,
@@ -54,7 +73,7 @@ class LoginViewModel(private val loginUseCase: LoginUseCase, private val userUse
                         )
                     )
                 }, {
-                    setState(LoginState.ValidateLogin(Result.Success(it)))
+                    setState(ValidateLogin(Result.Success(it)))
                 })
             }
         }
