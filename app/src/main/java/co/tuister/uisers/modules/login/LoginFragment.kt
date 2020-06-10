@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import co.tuister.domain.base.Failure.EmailNotVerifiedError
 import co.tuister.domain.entities.User
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentLoginBinding
 import co.tuister.uisers.modules.main.MainActivity
+import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -22,9 +24,9 @@ class LoginFragment : BaseFragment() {
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -67,17 +69,31 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun validateLogin(state: LoginState.ValidateLogin) {
-        when {
-            state.inProgress() -> {
+        when (val result = state.result){
+             is Result.InProgress-> {
                 binding.loginStatus.isVisible = true
             }
-            state.isFailure() -> {
+            is Result.Error -> {
                 binding.loginStatus.isVisible = false
-                showDialog(R.string.error_result_login_message, R.string.title_login)
+                when (result.exception) {
+                    is EmailNotVerifiedError -> {
+                        showDialog(
+                            R.string.error_result_login_message_not_verified_email,
+                            R.string.title_login,
+                            R.string.action_resend,
+                            {
+                                viewModel.reSendConfirmEmail()
+                            }
+                        )
+                    }
+                    else -> {
+                        showDialog(R.string.error_result_login_message, R.string.title_login)
+                    }
+                }
             }
-            state.isSuccess() -> {
+            is Result.Success -> {
                 binding.loginStatus.isVisible = false
-                goToMain(state.result.data)
+                goToMain(result.data)
             }
         }
     }

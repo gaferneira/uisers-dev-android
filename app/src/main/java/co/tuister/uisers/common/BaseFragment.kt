@@ -35,6 +35,25 @@ open class BaseFragment : Fragment() {
             .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
     }
 
+    protected fun showDialog(
+        message: Int,
+        title: Int,
+        negativeMessage: Int,
+        unitNegative: (() -> Unit)?,
+        unitPositive: (() -> Unit)? = null
+    ) {
+        UisersDialogFragment.Builder(requireContext())
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton(R.string.ok, View.OnClickListener {
+                unitPositive?.invoke()
+            })
+            .setNegativeButton(negativeMessage, View.OnClickListener {
+                unitNegative?.invoke()
+            })
+            .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
+    }
+
     protected fun launchImagePicker() {
         val photoPickerIntent = Intent(Intent.ACTION_GET_CONTENT)
         photoPickerIntent.type = "image/*"

@@ -13,4 +13,5 @@ interface UserRepository {
     suspend fun downloadImage(email: String): Either<Failure, Uri>
     suspend fun updateUser(user: User): Either<Failure, Boolean>
     suspend fun updateFCMToken(): Boolean
+    suspend fun reSendVerifyEmail(): Boolean
 }
