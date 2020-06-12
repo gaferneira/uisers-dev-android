@@ -56,7 +56,7 @@ class ProfileViewModel(
             withContext(Dispatchers.Main) {
                 val resultData =
                     downloadImageUseCase.run(DownloadImageUseCase.Params(user.value!!.email))
-                resultData.fold({ failure ->
+                resultData.fold({ _ ->
                 }, {
                     setState(DownloadedImage(Result.Success(it)))
                 })
