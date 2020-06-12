@@ -10,10 +10,10 @@ import co.tuister.domain.usecases.login.CareersUseCase
 import co.tuister.domain.usecases.login.DownloadImageUseCase
 import co.tuister.domain.usecases.login.UploadImageUseCase
 import co.tuister.domain.usecases.profile.ProfileUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
-import co.tuister.uisers.modules.main.MainState.DownloadedImage
-import co.tuister.uisers.modules.profile.ProfileState.ValidateProfileUpdate
-import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
+import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
+import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +28,12 @@ class ProfileViewModel(
   private val profileUseCase: ProfileUseCase
 ) : BaseViewModel() {
 
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class ValidateProfileUpdate(val result: Result<Boolean>) : State<Boolean>(result)
+    }
+
     private val _user: MutableLiveData<User> = MutableLiveData()
+
     val user get() = _user
     val listCareers = mutableListOf<Career>()
     val listCampus = mutableListOf<String>()
@@ -46,12 +51,12 @@ class ProfileViewModel(
         }
     }
 
-    fun downloadImage() {
+    private fun downloadImage() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData =
                     downloadImageUseCase.run(DownloadImageUseCase.Params(user.value!!.email))
-                resultData.fold({ failure ->
+                resultData.fold({ _ ->
                 }, {
                     setState(DownloadedImage(Result.Success(it)))
                 })
@@ -61,13 +66,13 @@ class ProfileViewModel(
 
     fun getCareers(unit: () -> Unit) {
         if (listCareers.isEmpty()) {
-            setState(ValidateProfileUpdate(InProgress(DOWNLOADING)))
+            setState(State.ValidateProfileUpdate(InProgress(DOWNLOADING)))
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
                         careersUseCase.run()
                     result.fold({ fail ->
-                        setState(ValidateProfileUpdate(Result.Error(fail)))
+                        setState(State.ValidateProfileUpdate(Result.Error(fail)))
                     }, { res ->
                         listCareers.addAll(res)
                         unit.invoke()
@@ -80,14 +85,14 @@ class ProfileViewModel(
     }
 
     fun updateProfile() {
-        setState(ValidateProfileUpdate(InProgress()))
+        setState(State.ValidateProfileUpdate(InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val result = profileUseCase.run(ProfileUseCase.Params(_user.value!!))
                 result.fold({ fail ->
-                    setState(ValidateProfileUpdate(Result.Error(fail)))
+                    setState(State.ValidateProfileUpdate(Result.Error(fail)))
                 }, { res ->
-                    setState(ValidateProfileUpdate(Result.Success(res)))
+                    setState(State.ValidateProfileUpdate(Result.Success(res)))
                 })
             }
         }
@@ -95,13 +100,13 @@ class ProfileViewModel(
 
     fun getCampus(unit: () -> Unit) {
         if (listCampus.isEmpty()) {
-            setState(ValidateProfileUpdate(InProgress(DOWNLOADING)))
+            setState(State.ValidateProfileUpdate(InProgress(DOWNLOADING)))
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
                         campusUseCase.run()
                     result.fold({ fail ->
-                        setState(ValidateProfileUpdate(Result.Error(fail)))
+                        setState(State.ValidateProfileUpdate(Result.Error(fail)))
                     }, { res ->
                         listCampus.addAll(res)
                         unit.invoke()

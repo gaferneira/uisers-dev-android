@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
+import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.format
-import kotlinx.android.synthetic.main.item_my_career_subject.view.*
+import kotlinx.android.synthetic.main.item_my_career_subject.*
 
 class SubjectsAdapter(
   private val listener: SubjectListener?
@@ -37,18 +38,16 @@ class SubjectsAdapter(
         notifyDataSetChanged()
     }
 
-    class SubjectViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class SubjectViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(
           subject: Subject,
           listener: SubjectListener?
         ) {
-            itemView.apply {
-                text_view_subject_name.text = subject.name
-                text_view_subject_desc.text = subject.teacher
-                text_view_subject_note.text = subject.note.format()
-                setOnClickListener {
-                    listener?.onClickSubject(subject)
-                }
+            text_view_subject_name.text = subject.name
+            text_view_subject_desc.text = subject.teacher
+            text_view_subject_note.text = subject.note.format()
+            itemView.setOnClickListener {
+                listener?.onClickSubject(subject)
             }
         }
     }

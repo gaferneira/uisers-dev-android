@@ -7,8 +7,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Note
 import co.tuister.uisers.R
+import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.format
-import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_my_career_note.*
 
 class NotesAdapter(
@@ -39,10 +39,7 @@ class NotesAdapter(
         notifyDataSetChanged()
     }
 
-    class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view), LayoutContainer {
-
-        override val containerView: View?
-            get() = itemView
+    class NoteViewHolder(view: View) : BaseViewHolder(view) {
 
         fun bind(
           note: Note,

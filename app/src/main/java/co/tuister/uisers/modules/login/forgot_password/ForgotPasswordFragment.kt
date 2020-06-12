@@ -11,6 +11,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentForgotPasswordBinding
+import co.tuister.uisers.modules.login.forgot_password.ForgotPasswordViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -50,11 +51,11 @@ class ForgotPasswordFragment : BaseFragment() {
 
     private fun update(state: BaseState<Any>) {
         when (state) {
-            is ForgotPasswordState.ValidateEmail -> validateEmail(state)
+            is State.ValidateEmail -> validateEmail(state)
         }
     }
 
-    private fun validateEmail(state: ForgotPasswordState.ValidateEmail) {
+    private fun validateEmail(state: State.ValidateEmail) {
         when {
             state.inProgress() -> {
                 binding.loginStatus.isVisible = true

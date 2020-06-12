@@ -17,10 +17,10 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentProfileBinding
 import co.tuister.uisers.modules.login.register.RegisterFragment
-import co.tuister.uisers.modules.main.MainState.DownloadedImage
-import co.tuister.uisers.modules.profile.ProfileState.ValidateProfileUpdate
+import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
+import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
 import co.tuister.uisers.utils.ImagesUtils.Companion.downloadImageInto
-import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
+import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result.InProgress
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.coroutines.flow.collect

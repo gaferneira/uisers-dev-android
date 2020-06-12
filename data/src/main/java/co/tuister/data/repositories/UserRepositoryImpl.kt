@@ -5,10 +5,7 @@ import co.tuister.data.await
 import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
-import co.tuister.data.utils.COLLECTION_DATA
-import co.tuister.data.utils.COLLECTION_USERS
-import co.tuister.data.utils.FIELD_USER_EMAIL
-import co.tuister.data.utils.FIELD_USER_FCM
+import co.tuister.data.utils.*
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.AuthenticationError
@@ -22,9 +19,9 @@ import com.google.firebase.storage.FirebaseStorage
 import java.util.*
 
 class UserRepositoryImpl(
-    val firebaseAuth: FirebaseAuth,
-    val firebaseFirestore: FirebaseFirestore,
-    val firebaseStorage: FirebaseStorage
+    private val firebaseAuth: FirebaseAuth,
+    private val firebaseFirestore: FirebaseFirestore,
+    private val firebaseStorage: FirebaseStorage
 ) :
     UserRepository {
 
@@ -66,7 +63,7 @@ class UserRepositoryImpl(
             .await()!!.documents.firstOrNull()
 
         return try {
-            val map = objectToMap(user.toDTO())
+            val map = user.toDTO().objectToMap()
             firebaseFirestore.collection(COLLECTION_USERS).document(data?.id!!).update(map).await()
             Either.Right(true)
         } catch (exception: Exception) {
@@ -115,18 +112,6 @@ class UserRepositoryImpl(
         }
     }
 
-    private fun objectToMap(obj: Any): Map<String, Any> {
-        val map: MutableMap<String, Any> = HashMap()
-        for (field in obj.javaClass.declaredFields) {
-            field.isAccessible = true
-            try {
-                map[field.name] = field[obj]
-            } catch (e: java.lang.Exception) {
-            }
-        }
-        return map
-    }
-
     override suspend fun getCareers(): Either<Failure, List<Career>> {
         val data = firebaseFirestore
             .collection(COLLECTION_DATA)
@@ -135,11 +120,8 @@ class UserRepositoryImpl(
             .await()
 
         return try {
-            val result = data?.get("careers") as MutableList<HashMap<String, String>>
-            val list = mutableListOf<Career>()
-            for (res in result) {
-                list.add(Career(res.get("codigo")!!, res.get("nombre")!!))
-            }
+            val result : List<HashMap<String, String>> = data?.get("careers")?.castToList() ?: listOf()
+            val list = result.map { Career(it["codigo"]!!, it["nombre"]!!)  }
             Either.Right(list)
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
@@ -154,7 +136,7 @@ class UserRepositoryImpl(
             .await()
 
         return try {
-            val result = data?.get("sedes") as MutableList<String>
+            val result = data?.get("sedes").castToList<String>() ?: listOf()
             Either.Right(result)
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))

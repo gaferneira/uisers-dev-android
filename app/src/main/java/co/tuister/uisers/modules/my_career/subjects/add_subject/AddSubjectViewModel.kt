@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.Subject
 import co.tuister.domain.usecases.my_career.GetAllSubjectsUseCase
 import co.tuister.domain.usecases.my_career.SaveSubjectUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
@@ -16,31 +17,37 @@ class AddSubjectViewModel(
   private val saveSubject: SaveSubjectUseCase
 ) : BaseViewModel() {
 
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class Save(result: Result<Subject>) : State<Subject>(result)
+        class LoadDefaultSubjects(result: Result<List<Subject>>) :
+            State<List<Subject>>(result)
+    }
+
     fun initialize() {
         getDefaultsSubjects()
     }
 
     private fun getDefaultsSubjects() {
         viewModelScope.launch {
-            setState(AddSubjectsState.LoadDefaultSubjects(InProgress()))
+            setState(State.LoadDefaultSubjects(InProgress()))
             val result = withContext(Dispatchers.IO) { getAllSubject.run() }
             result.fold({
-                setState(AddSubjectsState.LoadDefaultSubjects(Result.Error(it)))
+                setState(State.LoadDefaultSubjects(Result.Error(it)))
             }, {
-                setState(AddSubjectsState.LoadDefaultSubjects(Result.Success(it)))
+                setState(State.LoadDefaultSubjects(Result.Success(it)))
             })
         }
     }
 
     fun saveSubject(subject: Subject) {
-        setState(AddSubjectsState.Save(InProgress()))
+        setState(State.Save(InProgress()))
         viewModelScope.launch {
-            setState(AddSubjectsState.Save(InProgress()))
+            setState(State.Save(InProgress()))
             val result = withContext(Dispatchers.IO) { saveSubject.run(subject) }
             result.fold({
-                setState(AddSubjectsState.Save(Result.Error(it)))
+                setState(State.Save(Result.Error(it)))
             }, {
-                setState(AddSubjectsState.Save(Result.Success(subject)))
+                setState(State.Save(Result.Success(subject)))
             })
         }
     }

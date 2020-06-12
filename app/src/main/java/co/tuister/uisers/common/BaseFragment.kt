@@ -36,11 +36,11 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun showDialog(
-        message: Int,
-        title: Int,
-        negativeMessage: Int,
-        unitNegative: (() -> Unit)?,
-        unitPositive: (() -> Unit)? = null
+      message: Int,
+      title: Int,
+      negativeMessage: Int,
+      unitNegative: (() -> Unit)?,
+      unitPositive: (() -> Unit)? = null
     ) {
         UisersDialogFragment.Builder(requireContext())
             .setTitle(title)

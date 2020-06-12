@@ -2,6 +2,7 @@ package co.tuister.uisers.modules.my_career.subjects
 
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.usecases.my_career.GetCurrentSemesterUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,12 @@ class SubjectsViewModel(
   private val getCurrentSemester: GetCurrentSemesterUseCase
 ) : BaseViewModel() {
 
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class LoadSemesterAverage(result: Result<Float>) : State<Float>(result)
+    }
+
     fun initialize() {
+        // No op
     }
 
     fun refresh() {
@@ -23,10 +29,10 @@ class SubjectsViewModel(
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) { getCurrentSemester.run() }
             result.fold({
-                setState(SubjectsState.LoadSemesterAverage(Result.Error(it)))
+                setState(State.LoadSemesterAverage(Result.Error(it)))
             }, {
                 setState(
-                    SubjectsState.LoadSemesterAverage(Result.Success(it.average))
+                    State.LoadSemesterAverage(Result.Success(it.average))
                 )
             })
         }

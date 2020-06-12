@@ -6,6 +6,11 @@
         android:iconTint="@color/green_600"
         android:title="@string/title_menu_profile" />
     <item
+        android:id="@+id/option_feedback"
+        android:icon="@drawable/ic_semester"
+        android:iconTint="@color/green_600"
+        android:title="@string/title_menu_feedback" />
+    <item
         android:id="@+id/option_about"
         android:icon="@drawable/ic_semester"
         android:iconTint="@color/green_600"

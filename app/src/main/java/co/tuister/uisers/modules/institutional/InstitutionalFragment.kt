@@ -11,6 +11,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInstitutionalBinding
+import co.tuister.uisers.modules.institutional.InstitutionalViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -52,11 +53,11 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
 
     private fun update(state: BaseState<Any>?) {
         when (state) {
-            is InstitutionalState.LoadItems -> loadItems(state)
+            is State.LoadItems -> loadItems(state)
         }
     }
 
-    private fun loadItems(state: InstitutionalState.LoadItems) {
+    private fun loadItems(state: State.LoadItems) {
         when {
             state.inProgress() -> {
                 // show loading }
@@ -76,8 +77,8 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
         val action = when (position) {
             0 -> R.id.action_institutional_to_map
             1 -> R.id.action_institutional_to_calendar
-            2 -> R.id.action_institutional_to_wheels
-            else -> R.id.action_institutional_to_map
+            2 -> R.id.action_institutional_to_map
+            else -> R.id.action_institutional_to_wheels
         }
         findNavController().navigate(action)
     }

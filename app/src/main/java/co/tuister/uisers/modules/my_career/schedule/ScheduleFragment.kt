@@ -11,8 +11,8 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentScheduleBinding
-import co.tuister.uisers.modules.my_career.MyCareerState
 import co.tuister.uisers.modules.my_career.MyCareerViewModel
+import co.tuister.uisers.modules.my_career.schedule.ScheduleViewModel.State
 import co.tuister.uisers.modules.my_career.subjects.subject_details.AddNoteDialogFragment
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -77,9 +77,9 @@ class ScheduleFragment : BaseFragment(),
 
     private fun update(state: BaseState<Any>?) {
         when (state) {
-            is ScheduleState.LoadItems -> loadItems(state)
-            is ScheduleState.SavePeriod -> resultSavePeriod(state)
-            is MyCareerState.LoadSubjects -> {
+            is State.LoadItems -> loadItems(state)
+            is State.SavePeriod -> resultSavePeriod(state)
+            is MyCareerViewModel.State.LoadSubjects -> {
                 if (state.isSuccess()) {
                     subjects = state.data
                 }
@@ -87,7 +87,7 @@ class ScheduleFragment : BaseFragment(),
         }
     }
 
-    private fun loadItems(state: ScheduleState.LoadItems) {
+    private fun loadItems(state: State.LoadItems) {
         when {
             state.inProgress() -> {
                 // show loading }
@@ -117,11 +117,11 @@ class ScheduleFragment : BaseFragment(),
         showScheduleDialog()
     }
 
-    override fun onSavePeriod(schedulePeriod: SchedulePeriod) {
-        viewModel.savePeriod(schedulePeriod)
+    override fun onSavePeriod(period: SchedulePeriod) {
+        viewModel.savePeriod(period)
     }
 
-    private fun resultSavePeriod(state: ScheduleState.SavePeriod) {
+    private fun resultSavePeriod(state: State.SavePeriod) {
         if (state.isSuccess()) {
             viewModel.refresh()
         }
@@ -132,7 +132,7 @@ class ScheduleFragment : BaseFragment(),
             .show(parentFragmentManager, AddNoteDialogFragment.TAG)
     }
 
-    override fun onClickPeriod(schedulePeriod: SchedulePeriod) {
-        showScheduleDialog(schedulePeriod)
+    override fun onClickPeriod(period: SchedulePeriod) {
+        showScheduleDialog(period)
     }
 }

@@ -14,16 +14,15 @@ import androidx.viewpager2.widget.ViewPager2
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
-import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentMyCareerBinding
 import co.tuister.uisers.modules.my_career.schedule.ScheduleFragment
 import co.tuister.uisers.modules.my_career.semesters.SemestersFragment
 import co.tuister.uisers.modules.my_career.subjects.SubjectsAdapter
 import co.tuister.uisers.modules.my_career.subjects.SubjectsFragment
 import com.google.android.material.tabs.TabLayoutMediator
-import java.util.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.sharedViewModel
+import java.util.*
 
 class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
 
@@ -84,15 +83,10 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
     private fun initViewModel() {
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect {
-                update(it)
+                // No op
             }
         }
         viewModel.initialize()
-    }
-
-    private fun update(state: BaseState<Any>?) {
-        // Log.d("GABRIEL", "update state MyCareerFragment")
-        // Log.d("GABRIEL", state?.toString() ?: "")
     }
 
     override fun onClickSubject(subject: Subject) {

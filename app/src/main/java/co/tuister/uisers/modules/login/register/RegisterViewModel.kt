@@ -8,9 +8,10 @@ import co.tuister.domain.entities.Career
 import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.login.*
 import co.tuister.domain.usecases.login.RegisterUseCase.Params
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
-import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
-import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
+import co.tuister.uisers.utils.ProgressType.DOWNLOADING
+import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.*
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,11 @@ class RegisterViewModel(
   val uploadImageUseCase: UploadImageUseCase
 ) :
     BaseViewModel() {
+
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class ValidateRegister(val result: Result<User>) : State<User>(result)
+    }
+
     val userLive = MutableLiveData(User())
     val password1 = MutableLiveData<String>()
     val password2 = MutableLiveData<String>()
@@ -33,7 +39,7 @@ class RegisterViewModel(
     private var uri: Uri? = null
 
     fun doRegister() {
-        setState(ValidateRegister(InProgress()))
+        setState(State.ValidateRegister(InProgress()))
         val pass1 = password1.value
         val pass2 = password2.value
         val user = userLive.value
@@ -61,24 +67,28 @@ class RegisterViewModel(
             }
 
             if (errorMessage.isEmpty()) {
-                viewModelScope.launch {
-                    withContext(Dispatchers.Main) {
-                        val result = registerUseCase.run(Params(userLive.value!!, pass1!!))
-                        result.fold({ fail ->
-                            if (fail.error is FirebaseAuthWeakPasswordException) {
-                                setState(ValidateRegister(Error(FormError(Exception("Password is to weak to create a account")))))
-                            } else {
-                                setState(ValidateRegister(Error(fail)))
-                            }
-                        }, { res ->
-                            if (res) {
-                                runUploadRoutine()
-                            }
-                        })
-                    }
-                }
+                registerUser()
             } else {
-                setState(ValidateRegister(Error(FormError(Exception(errorMessage)))))
+                setState(State.ValidateRegister(Error(FormError(Exception(errorMessage)))))
+            }
+        }
+    }
+
+    private fun registerUser() {
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                val result = registerUseCase.run(Params(userLive.value!!, password1.value!!))
+                result.fold({ fail ->
+                    if (fail.error is FirebaseAuthWeakPasswordException) {
+                        setState(State.ValidateRegister(Error(FormError(Exception("Password is to weak to create a account")))))
+                    } else {
+                        setState(State.ValidateRegister(Error(fail)))
+                    }
+                }, { res ->
+                    if (res) {
+                        runUploadRoutine()
+                    }
+                })
             }
         }
     }
@@ -96,7 +106,7 @@ class RegisterViewModel(
                 }
             }
         }
-        setState(ValidateRegister(Success()))
+        setState(State.ValidateRegister(Success()))
     }
 
     fun setImageUri(uri: Uri) {
@@ -135,13 +145,13 @@ class RegisterViewModel(
 
     fun getCareers(unit: () -> Unit) {
         if (listCareers.isEmpty()) {
-            setState(ValidateRegister(InProgress(DOWNLOADING)))
+            setState(State.ValidateRegister(InProgress(DOWNLOADING)))
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
                         careersUseCase.run()
                     result.fold({ fail ->
-                        setState(ValidateRegister(Error(fail)))
+                        setState(State.ValidateRegister(Error(fail)))
                     }, { res ->
                         listCareers.addAll(res)
                         unit.invoke()
@@ -155,13 +165,13 @@ class RegisterViewModel(
 
     fun getCampus(unit: () -> Unit) {
         if (listCampus.isEmpty()) {
-            setState(ValidateRegister(InProgress(DOWNLOADING)))
+            setState(State.ValidateRegister(InProgress(DOWNLOADING)))
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
                         campusUseCase.run()
                     result.fold({ fail ->
-                        setState(ValidateRegister(Error(fail)))
+                        setState(State.ValidateRegister(Error(fail)))
                     }, { res ->
                         listCampus.addAll(res)
                         unit.invoke()

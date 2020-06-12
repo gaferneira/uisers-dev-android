@@ -256,6 +256,7 @@
     <string name="confirm_change_current_semester">Are you sure to change the current semester?</string>
     <string name="institutional_map_hint_sites">Select a site</string>
     <string name="institutional_map_hint_place">Select a place</string>
+    <string name="title_menu_feedback">Feedback</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>

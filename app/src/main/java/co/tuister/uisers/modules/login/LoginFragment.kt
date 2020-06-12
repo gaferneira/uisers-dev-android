@@ -24,9 +24,9 @@ class LoginFragment : BaseFragment() {
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -69,8 +69,8 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun validateLogin(state: LoginState.ValidateLogin) {
-        when (val result = state.result){
-             is Result.InProgress-> {
+        when (val result = state.result) {
+            is Result.InProgress -> {
                 binding.loginStatus.isVisible = true
             }
             is Result.Error -> {

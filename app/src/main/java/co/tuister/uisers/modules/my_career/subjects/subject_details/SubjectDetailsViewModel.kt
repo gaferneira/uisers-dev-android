@@ -5,6 +5,7 @@ import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.domain.usecases.my_career.GetNotesUseCase
 import co.tuister.domain.usecases.my_career.SaveNoteUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
@@ -16,6 +17,11 @@ class SubjectDetailsViewModel(
   private val getNotes: GetNotesUseCase,
   private val saveNote: SaveNoteUseCase
 ) : BaseViewModel() {
+
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class LoadItems(result: Result<List<Note>>) : State<List<Note>>(result)
+        class SaveNote(result: Result<Nothing>) : State<Nothing>(result)
+    }
 
     lateinit var subject: Subject
 
@@ -29,12 +35,12 @@ class SubjectDetailsViewModel(
 
     private fun updateNotes() {
         viewModelScope.launch {
-            setState(SubjectDetailsState.LoadItems(InProgress()))
+            setState(State.LoadItems(InProgress()))
             val result = withContext(Dispatchers.IO) { getNotes.run(subject) }
             result.fold({
-                setState(SubjectDetailsState.LoadItems(Result.Error(it)))
+                setState(State.LoadItems(Result.Error(it)))
             }, {
-                setState(SubjectDetailsState.LoadItems(Result.Success(it)))
+                setState(State.LoadItems(Result.Success(it)))
             })
         }
     }
@@ -42,9 +48,9 @@ class SubjectDetailsViewModel(
     fun saveNote(note: Note) {
         viewModelScope.launch {
             saveNote.run(Pair(note, subject)).fold({
-                setState(SubjectDetailsState.SaveNote(Result.Error(it)))
+                setState(State.SaveNote(Result.Error(it)))
             }, {
-                setState(SubjectDetailsState.SaveNote(Result.Success()))
+                setState(State.SaveNote(Result.Success()))
             })
         }
     }

@@ -18,10 +18,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginViewModel(
-    private val loginUseCase: LoginUseCase,
-    private val userUseCase: UserUseCase,
-    private val logoutUseCase: LogoutUseCase,
-    private val sendVerifyLinkUseCase: SendVerifyLinkUseCase
+  private val loginUseCase: LoginUseCase,
+  private val userUseCase: UserUseCase,
+  private val logoutUseCase: LogoutUseCase,
+  private val sendVerifyLinkUseCase: SendVerifyLinkUseCase
 ) :
     BaseViewModel() {
     val email: MutableLiveData<String> = MutableLiveData("")
@@ -57,7 +57,7 @@ class LoginViewModel(
         }
     }
 
-    fun doLoadUserData(emailText: String) {
+    private fun doLoadUserData(emailText: String) {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData = userUseCase.run()

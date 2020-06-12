@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Semester
 import co.tuister.uisers.R
+import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.format
-import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_my_career_semester.*
 
 class SemestersAdapter(
@@ -38,10 +38,12 @@ class SemestersAdapter(
         notifyDataSetChanged()
     }
 
-    class SemesterViewHolder(view: View) : RecyclerView.ViewHolder(view), LayoutContainer {
+    override fun onViewRecycled(holder: SemesterViewHolder) {
+        super.onViewRecycled(holder)
+        holder.unbind()
+    }
 
-        override val containerView: View?
-            get() = itemView
+    class SemesterViewHolder(view: View) : BaseViewHolder(view) {
 
         fun bind(
           semester: Semester,
@@ -49,7 +51,8 @@ class SemestersAdapter(
         ) {
             text_view_semester.text = "" + semester.year + "-" + semester.period
             text_view_average.text = semester.average.format()
-            radio_button.setOnCheckedChangeListener { compoundButton, checked ->
+            radio_button.isChecked = semester.current
+            radio_button.setOnCheckedChangeListener { _, checked ->
                 if (checked) {
                     radio_button.isChecked = false
                     listener?.onClickSemester(semester)
@@ -58,6 +61,12 @@ class SemestersAdapter(
             itemView.setOnClickListener {
                 listener?.onClickSemester(semester)
             }
+        }
+
+        override fun unbind() {
+            super.unbind()
+            radio_button.setOnCheckedChangeListener(null)
+            itemView.setOnClickListener(null)
         }
     }
 }

@@ -1,7 +1,6 @@
 package co.tuister.uisers.modules.my_career.subjects
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +12,8 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectsBinding
 import co.tuister.uisers.modules.my_career.FooterAdapter
-import co.tuister.uisers.modules.my_career.MyCareerState
 import co.tuister.uisers.modules.my_career.MyCareerViewModel
+import co.tuister.uisers.modules.my_career.subjects.SubjectsViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -44,8 +43,7 @@ class SubjectsFragment : BaseFragment() {
 
     private fun initViews() {
         footerAdapter = FooterAdapter()
-        adapter =
-            SubjectsAdapter(listener)
+        adapter = SubjectsAdapter(listener)
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = MergeAdapter(this@SubjectsFragment.adapter, footerAdapter)
@@ -71,18 +69,15 @@ class SubjectsFragment : BaseFragment() {
     }
 
     private fun update(state: BaseState<Any>?) {
-        Log.d("GABRIEL", "update state SubjectsFragment")
-        Log.d("GABRIEL", state?.toString() ?: "")
-
         when (state) {
-            is MyCareerState.LoadSubjects -> loadItems(state)
-            is SubjectsState.LoadSemesterAverage -> {
+            is MyCareerViewModel.State.LoadSubjects -> loadItems(state)
+            is State.LoadSemesterAverage -> {
                 footerAdapter.setData(R.string.text_semester_average, state.data)
             }
         }
     }
 
-    private fun loadItems(state: MyCareerState.LoadSubjects) {
+    private fun loadItems(state: MyCareerViewModel.State.LoadSubjects) {
         when {
             state.inProgress() -> {
                 // show loading }
@@ -107,6 +102,6 @@ class SubjectsFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        // viewModel.refresh()
+        viewModel.refresh()
     }
 }

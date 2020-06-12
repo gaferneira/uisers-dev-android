@@ -1,5 +1,6 @@
 package co.tuister.uisers.modules.main
 
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.User
@@ -7,9 +8,9 @@ import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.DownloadImageUseCase
 import co.tuister.domain.usecases.login.FCMUpdateUseCase
 import co.tuister.domain.usecases.login.LogoutUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
-import co.tuister.uisers.modules.main.MainState.DownloadedImage
-import co.tuister.uisers.modules.main.MainState.ValidateLogout
+import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
 import co.tuister.uisers.utils.Result.Success
 import kotlinx.coroutines.Dispatchers
@@ -17,11 +18,21 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(
-    private val logoutUseCase: LogoutUseCase,
-    private val downloadImageUseCase: DownloadImageUseCase,
-    private val userUseCase: UserUseCase,
-    private val fcmUpdateUseCase: FCMUpdateUseCase
+  private val logoutUseCase: LogoutUseCase,
+  private val downloadImageUseCase: DownloadImageUseCase,
+  private val userUseCase: UserUseCase,
+  private val fcmUpdateUseCase: FCMUpdateUseCase
 ) : BaseViewModel() {
+
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class ValidateLogout(val result: Result<Boolean>) : State<Boolean>(result)
+        class DownloadedImage(val result: Result<Uri>) : State<Uri>(result)
+    }
+
+    sealed class Event {
+        object GoToLogin : Event()
+    }
+
     val title: MutableLiveData<String> = MutableLiveData("Inicio")
     val name: MutableLiveData<String> = MutableLiveData("")
     val email: MutableLiveData<String> = MutableLiveData("")
@@ -53,7 +64,7 @@ class MainViewModel(
             withContext(Dispatchers.Main) {
                 val resultData = downloadImageUseCase.run(DownloadImageUseCase.Params(user.email))
                 resultData.fold({}, {
-                    setState(DownloadedImage(Success(it)))
+                    setState(State.DownloadedImage(Success(it)))
                 })
             }
         }
@@ -72,11 +83,11 @@ class MainViewModel(
     }
 
     fun doLogOut() {
-        setState(ValidateLogout(InProgress()))
+        setState(State.ValidateLogout(InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 logoutUseCase.run()
-                setState(ValidateLogout(Success(true)))
+                setState(State.ValidateLogout(Success(true)))
             }
         }
     }

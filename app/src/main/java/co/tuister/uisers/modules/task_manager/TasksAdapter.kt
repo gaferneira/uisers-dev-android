@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
-import kotlinx.android.synthetic.main.item_tasks_task.view.*
+import co.tuister.uisers.common.BaseViewHolder
+import kotlinx.android.synthetic.main.item_tasks_task.*
 
 class TasksAdapter(
   private val listener: TasksListener?
@@ -27,9 +28,8 @@ class TasksAdapter(
     }
 
     override fun onBindViewHolder(holder: TasksViewHolder, position: Int) {
-        val isLastIndex = position == itemCount - 1
         val item = list[position]
-        holder.bind(position, item, listener, isLastIndex)
+        holder.bind(item, listener)
     }
 
     fun setItems(items: List<Task>) {
@@ -37,25 +37,15 @@ class TasksAdapter(
         notifyDataSetChanged()
     }
 
-    fun clearItems() {
-        val itemCount = list.size
-        list = mutableListOf()
-        notifyItemRangeRemoved(0, itemCount)
-    }
-
-    class TasksViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class TasksViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(
-          position: Int,
           task: Task,
-          listener: TasksListener?,
-          isLastIndex: Boolean
+          listener: TasksListener?
         ) {
-            itemView.apply {
-                text_view_task_name.text = task.title
-                text_view_task_desc.text = task.description
-                setOnClickListener {
-                    listener?.onClickTask(task)
-                }
+            text_view_task_name.text = task.title
+            text_view_task_desc.text = task.description
+            itemView.setOnClickListener {
+                listener?.onClickTask(task)
             }
         }
     }
