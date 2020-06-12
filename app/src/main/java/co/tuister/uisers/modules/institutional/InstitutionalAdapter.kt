@@ -5,7 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.uisers.R
-import kotlinx.android.synthetic.main.item_institutional_menu.view.*
+import co.tuister.uisers.common.BaseViewHolder
+import kotlinx.android.synthetic.main.item_institutional_menu.*
 
 class InstitutionalAdapter(
   private val listener: InstitutionalListener
@@ -35,25 +36,17 @@ class InstitutionalAdapter(
         notifyDataSetChanged()
     }
 
-    fun clearItems() {
-        val itemCount = list.size
-        list = mutableListOf()
-        notifyItemRangeRemoved(0, itemCount)
-    }
-
-    class InstitutionalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class InstitutionalViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(
           position: Int,
           menu: InstitutionalMenu,
           listener: InstitutionalListener
         ) {
-            itemView.apply {
-                text_view_institutional_menu.setText(menu.title)
-                image_view_institutional_menu.setImageResource(menu.icon)
-                container_institutional.setBackgroundResource(menu.backgroundColor)
-                setOnClickListener {
-                    listener.onClickMenu(position)
-                }
+            text_view_institutional_menu.setText(menu.title)
+            image_view_institutional_menu.setImageResource(menu.icon)
+            container_institutional.setBackgroundResource(menu.backgroundColor)
+            itemView.setOnClickListener {
+                listener.onClickMenu(position)
             }
         }
     }

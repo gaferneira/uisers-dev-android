@@ -1,15 +1,18 @@
 package co.tuister.uisers.modules.home
 
 import androidx.lifecycle.viewModelScope
+import co.tuister.domain.entities.SchedulePeriod
+import co.tuister.domain.entities.Task
 import co.tuister.domain.usecases.my_career.GetCurrentSemesterUseCase
 import co.tuister.domain.usecases.my_career.GetScheduleByDateUseCase
 import co.tuister.domain.usecases.tasks.GetTasksByDateUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
-import java.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class HomeViewModel(
   private val getCurrentSemesterCase: GetCurrentSemesterUseCase,
@@ -17,7 +20,14 @@ class HomeViewModel(
   private val scheduleByUseCase: GetScheduleByDateUseCase
 ) : BaseViewModel() {
 
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class LoadHeader(result: Result<HomeHeader>) : State<HomeHeader>(result)
+        class LoadTasks(result: Result<List<Task>>) : State<List<Task>>(result)
+        class LoadSubjects(result: Result<List<SchedulePeriod>>) : State<List<SchedulePeriod>>(result)
+    }
+
     fun initialize() {
+        // No op
     }
 
     fun refresh() {
@@ -34,7 +44,7 @@ class HomeViewModel(
             }, { semester ->
                 val period = String.format("%d - %d", semester.year, semester.period)
                 val header = HomeHeader("", period)
-                setState(HomeState.LoadHeader(Result.Success(header)))
+                setState(State.LoadHeader(Result.Success(header)))
             })
         }
     }
@@ -46,9 +56,9 @@ class HomeViewModel(
                 getTasksByDateUseCase.run(calendar.time)
             }
             result.fold({
-                setState(HomeState.LoadTasks(Result.Error(it)))
+                setState(State.LoadTasks(Result.Error(it)))
             }, {
-                setState(HomeState.LoadTasks(Result.Success(it)))
+                setState(State.LoadTasks(Result.Success(it)))
             })
         }
     }
@@ -58,9 +68,9 @@ class HomeViewModel(
             val calendar = Calendar.getInstance()
             val result = withContext(Dispatchers.IO) { scheduleByUseCase.run(calendar.time) }
             result.fold({
-                setState(HomeState.LoadSubjects(Result.Error(it)))
+                setState(State.LoadSubjects(Result.Error(it)))
             }, {
-                setState(HomeState.LoadSubjects(Result.Success(it)))
+                setState(State.LoadSubjects(Result.Success(it)))
             })
         }
     }

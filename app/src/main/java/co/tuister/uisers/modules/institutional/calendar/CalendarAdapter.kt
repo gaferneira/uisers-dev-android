@@ -9,7 +9,6 @@ import co.tuister.domain.entities.Event
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.DateUtils
-import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_institutional_calendar.*
 import java.util.*
 
@@ -51,7 +50,7 @@ class CalendarAdapter(
         notifyItemRangeRemoved(0, itemCount)
     }
 
-    class EventsViewHolder(view: View) : BaseViewHolder(view), LayoutContainer {
+    class EventsViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(
           event: Event,
           listener: CalendarListener?

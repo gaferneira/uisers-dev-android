@@ -12,7 +12,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
-import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.collect
@@ -57,13 +56,10 @@ class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
     private fun initViewModel() {
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect {
-                update(it)
+                // No op
             }
         }
         viewModel.initialize()
-    }
-
-    private fun update(state: BaseState<Any>?) {
     }
 
     override fun onResume() {

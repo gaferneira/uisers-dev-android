@@ -17,21 +17,21 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.ActivityMainBinding
 import co.tuister.uisers.databinding.LeftHomeMenuHeaderLayoutBinding
 import co.tuister.uisers.modules.login.LoginActivity
-import co.tuister.uisers.modules.main.MainState.DownloadedImage
-import co.tuister.uisers.modules.main.MainState.ValidateLogout
+import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
+import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
 import co.tuister.uisers.utils.ImagesUtils.Companion.downloadImageInto
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class MainActivity : BaseActivity() {
-    lateinit var binding: ActivityMainBinding
-    lateinit var bindingMenu: LeftHomeMenuHeaderLayoutBinding
-    lateinit var viewModel: MainViewModel
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var bindingMenu: LeftHomeMenuHeaderLayoutBinding
+    private lateinit var viewModel: MainViewModel
     private lateinit var navController: NavController
 
     companion object {
-        private val EXTRA_USER = "EXTRA_USER"
+        private const val EXTRA_USER = "EXTRA_USER"
 
         fun start(context: Context, user: User?) {
             val intent = Intent(context, MainActivity::class.java)
@@ -82,6 +82,10 @@ class MainActivity : BaseActivity() {
                     viewModel.user
                 )
                 resources.getString(R.string.title_menu_about) -> {
+                    // TODO: Implement about
+                }
+                resources.getString(R.string.title_menu_feedback) -> {
+                    // TODO: Implement about
                 }
             }
             true

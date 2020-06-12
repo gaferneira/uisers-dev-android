@@ -16,12 +16,12 @@ class SemesterRepositoryImpl : SemesterRepository {
         delay(1000)
         return Either.Right(
             listOf(
-                Semester(2019, 2, 4.2f),
-                Semester(2019, 1, 4.2f),
-                Semester(2018, 2, 4.1f),
-                Semester(2018, 1, 3.9f),
-                Semester(2017, 2, 3.7f),
-                Semester(2017, 1, 3.8f)
+                Semester(2019, 2, 4.2f, 35, true),
+                Semester(2019, 1, 4.2f, 34),
+                Semester(2018, 2, 4.1f, 40),
+                Semester(2018, 1, 3.9f,38),
+                Semester(2017, 2, 3.7f,40),
+                Semester(2017, 1, 3.8f, 38)
             ))
     }
 
@@ -31,7 +31,7 @@ class SemesterRepositoryImpl : SemesterRepository {
     }
 
     override suspend fun changeCurrentSemester(semester: Semester): Either<Failure, Semester> {
-        delay(1000)
+        delay(1001)
         return Either.Right(semester)
     }
 }

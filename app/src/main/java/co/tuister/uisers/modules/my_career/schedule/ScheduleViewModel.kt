@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.usecases.my_career.GetScheduleUseCase
 import co.tuister.domain.usecases.my_career.SaveSchedulePeriodUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +16,13 @@ class ScheduleViewModel(
   private val savePeriod: SaveSchedulePeriodUseCase
 ) : BaseViewModel() {
 
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class LoadItems(result: Result<List<SchedulePeriod>>) : State<List<SchedulePeriod>>(result)
+        class SavePeriod(result: Result<Nothing>) : State<Nothing>(result)
+    }
+
     fun initialize() {
+        // no op
     }
 
     fun refresh() {
@@ -25,24 +32,24 @@ class ScheduleViewModel(
     private fun updateClasses() {
         viewModelScope.launch {
             setState(
-                ScheduleState.LoadItems(Result.InProgress())
+                State.LoadItems(Result.InProgress())
             )
             val result = withContext(Dispatchers.IO) { getSchedule.run() }
             result.fold({
-                setState(ScheduleState.LoadItems(Result.Error(it)))
+                setState(State.LoadItems(Result.Error(it)))
             }, {
-                setState(ScheduleState.LoadItems(Result.Success(it)))
+                setState(State.LoadItems(Result.Success(it)))
             })
         }
     }
 
     fun savePeriod(period: SchedulePeriod) {
-        setState(ScheduleState.SavePeriod(Result.InProgress()))
+        setState(State.SavePeriod(Result.InProgress()))
         viewModelScope.launch {
             savePeriod.run(period).fold({
-                setState(ScheduleState.SavePeriod(Result.Error(it)))
+                setState(State.SavePeriod(Result.Error(it)))
             }, {
-                setState(ScheduleState.SavePeriod(Result.Success()))
+                setState(State.SavePeriod(Result.Success()))
             })
         }
     }

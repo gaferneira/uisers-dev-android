@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksListBinding
+import co.tuister.uisers.modules.task_manager.TasksViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -59,11 +60,11 @@ class TasksListFragment : BaseFragment() {
 
     private fun update(state: BaseState<Any>?) {
         when (state) {
-            is TasksState.LoadItems -> loadItems(state)
+            is State.LoadItems -> loadItems(state)
         }
     }
 
-    private fun loadItems(state: TasksState.LoadItems) {
+    private fun loadItems(state: State.LoadItems) {
         when {
             state.inProgress() -> {
                 // show loading }

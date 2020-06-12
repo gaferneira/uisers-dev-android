@@ -70,7 +70,7 @@ class LoginFragment : BaseFragment() {
 
     private fun validateLogin(state: LoginState.ValidateLogin) {
         when (val result = state.result) {
-             is Result.InProgress -> {
+            is Result.InProgress -> {
                 binding.loginStatus.isVisible = true
             }
             is Result.Error -> {

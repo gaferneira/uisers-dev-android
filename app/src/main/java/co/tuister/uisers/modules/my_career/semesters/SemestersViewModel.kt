@@ -5,6 +5,7 @@ import co.tuister.domain.entities.Semester
 import co.tuister.domain.usecases.my_career.ChangeCurrentSemesterUseCase
 import co.tuister.domain.usecases.my_career.GetAllSemestersUseCase
 import co.tuister.domain.usecases.my_career.SaveSemesterUseCase
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +18,14 @@ class SemestersViewModel(
   private val changeCurrentSemester: ChangeCurrentSemesterUseCase
 ) : BaseViewModel() {
 
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class LoadItems(result: Result<List<Semester>>) : State<List<Semester>>(result)
+        class SaveSemester(result: Result<Nothing>) : State<Nothing>(result)
+        class ChangeCurrentSemester(result: Result<Nothing>) : State<Nothing>(result)
+    }
+
     fun initialize() {
+        // No op
     }
 
     fun refresh() {
@@ -27,35 +35,35 @@ class SemestersViewModel(
     private fun updateSemesters() {
         viewModelScope.launch {
             setState(
-                SemestersState.LoadItems(Result.InProgress())
+                State.LoadItems(Result.InProgress())
             )
             val result = withContext(Dispatchers.IO) { getAllSemesters.run() }
             result.fold({
-                setState(SemestersState.LoadItems(Result.Error(it)))
+                setState(State.LoadItems(Result.Error(it)))
             }, {
-                setState(SemestersState.LoadItems(Result.Success(it)))
+                setState(State.LoadItems(Result.Success(it)))
             })
         }
     }
 
     fun saveSemester(semester: Semester) {
-        setState(SemestersState.SaveSemester(Result.InProgress()))
+        setState(State.SaveSemester(Result.InProgress()))
         viewModelScope.launch {
             saveSemester.run(semester).fold({
-                setState(SemestersState.SaveSemester(Result.Error(it)))
+                setState(State.SaveSemester(Result.Error(it)))
             }, {
-                setState(SemestersState.SaveSemester(Result.Success()))
+                setState(State.SaveSemester(Result.Success()))
             })
         }
     }
 
     fun changeCurrentSemester(semester: Semester) {
-        setState(SemestersState.ChangeCurrentSemester(Result.InProgress()))
+        setState(State.ChangeCurrentSemester(Result.InProgress()))
         viewModelScope.launch {
             changeCurrentSemester.run(semester).fold({
-                setState(SemestersState.ChangeCurrentSemester(Result.Error(it)))
+                setState(State.ChangeCurrentSemester(Result.Error(it)))
             }, {
-                setState(SemestersState.ChangeCurrentSemester(Result.Success()))
+                setState(State.ChangeCurrentSemester(Result.Success()))
             })
         }
     }

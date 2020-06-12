@@ -12,6 +12,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInstitutionalMapBinding
+import co.tuister.uisers.modules.institutional.map.MapViewModel.State
 import co.tuister.uisers.utils.maps.MapController
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
@@ -70,12 +71,12 @@ class MapFragment : BaseFragment() {
 
     private fun update(status: BaseState<Any>?) {
         when (status) {
-            is MapViewModel.State.LoadPlaces -> loadPlaces(status)
-            is MapViewModel.State.LoadSites -> loadSites(status)
+            is State.LoadPlaces -> loadPlaces(status)
+            is State.LoadSites -> loadSites(status)
         }
     }
 
-    private fun loadSites(state: MapViewModel.State.LoadSites) {
+    private fun loadSites(state: State.LoadSites) {
         when {
             state.inProgress() -> {
                 // show loading }

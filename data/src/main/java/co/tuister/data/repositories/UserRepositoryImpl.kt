@@ -122,6 +122,7 @@ class UserRepositoryImpl(
             try {
                 map[field.name] = field[obj]
             } catch (e: java.lang.Exception) {
+                //Error
             }
         }
         return map

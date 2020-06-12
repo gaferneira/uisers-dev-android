@@ -10,6 +10,7 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectAddBinding
+import co.tuister.uisers.modules.my_career.subjects.add_subject.AddSubjectViewModel.State
 import co.tuister.uisers.utils.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -77,19 +78,19 @@ class AddSubjectFragment : BaseFragment() {
 
     private fun update(status: BaseState<Any>?) {
         when (status) {
-            is AddSubjectsState.Save -> onSaveSubject(status)
-            is AddSubjectsState.LoadDefaultSubjects -> loadDefaultSubjects(status)
+            is State.Save -> onSaveSubject(status)
+            is State.LoadDefaultSubjects -> loadDefaultSubjects(status)
         }
     }
 
-    private fun loadDefaultSubjects(status: AddSubjectsState.LoadDefaultSubjects) {
+    private fun loadDefaultSubjects(status: State.LoadDefaultSubjects) {
         if (status.isSuccess()) {
             val adapter = AutoCompleteSubjectsAdapter(requireContext(), status.data)
             binding.autocompleteSubject.setAdapter(adapter)
         }
     }
 
-    private fun onSaveSubject(state: AddSubjectsState.Save) {
+    private fun onSaveSubject(state: State.Save) {
         when {
             state.inProgress() -> {
                 // show loading }

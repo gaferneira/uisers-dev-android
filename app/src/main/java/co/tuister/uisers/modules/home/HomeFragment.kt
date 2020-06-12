@@ -11,6 +11,7 @@ import co.tuister.domain.entities.Task
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentHomeBinding
+import co.tuister.uisers.modules.home.HomeViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -52,9 +53,9 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
 
     private fun update(state: BaseState<Any>) {
         when (state) {
-            is HomeState.LoadHeader -> state.data?.run { adapter.addItem(this) }
-            is HomeState.LoadTasks -> state.data?.run { updateListTasks(this) }
-            is HomeState.LoadSubjects -> state.data?.run { updateListSubjects(this) }
+            is State.LoadHeader -> state.data?.run { adapter.addItem(this) }
+            is State.LoadTasks -> state.data?.run { updateListTasks(this) }
+            is State.LoadSubjects -> state.data?.run { updateListSubjects(this) }
         }
     }
 
@@ -77,11 +78,14 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     }
 
     override fun onClickRow(position: Int) {
+        // TODO
     }
 
-    override fun onClickSchedulePeriod(schedulePeriod: SchedulePeriod) {
+    override fun onClickSchedulePeriod(period: SchedulePeriod) {
+        // TODO
     }
 
     override fun onClickTask(task: Task) {
+        // TODO
     }
 }

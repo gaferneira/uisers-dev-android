@@ -12,12 +12,13 @@ import co.tuister.domain.entities.Task
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksAddBinding
+import co.tuister.uisers.modules.task_manager.add_task.AddTaskViewModel.State
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.checkRequireFormFields
 import co.tuister.uisers.utils.pickDateTime
-import java.util.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
+import java.util.*
 
 class AddTaskFragment : BaseFragment() {
 
@@ -61,11 +62,11 @@ class AddTaskFragment : BaseFragment() {
 
     private fun update(status: BaseState<Any>?) {
         when (status) {
-            is AddTaskState.Save -> onSaveTask(status)
+            is State.Save -> onSaveTask(status)
         }
     }
 
-    private fun onSaveTask(state: AddTaskState.Save) {
+    private fun onSaveTask(state: State.Save) {
         when {
             state.inProgress() -> {
                 // show loading }

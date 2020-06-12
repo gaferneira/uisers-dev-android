@@ -19,6 +19,7 @@ class CalendarViewModel(
     }
 
     fun initialize() {
+        // No op
     }
 
     fun refresh() {

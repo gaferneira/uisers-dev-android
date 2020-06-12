@@ -16,15 +16,15 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentRegisterBinding
 import co.tuister.uisers.modules.login.LoginActivity
-import co.tuister.uisers.modules.login.register.RegisterState.ValidateRegister
-import co.tuister.uisers.utils.PROGESS_TYPE.DOWNLOADING
+import co.tuister.uisers.modules.login.register.RegisterViewModel.State.ValidateRegister
+import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-import java.util.Calendar.YEAR
-import java.util.Calendar.getInstance
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
+import java.util.Calendar.YEAR
+import java.util.Calendar.getInstance
 
 class RegisterFragment : BaseFragment() {
 

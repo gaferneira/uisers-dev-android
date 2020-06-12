@@ -8,10 +8,10 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.uisers.R
-import java.util.*
-import kotlinx.android.extensions.LayoutContainer
+import co.tuister.uisers.common.BaseViewHolder
 import kotlinx.android.synthetic.main.item_my_career_schedule.*
 import kotlinx.android.synthetic.main.item_my_career_schedule_title.*
+import java.util.*
 
 class ScheduleAdapter(
   private val listener: ScheduleListener?
@@ -31,10 +31,10 @@ class ScheduleAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         val layout = if (viewType == 0) {
-             R.layout.item_my_career_schedule_title
-         } else {
-             R.layout.item_my_career_schedule
-         }
+                R.layout.item_my_career_schedule_title
+          } else {
+                R.layout.item_my_career_schedule
+          }
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return ScheduleViewHolder(view)
     }
@@ -54,10 +54,7 @@ class ScheduleAdapter(
         notifyDataSetChanged()
     }
 
-    open class ScheduleViewHolder(view: View) : RecyclerView.ViewHolder(view), LayoutContainer {
-
-        override val containerView: View?
-            get() = itemView
+    open class ScheduleViewHolder(view: View) : BaseViewHolder(view) {
 
         open fun bind(
           pair: Pair<Int?, SchedulePeriod?>,

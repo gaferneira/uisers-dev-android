@@ -2,14 +2,6 @@ package co.tuister.uisers.modules.home
 
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Task
-import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.utils.Result
-
-sealed class HomeState<out T : Any>(result: Result<T>) : BaseState<T>(result) {
-    class LoadHeader(result: Result<HomeHeader>) : HomeState<HomeHeader>(result)
-    class LoadTasks(result: Result<List<Task>>) : HomeState<List<Task>>(result)
-    class LoadSubjects(result: Result<List<SchedulePeriod>>) : HomeState<List<SchedulePeriod>>(result)
-}
 
 open class HomeData(val template: HomeAdapter.HomeEnum)
 

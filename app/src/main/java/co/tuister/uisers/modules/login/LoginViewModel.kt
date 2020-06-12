@@ -57,7 +57,7 @@ class LoginViewModel(
         }
     }
 
-    fun doLoadUserData(emailText: String) {
+    private fun doLoadUserData(emailText: String) {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData = userUseCase.run()

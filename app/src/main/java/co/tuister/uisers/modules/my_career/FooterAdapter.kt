@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.uisers.R
+import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.format
-import kotlinx.android.synthetic.main.item_my_career_footer.view.*
+import kotlinx.android.synthetic.main.item_my_career_footer.*
 
 class FooterAdapter() : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {
 
@@ -36,12 +37,10 @@ class FooterAdapter() : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class FooterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class FooterViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(data: FooterData?) {
-            itemView.apply {
-                text_view_footer_title.text = data?.title?.let { context.getString(it) }
-                text_view_footer_total.text = data?.total?.format()
-            }
+            text_view_footer_title.text = data?.title?.let { context.getString(it) }
+            text_view_footer_total.text = data?.total?.format()
         }
     }
 }

@@ -15,6 +15,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentCalendarBinding
+import co.tuister.uisers.modules.institutional.calendar.CalendarViewModel.State
 import co.tuister.uisers.utils.DateUtils
 import jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
 import jp.co.recruit_mp.android.lightcalendarview.MonthView
@@ -127,7 +128,7 @@ class CalendarFragment : BaseFragment() {
 
     private fun update(state: BaseState<Any>?) {
         when (state) {
-            is CalendarViewModel.State.LoadItems -> loadItems(state)
+            is State.LoadItems -> loadItems(state)
         }
     }
 

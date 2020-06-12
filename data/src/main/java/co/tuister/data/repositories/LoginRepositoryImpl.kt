@@ -23,7 +23,7 @@ class LoginRepositoryImpl(
 
     override suspend fun login(email: String, password: String): Either<Failure, User?> {
         return try {
-            val data = firebaseAuth
+            firebaseAuth
                 .signInWithEmailAndPassword(email, password)
                 .await()
 

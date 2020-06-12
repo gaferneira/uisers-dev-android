@@ -15,6 +15,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectDetailsBinding
 import co.tuister.uisers.modules.my_career.FooterAdapter
+import co.tuister.uisers.modules.my_career.subjects.subject_details.SubjectDetailsViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -75,12 +76,12 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
 
     private fun update(state: BaseState<Any>?) {
         when (state) {
-            is SubjectDetailsState.LoadItems -> loadItems(state)
-            is SubjectDetailsState.SaveNote -> resultSaveNote(state)
+            is State.LoadItems -> loadItems(state)
+            is State.SaveNote -> resultSaveNote(state)
         }
     }
 
-    private fun loadItems(state: SubjectDetailsState.LoadItems) {
+    private fun loadItems(state: State.LoadItems) {
         when {
             state.inProgress() -> {
                 // show loading }
@@ -98,7 +99,7 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
         }
     }
 
-    private fun resultSaveNote(state: SubjectDetailsState.SaveNote) {
+    private fun resultSaveNote(state: State.SaveNote) {
         if (state.isSuccess()) {
             viewModel.refresh()
         }

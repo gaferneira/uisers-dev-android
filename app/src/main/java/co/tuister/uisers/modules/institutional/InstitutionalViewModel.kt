@@ -1,10 +1,16 @@
 package co.tuister.uisers.modules.institutional
 
 import co.tuister.uisers.R
+import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 
 class InstitutionalViewModel() : BaseViewModel() {
+
+    sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class LoadItems(result: Result<List<InstitutionalMenu>>) :
+            State<List<InstitutionalMenu>>(result)
+    }
 
     fun initialize() {
         val menus = listOf(
@@ -29,6 +35,6 @@ class InstitutionalViewModel() : BaseViewModel() {
                 R.color.blue_600
             )
         )
-        setState(InstitutionalState.LoadItems(Result.Success(menus)))
+        setState(State.LoadItems(Result.Success(menus)))
     }
 }
