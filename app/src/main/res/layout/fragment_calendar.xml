@@ -1,22 +1,37 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="@dimen/screen_horizontal_margin"
-    android:paddingVertical="@dimen/screen_vertical_margin">
+    app:layoutDescription="@xml/collapsing_toolbar"
+    tools:showPaths="true">
 
     <TextView
-        android:id="@+id/text_view_no_data"
-        android:layout_width="0dp"
+        android:id="@+id/text_view_calendar_date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empty_calendar"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/padding_margin_large"
+        android:paddingTop="@dimen/padding_margin_normal_smaller"
+        android:textColor="?colorOnSurface"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        tools:text="Jun 2020" />
+
+    <jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
+        android:id="@+id/view_calendar"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:adjustViewBounds="true"
+        android:fitsSystemWindows="true"
+        android:scaleType="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_calendar_date"
+        app:lcv_dayTextSize="18sp"
+        app:lcv_firstDayOfWeek="@integer/lcv_monday"
+        app:lcv_weekDayTextSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -25,7 +40,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_calendar" />
+        app:layout_constraintTop_toBottomOf="@+id/view_calendar" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

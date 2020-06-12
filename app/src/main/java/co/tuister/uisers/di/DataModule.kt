@@ -18,4 +18,5 @@ val dataModule = module {
     single<UserRepository> { UserRepositoryImpl(get(), get(), get()) }
     single<ScheduleRepository> { ScheduleRepositoryImpl() }
     single<MapRepository> { MapRepositoryImpl() }
+    single<CalendarRepository> { CalendarRepositoryImpl() }
 }

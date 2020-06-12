@@ -17,10 +17,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(
-    private val logoutUseCase: LogoutUseCase,
-    private val downloadImageUseCase: DownloadImageUseCase,
-    private val userUseCase: UserUseCase,
-    private val fcmUpdateUseCase: FCMUpdateUseCase
+  private val logoutUseCase: LogoutUseCase,
+  private val downloadImageUseCase: DownloadImageUseCase,
+  private val userUseCase: UserUseCase,
+  private val fcmUpdateUseCase: FCMUpdateUseCase
 ) : BaseViewModel() {
     val title: MutableLiveData<String> = MutableLiveData("Inicio")
     val name: MutableLiveData<String> = MutableLiveData("")

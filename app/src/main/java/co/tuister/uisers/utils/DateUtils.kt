@@ -10,19 +10,26 @@ class DateUtils {
 
     companion object {
 
-        fun stringToDate(string: String?): Date? {
+        fun stringToDateTime(string: String?): Date? {
             return string?.let {
                 try {
-                    DATE_FORMAT.parse(it)
+                    DATE_TIME_FORMAT.parse(it)
                 } catch (e: Exception) {
                     null
                 }
             }
         }
 
-        fun dateToString(date: Date?): String? {
+        fun dateTimeToString(date: Date?): String? {
             return date?.let {
-                DATE_FORMAT.format(it)
+                DATE_TIME_FORMAT.format(it)
+            }
+        }
+
+        fun dateToString(date: Date?, format: String? = null): String? {
+            return date?.let {
+                val sdf = format?.let { SimpleDateFormat(it) } ?: DATE_FORMAT
+                sdf.format(it)
             }
         }
 
@@ -44,7 +51,8 @@ class DateUtils {
             return builder.toString()
         }
 
-        private val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        private val DATE_TIME_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        private val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd")
     }
 }
 
@@ -54,12 +62,12 @@ object DateConverter {
     @JvmStatic
     fun dateToString(value: Long): String? {
         return if (value == 0L) "" else {
-            DateUtils.dateToString(Date(value))
+            DateUtils.dateTimeToString(Date(value))
         }
     }
 
     @JvmStatic
     fun stringToDate(value: String?): Long {
-        return DateUtils.stringToDate(value)?.time ?: 0
+        return DateUtils.stringToDateTime(value)?.time ?: 0
     }
 }

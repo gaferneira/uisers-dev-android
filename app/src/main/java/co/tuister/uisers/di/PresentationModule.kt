@@ -51,7 +51,7 @@ val viewModelModule = module {
 
     // Institutional
     viewModel { InstitutionalViewModel() }
-    viewModel { CalendarViewModel() }
+    viewModel { CalendarViewModel(get()) }
     viewModel { MapViewModel(get(), get()) }
     viewModel { WheelsViewModel() }
 }

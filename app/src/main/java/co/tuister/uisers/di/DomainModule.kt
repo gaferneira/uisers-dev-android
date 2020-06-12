@@ -1,6 +1,7 @@
 package co.tuister.uisers.di
 
 import co.tuister.domain.usecases.UserUseCase
+import co.tuister.domain.usecases.institutional.GetEventsUseCase
 import co.tuister.domain.usecases.institutional.GetPlacesUseCase
 import co.tuister.domain.usecases.institutional.GetSitesUseCase
 import co.tuister.domain.usecases.login.*
@@ -50,6 +51,7 @@ val domainModule = module {
     // Institutional
     single { GetPlacesUseCase(get()) }
     single { GetSitesUseCase(get()) }
+    single { GetEventsUseCase(get()) }
 
     // Profile
     single { ProfileUseCase(get()) }
