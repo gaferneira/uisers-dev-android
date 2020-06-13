@@ -1,6 +1,7 @@
 package co.tuister.uisers.modules.my_career.subjects.add_subject
 
 import androidx.lifecycle.viewModelScope
+import co.tuister.domain.entities.CareerSubject
 import co.tuister.domain.entities.Subject
 import co.tuister.domain.usecases.my_career.GetAllSubjectsUseCase
 import co.tuister.domain.usecases.my_career.SaveSubjectUseCase
@@ -19,8 +20,8 @@ class AddSubjectViewModel(
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class Save(result: Result<Subject>) : State<Subject>(result)
-        class LoadDefaultSubjects(result: Result<List<Subject>>) :
-            State<List<Subject>>(result)
+        class LoadDefaultSubjects(result: Result<List<CareerSubject>>) :
+            State<List<CareerSubject>>(result)
     }
 
     fun initialize() {

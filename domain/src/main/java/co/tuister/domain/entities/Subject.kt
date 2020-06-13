@@ -10,3 +10,11 @@ data class Subject(
     var note: Float = 0f,
     var credits: Int = 1
 ) : Parcelable
+
+@Parcelize
+data class CareerSubject(
+    var career : String,
+    var id : String = "",
+    var name : String = "",
+    var credits : Int = 1
+) : Parcelable

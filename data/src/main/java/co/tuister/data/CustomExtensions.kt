@@ -6,7 +6,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
-public suspend fun <T> Task<T>.await(): T? {
+suspend fun <T> Task<T>.await(): T? {
     if (isComplete) {
         val e = exception
         return if (e == null) {
