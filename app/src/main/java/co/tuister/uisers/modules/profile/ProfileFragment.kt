@@ -127,6 +127,9 @@ class ProfileFragment : BaseFragment() {
                 }
                 binding.loadingStatus.isVisible = true
             }
+            state.isFailure() -> {
+                binding.loadingStatus.isVisible = false
+            }
         }
     }
 
