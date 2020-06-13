@@ -13,7 +13,6 @@ import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.*
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -79,11 +78,7 @@ class RegisterViewModel(
             withContext(Dispatchers.Main) {
                 val result = registerUseCase.run(Params(userLive.value!!, password1.value!!))
                 result.fold({ fail ->
-                    if (fail.error is FirebaseAuthWeakPasswordException) {
-                        setState(State.ValidateRegister(Error(FormError(Exception("Password is to weak to create a account")))))
-                    } else {
-                        setState(State.ValidateRegister(Error(fail)))
-                    }
+                    setState(State.ValidateRegister(Error(fail)))
                 }, { res ->
                     if (res) {
                         runUploadRoutine()

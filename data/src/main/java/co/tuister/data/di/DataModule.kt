@@ -1,4 +1,4 @@
-package co.tuister.uisers.di
+package co.tuister.data.di
 
 import co.tuister.data.repositories.*
 import co.tuister.domain.repositories.*

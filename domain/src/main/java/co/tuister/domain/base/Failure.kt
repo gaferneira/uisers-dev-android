@@ -9,6 +9,7 @@ import co.tuister.domain.base.Failure.FeatureFailure
 sealed class Failure(val error: Exception?, var param: String = "") {
     class NetworkConnection(error: Exception? = null) : Failure(error)
     class ServerError(error: Exception? = null) : Failure(error)
+    class AuthWeakPasswordException(error: Exception? = null) : Failure(error)
     class AuthenticationError(error: Exception? = null) : Failure(error)
     class EmailNotVerifiedError(error: Exception? = null) : Failure(error)
     class FormError(error: Exception? = null) : Failure(error)

@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
+import java.util.*
 import kotlinx.android.synthetic.main.item_my_career_schedule.*
 import kotlinx.android.synthetic.main.item_my_career_schedule_title.*
-import java.util.*
 
 class ScheduleAdapter(
   private val listener: ScheduleListener?
