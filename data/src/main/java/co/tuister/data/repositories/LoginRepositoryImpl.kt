@@ -11,6 +11,7 @@ import co.tuister.domain.base.Failure.EmailNotVerifiedError
 import co.tuister.domain.entities.User
 import co.tuister.domain.repositories.LoginRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
@@ -69,7 +70,11 @@ class LoginRepositoryImpl(
             }
             Either.Right(true)
         } catch (e: Exception) {
-            Either.Left(Failure.ServerError(e))
+            if (e is FirebaseAuthWeakPasswordException){
+                Either.Left(Failure.AuthWeakPasswordException(e))
+            } else {
+                Either.Left(Failure.ServerError(e))
+            }
         }
     }
 

@@ -9,8 +9,8 @@ import co.tuister.domain.entities.Event
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.DateUtils
-import kotlinx.android.synthetic.main.item_institutional_calendar.*
 import java.util.*
+import kotlinx.android.synthetic.main.item_institutional_calendar.*
 
 class CalendarAdapter(
   private val listener: CalendarListener?

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.FormError
 import co.tuister.domain.entities.Career
 import co.tuister.uisers.R
@@ -21,10 +22,10 @@ import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.Calendar.YEAR
 import java.util.Calendar.getInstance
+import kotlinx.coroutines.flow.collect
+import org.koin.android.viewmodel.ext.android.getViewModel
 
 class RegisterFragment : BaseFragment() {
 
@@ -166,6 +167,12 @@ class RegisterFragment : BaseFragment() {
                     is FormError -> {
                         showDialog(
                             st.error!!.message!!,
+                            requireContext().getString(R.string.title_dialog_view_register)
+                        )
+                    }
+                    is Failure.AuthWeakPasswordException -> {
+                        showDialog(
+                            "Password is to weak to create a account",
                             requireContext().getString(R.string.title_dialog_view_register)
                         )
                     }

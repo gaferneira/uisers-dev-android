@@ -17,12 +17,12 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentCalendarBinding
 import co.tuister.uisers.modules.institutional.calendar.CalendarViewModel.State
 import co.tuister.uisers.utils.DateUtils
+import java.util.*
 import jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
 import jp.co.recruit_mp.android.lightcalendarview.MonthView
+import kotlin.math.abs
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
-import java.util.*
-import kotlin.math.abs
 
 class CalendarFragment : BaseFragment() {
 

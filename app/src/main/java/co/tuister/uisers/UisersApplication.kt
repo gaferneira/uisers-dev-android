@@ -3,7 +3,7 @@ package co.tuister.uisers
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
-import co.tuister.uisers.di.dataModule
+import co.tuister.data.di.dataModule
 import co.tuister.uisers.di.domainModule
 import co.tuister.uisers.di.presentationModule
 import co.tuister.uisers.di.viewModelModule
