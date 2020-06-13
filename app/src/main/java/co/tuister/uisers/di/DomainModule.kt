@@ -40,7 +40,7 @@ val domainModule = module {
     single { GetMySubjectsUseCase(get()) }
     single { GetNotesUseCase(get()) }
     single { SaveNoteUseCase(get()) }
-    single { GetAllSubjectsUseCase(get()) }
+    single { GetAllSubjectsUseCase(get(), get()) }
     single { SaveSubjectUseCase(get()) }
 
     // Tasks

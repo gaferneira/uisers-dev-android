@@ -7,9 +7,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.firestore.FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED
 import com.google.firebase.storage.FirebaseStorage
+import com.google.gson.GsonBuilder
 import org.koin.dsl.module
 
 val dataModule = module {
+    single { GsonBuilder().create() }
     single { FirebaseAuth.getInstance() }
     single {
         FirebaseFirestore.getInstance().apply {
@@ -25,11 +27,11 @@ val dataModule = module {
     single { FirebaseStorage.getInstance() }
     single<LoginRepository> { LoginRepositoryImpl(get(), get(), get()) }
     single<SemesterRepository> { SemesterRepositoryImpl() }
-    single<SubjectRepository> { SubjectRepositoryImpl() }
+    single<SubjectRepository> { SubjectRepositoryImpl(get(), get()) }
     single<TasksRepository> { TasksRepositoryImpl() }
-    single<UserRepository> { UserRepositoryImpl(get(), get(), get(), get()) }
+    single<UserRepository> { UserRepositoryImpl(get(), get(), get()) }
     single<ScheduleRepository> { ScheduleRepositoryImpl() }
     single<MapRepository> { MapRepositoryImpl() }
     single<CalendarRepository> { CalendarRepositoryImpl() }
-    single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get()) }
+    single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get(), get()) }
 }

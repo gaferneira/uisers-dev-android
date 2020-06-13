@@ -1,13 +1,15 @@
 package co.tuister.data.repositories
 
-import android.content.Context
 import android.net.Uri
 import co.tuister.data.await
-import co.tuister.data.dto.CareerDto
 import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.*
+import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
+import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
+import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
+import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.AuthenticationError
@@ -18,15 +20,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.storage.FirebaseStorage
-import com.google.gson.Gson
 
 class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
-    private val firebaseFirestore: FirebaseFirestore,
-    private val firebaseStorage: FirebaseStorage,
-    private val context: Context
+    private val db: FirebaseFirestore,
+    private val firebaseStorage: FirebaseStorage
 ) :
     UserRepository {
+
+    private val usersCollection by lazy { UsersCollection(db) }
+    private val baseCollection by lazy { BaseCollection(db) }
 
     override suspend fun getUser(): Either<Failure, User> {
         val current = firebaseAuth.currentUser ?: return Either.Left(AuthenticationError())
@@ -35,8 +38,7 @@ class UserRepositoryImpl(
             return Either.Left(AuthenticationError())
         }
 
-        val data = firebaseFirestore
-            .collection(COLLECTION_USERS)
+        val data = usersCollection.getCollection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
             .get()
             .await()
@@ -59,15 +61,14 @@ class UserRepositoryImpl(
             return Either.Left(AuthenticationError())
         }
 
-        val data = firebaseFirestore
-            .collection(COLLECTION_USERS)
+        val data = usersCollection.getCollection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
             .get()
             .await()!!.documents.firstOrNull()
 
         return try {
             val map = user.toDTO().objectToMap()
-            firebaseFirestore.collection(COLLECTION_USERS).document(data?.id!!).update(map).await()
+            usersCollection.getCollection().document(data?.id!!).update(map).await()
             Either.Right(true)
         } catch (exception: Exception) {
             Either.Left(Failure.DataError(exception, current.email!!))
@@ -81,8 +82,7 @@ class UserRepositoryImpl(
             return false
         }
 
-        val data = firebaseFirestore
-            .collection(COLLECTION_USERS)
+        val data = usersCollection.getCollection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
             .get()
             .await()!!.documents.firstOrNull()
@@ -95,7 +95,7 @@ class UserRepositoryImpl(
             } else {
                 val map = mutableMapOf<String, String>()
                 map[FIELD_USER_FCM] = token
-                firebaseFirestore.collection(COLLECTION_USERS).document(data?.id!!)
+                usersCollection.getCollection().document(data?.id!!)
                     .update(map as Map<String, Any>).await()
                 true
             }
@@ -118,11 +118,7 @@ class UserRepositoryImpl(
     override suspend fun getCareers(): Either<Failure, List<Career>> {
 
         return try {
-            val data = firebaseFirestore
-                .collection(COLLECTION_DATA)
-                .document("uis")
-                .get()
-                .await()
+            val data = baseCollection.getBaseDocument()
 
             val result: List<HashMap<String, String>> =
                 data?.get(FIELD_CAREERS)?.castToList() ?: listOf()
@@ -138,12 +134,7 @@ class UserRepositoryImpl(
 
     override suspend fun getCampus(): Either<Failure, List<String>> {
         return try {
-            val data = firebaseFirestore
-                .collection(COLLECTION_DATA)
-                .document("uis")
-                .get()
-                .await()
-
+            val data = baseCollection.getBaseDocument()
             val result = data?.get(FIELD_CAMPUS).castToList<String>() ?: listOf()
             Either.Right(result)
         } catch (exception: Exception) {

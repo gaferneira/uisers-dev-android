@@ -3,8 +3,8 @@ package co.tuister.data.repositories
 import android.net.Uri
 import co.tuister.data.await
 import co.tuister.data.dto.toDTO
-import co.tuister.data.utils.COLLECTION_USERS
-import co.tuister.data.utils.FIELD_USER_EMAIL
+import co.tuister.data.utils.UsersCollection
+import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.EmailNotVerifiedError
@@ -17,10 +17,11 @@ import com.google.firebase.storage.FirebaseStorage
 
 class LoginRepositoryImpl(
     val firebaseAuth: FirebaseAuth,
-    val firebaseFirestore: FirebaseFirestore,
+    val db: FirebaseFirestore,
     val firebaseStorage: FirebaseStorage
 ) : LoginRepository {
 
+    private val usersCollection by lazy { UsersCollection(db) }
 
     override suspend fun login(email: String, password: String): Either<Failure, User?> {
         return try {
@@ -32,8 +33,7 @@ class LoginRepositoryImpl(
                 return Either.Left(EmailNotVerifiedError())
             }
 
-            val dataUser = firebaseFirestore
-                .collection(COLLECTION_USERS)
+            val dataUser = usersCollection.getCollection()
                 .whereEqualTo(FIELD_USER_EMAIL, email)
                 .get()
                 .await()
@@ -66,7 +66,7 @@ class LoginRepositoryImpl(
                 .await()
             data?.user?.let {
                 it.sendEmailVerification().await()
-                firebaseFirestore.collection(COLLECTION_USERS).add(user.toDTO()).await()
+                usersCollection.getCollection().add(user.toDTO()).await()
             }
             Either.Right(true)
         } catch (e: Exception) {

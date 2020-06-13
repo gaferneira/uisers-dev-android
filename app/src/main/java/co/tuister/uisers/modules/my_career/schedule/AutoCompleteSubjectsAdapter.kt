@@ -1,4 +1,4 @@
-package co.tuister.uisers.modules.my_career.subjects.add_subject
+package co.tuister.uisers.modules.my_career.schedule
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import android.widget.ArrayAdapter
 import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
-import co.tuister.domain.entities.CareerSubject
+import co.tuister.domain.entities.Subject
 
-class AutoCompleteSubjectsAdapter(context: Context, items: List<CareerSubject>?) :
-    ArrayAdapter<CareerSubject>(context, android.R.layout.simple_list_item_1, items ?: listOf()),
+class AutoCompleteSubjectsAdapter(context: Context, items: List<Subject>?) :
+    ArrayAdapter<Subject>(context, android.R.layout.simple_list_item_1, items ?: listOf()),
     Filterable {
 
-    var filtered: List<CareerSubject> = listOf()
+    var filtered: List<Subject> = listOf()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return convertView ?: createView(position, parent)
@@ -50,10 +50,10 @@ class AutoCompleteSubjectsAdapter(context: Context, items: List<CareerSubject>?)
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults) {
-            filtered = results.values as List<CareerSubject>
+            filtered = results.values as List<Subject>
             notifyDataSetInvalidated()
         }
 
-        override fun convertResultToString(result: Any) = (result as CareerSubject).name
+        override fun convertResultToString(result: Any) = (result as Subject).name
     }
 }
