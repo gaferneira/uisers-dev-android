@@ -5,6 +5,7 @@ import co.tuister.data.await
 import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
+import co.tuister.data.dto.*
 import co.tuister.data.utils.*
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
@@ -42,6 +43,8 @@ class UserRepositoryImpl(
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
             .get()
             .await()
+
+        test()
 
         return try {
             val userDataDto: UserDataDto? = data?.let {
@@ -115,6 +118,25 @@ class UserRepositoryImpl(
         }
     }
 
+    suspend fun test() {
+
+        try {
+            val data = db
+                .collection(COLLECTION_SEMESTERS)
+                .whereEqualTo("email", "gabo.neira@gmail.com")
+                .get()
+                .await()
+            val doc = data!!.documents.first()
+            val ob = (doc.toObject(DataSemesterUserDto::class.java))!!
+
+            ob.semesters[0].subjects[0].notes.add(NoteDto("10", "5", "Prueba"))
+
+            db.collection(COLLECTION_SEMESTERS).document(doc.id).update(ob.objectToMap()).await()
+        } catch (exception: Exception) {
+            exception.printStackTrace()
+        }
+    }
+
     override suspend fun getCareers(): Either<Failure, List<Career>> {
 
         return try {
@@ -123,7 +145,6 @@ class UserRepositoryImpl(
             val result: List<HashMap<String, String>> =
                 data?.get(FIELD_CAREERS)?.castToList() ?: listOf()
             val list = result.map {
-
                 Career(it["id"]!!, it["name"]!!)
             }
             Either.Right(list)

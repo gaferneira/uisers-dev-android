@@ -26,3 +26,5 @@ class UsersCollection(db: FirebaseFirestore): FirebaseCollection(db, NAME) {
         const val FIELD_USER_EMAIL = "correo"
     }
 }
+
+const val COLLECTION_SEMESTERS = "semesters"
