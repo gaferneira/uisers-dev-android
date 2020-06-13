@@ -1,7 +1,9 @@
 package co.tuister.data.repositories
 
+import android.content.Context
 import android.net.Uri
 import co.tuister.data.await
+import co.tuister.data.dto.CareerDto
 import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
@@ -16,12 +18,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.storage.FirebaseStorage
-import java.util.*
+import com.google.gson.Gson
 
 class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
-    private val firebaseStorage: FirebaseStorage
+    private val firebaseStorage: FirebaseStorage,
+    private val context: Context
 ) :
     UserRepository {
 
@@ -113,15 +116,20 @@ class UserRepositoryImpl(
     }
 
     override suspend fun getCareers(): Either<Failure, List<Career>> {
-        val data = firebaseFirestore
-            .collection(COLLECTION_DATA)
-            .document("uis")
-            .get()
-            .await()
 
         return try {
-            val result : List<HashMap<String, String>> = data?.get("careers")?.castToList() ?: listOf()
-            val list = result.map { Career(it["codigo"]!!, it["nombre"]!!)  }
+            val data = firebaseFirestore
+                .collection(COLLECTION_DATA)
+                .document("uis")
+                .get()
+                .await()
+
+            val result: List<HashMap<String, String>> =
+                data?.get(FIELD_CAREERS)?.castToList() ?: listOf()
+            val list = result.map {
+
+                Career(it["id"]!!, it["name"]!!)
+            }
             Either.Right(list)
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
@@ -129,14 +137,14 @@ class UserRepositoryImpl(
     }
 
     override suspend fun getCampus(): Either<Failure, List<String>> {
-        val data = firebaseFirestore
-            .collection(COLLECTION_DATA)
-            .document("uis")
-            .get()
-            .await()
-
         return try {
-            val result = data?.get("sedes").castToList<String>() ?: listOf()
+            val data = firebaseFirestore
+                .collection(COLLECTION_DATA)
+                .document("uis")
+                .get()
+                .await()
+
+            val result = data?.get(FIELD_CAMPUS).castToList<String>() ?: listOf()
             Either.Right(result)
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))

@@ -1,0 +1,154 @@
+[
+  {
+    "id": "10",
+    "name": "BIOLOGIA"
+  },
+  {
+    "id": "11",
+    "name": "INGENIERIA DE SISTEMAS"
+  },
+  {
+    "id": "14",
+    "name": "QUIMICA"
+  },
+  {
+    "id": "16",
+    "name": "LICENCIATURA EN MATEMATICAS"
+  },
+  {
+    "id": "18",
+    "name": "FISICA"
+  },
+  {
+    "id": "19",
+    "name": "LIC EN EDUC BASICA CON ENFAS CIENCIAS NAT EDU AMBI"
+  },
+  {
+    "id": "20",
+    "name": "LICENCIATURA EN INGLES"
+  },
+  {
+    "id": "21",
+    "name": "INGENIERIA CIVIL"
+  },
+  {
+    "id": "22",
+    "name": "INGENIERIA ELECTRICA"
+  },
+  {
+    "id": "23",
+    "name": "INGENIERIA INDUSTRIAL"
+  },
+  {
+    "id": "24",
+    "name": "INGENIERIA MECANICA"
+  },
+  {
+    "id": "26",
+    "name": "INGENIERIA ELECTRONICA"
+  },
+  {
+    "id": "27",
+    "name": "DISEÑO INDUSTRIAL"
+  },
+  {
+    "id": "28",
+    "name": "LIC.EN EDUC.BASICA ENFAS.EN LENGUA CASTELLANA"
+  },
+  {
+    "id": "29",
+    "name": "LICENCIATURA EN ESPAÑOL Y LITERATURA"
+  },
+  {
+    "id": "30",
+    "name": "LICENCIATURA EN MUSICA"
+  },
+  {
+    "id": "31",
+    "name": "INGENIERIA METALURGICA"
+  },
+  {
+    "id": "32",
+    "name": "INGENIERIA DE PETROLEOS"
+  },
+  {
+    "id": "33",
+    "name": "INGENIERIA QUIMICA"
+  },
+  {
+    "id": "34",
+    "name": "GEOLOGIA"
+  },
+  {
+    "id": "35",
+    "name": "LICENCIATURA EN MATEMATICAS"
+  },
+  {
+    "id": "37",
+    "name": "FILOSOFIA"
+  },
+  {
+    "id": "39",
+    "name": "MATEMATICAS"
+  },
+  {
+    "id": "40",
+    "name": "FISICA"
+  },
+  {
+    "id": "41",
+    "name": "TRABAJO SOCIAL"
+  },
+  {
+    "id": "43",
+    "name": "LICENCIATURA EN MUSICA"
+  },
+  {
+    "id": "44",
+    "name": "HISTORIA"
+  },
+  {
+    "id": "45",
+    "name": "ECONOMIA"
+  },
+  {
+    "id": "46",
+    "name": "DERECHO"
+  },
+  {
+    "id": "51",
+    "name": "ENFERMERIA"
+  },
+  {
+    "id": "52",
+    "name": "MEDICINA"
+  },
+  {
+    "id": "56",
+    "name": "FISIOTERAPIA"
+  },
+  {
+    "id": "57",
+    "name": "NUTRICION Y DIETETICA"
+  },
+  {
+    "id": "58",
+    "name": "MICROBIOLOGIA Y BIOANALISIS"
+  },
+  {
+    "id": "60",
+    "name": "HISTORIA Y ARCHIVISTICA"
+  },
+  {
+    "id": "63",
+    "name": "LIC.LENGUAS EXTRANJERAS CON ENFASIS EN INGLES"
+  },
+  {
+    "id": "64",
+    "name": "LICENCIATURA EN LITERATURA Y LENGUA CASTELLANA"
+  },
+  {
+    "id": "68",
+    "name": "LICENCIATURA EN EDUCACIÓN BÁSICA PRIMARIA"
+  }
+]
