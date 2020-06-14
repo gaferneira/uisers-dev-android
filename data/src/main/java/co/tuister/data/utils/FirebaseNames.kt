@@ -35,6 +35,7 @@ class SemestersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) 
         const val NAME = "semesters"
         const val COL_SEMESTERS = "semesters"
         const val COL_SUBJECTS = "subjects"
+        const val COL_SCHEDULE = "schedule"
         const val FIELD_EMAIL = "email"
         const val FIELD_CURRENT_SEMESTER = "currentSemester"
         const val FIELD_PERIOD = "period"

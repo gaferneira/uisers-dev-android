@@ -19,7 +19,7 @@ import com.google.gson.Gson
 class SubjectRepositoryImpl(
     firebaseAuth: FirebaseAuth,
     db: FirebaseFirestore,
-    val gson: Gson
+    private val gson: Gson
 ) : MyCareerRepository(firebaseAuth, db), SubjectRepository {
 
     private val baseCollection by lazy { BaseCollection(db) }
@@ -38,7 +38,6 @@ class SubjectRepositoryImpl(
 
     override suspend fun getMySubjects(): Either<Failure, List<Subject>> {
         return try {
-
             val subjects = semestersCollection.documentByPath(getCurrentSemesterPath())
                 .collection(SemestersCollection.COL_SUBJECTS)
                 .get()
