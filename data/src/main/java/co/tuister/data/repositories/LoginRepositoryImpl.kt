@@ -33,7 +33,7 @@ class LoginRepositoryImpl(
                 return Either.Left(EmailNotVerifiedError())
             }
 
-            val dataUser = usersCollection.getCollection()
+            val dataUser = usersCollection.collection()
                 .whereEqualTo(FIELD_USER_EMAIL, email)
                 .get()
                 .await()
@@ -66,7 +66,7 @@ class LoginRepositoryImpl(
                 .await()
             data?.user?.let {
                 it.sendEmailVerification().await()
-                usersCollection.getCollection().add(user.toDTO()).await()
+                usersCollection.collection().add(user.toDTO()).await()
             }
             Either.Right(true)
         } catch (e: Exception) {

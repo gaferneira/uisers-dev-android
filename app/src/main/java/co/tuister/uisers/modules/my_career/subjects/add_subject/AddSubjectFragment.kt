@@ -11,6 +11,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectAddBinding
 import co.tuister.uisers.modules.my_career.subjects.add_subject.AddSubjectViewModel.State
+import co.tuister.uisers.utils.StringUtils
 import co.tuister.uisers.utils.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -53,6 +54,7 @@ class AddSubjectFragment : BaseFragment() {
                     (adapterView.adapter as AutoCompleteSubjectsAdapter).getItem(position)
                 binding.subjectBinding = subject.apply {
                     credits = selectedItem.credits
+                    code = selectedItem.id
                 }
             }
         }
@@ -61,6 +63,9 @@ class AddSubjectFragment : BaseFragment() {
             hideKeyboard()
             if (requireContext().checkRequireFormFields(binding.autocompleteSubject, binding.editTextCredits)) {
                 it.isEnabled = false
+                if (subject.code.isEmpty()) {
+                    subject.code = StringUtils.generateId()
+                }
                 viewModel.saveSubject(subject)
             }
         }

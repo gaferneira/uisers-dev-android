@@ -42,7 +42,7 @@ class HomeViewModel(
             result.fold({
                 // left --> error
             }, { semester ->
-                val period = String.format("%d - %d", semester.year, semester.period)
+                val period = semester.period
                 val header = HomeHeader("", period)
                 setState(State.LoadHeader(Result.Success(header)))
             })

@@ -49,7 +49,7 @@ class SemestersAdapter(
           semester: Semester,
           listener: SemesterListener?
         ) {
-            text_view_semester.text = "" + semester.year + "-" + semester.period
+            text_view_semester.text = semester.period
             text_view_average.text = semester.average.format()
             radio_button.isChecked = semester.current
             radio_button.setOnCheckedChangeListener { _, checked ->

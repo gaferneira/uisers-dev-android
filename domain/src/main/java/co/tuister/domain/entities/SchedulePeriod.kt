@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class SchedulePeriod(
+    var id : String = "",
     var description: String = "",
     var day: Int = 2, //Monday
     var initialHour: String = "",

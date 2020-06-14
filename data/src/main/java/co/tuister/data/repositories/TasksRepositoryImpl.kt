@@ -1,32 +1,45 @@
 package co.tuister.data.repositories
 
+import co.tuister.data.await
+import co.tuister.data.dto.DataTasksUserDto
+import co.tuister.data.dto.TaskDto
+import co.tuister.data.dto.toDTO
+import co.tuister.data.dto.toEntity
+import co.tuister.data.utils.TaskManagerCollection
+import co.tuister.data.utils.objectToMap
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.Task
 import co.tuister.domain.repositories.TasksRepository
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.delay
 import java.util.*
 
-class TasksRepositoryImpl : TasksRepository {
+class TasksRepositoryImpl(
+    private val firebaseAuth: FirebaseAuth,
+    private val db: FirebaseFirestore
+) : TasksRepository {
+
+    private val taskManagerCollection by lazy { TaskManagerCollection(db) }
 
     override suspend fun getTasks(): Either<Failure, List<Task>> {
-        delay(1000)
+        return try {
+            val collection = getUserDocument().collection(TaskManagerCollection.COL_TASKS)
+                .get()
+                .await()!!
 
-        val time = Calendar.getInstance().timeInMillis
-        return Either.Right(
-            listOf(
-                Task("Tarea 1", "Descripcion 1", time),
-                Task("Tarea 2", "Descripcion 2", time),
-                Task("Tarea 3", "Descripcion 3", time),
-                Task("Tarea 4", "Descripcion 4", time),
-                Task("Tarea 5", "Descripcion 5", time),
-                Task("Tarea 6", "Descripcion 6", time, 1),
-                Task("Tarea 7", "Descripcion 7", time, 1, 0),
-                Task("Tarea 8", "Descripcion 8", time, 1, 5),
-                Task("Tarea 9", "Descripcion 9", time, 2, 10),
-                Task("Tarea 10", "Descripcion 10", time, 2, 60)
-            )
-        )
+            val list = collection.documents.map {
+                val path = it.reference.path
+                it.toObject(TaskDto::class.java)!!.toEntity().apply {
+                    id = path
+                }
+            }
+
+            Either.Right(list)
+        } catch (exception: Exception) {
+            Either.Left(Failure.ServerError(exception))
+        }
     }
 
     override suspend fun getTasksByDate(date: Date): Either<Failure, List<Task>> {
@@ -34,16 +47,52 @@ class TasksRepositoryImpl : TasksRepository {
         val time = Calendar.getInstance().timeInMillis
         return Either.Right(
             listOf(
-                Task("Tarea 1", "Descripcion 1", time),
-                Task("Tarea 2", "Descripcion 2", time),
-                Task("Tarea 3", "Descripcion 3", time)
+                Task("", "Tarea 1", "Descripcion 1", time),
+                Task("", "Tarea 2", "Descripcion 2", time),
+                Task("", "Tarea 3", "Descripcion 3", time)
             )
         )
     }
 
     override suspend fun save(task: Task): Either<Failure, Task> {
-        delay(1000)
-        return Either.Right(task)
+        return try {
+            if (task.id.isNotEmpty()){
+                val subjectDto = taskManagerCollection.documentByPath(task.id).get().await()!!
+                subjectDto.reference.update(task.toDTO().objectToMap())
+            } else {
+                val id = getUserDocument()
+                    .collection(TaskManagerCollection.COL_TASKS)
+                    .add(task.toDTO())
+                    .await()!!.path
+                task.id = id
+            }
+            Either.Right(task)
+        } catch (exception: Exception) {
+            Either.Left(Failure.ServerError(exception))
+        }
+    }
+
+    private suspend fun getUserDocument() = taskManagerCollection.document(getUserDocumentsId())
+
+    private suspend fun getUserDocumentsId(): String {
+        val email = firebaseAuth.currentUser!!.email!!
+        val id = taskManagerCollection.collection()
+            .whereEqualTo(TaskManagerCollection.FIELD_EMAIL, email)
+            .get()
+            .await()!!
+            .documents.firstOrNull()?.id
+
+        return id ?: createInitialDocument(email)
+    }
+
+    private suspend fun createInitialDocument(email : String): String {
+        return try {
+            val data = DataTasksUserDto(email)
+            taskManagerCollection.collection().add(data).await()!!.id
+        } catch (exception: Exception) {
+            exception.printStackTrace()
+            ""
+        }
     }
 
 }
