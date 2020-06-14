@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Note(
+    var id : String = "",
     var title: String = "",
     var grade: Float = 0f,
     var percentage: Float = 0f,

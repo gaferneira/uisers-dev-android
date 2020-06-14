@@ -1,6 +1,8 @@
 package co.tuister.data.repositories
 
+import co.tuister.data.await
 import co.tuister.data.dto.DataSemesterUserDto
+import co.tuister.data.dto.SemesterUserDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.SemestersCollection
@@ -12,16 +14,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SemesterRepositoryImpl(
-    private val firebaseAuth: FirebaseAuth,
-    private val db: FirebaseFirestore
-) : SemesterRepository {
-
-    private val semestersCollection by lazy { SemestersCollection(db) }
+    firebaseAuth: FirebaseAuth,
+    db: FirebaseFirestore
+) : MyCareerRepository(firebaseAuth, db), SemesterRepository {
 
     override suspend fun getCurrent(): Either<Failure, Semester> {
         return try {
-            val data = getData()
-            val semester = data.semesters.firstOrNull {it.current} ?: data.semesters[0]
+            val semester = getCurrentSemester()
             Either.Right(semester.toEntity())
         } catch (e: Exception) {
             Either.Left(Failure.ServerError(e))
@@ -30,10 +29,19 @@ class SemesterRepositoryImpl(
 
     override suspend fun getAll(): Either<Failure, List<Semester>> {
         return try {
-            val data = getData()
-            Either.Right(data.semesters.map {
-                it.toEntity()
-            })
+
+            val currentSemester = getCurrentSemester()
+            val collection = getSemestersCollection()
+                .get()
+                .await()!!
+
+            val list = collection.documents.map {
+                it.toObject(SemesterUserDto::class.java)!!.toEntity().apply {
+                    current = period == currentSemester.period
+                }
+            }
+
+            Either.Right(list ?: listOf())
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
         }
@@ -41,9 +49,15 @@ class SemesterRepositoryImpl(
 
     override suspend fun save(semester: Semester): Either<Failure, Semester> {
         return try {
-            val data = getData()
-            data.semesters.add(semester.toDTO())
-            saveData(data)
+            getSemestersCollection()
+                .add(semester.toDTO())
+                .await()
+
+            if (semester.current) {
+                getUserDocument()
+                    .update(SemestersCollection.FIELD_CURRENT_SEMESTER, semester.period)
+                    .await()
+            }
             Either.Right(semester)
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
@@ -52,37 +66,22 @@ class SemesterRepositoryImpl(
 
     override suspend fun changeCurrentSemester(semester: Semester): Either<Failure, Semester> {
         return try {
-            val data = getData()
-            data.semesters.forEach { it.current = false }
-            data.semesters.firstOrNull { it.period == semester.period }?.current = true
-            saveData(data)
+            getUserDocument()
+                .update(SemestersCollection.FIELD_CURRENT_SEMESTER, semester.period)
+                .await()
+
             Either.Right(semester)
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
         }
     }
 
+    private suspend fun getCurrentSemester(): SemesterUserDto {
+        val document = semestersCollection.documentByPath(getCurrentSemesterPath())
+            .get()
+            .await()!!
 
-    private suspend fun getData() : DataSemesterUserDto {
-        val email = firebaseAuth.currentUser!!.email!!
-        val doc = semestersCollection.getAll(email)!!.documents.firstOrNull()
-        return if (doc == null) {
-            val semester = Semester("2020-1", 0f, 0, true)
-            val data = DataSemesterUserDto("0", true, email, mutableListOf(semester.toDTO()))
-            semestersCollection.create(data)
-            data
-        } else {
-            doc.toObject(DataSemesterUserDto::class.java)!!
-        }
-    }
+        return document.toObject(SemesterUserDto::class.java)!!
 
-    private suspend fun saveData(data : DataSemesterUserDto)  {
-        val email = firebaseAuth.currentUser!!.email!!
-        val docs = semestersCollection.getAll(email)!!.documents
-        if (docs.isEmpty()) {
-            semestersCollection.create(data)
-        } else {
-            semestersCollection.update(data, docs.first().id)
-        }
     }
 }

@@ -5,8 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Subject(
+    var id : String = "",
+    var code : String = "",
     var name: String = "",
-    var teacher: String? = null,
+    var teacher: String = "",
     var note: Float = 0f,
     var credits: Int = 1
 ) : Parcelable

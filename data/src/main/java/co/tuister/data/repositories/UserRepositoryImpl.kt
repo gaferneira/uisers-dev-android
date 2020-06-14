@@ -39,7 +39,7 @@ class UserRepositoryImpl(
             return Either.Left(AuthenticationError())
         }
 
-        val data = usersCollection.getCollection()
+        val data = usersCollection.collection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
             .get()
             .await()
@@ -62,14 +62,14 @@ class UserRepositoryImpl(
             return Either.Left(AuthenticationError())
         }
 
-        val data = usersCollection.getCollection()
+        val data = usersCollection.collection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
             .get()
             .await()!!.documents.firstOrNull()
 
         return try {
             val map = user.toDTO().objectToMap()
-            usersCollection.getCollection().document(data?.id!!).update(map).await()
+            usersCollection.collection().document(data?.id!!).update(map).await()
             Either.Right(true)
         } catch (exception: Exception) {
             Either.Left(Failure.DataError(exception, current.email!!))
@@ -83,7 +83,7 @@ class UserRepositoryImpl(
             return false
         }
 
-        val data = usersCollection.getCollection()
+        val data = usersCollection.collection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
             .get()
             .await()!!.documents.firstOrNull()
@@ -96,7 +96,7 @@ class UserRepositoryImpl(
             } else {
                 val map = mutableMapOf<String, String>()
                 map[FIELD_USER_FCM] = token
-                usersCollection.getCollection().document(data?.id!!)
+                usersCollection.collection().document(data?.id!!)
                     .update(map as Map<String, Any>).await()
                 true
             }

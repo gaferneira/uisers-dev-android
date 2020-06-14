@@ -27,7 +27,7 @@ val dataModule = module {
     single { FirebaseStorage.getInstance() }
     single<LoginRepository> { LoginRepositoryImpl(get(), get(), get()) }
     single<SemesterRepository> { SemesterRepositoryImpl(get(), get()) }
-    single<SubjectRepository> { SubjectRepositoryImpl(get(), get()) }
+    single<SubjectRepository> { SubjectRepositoryImpl(get(), get(), get()) }
     single<TasksRepository> { TasksRepositoryImpl() }
     single<UserRepository> { UserRepositoryImpl(get(), get(), get()) }
     single<ScheduleRepository> { ScheduleRepositoryImpl() }

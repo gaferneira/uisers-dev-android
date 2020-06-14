@@ -1,16 +1,16 @@
 package co.tuister.data.utils
 
 import co.tuister.data.await
-import co.tuister.data.dto.DataSemesterUserDto
 import com.google.firebase.firestore.FirebaseFirestore
 
 sealed class FirebaseCollection(private val db: FirebaseFirestore, val name: String) {
-    fun getCollection() = db.collection(name)
-    fun getDocument(document: String) = getCollection().document(document)
+    fun collection() = db.collection(name)
+    fun document(name: String) = collection().document(name)
+    fun documentByPath(path: String) =  db.document(path)
 }
 
 class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
-    suspend fun getBaseDocument() = getDocument(DOCUMENT).get().await()
+    suspend fun getBaseDocument() = document(DOCUMENT).get().await()
 
     companion object {
         const val NAME = "data_base"
@@ -30,17 +30,16 @@ class UsersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
 }
 
 class SemestersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
-    suspend fun getAll(email: String) =
-        getCollection().whereEqualTo(FIELD_EMAIL, email).get().await()
-
-    suspend fun update(data: DataSemesterUserDto, docId: String) =
-        getCollection().document(docId).update(data.objectToMap()).await()
-
-    suspend fun create(data: DataSemesterUserDto) =
-        getCollection().add(data).await()
 
     companion object {
         const val NAME = "semesters"
+        const val COL_SEMESTERS = "semesters"
+        const val COL_SUBJECTS = "subjects"
         const val FIELD_EMAIL = "email"
+        const val FIELD_CURRENT_SEMESTER = "currentSemester"
+        const val FIELD_PERIOD = "period"
+        const val FIELD_SUBJECT_CODE = "code"
+        const val COL_NOTES = "notes"
+
     }
 }

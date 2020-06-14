@@ -4,18 +4,12 @@ import co.tuister.domain.entities.Semester
 import java.io.Serializable
 
 class SemesterUserDto(
-    val average: String,
-    val period: String,
-    val credits: String,
-    var current: Boolean,
-    val subjects: MutableList<SubjectUserDto>
-) : Serializable {
-    constructor() : this("", "", "", false, mutableListOf<SubjectUserDto>())
-}
+    val average: String = "",
+    val period: String = "",
+    val credits: String = ""
+) : Serializable
 
-fun SemesterUserDto.toEntity() = Semester(period, average.toFloat(), credits.toInt(), current)
+fun SemesterUserDto.toEntity() = Semester(period, average.toFloat(), credits.toInt(), false)
 
 fun Semester.toDTO() = SemesterUserDto(
-    average.toString(), period, credits.toString(), current,
-    mutableListOf()
-)
+    average.toString(), period, credits.toString())
