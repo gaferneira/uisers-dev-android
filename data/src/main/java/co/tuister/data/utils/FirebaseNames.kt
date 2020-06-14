@@ -1,6 +1,7 @@
 package co.tuister.data.utils
 
 import co.tuister.data.await
+import co.tuister.domain.entities.User
 import com.google.firebase.firestore.FirebaseFirestore
 
 sealed class FirebaseCollection(private val db: FirebaseFirestore, val name: String) {
@@ -22,10 +23,19 @@ class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
 }
 
 class UsersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
+    suspend fun getByEmail(email: String) =
+       collection()
+            .whereEqualTo(FIELD_USER_EMAIL, email)
+            .get()
+            .await()
+           ?.documents?.firstOrNull()
+
+
     companion object {
         const val NAME = "data_users"
         const val FIELD_USER_FCM = "fcmId"
         const val FIELD_USER_EMAIL = "correo"
+        const val FIELD_USER_MIGRATION = "migration"
     }
 }
 
@@ -50,6 +60,7 @@ class TaskManagerCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME
         const val NAME = "task_manager"
         const val FIELD_EMAIL = "email"
         const val COL_TASKS = "tasks"
+        const val DUE_DATE = "due_date"
     }
 }
 

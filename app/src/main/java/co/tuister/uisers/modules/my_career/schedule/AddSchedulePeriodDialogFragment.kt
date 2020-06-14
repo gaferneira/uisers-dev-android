@@ -17,7 +17,6 @@ import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentSchedulePeriodBinding
-import co.tuister.uisers.modules.my_career.subjects.add_subject.AutoCompleteSubjectsAdapter
 import co.tuister.uisers.utils.checkRequireFormFields
 import co.tuister.uisers.utils.pickTime
 

@@ -11,6 +11,6 @@ data class User(
     var semester: String = "",
     var period: String = "",
     var fcmId: String = "",
-    var code: String = ""
-) : Serializable {
-}
+    var code: String = "",
+    val migration: Boolean = false
+) : Serializable

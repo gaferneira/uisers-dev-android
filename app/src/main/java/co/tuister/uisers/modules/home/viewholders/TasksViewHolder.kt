@@ -52,7 +52,7 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
     private fun configChildView(view: View, task: Task): View {
         return view.apply {
             text_view_task_name.text = task.title
-            text_view_task_hour.text = task.dueDate?.let { DateUtils.dateTimeToString(Date(it)) }
+            text_view_task_hour.text = task.dueDate?.let { DateUtils.dateTimeToString(Date(it), "MMM dd HH:mm") }
             text_view_task_desc.text = task.description
         }
     }

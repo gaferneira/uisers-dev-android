@@ -7,3 +7,7 @@ class StringUtils {
         fun generateId() = UUID.randomUUID().toString()
     }
 }
+
+fun String.capitalizeFormat(): String {
+    return this.toLowerCase().capitalize()
+}

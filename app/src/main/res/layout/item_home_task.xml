@@ -13,7 +13,9 @@
         android:textColor="@color/grey_700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="9:00-11:00" />
+        android:textAlignment="textEnd"
+        android:paddingEnd="@dimen/padding_margin_small"
+        tools:text="Jun 20 10:00" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -44,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
-                tools:text="Materia" />
+                tools:text="Tarea" />
 
             <TextView
                 android:id="@+id/text_view_task_desc"
@@ -56,7 +58,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/text_view_task_name"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_task_name"
-                tools:text="Lugar" />
+                tools:text="Descripción" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

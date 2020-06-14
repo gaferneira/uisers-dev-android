@@ -4,10 +4,7 @@ import android.content.Context
 import co.tuister.data.await
 import co.tuister.data.dto.*
 import co.tuister.data.repositories.MyCareerRepository
-import co.tuister.data.utils.BackupCollection
-import co.tuister.data.utils.SemestersCollection
-import co.tuister.data.utils.TaskManagerCollection
-import co.tuister.data.utils.objectToMap
+import co.tuister.data.utils.*
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.repositories.MigrationRepository
@@ -25,18 +22,29 @@ class MigrationRepositoryImpl(
 
     private val taskManagerCollection by lazy { TaskManagerCollection(db) }
     private val backupCollection by lazy { BackupCollection(db) }
+    private val usersCollection by lazy { UsersCollection(db) }
 
     override
     suspend fun migrate(): Either<Failure, Boolean> {
         try {
+
             val email = firebaseAuth.currentUser!!.email!!
+            val migration = usersCollection.getByEmail(email)
+                ?.getBoolean(UsersCollection.FIELD_USER_MIGRATION) ?: false
+
+            if (migration) {
+                return Either.Right(true)
+            }
+
             val document = backupCollection.getUserBackup(email) ?: return Either.Right(true)
+
             document.let { text ->
                 val migrationData = gson.fromJson(text, MigrationData::class.java)
 
                 if (migrationData.materiaEstudianteList.isEmpty() &&
                     migrationData.tareaList.isEmpty()
                 ) {
+                    finishProcessMigration(email)
                     return Either.Right(false)
                 }
 
@@ -109,10 +117,12 @@ class MigrationRepositoryImpl(
                     taskCollection.add(it.objectToMap()).await()
                 }
 
+                val lastPeriod = migrationData.semestreEstudianteList
+                    .maxBy { it.fkSemestre!!.toString() }!!
+                    .fkSemestre.toString()
+
                 val semesterCol = getSemestersCollection()
 
-                val lastPeriod =
-                    migrationData.semestreEstudianteList.maxBy { it.fkSemestre!!.toString() }!!.fkSemestre.toString()
                 getUserDocument()
                     .update(SemestersCollection.FIELD_CURRENT_SEMESTER, lastPeriod)
                     .await()
@@ -137,13 +147,24 @@ class MigrationRepositoryImpl(
                         ).await()
                     }
                 }
+
+                finishProcessMigration(email)
+
             }
-            backupCollection.deleteUserBackup(email)
+
             return Either.Right(true)
         } catch (exception: Exception) {
             exception.printStackTrace()
             return Either.Left(Failure.ServerError(exception))
         }
+    }
+
+    private suspend fun finishProcessMigration(email : String) {
+        usersCollection.getByEmail(email)?.reference?.update(
+            UsersCollection.FIELD_USER_MIGRATION, true
+        )?.await()
+
+        backupCollection.deleteUserBackup(email)
     }
 
 

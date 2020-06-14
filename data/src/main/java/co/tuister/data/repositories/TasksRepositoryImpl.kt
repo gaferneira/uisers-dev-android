@@ -13,8 +13,6 @@ import co.tuister.domain.entities.Task
 import co.tuister.domain.repositories.TasksRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.delay
-import java.util.*
 
 class TasksRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
@@ -36,22 +34,10 @@ class TasksRepositoryImpl(
                 }
             }
 
-            Either.Right(list)
+            Either.Right(list.sortedBy { it.status })
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
         }
-    }
-
-    override suspend fun getTasksByDate(date: Date): Either<Failure, List<Task>> {
-        delay(1000)
-        val time = Calendar.getInstance().timeInMillis
-        return Either.Right(
-            listOf(
-                Task("", "Tarea 1", "Descripcion 1", time),
-                Task("", "Tarea 2", "Descripcion 2", time),
-                Task("", "Tarea 3", "Descripcion 3", time)
-            )
-        )
     }
 
     override suspend fun save(task: Task): Either<Failure, Task> {

@@ -5,7 +5,7 @@ import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Task
 import co.tuister.domain.usecases.my_career.GetCurrentSemesterUseCase
 import co.tuister.domain.usecases.my_career.GetScheduleByDateUseCase
-import co.tuister.domain.usecases.tasks.GetTasksByDateUseCase
+import co.tuister.domain.usecases.tasks.GetMainTasks
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 
 class HomeViewModel(
   private val getCurrentSemesterCase: GetCurrentSemesterUseCase,
-  private val getTasksByDateUseCase: GetTasksByDateUseCase,
+  private val getMainTasks: GetMainTasks,
   private val scheduleByUseCase: GetScheduleByDateUseCase
 ) : BaseViewModel() {
 
@@ -53,7 +53,7 @@ class HomeViewModel(
         viewModelScope.launch {
             val calendar = Calendar.getInstance()
             val result = withContext(Dispatchers.IO) {
-                getTasksByDateUseCase.run(calendar.time)
+                getMainTasks.run(calendar.time)
             }
             result.fold({
                 setState(State.LoadTasks(Result.Error(it)))
