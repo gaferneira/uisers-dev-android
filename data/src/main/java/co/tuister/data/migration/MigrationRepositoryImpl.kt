@@ -1,11 +1,10 @@
 package co.tuister.data.migration
 
 import android.content.Context
-import android.util.Log
 import co.tuister.data.await
 import co.tuister.data.dto.*
 import co.tuister.data.repositories.MyCareerRepository
-import co.tuister.data.utils.BaseCollection
+import co.tuister.data.utils.BackupCollection
 import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.TaskManagerCollection
 import co.tuister.data.utils.objectToMap
@@ -25,12 +24,14 @@ class MigrationRepositoryImpl(
 ) : MyCareerRepository(auth, db), MigrationRepository {
 
     private val taskManagerCollection by lazy { TaskManagerCollection(db) }
+    private val backupCollection by lazy { BackupCollection(db) }
 
     override
     suspend fun migrate(): Either<Failure, Boolean> {
         try {
-            context.assets.open("backup.json").bufferedReader().use { assets ->
-                val text = assets.readText()
+            val email = firebaseAuth.currentUser!!.email!!
+            val document = backupCollection.getUserBackup(email) ?: return Either.Right(true)
+            document.let { text ->
                 val migrationData = gson.fromJson(text, MigrationData::class.java)
 
                 if (migrationData.materiaEstudianteList.isEmpty() &&
@@ -110,14 +111,15 @@ class MigrationRepositoryImpl(
 
                 val semesterCol = getSemestersCollection()
 
-                val lastPeriod = migrationData.semestreEstudianteList.maxBy { it.fkSemestre!!.toString() }!!.fkSemestre.toString()
+                val lastPeriod =
+                    migrationData.semestreEstudianteList.maxBy { it.fkSemestre!!.toString() }!!.fkSemestre.toString()
                 getUserDocument()
                     .update(SemestersCollection.FIELD_CURRENT_SEMESTER, lastPeriod)
                     .await()
 
                 semestres.forEach {
                     val doc = semesterCol.add(it.objectToMap()).await()!!
-                    materias[it.period]?.forEach {sub ->
+                    materias[it.period]?.forEach { sub ->
                         val docMateria = doc.collection(SemestersCollection.COL_SUBJECTS).add(
                             sub.objectToMap()
                         ).await()!!
@@ -136,6 +138,7 @@ class MigrationRepositoryImpl(
                     }
                 }
             }
+            backupCollection.deleteUserBackup(email)
             return Either.Right(true)
         } catch (exception: Exception) {
             exception.printStackTrace()
@@ -157,7 +160,7 @@ class MigrationRepositoryImpl(
         return id ?: createInitialTaskDocument(email)
     }
 
-    private suspend fun createInitialTaskDocument(email : String): String {
+    private suspend fun createInitialTaskDocument(email: String): String {
         return try {
             val data = DataTasksUserDto(email)
             taskManagerCollection.collection().add(data).await()!!.id

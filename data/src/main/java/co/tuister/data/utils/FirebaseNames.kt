@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 sealed class FirebaseCollection(private val db: FirebaseFirestore, val name: String) {
     fun collection() = db.collection(name)
     fun document(name: String) = collection().document(name)
-    fun documentByPath(path: String) =  db.document(path)
+    fun documentByPath(path: String) = db.document(path)
 }
 
 class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
@@ -50,5 +50,15 @@ class TaskManagerCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME
         const val NAME = "task_manager"
         const val FIELD_EMAIL = "email"
         const val COL_TASKS = "tasks"
+    }
+}
+
+class BackupCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
+    suspend fun getUserBackup(email: String) = document(email).get().await()?.getString(FIELD_DATA)
+    suspend fun deleteUserBackup(email: String) = document(email).delete().await()
+
+    companion object {
+        const val NAME = "backup"
+        const val FIELD_DATA = "data"
     }
 }
