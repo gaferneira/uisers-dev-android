@@ -44,3 +44,11 @@ class SemestersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) 
 
     }
 }
+
+class TaskManagerCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
+    companion object {
+        const val NAME = "task_manager"
+        const val FIELD_EMAIL = "email"
+        const val COL_TASKS = "tasks"
+    }
+}
