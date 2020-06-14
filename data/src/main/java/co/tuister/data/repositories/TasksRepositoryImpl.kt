@@ -58,7 +58,7 @@ class TasksRepositoryImpl(
         return try {
             if (task.id.isNotEmpty()){
                 val subjectDto = taskManagerCollection.documentByPath(task.id).get().await()!!
-                subjectDto.reference.update(task.toDTO().objectToMap())
+                    subjectDto.reference.update(task.toDTO().objectToMap())
             } else {
                 val id = getUserDocument()
                     .collection(TaskManagerCollection.COL_TASKS)

@@ -1,5 +1,6 @@
 package co.tuister.uisers.di
 
+import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.institutional.GetEventsUseCase
 import co.tuister.domain.usecases.institutional.GetPlacesUseCase
@@ -57,4 +58,7 @@ val domainModule = module {
     single { ProfileUseCase(get()) }
     single { FCMUpdateUseCase(get()) }
     single { SendVerifyLinkUseCase(get()) }
+
+    // Use case
+    single { MigrationUseCase(get()) }
 }
