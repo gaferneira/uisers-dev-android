@@ -7,7 +7,7 @@ class SemesterUserDto(
     val average: String,
     val period: String,
     val credits: String,
-    val current: Boolean,
+    var current: Boolean,
     val subjects: MutableList<SubjectUserDto>
 ) : Serializable {
     constructor() : this("", "", "", false, mutableListOf<SubjectUserDto>())
