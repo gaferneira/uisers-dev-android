@@ -44,8 +44,6 @@ class UserRepositoryImpl(
             .get()
             .await()
 
-        test()
-
         return try {
             val userDataDto: UserDataDto? = data?.let {
                 it.firstOrNull()?.toObject(UserDataDto::class.java)
@@ -115,25 +113,6 @@ class UserRepositoryImpl(
             true
         } catch (exception: Exception) {
             false
-        }
-    }
-
-    suspend fun test() {
-
-        try {
-            val data = db
-                .collection(COLLECTION_SEMESTERS)
-                .whereEqualTo("email", "gabo.neira@gmail.com")
-                .get()
-                .await()
-            val doc = data!!.documents.first()
-            val ob = (doc.toObject(DataSemesterUserDto::class.java))!!
-
-            ob.semesters[0].subjects[0].notes.add(NoteDto("10", "5", "Prueba"))
-
-            db.collection(COLLECTION_SEMESTERS).document(doc.id).update(ob.objectToMap()).await()
-        } catch (exception: Exception) {
-            exception.printStackTrace()
         }
     }
 

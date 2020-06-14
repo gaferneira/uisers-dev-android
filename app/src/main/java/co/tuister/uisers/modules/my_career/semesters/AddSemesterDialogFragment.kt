@@ -32,12 +32,13 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = DialogFragmentSemesterBinding.inflate(LayoutInflater.from(context))
-        semesters = arguments?.getParcelableArray(ARGUMENT_SEMESTERS)?.map { it as Semester } ?: listOf()
+        semesters =
+            arguments?.getParcelableArray(ARGUMENT_SEMESTERS)?.map { it as Semester } ?: listOf()
         return binding.root
     }
 
@@ -54,20 +55,24 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
 
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
 
-        val semestersAvailable = List(20) { Pair(currentYear - (it / 2), 2 - (it % 2)) }.filter { pair ->
-            semesters.firstOrNull { it.year == pair.first && it.period == pair.second } == null
-        }
+        val semestersAvailable =
+            List(20) {
+                Pair(
+                    (currentYear - (it / 2)).toString(),
+                    (2 - (it % 2)).toString()
+                )
+            }.filter { pair ->
+                semesters.firstOrNull { it.period == pair.first } == null
+            }
 
-        val options = semestersAvailable.map { "" + it.first + "-" + it.second }.toTypedArray()
+        val options = semestersAvailable.map { it.first + "-" + it.second }.toTypedArray()
 
         // setup the alert builder
         val dialog = AlertDialog.Builder(requireContext())
             .setTitle("Select semester")
-            .setItems(options) {
-                    _, which ->
-
+            .setItems(options) { _, which ->
                 val selected = semestersAvailable[which]
-                semester = Semester(selected.first, selected.second)
+                semester = Semester(selected.first + selected.second)
                 binding.editTextSemester.setText(options[which])
                 binding.buttonSave.isEnabled = true
             }
@@ -98,8 +103,8 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
         private const val ARGUMENT_SEMESTERS = "ARGUMENT_PERIOD"
 
         fun create(
-          semesters: List<Semester>?,
-          listener: AddSemesterDialogListener?
+            semesters: List<Semester>?,
+            listener: AddSemesterDialogListener?
         ): AddSemesterDialogFragment {
             val dialog = AddSemesterDialogFragment()
             dialog.arguments = bundleOf(
