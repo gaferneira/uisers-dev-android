@@ -18,9 +18,9 @@ abstract class MyCareerRepository(
     private var userDocumentId: String? = null
     private var email: String = ""
 
-    protected suspend fun getUserDocument() = semestersCollection.document(getUserDocumentsId())
+    protected suspend fun getUserDocument(defaultPeriod : String = DEFAULT_PERIOD) = semestersCollection.document(getUserDocumentsId(defaultPeriod))
 
-    protected suspend fun getSemestersCollection() = getUserDocument()
+    protected suspend fun getSemestersCollection(defaultPeriod : String = DEFAULT_PERIOD) = getUserDocument(defaultPeriod)
         .collection(SemestersCollection.COL_SEMESTERS)
 
     protected suspend fun getCurrentSemesterPath(): String {
@@ -36,7 +36,7 @@ abstract class MyCareerRepository(
 
     }
 
-    private suspend fun getUserDocumentsId(): String {
+    private suspend fun getUserDocumentsId(defaultPeriod : String = DEFAULT_PERIOD): String {
         if (userDocumentId.isNullOrEmpty() || email != firebaseAuth.currentUser!!.email!!) {
             email = firebaseAuth.currentUser!!.email!!
             val id = semestersCollection.collection()
@@ -46,7 +46,7 @@ abstract class MyCareerRepository(
                 .documents.firstOrNull()?.id
 
             userDocumentId = if (id == null) {
-                val data = DataSemesterUserDto(0f, email, "2021-1")
+                val data = DataSemesterUserDto(0f, email, defaultPeriod)
                 createInitialDocument(data)
             } else {
                 id
@@ -68,6 +68,10 @@ abstract class MyCareerRepository(
             exception.printStackTrace()
             ""
         }
+    }
+
+    companion object {
+        const val DEFAULT_PERIOD = "2020-2"
     }
 
 }

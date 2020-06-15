@@ -28,13 +28,14 @@
                 android:id="@+id/text_view_subject_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/padding_margin_normal_smaller"
+                android:layout_marginHorizontal="@dimen/padding_margin_normal_smaller"
                 android:textAppearance="?textAppearanceSubtitle1"
                 android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toTopOf="@+id/text_view_subject_desc"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintEnd_toStartOf="@id/text_view_subject_note"
                 tools:text="Materia" />
 
             <TextView

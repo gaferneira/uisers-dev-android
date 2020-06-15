@@ -1,5 +1,7 @@
 package co.tuister.uisers.di
 
+import co.tuister.domain.usecases.DataUserUseCase
+import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.institutional.GetEventsUseCase
 import co.tuister.domain.usecases.institutional.GetPlacesUseCase
@@ -7,8 +9,8 @@ import co.tuister.domain.usecases.institutional.GetSitesUseCase
 import co.tuister.domain.usecases.login.*
 import co.tuister.domain.usecases.my_career.*
 import co.tuister.domain.usecases.profile.ProfileUseCase
+import co.tuister.domain.usecases.tasks.GetMainTasks
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
-import co.tuister.domain.usecases.tasks.GetTasksByDateUseCase
 import co.tuister.domain.usecases.tasks.SaveTaskUseCase
 import org.koin.dsl.module
 
@@ -44,7 +46,7 @@ val domainModule = module {
     single { SaveSubjectUseCase(get()) }
 
     // Tasks
-    single { GetTasksByDateUseCase(get()) }
+    single { GetMainTasks(get()) }
     single { GetMyTasksUseCase(get()) }
     single { SaveTaskUseCase(get()) }
 
@@ -57,4 +59,10 @@ val domainModule = module {
     single { ProfileUseCase(get()) }
     single { FCMUpdateUseCase(get()) }
     single { SendVerifyLinkUseCase(get()) }
+
+    // Use case
+    single { MigrationUseCase(get()) }
+
+    // Internal
+    single { DataUserUseCase(get()) }
 }

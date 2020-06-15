@@ -20,9 +20,10 @@ class DateUtils {
             }
         }
 
-        fun dateTimeToString(date: Date?): String? {
+        fun dateTimeToString(date: Date?, format: String? = null): String? {
             return date?.let {
-                DATE_TIME_FORMAT.format(it)
+                val sdf = format?.let { SimpleDateFormat(it) } ?: DATE_TIME_FORMAT
+                sdf.format(it)
             }
         }
 

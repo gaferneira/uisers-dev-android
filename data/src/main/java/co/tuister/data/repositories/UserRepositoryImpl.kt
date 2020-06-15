@@ -5,7 +5,6 @@ import co.tuister.data.await
 import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
-import co.tuister.data.dto.*
 import co.tuister.data.utils.*
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS

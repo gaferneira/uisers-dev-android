@@ -10,7 +10,8 @@ data class UserDataDto(
     var correo: String = "",
     var ingreso: String = "",
     var periodo: String = "",
-    var codigo: String = ""
+    var codigo: String = "",
+    var fcmId: String = ""
 )
 
 fun UserDataDto.toEntity() = User(
@@ -21,7 +22,8 @@ fun UserDataDto.toEntity() = User(
     sede,
     ingreso,
     periodo,
-    code = codigo
+    fcmId,
+    codigo
 )
 
 fun User.toDTO() = UserDataDto(

@@ -13,6 +13,8 @@
         android:textColor="@color/green_700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="textEnd"
+        android:paddingEnd="@dimen/padding_margin_small"
         tools:text="9:00-11:00" />
 
     <androidx.cardview.widget.CardView

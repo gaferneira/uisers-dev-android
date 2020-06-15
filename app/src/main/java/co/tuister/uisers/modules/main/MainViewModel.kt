@@ -1,9 +1,11 @@
 package co.tuister.uisers.modules.main
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.User
+import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.DownloadImageUseCase
 import co.tuister.domain.usecases.login.FCMUpdateUseCase
@@ -21,7 +23,8 @@ class MainViewModel(
   private val logoutUseCase: LogoutUseCase,
   private val downloadImageUseCase: DownloadImageUseCase,
   private val userUseCase: UserUseCase,
-  private val fcmUpdateUseCase: FCMUpdateUseCase
+  private val fcmUpdateUseCase: FCMUpdateUseCase,
+  private val migrationUseCase: MigrationUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -41,10 +44,22 @@ class MainViewModel(
     val version: MutableLiveData<String> = MutableLiveData("")
     lateinit var user: User
 
+    private var migration = false
+
     init {
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
                 fcmUpdateUseCase.run()
+            }
+        }
+
+        viewModelScope.launch {
+            if (!migration) {
+                migration = true
+                withContext(Dispatchers.IO) {
+                    val success = migrationUseCase.run()
+                    Log.i("migration", "Result " + success)
+                }
             }
         }
     }

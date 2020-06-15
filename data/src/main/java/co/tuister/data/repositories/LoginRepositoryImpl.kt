@@ -4,7 +4,6 @@ import android.net.Uri
 import co.tuister.data.await
 import co.tuister.data.dto.toDTO
 import co.tuister.data.utils.UsersCollection
-import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.EmailNotVerifiedError
@@ -16,10 +15,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
 class LoginRepositoryImpl(
-    val firebaseAuth: FirebaseAuth,
+    firebaseAuth: FirebaseAuth,
     val db: FirebaseFirestore,
     val firebaseStorage: FirebaseStorage
-) : LoginRepository {
+) : MyCareerRepository(firebaseAuth, db), LoginRepository {
 
     private val usersCollection by lazy { UsersCollection(db) }
 
@@ -33,12 +32,13 @@ class LoginRepositoryImpl(
                 return Either.Left(EmailNotVerifiedError())
             }
 
-            val dataUser = usersCollection.collection()
-                .whereEqualTo(FIELD_USER_EMAIL, email)
-                .get()
-                .await()
-            val user = dataUser!!.documents[0].toObject(User::class.java)
+            val user = usersCollection.getByEmail(email)?.toObject(User::class.java)
+
+            //check if current semester exists
+            getCurrentSemesterPath()
+
             Either.Right(user)
+
         } catch (e: Exception) {
             Either.Left(Failure.ServerError(e))
         }

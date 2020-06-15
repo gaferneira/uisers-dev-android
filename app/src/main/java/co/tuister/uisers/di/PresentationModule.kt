@@ -4,6 +4,7 @@ import co.tuister.uisers.modules.home.HomeViewModel
 import co.tuister.uisers.modules.institutional.InstitutionalViewModel
 import co.tuister.uisers.modules.institutional.calendar.CalendarViewModel
 import co.tuister.uisers.modules.institutional.map.MapViewModel
+import co.tuister.uisers.modules.internal.InternalUseViewModel
 import co.tuister.uisers.modules.login.LoginViewModel
 import co.tuister.uisers.modules.login.forgot_password.ForgotPasswordViewModel
 import co.tuister.uisers.modules.login.register.RegisterViewModel
@@ -32,7 +33,7 @@ val viewModelModule = module {
     viewModel { ForgotPasswordViewModel(get()) }
 
     // Main
-    viewModel { MainViewModel(get(), get(), get(), get()) }
+    viewModel { MainViewModel(get(), get(), get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
 
@@ -52,6 +53,9 @@ val viewModelModule = module {
     viewModel { InstitutionalViewModel() }
     viewModel { CalendarViewModel(get()) }
     viewModel { MapViewModel(get(), get()) }
+
+    // Internal Use Only
+    viewModel { InternalUseViewModel(get()) }
 }
 
 val presentationModule = module {

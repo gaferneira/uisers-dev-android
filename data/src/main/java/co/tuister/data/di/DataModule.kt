@@ -1,5 +1,6 @@
 package co.tuister.data.di
 
+import co.tuister.data.migration.MigrationRepositoryImpl
 import co.tuister.data.repositories.*
 import co.tuister.domain.repositories.*
 import com.google.firebase.auth.FirebaseAuth
@@ -34,4 +35,5 @@ val dataModule = module {
     single<MapRepository> { MapRepositoryImpl() }
     single<CalendarRepository> { CalendarRepositoryImpl() }
     single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get(), get()) }
+    single<MigrationRepository> { MigrationRepositoryImpl(get(), get(), get()) }
 }

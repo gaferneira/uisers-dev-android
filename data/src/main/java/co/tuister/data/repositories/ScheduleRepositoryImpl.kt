@@ -39,17 +39,6 @@ class ScheduleRepositoryImpl(
         }
     }
 
-
-    override suspend fun getScheduleByDate(date: Date): Either<Failure, List<SchedulePeriod>> {
-        delay(1000)
-        return Either.Right(
-            listOf(
-                SchedulePeriod("", "Calculo I",  1,"08:00", "10:00", "CT 301"),
-                SchedulePeriod("", "Quimica",1, "10:00", "12:00", "LP 310")
-            )
-        )
-    }
-
     override suspend fun getSchedule(): Either<Failure, List<SchedulePeriod>> {
         return try {
             val periods = semestersCollection.documentByPath(getCurrentSemesterPath())

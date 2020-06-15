@@ -16,6 +16,7 @@ import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentProfileBinding
+import co.tuister.uisers.modules.internal.InternalActivity
 import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
@@ -46,6 +47,9 @@ class ProfileFragment : BaseFragment() {
     private fun initViews() {
         binding.buttonUploadPicture.setOnClickListener {
             launchImagePicker()
+        }
+        binding.buttonInternal.setOnClickListener {
+            InternalActivity.start(requireContext())
         }
         binding.editTextCareer.setOnClickListener {
             viewModel.getCareers {
