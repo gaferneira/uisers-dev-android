@@ -27,9 +27,8 @@ class InternalOnlyRepositoryImpl(
     private val baseCollection by lazy { BaseCollection(db) }
     private val usersCollection by lazy { UsersCollection(db) }
 
-    override
-    suspend fun loadDataCareers() {
-        try {
+    override suspend fun loadDataCareers(): Either<Failure, Boolean> {
+        return try {
             context.assets.open("careers.json").bufferedReader().use {
                 val text = it.readText()
 
@@ -40,14 +39,14 @@ class InternalOnlyRepositoryImpl(
                     .update(mapOf(Pair(FIELD_CAREERS, list)))
                     .await()
             }
+            Either.Right(true)
         } catch (exception: Exception) {
-            exception.printStackTrace()
+            Either.Left(Failure.ServerError(exception))
         }
     }
 
-    override
-    suspend fun loadDataSubjects() {
-        try {
+    override suspend fun loadDataSubjects(): Either<Failure, Boolean> {
+        return try {
             context.assets.open("subjects.json").bufferedReader().use {
                 val text = it.readText()
 
@@ -58,8 +57,9 @@ class InternalOnlyRepositoryImpl(
                     .update(mapOf(Pair(FIELD_SUBJECTS, list)))
                     .await()
             }
+            Either.Right(true)
         } catch (exception: Exception) {
-            exception.printStackTrace()
+            Either.Left(Failure.ServerError(exception))
         }
     }
 

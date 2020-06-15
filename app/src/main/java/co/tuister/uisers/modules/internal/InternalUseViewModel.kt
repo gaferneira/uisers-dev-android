@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure.FormError
 import co.tuister.domain.usecases.DataUserUseCase
+import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
+import co.tuister.domain.usecases.internal.UpdateDataSubjectsUseCase
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.ValidateUserDocument
@@ -14,10 +16,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class InternalUseViewModel(val dataUserUseCase: DataUserUseCase) : BaseViewModel() {
+class InternalUseViewModel(
+  val dataUserUseCase: DataUserUseCase,
+  val updateSubjects: UpdateDataSubjectsUseCase,
+  val updateCareers: UpdateDataCareersUseCase
+) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class ValidateUserDocument(val result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateSubjects(val result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateCareers(val result: Result<Boolean>) : State<Boolean>(result)
     }
 
     fun generateUserCSVData(context: Context) {
@@ -52,6 +60,30 @@ class InternalUseViewModel(val dataUserUseCase: DataUserUseCase) : BaseViewModel
                     }
                 })
             }
+        }
+    }
+
+    fun updateSubjects() {
+        viewModelScope.launch {
+            setState(State.UpdateSubjects(InProgress()))
+            val result = updateSubjects.run()
+            result.fold({
+                setState(State.UpdateSubjects(Error(it)))
+            }, {
+                setState(State.UpdateSubjects(Success(it)))
+            })
+        }
+    }
+
+    fun updateCareers() {
+        viewModelScope.launch {
+            setState(State.UpdateCareers(InProgress()))
+            val result = updateCareers.run()
+            result.fold({
+                setState(State.UpdateCareers(Error(it)))
+            }, {
+                setState(State.UpdateCareers(Success(it)))
+            })
         }
     }
 }

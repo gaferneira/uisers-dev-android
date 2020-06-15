@@ -9,10 +9,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import co.tuister.domain.base.Failure.EmailNotVerifiedError
 import co.tuister.domain.entities.User
+import co.tuister.uisers.BuildConfig
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentLoginBinding
+import co.tuister.uisers.modules.internal.InternalActivity
 import co.tuister.uisers.modules.main.MainActivity
 import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.flow.collect
@@ -31,7 +33,7 @@ class LoginFragment : BaseFragment() {
         binding = FragmentLoginBinding.inflate(inflater)
         binding.lifecycleOwner = this
         initViewModel()
-        initListeners()
+        initViews()
         return binding.root
     }
 
@@ -45,7 +47,13 @@ class LoginFragment : BaseFragment() {
         binding.loginViewModel = viewModel
     }
 
-    private fun initListeners() {
+    private fun initViews() {
+
+        binding.buttonInternal.isVisible = BuildConfig.DEBUG
+        binding.buttonInternal.setOnClickListener {
+            InternalActivity.start(requireContext())
+        }
+
         binding.loginSignInButton.setOnClickListener {
             hideKeyboard()
             viewModel.doLogIn()
