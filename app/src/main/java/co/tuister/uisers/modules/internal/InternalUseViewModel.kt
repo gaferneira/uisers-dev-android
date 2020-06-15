@@ -9,10 +9,10 @@ import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.ValidateUserDocument
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.*
+import java.io.File
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.File
 
 class InternalUseViewModel(val dataUserUseCase: DataUserUseCase) : BaseViewModel() {
 

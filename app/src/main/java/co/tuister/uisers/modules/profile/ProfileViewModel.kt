@@ -24,11 +24,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ProfileViewModel(
-    private val uploadImageUseCase: UploadImageUseCase,
-    private val downloadImageUseCase: DownloadImageUseCase,
-    private val careersUseCase: CareersUseCase,
-    private val campusUseCase: CampusUseCase,
-    private val profileUseCase: ProfileUseCase
+  private val uploadImageUseCase: UploadImageUseCase,
+  private val downloadImageUseCase: DownloadImageUseCase,
+  private val careersUseCase: CareersUseCase,
+  private val campusUseCase: CampusUseCase,
+  private val profileUseCase: ProfileUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {

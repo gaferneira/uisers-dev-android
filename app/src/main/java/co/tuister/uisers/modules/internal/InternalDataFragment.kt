@@ -23,9 +23,9 @@ class InternalDataFragment : BaseFragment() {
     private lateinit var viewModel: InternalUseViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+      inflater: LayoutInflater,
+      container: ViewGroup?,
+      savedInstanceState: Bundle?
     ): View? {
         binding = FragmentInternalDataBinding.inflate(inflater)
         initViews()
