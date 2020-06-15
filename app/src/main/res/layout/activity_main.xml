@@ -29,7 +29,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -41,31 +41,39 @@
                         android:layout_height="40dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/avatar"
+                        android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/text_view_toolbar_title"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:border_color="@color/red"
                         app:border_width="2dp" />
 
                     <TextView
                         android:id="@+id/text_view_toolbar_title"
                         style="@style/TitleTextViewToolbar"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
                         android:text="@{viewModel.title}"
+                        android:lines="1"
+                        android:ellipsize="end"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/circle_image_photo"
+                        app:layout_constraintEnd_toEndOf="parent"
                         tools:text="Home me" />
-                </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.Toolbar>
 
-            <fragment
-                android:id="@+id/fragment_nav_host_home"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_container"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@id/bottom_nav_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:navGraph="@navigation/nav_graph_home" />
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_nav_view"

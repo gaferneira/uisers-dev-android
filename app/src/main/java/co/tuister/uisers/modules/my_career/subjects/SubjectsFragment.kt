@@ -30,6 +30,11 @@ class SubjectsFragment : BaseFragment() {
 
     var listener: SubjectsAdapter.SubjectListener? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initViewModel()
+    }
+
     override fun onCreateView(
       inflater: LayoutInflater,
       container: ViewGroup?,
@@ -37,13 +42,16 @@ class SubjectsFragment : BaseFragment() {
     ): View? {
         binding = FragmentSubjectsBinding.inflate(inflater)
         initViews()
-        initViewModel()
         return binding.root
     }
 
     private fun initViews() {
-        footerAdapter = FooterAdapter()
-        adapter = SubjectsAdapter(listener)
+        if (!this::adapter.isInitialized) {
+            adapter = SubjectsAdapter(listener)
+        }
+        if (!this::footerAdapter.isInitialized) {
+            footerAdapter = FooterAdapter()
+        }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = MergeAdapter(this@SubjectsFragment.adapter, footerAdapter)
@@ -54,6 +62,7 @@ class SubjectsFragment : BaseFragment() {
         viewModel = getViewModel()
 
         lifecycleScope.launchWhenStarted {
+            viewModel.initialize()
             viewModel.state.collect {
                 update(it)
             }
@@ -64,8 +73,6 @@ class SubjectsFragment : BaseFragment() {
                 update(it)
             }
         }
-
-        viewModel.initialize()
     }
 
     private fun update(state: BaseState<Any>?) {

@@ -6,10 +6,11 @@ import android.os.Bundle
 import androidx.core.view.GravityCompat.START
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
+import androidx.navigation.NavDestination
+import androidx.navigation.ui.setupActionBarWithNavController
 import co.tuister.domain.entities.User
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
@@ -21,14 +22,15 @@ import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
 import co.tuister.uisers.utils.ImagesUtils.Companion.downloadImageInto
+import co.tuister.uisers.utils.setupWithNavController
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var bindingMenu: LeftHomeMenuHeaderLayoutBinding
     private lateinit var viewModel: MainViewModel
-    private lateinit var navController: NavController
 
     companion object {
         private const val EXTRA_USER = "EXTRA_USER"
@@ -40,6 +42,8 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private var currentNavController: NavController? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -50,7 +54,10 @@ class MainActivity : BaseActivity() {
         bindingMenu.lifecycleOwner = this
         binding.viewModel = viewModel
         bindingMenu.viewModel = viewModel
-        navController = findNavController(R.id.fragment_nav_host_home)
+
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
+        }
         initViews()
     }
 
@@ -61,11 +68,6 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initViews() {
-        binding.bottomNavView.setOnNavigationItemSelectedListener {
-            onNavDestinationSelected(it, navController)
-            viewModel.title.value = it.title.toString()
-            true
-        }
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.toolbar.navigationIcon = null
@@ -98,6 +100,54 @@ class MainActivity : BaseActivity() {
                 update(it)
             }
         }
+    }
+
+    /**
+     * Called on first creation and when restoring state.
+     */
+    private fun setupBottomNavigationBar() {
+
+        val navGraphIds = listOf(R.navigation.nav_graph_home,
+            R.navigation.nav_graph_my_career,
+            R.navigation.nav_graph_task_manager,
+            R.navigation.nav_graph_institution
+        )
+
+        // Setup the bottom navigation view with a list of navigation graphs
+        val controller = binding.bottomNavView.setupWithNavController(
+            navGraphIds,
+            supportFragmentManager,
+            R.id.nav_host_container,
+            intent
+        )
+
+        // Whenever the selected controller changes, setup the action bar.
+        controller.observe(this, Observer { navController ->
+            setupActionBarWithNavController(navController)
+            currentNavController?.removeOnDestinationChangedListener(this)
+            currentNavController = navController
+            currentNavController?.addOnDestinationChangedListener(this)
+        })
+    }
+
+    override fun onDestinationChanged(
+      controller: NavController,
+      destination: NavDestination,
+      arguments: Bundle?
+    ) {
+        val backButtonVisible = drawerToggleDelegate?.isNavigationVisible ?: false
+        binding.circleImagePhoto.isVisible = !backButtonVisible
+    }
+
+    override fun setTitle(title: CharSequence?) {
+        super.setTitle(title)
+        title?.let {
+            viewModel.title.value = it.toString()
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return currentNavController?.navigateUp() ?: false
     }
 
     private fun update(state: BaseState<Any>) {

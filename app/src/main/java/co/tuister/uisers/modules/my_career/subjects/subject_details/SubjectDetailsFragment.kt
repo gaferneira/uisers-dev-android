@@ -32,9 +32,12 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
 
     private val safeArgs by navArgs<SubjectDetailsFragmentArgs>()
 
+    override fun getTitle() = subject.name
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadArguments()
+        initViewModel()
     }
 
     private fun loadArguments() {
@@ -48,13 +51,16 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
     ): View? {
         binding = FragmentSubjectDetailsBinding.inflate(inflater)
         initViews()
-        initViewModel()
         return binding.root
     }
 
     private fun initViews() {
-        footerAdapter = FooterAdapter()
-        adapter = NotesAdapter(this)
+        if (!this::footerAdapter.isInitialized) {
+            footerAdapter = FooterAdapter()
+        }
+        if (!this::adapter.isInitialized) {
+            adapter = NotesAdapter(this)
+        }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = MergeAdapter(this@SubjectDetailsFragment.adapter, footerAdapter)

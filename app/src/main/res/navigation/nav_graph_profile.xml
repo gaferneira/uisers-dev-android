@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/profile_fragment_dest"
         android:name="co.tuister.uisers.modules.profile.ProfileFragment"
-        android:label="ProfileFragment"
+        android:label="@string/title_menu_profile"
         tools:layout="@layout/fragment_profile">
         <argument
             android:name="EXTRA_USER"

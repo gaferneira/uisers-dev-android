@@ -31,6 +31,11 @@ class ScheduleFragment : BaseFragment(),
 
     private var subjects: List<Subject>? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initViewModel()
+    }
+
     override fun onCreateView(
       inflater: LayoutInflater,
       container: ViewGroup?,
@@ -38,12 +43,13 @@ class ScheduleFragment : BaseFragment(),
     ): View? {
         binding = FragmentScheduleBinding.inflate(inflater)
         initViews()
-        initViewModel()
         return binding.root
     }
 
     private fun initViews() {
-        adapter = ScheduleAdapter(this)
+        if (!this::adapter.isInitialized) {
+            adapter = ScheduleAdapter(this)
+        }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@ScheduleFragment.adapter
@@ -54,6 +60,7 @@ class ScheduleFragment : BaseFragment(),
         viewModel = getViewModel()
 
         lifecycleScope.launchWhenStarted {
+            viewModel.initialize()
             viewModel.state.collect {
                 update(it)
             }
@@ -64,8 +71,6 @@ class ScheduleFragment : BaseFragment(),
                 update(it)
             }
         }
-
-        viewModel.initialize()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

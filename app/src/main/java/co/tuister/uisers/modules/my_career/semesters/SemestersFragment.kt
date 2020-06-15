@@ -26,6 +26,10 @@ class SemestersFragment : BaseFragment(), SemestersAdapter.SemesterListener,
     private lateinit var adapter: SemestersAdapter
     private lateinit var footerAdapter: FooterAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initViewModel()
+    }
     override fun onCreateView(
       inflater: LayoutInflater,
       container: ViewGroup?,
@@ -42,8 +46,12 @@ class SemestersFragment : BaseFragment(), SemestersAdapter.SemesterListener,
         viewModel.refresh()
     }
     private fun initViews() {
-        footerAdapter = FooterAdapter()
-        adapter = SemestersAdapter(this)
+        if (!this::adapter.isInitialized) {
+            adapter = SemestersAdapter(this)
+        }
+        if (!this::footerAdapter.isInitialized) {
+            footerAdapter = FooterAdapter()
+        }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = MergeAdapter(this@SemestersFragment.adapter, footerAdapter)
@@ -53,11 +61,11 @@ class SemestersFragment : BaseFragment(), SemestersAdapter.SemesterListener,
     private fun initViewModel() {
         viewModel = getViewModel()
         lifecycleScope.launchWhenStarted {
+            viewModel.initialize()
             viewModel.state.collect {
                 update(it)
             }
         }
-        viewModel.initialize()
     }
 
     private fun update(state: BaseState<Any>?) {

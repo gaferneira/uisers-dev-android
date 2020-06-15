@@ -162,64 +162,14 @@
     <string name="settings_logout">Logout</string>
     <string name="settings_logout_summary">If you logout your data might be lost and you won\'t be able to retrieve it</string>
 
-    <array name="lugaresMapa">
-        <item>PORTERIA CARRERA 27</item>
-        <item>AUDITORIO LUIS A. CALVO</item>
-        <item>ADMINISTRACIÓN</item>
-        <item>INSED</item>
-        <item>TEATRO AIRE LIBRE</item>
-        <item>ADMINISTRACION 2</item>
-        <item>BIENESTAR UNIVERSITARIO</item>
-        <item>LA PERLA</item>
-        <item>MANTEN. Y PLANTA FISICA</item>
-        <item>IM-INGENIERIA MECANICA</item>
-        <item>AULA MAX. MECANICA</item>
-        <item>BIBLIOTECA</item>
-        <item>PLANTA TELEFONICA</item>
-        <item>IL-LANGUAGE INSTITUE</item>
-        <item>II-INGENIERIA INDUSTRIAL</item>
-        <item>CARACT. DE MAT.</item>
-        <item>LL-LAB. LIVIANOS</item>
-        <item>CT-CAMILO TORRES</item>
-        <item>CENTIC</item>
-        <item>CAPRUIS Y FAVUIS</item>
-        <item>DISEÑO INDUSTRIAL</item>
-        <item>IE-ING. ELECTRICA</item>
-        <item>LAB. DE POSGRADO</item>
-        <item>IQ-ING. QUIMICA</item>
-        <item>AULA MAXIMA DE FISICA</item>
-        <item>CEIAM</item>
-        <item>LAB. ALTA TENSION</item>
-        <item>LAB. DE HIDRAULICA.</item>
-        <item>TALLERES DISEÑO</item>
-        <item>PLANTA DE ACEROS</item>
-        <item>JORGE BAUTISTA V.</item>
-        <item>LP-LABORATORIOS PESADOS</item>
-        <item>DC -DANIEL CASAS</item>
-        <item>RESIDENCIAS UNIV.</item>
-        <item>PORTERIA CRA 30</item>
-        <item>KIOSKO RESIDENCIAS</item>
-        <item>CH-CIENCIAS HUMANAS</item>
-        <item>JARDINERIA</item>
-        <item>CANCHAS DE TENIS</item>
-        <item>CANCHA 1. DE MARZO</item>
-        <item>CANCHA FUTBOL SUR</item>
-        <item>CANCHAS MULTIPLES</item>
-        <item>COLISEO</item>
-        <item>DIAMANTE DE SOFTBOL</item>
-        <item>CENIVAM</item>
-        <item>CAFETERIA</item>
-        <item>PORTERIA CRA 25</item>
-        <item>INVERNADERO</item>
-    </array>
     <string name="empty_information">No information available</string>
     <string name="action_save">Guardar</string>
 
     <!-- Bottom Menu -->
-    <string name="title_menu_home">Inicio</string>
-    <string name="title_menu_subjects">Materias</string>
-    <string name="title_menu_task">Tareas</string>
-    <string name="title_menu_institution">Institucion</string>
+    <string name="title_menu_home">Home</string>
+    <string name="title_menu_subjects">My Career</string>
+    <string name="title_menu_task">Tasks</string>
+    <string name="title_menu_institution">Institution</string>
 
     <!-- Left side menu -->
     <string name="welcome_message">Hi,</string>
@@ -247,6 +197,7 @@
     <string name="task_status_done">Done</string>
     <string name="task_label_status">Status</string>
 
+    <string name="title_my_career">My Career</string>
     <string name="title_my_career_subjects">Subjects</string>
     <string name="title_my_career_schedule">Schedule</string>
     <string name="title_my_career_semesters">Semesters</string>
