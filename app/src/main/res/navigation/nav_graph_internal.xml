@@ -9,6 +9,18 @@
         android:id="@+id/internal_fragment_dest"
         android:name="co.tuister.uisers.modules.internal.InternalDataFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_internal_data"/>
+        tools:layout="@layout/fragment_internal_data">
+        <action
+            android:id="@+id/action_internal_to_material"
+            app:destination="@id/internal_fragment_material" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/internal_fragment_material"
+        android:name="co.tuister.uisers.modules.internal.InternalMaterialFragment"
+        android:label="Material"
+        tools:layout="@layout/fragment_internal_material"/>
+
 
 </navigation>
+

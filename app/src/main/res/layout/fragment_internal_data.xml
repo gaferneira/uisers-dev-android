@@ -68,6 +68,15 @@
                 android:text="Update Places"
                 android:textColor="@color/black" />
 
+
+            <Button
+                android:id="@+id/button_material"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="Material"
+                android:textColor="@color/black" />
+
         </LinearLayout>
 
         <ImageView

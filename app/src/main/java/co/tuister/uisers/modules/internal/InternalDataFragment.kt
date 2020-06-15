@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseFragment
@@ -45,6 +46,9 @@ class InternalDataFragment : BaseFragment() {
         }
         binding.buttonUpdateCareers.setOnClickListener {
             viewModel.updateCareers()
+        }
+        binding.buttonMaterial.setOnClickListener {
+            findNavController().navigate(R.id.action_internal_to_material)
         }
     }
 

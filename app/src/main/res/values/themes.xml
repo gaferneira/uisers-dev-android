@@ -13,8 +13,8 @@
         <item name="colorPrimaryVariant">@color/green_700</item>
         <item name="colorPrimaryDark">@color/green_700</item>
 
-        <item name="colorSecondary">@color/grey_200</item>
-        <item name="colorSecondaryVariant">@color/grey_500</item>
+        <item name="colorSecondary">@color/grey_500</item>
+        <item name="colorSecondaryVariant">@color/grey_700</item>
         <!--colorBackground appears behind scrollable content and is used for the default window-->
         <!--background. colorSurface is mapped to the surface of components such as cards, sheets-->
         <!--and menus. colorError is used to indicate an error state for components such as-->
@@ -25,7 +25,7 @@
         <!--"On" colors define how text, icons and strokes are colored in relation to the surface-->
         <!--on which they appear.-->
         <item name="colorOnPrimary">@color/white_50</item>
-        <item name="colorOnSecondary">@color/black_900</item>
+        <item name="colorOnSecondary">@color/white_50</item>
         <item name="colorOnBackground">@color/black_900</item>
         <item name="colorOnSurface">@color/black_900</item>
         <item name="colorOnError">@color/white_50</item>
@@ -61,9 +61,13 @@
 
     </style>
 
-    <style name="ThemeOverlay.MyApp.LightGreen" parent="">
+    <style name="ThemeOverlay.MyApp.Lighter" parent="">
         <item name="colorPrimary">@color/green_100</item>
         <item name="colorOnPrimary">@color/grey_800</item>
+        <item name="colorPrimaryDark">@color/green_500</item>
+
+        <item name="colorSecondary">@color/grey_300</item>
+        <item name="colorOnSecondary">@color/grey_800</item>
     </style>
 
 </resources>

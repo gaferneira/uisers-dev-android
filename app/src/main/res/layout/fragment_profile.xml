@@ -22,7 +22,7 @@
             android:id="@+id/container_header"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/green"
+            android:background="?colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -47,7 +47,7 @@
                 android:backgroundTint="@color/amber_200"
                 android:padding="5dp"
                 android:src="@drawable/ic_upload"
-                android:tint="@color/green"
+                android:tint="?colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/circle_image_photo"
                 app:layout_constraintEnd_toEndOf="@+id/circle_image_photo" />
 
@@ -56,6 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textColor="?colorOnPrimary"
                 android:text="@{viewModel.user.name}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
