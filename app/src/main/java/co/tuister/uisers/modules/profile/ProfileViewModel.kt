@@ -1,6 +1,8 @@
 package co.tuister.uisers.modules.profile
 
 import android.net.Uri
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.Career
@@ -22,11 +24,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ProfileViewModel(
-  private val uploadImageUseCase: UploadImageUseCase,
-  private val downloadImageUseCase: DownloadImageUseCase,
-  private val careersUseCase: CareersUseCase,
-  private val campusUseCase: CampusUseCase,
-  private val profileUseCase: ProfileUseCase
+    private val uploadImageUseCase: UploadImageUseCase,
+    private val downloadImageUseCase: DownloadImageUseCase,
+    private val careersUseCase: CareersUseCase,
+    private val campusUseCase: CampusUseCase,
+    private val profileUseCase: ProfileUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -34,13 +36,18 @@ class ProfileViewModel(
     }
 
     private val _user: MutableLiveData<User> = MutableLiveData()
+    private val _visibility: MutableLiveData<Int> = MutableLiveData(GONE)
 
     val user get() = _user
+    val visibility get() = _visibility
     val listCareers = mutableListOf<Career>()
     val listCampus = mutableListOf<String>()
 
     fun initialize(extrauser: User) {
         _user.value = extrauser
+        if (extrauser.email in listOf("vidaljramirez@gmail.com", "gabo.neira@gmail.com")) {
+            _visibility.value = VISIBLE
+        }
         downloadImage()
     }
 

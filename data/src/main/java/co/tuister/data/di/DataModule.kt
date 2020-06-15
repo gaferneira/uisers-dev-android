@@ -35,5 +35,5 @@ val dataModule = module {
     single<MapRepository> { MapRepositoryImpl() }
     single<CalendarRepository> { CalendarRepositoryImpl() }
     single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get(), get()) }
-    single<MigrationRepository> { MigrationRepositoryImpl(get(), get(), get(), get()) }
+    single<MigrationRepository> { MigrationRepositoryImpl(get(), get(), get()) }
 }

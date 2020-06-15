@@ -1,7 +1,6 @@
 package co.tuister.data.utils
 
 import co.tuister.data.await
-import co.tuister.domain.entities.User
 import com.google.firebase.firestore.FirebaseFirestore
 
 sealed class FirebaseCollection(private val db: FirebaseFirestore, val name: String) {
@@ -24,12 +23,13 @@ class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
 
 class UsersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
     suspend fun getByEmail(email: String) =
-       collection()
+        collection()
             .whereEqualTo(FIELD_USER_EMAIL, email)
             .get()
             .await()
-           ?.documents?.firstOrNull()
+            ?.documents?.firstOrNull()
 
+    suspend fun getAllUserData() = collection().get().await()?.documents
 
     companion object {
         const val NAME = "data_users"
@@ -65,6 +65,7 @@ class TaskManagerCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME
 }
 
 class BackupCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
+    suspend fun getAllUserBackup() = collection().get().await()
     suspend fun getUserBackup(email: String) = document(email).get().await()?.getString(FIELD_DATA)
     suspend fun deleteUserBackup(email: String) = document(email).delete().await()
 

@@ -1,6 +1,5 @@
 package co.tuister.data.migration
 
-import android.content.Context
 import co.tuister.data.await
 import co.tuister.data.dto.*
 import co.tuister.data.repositories.MyCareerRepository
@@ -16,7 +15,6 @@ import com.google.gson.Gson
 import java.util.*
 
 class MigrationRepositoryImpl(
-    private val context: Context,
     private val gson: Gson,
     val db: FirebaseFirestore,
     val auth: FirebaseAuth

@@ -1,5 +1,6 @@
 package co.tuister.uisers.di
 
+import co.tuister.domain.usecases.DataUserUseCase
 import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.institutional.GetEventsUseCase
@@ -61,4 +62,7 @@ val domainModule = module {
 
     // Use case
     single { MigrationUseCase(get()) }
+
+    // Internal
+    single { DataUserUseCase(get()) }
 }

@@ -20,11 +20,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(
-  private val logoutUseCase: LogoutUseCase,
-  private val downloadImageUseCase: DownloadImageUseCase,
-  private val userUseCase: UserUseCase,
-  private val fcmUpdateUseCase: FCMUpdateUseCase,
-  private val migrationUseCase: MigrationUseCase
+    private val logoutUseCase: LogoutUseCase,
+    private val downloadImageUseCase: DownloadImageUseCase,
+    private val userUseCase: UserUseCase,
+    private val fcmUpdateUseCase: FCMUpdateUseCase,
+    private val migrationUseCase: MigrationUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -56,8 +56,10 @@ class MainViewModel(
         viewModelScope.launch {
             if (!migration) {
                 migration = true
-                val success = migrationUseCase.run()
-                Log.i("migration", "Result " + success)
+                withContext(Dispatchers.IO) {
+                    val success = migrationUseCase.run()
+                    Log.i("migration", "Result " + success)
+                }
             }
         }
     }
