@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_my_career"
+    app:startDestination="@id/my_career_fragment_dest">
+
+    <fragment
+        android:id="@+id/my_career_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.MyCareerFragment"
+        android:label="@string/title_menu_subjects"
+        tools:layout="@layout/fragment_subjects">
+        <action
+            android:id="@+id/action_subjects_to_semesters"
+            app:destination="@id/semesters_fragment_dest" />
+        <action
+            android:id="@+id/action_subjects_to_subject_details"
+            app:destination="@id/subject_details_fragment_dest" />
+        <action
+            android:id="@+id/action_subjects_to_subject_add"
+            app:destination="@id/subject_add_fragment_dest" />
+        <action
+            android:id="@+id/action_subjects_to_schedule"
+            app:destination="@id/schedule_fragment_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subject_add_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.subjects.add_subject.AddSubjectFragment"
+        android:label="@string/title_fragment_add_subject"
+        tools:layout="@layout/fragment_subject_add" />
+
+    <fragment
+        android:id="@+id/schedule_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.schedule.ScheduleFragment"
+        android:label="@string/title_fragment_schedule"
+        tools:layout="@layout/fragment_schedule" />
+
+    <fragment
+        android:id="@+id/subject_details_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.subjects.subject_details.SubjectDetailsFragment"
+        android:label="@string/title_fragment_details_subject"
+        tools:layout="@layout/fragment_subject_details">
+
+        <argument
+            android:name="subject"
+            app:argType="co.tuister.domain.entities.Subject" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/semesters_fragment_dest"
+        android:name="co.tuister.uisers.modules.my_career.semesters.SemestersFragment"
+        android:label="@string/title_fragment_semester"
+        tools:layout="@layout/fragment_semesters" />
+
+
+</navigation>

@@ -5,11 +5,22 @@ import android.content.Intent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import co.tuister.uisers.R
 import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.utils.UisersDialogFragment
 
 open class BaseFragment : Fragment() {
+
+    override fun onStart() {
+        super.onStart()
+        getTitle()?.let {
+            activity?.title = it
+        }
+    }
+
+    open fun getTitle(): CharSequence? = findNavController()?.currentDestination?.label
+
     fun hideKeyboard() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view?.windowToken, 0)

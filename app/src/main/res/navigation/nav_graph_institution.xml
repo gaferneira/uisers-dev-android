@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_institution"
+    app:startDestination="@id/institutional_fragment_dest">
+
+    <fragment
+        android:id="@+id/institutional_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.InstitutionalFragment"
+        android:label="@string/title_menu_institution"
+        tools:layout="@layout/fragment_institutional">
+        <action
+            android:id="@+id/action_institutional_to_map"
+            app:destination="@id/map_fragment_dest" />
+        <action
+            android:id="@+id/action_institutional_to_calendar"
+            app:destination="@id/calendar_fragment_dest" />
+        <action
+            android:id="@+id/action_institutional_to_wheels"
+            app:destination="@id/wheels_fragment_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/map_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.map.MapFragment"
+        android:label="@string/title_fragment_map"
+        tools:layout="@layout/fragment_institutional_map" />
+
+    <fragment
+        android:id="@+id/calendar_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.calendar.CalendarFragment"
+        android:label="@string/title_fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/wheels_fragment_dest"
+        android:name="co.tuister.uisers.modules.institutional.wheels.WheelsFragment"
+        android:label="@string/title_fragment_wheels"
+        tools:layout="@layout/fragment_wheels" />
+
+
+</navigation>

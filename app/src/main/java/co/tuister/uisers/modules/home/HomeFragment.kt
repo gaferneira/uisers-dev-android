@@ -34,7 +34,9 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     }
 
     private fun initViews() {
-        adapter = HomeAdapter(this)
+        if (!this::adapter.isInitialized) {
+            adapter = HomeAdapter(this)
+        }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = this@HomeFragment.adapter
@@ -53,7 +55,7 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
 
     private fun update(state: BaseState<Any>) {
         when (state) {
-            is State.LoadHeader -> state.data?.run { adapter.addItem(this) }
+            is State.LoadHeader -> state.data?.run { addHeader(this) }
             is State.LoadTasks -> state.data?.run { updateListTasks(this) }
             is State.LoadSubjects -> state.data?.run { updateListSubjects(this) }
         }
@@ -65,15 +67,21 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     }
 
     private fun refresh() {
-        adapter.clearItems()
         viewModel.refresh()
     }
 
+    private fun addHeader(homeHeader: HomeHeader) {
+        adapter.list.removeAll { it.template == homeHeader.template }
+        adapter.addItem(homeHeader)
+    }
+
     private fun updateListSubjects(list: List<SchedulePeriod>?) {
+        adapter.list.removeAll { it.template == HomeAdapter.HomeEnum.SCHEDULE }
         adapter.addItem(HomeSchedule(list))
     }
 
     private fun updateListTasks(list: List<Task>) {
+        adapter.list.removeAll { it.template == HomeAdapter.HomeEnum.TASKS }
         adapter.addItem(HomeTasks(list))
     }
 

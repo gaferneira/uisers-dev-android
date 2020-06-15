@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_task_manager"
+    app:startDestination="@id/tasks_fragment_dest">
+
+    <fragment
+        android:id="@+id/tasks_fragment_dest"
+        android:name="co.tuister.uisers.modules.task_manager.TasksFragment"
+        android:label="@string/title_menu_task"
+        tools:layout="@layout/fragment_tasks">
+        <action
+            android:id="@+id/action_tasks_to_tasks_add"
+            app:destination="@id/tasks_add_fragment_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tasks_add_fragment_dest"
+        android:name="co.tuister.uisers.modules.task_manager.add_task.AddTaskFragment"
+        android:label="@string/title_fragment_add_task"
+        tools:layout="@layout/fragment_tasks">
+
+        <argument
+            android:name="task"
+            app:argType="co.tuister.domain.entities.Task"
+            app:nullable="true" />
+
+    </fragment>
+
+
+</navigation>
