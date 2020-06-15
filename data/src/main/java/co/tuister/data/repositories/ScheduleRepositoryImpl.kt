@@ -51,7 +51,7 @@ class ScheduleRepositoryImpl(
                         id = path
                     }
                 }
-            Either.Right(periods)
+            Either.Right(periods.sortedBy { (it.day - 2) % 8 }) // First day monday
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
         }

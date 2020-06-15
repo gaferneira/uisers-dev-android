@@ -31,7 +31,8 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
         val viewsList = container.children.toMutableList()
         val currentSize = viewsList.size
 
-        val lastIndex = data.list?.lastIndex ?: 0
+        val list = data.list?.sortedBy { it.dueDate } ?: listOf()
+        val lastIndex = list.lastIndex
         for (i in currentSize..lastIndex) {
             val view = LayoutInflater.from(itemView.context).inflate(R.layout.item_home_task, null)
             container.addView(view)
@@ -40,7 +41,7 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
 
         container.removeAllViews()
 
-        data.list?.forEachIndexed { i, task ->
+        list.forEachIndexed { i, task ->
             container.addView(configChildView(viewsList[i], task).apply {
                 setOnClickListener {
                     listener.onClickTask(task)

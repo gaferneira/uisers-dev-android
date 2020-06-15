@@ -18,7 +18,7 @@ class GetScheduleByDateUseCase(
 
         return when (val result = repository.getSchedule()) {
             is Either.Right -> {
-                Either.Right(result.value.filter { it.day == day+1 })
+                Either.Right(result.value.filter { it.day == day }.sortedBy { it.initialHour })
             }
             else -> result
         }
