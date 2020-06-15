@@ -115,7 +115,7 @@ class Semestre : Serializable {
 
 class SemestreEstudiante : Serializable {
     var idSemestreEstudiante: String? = null
-    var promedioSemestral = 0f
+    var ponderado = 0f
     var fkEstudiante: Estudiante? = null
     var puntos = 0f
     var creditos = 0

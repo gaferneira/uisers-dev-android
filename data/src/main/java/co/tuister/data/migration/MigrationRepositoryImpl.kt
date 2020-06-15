@@ -51,7 +51,7 @@ class MigrationRepositoryImpl(
 
             val semestres = migrationData.semestreEstudianteList.map {
                 SemesterUserDto(
-                    it.promedioSemestral.toString(),
+                    it.ponderado.toString(),
                     "" + it.fkSemestre!!.toString(),
                     it.creditos.toString()
                 )
