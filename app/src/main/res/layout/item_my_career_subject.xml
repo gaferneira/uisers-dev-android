@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/ThemeOverlay.MyApp.Lighter"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -21,8 +22,7 @@
             android:layout_height="wrap_content"
             android:background="?colorPrimary"
             android:paddingTop="@dimen/padding_margin_small"
-            android:paddingBottom="@dimen/padding_margin_small"
-            android:theme="@style/ThemeOverlay.MyApp.LightGreen">
+            android:paddingBottom="@dimen/padding_margin_small">
 
             <TextView
                 android:id="@+id/text_view_subject_name"

@@ -12,6 +12,7 @@ import co.tuister.domain.usecases.login.CareersUseCase
 import co.tuister.domain.usecases.login.DownloadImageUseCase
 import co.tuister.domain.usecases.login.UploadImageUseCase
 import co.tuister.domain.usecases.profile.ProfileUseCase
+import co.tuister.uisers.BuildConfig
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
@@ -45,7 +46,8 @@ class ProfileViewModel(
 
     fun initialize(extrauser: User) {
         _user.value = extrauser
-        if (extrauser.email in listOf("vidaljramirez@gmail.com", "gabo.neira@gmail.com")) {
+
+        if (BuildConfig.DEBUG || (extrauser.email in listOf("vidaljramirez@gmail.com", "gabo.neira@gmail.com"))) {
             _visibility.value = VISIBLE
         }
         downloadImage()

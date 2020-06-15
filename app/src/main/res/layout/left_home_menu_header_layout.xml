@@ -13,8 +13,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey_300"
-        android:padding="10dp">
+        android:background="?colorPrimary"
+        android:padding="10dp"
+        android:theme="@style/ThemeOverlay.MyApp.Lighter">
 
         <com.androdocs.circleimagelibrary.CircleImageView
             android:id="@+id/circle_image_photo"
@@ -31,22 +32,24 @@
         <TextView
             android:id="@+id/text_view_hi"
             style="@style/TextAppearance.MyTheme.Headline6"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:maxLength="15"
+            android:lines="1"
             android:text="@string/welcome_message"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/circle_image_photo"
             app:layout_constraintTop_toTopOf="@+id/circle_image_photo" />
 
         <TextView
             android:id="@+id/text_view_name"
-            style="@style/TextAppearance.MyTheme.Headline4"
-            android:layout_width="wrap_content"
+            style="@style/TextAppearance.MyTheme.Headline6"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:maxLength="7"
+            android:lines="1"
             android:text="@{viewModel.name}"
-            android:textColor="@color/black"
+            android:textColor="?colorOnSurface"
+            app:layout_constraintEnd_toStartOf="@id/circle_image_photo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_hi"
             tools:text="vidaljramirez@dasdad.com" />
@@ -58,31 +61,34 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@{viewModel.email}"
+            android:textColor="?colorOnPrimarySurface"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/circle_image_photo"
             tools:text="asdasd@dasdad.com" />
 
         <TextView
             android:id="@+id/text_view_career"
-            style="@style/TextAppearance.MyTheme.Subtitle1"
+            style="@style/TextAppearance.MyTheme.Subtitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@{viewModel.career}"
+            android:textColor="?colorOnPrimarySurface"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_email"
             tools:text="Ingenieria de Sistemas" />
 
         <TextView
             android:id="@+id/text_view_semester"
-            style="@style/TextAppearance.MyTheme.Subtitle1"
+            style="@style/TextAppearance.MyTheme.Subtitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@{viewModel.semester}"
+            android:textColor="?colorOnPrimarySurface"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_career"
-            tools:text="Ingenieria de Sistemas" />
+            tools:text="2020-2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

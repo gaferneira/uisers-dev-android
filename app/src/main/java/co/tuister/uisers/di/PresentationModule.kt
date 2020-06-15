@@ -55,7 +55,7 @@ val viewModelModule = module {
     viewModel { MapViewModel(get(), get()) }
 
     // Internal Use Only
-    viewModel { InternalUseViewModel(get()) }
+    viewModel { InternalUseViewModel(get(), get(), get()) }
 }
 
 val presentationModule = module {

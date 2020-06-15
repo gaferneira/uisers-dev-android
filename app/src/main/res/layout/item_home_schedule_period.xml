@@ -34,7 +34,7 @@
             android:background="?colorPrimary"
             android:paddingTop="@dimen/padding_margin_small"
             android:paddingBottom="@dimen/padding_margin_small"
-            android:theme="@style/ThemeOverlay.MyApp.LightGreen">
+            android:theme="@style/ThemeOverlay.MyApp.Lighter">
 
             <TextView
                 android:id="@+id/text_view_subject_name"

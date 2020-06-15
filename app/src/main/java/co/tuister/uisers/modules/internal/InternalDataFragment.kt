@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInternalDataBinding
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateCareers
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateSubjects
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.ValidateUserDocument
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
+import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -37,6 +41,15 @@ class InternalDataFragment : BaseFragment() {
         binding.buttonDownloadUsesCsv.setOnClickListener {
             viewModel.generateUserCSVData(requireContext())
         }
+        binding.buttonUpdateSubjects.setOnClickListener {
+            viewModel.updateSubjects()
+        }
+        binding.buttonUpdateCareers.setOnClickListener {
+            viewModel.updateCareers()
+        }
+        binding.buttonMaterial.setOnClickListener {
+            findNavController().navigate(R.id.action_internal_to_material)
+        }
     }
 
     private fun initViewModel() {
@@ -53,6 +66,8 @@ class InternalDataFragment : BaseFragment() {
     private fun update(status: BaseState<Any>?) {
         when (status) {
             is ValidateUserDocument -> processDocument(status)
+            is UpdateSubjects -> updateSubjects(status)
+            is UpdateCareers -> updateCareers(status)
         }
     }
 
@@ -74,6 +89,45 @@ class InternalDataFragment : BaseFragment() {
             }
             state.isFailure() -> {
                 binding.loadingStatus.isVisible = false
+            }
+        }
+    }
+
+    private fun updateSubjects(status: UpdateSubjects) {
+        when (val result = status.result) {
+            is Result.InProgress -> {
+                binding.loadingStatus.isVisible = true
+                binding.buttonUpdateSubjects.isEnabled = false
+                binding.loadingStatusMessage.text =
+                context?.getString(R.string.progress_updating)
+            }
+            is Result.Error -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonUpdateSubjects.isEnabled = true
+                manageFailure(result.exception, true)
+            }
+            is Result.Success -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonUpdateSubjects.isEnabled = true
+            }
+        }
+    }
+
+    private fun updateCareers(status: UpdateCareers) {
+        when (val result = status.result) {
+            is InProgress -> {
+                binding.loadingStatus.isVisible = true
+                binding.buttonUpdateCareers.isEnabled = false
+                context?.getString(R.string.progress_updating)
+            }
+            is Result.Error -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonUpdateCareers.isEnabled = true
+                manageFailure(result.exception, true)
+            }
+            is Result.Success -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonUpdateCareers.isEnabled = true
             }
         }
     }

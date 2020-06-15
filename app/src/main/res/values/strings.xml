@@ -64,6 +64,7 @@
     <string name="register_period_II">II</string>
     <string name="start_progress">Starting app...</string>
     <string name="progress_downloading_data">Downloading&#8230;</string>
+    <string name="progress_updating">Updating&#8230;</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_invalid_match_password">The password is different</string>
@@ -130,6 +131,7 @@
     <string name="alert">Alert</string>
     <string name="alert_check_internet">Check your internet connection</string>
     <string name="alert_error_server">"Server error, please try again later"</string>
+    <string name="alert_error_try_again">"There was an error, please try again later"</string>
     <string name="alert_select_semester">In order to add a subject you must chose the current semester</string>
     <string name="confirm_are_you_sure">Are you sure?</string>
     <string name="confirm_update_calendar">Would you like to update the calendar?</string>

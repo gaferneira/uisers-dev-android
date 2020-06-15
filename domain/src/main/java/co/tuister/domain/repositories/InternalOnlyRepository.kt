@@ -5,7 +5,7 @@ import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.User
 
 interface InternalOnlyRepository {
-    suspend fun loadDataCareers()
-    suspend fun loadDataSubjects()
+    suspend fun loadDataCareers() : Either<Failure, Boolean>
+    suspend fun loadDataSubjects() : Either<Failure, Boolean>
     suspend fun getAllUserData(): Either<Failure, List<User>>
 }

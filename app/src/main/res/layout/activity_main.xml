@@ -93,7 +93,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            app:itemTextAppearance="@style/TextAppearance.MyTheme.Subtitle1"
             app:menu="@menu/left_home_menu">
 
             <LinearLayout

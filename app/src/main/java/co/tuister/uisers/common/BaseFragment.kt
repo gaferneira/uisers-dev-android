@@ -6,6 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import co.tuister.domain.base.Failure
 import co.tuister.uisers.R
 import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.utils.UisersDialogFragment
@@ -73,5 +74,21 @@ open class BaseFragment : Fragment() {
             Intent.createChooser(photoPickerIntent, "Select Picture"),
             RegisterFragment.RESULT_LOAD_IMAGE
         )
+    }
+
+    protected fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
+        when (failure) {
+            is Failure.ServerError -> showDialog(R.string.alert_error_server, R.string.alert)
+            is Failure.NetworkConnection -> showDialog(R.string.alert_check_internet, R.string.alert)
+            else -> {
+                if (showGenericMessage) {
+                    showDialog(R.string.alert_error_try_again, R.string.alert)
+                } else {
+                    return false
+                }
+            }
+        }
+
+        return true
     }
 }
