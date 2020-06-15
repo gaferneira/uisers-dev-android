@@ -15,10 +15,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
 class LoginRepositoryImpl(
-    val firebaseAuth: FirebaseAuth,
+    firebaseAuth: FirebaseAuth,
     val db: FirebaseFirestore,
     val firebaseStorage: FirebaseStorage
-) : LoginRepository {
+) : MyCareerRepository(firebaseAuth, db), LoginRepository {
 
     private val usersCollection by lazy { UsersCollection(db) }
 
@@ -33,6 +33,10 @@ class LoginRepositoryImpl(
             }
 
             val user = usersCollection.getByEmail(email)?.toObject(User::class.java)
+
+            //check if current semester exists
+            getCurrentSemesterPath()
+
             Either.Right(user)
 
         } catch (e: Exception) {
