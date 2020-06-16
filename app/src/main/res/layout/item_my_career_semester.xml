@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/grey_50"
+    android:background="?colorSecondary"
     android:paddingHorizontal="@dimen/padding_margin_normal_smaller"
-    android:paddingBottom="@dimen/padding_margin_small">
+    android:paddingBottom="@dimen/padding_margin_small"
+    android:theme="@style/ThemeOverlay.MyApp.Light">
 
     <View
         android:id="@+id/divider"
@@ -22,10 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBaseline_toBaselineOf="@id/text_view_semester"
-        app:layout_constraintTop_toBottomOf="@id/divider"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <TextView
         android:id="@+id/text_view_semester"
@@ -34,10 +34,10 @@
         android:layout_marginStart="@dimen/padding_margin_normal_smaller"
         android:layout_marginTop="@dimen/padding_margin_micro"
         android:textAppearance="?textAppearanceSubtitle1"
-        android:textColor="?colorOnSurface"
-        app:layout_constraintTop_toBottomOf="@id/divider"
-        app:layout_constraintStart_toEndOf="@id/radio_button"
+        android:textColor="?colorOnSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/radio_button"
+        app:layout_constraintTop_toBottomOf="@id/divider"
         tools:text="2019-2" />
 
     <TextView
@@ -50,7 +50,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider"
         tools:text="3.95" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

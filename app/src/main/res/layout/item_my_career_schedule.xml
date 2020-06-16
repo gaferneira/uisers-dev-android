@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/grey_50"
+    android:background="?colorSecondary"
     android:paddingHorizontal="@dimen/padding_margin_normal_smaller"
-    android:paddingBottom="@dimen/padding_margin_small">
+    android:paddingBottom="@dimen/padding_margin_small"
+    android:theme="@style/ThemeOverlay.MyApp.Light">
 
     <View
         android:id="@+id/divider"
@@ -33,10 +34,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_margin_normal_smaller"
-        android:paddingTop="@dimen/padding_margin_small"
         android:layout_marginTop="@dimen/padding_margin_micro"
+        android:paddingTop="@dimen/padding_margin_small"
         android:textAppearance="?textAppearanceSubtitle1"
-        android:textColor="?colorOnSurface"
+        android:textColor="?colorOnSecondary"
         app:layout_constraintBottom_toTopOf="@+id/text_view_description"
         app:layout_constraintStart_toEndOf="@id/text_view_hour"
         app:layout_constraintTop_toBottomOf="@id/divider"
@@ -48,11 +49,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="?textAppearanceCaption"
+        android:textColor="?colorOnSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/text_view_class_name"
         app:layout_constraintTop_toBottomOf="@+id/text_view_class_name"
         tools:text="Lugar" />
-    >
 
 </androidx.constraintlayout.widget.ConstraintLayout>

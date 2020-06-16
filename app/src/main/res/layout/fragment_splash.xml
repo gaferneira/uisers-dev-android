@@ -61,9 +61,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/padding_margin_normal"
-                android:fontFamily="sans-serif-light"
                 android:text="@{splashViewModel.message}"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </RelativeLayout>

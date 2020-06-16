@@ -2,24 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/ThemeOverlay.MyApp.Lighter"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.MyApp.Light">
 
     <TextView
         android:id="@+id/text_view_day"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_margin_small"
+        android:background="?colorSecondaryVariant"
         android:paddingHorizontal="@dimen/padding_margin_normal_smaller"
         android:paddingVertical="@dimen/padding_margin_small"
         android:textAppearance="?textAppearanceSubtitle1"
         android:textColor="?colorOnSecondary"
-        android:background="?colorSecondary"
-        android:layout_marginTop="@dimen/padding_margin_small"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Lunes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@ class InternalMaterialFragment : BaseFragment() {
             theme = if (checkedId == R.id.radio_button_one) {
                 R.style.Base_Theme_MyApp
             } else {
-                R.style.ThemeOverlay_MyApp_Lighter
+                R.style.ThemeOverlay_MyApp_Light
             }
             showDialog("Ingrese de nuevo para ver el cambio de theme", "") {
                 findNavController().popBackStack()

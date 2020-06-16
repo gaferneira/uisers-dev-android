@@ -13,9 +13,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?colorPrimary"
+        android:background="?colorPrimaryVariant"
         android:padding="10dp"
-        android:theme="@style/ThemeOverlay.MyApp.Lighter">
+        android:theme="@style/ThemeOverlay.MyApp.Light">
 
         <com.androdocs.circleimagelibrary.CircleImageView
             android:id="@+id/circle_image_photo"
@@ -37,6 +37,7 @@
             android:lines="1"
             android:text="@string/welcome_message"
             android:textAppearance="?textAppearanceHeadline4"
+            android:textColor="@color/black_800"
             app:layout_constraintEnd_toStartOf="@id/circle_image_photo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/circle_image_photo" />
@@ -48,7 +49,7 @@
             android:lines="1"
             android:text="@{viewModel.name}"
             android:textAppearance="@style/TextAppearance.MyTheme.Headline6"
-            android:textColor="?colorOnSurface"
+            android:textColor="?colorOnSecondary"
             app:layout_constraintEnd_toStartOf="@id/circle_image_photo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_hi"
@@ -61,7 +62,7 @@
             android:layout_marginTop="10dp"
             android:text="@{viewModel.email}"
             android:textAppearance="@style/TextAppearance.MyTheme.Subtitle1"
-            android:textColor="?colorOnPrimarySurface"
+            android:textColor="?colorOnSecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/circle_image_photo"
             tools:text="asdasd@dasdad.com" />
@@ -73,7 +74,7 @@
             android:layout_marginTop="5dp"
             android:text="@{viewModel.career}"
             android:textAppearance="@style/TextAppearance.MyTheme.Subtitle2"
-            android:textColor="?colorOnPrimarySurface"
+            android:textColor="?colorOnSecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_email"
             tools:text="Ingenieria de Sistemas" />
@@ -85,7 +86,7 @@
             android:layout_marginTop="5dp"
             android:text="@{viewModel.semester}"
             android:textAppearance="@style/TextAppearance.MyTheme.Subtitle2"
-            android:textColor="?colorOnPrimarySurface"
+            android:textColor="?colorOnSecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_career"
             tools:text="2020-2" />
