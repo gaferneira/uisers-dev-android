@@ -1,10 +1,10 @@
 package co.tuister.uisers.modules.my_career
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
@@ -55,9 +55,13 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     currentPosition = position
-                    val colorRes = if (position == 1) R.color.green_200 else R.color.grey_200
-                    val color = ResourcesCompat.getColorStateList(resources, colorRes, activity?.theme)
-                    binding.buttonAdd.backgroundTintList = color
+
+                    val attr = if (position == 1) R.attr.colorPrimary else R.attr.colorSecondary
+                    val typedArray = context.theme.obtainStyledAttributes(intArrayOf(attr))
+                    val color = typedArray.getColor(0, 0)
+                    typedArray.recycle()
+
+                    binding.buttonAdd.backgroundTintList = ColorStateList.valueOf(color)
                 }
             })
         }

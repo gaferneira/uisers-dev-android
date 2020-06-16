@@ -49,7 +49,8 @@ class SubjectRepositoryImpl(
                     }
                 }
 
-            Either.Right(subjects)
+            Either.Right(subjects.sortedByDescending { it.credits })
+
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
         }

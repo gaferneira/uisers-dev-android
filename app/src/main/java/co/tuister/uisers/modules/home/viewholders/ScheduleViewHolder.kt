@@ -29,7 +29,8 @@ class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
         val viewsList = container.children.toMutableList()
         val currentSize = viewsList.size
 
-        val lastIndex = data.list?.lastIndex ?: 0
+        val list = data.list?.sortedBy { it.initialHour } ?: listOf()
+        val lastIndex = list.lastIndex
         for (i in currentSize..lastIndex) {
             val view =
                 LayoutInflater.from(itemView.context).inflate(R.layout.item_home_schedule_period, null)
@@ -39,7 +40,7 @@ class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
 
         container.removeAllViews()
 
-        data.list?.forEachIndexed { i, period ->
+        list.forEachIndexed { i, period ->
             container.addView(configChildView(viewsList[i], period).apply {
                 setOnClickListener {
                     listener.onClickSchedulePeriod(period)

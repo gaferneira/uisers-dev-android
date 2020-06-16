@@ -41,7 +41,7 @@ class SemesterRepositoryImpl(
                 }
             }
 
-            Either.Right(list ?: listOf())
+            Either.Right(list.sortedByDescending { it.period })
         } catch (exception: Exception) {
             Either.Left(Failure.ServerError(exception))
         }
