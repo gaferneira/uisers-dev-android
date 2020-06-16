@@ -1,6 +1,6 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.await
+import co.tuister.data.utils.await
 import co.tuister.data.dto.DataTasksUserDto
 import co.tuister.data.dto.TaskDto
 import co.tuister.data.dto.toDTO

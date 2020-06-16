@@ -1,7 +1,7 @@
 package co.tuister.data.repositories
 
 import android.net.Uri
-import co.tuister.data.await
+import co.tuister.data.utils.await
 import co.tuister.data.dto.toDTO
 import co.tuister.data.utils.UsersCollection
 import co.tuister.domain.base.Either

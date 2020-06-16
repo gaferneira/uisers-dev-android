@@ -1,7 +1,7 @@
 package co.tuister.data.repositories
 
 import android.content.Context
-import co.tuister.data.await
+import co.tuister.data.utils.await
 import co.tuister.data.dto.CareerDto
 import co.tuister.data.dto.CareerSubjectDto
 import co.tuister.data.dto.UserDataDto

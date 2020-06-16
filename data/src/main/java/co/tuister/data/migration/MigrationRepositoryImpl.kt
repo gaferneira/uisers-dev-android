@@ -1,6 +1,6 @@
 package co.tuister.data.migration
 
-import co.tuister.data.await
+import co.tuister.data.utils.await
 import co.tuister.data.dto.*
 import co.tuister.data.repositories.MyCareerRepository
 import co.tuister.data.utils.*

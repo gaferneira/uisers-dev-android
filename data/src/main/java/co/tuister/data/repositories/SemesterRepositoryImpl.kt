@@ -1,7 +1,6 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.await
-import co.tuister.data.dto.DataSemesterUserDto
+import co.tuister.data.utils.await
 import co.tuister.data.dto.SemesterUserDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
