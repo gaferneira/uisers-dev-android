@@ -1,6 +1,5 @@
 package co.tuister.data.utils
 
-import co.tuister.data.await
 import com.google.firebase.firestore.FirebaseFirestore
 
 sealed class FirebaseCollection(private val db: FirebaseFirestore, val name: String) {

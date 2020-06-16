@@ -1,6 +1,6 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.await
+import co.tuister.data.utils.await
 import co.tuister.data.dto.*
 import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS

@@ -1,6 +1,6 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.await
+import co.tuister.data.utils.await
 import co.tuister.data.dto.SchedulePeriodDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
@@ -12,8 +12,6 @@ import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.repositories.ScheduleRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.delay
-import java.util.*
 
 class ScheduleRepositoryImpl(
     firebaseAuth: FirebaseAuth,

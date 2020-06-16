@@ -1,4 +1,4 @@
-package co.tuister.data
+package co.tuister.data.utils
 
 import com.google.android.gms.tasks.Task
 import kotlinx.coroutines.CancellationException

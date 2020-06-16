@@ -34,16 +34,12 @@
         <item name="android:layout_height">20dp</item>
     </style>
 
-    <style name="FontType">
-        <item name="fontFamily">@font/qarmic_sans</item>
-    </style>
-
     <style name="Widget.MyApp.TextInputLayout" parent="Base.Widget.MaterialComponents.TextInputLayout">
         <item name="boxBackgroundColor">@android:color/transparent</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="TitleTextViewToolbar" parent="FontType">
+    <style name="TitleTextViewToolbar">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>

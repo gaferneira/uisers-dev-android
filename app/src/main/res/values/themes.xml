@@ -43,6 +43,10 @@
         <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
+
+        <item name="fontFamily">@font/comfortaa_regular</item>
+        <item name="android:fontFamily">@font/comfortaa_regular</item>
+
         <!--Material shape attributes-->
         <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MyTheme.SmallComponent
         </item>
@@ -63,11 +67,11 @@
 
     <style name="ThemeOverlay.MyApp.Lighter" parent="">
         <item name="colorPrimary">@color/green_100</item>
-        <item name="colorOnPrimary">@color/grey_800</item>
+        <item name="colorOnPrimary">@color/grey_900</item>
         <item name="colorPrimaryDark">@color/green_500</item>
 
         <item name="colorSecondary">@color/grey_300</item>
-        <item name="colorOnSecondary">@color/grey_800</item>
+        <item name="colorOnSecondary">@color/black_900</item>
     </style>
 
 </resources>
