@@ -20,4 +20,15 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
     </style>
+
+    <style name="ThemeOverlay.MyApp.Light" parent="">
+        <item name="colorPrimary">@color/grey_700</item>
+        <item name="colorOnPrimary">@color/black_900</item>
+        <item name="colorPrimaryDark">@color/grey_600</item>
+        <item name="colorSecondary">@color/grey_400</item>
+        <item name="colorOnSecondary">@color/black_900</item>
+        <item name="colorPrimaryVariant">@color/green_100</item>
+        <item name="colorSecondaryVariant">@color/grey_300</item>
+    </style>
+
 </resources>

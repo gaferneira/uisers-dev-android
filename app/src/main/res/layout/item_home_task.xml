@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:theme="@style/ThemeOverlay.MyApp.Lighter">
+    android:theme="@style/ThemeOverlay.MyApp.Light">
 
     <TextView
         android:id="@+id/text_view_task_hour"
         android:layout_width="80dp"
         android:layout_height="0dp"
+        android:paddingEnd="@dimen/padding_margin_small"
+        android:textAlignment="textEnd"
         android:textAppearance="?textAppearanceCaption"
         android:textColor="@color/grey_700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textAlignment="textEnd"
-        android:paddingEnd="@dimen/padding_margin_small"
         tools:text="Jun 20 10:00" />
 
     <androidx.cardview.widget.CardView
@@ -32,7 +32,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?colorSecondary"
+            android:background="?colorSecondaryVariant"
             android:paddingTop="@dimen/padding_margin_small"
             android:paddingBottom="@dimen/padding_margin_small">
 

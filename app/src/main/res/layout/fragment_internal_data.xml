@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/green"
+        android:background="?colorPrimary"
         android:orientation="vertical">
 
         <LinearLayout
@@ -32,50 +32,50 @@
                 android:id="@+id/button_download_uses_csv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="?colorSurface"
                 android:text="DOWNLOAD CSV FILE"
-                android:textColor="@color/black" />
+                android:textColor="?colorOnSurface" />
 
             <Button
                 android:id="@+id/button_update_careers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="?colorSurface"
                 android:text="Update Careers"
-                android:textColor="@color/black" />
+                android:textColor="?colorOnSurface" />
 
             <Button
                 android:id="@+id/button_update_subjects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="?colorSurface"
                 android:text="Update Subjects"
-                android:textColor="@color/black" />
+                android:textColor="?colorOnSurface" />
 
             <Button
                 android:id="@+id/button_update_sites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="?colorSurface"
                 android:text="Update Sites"
-                android:textColor="@color/black" />
+                android:textColor="?colorOnSurface" />
 
             <Button
                 android:id="@+id/button_update_places"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="?colorSurface"
                 android:text="Update Places"
-                android:textColor="@color/black" />
+                android:textColor="?colorOnSurface" />
 
 
             <Button
                 android:id="@+id/button_material"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="?colorSurface"
                 android:text="Material"
-                android:textColor="@color/black" />
+                android:textColor="?colorOnSurface" />
 
         </LinearLayout>
 
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/padding_margin_normal"
-                android:fontFamily="sans-serif-light"
+
                 android:text="@string/progress_downloading_data"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@android:color/black" />

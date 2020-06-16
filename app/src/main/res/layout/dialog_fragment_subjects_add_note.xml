@@ -26,8 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minWidth="240dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -36,9 +36,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/prompt_details_grade"
+                android:importantForAutofill="no"
                 android:inputType="text"
-                android:text="@={noteBinding.title}"
-                android:importantForAutofill="no" />
+                android:text="@={noteBinding.title}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,10 +47,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/padding_margin_normal"
-            app:layout_constraintWidth_percent="0.5"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/text_input_percentage"
-            app:layout_constraintTop_toBottomOf="@+id/text_input_detail">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_detail"
+            app:layout_constraintWidth_percent="0.5">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_grade"
@@ -59,8 +59,8 @@
                 android:ems="4"
                 android:hint="@string/grade"
                 android:inputType="numberSigned|numberDecimal"
-                android:text="@={`` + noteBinding.grade}"
-                android:maxLength="4" />
+                android:maxLength="4"
+                android:text="@={`` + noteBinding.grade}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,10 +69,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_margin_normal"
-            app:layout_constraintWidth_percent="0.5"
-            app:layout_constraintTop_toTopOf="@id/text_input_grade"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/text_input_grade">
+            app:layout_constraintStart_toEndOf="@id/text_input_grade"
+            app:layout_constraintTop_toTopOf="@id/text_input_grade"
+            app:layout_constraintWidth_percent="0.5">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_percentage"
@@ -80,10 +80,10 @@
                 android:layout_height="wrap_content"
                 android:ems="4"
                 android:hint="@string/percentage"
+                android:importantForAutofill="no"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="4"
-                android:text="@={`` + noteBinding.percentage}"
-                android:importantForAutofill="no" />
+                android:text="@={`` + noteBinding.percentage}" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -94,8 +94,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:focusable="false"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_input_percentage">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -105,8 +105,8 @@
                 android:ems="10"
                 android:enabled="false"
                 android:hint="@string/grade_total"
-                android:inputType="text"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,8 +116,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:focusable="false"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_input_total">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -125,10 +125,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/note_subject"
-                android:inputType="text"
                 android:enabled="false"
-                android:importantForAutofill="no" />
+                android:hint="@string/note_subject"
+                android:importantForAutofill="no"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,10 +138,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/action_save"
-            app:layout_constraintTop_toBottomOf="@id/text_input_final_note"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_input_final_note" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

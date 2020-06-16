@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/screen_horizontal_margin"
-    android:paddingVertical="@dimen/screen_horizontal_margin"
-    android:orientation="vertical">
+    android:paddingVertical="@dimen/screen_horizontal_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,48 +15,45 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Themes"
-            android:textAppearance="?textAppearanceSubtitle1"
             android:layout_marginBottom="@dimen/padding_margin_normal"
-            />
+            android:text="Themes"
+            android:textAppearance="?textAppearanceSubtitle1" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/content_themes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <RadioGroup
                 android:id="@+id/radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/label"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/label">
 
                 <RadioButton
                     android:id="@+id/radio_button_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Base"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="Base" />
 
                 <RadioButton
                     android:id="@+id/radio_button_two"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lighter"
-                    />
+                    android:text="Light" />
 
             </RadioGroup>
 
             <LinearLayout
-                android:layout_marginTop="@dimen/padding_margin_normal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_margin_normal"
                 android:orientation="horizontal">
-
 
                 <Button
                     android:id="@+id/button_filled"
@@ -68,18 +65,17 @@
                     android:id="@+id/fab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_add"
-                    android:layout_marginStart="@dimen/padding_margin_normal" />
+                    android:layout_marginStart="@dimen/padding_margin_normal"
+                    android:src="@drawable/icon_add" />
 
                 <Button
-                    style="?materialButtonOutlinedStyle"
                     android:id="@+id/button_outlined"
+                    style="?materialButtonOutlinedStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Button"
-                    android:layout_marginStart="@dimen/padding_margin_normal" />
+                    android:layout_marginStart="@dimen/padding_margin_normal"
+                    android:text="Button" />
             </LinearLayout>
-
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_primary"
@@ -91,10 +87,10 @@
                 app:cardCornerRadius="@dimen/round_corner_normal">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?colorPrimary"
+                    android:orientation="vertical"
                     android:paddingHorizontal="@dimen/padding_margin_normal_smaller"
                     android:paddingTop="@dimen/padding_margin_small"
                     android:paddingBottom="@dimen/padding_margin_small">
@@ -102,16 +98,16 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Primary Color"
                         android:textAppearance="?textAppearanceSubtitle1"
-                        android:textColor="?colorOnPrimary"
-                        android:text="Materia" />
+                        android:textColor="?colorOnPrimary" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Description"
                         android:textAppearance="?textAppearanceCaption"
-                        android:textColor="?colorOnPrimary"
-                        android:text="Description" />
+                        android:textColor="?colorOnPrimary" />
 
                 </LinearLayout>
 
@@ -120,58 +116,118 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_margin_normal"
                 android:layout_marginBottom="@dimen/padding_margin_small"
                 android:paddingTop="@dimen/padding_margin_small"
-                android:layout_marginTop="@dimen/padding_margin_normal"
                 app:cardCornerRadius="@dimen/round_corner_normal">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?colorSecondary"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/padding_margin_normal_smaller"
                     android:paddingTop="@dimen/padding_margin_small"
                     android:paddingBottom="@dimen/padding_margin_small">
 
                     <TextView
-                        android:id="@+id/text_view_task_name"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/padding_margin_normal_smaller"
+                        android:text="Secondary Color"
                         android:textAppearance="?textAppearanceSubtitle1"
-                        android:textColor="?colorOnSecondary"
-                        app:layout_constraintBottom_toTopOf="@+id/text_view_task_desc"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_chainStyle="packed"
-                        android:text="Tarea" />
+                        android:textColor="?colorOnPrimary" />
 
                     <TextView
-                        android:id="@+id/text_view_task_desc"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Description"
                         android:textAppearance="?textAppearanceCaption"
-                        android:textColor="?colorOnSecondary"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@id/text_view_task_name"
-                        app:layout_constraintTop_toBottomOf="@+id/text_view_task_name"
-                        android:text="Description" />
+                        android:textColor="?colorOnPrimary" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_margin_normal"
+                android:layout_marginBottom="@dimen/padding_margin_small"
+                android:paddingTop="@dimen/padding_margin_small"
+                app:cardCornerRadius="@dimen/round_corner_normal">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?colorPrimaryVariant"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/padding_margin_normal_smaller"
+                    android:paddingTop="@dimen/padding_margin_small"
+                    android:paddingBottom="@dimen/padding_margin_small">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Primary Variant Color"
+                        android:textAppearance="?textAppearanceSubtitle1"
+                        android:textColor="?colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:textAppearance="?textAppearanceCaption"
+                        android:textColor="?colorOnPrimary" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_margin_normal"
+                android:layout_marginBottom="@dimen/padding_margin_small"
+                android:paddingTop="@dimen/padding_margin_small"
+                app:cardCornerRadius="@dimen/round_corner_normal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?colorSecondaryVariant"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/padding_margin_normal_smaller"
+                    android:paddingTop="@dimen/padding_margin_small"
+                    android:paddingBottom="@dimen/padding_margin_small">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Secondary Variant Color"
+                        android:textAppearance="?textAppearanceSubtitle1"
+                        android:textColor="?colorOnPrimary" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description"
+                        android:textAppearance="?textAppearanceCaption"
+                        android:textColor="?colorOnPrimary" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tipografia"
             android:layout_marginTop="@dimen/padding_margin_normal"
-            android:textAppearance="?textAppearanceSubtitle1"
-            />
+            android:text="Tipografia"
+            android:textAppearance="?textAppearanceSubtitle1" />
 
         <LinearLayout
             android:layout_width="match_parent"
