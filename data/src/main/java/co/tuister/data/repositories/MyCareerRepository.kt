@@ -56,7 +56,7 @@ abstract class MyCareerRepository(
 
     private suspend fun createInitialDocument(data: DataSemesterUserDto): String {
         return try {
-            val semester = Semester(data.currentSemester, 0f, 0, true)
+            val semester = Semester("", data.currentSemester, 0f, 0, true)
             val id = semestersCollection.collection().add(data).await()!!.id
             semestersCollection.document(id)
                 .collection(SemestersCollection.COL_SEMESTERS)

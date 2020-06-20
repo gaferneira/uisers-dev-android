@@ -11,7 +11,7 @@ import co.tuister.uisers.utils.format
 import kotlinx.android.synthetic.main.item_my_career_subject.*
 
 class SubjectsAdapter(
-  private val listener: SubjectListener?
+    private val listener: SubjectListener?
 ) : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>() {
 
     var list = listOf<Subject>()
@@ -40,8 +40,8 @@ class SubjectsAdapter(
 
     class SubjectViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(
-          subject: Subject,
-          listener: SubjectListener?
+            subject: Subject,
+            listener: SubjectListener?
         ) {
             text_view_subject_name.text = subject.name
             text_view_subject_desc.text = subject.teacher

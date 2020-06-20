@@ -12,6 +12,6 @@ class TaskDto(
     var reminder: Int? = null
     ) : Serializable
 
-fun TaskDto.toEntity() = Task("", title, description, dueDate, status, reminder)
+fun TaskDto.toEntity(path: String) = Task(path, title, description, dueDate, status, reminder)
 
 fun Task.toDTO() = TaskDto(title, description, dueDate, status, reminder)

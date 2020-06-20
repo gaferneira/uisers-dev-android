@@ -11,7 +11,7 @@ class SchedulePeriodDto(
     var place: String? = null
 ) : Serializable
 
-fun SchedulePeriodDto.toEntity() = SchedulePeriod("", description, day, initialHour, finalHour, place)
+fun SchedulePeriodDto.toEntity(path: String) = SchedulePeriod(path, description, day, initialHour, finalHour, place)
 
 fun SchedulePeriod.toDTO() = SchedulePeriodDto(
     description, day, initialHour, finalHour, place

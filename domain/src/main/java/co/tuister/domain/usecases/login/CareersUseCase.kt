@@ -10,6 +10,10 @@ class CareersUseCase(
     private val userRepository: UserRepository
 ) : NoParamsUseCase<List<Career>>() {
     override suspend fun run(): Either<Failure, List<Career>> {
-        return userRepository.getCareers()
+        return try {
+            Either.Right(userRepository.getCareers())
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

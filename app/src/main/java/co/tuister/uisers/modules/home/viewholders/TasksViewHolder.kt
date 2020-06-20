@@ -9,16 +9,16 @@ import co.tuister.uisers.modules.home.HomeAdapter
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeTasks
 import co.tuister.uisers.utils.DateUtils
-import java.util.*
 import kotlinx.android.synthetic.main.item_home_schedule.view.*
 import kotlinx.android.synthetic.main.item_home_task.view.*
+import java.util.*
 
 class TasksViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
-      position: Int,
-      homeData: HomeData,
-      listener: HomeAdapter.HomeListener,
-      isLastIndex: Boolean
+        position: Int,
+        homeData: HomeData,
+        listener: HomeAdapter.HomeListener,
+        isLastIndex: Boolean
     ) {
         super.bind(position, homeData, listener, isLastIndex)
 
@@ -42,11 +42,13 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
         container.removeAllViews()
 
         list.forEachIndexed { i, task ->
-            container.addView(configChildView(viewsList[i], task).apply {
-                setOnClickListener {
-                    listener.onClickTask(task)
+            container.addView(
+                configChildView(viewsList[i], task).apply {
+                    setOnClickListener {
+                        listener.onClickTask(task)
+                    }
                 }
-            })
+            )
         }
     }
 

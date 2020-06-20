@@ -10,6 +10,10 @@ class GetMySubjectsUseCase(
     private val repository: SubjectRepository
 ) : NoParamsUseCase<List<Subject>>() {
     override suspend fun run(): Either<Failure, List<Subject>> {
-        return repository.getMySubjects()
+        return try {
+            Either.Right(repository.getMySubjects())
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

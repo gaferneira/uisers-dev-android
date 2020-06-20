@@ -33,9 +33,9 @@ class AddSubjectFragment : BaseFragment() {
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSubjectAddBinding.inflate(inflater)
         binding.lifecycleOwner = this

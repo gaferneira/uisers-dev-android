@@ -13,8 +13,8 @@ class ImagesUtils {
         fun downloadImageInto(context: Context, uri: Uri?, circleImageView: CircleImageView) {
             Glide.with(context).asBitmap().load(uri).into(object : SimpleTarget<Bitmap>() {
                 override fun onResourceReady(
-                  resource: Bitmap?,
-                  transition: Transition<in Bitmap>?
+                    resource: Bitmap?,
+                    transition: Transition<in Bitmap>?
                 ) {
                     circleImageView.setImageBitmap(resource)
                 }

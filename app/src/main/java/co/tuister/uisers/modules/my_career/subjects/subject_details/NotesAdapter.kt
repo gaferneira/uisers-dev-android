@@ -12,7 +12,7 @@ import co.tuister.uisers.utils.format
 import kotlinx.android.synthetic.main.item_my_career_note.*
 
 class NotesAdapter(
-  private val listener: NoteListener
+    private val listener: NoteListener
 ) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
     var list = listOf<Note>()
@@ -42,13 +42,13 @@ class NotesAdapter(
     class NoteViewHolder(view: View) : BaseViewHolder(view) {
 
         fun bind(
-          note: Note,
-          listener: NoteListener
+            note: Note,
+            listener: NoteListener
         ) {
             text_view_note_desc.text = note.title
-            text_view_note_grade.text = note.grade.format()
+            text_view_note_grade.text = note.grade.format(2, true)
             text_view_note_percentage.text = note.percentage.format(1)
-            text_view_note_total.text = note.total.format()
+            text_view_note_total.text = note.grade.format(2, true)
 
             val color = if (note.grade >= 3) R.color.green_700 else R.color.red_700
 

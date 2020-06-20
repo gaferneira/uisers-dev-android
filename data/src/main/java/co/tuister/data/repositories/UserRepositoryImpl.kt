@@ -115,38 +115,25 @@ class UserRepositoryImpl(
         }
     }
 
-    override suspend fun getCareers(): Either<Failure, List<Career>> {
+    override suspend fun getCareers(): List<Career> {
+        val data = baseCollection.getBaseDocument()
 
-        return try {
-            val data = baseCollection.getBaseDocument()
-
-            val result: List<HashMap<String, String>> =
-                data?.get(FIELD_CAREERS)?.castToList() ?: listOf()
-            val list = result.map {
-                Career(it["id"]!!, it["name"]!!)
-            }
-            Either.Right(list)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
+        val result: List<HashMap<String, String>> =
+            data?.get(FIELD_CAREERS)?.castToList() ?: listOf()
+        return result.map {
+            Career(it["id"]!!, it["name"]!!)
         }
     }
 
-    override suspend fun getCampus(): Either<Failure, List<String>> {
-        return try {
-            val data = baseCollection.getBaseDocument()
-            val result = data?.get(FIELD_CAMPUS).castToList<String>() ?: listOf()
-            Either.Right(result)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
-        }
+    override suspend fun getCampus(): List<String> {
+        val data = baseCollection.getBaseDocument()
+        return data?.get(FIELD_CAMPUS).castToList<String>() ?: listOf()
+
     }
 
-    override suspend fun downloadImage(email: String): Either<Failure, Uri> {
-        return try {
-            val url = firebaseStorage.reference.child("$email/profile.jpg").downloadUrl.await()
-            Either.Right(url!!)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
-        }
+    override suspend fun downloadImage(email: String): Uri {
+
+        val url = firebaseStorage.reference.child("$email/profile.jpg").downloadUrl.await()
+        return url!!
     }
 }

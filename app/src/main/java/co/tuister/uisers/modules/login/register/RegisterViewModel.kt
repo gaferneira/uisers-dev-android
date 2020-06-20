@@ -18,11 +18,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class RegisterViewModel(
-  val registerUseCase: RegisterUseCase,
-  val careersUseCase: CareersUseCase,
-  val logoutUseCase: LogoutUseCase,
-  val campusUseCase: CampusUseCase,
-  val uploadImageUseCase: UploadImageUseCase
+    val registerUseCase: RegisterUseCase,
+    val careersUseCase: CareersUseCase,
+    val logoutUseCase: LogoutUseCase,
+    val campusUseCase: CampusUseCase,
+    val uploadImageUseCase: UploadImageUseCase
 ) :
     BaseViewModel() {
 
@@ -77,13 +77,16 @@ class RegisterViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val result = registerUseCase.run(Params(userLive.value!!, password1.value!!))
-                result.fold({ fail ->
-                    setState(State.ValidateRegister(Error(fail)))
-                }, { res ->
-                    if (res) {
-                        runUploadRoutine()
+                result.fold(
+                    { fail ->
+                        setState(State.ValidateRegister(Error(fail)))
+                    },
+                    { res ->
+                        if (res) {
+                            runUploadRoutine()
+                        }
                     }
-                })
+                )
             }
         }
     }
@@ -145,12 +148,15 @@ class RegisterViewModel(
                 withContext(Dispatchers.Main) {
                     val result =
                         careersUseCase.run()
-                    result.fold({ fail ->
-                        setState(State.ValidateRegister(Error(fail)))
-                    }, { res ->
-                        listCareers.addAll(res)
-                        unit.invoke()
-                    })
+                    result.fold(
+                        { fail ->
+                            setState(State.ValidateRegister(Error(fail)))
+                        },
+                        { res ->
+                            listCareers.addAll(res)
+                            unit.invoke()
+                        }
+                    )
                 }
             }
         } else {
@@ -165,12 +171,15 @@ class RegisterViewModel(
                 withContext(Dispatchers.Main) {
                     val result =
                         campusUseCase.run()
-                    result.fold({ fail ->
-                        setState(State.ValidateRegister(Error(fail)))
-                    }, { res ->
-                        listCampus.addAll(res)
-                        unit.invoke()
-                    })
+                    result.fold(
+                        { fail ->
+                            setState(State.ValidateRegister(Error(fail)))
+                        },
+                        { res ->
+                            listCampus.addAll(res)
+                            unit.invoke()
+                        }
+                    )
                 }
             }
         } else {

@@ -11,7 +11,11 @@ class GetAllSemestersUseCase(
 ) : NoParamsUseCase<List<Semester>>() {
 
     override suspend fun run(): Either<Failure, List<Semester>> {
-        return repository.getAll()
+        return try {
+            Either.Right(repository.getAll())
+        }
+        catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
-
 }

@@ -21,41 +21,31 @@ class TasksRepositoryImpl(
 
     private val taskManagerCollection by lazy { TaskManagerCollection(db) }
 
-    override suspend fun getTasks(): Either<Failure, List<Task>> {
-        return try {
-            val collection = getUserDocument().collection(TaskManagerCollection.COL_TASKS)
-                .get()
-                .await()!!
+    override suspend fun getTasks(): List<Task> {
+        val collection = getUserDocument().collection(TaskManagerCollection.COL_TASKS)
+            .get()
+            .await()!!
 
-            val list = collection.documents.map {
-                val path = it.reference.path
-                it.toObject(TaskDto::class.java)!!.toEntity().apply {
-                    id = path
-                }
-            }
-
-            Either.Right(list.sortedBy { it.status })
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
+        val list = collection.documents.map {
+            val path = it.reference.path
+            it.toObject(TaskDto::class.java)!!.toEntity(path)
         }
+
+        return list.sortedBy { it.status }
     }
 
-    override suspend fun save(task: Task): Either<Failure, Task> {
-        return try {
-            if (task.id.isNotEmpty()){
-                val subjectDto = taskManagerCollection.documentByPath(task.id).get().await()!!
-                    subjectDto.reference.update(task.toDTO().objectToMap())
-            } else {
-                val id = getUserDocument()
-                    .collection(TaskManagerCollection.COL_TASKS)
-                    .add(task.toDTO())
-                    .await()!!.path
-                task.id = id
-            }
-            Either.Right(task)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
+    override suspend fun save(task: Task): Task {
+        if (task.id.isNotEmpty()) {
+            val subjectDto = taskManagerCollection.documentByPath(task.id).get().await()!!
+            subjectDto.reference.update(task.toDTO().objectToMap())
+        } else {
+            val id = getUserDocument()
+                .collection(TaskManagerCollection.COL_TASKS)
+                .add(task.toDTO())
+                .await()!!.path
+            task.id = id
         }
+        return task
     }
 
     private suspend fun getUserDocument() = taskManagerCollection.document(getUserDocumentsId())
@@ -71,7 +61,7 @@ class TasksRepositoryImpl(
         return id ?: createInitialDocument(email)
     }
 
-    private suspend fun createInitialDocument(email : String): String {
+    private suspend fun createInitialDocument(email: String): String {
         return try {
             val data = DataTasksUserDto(email)
             taskManagerCollection.collection().add(data).await()!!.id

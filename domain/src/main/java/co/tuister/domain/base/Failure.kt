@@ -7,6 +7,7 @@ import co.tuister.domain.base.Failure.FeatureFailure
  * Every feature specific failure should extend [FeatureFailure] class.
  */
 sealed class Failure(val error: Exception?, var param: String = "") {
+    class UnknownException(error: Exception? = null) : Failure(error)
     class NetworkConnection(error: Exception? = null) : Failure(error)
     class ServerError(error: Exception? = null) : Failure(error)
     class AuthWeakPasswordException(error: Exception? = null) : Failure(error)

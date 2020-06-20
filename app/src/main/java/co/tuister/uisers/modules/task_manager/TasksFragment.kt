@@ -23,9 +23,9 @@ class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
     private val viewModel by sharedViewModel<TasksViewModel>(from = { requireActivity() })
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTasksBinding.inflate(inflater)
         initViews()

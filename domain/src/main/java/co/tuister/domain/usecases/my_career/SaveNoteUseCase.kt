@@ -1,7 +1,6 @@
 package co.tuister.domain.usecases.my_career
 
 import co.tuister.domain.base.Either
-import co.tuister.domain.base.Either.Right
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.UseCase
 import co.tuister.domain.entities.Note
@@ -12,11 +11,10 @@ class SaveNoteUseCase(
     private val repository: SubjectRepository
 ) : UseCase<Note, Pair<Note, Subject>>() {
     override suspend fun run(params: Pair<Note, Subject>): Either<Failure, Note> {
-        return when (val result = repository.saveNote(params.first, params.second)) {
-            is Either.Left -> result
-            is Right -> {
-                Right(result.value)
-            }
+        return try {
+            Either.Right(repository.saveNote(params.first, params.second))
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
         }
     }
 }

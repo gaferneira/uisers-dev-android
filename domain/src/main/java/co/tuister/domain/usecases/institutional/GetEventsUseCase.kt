@@ -10,6 +10,11 @@ class GetEventsUseCase(
     private val repository: CalendarRepository
 ) : NoParamsUseCase<List<Event>>() {
     override suspend fun run(): Either<Failure, List<Event>> {
-        return repository.getEvents()
+        return try {
+            Either.Right(repository.getEvents())
+        }
+        catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

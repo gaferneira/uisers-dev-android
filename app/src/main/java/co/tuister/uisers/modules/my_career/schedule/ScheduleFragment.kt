@@ -11,21 +11,18 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentScheduleBinding
-import co.tuister.uisers.modules.my_career.MyCareerViewModel
 import co.tuister.uisers.modules.my_career.schedule.ScheduleViewModel.State
 import co.tuister.uisers.modules.my_career.subjects.subject_details.AddNoteDialogFragment
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
-import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class ScheduleFragment : BaseFragment(),
+class ScheduleFragment :
+    BaseFragment(),
     AddSchedulePeriodDialogFragment.AddSchedulePeriodDialogListener,
     ScheduleAdapter.ScheduleListener {
 
     private lateinit var binding: FragmentScheduleBinding
     private lateinit var viewModel: ScheduleViewModel
-
-    private val sharedViewModel by sharedViewModel<MyCareerViewModel>(from = { requireActivity() })
 
     private lateinit var adapter: ScheduleAdapter
 
@@ -37,9 +34,9 @@ class ScheduleFragment : BaseFragment(),
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentScheduleBinding.inflate(inflater)
         initViews()
@@ -65,26 +62,13 @@ class ScheduleFragment : BaseFragment(),
                 update(it)
             }
         }
-
-        lifecycleScope.launchWhenStarted {
-            sharedViewModel.state.collect {
-                update(it)
-            }
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        if (adapter.list.isEmpty()) {
-            sharedViewModel.updateSubjects()
-        }
     }
 
     private fun update(state: BaseState<Any>?) {
         when (state) {
             is State.LoadItems -> loadItems(state)
             is State.SavePeriod -> resultSavePeriod(state)
-            is MyCareerViewModel.State.LoadSubjects -> {
+            is State.LoadSubjects -> {
                 if (state.isSuccess()) {
                     subjects = state.data
                 }

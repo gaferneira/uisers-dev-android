@@ -10,6 +10,10 @@ class GetCurrentSemesterUseCase(
     private val repository: SemesterRepository
 ) : NoParamsUseCase<Semester>() {
     override suspend fun run(): Either<Failure, Semester> {
-        return repository.getCurrent()
+        return try {
+            Either.Right(repository.getCurrent())
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

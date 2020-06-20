@@ -11,12 +11,12 @@ class GetMainTasks(
     private val repository: TasksRepository
 ) : UseCase<List<Task>, Date>() {
     override suspend fun run(params: Date): Either<Failure, List<Task>> {
-
-        return when (val result = repository.getTasks()) {
-            is Either.Right -> {
-                Either.Right(result.value.filter { it.status != 2 }.take(5))
-            }
-            else -> result
+        return try {
+            val result = repository.getTasks()
+            Either.Right(result.filter { it.status != 2 }.take(5))
+        }
+        catch (e: Exception) {
+            Either.Left(analyzeException(e))
         }
     }
 }

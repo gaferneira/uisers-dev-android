@@ -9,13 +9,13 @@ import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.format
 import kotlinx.android.synthetic.main.item_my_career_footer.*
 
-class FooterAdapter() : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {
+class FooterAdapter : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {
 
     data class FooterData(var title: Int?, var total: Number?)
 
     private val footerData = FooterData(null, null)
 
-    override fun getItemCount() = if (footerData.title != null) {
+    override fun getItemCount() = if (footerData.total != null) {
         1
     } else {
         0

@@ -37,10 +37,10 @@ class GoogleMapsController : MapController {
     }
 
     override fun setMarker(
-      latLng: Pair<Double, Double>,
-      tag: String?,
-      title: String?,
-      icon: Drawable?
+        latLng: Pair<Double, Double>,
+        tag: String?,
+        title: String?,
+        icon: Drawable?
     ) {
         val position = LatLng(latLng.first, latLng.second)
 

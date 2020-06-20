@@ -5,11 +5,13 @@ import co.tuister.data.dto.SemesterUserDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.SemestersCollection
+import co.tuister.data.utils.objectToMap
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.Semester
 import co.tuister.domain.repositories.SemesterRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SemesterRepositoryImpl(
@@ -17,70 +19,61 @@ class SemesterRepositoryImpl(
     db: FirebaseFirestore
 ) : MyCareerRepository(firebaseAuth, db), SemesterRepository {
 
-    override suspend fun getCurrent(): Either<Failure, Semester> {
-        return try {
-            val semester = getCurrentSemester()
-            Either.Right(semester.toEntity())
-        } catch (e: Exception) {
-            Either.Left(Failure.ServerError(e))
-        }
+    override suspend fun getCurrent(): Semester {
+        val semesterDocument = getCurrentSemester()
+        val semester = semesterDocument.toObject(SemesterUserDto::class.java)!!
+        return semester.toEntity(semesterDocument.reference.path)
     }
 
-    override suspend fun getAll(): Either<Failure, List<Semester>> {
-        return try {
+    override suspend fun getAll(): List<Semester> {
 
-            val currentSemester = getCurrentSemester()
-            val collection = getSemestersCollection()
-                .get()
-                .await()!!
-
-            val list = collection.documents.map {
-                it.toObject(SemesterUserDto::class.java)!!.toEntity().apply {
-                    current = period == currentSemester.period
-                }
-            }
-
-            Either.Right(list.sortedByDescending { it.period })
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
-        }
-    }
-
-    override suspend fun save(semester: Semester): Either<Failure, Semester> {
-        return try {
-            getSemestersCollection()
-                .add(semester.toDTO())
-                .await()
-
-            if (semester.current) {
-                getUserDocument()
-                    .update(SemestersCollection.FIELD_CURRENT_SEMESTER, semester.period)
-                    .await()
-            }
-            Either.Right(semester)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
-        }
-    }
-
-    override suspend fun changeCurrentSemester(semester: Semester): Either<Failure, Semester> {
-        return try {
-            getUserDocument()
-                .update(SemestersCollection.FIELD_CURRENT_SEMESTER, semester.period)
-                .await()
-
-            Either.Right(semester)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
-        }
-    }
-
-    private suspend fun getCurrentSemester(): SemesterUserDto {
-        val document = semestersCollection.documentByPath(getCurrentSemesterPath())
+        val currentSemester = getCurrentSemester().toObject(SemesterUserDto::class.java)!!
+        val collection = getSemestersCollection()
             .get()
             .await()!!
 
-        return document.toObject(SemesterUserDto::class.java)!!
+        val list = collection.documents.map {
+            val path = it.reference.path
+            it.toObject(SemesterUserDto::class.java)!!.toEntity(path).apply {
+                current = period == currentSemester.period
+            }
+        }
 
+        return list.sortedByDescending { it.period }
+
+    }
+
+    override suspend fun save(semester: Semester): Semester {
+        if (semester.id.isNotEmpty()) {
+            val subjectDto = semestersCollection.documentByPath(semester.id).get().await()!!
+            subjectDto.reference.update(semester.toDTO().objectToMap())
+        } else {
+            val id = getSemestersCollection()
+                .add(semester.toDTO())
+                .await()!!.path
+            semester.id = id
+        }
+
+        if (semester.current) {
+            getUserDocument()
+                .update(SemestersCollection.FIELD_CURRENT_SEMESTER, semester.period)
+                .await()
+        }
+
+        return semester
+    }
+
+    override suspend fun changeCurrentSemester(semester: Semester): Semester {
+        getUserDocument()
+            .update(SemestersCollection.FIELD_CURRENT_SEMESTER, semester.period)
+            .await()
+
+        return semester
+    }
+
+    private suspend fun getCurrentSemester(): DocumentSnapshot {
+        return semestersCollection.documentByPath(getCurrentSemesterPath())
+            .get()
+            .await()!!
     }
 }

@@ -9,9 +9,9 @@ import kotlinx.coroutines.delay
 
 class MapRepositoryImpl : MapRepository {
 
-    override suspend fun getPlaces(): Either<Failure, List<Place>> {
+    override suspend fun getPlaces(): List<Place> {
         delay(1000)
-        return Either.Right(listOf(
+        return listOf(
             Place("PORTERIA CARRERA 27", "",Pair(7.138838,-73.120263), "1"),
             Place("AUDITORIO LUIS A. CALVO", "",Pair(7.139737,-73.120035), "1"),
             Place("ADMINISTRACIÓN", "",Pair(7.140586,-73.119798), "1"),
@@ -62,14 +62,14 @@ class MapRepositoryImpl : MapRepository {
             Place("INVERNADERO", "",Pair(7.142697,-73.120929), "1"),
             Place("Hospital Universitario", "",Pair(7.128135, -73.113725), "2"),
             Place("Escuela de Enfermeria", "",Pair(7.128576, -73.114536), "2")
-        ))
+        )
     }
 
-    override suspend fun getSites(): Either<Failure, List<Site>> {
+    override suspend fun getSites(): List<Site> {
         delay(1000)
-        return Either.Right(listOf(
+        return listOf(
             Site("1","Campus Principal - Bucaramanga", "",Pair(7.138838,-73.120263)),
             Site("2","Facultad de Salud - Bucaramanga", "",Pair(7.128576, -73.114536))
-        ))
+        )
     }
 }

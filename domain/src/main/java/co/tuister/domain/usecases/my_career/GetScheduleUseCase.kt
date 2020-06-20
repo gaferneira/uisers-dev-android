@@ -10,6 +10,10 @@ class GetScheduleUseCase(
     private val repository: ScheduleRepository
 ) : NoParamsUseCase<List<SchedulePeriod>>() {
     override suspend fun run(): Either<Failure, List<SchedulePeriod>> {
-        return repository.getSchedule()
+        return try {
+            Either.Right(repository.getSchedule())
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

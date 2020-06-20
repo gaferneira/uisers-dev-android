@@ -20,11 +20,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(
-  private val logoutUseCase: LogoutUseCase,
-  private val downloadImageUseCase: DownloadImageUseCase,
-  private val userUseCase: UserUseCase,
-  private val fcmUpdateUseCase: FCMUpdateUseCase,
-  private val migrationUseCase: MigrationUseCase
+    private val logoutUseCase: LogoutUseCase,
+    private val downloadImageUseCase: DownloadImageUseCase,
+    private val userUseCase: UserUseCase,
+    private val fcmUpdateUseCase: FCMUpdateUseCase,
+    private val migrationUseCase: MigrationUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -78,9 +78,12 @@ class MainViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData = downloadImageUseCase.run(DownloadImageUseCase.Params(user.email))
-                resultData.fold({}, {
-                    setState(State.DownloadedImage(Success(it)))
-                })
+                resultData.fold(
+                    {},
+                    {
+                        setState(State.DownloadedImage(Success(it)))
+                    }
+                )
             }
         }
     }
@@ -89,10 +92,13 @@ class MainViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData = userUseCase.run()
-                resultData.fold({ failure ->
-                }, {
-                    setUserData(it)
-                })
+                resultData.fold(
+                    { failure ->
+                    },
+                    {
+                        setUserData(it)
+                    }
+                )
             }
         }
     }

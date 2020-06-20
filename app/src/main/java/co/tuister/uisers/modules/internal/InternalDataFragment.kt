@@ -27,9 +27,9 @@ class InternalDataFragment : BaseFragment() {
     private lateinit var viewModel: InternalUseViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentInternalDataBinding.inflate(inflater)
         initViews()
@@ -99,7 +99,7 @@ class InternalDataFragment : BaseFragment() {
                 binding.loadingStatus.isVisible = true
                 binding.buttonUpdateSubjects.isEnabled = false
                 binding.loadingStatusMessage.text =
-                context?.getString(R.string.progress_updating)
+                    context?.getString(R.string.progress_updating)
             }
             is Result.Error -> {
                 binding.loadingStatus.isVisible = false

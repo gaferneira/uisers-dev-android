@@ -5,6 +5,6 @@ import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.SchedulePeriod
 
 interface ScheduleRepository {
-    suspend fun save(period: SchedulePeriod): Either<Failure, SchedulePeriod>
-    suspend fun getSchedule(): Either<Failure, List<SchedulePeriod>>
+    suspend fun save(period: SchedulePeriod): SchedulePeriod
+    suspend fun getSchedule(): List<SchedulePeriod>
 }

@@ -23,9 +23,9 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     private lateinit var adapter: HomeAdapter
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
         initViews()

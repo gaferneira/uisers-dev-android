@@ -16,9 +16,9 @@ import co.tuister.uisers.modules.task_manager.add_task.AddTaskViewModel.State
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.checkRequireFormFields
 import co.tuister.uisers.utils.pickDateTime
-import java.util.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
+import java.util.*
 
 class AddTaskFragment : BaseFragment() {
 
@@ -39,9 +39,9 @@ class AddTaskFragment : BaseFragment() {
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTasksAddBinding.inflate(inflater)
         binding.taskBinding = task
@@ -132,9 +132,9 @@ class AddTaskFragment : BaseFragment() {
 
     private fun showReminderOptions() {
         val valuesList = listOf(null) +
-                List(7) { (it) * 5 } + // minutes
-                List(4) { (it + 1) * 60 } + // hours
-                List(2) { (it + 1) * 60 * 24 } // days
+            List(7) { (it) * 5 } + // minutes
+            List(4) { (it + 1) * 60 } + // hours
+            List(2) { (it + 1) * 60 * 24 } // days
 
         val options = valuesList.map { reminderOption(it) }.toTypedArray()
 

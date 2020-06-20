@@ -8,16 +8,15 @@ import androidx.navigation.fragment.findNavController
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.databinding.FragmentInternalMaterialBinding
-import kotlinx.android.synthetic.main.fragment_internal_material.view.*
 
 class InternalMaterialFragment : BaseFragment() {
 
     private lateinit var binding: FragmentInternalMaterialBinding
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         requireContext().theme.applyStyle(theme, true)
         binding = FragmentInternalMaterialBinding.inflate(inflater)

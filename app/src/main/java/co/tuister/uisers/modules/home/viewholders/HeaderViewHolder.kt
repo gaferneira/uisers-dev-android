@@ -4,16 +4,16 @@ import android.view.View
 import co.tuister.uisers.modules.home.HomeAdapter
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeHeader
+import kotlinx.android.synthetic.main.item_home_header.view.*
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlinx.android.synthetic.main.item_home_header.view.*
 
 class HeaderViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
-      position: Int,
-      homeData: HomeData,
-      listener: HomeAdapter.HomeListener,
-      isLastIndex: Boolean
+        position: Int,
+        homeData: HomeData,
+        listener: HomeAdapter.HomeListener,
+        isLastIndex: Boolean
     ) {
         super.bind(position, homeData, listener, isLastIndex)
 

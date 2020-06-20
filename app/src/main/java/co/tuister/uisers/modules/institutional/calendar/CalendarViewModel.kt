@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CalendarViewModel(
-  private val getEvents: GetEventsUseCase
+    private val getEvents: GetEventsUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -30,11 +30,14 @@ class CalendarViewModel(
         viewModelScope.launch {
             setState(State.LoadItems(Result.InProgress()))
             val result = withContext(Dispatchers.IO) { getEvents.run() }
-            result.fold({
-                setState(State.LoadItems(Result.Error(it)))
-            }, {
-                setState(State.LoadItems(Result.Success(it)))
-            })
+            result.fold(
+                {
+                    setState(State.LoadItems(Result.Error(it)))
+                },
+                {
+                    setState(State.LoadItems(Result.Success(it)))
+                }
+            )
         }
     }
 }

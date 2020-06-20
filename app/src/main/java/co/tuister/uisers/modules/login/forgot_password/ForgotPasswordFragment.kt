@@ -21,9 +21,9 @@ class ForgotPasswordFragment : BaseFragment() {
     private lateinit var viewModel: ForgotPasswordViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentForgotPasswordBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -62,11 +62,11 @@ class ForgotPasswordFragment : BaseFragment() {
             }
             state.isFailure() -> {
                 binding.loginStatus.isVisible = false
-                showDialog(R.string.error_result_forget_message, R.string.title_forget_title)
+                showConfirmDialog(R.string.error_result_forget_message, R.string.title_forget_title)
             }
             else -> {
                 binding.loginStatus.isVisible = false
-                showDialog(R.string.success_result_forget_message, R.string.title_forget_title) {
+                showConfirmDialog(R.string.success_result_forget_message, R.string.title_forget_title) {
                     goBackToLogin()
                 }
             }

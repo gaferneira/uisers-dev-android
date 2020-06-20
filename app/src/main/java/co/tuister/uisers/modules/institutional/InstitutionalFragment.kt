@@ -23,9 +23,9 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
     private lateinit var viewModel: InstitutionalViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentInstitutionalBinding.inflate(inflater)
         initViews()

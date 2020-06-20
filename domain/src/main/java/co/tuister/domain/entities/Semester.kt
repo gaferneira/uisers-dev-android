@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Semester(
+    var id: String = "",
     val period: String,
     var average: Float = 0f,
     var credits: Int = 0,

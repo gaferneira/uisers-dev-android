@@ -45,7 +45,7 @@
                 android:textAppearance="?textAppearanceCaption"
                 android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/text_view_subject_name"
                 app:layout_constraintStart_toStartOf="@id/text_view_subject_name"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_subject_name"
                 tools:text="Lugar" />

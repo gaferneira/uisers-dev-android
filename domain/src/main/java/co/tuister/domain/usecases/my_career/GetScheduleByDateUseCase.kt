@@ -12,15 +12,15 @@ class GetScheduleByDateUseCase(
 ) : UseCase<List<SchedulePeriod>, Date>() {
 
     override suspend fun run(params: Date): Either<Failure, List<SchedulePeriod>> {
-        val day = Calendar.getInstance().apply {
-            time = params
-        }.get(Calendar.DAY_OF_WEEK)
-
-        return when (val result = repository.getSchedule()) {
-            is Either.Right -> {
-                Either.Right(result.value.filter { it.day == day }.sortedBy { it.initialHour })
-            }
-            else -> result
+        return try {
+            val day = Calendar.getInstance().apply {
+                time = params
+            }.get(Calendar.DAY_OF_WEEK)
+            val list = repository.getSchedule()
+            Either.Right(list.filter { it.day == day }.sortedBy { it.initialHour })
+        }
+        catch (e: Exception) {
+            Either.Left(analyzeException(e))
         }
     }
 

@@ -21,9 +21,9 @@ class SplashFragment : BaseFragment() {
     private lateinit var splashViewModel: SplashViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSplashBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -35,12 +35,15 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun initListeners() {
-        splashViewModel.events.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is GoToLogin -> findNavController().navigate(R.id.action_splash_fragment_dest_to_login_fragment_dest)
-                is GoToMain -> goToMain(it.user)
+        splashViewModel.events.observe(
+            viewLifecycleOwner,
+            Observer {
+                when (it) {
+                    is GoToLogin -> findNavController().navigate(R.id.action_splash_fragment_dest_to_login_fragment_dest)
+                    is GoToMain -> goToMain(it.user)
+                }
             }
-        })
+        )
     }
 
     private fun goToMain(user: User) {

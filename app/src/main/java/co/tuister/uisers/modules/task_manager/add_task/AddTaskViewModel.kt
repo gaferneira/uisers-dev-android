@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AddTaskViewModel(
-  private val saveTask: SaveTaskUseCase
+    private val saveTask: SaveTaskUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -28,11 +28,14 @@ class AddTaskViewModel(
         viewModelScope.launch {
             setState(State.Save(InProgress()))
             val result = withContext(Dispatchers.IO) { saveTask.run(task) }
-            result.fold({
-                setState(State.Save(Result.Error(it)))
-            }, {
-                setState(State.Save(Result.Success(task)))
-            })
+            result.fold(
+                {
+                    setState(State.Save(Result.Error(it)))
+                },
+                {
+                    setState(State.Save(Result.Success(task)))
+                }
+            )
         }
     }
 }

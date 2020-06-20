@@ -9,11 +9,11 @@ import co.tuister.domain.entities.Event
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.DateUtils
-import java.util.*
 import kotlinx.android.synthetic.main.item_institutional_calendar.*
+import java.util.*
 
 class CalendarAdapter(
-  private val listener: CalendarListener?
+    private val listener: CalendarListener?
 ) : RecyclerView.Adapter<CalendarAdapter.EventsViewHolder>(), SectionsAdapterInterface {
 
     var list = listOf<Event>()
@@ -52,8 +52,8 @@ class CalendarAdapter(
 
     class EventsViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(
-          event: Event,
-          listener: CalendarListener?
+            event: Event,
+            listener: CalendarListener?
         ) {
             text_view_title.text = event.title
             text_view_desc.text = event.description

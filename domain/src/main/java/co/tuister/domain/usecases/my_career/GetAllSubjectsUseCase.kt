@@ -13,23 +13,21 @@ class GetAllSubjectsUseCase(
 ) : NoParamsUseCase<List<CareerSubject>>() {
 
     override suspend fun run(): Either<Failure, List<CareerSubject>> {
-
-        when (val result = repository.getAll()) {
-            is Either.Right -> {
-                val list = result.value
-                val userCareer = userCareer()
-                val filterList = list.groupBy {it.id}.map { map ->
-                    val item = if (map.component2().size == 1) {
-                        map.component2().first()
-                    } else {
-                        map.component2().singleOrNull() { it.career == userCareer } ?: map.component2().first()
-                    }
-                    item
+        return try {
+            val list = repository.getAll()
+            val userCareer = userCareer()
+            val filterList = list.groupBy {it.id}.map { map ->
+                val item = if (map.component2().size == 1) {
+                    map.component2().first()
+                } else {
+                    map.component2().singleOrNull() { it.career == userCareer } ?: map.component2().first()
                 }
-                return Either.Right(filterList)
-            } else -> {
-              return result
+                item
             }
+            Either.Right(filterList)
+        }
+        catch (e: Exception) {
+            Either.Left(analyzeException(e))
         }
     }
 
@@ -39,6 +37,5 @@ class GetAllSubjectsUseCase(
             else -> null
         }
     }
-
 
 }

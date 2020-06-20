@@ -31,9 +31,12 @@ open class BaseFragment : Fragment() {
         UisersDialogFragment.Builder(requireContext())
             .setTitle(title)
             .setMessage(message)
-            .setPositiveButton(R.string.ok, View.OnClickListener {
-                unit?.invoke()
-            })
+            .setPositiveButton(
+                R.string.ok,
+                View.OnClickListener {
+                    unit?.invoke()
+                }
+            )
             .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
     }
 
@@ -41,28 +44,37 @@ open class BaseFragment : Fragment() {
         UisersDialogFragment.Builder(requireContext())
             .setTitle(title)
             .setMessage(message)
-            .setPositiveButton(R.string.ok, View.OnClickListener {
-                unit?.invoke()
-            })
+            .setPositiveButton(
+                R.string.ok,
+                View.OnClickListener {
+                    unit?.invoke()
+                }
+            )
             .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
     }
 
-    protected fun showDialog(
-      message: Int,
-      title: Int,
-      negativeMessage: Int,
-      unitNegative: (() -> Unit)?,
-      unitPositive: (() -> Unit)? = null
+    protected fun showConfirmDialog(
+        message: Int,
+        title: Int,
+        negativeMessage: Int = android.R.string.cancel,
+        unitNegative: (() -> Unit)? = null,
+        unitPositive: (() -> Unit)? = null
     ) {
         UisersDialogFragment.Builder(requireContext())
             .setTitle(title)
             .setMessage(message)
-            .setPositiveButton(R.string.ok, View.OnClickListener {
-                unitPositive?.invoke()
-            })
-            .setNegativeButton(negativeMessage, View.OnClickListener {
-                unitNegative?.invoke()
-            })
+            .setPositiveButton(
+                R.string.ok,
+                View.OnClickListener {
+                    unitPositive?.invoke()
+                }
+            )
+            .setNegativeButton(
+                negativeMessage,
+                View.OnClickListener {
+                    unitNegative?.invoke()
+                }
+            )
             .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
     }
 
@@ -78,11 +90,11 @@ open class BaseFragment : Fragment() {
 
     protected fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
         when (failure) {
-            is Failure.ServerError -> showDialog(R.string.alert_error_server, R.string.alert)
-            is Failure.NetworkConnection -> showDialog(R.string.alert_check_internet, R.string.alert)
+            is Failure.ServerError -> showConfirmDialog(R.string.alert_error_server, R.string.alert)
+            is Failure.NetworkConnection -> showConfirmDialog(R.string.alert_check_internet, R.string.alert)
             else -> {
                 if (showGenericMessage) {
-                    showDialog(R.string.alert_error_try_again, R.string.alert)
+                    showConfirmDialog(R.string.alert_error_try_again, R.string.alert)
                 } else {
                     return false
                 }
