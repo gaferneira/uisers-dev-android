@@ -1,6 +1,7 @@
 package co.tuister.uisers.modules.my_career.schedule
 
 import android.text.format.DateFormat
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +55,7 @@ class ScheduleAdapter(
         notifyDataSetChanged()
     }
 
-    open class ScheduleViewHolder(view: View) : BaseViewHolder(view) {
+    open class ScheduleViewHolder(view: View) : BaseViewHolder(view), View.OnCreateContextMenuListener {
 
         open fun bind(
             pair: Pair<Int?, SchedulePeriod?>,
@@ -69,6 +70,8 @@ class ScheduleAdapter(
 
                 val today = if (dayOfWeek == it) " (Today)" else ""
                 text_view_day.text = "" + DateFormat.format("EEEE", calendar.time) + today
+
+                itemView.setOnCreateContextMenuListener(null)
             } ?: run {
                 pair.second?.let {
                     divider.isVisible = showDivider
@@ -79,7 +82,16 @@ class ScheduleAdapter(
                         listener?.onClickPeriod(it)
                     }
                 }
+                itemView.setOnCreateContextMenuListener(this)
             }
+        }
+
+        override fun onCreateContextMenu(
+            menu: ContextMenu,
+            v: View,
+            menuInfo: ContextMenu.ContextMenuInfo?
+        ) {
+            menu.add(bindingAdapterPosition, v.id, 0, "Remove")
         }
     }
 

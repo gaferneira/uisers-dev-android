@@ -1,5 +1,7 @@
 package co.tuister.uisers.modules.my_career.subjects
 
+import android.view.ContextMenu
+import android.view.ContextMenu.ContextMenuInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +40,7 @@ class SubjectsAdapter(
         notifyDataSetChanged()
     }
 
-    class SubjectViewHolder(view: View) : BaseViewHolder(view) {
+    class SubjectViewHolder(view: View) : BaseViewHolder(view), View.OnCreateContextMenuListener {
         fun bind(
             subject: Subject,
             listener: SubjectListener?
@@ -49,6 +51,15 @@ class SubjectsAdapter(
             itemView.setOnClickListener {
                 listener?.onClickSubject(subject)
             }
+            itemView.setOnCreateContextMenuListener(this)
+        }
+
+        override fun onCreateContextMenu(
+            menu: ContextMenu,
+            v: View,
+            menuInfo: ContextMenuInfo?
+        ) {
+            menu.add(bindingAdapterPosition, v.id, 0, "Remove")
         }
     }
 }

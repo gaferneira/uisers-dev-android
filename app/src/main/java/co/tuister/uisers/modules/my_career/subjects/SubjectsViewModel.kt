@@ -5,6 +5,7 @@ import co.tuister.domain.base.Either
 import co.tuister.domain.entities.Subject
 import co.tuister.domain.usecases.my_career.GetCurrentSemesterUseCase
 import co.tuister.domain.usecases.my_career.GetMySubjectsUseCase
+import co.tuister.domain.usecases.my_career.RemoveSubjectUseCase
 import co.tuister.domain.usecases.my_career.SaveSemesterUseCase
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
@@ -16,12 +17,14 @@ import kotlinx.coroutines.withContext
 class SubjectsViewModel(
     private val getMySubjects: GetMySubjectsUseCase,
     private val getCurrentSemester: GetCurrentSemesterUseCase,
-    private val updateSemester: SaveSemesterUseCase
+    private val updateSemester: SaveSemesterUseCase,
+    private val removeSubject: RemoveSubjectUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class LoadSubjects(result: Result<List<Subject>>) : State<List<Subject>>(result)
         class LoadSemesterAverage(result: Result<Float>) : State<Float>(result)
+        class RemoveSubject(result: Result<Nothing>) : State<Nothing>(result)
     }
 
     fun initialize() {
@@ -74,6 +77,20 @@ class SubjectsViewModel(
             } else {
                 0f
             }
+        }
+    }
+
+    fun removeSubject(subject: Subject) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) { removeSubject.run(subject) }
+            result.fold(
+                {
+                    setState(State.RemoveSubject(Result.Error(it)))
+                },
+                {
+                    setState(State.RemoveSubject(Result.Success()))
+                }
+            )
         }
     }
 }

@@ -1,5 +1,6 @@
 package co.tuister.uisers.modules.task_manager
 
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +38,7 @@ class TasksAdapter(
         notifyDataSetChanged()
     }
 
-    class TasksViewHolder(view: View) : BaseViewHolder(view) {
+    class TasksViewHolder(view: View) : BaseViewHolder(view), View.OnCreateContextMenuListener {
         fun bind(
             task: Task,
             listener: TasksListener?
@@ -47,6 +48,16 @@ class TasksAdapter(
             itemView.setOnClickListener {
                 listener?.onClickTask(task)
             }
+
+            itemView.setOnCreateContextMenuListener(this)
+        }
+
+        override fun onCreateContextMenu(
+            menu: ContextMenu,
+            v: View,
+            menuInfo: ContextMenu.ContextMenuInfo?
+        ) {
+            menu.add(bindingAdapterPosition, v.id, 0, "Remove")
         }
     }
 }

@@ -2,12 +2,15 @@ package co.tuister.uisers.modules.my_career.schedule
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Subject
+import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentScheduleBinding
@@ -67,6 +70,7 @@ class ScheduleFragment :
         when (state) {
             is State.LoadItems -> loadItems(state)
             is State.SavePeriod -> resultSavePeriod(state)
+            is State.RemoveItem -> removeItem(state)
             is State.LoadSubjects -> {
                 if (state.isSuccess()) {
                     subjects = state.data
@@ -122,5 +126,30 @@ class ScheduleFragment :
 
     override fun onClickPeriod(period: SchedulePeriod) {
         showScheduleDialog(period)
+    }
+
+    private fun removeItem(state: State.RemoveItem) {
+        when {
+            state.inProgress() -> {
+                // show loading }
+            }
+            state.isFailure() -> {
+                // show error
+            }
+            else -> {
+                viewModel.refresh()
+            }
+        }
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        if (lifecycle.currentState != Lifecycle.State.RESUMED) return false
+
+        val adapterPosition = item.groupId
+        val period = adapter.list.getOrNull(adapterPosition)?.second ?: return false
+        showConfirmDialog(getString(R.string.confirm_remove_subject), period.description) {
+            viewModel.removePeriod(period)
+        }
+        return true
     }
 }

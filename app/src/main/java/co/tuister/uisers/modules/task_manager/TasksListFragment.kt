@@ -2,10 +2,13 @@ package co.tuister.uisers.modules.task_manager
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksListBinding
@@ -61,6 +64,7 @@ class TasksListFragment : BaseFragment() {
     private fun update(state: BaseState<Any>?) {
         when (state) {
             is State.LoadItems -> loadItems(state)
+            is State.RemoveItem -> removeItem(state)
         }
     }
 
@@ -83,6 +87,30 @@ class TasksListFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         adapter.notifyDataSetChanged()
+    }
+
+    private fun removeItem(state: State.RemoveItem) {
+        when {
+            state.inProgress() -> {
+                // show loading }
+            }
+            state.isFailure() -> {
+                // show error
+            }
+            else -> {
+                viewModel.refresh()
+            }
+        }
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        if (lifecycle.currentState != Lifecycle.State.RESUMED) return false
+        val adapterPosition = item.groupId
+        val task = adapter.list.getOrNull(adapterPosition) ?: return false
+        showConfirmDialog(getString(R.string.confirm_remove_task), task.title) {
+            viewModel.remove(task)
+        }
+        return true
     }
 
     companion object {

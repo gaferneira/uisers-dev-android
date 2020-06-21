@@ -59,6 +59,15 @@ class SubjectRepositoryImpl(
         return subject
     }
 
+    override suspend fun remove(subject: Subject): Boolean {
+        return if (subject.id.isNotEmpty()) {
+            semestersCollection.documentByPath(subject.id).delete().await()
+            true
+        } else {
+           false
+        }
+    }
+
 
     override suspend fun getNotes(subject: Subject): List<Note> {
         return semestersCollection.documentByPath(subject.id)
@@ -84,6 +93,16 @@ class SubjectRepositoryImpl(
         }
 
         return note
+    }
+
+
+    override suspend fun removeNote(item: Note): Boolean {
+        return if (item.id.isNotEmpty()) {
+            semestersCollection.documentByPath(item.id).delete().await()
+            true
+        } else {
+            false
+        }
     }
 
 }

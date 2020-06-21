@@ -1,5 +1,6 @@
 package co.tuister.uisers.modules.my_career.subjects.subject_details
 
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,7 @@ class NotesAdapter(
         notifyDataSetChanged()
     }
 
-    class NoteViewHolder(view: View) : BaseViewHolder(view) {
+    class NoteViewHolder(view: View) : BaseViewHolder(view), View.OnCreateContextMenuListener {
 
         fun bind(
             note: Note,
@@ -63,6 +64,15 @@ class NotesAdapter(
             itemView.setOnClickListener {
                 listener.onClickNote(note)
             }
+            itemView.setOnCreateContextMenuListener(this)
+        }
+
+        override fun onCreateContextMenu(
+            menu: ContextMenu,
+            v: View,
+            menuInfo: ContextMenu.ContextMenuInfo?
+        ) {
+            menu.add(bindingAdapterPosition, v.id, 0, "Remove")
         }
     }
 }

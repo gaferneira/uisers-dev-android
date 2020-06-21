@@ -16,6 +16,7 @@ import co.tuister.domain.usecases.my_career.*
 import co.tuister.domain.usecases.profile.ProfileUseCase
 import co.tuister.domain.usecases.tasks.GetMainTasks
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
+import co.tuister.domain.usecases.tasks.RemoveTaskUseCase
 import co.tuister.domain.usecases.tasks.SaveTaskUseCase
 import org.koin.dsl.module
 
@@ -36,25 +37,30 @@ val domainModule = module {
 
     // My Career
 
-    single { GetCurrentSemesterUseCase(get()) }
     single { SaveSemesterUseCase(get()) }
+    single { GetCurrentSemesterUseCase(get()) }
     single { GetAllSemestersUseCase(get()) }
     single { ChangeCurrentSemesterUseCase(get()) }
 
-    single { GetScheduleUseCase(get()) }
     single { SaveSchedulePeriodUseCase(get()) }
+    single { GetScheduleUseCase(get()) }
     single { GetScheduleByDateUseCase(get()) }
+    single { RemoveSchedulePeriodUseCase(get()) }
 
-    single { GetMySubjectsUseCase(get()) }
-    single { GetNotesUseCase(get()) }
-    single { SaveNoteUseCase(get()) }
     single { GetAllSubjectsUseCase(get(), get()) }
     single { SaveSubjectUseCase(get()) }
+    single { GetMySubjectsUseCase(get()) }
+    single { RemoveSubjectUseCase(get()) }
+
+    single { SaveNoteUseCase(get()) }
+    single { GetNotesUseCase(get()) }
+    single { RemoveNoteUseCase(get()) }
 
     // Tasks
+    single { SaveTaskUseCase(get()) }
     single { GetMainTasks(get()) }
     single { GetMyTasksUseCase(get()) }
-    single { SaveTaskUseCase(get()) }
+    single { RemoveTaskUseCase(get()) }
 
     // Institutional
     single { GetPlacesUseCase(get()) }

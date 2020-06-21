@@ -221,6 +221,9 @@
     <string name="feedback_result_message">Thanks for the feedback.</string>
     <string name="feedback_result_title">Feedback</string>
     <string name="title_dialog_about">About UISers</string>
+    <string name="confirm_remove_subject">Do you want to remove this subject?</string>
+    <string name="confirm_remove_task">Do you want to remove this task?</string>
+    <string name="confirm_remove_note">Do you want to remove this note?</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>
