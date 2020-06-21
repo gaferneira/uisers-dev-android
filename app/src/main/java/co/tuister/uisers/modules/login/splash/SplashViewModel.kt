@@ -8,9 +8,6 @@ import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.uisers.common.SingleLiveEvent
-import co.tuister.uisers.modules.login.LoginEvent
-import co.tuister.uisers.modules.login.LoginEvent.GoToLogin
-import co.tuister.uisers.modules.login.LoginEvent.GoToMain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -21,8 +18,13 @@ class SplashViewModel(
     private val userUseCase: UserUseCase
 ) : ViewModel() {
 
+    sealed class Event {
+        class GoToMain(val user: User) : Event()
+        object GoToLogin : Event()
+    }
+
     val message: MutableLiveData<String> = MutableLiveData("")
-    val events: SingleLiveEvent<LoginEvent> = SingleLiveEvent()
+    val events: SingleLiveEvent<Event> = SingleLiveEvent()
 
     fun runInitialChecks() {
         viewModelScope.launch {
@@ -41,12 +43,12 @@ class SplashViewModel(
                     is Either.Left -> {
                         message.value = "Vamos al Login..."
                         delay(delayTime)
-                        events.value = GoToLogin
+                        events.value = Event.GoToLogin
                     }
                     is Either.Right -> {
                         message.value = "Vamos a ver tus notas..."
                         delay(delayTime)
-                        events.value = GoToMain(it.value)
+                        events.value = Event.GoToMain(it.value)
                     }
                 }
             }

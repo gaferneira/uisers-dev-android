@@ -56,21 +56,24 @@ class ForgotPasswordFragment : BaseFragment() {
     }
 
     private fun validateEmail(state: State.ValidateEmail) {
-        when {
-            state.inProgress() -> {
+        handleState(
+            state,
+            inProgress = {
                 binding.loginStatus.isVisible = true
-            }
-            state.isFailure() -> {
+            },
+            onError = {
                 binding.loginStatus.isVisible = false
-                showConfirmDialog(R.string.error_result_forget_message, R.string.title_forget_title)
-            }
-            else -> {
+                if (!manageFailure(it)) {
+                    showDialog(R.string.error_result_forget_message, R.string.title_forget_title)
+                }
+            },
+            onSuccess = {
                 binding.loginStatus.isVisible = false
-                showConfirmDialog(R.string.success_result_forget_message, R.string.title_forget_title) {
+                showDialog(R.string.success_result_forget_message, R.string.title_forget_title) {
                     goBackToLogin()
                 }
             }
-        }
+        )
     }
 
     private fun goBackToLogin() {

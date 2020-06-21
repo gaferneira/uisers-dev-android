@@ -67,17 +67,8 @@ class AddTaskFragment : BaseFragment() {
     }
 
     private fun onSaveTask(state: State.Save) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-                binding.buttonSave.isEnabled = true
-            }
-            else -> {
-                findNavController().popBackStack()
-            }
+        handleState(state) {
+            findNavController().popBackStack()
         }
     }
 

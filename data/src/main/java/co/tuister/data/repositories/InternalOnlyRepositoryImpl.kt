@@ -40,8 +40,8 @@ class InternalOnlyRepositoryImpl(
                     .await()
             }
             Either.Right(true)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
+        } catch (e: Exception) {
+             Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -58,8 +58,8 @@ class InternalOnlyRepositoryImpl(
                     .await()
             }
             Either.Right(true)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
+        } catch (e: Exception) {
+              Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -71,7 +71,7 @@ class InternalOnlyRepositoryImpl(
             }
             Either.Right(data)
         } catch (e: Exception) {
-            Either.Left(Failure.ServerError(e))
+             Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -101,8 +101,8 @@ class InternalOnlyRepositoryImpl(
                     .await()
             }
             Either.Right(true)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
+        } catch (e: Exception) {
+             Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -121,8 +121,8 @@ class InternalOnlyRepositoryImpl(
                     .await()
             }
             Either.Right(true)
-        } catch (exception: Exception) {
-            Either.Left(Failure.ServerError(exception))
+        } catch (e: Exception) {
+             Either.Left(Failure.analyzeException(e))
         }
     }
 }

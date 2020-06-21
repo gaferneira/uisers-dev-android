@@ -27,11 +27,11 @@ class InternalUseViewModel(
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
-        class ValidateUserDocument(val result: Result<Boolean>) : State<Boolean>(result)
-        class UpdateSubjects(val result: Result<Boolean>) : State<Boolean>(result)
-        class UpdateCareers(val result: Result<Boolean>) : State<Boolean>(result)
-        class UpdateMapData(val result: Result<Boolean>) : State<Boolean>(result)
-        class UpdateCalendarData(val result: Result<Boolean>) : State<Boolean>(result)
+        class ValidateUserDocument(result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateSubjects(result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateCareers(result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateMapData(result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateCalendarData(result: Result<Boolean>) : State<Boolean>(result)
     }
 
     fun generateUserCSVData(context: Context) {

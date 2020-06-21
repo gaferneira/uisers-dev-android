@@ -87,11 +87,13 @@ class MainActivity :
                     viewModel.user
                 )
                 resources.getString(R.string.title_menu_about) -> {
-                    AboutDialogFragment.create().show(supportFragmentManager, AboutDialogFragment.TAG)
+                    AboutDialogFragment.create()
+                        .show(supportFragmentManager, AboutDialogFragment.TAG)
                     binding.drawerLayout.closeDrawers()
                 }
                 resources.getString(R.string.title_menu_feedback) -> {
-                    FeedbackDialogFragment.create(this).show(supportFragmentManager, FeedbackDialogFragment.TAG)
+                    FeedbackDialogFragment.create(this)
+                        .show(supportFragmentManager, FeedbackDialogFragment.TAG)
                     binding.drawerLayout.closeDrawers()
                 }
             }
@@ -167,28 +169,27 @@ class MainActivity :
     }
 
     private fun downloadImage(state: DownloadedImage) {
-        when {
-            state.isSuccess() -> {
-                binding.circleImagePhoto.setImageFromUri(state.result.data)
-                bindingMenu.circleImagePhoto.setImageFromUri(state.result.data)
-            }
+        handleState(state) {
+            binding.circleImagePhoto.setImageFromUri(state.result.data)
+            bindingMenu.circleImagePhoto.setImageFromUri(state.result.data)
         }
     }
 
     private fun validateLogout(state: ValidateLogout) {
-        when {
-            state.inProgress() -> {
+        handleState(
+            state,
+            inProgress = {
                 binding.loginStatus.isVisible = true
-            }
-            state.isSuccess() -> {
+            },
+            onError = {
                 binding.loginStatus.isVisible = false
                 finish()
                 LoginActivity.start(this)
-            }
-            else -> {
+            },
+            onSuccess = {
                 binding.loginStatus.isVisible = false
             }
-        }
+        )
     }
 
     override fun onSendFeedback(feedback: String) {

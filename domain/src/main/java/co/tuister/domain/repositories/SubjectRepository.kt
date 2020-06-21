@@ -12,5 +12,5 @@ interface SubjectRepository {
     //Notes
     suspend fun saveNote(item: Note, subject: Subject): Note
     suspend fun getNotes(subject: Subject): List<Note>
-    suspend fun removeNote(params: Note): Boolean
+    suspend fun removeNote(item: Note): Boolean
 }

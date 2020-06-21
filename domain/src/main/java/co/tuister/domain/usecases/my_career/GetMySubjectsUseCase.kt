@@ -13,7 +13,7 @@ class GetMySubjectsUseCase(
         return try {
             Either.Right(repository.getMySubjects())
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

@@ -16,7 +16,7 @@ class GetMainTasks(
             Either.Right(result.filter { it.status != 2 }.take(5))
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

@@ -13,7 +13,7 @@ class SendVerifyLinkUseCase(
     override suspend fun run(): Either<Failure, Boolean> {
         val result = userRepository.reSendVerifyEmail()
         return if (result) {
-            Left(Failure.ServerError())
+            Left(Failure.UnknownException())
         } else {
             Right(true)
         }

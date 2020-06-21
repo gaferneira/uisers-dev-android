@@ -6,8 +6,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import co.tuister.domain.base.Failure
-import co.tuister.uisers.R
 import co.tuister.uisers.modules.login.register.RegisterFragment
+import co.tuister.uisers.utils.ProgressType
 import co.tuister.uisers.utils.extensions.showConfirmDialog
 import co.tuister.uisers.utils.extensions.showDialog
 
@@ -79,19 +79,34 @@ open class BaseFragment : Fragment() {
         )
     }
 
-    protected fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
-        when (failure) {
-            is Failure.ServerError -> showConfirmDialog(R.string.alert_error_server, R.string.alert)
-            is Failure.NetworkConnection -> showConfirmDialog(R.string.alert_check_internet, R.string.alert)
-            else -> {
-                if (showGenericMessage) {
-                    showConfirmDialog(R.string.alert_error_try_again, R.string.alert)
-                } else {
-                    return false
+    protected fun <T : Any> handleState(
+        state: BaseState<T>,
+        inProgress: ((ProgressType) -> Unit)? = null,
+        onError: ((Failure?) -> Unit)? = null,
+        onSuccess: (T?) -> Unit
+    ) {
+        state.handleResult(
+            inProgress = {
+                inProgress?.invoke(it) ?: showDefaultProgress(true)
+            },
+            onError = {
+                onError?.invoke(it) ?: run {
+                    showDefaultProgress(false)
+                    manageFailure(it)
                 }
+            },
+            onSuccess = {
+                showDefaultProgress(false)
+                onSuccess.invoke(it)
             }
-        }
+        )
+    }
 
-        return true
+    fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
+        return (activity as? BaseActivity)?.manageFailure(failure, showGenericMessage) ?: false
+    }
+
+    open fun showDefaultProgress(show: Boolean) {
+        // Optional
     }
 }

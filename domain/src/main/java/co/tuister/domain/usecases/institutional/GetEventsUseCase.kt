@@ -14,7 +14,7 @@ class GetEventsUseCase(
             Either.Right(repository.getEvents())
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

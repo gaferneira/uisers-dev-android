@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'org.jmailen.kotlinter'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -13,8 +14,8 @@ android {
         applicationId "co.tuister.uisers"
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 40
-        versionName "2.0.0"
+        versionCode 44
+        versionName "2.1.0-alpha01"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -74,12 +75,6 @@ dependencies {
     implementation "org.koin:koin-android-ext:$koin_version"
     // Koin Implementation --------------------------------------------------------
 
-    // Room Implementation --------------------------------------------------------
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    implementation "android.arch.persistence.room:rxjava2:$room_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
-    // Room Implementation --------------------------------------------------------
-
     // Retrofit Implementation ----------------------------------------------------
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
@@ -105,6 +100,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     // Play Services -------------------------------------------------------------
 
+    //Firebase
+    // Recommended: Add the Firebase SDK for Google Analytics.
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.3'
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
 
     //Utils
     implementation 'com.jakewharton.timber:timber:4.7.1'

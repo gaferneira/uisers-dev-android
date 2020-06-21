@@ -13,7 +13,7 @@ class GetPlacesUseCase(
         return try {
             Either.Right(repository.getPlaces())
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

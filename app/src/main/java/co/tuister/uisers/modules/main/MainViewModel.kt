@@ -95,7 +95,8 @@ class MainViewModel(
             withContext(Dispatchers.Main) {
                 val resultData = userUseCase.run()
                 resultData.fold(
-                    { failure ->
+                    { _ ->
+                        // No op
                     },
                     {
                         setUserData(it)

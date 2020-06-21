@@ -20,7 +20,7 @@ class GetScheduleByDateUseCase(
             Either.Right(list.filter { it.day == day }.sortedBy { it.initialHour })
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 

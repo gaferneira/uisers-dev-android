@@ -27,7 +27,7 @@ class GetAllSubjectsUseCase(
             Either.Right(filterList)
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 

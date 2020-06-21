@@ -58,17 +58,9 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
     }
 
     private fun loadItems(state: State.LoadItems) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    adapter.setItems(this)
-                }
+        handleState(state) {
+            it?.run {
+                adapter.setItems(this)
             }
         }
     }

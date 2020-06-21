@@ -13,7 +13,7 @@ class RemoveNoteUseCase(
         return try {
             Either.Right(repository.removeNote(params))
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

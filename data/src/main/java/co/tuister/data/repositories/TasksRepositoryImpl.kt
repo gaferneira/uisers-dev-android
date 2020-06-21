@@ -11,6 +11,7 @@ import co.tuister.domain.entities.Task
 import co.tuister.domain.repositories.TasksRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import timber.log.Timber
 
 class TasksRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
@@ -73,7 +74,7 @@ class TasksRepositoryImpl(
             val data = DataTasksUserDto(email)
             taskManagerCollection.collection().add(data).await()!!.id
         } catch (exception: Exception) {
-            exception.printStackTrace()
+            Timber.e(exception)
             ""
         }
     }

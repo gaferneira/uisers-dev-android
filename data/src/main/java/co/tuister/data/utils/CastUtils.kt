@@ -1,5 +1,6 @@
 package co.tuister.data.utils
 
+import timber.log.Timber
 import java.util.*
 
 inline fun <reified T> Any?.castToList(): List<T>? {
@@ -32,8 +33,8 @@ fun Any.objectToMap(): Map<String, Any> {
             field[this]?.let {
                 map[field.name] = it
             }
-        } catch (e: java.lang.Exception) {
-            //Error
+        } catch (e: Exception) {
+            Timber.e(e)
         }
     }
     return map

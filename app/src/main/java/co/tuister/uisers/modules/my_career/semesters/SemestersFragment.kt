@@ -79,36 +79,28 @@ class SemestersFragment :
     }
 
     private fun loadItems(state: State.LoadItems) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    adapter.setItems(this)
+        handleState(state) { data ->
+            data?.run {
+                adapter.setItems(this)
 
-                    val credits = map { it.credits }.sum()
-                    val average = if (credits != 0) {
-                        map { it.average * it.credits }.sum() / credits
-                    } else 0f
+                val credits = map { it.credits }.sum()
+                val average = if (credits != 0) {
+                    map { it.average * it.credits }.sum() / credits
+                } else 0f
 
-                    footerAdapter.setData(R.string.my_career_semesters_average, average)
-                }
+                footerAdapter.setData(R.string.my_career_semesters_average, average)
             }
         }
     }
 
     private fun resultSaveSemester(state: State.SaveSemester) {
-        if (state.isSuccess()) {
+        handleState(state) {
             viewModel.refresh()
         }
     }
 
     private fun resultChangeCurrentSemester(state: State.ChangeCurrentSemester) {
-        if (state.isSuccess()) {
+        handleState(state) {
             viewModel.refresh()
         }
     }

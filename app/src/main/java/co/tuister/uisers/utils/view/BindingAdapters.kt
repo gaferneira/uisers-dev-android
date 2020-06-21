@@ -6,7 +6,7 @@ import co.tuister.uisers.utils.extensions.setImageFromUrl
 
 class BindingAdapters {
     companion object {
-        @BindingAdapter("android:image_url")
+        @BindingAdapter("image_url")
         @JvmStatic
         fun loadImageFromUrl(imageView: ImageView, auctionImageUrl: String) {
             imageView.setImageFromUrl(auctionImageUrl)

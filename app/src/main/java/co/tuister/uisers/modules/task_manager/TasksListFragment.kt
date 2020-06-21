@@ -69,17 +69,9 @@ class TasksListFragment : BaseFragment() {
     }
 
     private fun loadItems(state: State.LoadItems) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    adapter.setItems(this.filter { it.status == status })
-                }
+        handleState(state) {
+            state.data?.run {
+                adapter.setItems(this.filter { it.status == status })
             }
         }
     }
@@ -90,16 +82,8 @@ class TasksListFragment : BaseFragment() {
     }
 
     private fun removeItem(state: State.RemoveItem) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                viewModel.refresh()
-            }
+        handleState(state) {
+            viewModel.refresh()
         }
     }
 

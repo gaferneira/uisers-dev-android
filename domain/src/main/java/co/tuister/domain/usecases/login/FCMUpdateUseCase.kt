@@ -11,11 +11,11 @@ class FCMUpdateUseCase(
     private val userRepository: UserRepository
 ) : NoParamsUseCase<Boolean>() {
     override suspend fun run(): Either<Failure, Boolean> {
-        val result = userRepository.updateFCMToken()
-        return if (result) {
-            Left(Failure.ServerError())
-        } else {
-            Right(true)
+        return try {
+            val result = userRepository.updateFCMToken()
+            Right(result)
+        } catch (e: Exception) {
+             Left(Failure.analyzeException(e))
         }
     }
 }

@@ -30,9 +30,9 @@ class VerticalPainter(
 
         if (lineEnd > lineStart) {
             canvas.drawLine(
-                getXStart(sectionIndex, sectionsVisibleElements.first()),
+                headerToLineOffset,
                 getYStart(sectionIndex, sectionsVisibleElements.first()),
-                getXEnd(sectionIndex, sectionSize, canvas, sectionsVisibleElements.last()),
+                headerToLineOffset,
                 getYEnd(sectionIndex, sectionSize, canvas, sectionsVisibleElements.last()),
                 linePaint
             )
@@ -85,11 +85,7 @@ class VerticalPainter(
         }
     }
 
-    private fun getXStart(sectionIndex: Int, first: View) = headerToLineOffset
     private fun getYStart(sectionIndex: Int, first: View) = getLineStart(sectionIndex, first)
-
-    private fun getXEnd(sectionIndex: Int, sectionSize: Int, canvas: Canvas, last: View) =
-        headerToLineOffset
 
     private fun getYEnd(sectionIndex: Int, sectionSize: Int, canvas: Canvas, last: View) =
         getLineEnd(sectionIndex, sectionSize, canvas, last)

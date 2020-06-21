@@ -7,6 +7,7 @@ import co.tuister.data.utils.SemestersCollection
 import co.tuister.domain.entities.Semester
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import timber.log.Timber
 
 abstract class MyCareerRepository(
     protected val firebaseAuth: FirebaseAuth,
@@ -64,7 +65,7 @@ abstract class MyCareerRepository(
                 .await()
             id
         } catch (exception: Exception) {
-            exception.printStackTrace()
+            Timber.e(exception)
             ""
         }
     }

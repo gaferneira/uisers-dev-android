@@ -15,7 +15,7 @@ class DownloadImageUseCase(
             Either.Right(userRepository.downloadImage(params.email))
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
 
     }

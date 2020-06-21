@@ -82,33 +82,17 @@ class MapFragment : BaseFragment() {
     }
 
     private fun loadSites(state: State.LoadSites) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    sites = this
-                }
+        handleState(state) {
+            state.data?.run {
+                sites = this
             }
         }
     }
 
     private fun loadPlaces(state: MapViewModel.State.LoadPlaces) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    places = this
-                }
+        handleState(state) {
+            it?.run {
+                places = this
             }
         }
     }
