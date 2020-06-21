@@ -11,10 +11,11 @@ class RecoverPasswordUseCase(
     private val loginRepository: LoginRepository
 ) : UseCase<Boolean, String>() {
     override suspend fun run(params: String): Either<Failure, Boolean> {
-        return if (loginRepository.recoverPassword(params)) {
-            Right(true)
-        } else {
-            Left(Failure.ServerError())
+        return try {
+            val result = loginRepository.recoverPassword(params)
+            Right(result)
+        } catch (e: Exception) {
+            Left(Failure.analyzeException(e))
         }
     }
 }

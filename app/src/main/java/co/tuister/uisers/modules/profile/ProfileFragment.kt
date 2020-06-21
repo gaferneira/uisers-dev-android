@@ -116,11 +116,9 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun processProfile(state: ValidateProfileUpdate) {
-        when {
-            state.isSuccess() -> {
-                binding.loadingStatus.isVisible = false
-            }
-            state.inProgress() -> {
+        handleState(
+            state,
+            inProgress = {
                 val st = state.result as InProgress
                 if (st.type == DOWNLOADING) {
                     binding.loadingStatusMessage.text =
@@ -130,18 +128,19 @@ class ProfileFragment : BaseFragment() {
                         context?.getString(R.string.profile_progress_updating)
                 }
                 binding.loadingStatus.isVisible = true
-            }
-            state.isFailure() -> {
+            },
+            onError = {
+                binding.loadingStatus.isVisible = false
+            },
+            onSuccess = {
                 binding.loadingStatus.isVisible = false
             }
-        }
+        )
     }
 
     private fun downloadImage(state: DownloadedImage) {
-        when {
-            state.isSuccess() -> {
-                binding.circleImagePhoto.setImageFromUri(state.result.data)
-            }
+        handleState(state) {
+            binding.circleImagePhoto.setImageFromUri(state.result.data)
         }
     }
 

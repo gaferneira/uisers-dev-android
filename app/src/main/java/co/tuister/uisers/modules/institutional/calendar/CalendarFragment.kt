@@ -135,20 +135,11 @@ class CalendarFragment : BaseFragment() {
     }
 
     private fun loadItems(state: State.LoadItems) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-
-                state.data?.run {
-                    adapter.setItems(this)
-                    binding.recyclerView.postDelayed(200) {
-                        goToDate(Calendar.getInstance().time)
-                    }
+        handleState(state) {
+            state.data?.run {
+                adapter.setItems(this)
+                binding.recyclerView.postDelayed(200) {
+                    goToDate(Calendar.getInstance().time)
                 }
             }
         }

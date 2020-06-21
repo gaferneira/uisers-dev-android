@@ -143,8 +143,8 @@ class MigrationRepositoryImpl(
             finishProcessMigration(email)
 
             return Either.Right(true)
-        } catch (exception: Exception) {
-            return Either.Left(Failure.ServerError(exception))
+        } catch (e: Exception) {
+            return Either.Left(Failure.analyzeException(e))
         }
     }
 

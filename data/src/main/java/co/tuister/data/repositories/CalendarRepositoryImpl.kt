@@ -6,6 +6,7 @@ import co.tuister.domain.entities.Event
 import co.tuister.domain.repositories.CalendarRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
+import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -41,6 +42,7 @@ class CalendarRepositoryImpl(
             try {
                 DATE_TIME_FORMAT.parse(it)
             } catch (e: Exception) {
+                Timber.e(e)
                 null
             }
         }

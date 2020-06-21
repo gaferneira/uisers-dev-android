@@ -15,7 +15,7 @@ class RemoveSchedulePeriodUseCase(
             Right(repository.remove(params))
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

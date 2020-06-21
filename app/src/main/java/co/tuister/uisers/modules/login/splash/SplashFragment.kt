@@ -10,8 +10,8 @@ import co.tuister.domain.entities.User
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.databinding.FragmentSplashBinding
-import co.tuister.uisers.modules.login.LoginEvent.GoToLogin
-import co.tuister.uisers.modules.login.LoginEvent.GoToMain
+import co.tuister.uisers.modules.login.splash.SplashViewModel.Event.GoToLogin
+import co.tuister.uisers.modules.login.splash.SplashViewModel.Event.GoToMain
 import co.tuister.uisers.modules.main.MainActivity
 import org.koin.android.viewmodel.ext.android.getViewModel
 

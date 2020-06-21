@@ -49,15 +49,11 @@ class UserRepositoryImpl(
             .get()
             .await()
 
-        return try {
-            val userDataDto: UserDataDto? = data?.let {
-                it.firstOrNull()?.toObject(UserDataDto::class.java)
-            }
-
-            Either.Right(userDataDto!!.toEntity())
-        } catch (exception: Exception) {
-            Either.Left(Failure.DataError(exception, current.email!!))
+        val userDataDto: UserDataDto? = data?.let {
+            it.firstOrNull()?.toObject(UserDataDto::class.java)
         }
+
+        return Either.Right(userDataDto!!.toEntity())
     }
 
     override suspend fun updateUser(user: User): Either<Failure, Boolean> {
@@ -72,13 +68,9 @@ class UserRepositoryImpl(
             .get()
             .await()!!.documents.firstOrNull()
 
-        return try {
-            val map = user.toDTO().objectToMap()
-            usersCollection.collection().document(data?.id!!).update(map).await()
-            Either.Right(true)
-        } catch (exception: Exception) {
-            Either.Left(Failure.DataError(exception, current.email!!))
-        }
+        val map = user.toDTO().objectToMap()
+        usersCollection.collection().document(data?.id!!).update(map).await()
+        return Either.Right(true)
     }
 
     override suspend fun updateFCMToken(): Boolean {
@@ -94,31 +86,21 @@ class UserRepositoryImpl(
             .await()!!.documents.firstOrNull()
         val token = FirebaseInstanceId.getInstance().instanceId.await()!!.token
 
-
-        return try {
-            if (data?.get(FIELD_USER_FCM) == token) {
-                true
-            } else {
-                val map = mutableMapOf<String, String>()
-                map[FIELD_USER_FCM] = token
-                usersCollection.collection().document(data?.id!!)
-                    .update(map as Map<String, Any>).await()
-                true
-            }
-        } catch (exception: Exception) {
-            false
+        return if (data?.get(FIELD_USER_FCM) == token) {
+            true
+        } else {
+            val map = mutableMapOf<String, String>()
+            map[FIELD_USER_FCM] = token
+            usersCollection.collection().document(data?.id!!)
+                .update(map as Map<String, Any>).await()
+            true
         }
     }
 
     override suspend fun reSendVerifyEmail(): Boolean {
         val current = firebaseAuth.currentUser ?: return false
-
-        return try {
-            current.sendEmailVerification().await()
-            true
-        } catch (exception: Exception) {
-            false
-        }
+        current.sendEmailVerification().await()
+        return true
     }
 
     override suspend fun sendFeedback(comment: String): Boolean {

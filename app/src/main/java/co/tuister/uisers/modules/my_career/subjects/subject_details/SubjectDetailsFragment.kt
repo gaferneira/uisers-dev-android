@@ -93,29 +93,21 @@ class SubjectDetailsFragment :
     }
 
     private fun loadItems(state: State.LoadItems) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    adapter.setItems(this)
-                }
+        handleState(state) {
+            it?.run {
+                adapter.setItems(this)
             }
         }
     }
 
     private fun getAverage(state: State.LoadAverage) {
-        if (state.isSuccess()) {
+        handleState(state) {
             footerAdapter.setData(R.string.text_final_grade, state.data)
         }
     }
 
     private fun resultSaveNote(state: State.SaveNote) {
-        if (state.isSuccess()) {
+        handleState(state) {
             viewModel.refresh()
         }
     }
@@ -125,14 +117,15 @@ class SubjectDetailsFragment :
     }
 
     private fun showNoteDialog(note: Note? = null) {
-        val maxPercentage = adapter.list.filterNot { it == note }.sumByDouble { it.percentage.toDouble() }.let {
-            val value = 100 - it.toFloat()
-            if (value > 0) {
-                value
-            } else {
-                0f
+        val maxPercentage =
+            adapter.list.filterNot { it == note }.sumByDouble { it.percentage.toDouble() }.let {
+                val value = 100 - it.toFloat()
+                if (value > 0) {
+                    value
+                } else {
+                    0f
+                }
             }
-        }
 
         AddNoteDialogFragment.create(subject, note, maxPercentage.toFloat(), this)
             .show(parentFragmentManager, AddNoteDialogFragment.TAG)
@@ -148,18 +141,11 @@ class SubjectDetailsFragment :
     }
 
     private fun removeItem(state: State.RemoveItem) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                viewModel.refresh()
-            }
+        handleState(state) {
+            viewModel.refresh()
         }
     }
+
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val adapterPosition = item.groupId
         val note = adapter.list[adapterPosition]

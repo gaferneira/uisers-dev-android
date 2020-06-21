@@ -80,19 +80,19 @@ class SubjectRepositoryImpl(
             }
     }
 
-    override suspend fun saveNote(note: Note, subject: Subject): Note {
-        if (note.id.isNotEmpty()) {
-            val noteDto = semestersCollection.documentByPath(note.id).get().await()!!
-            noteDto.reference.update(note.toDTO().objectToMap())
+    override suspend fun saveNote(item: Note, subject: Subject): Note {
+        if (item.id.isNotEmpty()) {
+            val noteDto = semestersCollection.documentByPath(item.id).get().await()!!
+            noteDto.reference.update(item.toDTO().objectToMap())
         } else {
             val id = semestersCollection.documentByPath(subject.id)
                 .collection(SemestersCollection.COL_NOTES)
-                .add(note.toDTO())
+                .add(item.toDTO())
                 .await()!!.path
-            note.id = id
+            item.id = id
         }
 
-        return note
+        return item
     }
 
 

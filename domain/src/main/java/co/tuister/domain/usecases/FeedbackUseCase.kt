@@ -13,7 +13,7 @@ class FeedbackUseCase(
         return try {
             Right(repository.sendFeedback(params))
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

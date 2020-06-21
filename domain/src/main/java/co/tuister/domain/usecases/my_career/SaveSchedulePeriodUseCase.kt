@@ -15,7 +15,7 @@ class SaveSchedulePeriodUseCase(
             Right(repository.save(params))
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

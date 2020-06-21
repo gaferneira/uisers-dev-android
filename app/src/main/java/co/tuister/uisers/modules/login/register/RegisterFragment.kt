@@ -19,7 +19,6 @@ import co.tuister.uisers.databinding.FragmentRegisterBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterViewModel.State.ValidateRegister
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
-import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 import kotlinx.coroutines.flow.collect
@@ -149,10 +148,10 @@ class RegisterFragment : BaseFragment() {
     }
 
     private fun validateRegister(state: ValidateRegister) {
-        when {
-            state.inProgress() -> {
-                val st = state.result as Result.InProgress
-                if (st.type == DOWNLOADING) {
+        handleState(
+            state,
+            inProgress = {
+                if (it == DOWNLOADING) {
                     binding.loginStatusMessage.text =
                         context?.getString(R.string.progress_downloading_data)
                 } else {
@@ -160,31 +159,11 @@ class RegisterFragment : BaseFragment() {
                         context?.getString(R.string.login_progress_signing_in)
                 }
                 binding.loginStatus.isVisible = true
-            }
-            state.isFailure() -> {
-                binding.loginStatus.isVisible = false
-                when (val st = (state.result as Result.Error).exception) {
-                    is FormError -> {
-                        showDialog(
-                            st.error!!.message!!,
-                            requireContext().getString(R.string.title_dialog_view_register)
-                        )
-                    }
-                    is Failure.AuthWeakPasswordException -> {
-                        showDialog(
-                            "Password is to weak to create a account",
-                            requireContext().getString(R.string.title_dialog_view_register)
-                        )
-                    }
-                    else -> {
-                        showDialog(
-                            "Lo sentimos no pudimos crear una cuenta con ese correo. Intenta colocando uno nuevo.",
-                            requireContext().getString(R.string.title_dialog_view_register)
-                        )
-                    }
-                }
-            }
-            state.isSuccess() -> {
+            },
+            onError = {
+                onRegisterError(it)
+            },
+            onSuccess = {
                 binding.loginStatus.isVisible = false
                 showDialog(
                     "Te hemos enviado un correo para que confirmes tu correo y puedas acceder a la aplicación a " + viewModel.userLive.value?.email,
@@ -193,6 +172,32 @@ class RegisterFragment : BaseFragment() {
                     viewModel.doLogout {
                         goToLogin()
                     }
+                }
+            }
+        )
+    }
+
+    private fun onRegisterError(it: Failure?) {
+        binding.loginStatus.isVisible = false
+        when (it) {
+            is FormError -> {
+                showDialog(
+                    it.error!!.message!!,
+                    requireContext().getString(R.string.title_dialog_view_register)
+                )
+            }
+            is Failure.AuthWeakPasswordException -> {
+                showDialog(
+                    "Password is to weak to create a account",
+                    requireContext().getString(R.string.title_dialog_view_register)
+                )
+            }
+            else -> {
+                if (!manageFailure(it)) {
+                    showDialog(
+                        "Lo sentimos no pudimos crear una cuenta con ese correo. Intenta colocando uno nuevo.",
+                        requireContext().getString(R.string.title_dialog_view_register)
+                    )
                 }
             }
         }

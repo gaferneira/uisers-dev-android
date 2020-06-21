@@ -13,7 +13,7 @@ class GetMyTasksUseCase(
         return try {
             Either.Right(repository.getTasks())
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

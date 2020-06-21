@@ -15,7 +15,7 @@ class GetAllSemestersUseCase(
             Either.Right(repository.getAll())
         }
         catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

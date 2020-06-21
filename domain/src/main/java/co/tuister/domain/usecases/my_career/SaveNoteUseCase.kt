@@ -14,7 +14,7 @@ class SaveNoteUseCase(
         return try {
             Either.Right(repository.saveNote(params.first, params.second))
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

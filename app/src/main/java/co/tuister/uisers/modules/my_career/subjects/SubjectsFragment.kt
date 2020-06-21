@@ -78,32 +78,16 @@ class SubjectsFragment : BaseFragment() {
     }
 
     private fun loadItems(state: State.LoadSubjects) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    adapter.setItems(this)
-                }
+        handleState(state) {
+            it?.run {
+                adapter.setItems(this)
             }
         }
     }
 
     private fun removeItem(state: State.RemoveSubject) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                viewModel.refresh()
-            }
+        handleState(state) {
+            viewModel.refresh()
         }
     }
 

@@ -13,7 +13,7 @@ class CareersUseCase(
         return try {
             Either.Right(userRepository.getCareers())
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

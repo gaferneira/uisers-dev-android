@@ -14,5 +14,5 @@ interface UserRepository {
     suspend fun updateUser(user: User): Either<Failure, Boolean>
     suspend fun updateFCMToken(): Boolean
     suspend fun reSendVerifyEmail(): Boolean
-    suspend fun sendFeedback(params: String): Boolean
+    suspend fun sendFeedback(comment: String): Boolean
 }

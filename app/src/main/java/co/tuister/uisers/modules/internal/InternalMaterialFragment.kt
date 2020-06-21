@@ -30,7 +30,7 @@ class InternalMaterialFragment : BaseFragment() {
         else R.id.radio_button_two
         binding.radioGroup.check(checkId)
 
-        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
             theme = if (checkedId == R.id.radio_button_one) {
                 R.style.Base_Theme_MyApp
             } else {

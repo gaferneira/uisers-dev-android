@@ -71,32 +71,20 @@ class ScheduleFragment :
             is State.LoadItems -> loadItems(state)
             is State.SavePeriod -> resultSavePeriod(state)
             is State.RemoveItem -> removeItem(state)
-            is State.LoadSubjects -> {
-                if (state.isSuccess()) {
-                    subjects = state.data
-                }
+            is State.LoadSubjects -> handleState(state) {
+                subjects = state.data
             }
         }
     }
 
     private fun loadItems(state: State.LoadItems) {
-        when {
-            state.inProgress() -> {
-                // show loading }
+        handleState(state) { list ->
+            val items: MutableList<Pair<Int?, SchedulePeriod?>> = mutableListOf()
+            list?.groupBy { it.day }?.forEach { entry ->
+                items.add(Pair(entry.key, null))
+                items.addAll(entry.value.sortedBy { it.initialHour }.map { Pair(null, it) })
             }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                state.data?.run {
-                    val items: MutableList<Pair<Int?, SchedulePeriod?>> = mutableListOf()
-                    this.groupBy { it.day }.forEach { entry ->
-                        items.add(Pair(entry.key, null))
-                        items.addAll(entry.value.sortedBy { it.initialHour }.map { Pair(null, it) })
-                    }
-                    adapter.setItems(items)
-                }
-            }
+            adapter.setItems(items)
         }
     }
 
@@ -114,7 +102,7 @@ class ScheduleFragment :
     }
 
     private fun resultSavePeriod(state: State.SavePeriod) {
-        if (state.isSuccess()) {
+        handleState(state) {
             viewModel.refresh()
         }
     }
@@ -129,16 +117,8 @@ class ScheduleFragment :
     }
 
     private fun removeItem(state: State.RemoveItem) {
-        when {
-            state.inProgress() -> {
-                // show loading }
-            }
-            state.isFailure() -> {
-                // show error
-            }
-            else -> {
-                viewModel.refresh()
-            }
+        handleState(state) {
+            viewModel.refresh()
         }
     }
 

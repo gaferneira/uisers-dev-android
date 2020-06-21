@@ -13,7 +13,7 @@ class GetScheduleUseCase(
         return try {
             Either.Right(repository.getSchedule())
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

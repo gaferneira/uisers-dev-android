@@ -40,19 +40,15 @@ class LoginRepositoryImpl(
             Either.Right(user)
 
         } catch (e: Exception) {
-            Either.Left(Failure.ServerError(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 
     override suspend fun recoverPassword(email: String): Boolean {
-        return try {
-            firebaseAuth
-                .sendPasswordResetEmail(email)
-                .await()
-            true
-        } catch (e: Exception) {
-            false
-        }
+        firebaseAuth
+            .sendPasswordResetEmail(email)
+            .await()
+        return true
     }
 
     override suspend fun logout() {
@@ -73,7 +69,7 @@ class LoginRepositoryImpl(
             if (e is FirebaseAuthWeakPasswordException){
                 Either.Left(Failure.AuthWeakPasswordException(e))
             } else {
-                Either.Left(Failure.ServerError(e))
+                Either.Left(Failure.analyzeException(e))
             }
         }
     }
@@ -86,7 +82,7 @@ class LoginRepositoryImpl(
             profileRef.putFile(uri).await()
             Either.Right(true)
         } catch (e: Exception) {
-            Either.Left(Failure.ServerError(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 }

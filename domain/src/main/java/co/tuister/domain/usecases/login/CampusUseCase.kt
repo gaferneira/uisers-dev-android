@@ -12,7 +12,7 @@ class CampusUseCase(
         return try {
             Either.Right(userRepository.getCampus())
         } catch (e: Exception) {
-            Either.Left(analyzeException(e))
+            Either. Left(Failure.analyzeException(e))
         }
     }
 }

@@ -16,7 +16,7 @@ class ChangeCurrentSemesterUseCase(
             Right(repository.changeCurrentSemester(params))
         }
         catch (e: Exception) {
-            Left(Failure.ServerError(e))
+            Left(Failure.UnknownException(e))
         }
     }
 }

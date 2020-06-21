@@ -13,13 +13,16 @@ class LoginUseCase(
     private val loginRepository: LoginRepository
 ) : UseCase<Boolean, LoginUseCase.Params>() {
     override suspend fun run(params: Params): Either<Failure, Boolean> {
-        val result = loginRepository.login(params.email, params.password)
-        return when (result) {
-            is Left -> result
-            is Right -> {
-                result.value?.let { createSession(it) }
-                Right(result.value != null)
-            }
+        return try {
+             val value = when ( val result = loginRepository.login(params.email, params.password)) {
+                 is Right -> {
+                     result.value?.also { createSession(it) }
+                 }
+                 else -> null
+             }
+            Right(value != null)
+        } catch (e: Exception) {
+             Left(Failure.analyzeException(e))
         }
     }
 

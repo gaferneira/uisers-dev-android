@@ -15,8 +15,8 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentLoginBinding
 import co.tuister.uisers.modules.internal.InternalActivity
+import co.tuister.uisers.modules.login.LoginViewModel.State
 import co.tuister.uisers.modules.main.MainActivity
-import co.tuister.uisers.utils.Result
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -72,18 +72,20 @@ class LoginFragment : BaseFragment() {
 
     private fun update(state: BaseState<Any>) {
         when (state) {
-            is LoginState.ValidateLogin -> validateLogin(state)
+            is State.ValidateLogin -> validateLogin(state)
         }
     }
 
-    private fun validateLogin(state: LoginState.ValidateLogin) {
-        when (val result = state.result) {
-            is Result.InProgress -> {
+    private fun validateLogin(state: State.ValidateLogin) {
+
+        handleState(
+            state,
+            inProgress = {
                 binding.loginStatus.isVisible = true
-            }
-            is Result.Error -> {
+            },
+            onError = {
                 binding.loginStatus.isVisible = false
-                when (result.exception) {
+                when (it) {
                     is EmailNotVerifiedError -> {
                         showConfirmDialog(
                             R.string.error_result_login_message_not_verified_email,
@@ -95,15 +97,15 @@ class LoginFragment : BaseFragment() {
                         )
                     }
                     else -> {
-                        showConfirmDialog(R.string.error_result_login_message, R.string.title_login)
+                        showDialog(R.string.error_result_login_message, R.string.title_login)
                     }
                 }
-            }
-            is Result.Success -> {
+            },
+            onSuccess = {
                 binding.loginStatus.isVisible = false
-                goToMain(result.data)
+                goToMain(it)
             }
-        }
+        )
     }
 
     private fun goToMain(user: User?) {
