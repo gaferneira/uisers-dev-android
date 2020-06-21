@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class TasksViewModel(
-  private val getMyTasks: GetMyTasksUseCase
+    private val getMyTasks: GetMyTasksUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -31,11 +31,14 @@ class TasksViewModel(
         viewModelScope.launch {
             setState(State.LoadItems(InProgress()))
             val result = withContext(Dispatchers.IO) { getMyTasks.run() }
-            result.fold({
-                setState(State.LoadItems(Result.Error(it)))
-            }, {
-                setState(State.LoadItems(Result.Success(it)))
-            })
+            result.fold(
+                {
+                    setState(State.LoadItems(Result.Error(it)))
+                },
+                {
+                    setState(State.LoadItems(Result.Success(it)))
+                }
+            )
         }
     }
 }

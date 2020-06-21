@@ -19,6 +19,7 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentSubjectsAddNoteBinding
 import co.tuister.uisers.utils.format
+import java.text.DecimalFormat
 
 class AddNoteDialogFragment : AppCompatDialogFragment() {
 
@@ -30,16 +31,20 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
     lateinit var note: Note
     lateinit var subject: Subject
 
+    private var maxPercentage: Float = 100f
+
     private var listener: AddNoteDialogListener? = null
+
+    private var originalSubjectNote: Float = 0f
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AppCompatDialog(context)
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
@@ -50,6 +55,7 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
         binding.lifecycleOwner = this
         note = arguments?.getParcelable(ARGUMENT_NOTE) ?: Note()
         subject = arguments?.getParcelable(ARGUMENT_SUBJECT) ?: Subject()
+        maxPercentage = arguments?.getFloat(ARGUMENT_MAX_PERCENTAGE) ?: 100f
         binding.subjectBinding = subject
         binding.noteBinding = note
         return binding.root
@@ -58,16 +64,23 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        originalSubjectNote = subject.note - note.total
+
+        if (maxPercentage == 0f) {
+            binding.editTextPercentage.isEnabled = false
+        }
+
         binding.editTextPercentage.addTextChangedListener(
-            EditorTextWatcher(binding.editTextPercentage, 100) {
+            EditorTextWatcher(binding.editTextPercentage, maxPercentage) {
                 updateValues()
             }
         )
 
         binding.editTextGrade.addTextChangedListener(
-            EditorTextWatcher(binding.editTextGrade, 5) {
+            EditorTextWatcher(binding.editTextGrade, 5f) {
                 updateValues()
-            })
+            }
+        )
 
         binding.buttonSave.isEnabled = note.title.isNotEmpty()
         binding.editTextDetail.addTextChangedListener {
@@ -90,19 +103,20 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
     }
 
     private fun updateValues() {
-        val total = (note.percentage * note.grade / 100.0).toFloat()
 
-        var definitelyGrade: Float = subject.note - note.total
-        definitelyGrade += total
+        val total = (note.percentage * note.grade / 100.0).toFloat()
+        val definitelyGrade = originalSubjectNote + total
 
         binding.editTextTotal.setText(total.format(2))
         binding.editTextFinalNote.setText(definitelyGrade.format(2))
+
+        note.total = total
     }
 
     internal class EditorTextWatcher(
-      private var editText: EditText,
-      private var max: Int,
-      private val updateValues: (() -> Unit)?
+        private var editText: EditText,
+        private var max: Float,
+        private val updateValues: (() -> Unit)?
     ) : TextWatcher {
 
         override fun afterTextChanged(s: Editable) {
@@ -120,7 +134,9 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
                     while (value > max) {
                         value /= 10f
                     }
-                    editText.setText(String.format("%1.1f", value).replace(",".toRegex(), "."))
+
+                    val text = DecimalFormat("##.#").format(value)
+                    editText.setText(text.replace(",".toRegex(), "."))
                 }
                 editText.setSelection(editText.text.length)
             } catch (e: NumberFormatException) {
@@ -135,16 +151,19 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
         const val TAG = "AddNoteDialogFragment"
         private const val ARGUMENT_SUBJECT = "ARGUMENT_SUBJECT"
         private const val ARGUMENT_NOTE = "ARGUMENT_NOTE"
+        private const val ARGUMENT_MAX_PERCENTAGE = "ARGUMENT_PERCENTAGE"
 
         fun create(
-          subject: Subject,
-          note: Note?,
-          listener: AddNoteDialogListener
+            subject: Subject,
+            note: Note?,
+            maxPercentage: Float,
+            listener: AddNoteDialogListener
         ): AddNoteDialogFragment {
             val dialog = AddNoteDialogFragment()
             dialog.arguments = bundleOf(
                 Pair(ARGUMENT_SUBJECT, subject),
-                Pair(ARGUMENT_NOTE, note)
+                Pair(ARGUMENT_NOTE, note),
+                Pair(ARGUMENT_MAX_PERCENTAGE, maxPercentage)
             )
             dialog.listener = listener
             return dialog

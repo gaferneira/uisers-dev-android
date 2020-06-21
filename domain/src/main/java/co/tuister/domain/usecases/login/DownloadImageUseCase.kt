@@ -11,7 +11,13 @@ class DownloadImageUseCase(
     private val userRepository: UserRepository
 ) : UseCase<Uri, Params>() {
     override suspend fun run(params: Params): Either<Failure, Uri> {
-        return userRepository.downloadImage(params.email)
+        return try {
+            Either.Right(userRepository.downloadImage(params.email))
+        }
+        catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
+
     }
 
     data class Params(val email: String)

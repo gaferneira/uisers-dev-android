@@ -5,7 +5,7 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 
-class InstitutionalViewModel() : BaseViewModel() {
+class InstitutionalViewModel : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class LoadItems(result: Result<List<InstitutionalMenu>>) :

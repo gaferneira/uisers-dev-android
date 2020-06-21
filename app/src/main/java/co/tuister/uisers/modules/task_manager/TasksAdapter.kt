@@ -10,7 +10,7 @@ import co.tuister.uisers.common.BaseViewHolder
 import kotlinx.android.synthetic.main.item_tasks_task.*
 
 class TasksAdapter(
-  private val listener: TasksListener?
+    private val listener: TasksListener?
 ) : RecyclerView.Adapter<TasksAdapter.TasksViewHolder>() {
 
     var list = listOf<Task>()
@@ -39,8 +39,8 @@ class TasksAdapter(
 
     class TasksViewHolder(view: View) : BaseViewHolder(view) {
         fun bind(
-          task: Task,
-          listener: TasksListener?
+            task: Task,
+            listener: TasksListener?
         ) {
             text_view_task_name.text = task.title
             text_view_task_desc.text = task.description

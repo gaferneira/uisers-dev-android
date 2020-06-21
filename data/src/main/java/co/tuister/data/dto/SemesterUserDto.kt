@@ -9,7 +9,7 @@ class SemesterUserDto(
     val credits: String = ""
 ) : Serializable
 
-fun SemesterUserDto.toEntity() = Semester(period, average.toFloat(), credits.toInt(), false)
+fun SemesterUserDto.toEntity(path: String) = Semester(path, period, average.toFloat(), credits.toInt(), false)
 
 fun Semester.toDTO() = SemesterUserDto(
     average.toString(), period, credits.toString())

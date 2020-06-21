@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.item_home_schedule_period.view.*
 
 class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
-      position: Int,
-      homeData: HomeData,
-      listener: HomeAdapter.HomeListener,
-      isLastIndex: Boolean
+        position: Int,
+        homeData: HomeData,
+        listener: HomeAdapter.HomeListener,
+        isLastIndex: Boolean
     ) {
         super.bind(position, homeData, listener, isLastIndex)
 
@@ -41,11 +41,13 @@ class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
         container.removeAllViews()
 
         list.forEachIndexed { i, period ->
-            container.addView(configChildView(viewsList[i], period).apply {
-                setOnClickListener {
-                    listener.onClickSchedulePeriod(period)
+            container.addView(
+                configChildView(viewsList[i], period).apply {
+                    setOnClickListener {
+                        listener.onClickSchedulePeriod(period)
+                    }
                 }
-            })
+            )
         }
     }
 

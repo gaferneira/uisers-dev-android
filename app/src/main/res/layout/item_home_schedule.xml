@@ -50,10 +50,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_margin_normal_smaller"
+                android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
                 android:text="@string/label_home_no_subjects"
                 android:textAppearance="?textAppearanceBody1"
                 android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />

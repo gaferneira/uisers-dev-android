@@ -10,6 +10,10 @@ class GetMyTasksUseCase(
     private val repository: TasksRepository
 ) : NoParamsUseCase<List<Task>>() {
     override suspend fun run(): Either<Failure, List<Task>> {
-        return repository.getTasks()
+        return try {
+            Either.Right(repository.getTasks())
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

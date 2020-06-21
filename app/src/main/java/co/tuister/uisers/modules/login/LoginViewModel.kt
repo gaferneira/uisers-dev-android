@@ -18,10 +18,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginViewModel(
-  private val loginUseCase: LoginUseCase,
-  private val userUseCase: UserUseCase,
-  private val logoutUseCase: LogoutUseCase,
-  private val sendVerifyLinkUseCase: SendVerifyLinkUseCase
+    private val loginUseCase: LoginUseCase,
+    private val userUseCase: UserUseCase,
+    private val logoutUseCase: LogoutUseCase,
+    private val sendVerifyLinkUseCase: SendVerifyLinkUseCase
 ) :
     BaseViewModel() {
     val email: MutableLiveData<String> = MutableLiveData("")
@@ -33,17 +33,20 @@ class LoginViewModel(
             withContext(Dispatchers.Main) {
                 val emailText = email.value!!
                 val result = loginUseCase.run(Params(emailText, password.value!!))
-                result.fold({
-                    // manage error
-                    setState(ValidateLogin(Error(it)))
-                }, {
-                    if (it) {
-                        doLoadUserData(emailText)
-                    } else {
-                        // password incorrect
-                        setState(ValidateLogin(Error(AuthenticationError())))
+                result.fold(
+                    {
+                        // manage error
+                        setState(ValidateLogin(Error(it)))
+                    },
+                    {
+                        if (it) {
+                            doLoadUserData(emailText)
+                        } else {
+                            // password incorrect
+                            setState(ValidateLogin(Error(AuthenticationError())))
+                        }
                     }
-                })
+                )
             }
         }
     }
@@ -61,20 +64,14 @@ class LoginViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData = userUseCase.run()
-                resultData.fold({ failure ->
-                    setState(
-                        ValidateLogin(
-                            Result.Success(
-                                User(
-                                    emailText,
-                                    emailText
-                                )
-                            )
-                        )
-                    )
-                }, {
-                    setState(ValidateLogin(Result.Success(it)))
-                })
+                resultData.fold(
+                    { failure ->
+                        setState(ValidateLogin(Result.Success(User(emailText, emailText))))
+                    },
+                    {
+                        setState(ValidateLogin(Result.Success(it)))
+                    }
+                )
             }
         }
     }

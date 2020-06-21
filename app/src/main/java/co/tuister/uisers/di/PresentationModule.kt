@@ -10,7 +10,6 @@ import co.tuister.uisers.modules.login.forgot_password.ForgotPasswordViewModel
 import co.tuister.uisers.modules.login.register.RegisterViewModel
 import co.tuister.uisers.modules.login.splash.SplashViewModel
 import co.tuister.uisers.modules.main.MainViewModel
-import co.tuister.uisers.modules.my_career.MyCareerViewModel
 import co.tuister.uisers.modules.my_career.schedule.ScheduleViewModel
 import co.tuister.uisers.modules.my_career.semesters.SemestersViewModel
 import co.tuister.uisers.modules.my_career.subjects.SubjectsViewModel
@@ -38,11 +37,10 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
 
     // My Career
-    viewModel { MyCareerViewModel(get()) }
-    viewModel { SubjectsViewModel(get()) }
-    viewModel { SubjectDetailsViewModel(get(), get()) }
+    viewModel { SubjectsViewModel(get(), get(), get()) }
+    viewModel { SubjectDetailsViewModel(get(), get(), get()) }
     viewModel { AddSubjectViewModel(get(), get()) }
-    viewModel { ScheduleViewModel(get(), get()) }
+    viewModel { ScheduleViewModel(get(), get(), get()) }
     viewModel { SemestersViewModel(get(), get(), get()) }
 
     // Tasks

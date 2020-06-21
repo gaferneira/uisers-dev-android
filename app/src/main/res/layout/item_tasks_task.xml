@@ -29,10 +29,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_margin_normal_smaller"
+                android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
                 android:textAppearance="?textAppearanceSubtitle1"
                 android:textColor="?colorOnSecondary"
                 app:layout_constraintBottom_toTopOf="@+id/text_view_task_desc"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="Tarea" />
@@ -44,7 +46,7 @@
                 android:textAppearance="?textAppearanceCaption"
                 android:textColor="?colorOnSecondary"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/text_view_task_name"
                 app:layout_constraintStart_toStartOf="@id/text_view_task_name"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_task_name"
                 tools:text="Description" />

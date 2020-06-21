@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -21,14 +20,10 @@ import co.tuister.uisers.modules.my_career.subjects.SubjectsAdapter
 import co.tuister.uisers.modules.my_career.subjects.SubjectsFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
-import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
 
     private lateinit var binding: FragmentMyCareerBinding
-
-    private val viewModel by sharedViewModel<MyCareerViewModel>(from = { requireActivity() })
 
     private var subjectFragment: SubjectsFragment? = null
     private var scheduleFragment: ScheduleFragment? = null
@@ -37,13 +32,12 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
     private var currentPosition = 0
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyCareerBinding.inflate(inflater)
         initViews()
-        initViewModel()
         return binding.root
     }
 
@@ -84,15 +78,6 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
         }
     }
 
-    private fun initViewModel() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.state.collect {
-                // No op
-            }
-        }
-        viewModel.initialize()
-    }
-
     override fun onClickSubject(subject: Subject) {
         val action =
             MyCareerFragmentDirections.actionSubjectsToSubjectDetails(
@@ -106,8 +91,9 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> SubjectsFragment().apply {
-                    listener = this@MyCareerFragment
+                0 ->
+                    SubjectsFragment().apply {
+                        listener = this@MyCareerFragment
                     }.also {
                         subjectFragment = it
                     }
@@ -123,6 +109,8 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
 
     override fun onResume() {
         super.onResume()
-        viewModel.refresh()
+        if (currentPosition == 0) {
+            subjectFragment?.refresh()
+        }
     }
 }

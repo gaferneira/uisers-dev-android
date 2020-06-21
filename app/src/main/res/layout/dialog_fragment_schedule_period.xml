@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="periodBinding"
             type="co.tuister.domain.entities.SchedulePeriod" />
@@ -59,13 +58,30 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_place">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="start"
+                android:focusable="false"
+                android:hint="@string/prompt_week_day"
+                android:textColor="@android:color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_initial"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingEnd="@dimen/padding_margin_normal"
             app:layout_constraintEnd_toStartOf="@id/text_input_final"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_input_place"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_day"
             app:layout_constraintWidth_percent="0.5">
 
             <com.google.android.material.textfield.TextInputEditText

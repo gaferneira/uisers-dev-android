@@ -13,19 +13,17 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSemestersBinding
 import co.tuister.uisers.modules.my_career.FooterAdapter
-import co.tuister.uisers.modules.my_career.MyCareerViewModel
 import co.tuister.uisers.modules.my_career.semesters.SemestersViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
-import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class SemestersFragment : BaseFragment(), SemestersAdapter.SemesterListener,
+class SemestersFragment :
+    BaseFragment(),
+    SemestersAdapter.SemesterListener,
     AddSemesterDialogFragment.AddSemesterDialogListener {
 
     private lateinit var binding: FragmentSemestersBinding
     private lateinit var viewModel: SemestersViewModel
-
-    private val sharedViewModel by sharedViewModel<MyCareerViewModel>(from = { requireActivity() })
 
     private lateinit var adapter: SemestersAdapter
     private lateinit var footerAdapter: FooterAdapter
@@ -35,9 +33,9 @@ class SemestersFragment : BaseFragment(), SemestersAdapter.SemesterListener,
         initViewModel()
     }
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSemestersBinding.inflate(inflater)
         initViews()
@@ -112,12 +110,11 @@ class SemestersFragment : BaseFragment(), SemestersAdapter.SemesterListener,
     private fun resultChangeCurrentSemester(state: State.ChangeCurrentSemester) {
         if (state.isSuccess()) {
             viewModel.refresh()
-            sharedViewModel.refresh()
         }
     }
 
     override fun onClickSemester(semester: Semester) {
-        showDialog(R.string.confirm_change_current_semester, R.string.title_my_career_semesters) {
+        showConfirmDialog(R.string.confirm_change_current_semester, R.string.title_my_career_semesters) {
             viewModel.changeCurrentSemester(semester)
         }
     }

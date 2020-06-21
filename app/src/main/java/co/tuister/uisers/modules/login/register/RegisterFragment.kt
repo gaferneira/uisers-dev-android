@@ -22,10 +22,10 @@ import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-import java.util.Calendar.YEAR
-import java.util.Calendar.getInstance
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
+import java.util.Calendar.YEAR
+import java.util.Calendar.getInstance
 
 class RegisterFragment : BaseFragment() {
 
@@ -37,9 +37,9 @@ class RegisterFragment : BaseFragment() {
     private lateinit var viewModel: RegisterViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRegisterBinding.inflate(inflater)
         binding.lifecycleOwner = this

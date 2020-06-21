@@ -10,6 +10,10 @@ class GetPlacesUseCase(
     private val repository: MapRepository
 ) : NoParamsUseCase<List<Place>>() {
     override suspend fun run(): Either<Failure, List<Place>> {
-        return repository.getPlaces()
+        return try {
+            Either.Right(repository.getPlaces())
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

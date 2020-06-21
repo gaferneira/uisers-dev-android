@@ -10,7 +10,7 @@ class NoteDto(
     var total: Float = 0f
     ) : Serializable
 
-fun NoteDto.toEntity() = Note("", description, score, percentage, total)
+fun NoteDto.toEntity(path: String) = Note(path, description, score, percentage, total)
 
 fun Note.toDTO() = NoteDto(title, grade, percentage, total
 )

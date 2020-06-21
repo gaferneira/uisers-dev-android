@@ -11,6 +11,10 @@ class GetNotesUseCase(
     private val repository: SubjectRepository
 ) : UseCase<List<Note>, Subject>() {
     override suspend fun run(params: Subject): Either<Failure, List<Note>> {
-        return repository.getNotes(params)
+        return try {
+            Either.Right(repository.getNotes(params))
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
     }
 }

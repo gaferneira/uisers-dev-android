@@ -2,11 +2,13 @@ package co.tuister.uisers.modules.my_career.schedule
 
 import android.app.Dialog
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.core.os.bundleOf
@@ -19,6 +21,8 @@ import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentSchedulePeriodBinding
 import co.tuister.uisers.utils.checkRequireFormFields
 import co.tuister.uisers.utils.pickTime
+import kotlinx.android.synthetic.main.item_my_career_schedule_title.*
+import java.util.*
 
 class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
 
@@ -31,6 +35,7 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
     lateinit var period: SchedulePeriod
     lateinit var requireTextViews: Array<TextView>
 
+    val calendar = Calendar.getInstance()
     private var listener: AddSchedulePeriodDialogListener? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -38,9 +43,9 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
@@ -51,10 +56,13 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
         binding.lifecycleOwner = this
         subjects = arguments?.getParcelableArray(ARGUMENT_SUBJECTS)?.map { it as Subject } ?: listOf()
         period = arguments?.getParcelable(ARGUMENT_PERIOD) ?: SchedulePeriod()
-        requireTextViews = arrayOf(binding.autocompleteSubject,
+        requireTextViews = arrayOf(
+            binding.autocompleteSubject,
             binding.editTextPlace,
+            binding.editTextDay,
             binding.editTextInitial,
-            binding.editTextFinal)
+            binding.editTextFinal
+        )
         binding.periodBinding = period
         return binding.root
     }
@@ -80,6 +88,10 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
             }
         }
 
+        binding.editTextDay.setOnClickListener {
+            showWeekDays()
+        }
+
         binding.editTextInitial.setOnClickListener {
             showTimeDialog(binding.editTextInitial)
         }
@@ -87,6 +99,8 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
         binding.editTextFinal.setOnClickListener {
             showTimeDialog(binding.editTextFinal)
         }
+
+        binding.editTextDay.setText(getNameDay(period.day))
     }
 
     private fun showTimeDialog(editText: EditText) {
@@ -103,6 +117,28 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
         requireContext().pickTime(hours, minutes) { selectedHour, selectedMinute ->
             editText.setText(String.format("%02d:%02d", selectedHour, selectedMinute))
         }
+    }
+
+    private fun showWeekDays() {
+        val valuesList = List(7) { (it + 2) % 8 } // Monday first
+
+        val options = valuesList.map { getNameDay(it) }.toTypedArray()
+
+        // setup the alert builder
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle("Set Day")
+            .setItems(options) { _, which ->
+                period.day = valuesList[which]
+                binding.editTextDay.setText(options[which])
+            }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun getNameDay(day: Int): CharSequence {
+        calendar.set(Calendar.DAY_OF_WEEK, day)
+        return DateFormat.format("EEEE", calendar)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -129,9 +165,9 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
         private const val ARGUMENT_PERIOD = "ARGUMENT_PERIOD"
 
         fun create(
-          schedulePeriod: SchedulePeriod?,
-          subjects: List<Subject>?,
-          listener: AddSchedulePeriodDialogListener?
+            schedulePeriod: SchedulePeriod?,
+            subjects: List<Subject>?,
+            listener: AddSchedulePeriodDialogListener?
         ): AddSchedulePeriodDialogFragment {
             val dialog = AddSchedulePeriodDialogFragment()
             dialog.arguments = bundleOf(

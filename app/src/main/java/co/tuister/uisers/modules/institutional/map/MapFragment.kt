@@ -30,9 +30,9 @@ class MapFragment : BaseFragment() {
     private var selectedSite: Site? = null
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentInstitutionalMapBinding.inflate(inflater)
         initViews()

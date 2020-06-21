@@ -32,9 +32,9 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = DialogFragmentSemesterBinding.inflate(LayoutInflater.from(context))
         semesters =
@@ -72,7 +72,7 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
             .setTitle("Select semester")
             .setItems(options) { _, which ->
                 val selected = semestersAvailable[which]
-                semester = Semester(selected.first + "-" + selected.second)
+                semester = Semester("", selected.first + "-" + selected.second)
                 binding.editTextSemester.setText(options[which])
                 binding.buttonSave.isEnabled = true
             }
@@ -103,8 +103,8 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
         private const val ARGUMENT_SEMESTERS = "ARGUMENT_PERIOD"
 
         fun create(
-          semesters: List<Semester>?,
-          listener: AddSemesterDialogListener?
+            semesters: List<Semester>?,
+            listener: AddSemesterDialogListener?
         ): AddSemesterDialogFragment {
             val dialog = AddSemesterDialogFragment()
             dialog.arguments = bundleOf(

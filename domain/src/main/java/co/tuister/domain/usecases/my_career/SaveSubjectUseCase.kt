@@ -11,13 +11,13 @@ class SaveSubjectUseCase(
     private val repository: SubjectRepository
 ) : UseCase<Subject, Subject>() {
     override suspend fun run(params: Subject): Either<Failure, Subject> {
-        return when (val result = repository.save(params)) {
-            is Either.Left -> result
-            is Right -> {
-                Right(result.value)
-            }
-        }
-    }
 
+        return try {
+            Right(repository.save(params))
+        } catch (e: Exception) {
+            Either.Left(analyzeException(e))
+        }
+
+    }
 
 }

@@ -26,9 +26,9 @@ class LoginFragment : BaseFragment() {
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater)
         binding.lifecycleOwner = this
@@ -85,7 +85,7 @@ class LoginFragment : BaseFragment() {
                 binding.loginStatus.isVisible = false
                 when (result.exception) {
                     is EmailNotVerifiedError -> {
-                        showDialog(
+                        showConfirmDialog(
                             R.string.error_result_login_message_not_verified_email,
                             R.string.title_login,
                             R.string.action_resend,
@@ -95,7 +95,7 @@ class LoginFragment : BaseFragment() {
                         )
                     }
                     else -> {
-                        showDialog(R.string.error_result_login_message, R.string.title_login)
+                        showConfirmDialog(R.string.error_result_login_message, R.string.title_login)
                     }
                 }
             }

@@ -144,7 +144,6 @@ class MigrationRepositoryImpl(
 
             return Either.Right(true)
         } catch (exception: Exception) {
-            exception.printStackTrace()
             return Either.Left(Failure.ServerError(exception))
         }
     }

@@ -13,7 +13,7 @@ import co.tuister.uisers.modules.home.viewholders.ScheduleViewHolder
 import co.tuister.uisers.modules.home.viewholders.TasksViewHolder
 
 class HomeAdapter(
-  private val listener: HomeListener
+    private val listener: HomeListener
 ) : RecyclerView.Adapter<HomeViewHolder>() {
 
     var list = mutableListOf<HomeData>()

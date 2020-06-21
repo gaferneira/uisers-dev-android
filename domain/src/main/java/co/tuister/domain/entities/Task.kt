@@ -12,4 +12,4 @@ data class Task(
     //DO, DOING, DONE
     var status: Int = 0,
     var reminder: Int? = null
-) : Parcelable {}
+) : Parcelable

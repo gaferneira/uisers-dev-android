@@ -11,7 +11,7 @@ import co.tuister.uisers.utils.format
 import kotlinx.android.synthetic.main.item_my_career_semester.*
 
 class SemestersAdapter(
-  private val listener: SemesterListener?
+    private val listener: SemesterListener?
 ) : RecyclerView.Adapter<SemestersAdapter.SemesterViewHolder>() {
 
     var list = listOf<Semester>()
@@ -46,8 +46,8 @@ class SemestersAdapter(
     class SemesterViewHolder(view: View) : BaseViewHolder(view) {
 
         fun bind(
-          semester: Semester,
-          listener: SemesterListener?
+            semester: Semester,
+            listener: SemesterListener?
         ) {
             text_view_semester.text = semester.period
             text_view_average.text = semester.average.format()

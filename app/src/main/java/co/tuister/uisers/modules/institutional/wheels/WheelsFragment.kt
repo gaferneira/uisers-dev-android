@@ -14,9 +14,9 @@ class WheelsFragment : BaseFragment() {
     private lateinit var binding: FragmentWheelsBinding
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWheelsBinding.inflate(inflater)
         initViews()

@@ -19,7 +19,9 @@ import co.tuister.uisers.modules.my_career.subjects.subject_details.SubjectDetai
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
+class SubjectDetailsFragment :
+    BaseFragment(),
+    NotesAdapter.NoteListener,
     AddNoteDialogFragment.AddNoteDialogListener {
 
     private lateinit var adapter: NotesAdapter
@@ -45,9 +47,9 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
     }
 
     override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSubjectDetailsBinding.inflate(inflater)
         initViews()
@@ -84,6 +86,7 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
         when (state) {
             is State.LoadItems -> loadItems(state)
             is State.SaveNote -> resultSaveNote(state)
+            is State.LoadAverage -> getAverage(state)
         }
     }
 
@@ -98,10 +101,14 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
             else -> {
                 state.data?.run {
                     adapter.setItems(this)
-                    val total = this.map { it.total }.sum()
-                    footerAdapter.setData(R.string.text_final_grade, total)
                 }
             }
+        }
+    }
+
+    private fun getAverage(state: State.LoadAverage) {
+        if (state.isSuccess()) {
+            footerAdapter.setData(R.string.text_final_grade, state.data)
         }
     }
 
@@ -116,7 +123,16 @@ class SubjectDetailsFragment : BaseFragment(), NotesAdapter.NoteListener,
     }
 
     private fun showNoteDialog(note: Note? = null) {
-        AddNoteDialogFragment.create(subject, note, this)
+        val maxPercentage = adapter.list.filterNot { it == note }.sumByDouble { it.percentage.toDouble() }.let {
+            val value = 100 - it.toFloat()
+            if (value > 0) {
+                value
+            } else {
+                0f
+            }
+        }
+
+        AddNoteDialogFragment.create(subject, note, maxPercentage.toFloat(), this)
             .show(parentFragmentManager, AddNoteDialogFragment.TAG)
     }
 

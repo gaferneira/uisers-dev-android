@@ -107,7 +107,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
      */
     private fun setupBottomNavigationBar() {
 
-        val navGraphIds = listOf(R.navigation.nav_graph_home,
+        val navGraphIds = listOf(
+            R.navigation.nav_graph_home,
             R.navigation.nav_graph_my_career,
             R.navigation.nav_graph_task_manager,
             R.navigation.nav_graph_institution
@@ -122,18 +123,21 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
         )
 
         // Whenever the selected controller changes, setup the action bar.
-        controller.observe(this, Observer { navController ->
-            setupActionBarWithNavController(navController)
-            currentNavController?.removeOnDestinationChangedListener(this)
-            currentNavController = navController
-            currentNavController?.addOnDestinationChangedListener(this)
-        })
+        controller.observe(
+            this,
+            Observer { navController ->
+                setupActionBarWithNavController(navController)
+                currentNavController?.removeOnDestinationChangedListener(this)
+                currentNavController = navController
+                currentNavController?.addOnDestinationChangedListener(this)
+            }
+        )
     }
 
     override fun onDestinationChanged(
-      controller: NavController,
-      destination: NavDestination,
-      arguments: Bundle?
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
     ) {
         val backButtonVisible = drawerToggleDelegate?.isNavigationVisible ?: false
         binding.circleImagePhoto.isVisible = !backButtonVisible
