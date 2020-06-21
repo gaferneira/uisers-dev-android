@@ -18,7 +18,7 @@ import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentSubjectsAddNoteBinding
-import co.tuister.uisers.utils.format
+import co.tuister.uisers.utils.extensions.format
 import java.text.DecimalFormat
 
 class AddNoteDialogFragment : AppCompatDialogFragment() {

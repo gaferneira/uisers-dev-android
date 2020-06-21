@@ -2,14 +2,14 @@ package co.tuister.uisers.common
 
 import android.content.Context
 import android.content.Intent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import co.tuister.domain.base.Failure
 import co.tuister.uisers.R
 import co.tuister.uisers.modules.login.register.RegisterFragment
-import co.tuister.uisers.utils.UisersDialogFragment
+import co.tuister.uisers.utils.extensions.showConfirmDialog
+import co.tuister.uisers.utils.extensions.showDialog
 
 open class BaseFragment : Fragment() {
 
@@ -28,29 +28,11 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun showDialog(message: Int, title: Int, unit: (() -> Unit)? = null) {
-        UisersDialogFragment.Builder(requireContext())
-            .setTitle(title)
-            .setMessage(message)
-            .setPositiveButton(
-                R.string.ok,
-                View.OnClickListener {
-                    unit?.invoke()
-                }
-            )
-            .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
+        parentFragmentManager.showDialog(requireContext(), message, title, unit)
     }
 
     protected fun showDialog(message: String, title: String, unit: (() -> Unit)? = null) {
-        UisersDialogFragment.Builder(requireContext())
-            .setTitle(title)
-            .setMessage(message)
-            .setPositiveButton(
-                R.string.ok,
-                View.OnClickListener {
-                    unit?.invoke()
-                }
-            )
-            .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
+        parentFragmentManager.showDialog(requireContext(), message, title, unit)
     }
 
     protected fun showConfirmDialog(
@@ -60,22 +42,14 @@ open class BaseFragment : Fragment() {
         unitNegative: (() -> Unit)? = null,
         unitPositive: (() -> Unit)? = null
     ) {
-        UisersDialogFragment.Builder(requireContext())
-            .setTitle(title)
-            .setMessage(message)
-            .setPositiveButton(
-                R.string.ok,
-                View.OnClickListener {
-                    unitPositive?.invoke()
-                }
-            )
-            .setNegativeButton(
-                negativeMessage,
-                View.OnClickListener {
-                    unitNegative?.invoke()
-                }
-            )
-            .create().show(parentFragmentManager, UisersDialogFragment.UISERS_DIALOG_TAG)
+        parentFragmentManager.showConfirmDialog(
+            requireContext(),
+            message,
+            title,
+            negativeMessage,
+            unitNegative,
+            unitPositive
+        )
     }
 
     protected fun launchImagePicker() {

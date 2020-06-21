@@ -19,9 +19,8 @@ import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentSchedulePeriodBinding
-import co.tuister.uisers.utils.checkRequireFormFields
-import co.tuister.uisers.utils.pickTime
-import kotlinx.android.synthetic.main.item_my_career_schedule_title.*
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.pickTime
 import java.util.*
 
 class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
@@ -161,6 +160,8 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
     }
 
     companion object {
+        const val TAG = "AddSchedulePeriodDialogFragment"
+
         private const val ARGUMENT_SUBJECTS = "ARGUMENT_SUBJECTS"
         private const val ARGUMENT_PERIOD = "ARGUMENT_PERIOD"
 

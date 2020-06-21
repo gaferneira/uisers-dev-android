@@ -8,6 +8,9 @@ import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.*
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
+import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK
+import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_DATE
+import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_EMAIL
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
 import co.tuister.domain.base.Either
@@ -20,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.storage.FirebaseStorage
+import java.util.*
+import kotlin.collections.HashMap
 
 class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
@@ -30,6 +35,7 @@ class UserRepositoryImpl(
 
     private val usersCollection by lazy { UsersCollection(db) }
     private val baseCollection by lazy { BaseCollection(db) }
+    private val feedbackCollection by lazy { FeedbackCollection(db) }
 
     override suspend fun getUser(): Either<Failure, User> {
         val current = firebaseAuth.currentUser ?: return Either.Left(AuthenticationError())
@@ -113,6 +119,16 @@ class UserRepositoryImpl(
         } catch (exception: Exception) {
             false
         }
+    }
+
+    override suspend fun sendFeedback(comment: String): Boolean {
+        val feedback = hashMapOf(
+            FIELD_FEEDBACK to comment,
+            FIELD_FEEDBACK_EMAIL to firebaseAuth.currentUser?.email,
+            FIELD_FEEDBACK_DATE to Date()
+        )
+        feedbackCollection.collection().add(feedback).await()
+        return true
     }
 
     override suspend fun getCareers(): List<Career> {

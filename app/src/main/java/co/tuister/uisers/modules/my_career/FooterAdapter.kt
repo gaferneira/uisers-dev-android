@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
-import co.tuister.uisers.utils.format
+import co.tuister.uisers.utils.extensions.format
 import kotlinx.android.synthetic.main.item_my_career_footer.*
 
 class FooterAdapter : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {

@@ -10,12 +10,56 @@ import kotlin.math.max
 import kotlin.math.min
 
 class VerticalPainter(
-    fixLayoutSize: (View, ViewGroup) -> Unit,
-    headerToLineOffset: Float,
-    linePaint: Paint
-) : Painter(fixLayoutSize, headerToLineOffset, linePaint) {
+    private val fixLayoutSize: (View, ViewGroup) -> Unit,
+    private val headerToLineOffset: Float,
+    private val linePaint: Paint
+) {
 
-    override fun getLineStart(sectionIndex: Int, first: View): Float {
+    fun paint(
+        canvas: Canvas,
+        sectionIndex: Int,
+        sectionTitle: String,
+        sectionsVisibleElements: List<View>,
+        headerView: TextView,
+        sectionSize: Int,
+        parent: ViewGroup
+    ) {
+
+        val lineStart = getLineStart(sectionIndex, sectionsVisibleElements.first())
+        val lineEnd = getLineEnd(sectionIndex, sectionSize, canvas, sectionsVisibleElements.last())
+
+        if (lineEnd > lineStart) {
+            canvas.drawLine(
+                getXStart(sectionIndex, sectionsVisibleElements.first()),
+                getYStart(sectionIndex, sectionsVisibleElements.first()),
+                getXEnd(sectionIndex, sectionSize, canvas, sectionsVisibleElements.last()),
+                getYEnd(sectionIndex, sectionSize, canvas, sectionsVisibleElements.last()),
+                linePaint
+            )
+        }
+
+        headerView.apply {
+            text = sectionTitle
+            fixLayoutSize(this, parent)
+
+            val headerWidth = with(this) {
+                width + paddingStart + paddingEnd +
+                    with(layoutParams as ViewGroup.MarginLayoutParams) {
+                        marginStart + marginEnd
+                    }
+            }
+
+            val startPosition = if (lineEnd - lineStart < headerWidth && sectionIndex == 0) {
+                lineEnd - headerWidth
+            } else {
+                lineStart
+            }
+
+            drawHeader(canvas, this, startPosition)
+        }
+    }
+
+    private fun getLineStart(sectionIndex: Int, first: View): Float {
         val topMargin =
             (first.layoutParams as ViewGroup.MarginLayoutParams).topMargin.toFloat()
         return if (sectionIndex == 0) {
@@ -25,7 +69,7 @@ class VerticalPainter(
         }
     }
 
-    override fun getLineEnd(
+    private fun getLineEnd(
         sectionIndex: Int,
         sectionSize: Int,
         canvas: Canvas,
@@ -41,16 +85,16 @@ class VerticalPainter(
         }
     }
 
-    override fun getXStart(sectionIndex: Int, first: View) = headerToLineOffset
-    override fun getYStart(sectionIndex: Int, first: View) = getLineStart(sectionIndex, first)
+    private fun getXStart(sectionIndex: Int, first: View) = headerToLineOffset
+    private fun getYStart(sectionIndex: Int, first: View) = getLineStart(sectionIndex, first)
 
-    override fun getXEnd(sectionIndex: Int, sectionSize: Int, canvas: Canvas, last: View) =
+    private fun getXEnd(sectionIndex: Int, sectionSize: Int, canvas: Canvas, last: View) =
         headerToLineOffset
 
-    override fun getYEnd(sectionIndex: Int, sectionSize: Int, canvas: Canvas, last: View) =
+    private fun getYEnd(sectionIndex: Int, sectionSize: Int, canvas: Canvas, last: View) =
         getLineEnd(sectionIndex, sectionSize, canvas, last)
 
-    override fun drawHeader(
+    private fun drawHeader(
         canvas: Canvas,
         textView: TextView,
         startPosition: Float
@@ -61,7 +105,7 @@ class VerticalPainter(
         canvas.restore()
     }
 
-    override fun getOutRect(outRect: Rect) {
+    fun getOutRect(outRect: Rect) {
         outRect.left = headerToLineOffset.toInt()
     }
 }

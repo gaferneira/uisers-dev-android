@@ -20,9 +20,9 @@ import co.tuister.uisers.modules.internal.InternalActivity
 import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
-import co.tuister.uisers.utils.ImagesUtils.Companion.downloadImageInto
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result.InProgress
+import co.tuister.uisers.utils.extensions.setImageFromUri
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -140,7 +140,7 @@ class ProfileFragment : BaseFragment() {
     private fun downloadImage(state: DownloadedImage) {
         when {
             state.isSuccess() -> {
-                downloadImageInto(requireContext(), state.result.data, binding.circleImagePhoto)
+                binding.circleImagePhoto.setImageFromUri(state.result.data)
             }
         }
     }

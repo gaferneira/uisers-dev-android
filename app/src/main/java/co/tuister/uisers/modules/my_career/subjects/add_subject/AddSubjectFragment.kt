@@ -12,7 +12,7 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentSubjectAddBinding
 import co.tuister.uisers.modules.my_career.subjects.add_subject.AddSubjectViewModel.State
 import co.tuister.uisers.utils.StringUtils
-import co.tuister.uisers.utils.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 

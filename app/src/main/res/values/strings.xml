@@ -214,6 +214,13 @@
 
     <string name="permission_location_required_text">Location permission required</string>
     <string name="permission_location_explanation">Allow UISers to access this device\'s location </string>
+    <string name="title_dialog_feedback">Give us feedback. We\'d love to hear from you!</string>
+    <string name="feedback_description">Having issues, or just want to give us some feedback?. Tell us the good and the bad</string>
+    <string name="prompt_feedback">Leave feedback here</string>
+    <string name="action_send">Send</string>
+    <string name="feedback_result_message">Thanks for the feedback.</string>
+    <string name="feedback_result_title">Feedback</string>
+    <string name="title_dialog_about">About UISers</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>

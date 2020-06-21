@@ -14,6 +14,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.uisers.R
+import co.tuister.uisers.utils.extensions.addToValueList
+import co.tuister.uisers.utils.extensions.nullCheck2
 
 class SectionDecorator(private val context: Context) : RecyclerView.ItemDecoration() {
 
@@ -26,7 +28,7 @@ class SectionDecorator(private val context: Context) : RecyclerView.ItemDecorati
     private var headerView: TextView? = null
     private var headerLayoutId: Int = R.layout.item_section_decorator_header
 
-    private var painter: Painter? = null
+    private var painter: VerticalPainter? = null
 
     init {
         linePaint.color = ContextCompat.getColor(context, android.R.color.black)
@@ -163,17 +165,5 @@ fun ViewGroup.asSequence(): Sequence<View> = object : Sequence<View> {
             nextValue = null
             return answer!!
         }
-    }
-}
-
-fun <R, T> Map<R, List<T>>.addToValueList(key: R, element: T): Map<R, List<T>> {
-    val mutable = this.toMutableMap()
-    mutable[key] = (this[key] ?: emptyList()) + element
-    return mutable
-}
-
-inline fun <A : Any, B : Any> nullCheck2(item1: A?, item2: B?, f: (A, B) -> Unit) {
-    if (item1 != null && item2 != null) {
-        f(item1, item2)
     }
 }
