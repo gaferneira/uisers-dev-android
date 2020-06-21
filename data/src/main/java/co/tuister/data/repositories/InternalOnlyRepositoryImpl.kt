@@ -4,6 +4,7 @@ import android.content.Context
 import co.tuister.data.dto.*
 import co.tuister.data.utils.await
 import co.tuister.data.utils.BaseCollection
+import co.tuister.data.utils.BaseCollection.Companion.FIELD_CALENDAR
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_MAP_PLACES
@@ -94,9 +95,29 @@ class InternalOnlyRepositoryImpl(
                 val list = gson.fromJson(text, Array<SiteDto>::class.java).toList()
                     .map { site -> site.objectToMap() }
 
-                 baseCollection.getMapDocument()!!
+                baseCollection.getMapDocument()!!
                     .reference
                     .update(mapOf(Pair(FIELD_MAP_SITES, list)))
+                    .await()
+            }
+            Either.Right(true)
+        } catch (exception: Exception) {
+            Either.Left(Failure.ServerError(exception))
+        }
+    }
+
+    override suspend fun loadDataCalendar(): Either<Failure, Boolean> {
+        return try {
+            context.assets.open("calendar.json").bufferedReader().use {
+                val text = it.readText()
+
+                val list = gson.fromJson(text, Array<EventDto>::class.java).toList()
+                    .map { dto ->
+                        dto.objectToMap()
+                    }
+
+                baseCollection.document(BaseCollection.DOCUMENT_CALENDAR)
+                    .update(mapOf(Pair(FIELD_CALENDAR, list)))
                     .await()
             }
             Either.Right(true)

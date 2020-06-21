@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.netguru.sectionsDecorator.SectionsAdapterInterface
 import co.tuister.domain.entities.Event
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.DateUtils
+import co.tuister.uisers.utils.sectionsDecorator.SectionsAdapterInterface
 import kotlinx.android.synthetic.main.item_institutional_calendar.*
 import java.util.*
 
@@ -65,7 +65,14 @@ class CalendarAdapter(
 
     override fun getItemCountForSection(sectionIndex: Int): Int = sections[sectionIndex].second
 
-    override fun getSectionTitleAt(sectionIndex: Int): String = sections[sectionIndex].first.split("-").getOrNull(2) ?: ""
+    override fun getSectionTitleAt(sectionIndex: Int): String {
+        val stringDate = sections[sectionIndex].first
+        val date = DateUtils.stringToDate(stringDate) ?: Date()
+        val calendar = Calendar.getInstance().apply {
+            time = date
+        }
+        return DateUtils.dateToString(date, "EEE") + "\n" + calendar.get(Calendar.DAY_OF_MONTH)
+    }
 
     override fun getSectionsCount(): Int = sections.size
 }

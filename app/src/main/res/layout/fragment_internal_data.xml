@@ -68,6 +68,14 @@
                 android:text="Update map data"
                 android:textColor="?colorOnSurface" />
 
+            <Button
+                android:id="@+id/button_calendar_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?colorSurface"
+                android:text="Update calendar"
+                android:textColor="?colorOnSurface" />
+
         </LinearLayout>
 
         <ImageView

@@ -9,4 +9,5 @@ interface InternalOnlyRepository {
     suspend fun loadDataSubjects() : Either<Failure, Boolean>
     suspend fun getAllUserData(): Either<Failure, List<User>>
     suspend fun loadMapData(): Either<Failure, Boolean>
+    suspend fun loadDataCalendar(): Either<Failure, Boolean>
 }

@@ -1,36 +1,54 @@
 package co.tuister.data.repositories
 
+import co.tuister.data.dto.EventDto
+import co.tuister.data.utils.BaseCollection
 import co.tuister.domain.entities.Event
 import co.tuister.domain.repositories.CalendarRepository
-import kotlinx.coroutines.delay
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
+import java.text.SimpleDateFormat
 import java.util.*
 
-class CalendarRepositoryImpl : CalendarRepository {
+class CalendarRepositoryImpl(
+    val db: FirebaseFirestore,
+    private val gson: Gson
+) : CalendarRepository {
+
+    private val baseCollection by lazy { BaseCollection(db) }
 
     override suspend fun getEvents(): List<Event> {
-        delay(1000)
-        val calendar = Calendar.getInstance()
-        calendar.set(2020, 0, 1)
-
-        val list = mutableListOf<Event>()
-        for (i in 0..366) {
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
-            list.add(Event("Event A$i", "Description A", calendar.timeInMillis, 0, true))
-            list.add(Event("Event B$i", "Description B", calendar.timeInMillis, 0, true))
-            list.add(Event("Event C$i", "Description C", calendar.timeInMillis, 0, true))
+        val document = baseCollection.getCalendarDocument()
+        val field = document?.get(BaseCollection.FIELD_CALENDAR)
+        val json = gson.toJson(field)
+        return gson.fromJson(json, Array<EventDto>::class.java).toList().map {
+           Event(it.title, it.description, stringToDateTime(it.date)?.time ?: 0, it.duration)
         }
-        return list
     }
 
     override suspend fun getEventsByDate(date: Date): List<Event> {
-        delay(1000)
-        val calendar = Calendar.getInstance()
-        calendar.time = date
-        val list = mutableListOf<Event>()
-        for (i in 0..10) {
-            list.add(Event("Event $i", "Description", calendar.timeInMillis, 0, true))
+        val document = baseCollection.getCalendarDocument()
+        val field = document?.get(BaseCollection.FIELD_CALENDAR)
+        val json = gson.toJson(field)
+        return gson.fromJson(json, Array<EventDto>::class.java).toList().filter {
+            it.date.startsWith(DATE_TIME.format(date))
+        }.map {
+            Event(it.title, it.description, stringToDateTime(it.date)?.time ?: 0, it.duration)
         }
-        return list
     }
 
+    private fun stringToDateTime(string: String?): Date? {
+        return string?.let {
+            try {
+                DATE_TIME_FORMAT.parse(it)
+            } catch (e: Exception) {
+                null
+            }
+        }
+    }
+
+    companion object {
+        private val DATE_TIME_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
+        private val DATE_TIME = SimpleDateFormat("yyyy-MM-dd")
+
+    }
 }

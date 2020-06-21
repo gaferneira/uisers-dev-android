@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING
 import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE
-import co.netguru.sectionsDecorator.SectionDecorator
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentCalendarBinding
 import co.tuister.uisers.modules.institutional.calendar.CalendarViewModel.State
 import co.tuister.uisers.utils.DateUtils
+import co.tuister.uisers.utils.sectionsDecorator.SectionDecorator
 import jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
 import jp.co.recruit_mp.android.lightcalendarview.MonthView
 import kotlinx.coroutines.flow.collect
@@ -134,7 +134,7 @@ class CalendarFragment : BaseFragment() {
         }
     }
 
-    private fun loadItems(state: CalendarViewModel.State.LoadItems) {
+    private fun loadItems(state: State.LoadItems) {
         when {
             state.inProgress() -> {
                 // show loading }

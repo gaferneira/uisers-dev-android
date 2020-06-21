@@ -12,7 +12,9 @@ import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInternalDataBinding
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateCalendarData
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateCareers
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateMapData
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateSubjects
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.ValidateUserDocument
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
@@ -50,6 +52,9 @@ class InternalDataFragment : BaseFragment() {
         binding.buttonUpdateMapData.setOnClickListener {
             viewModel.updateMapData()
         }
+        binding.buttonCalendarData.setOnClickListener {
+            viewModel.updateCalendarData()
+        }
         binding.buttonMaterial.setOnClickListener {
             findNavController().navigate(R.id.action_internal_to_material)
         }
@@ -71,6 +76,8 @@ class InternalDataFragment : BaseFragment() {
             is ValidateUserDocument -> processDocument(status)
             is UpdateSubjects -> updateSubjects(status)
             is UpdateCareers -> updateCareers(status)
+            is UpdateMapData -> updateMapData(status)
+            is UpdateCalendarData -> updateCalendarData(status)
         }
     }
 
@@ -131,6 +138,44 @@ class InternalDataFragment : BaseFragment() {
             is Result.Success -> {
                 binding.loadingStatus.isVisible = false
                 binding.buttonUpdateCareers.isEnabled = true
+            }
+        }
+    }
+
+    private fun updateMapData(status: UpdateMapData) {
+        when (val result = status.result) {
+            is InProgress -> {
+                binding.loadingStatus.isVisible = true
+                binding.buttonUpdateMapData.isEnabled = false
+                context?.getString(R.string.progress_updating)
+            }
+            is Result.Error -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonUpdateMapData.isEnabled = true
+                manageFailure(result.exception, true)
+            }
+            is Result.Success -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonUpdateMapData.isEnabled = true
+            }
+        }
+    }
+
+    private fun updateCalendarData(status: UpdateCalendarData) {
+        when (val result = status.result) {
+            is InProgress -> {
+                binding.loadingStatus.isVisible = true
+                binding.buttonCalendarData.isEnabled = false
+                context?.getString(R.string.progress_updating)
+            }
+            is Result.Error -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonCalendarData.isEnabled = true
+                manageFailure(result.exception, true)
+            }
+            is Result.Success -> {
+                binding.loadingStatus.isVisible = false
+                binding.buttonCalendarData.isEnabled = true
             }
         }
     }
