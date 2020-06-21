@@ -21,12 +21,15 @@ import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
-import co.tuister.uisers.utils.ImagesUtils.Companion.downloadImageInto
-import co.tuister.uisers.utils.setupWithNavController
+import co.tuister.uisers.utils.extensions.setImageFromUri
+import co.tuister.uisers.utils.extensions.setupWithNavController
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener {
+class MainActivity :
+    BaseActivity(),
+    NavController.OnDestinationChangedListener,
+    FeedbackDialogFragment.FeedbackDialogListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var bindingMenu: LeftHomeMenuHeaderLayoutBinding
@@ -84,10 +87,12 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                     viewModel.user
                 )
                 resources.getString(R.string.title_menu_about) -> {
-                    // TODO: Implement about
+                    AboutDialogFragment.create().show(supportFragmentManager, AboutDialogFragment.TAG)
+                    binding.drawerLayout.closeDrawers()
                 }
                 resources.getString(R.string.title_menu_feedback) -> {
-                    // TODO: Implement about
+                    FeedbackDialogFragment.create(this).show(supportFragmentManager, FeedbackDialogFragment.TAG)
+                    binding.drawerLayout.closeDrawers()
                 }
             }
             true
@@ -164,8 +169,8 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
     private fun downloadImage(state: DownloadedImage) {
         when {
             state.isSuccess() -> {
-                downloadImageInto(this, state.result.data, binding.circleImagePhoto)
-                downloadImageInto(this, state.result.data, bindingMenu.circleImagePhoto)
+                binding.circleImagePhoto.setImageFromUri(state.result.data)
+                bindingMenu.circleImagePhoto.setImageFromUri(state.result.data)
             }
         }
     }
@@ -184,5 +189,10 @@ class MainActivity : BaseActivity(), NavController.OnDestinationChangedListener 
                 binding.loginStatus.isVisible = false
             }
         }
+    }
+
+    override fun onSendFeedback(feedback: String) {
+        viewModel.sendFeedback(feedback)
+        showDialog(R.string.feedback_result_message, R.string.feedback_result_title)
     }
 }

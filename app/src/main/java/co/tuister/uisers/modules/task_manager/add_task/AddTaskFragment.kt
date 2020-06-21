@@ -14,8 +14,8 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksAddBinding
 import co.tuister.uisers.modules.task_manager.add_task.AddTaskViewModel.State
 import co.tuister.uisers.utils.DateUtils
-import co.tuister.uisers.utils.checkRequireFormFields
-import co.tuister.uisers.utils.pickDateTime
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.pickDateTime
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.*

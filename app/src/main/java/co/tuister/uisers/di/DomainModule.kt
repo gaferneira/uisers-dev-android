@@ -1,11 +1,12 @@
 package co.tuister.uisers.di
 
-import co.tuister.domain.usecases.DataUserUseCase
+import co.tuister.domain.usecases.FeedbackUseCase
 import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.institutional.GetEventsUseCase
 import co.tuister.domain.usecases.institutional.GetPlacesUseCase
 import co.tuister.domain.usecases.institutional.GetSitesUseCase
+import co.tuister.domain.usecases.internal.DataUserUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCalendarUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
 import co.tuister.domain.usecases.internal.UpdateDataMapUseCase
@@ -21,6 +22,7 @@ import org.koin.dsl.module
 val domainModule = module {
 
     single { UserUseCase(get()) }
+    single { FeedbackUseCase(get()) }
 
     // login
     single { LoginUseCase(get()) }

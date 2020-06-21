@@ -72,12 +72,20 @@ class TaskManagerCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME
 }
 
 class BackupCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
-    suspend fun getAllUserBackup() = collection().get().await()
     suspend fun getUserBackup(email: String) = document(email).get().await()?.getString(FIELD_DATA)
     suspend fun deleteUserBackup(email: String) = document(email).delete().await()
 
     companion object {
         const val NAME = "backup"
         const val FIELD_DATA = "data"
+    }
+}
+
+class FeedbackCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
+    companion object {
+        const val NAME = "feedback"
+        const val FIELD_FEEDBACK = "comment"
+        const val FIELD_FEEDBACK_EMAIL = "email"
+        const val FIELD_FEEDBACK_DATE = "date"
     }
 }

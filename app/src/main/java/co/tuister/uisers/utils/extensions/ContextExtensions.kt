@@ -1,4 +1,4 @@
-package co.tuister.uisers.utils
+package co.tuister.uisers.utils.extensions
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog

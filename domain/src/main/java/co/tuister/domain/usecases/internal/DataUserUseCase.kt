@@ -1,4 +1,4 @@
-package co.tuister.domain.usecases
+package co.tuister.domain.usecases.internal
 
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure

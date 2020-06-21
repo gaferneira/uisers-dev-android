@@ -1,4 +1,4 @@
-package co.tuister.uisers.utils
+package co.tuister.uisers.utils.view
 
 import android.app.Dialog
 import android.content.Context
@@ -17,13 +17,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentUisersBinding
-import co.tuister.uisers.utils.UisersDialogFragment.Builder.Companion.ARGUMENT_CANCELABLE
-import co.tuister.uisers.utils.UisersDialogFragment.Builder.Companion.ARGUMENT_MESSAGE
-import co.tuister.uisers.utils.UisersDialogFragment.Builder.Companion.ARGUMENT_MESSAGE_PARAMS
-import co.tuister.uisers.utils.UisersDialogFragment.Builder.Companion.ARGUMENT_NEGATIVE_BUTTON
-import co.tuister.uisers.utils.UisersDialogFragment.Builder.Companion.ARGUMENT_POSITIVE_BUTTON
-import co.tuister.uisers.utils.UisersDialogFragment.Builder.Companion.ARGUMENT_TITLE
-import co.tuister.uisers.utils.UisersDialogFragment.Builder.Companion.ARGUMENT_TITLE_PARAMS
+import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_CANCELABLE
+import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_MESSAGE
+import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_MESSAGE_PARAMS
+import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_NEGATIVE_BUTTON
+import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_POSITIVE_BUTTON
+import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_TITLE
+import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_TITLE_PARAMS
 
 class UisersDialogFragment : AppCompatDialogFragment() {
     class Builder(private val context: Context) {

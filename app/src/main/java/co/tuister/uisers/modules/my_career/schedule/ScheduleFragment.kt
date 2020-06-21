@@ -12,7 +12,6 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentScheduleBinding
 import co.tuister.uisers.modules.my_career.schedule.ScheduleViewModel.State
-import co.tuister.uisers.modules.my_career.subjects.subject_details.AddNoteDialogFragment
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -118,7 +117,7 @@ class ScheduleFragment :
 
     private fun showScheduleDialog(schedulePeriod: SchedulePeriod? = null) {
         AddSchedulePeriodDialogFragment.create(schedulePeriod, subjects, this)
-            .show(parentFragmentManager, AddNoteDialogFragment.TAG)
+            .show(parentFragmentManager, AddSchedulePeriodDialogFragment.TAG)
     }
 
     override fun onClickPeriod(period: SchedulePeriod) {

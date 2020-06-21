@@ -3,7 +3,7 @@ package co.tuister.uisers.modules.internal
 import android.content.Context
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure.FormError
-import co.tuister.domain.usecases.DataUserUseCase
+import co.tuister.domain.usecases.internal.DataUserUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCalendarUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
 import co.tuister.domain.usecases.internal.UpdateDataMapUseCase

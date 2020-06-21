@@ -13,11 +13,11 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInstitutionalMapBinding
 import co.tuister.uisers.modules.institutional.map.MapViewModel.State
-import co.tuister.uisers.utils.AppPermission
-import co.tuister.uisers.utils.handlePermission
-import co.tuister.uisers.utils.handlePermissionsResult
+import co.tuister.uisers.utils.extensions.AppPermission
+import co.tuister.uisers.utils.extensions.handlePermission
+import co.tuister.uisers.utils.extensions.handlePermissionsResult
+import co.tuister.uisers.utils.extensions.requestPermission
 import co.tuister.uisers.utils.maps.MapController
-import co.tuister.uisers.utils.requestPermission
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.getViewModel

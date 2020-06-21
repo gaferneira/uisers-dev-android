@@ -1,4 +1,4 @@
-package co.tuister.uisers.utils
+package co.tuister.uisers.utils.extensions
 
 import android.Manifest
 import android.content.Intent
