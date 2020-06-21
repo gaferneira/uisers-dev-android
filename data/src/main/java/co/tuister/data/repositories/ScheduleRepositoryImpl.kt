@@ -43,4 +43,13 @@ class ScheduleRepositoryImpl(
         return periods.sortedBy { (it.day - 2) % 8 } // First day monday
     }
 
+    override suspend fun remove(item: SchedulePeriod): Boolean {
+        return if (item.id.isNotEmpty()) {
+            semestersCollection.documentByPath(item.id).delete().await()
+            true
+        } else {
+            false
+        }
+    }
+
 }

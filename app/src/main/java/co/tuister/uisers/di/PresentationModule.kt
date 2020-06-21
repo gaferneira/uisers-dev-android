@@ -37,14 +37,14 @@ val viewModelModule = module {
     viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
 
     // My Career
-    viewModel { SubjectsViewModel(get(), get(), get()) }
-    viewModel { SubjectDetailsViewModel(get(), get(), get()) }
+    viewModel { SubjectsViewModel(get(), get(), get(), get()) }
+    viewModel { SubjectDetailsViewModel(get(), get(), get(), get()) }
     viewModel { AddSubjectViewModel(get(), get()) }
-    viewModel { ScheduleViewModel(get(), get(), get()) }
+    viewModel { ScheduleViewModel(get(), get(), get(), get()) }
     viewModel { SemestersViewModel(get(), get(), get()) }
 
     // Tasks
-    viewModel { TasksViewModel(get()) }
+    viewModel { TasksViewModel(get(), get()) }
     viewModel { AddTaskViewModel(get()) }
 
     // Institutional

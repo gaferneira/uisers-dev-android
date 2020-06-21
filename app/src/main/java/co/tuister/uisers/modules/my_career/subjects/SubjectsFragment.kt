@@ -2,8 +2,10 @@ package co.tuister.uisers.modules.my_career.subjects
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.MergeAdapter
@@ -24,8 +26,6 @@ class SubjectsFragment : BaseFragment() {
     private lateinit var binding: FragmentSubjectsBinding
 
     private lateinit var viewModel: SubjectsViewModel
-
-    private var average: Float? = null
 
     var listener: SubjectsAdapter.SubjectListener? = null
 
@@ -70,6 +70,7 @@ class SubjectsFragment : BaseFragment() {
     private fun update(state: BaseState<Any>?) {
         when (state) {
             is State.LoadSubjects -> loadItems(state)
+            is State.RemoveSubject -> removeItem(state)
             is State.LoadSemesterAverage -> {
                 footerAdapter.setData(R.string.text_semester_average, state.data)
             }
@@ -92,6 +93,20 @@ class SubjectsFragment : BaseFragment() {
         }
     }
 
+    private fun removeItem(state: State.RemoveSubject) {
+        when {
+            state.inProgress() -> {
+                // show loading }
+            }
+            state.isFailure() -> {
+                // show error
+            }
+            else -> {
+                viewModel.refresh()
+            }
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         refresh()
@@ -99,5 +114,16 @@ class SubjectsFragment : BaseFragment() {
 
     fun refresh() {
         viewModel.refresh()
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        if (lifecycle.currentState != Lifecycle.State.RESUMED) return false
+
+        val adapterPosition = item.groupId
+        val subject = adapter.list.getOrNull(adapterPosition) ?: return false
+        showConfirmDialog(getString(R.string.confirm_remove_subject), subject.name) {
+            viewModel.removeSubject(subject)
+        }
+        return true
     }
 }

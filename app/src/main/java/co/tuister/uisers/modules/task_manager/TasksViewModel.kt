@@ -3,6 +3,7 @@ package co.tuister.uisers.modules.task_manager
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.Task
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
+import co.tuister.domain.usecases.tasks.RemoveTaskUseCase
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
@@ -12,11 +13,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class TasksViewModel(
-    private val getMyTasks: GetMyTasksUseCase
+    private val getMyTasks: GetMyTasksUseCase,
+    private val removeUseCase: RemoveTaskUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class LoadItems(result: Result<List<Task>>) : State<List<Task>>(result)
+        class RemoveItem(result: Result<Nothing>) : State<Nothing>(result)
     }
 
     fun initialize() {
@@ -37,6 +40,20 @@ class TasksViewModel(
                 },
                 {
                     setState(State.LoadItems(Result.Success(it)))
+                }
+            )
+        }
+    }
+
+    fun remove(item: Task) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) { removeUseCase.run(item) }
+            result.fold(
+                {
+                    setState(State.RemoveItem(Result.Error(it)))
+                },
+                {
+                    setState(State.RemoveItem(Result.Success()))
                 }
             )
         }

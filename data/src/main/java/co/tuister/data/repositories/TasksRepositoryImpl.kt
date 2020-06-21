@@ -1,14 +1,12 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.utils.await
 import co.tuister.data.dto.DataTasksUserDto
 import co.tuister.data.dto.TaskDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.TaskManagerCollection
+import co.tuister.data.utils.await
 import co.tuister.data.utils.objectToMap
-import co.tuister.domain.base.Either
-import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.Task
 import co.tuister.domain.repositories.TasksRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -46,6 +44,15 @@ class TasksRepositoryImpl(
             task.id = id
         }
         return task
+    }
+
+    override suspend fun remove(item: Task): Boolean {
+        return if (item.id.isNotEmpty()) {
+            taskManagerCollection.documentByPath(item.id).delete().await()
+            true
+        } else {
+            false
+        }
     }
 
     private suspend fun getUserDocument() = taskManagerCollection.document(getUserDocumentsId())

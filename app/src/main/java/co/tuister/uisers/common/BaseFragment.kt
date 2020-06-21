@@ -52,6 +52,23 @@ open class BaseFragment : Fragment() {
         )
     }
 
+    protected fun showConfirmDialog(
+        message: String,
+        title: String,
+        negativeMessage: Int = android.R.string.cancel,
+        unitNegative: (() -> Unit)? = null,
+        unitPositive: (() -> Unit)? = null
+    ) {
+        parentFragmentManager.showConfirmDialog(
+            requireContext(),
+            message,
+            title,
+            negativeMessage,
+            unitNegative,
+            unitPositive
+        )
+    }
+
     protected fun launchImagePicker() {
         val photoPickerIntent = Intent(Intent.ACTION_GET_CONTENT)
         photoPickerIntent.type = "image/*"

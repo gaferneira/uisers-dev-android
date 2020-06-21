@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.domain.usecases.my_career.GetNotesUseCase
+import co.tuister.domain.usecases.my_career.RemoveNoteUseCase
 import co.tuister.domain.usecases.my_career.SaveNoteUseCase
 import co.tuister.domain.usecases.my_career.SaveSubjectUseCase
 import co.tuister.uisers.common.BaseState
@@ -17,13 +18,15 @@ import kotlinx.coroutines.withContext
 class SubjectDetailsViewModel(
     private val getNotes: GetNotesUseCase,
     private val saveNote: SaveNoteUseCase,
-    private val saveSubject: SaveSubjectUseCase
+    private val saveSubject: SaveSubjectUseCase,
+    private val removeUseCase: RemoveNoteUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class LoadItems(result: Result<List<Note>>) : State<List<Note>>(result)
         class LoadAverage(result: Result<Float>) : State<Float>(result)
         class SaveNote(result: Result<Nothing>) : State<Nothing>(result)
+        class RemoveItem(result: Result<Nothing>) : State<Nothing>(result)
     }
 
     lateinit var subject: Subject
@@ -76,6 +79,20 @@ class SubjectDetailsViewModel(
                 },
                 {
                     setState(State.SaveNote(Result.Success()))
+                }
+            )
+        }
+    }
+
+    fun removeNote(item: Note) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) { removeUseCase.run(item) }
+            result.fold(
+                {
+                    setState(State.RemoveItem(Result.Error(it)))
+                },
+                {
+                    setState(State.RemoveItem(Result.Success()))
                 }
             )
         }

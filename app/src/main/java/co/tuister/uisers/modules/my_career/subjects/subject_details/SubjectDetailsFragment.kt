@@ -2,6 +2,7 @@ package co.tuister.uisers.modules.my_career.subjects.subject_details
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
@@ -86,6 +87,7 @@ class SubjectDetailsFragment :
         when (state) {
             is State.LoadItems -> loadItems(state)
             is State.SaveNote -> resultSaveNote(state)
+            is State.RemoveItem -> removeItem(state)
             is State.LoadAverage -> getAverage(state)
         }
     }
@@ -143,5 +145,27 @@ class SubjectDetailsFragment :
 
     override fun onSaveNote(note: Note) {
         viewModel.saveNote(note)
+    }
+
+    private fun removeItem(state: State.RemoveItem) {
+        when {
+            state.inProgress() -> {
+                // show loading }
+            }
+            state.isFailure() -> {
+                // show error
+            }
+            else -> {
+                viewModel.refresh()
+            }
+        }
+    }
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        val adapterPosition = item.groupId
+        val note = adapter.list[adapterPosition]
+        showConfirmDialog(getString(R.string.confirm_remove_note), note.title) {
+            viewModel.removeNote(note)
+        }
+        return true
     }
 }
