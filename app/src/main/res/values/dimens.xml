@@ -46,5 +46,10 @@
     <dimen name="my_career_note_width_total">50dp</dimen>
     <dimen name="text_margin">16dp</dimen>
 
+    <!-- Section decorator -->
+
+    <dimen name="section_decorator_header_vertical_offset">48dp</dimen>
+    <dimen name="section_decorator_header_to_line_offset">24dp</dimen>
+    <dimen name="section_decorator_divider_size">1dp</dimen>
 
 </resources>

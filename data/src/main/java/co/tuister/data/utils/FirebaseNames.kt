@@ -11,16 +11,20 @@ sealed class FirebaseCollection(private val db: FirebaseFirestore, val name: Str
 class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
     suspend fun getBaseDocument() = document(DOCUMENT).get().await()
     suspend fun getMapDocument() = document(DOCUMENT_MAP).get().await()
+    suspend fun getCalendarDocument() = document(DOCUMENT_CALENDAR).get().await()
 
     companion object {
         const val NAME = "data_base"
         const val DOCUMENT = "uis"
         const val DOCUMENT_MAP = "map"
+        const val DOCUMENT_CALENDAR = "calendar"
         const val FIELD_SUBJECTS = "subjects"
         const val FIELD_CAREERS = "careers"
         const val FIELD_CAMPUS = "sedes"
         const val FIELD_MAP_PLACES = "map_places"
         const val FIELD_MAP_SITES = "map_sites"
+        const val FIELD_CALENDAR = "academico"
+
     }
 }
 

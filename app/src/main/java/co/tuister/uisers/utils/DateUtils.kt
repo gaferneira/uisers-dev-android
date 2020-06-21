@@ -34,6 +34,17 @@ class DateUtils {
             }
         }
 
+        fun stringToDate(string: String?, format: String? = null): Date? {
+            return string?.let {
+                try {
+                    val sdf = format?.let { SimpleDateFormat(it) } ?: DATE_FORMAT
+                    sdf.parse(it)
+                } catch (e: Exception) {
+                    null
+                }
+            }
+        }
+
         fun minutesToString(resources: Resources, timeInMinutes: Int): String {
 
             val minutes = timeInMinutes % 60

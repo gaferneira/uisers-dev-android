@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure.FormError
 import co.tuister.domain.usecases.DataUserUseCase
+import co.tuister.domain.usecases.internal.UpdateDataCalendarUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
 import co.tuister.domain.usecases.internal.UpdateDataMapUseCase
 import co.tuister.domain.usecases.internal.UpdateDataSubjectsUseCase
@@ -21,7 +22,8 @@ class InternalUseViewModel(
     val dataUserUseCase: DataUserUseCase,
     val updateSubjects: UpdateDataSubjectsUseCase,
     val updateCareers: UpdateDataCareersUseCase,
-    val updateMapData: UpdateDataMapUseCase
+    val updateMapData: UpdateDataMapUseCase,
+    val updateCalendar: UpdateDataCalendarUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -29,6 +31,7 @@ class InternalUseViewModel(
         class UpdateSubjects(val result: Result<Boolean>) : State<Boolean>(result)
         class UpdateCareers(val result: Result<Boolean>) : State<Boolean>(result)
         class UpdateMapData(val result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateCalendarData(val result: Result<Boolean>) : State<Boolean>(result)
     }
 
     fun generateUserCSVData(context: Context) {
@@ -109,6 +112,21 @@ class InternalUseViewModel(
                 },
                 {
                     setState(State.UpdateMapData(Success(it)))
+                }
+            )
+        }
+    }
+
+    fun updateCalendarData() {
+        viewModelScope.launch {
+            setState(State.UpdateCalendarData(InProgress()))
+            val result = updateCalendar.run()
+            result.fold(
+                {
+                    setState(State.UpdateCalendarData(Error(it)))
+                },
+                {
+                    setState(State.UpdateCalendarData(Success(it)))
                 }
             )
         }

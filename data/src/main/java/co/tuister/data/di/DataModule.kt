@@ -33,7 +33,7 @@ val dataModule = module {
     single<UserRepository> { UserRepositoryImpl(get(), get(), get()) }
     single<ScheduleRepository> { ScheduleRepositoryImpl(get(), get()) }
     single<MapRepository> { MapRepositoryImpl(get(), get()) }
-    single<CalendarRepository> { CalendarRepositoryImpl() }
+    single<CalendarRepository> { CalendarRepositoryImpl(get(), get()) }
     single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get(), get()) }
     single<MigrationRepository> { MigrationRepositoryImpl(get(), get(), get()) }
 }
