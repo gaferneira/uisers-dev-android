@@ -13,7 +13,11 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInstitutionalMapBinding
 import co.tuister.uisers.modules.institutional.map.MapViewModel.State
+import co.tuister.uisers.utils.AppPermission
+import co.tuister.uisers.utils.handlePermission
+import co.tuister.uisers.utils.handlePermissionsResult
 import co.tuister.uisers.utils.maps.MapController
+import co.tuister.uisers.utils.requestPermission
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -52,6 +56,7 @@ class MapFragment : BaseFragment() {
         with(mapController) {
             setCenter(uis, 16f)
         }
+        checkLocationPermission()
     }
 
     private fun initViews() {
@@ -147,6 +152,35 @@ class MapFragment : BaseFragment() {
             .create()
 
         dialog.show()
+    }
+
+    private fun checkLocationPermission() {
+        handlePermission(
+            AppPermission.AccessFineLocation,
+            onGranted = {
+                mapController.setMyLocationButton(true)
+            },
+            onDenied = {
+                requestPermission(AppPermission.AccessFineLocation)
+            },
+            onRationaleNeeded = {
+                requestPermission(AppPermission.AccessFineLocation)
+            }
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        handlePermissionsResult(
+            requestCode, permissions, grantResults,
+            onPermissionGranted = {
+                mapController.setMyLocationButton(true)
+            }
+        )
     }
 
     companion object {

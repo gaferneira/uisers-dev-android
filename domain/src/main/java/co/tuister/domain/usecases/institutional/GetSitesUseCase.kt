@@ -10,7 +10,6 @@ class GetSitesUseCase(
     private val repository: MapRepository
 ) : NoParamsUseCase<List<Site>>() {
     override suspend fun run(): Either<Failure, List<Site>> {
-
         return try {
             Either.Right(repository.getSites())
         } catch (e: Exception) {

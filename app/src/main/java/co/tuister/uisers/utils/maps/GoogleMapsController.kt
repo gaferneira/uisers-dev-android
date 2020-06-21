@@ -1,5 +1,6 @@
 package co.tuister.uisers.utils.maps
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import androidx.fragment.app.FragmentManager
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -66,5 +67,10 @@ class GoogleMapsController : MapController {
 
     override fun addGeoJsonLayer(tag: String, geoJsonString: String) {
         // TODO
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun setMyLocationButton(show: Boolean) {
+        map.isMyLocationEnabled = show
     }
 }

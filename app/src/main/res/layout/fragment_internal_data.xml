@@ -29,6 +29,14 @@
             app:layout_constraintTop_toBottomOf="@id/image_view_close">
 
             <Button
+                android:id="@+id/button_material"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?colorSurface"
+                android:text="Material"
+                android:textColor="?colorOnSurface" />
+
+            <Button
                 android:id="@+id/button_download_uses_csv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,28 +61,11 @@
                 android:textColor="?colorOnSurface" />
 
             <Button
-                android:id="@+id/button_update_sites"
+                android:id="@+id/button_update_map_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?colorSurface"
-                android:text="Update Sites"
-                android:textColor="?colorOnSurface" />
-
-            <Button
-                android:id="@+id/button_update_places"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?colorSurface"
-                android:text="Update Places"
-                android:textColor="?colorOnSurface" />
-
-
-            <Button
-                android:id="@+id/button_material"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?colorSurface"
-                android:text="Material"
+                android:text="Update map data"
                 android:textColor="?colorOnSurface" />
 
         </LinearLayout>

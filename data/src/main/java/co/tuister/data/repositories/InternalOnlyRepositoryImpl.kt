@@ -1,14 +1,13 @@
 package co.tuister.data.repositories
 
 import android.content.Context
+import co.tuister.data.dto.*
 import co.tuister.data.utils.await
-import co.tuister.data.dto.CareerDto
-import co.tuister.data.dto.CareerSubjectDto
-import co.tuister.data.dto.UserDataDto
-import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS
+import co.tuister.data.utils.BaseCollection.Companion.FIELD_MAP_PLACES
+import co.tuister.data.utils.BaseCollection.Companion.FIELD_MAP_SITES
 import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.base.Either
@@ -72,6 +71,37 @@ class InternalOnlyRepositoryImpl(
             Either.Right(data)
         } catch (e: Exception) {
             Either.Left(Failure.ServerError(e))
+        }
+    }
+
+    override suspend fun loadMapData(): Either<Failure, Boolean> {
+        return try {
+
+            context.assets.open("map_places.json").bufferedReader().use {
+                val text = it.readText()
+
+                val list = gson.fromJson(text, Array<PlaceDto>::class.java).toList()
+                    .map { place -> place.objectToMap() }
+
+                baseCollection.getMapDocument()!!
+                    .reference.update(mapOf(Pair(FIELD_MAP_PLACES, list)))
+                    .await()
+            }
+
+            context.assets.open("map_sites.json").bufferedReader().use {
+                val text = it.readText()
+
+                val list = gson.fromJson(text, Array<SiteDto>::class.java).toList()
+                    .map { site -> site.objectToMap() }
+
+                 baseCollection.getMapDocument()!!
+                    .reference
+                    .update(mapOf(Pair(FIELD_MAP_SITES, list)))
+                    .await()
+            }
+            Either.Right(true)
+        } catch (exception: Exception) {
+            Either.Left(Failure.ServerError(exception))
         }
     }
 }

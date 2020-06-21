@@ -11,4 +11,5 @@ interface MapController {
     fun zoomIn()
     fun zoomOut()
     fun addGeoJsonLayer(tag: String, geoJsonString: String)
+    fun setMyLocationButton(show: Boolean)
 }
