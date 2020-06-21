@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Principal - Bucaramanga",
+    "lat": 7.138838,
+    "lon": -73.120263
+  },
+  {
+    "id": 2,
+    "name": "Salud - Bucaramanga",
+    "lat": 7.138838,
+    "lon": -73.120263
+  },
+  {
+    "id": 3,
+    "name": "Barbosa",
+    "lat": 7.138838,
+    "lon": -73.120263
+  },
+  {
+    "id": 4,
+    "name": "Barrancabermeja",
+    "lat": 7.138838,
+    "lon": -73.120263
+  },
+  {
+    "id": 5,
+    "name": "Malaga",
+    "lat": 7.138838,
+    "lon": -73.120263
+  },
+  {
+    "id": 6,
+    "name": "Socorro",
+    "lat": 7.138838,
+    "lon": -73.120263
+  }
+]

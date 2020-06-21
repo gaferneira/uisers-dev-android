@@ -212,6 +212,9 @@
     <string name="title_menu_feedback">Feedback</string>
     <string name="prompt_week_day">Day</string>
 
+    <string name="permission_location_required_text">Location permission required</string>
+    <string name="permission_location_explanation">Allow UISers to access this device\'s location </string>
+
     <plurals name="minutes">
         <item quantity="one">1 minute</item>
         <item quantity="other">%d minutes</item>

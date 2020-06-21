@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure.FormError
 import co.tuister.domain.usecases.DataUserUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
+import co.tuister.domain.usecases.internal.UpdateDataMapUseCase
 import co.tuister.domain.usecases.internal.UpdateDataSubjectsUseCase
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
@@ -19,13 +20,15 @@ import java.io.File
 class InternalUseViewModel(
     val dataUserUseCase: DataUserUseCase,
     val updateSubjects: UpdateDataSubjectsUseCase,
-    val updateCareers: UpdateDataCareersUseCase
+    val updateCareers: UpdateDataCareersUseCase,
+    val updateMapData: UpdateDataMapUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class ValidateUserDocument(val result: Result<Boolean>) : State<Boolean>(result)
         class UpdateSubjects(val result: Result<Boolean>) : State<Boolean>(result)
         class UpdateCareers(val result: Result<Boolean>) : State<Boolean>(result)
+        class UpdateMapData(val result: Result<Boolean>) : State<Boolean>(result)
     }
 
     fun generateUserCSVData(context: Context) {
@@ -91,6 +94,21 @@ class InternalUseViewModel(
                 },
                 {
                     setState(State.UpdateCareers(Success(it)))
+                }
+            )
+        }
+    }
+
+    fun updateMapData() {
+        viewModelScope.launch {
+            setState(State.UpdateMapData(InProgress()))
+            val result = updateMapData.run()
+            result.fold(
+                {
+                    setState(State.UpdateMapData(Error(it)))
+                },
+                {
+                    setState(State.UpdateMapData(Success(it)))
                 }
             )
         }

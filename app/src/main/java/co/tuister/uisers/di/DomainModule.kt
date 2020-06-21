@@ -7,6 +7,7 @@ import co.tuister.domain.usecases.institutional.GetEventsUseCase
 import co.tuister.domain.usecases.institutional.GetPlacesUseCase
 import co.tuister.domain.usecases.institutional.GetSitesUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
+import co.tuister.domain.usecases.internal.UpdateDataMapUseCase
 import co.tuister.domain.usecases.internal.UpdateDataSubjectsUseCase
 import co.tuister.domain.usecases.login.*
 import co.tuister.domain.usecases.my_career.*
@@ -69,4 +70,5 @@ val domainModule = module {
     single { DataUserUseCase(get()) }
     single { UpdateDataSubjectsUseCase(get()) }
     single { UpdateDataCareersUseCase(get()) }
+    single { UpdateDataMapUseCase(get()) }
 }

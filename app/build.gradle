@@ -22,7 +22,7 @@ android {
         if (file("secure.properties").exists()) {
             file("secure.properties")?.withInputStream { secureProps.load(it) }
         }
-        resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?:
+        resValue "string", "google_maps_key", (secureProps.getProperty("GOOGLE_MAPS_API_KEY") ?:
                 "") // debug maps key
     }
 

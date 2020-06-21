@@ -47,6 +47,9 @@ class InternalDataFragment : BaseFragment() {
         binding.buttonUpdateCareers.setOnClickListener {
             viewModel.updateCareers()
         }
+        binding.buttonUpdateMapData.setOnClickListener {
+            viewModel.updateMapData()
+        }
         binding.buttonMaterial.setOnClickListener {
             findNavController().navigate(R.id.action_internal_to_material)
         }
