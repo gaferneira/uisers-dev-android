@@ -21,6 +21,7 @@ import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
+import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.setImageFromUri
 import co.tuister.uisers.utils.extensions.setupWithNavController
 import kotlinx.coroutines.flow.collect
@@ -76,25 +77,31 @@ class MainActivity :
         binding.toolbar.navigationIcon = null
 
         binding.circleImagePhoto.setOnClickListener {
+            analytics.trackEvent(Analytics.EVENT_CLICK_DRAWER_MENU)
             binding.drawerLayout.openDrawer(START)
         }
 
         binding.navigationView.addHeaderView(bindingMenu.root)
         binding.navigationView.setNavigationItemSelectedListener { menu ->
             when (menu.title) {
-                resources.getString(R.string.title_menu_profile) -> ProfileActivity.start(
-                    this,
-                    viewModel.user
-                )
+                resources.getString(R.string.title_menu_profile) -> {
+                    ProfileActivity.start(
+                        this,
+                        viewModel.user
+                    )
+                    analytics.trackEvent(Analytics.EVENT_CLICK_PROFILE)
+                }
                 resources.getString(R.string.title_menu_about) -> {
                     AboutDialogFragment.create()
                         .show(supportFragmentManager, AboutDialogFragment.TAG)
                     binding.drawerLayout.closeDrawers()
+                    analytics.trackEvent(Analytics.EVENT_CLICK_ABOUT)
                 }
                 resources.getString(R.string.title_menu_feedback) -> {
                     FeedbackDialogFragment.create(this)
                         .show(supportFragmentManager, FeedbackDialogFragment.TAG)
                     binding.drawerLayout.closeDrawers()
+                    analytics.trackEvent(Analytics.EVENT_CLICK_FEEDBACK)
                 }
             }
             true
@@ -134,6 +141,19 @@ class MainActivity :
             this,
             Observer { navController ->
                 setupActionBarWithNavController(navController)
+
+                if (currentNavController != null) {
+                    val event = when (navController.graph.id) {
+                        R.id.nav_graph_home -> Analytics.EVENT_CLICK_HOME
+                        R.id.nav_graph_my_career -> Analytics.EVENT_CLICK_MY_CAREER
+                        R.id.nav_graph_task_manager -> Analytics.EVENT_CLICK_TASKS
+                        R.id.nav_graph_institution -> Analytics.EVENT_CLICK_INSTITUTION
+                        else -> null
+                    }
+                    if (event != null) {
+                        analytics.trackEvent(event)
+                    }
+                }
                 currentNavController?.removeOnDestinationChangedListener(this)
                 currentNavController = navController
                 currentNavController?.addOnDestinationChangedListener(this)
@@ -183,11 +203,12 @@ class MainActivity :
             },
             onError = {
                 binding.loginStatus.isVisible = false
-                finish()
-                LoginActivity.start(this)
             },
             onSuccess = {
                 binding.loginStatus.isVisible = false
+                analytics.trackUserLogout()
+                finish()
+                LoginActivity.start(this)
             }
         )
     }

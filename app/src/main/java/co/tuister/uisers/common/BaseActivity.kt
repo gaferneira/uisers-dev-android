@@ -6,11 +6,16 @@ import androidx.appcompat.app.AppCompatDelegate
 import co.tuister.domain.base.Failure
 import co.tuister.uisers.R
 import co.tuister.uisers.utils.ProgressType
+import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.showConfirmDialog
 import co.tuister.uisers.utils.extensions.showDialog
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 open class BaseActivity : AppCompatActivity() {
+
+    protected val analytics: Analytics by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

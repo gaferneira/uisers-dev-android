@@ -25,11 +25,6 @@ class InstitutionalViewModel : BaseViewModel() {
                 R.color.green_600
             ),
             InstitutionalMenu(
-                R.string.title_fragment_publish,
-                R.drawable.icon_add,
-                R.color.green_600
-            ),
-            InstitutionalMenu(
                 R.string.title_fragment_wheels,
                 R.drawable.institutional_menu_wheels,
                 R.color.blue_600

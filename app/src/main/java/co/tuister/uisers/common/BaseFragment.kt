@@ -8,10 +8,14 @@ import androidx.navigation.fragment.findNavController
 import co.tuister.domain.base.Failure
 import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.utils.ProgressType
+import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.showConfirmDialog
 import co.tuister.uisers.utils.extensions.showDialog
+import org.koin.android.ext.android.inject
 
 open class BaseFragment : Fragment() {
+
+    protected val analytics: Analytics by inject()
 
     override fun onStart() {
         super.onStart()
@@ -21,6 +25,13 @@ open class BaseFragment : Fragment() {
     }
 
     open fun getTitle(): CharSequence? = findNavController()?.currentDestination?.label
+
+    override fun onResume() {
+        super.onResume()
+        activity?.let {
+            analytics.trackScreenView(it, this::class.java.simpleName, this::class.java.simpleName)
+        }
+    }
 
     fun hideKeyboard() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager

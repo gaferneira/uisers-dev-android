@@ -12,6 +12,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentForgotPasswordBinding
 import co.tuister.uisers.modules.login.forgot_password.ForgotPasswordViewModel.State
+import co.tuister.uisers.utils.analytics.Analytics
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -45,6 +46,7 @@ class ForgotPasswordFragment : BaseFragment() {
     private fun initViews() {
         binding.btnRecover.setOnClickListener {
             hideKeyboard()
+            analytics.trackEvent(Analytics.EVENT_FORGOT_PASSWORD)
             viewModel.doRecover()
         }
     }

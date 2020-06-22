@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.databinding.FragmentWheelsBinding
+import co.tuister.uisers.utils.analytics.Analytics
 
 class WheelsFragment : BaseFragment() {
 
@@ -39,6 +40,7 @@ class WheelsFragment : BaseFragment() {
                     )
                 )
             }
+            analytics.trackEvent(Analytics.EVENT_CLICK_OPEN_WHEELS)
         }
     }
 }
