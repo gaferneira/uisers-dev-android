@@ -12,4 +12,5 @@ class SemesterUserDto(
 fun SemesterUserDto.toEntity(path: String) = Semester(path, period, average.toFloat(), credits.toInt(), false)
 
 fun Semester.toDTO() = SemesterUserDto(
-    average.toString(), period, credits.toString())
+    average.toString(), period, credits.toString()
+)

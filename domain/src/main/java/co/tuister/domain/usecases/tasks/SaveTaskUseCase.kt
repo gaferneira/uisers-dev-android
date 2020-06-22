@@ -9,13 +9,12 @@ import co.tuister.domain.repositories.TasksRepository
 
 class SaveTaskUseCase(
     private val repository: TasksRepository
-) : UseCase<Task, Task>() {
+) : UseCase<Task, Task> {
     override suspend fun run(params: Task): Either<Failure, Task> {
         return try {
             Right(repository.save(params))
         } catch (e: Exception) {
-            Either. Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
-
 }

@@ -3,11 +3,11 @@ package co.tuister.data.migration
 import java.io.Serializable
 
 class MigrationData : Serializable {
-    var bloqueMateriaList : List<BloqueMateria> = listOf()
-    var materiaEstudianteList : List<MateriaEstudiante> = listOf()
-    var notaList : List<Nota> = listOf()
-    var semestreEstudianteList : List<SemestreEstudiante> = listOf()
-    var tareaList : List<Tarea> = listOf()
+    var bloqueMateriaList: List<BloqueMateria> = listOf()
+    var materiaEstudianteList: List<MateriaEstudiante> = listOf()
+    var notaList: List<Nota> = listOf()
+    var semestreEstudianteList: List<SemestreEstudiante> = listOf()
+    var tareaList: List<Tarea> = listOf()
 }
 
 class Carrera : Serializable {
@@ -39,7 +39,6 @@ class Estudiante : Serializable {
     var idGSM: String? = null
     var ponderado = 0f
     var fechaUpdate: String? = null
-
 }
 
 class Facultad : Serializable {
@@ -59,7 +58,6 @@ class MateriaCarrera : Serializable {
     var nivel = 0
     var fkMateria: Materia? = null
     var fkCarrera: Carrera? = null
-
 }
 
 class MateriaEstudiante : Serializable {
@@ -69,7 +67,6 @@ class MateriaEstudiante : Serializable {
     var fechaUpdate: String? = null
     var fkSemestreEstudiante: SemestreEstudiante? = null
     var fkMateriaCarrera: MateriaCarrera? = null
-
 }
 
 class Nota : Serializable {
@@ -80,7 +77,11 @@ class Nota : Serializable {
     var fechaUpdate: String? = null
     var fkMateriaEstudiante: MateriaEstudiante? = null
     val total: Float
-        get() = (porcentaje * valor / 100.0).toFloat()
+        get() = (porcentaje * valor / HUNDRED_PERCENT).toFloat()
+
+    companion object {
+        private const val HUNDRED_PERCENT = 100.0
+    }
 }
 
 class Profesor : Serializable {
@@ -90,7 +91,6 @@ class Profesor : Serializable {
     var telefonoProfesor: String? = null
     var tipoProfesor: String? = null
     var calificacionProfesor: Double? = null
-
 }
 
 class Promo : Serializable {
@@ -100,7 +100,6 @@ class Promo : Serializable {
     var numero: String? = null
     var dateEnd: String? = null
     var isOwn = false
-
 }
 
 class Semestre : Serializable {
@@ -121,7 +120,6 @@ class SemestreEstudiante : Serializable {
     var creditos = 0
     var fkSemestre: Semestre? = null
     var fechaUpdate: String? = null
-
 }
 
 class Tarea : Serializable {
@@ -136,5 +134,4 @@ class Tarea : Serializable {
     var horaAlerta: String? = null
     var fkEstudiante: Estudiante? = null
     var fechaUpdate: String? = null
-
 }

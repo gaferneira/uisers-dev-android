@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/tasks_fragment_dest"
-        android:name="co.tuister.uisers.modules.task_manager.TasksFragment"
+        android:name="co.tuister.uisers.modules.tasks.TasksFragment"
         android:label="@string/title_menu_task"
         tools:layout="@layout/fragment_tasks">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/tasks_add_fragment_dest"
-        android:name="co.tuister.uisers.modules.task_manager.add_task.AddTaskFragment"
+        android:name="co.tuister.uisers.modules.tasks.add.AddTaskFragment"
         android:label="@string/title_fragment_add_task"
         tools:layout="@layout/fragment_tasks">
 

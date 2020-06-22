@@ -3,8 +3,8 @@ package co.tuister.uisers.modules.home
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Task
-import co.tuister.domain.usecases.my_career.GetCurrentSemesterUseCase
-import co.tuister.domain.usecases.my_career.GetScheduleByDateUseCase
+import co.tuister.domain.usecases.career.GetCurrentSemesterUseCase
+import co.tuister.domain.usecases.career.GetScheduleByDateUseCase
 import co.tuister.domain.usecases.tasks.GetMainTasks
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel

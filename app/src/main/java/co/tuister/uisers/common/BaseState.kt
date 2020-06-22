@@ -4,17 +4,17 @@ import co.tuister.domain.base.Failure
 import co.tuister.uisers.utils.ProgressType
 import co.tuister.uisers.utils.Result
 
-open class BaseState<out T : Any>(private val _result: Result<T> = Result.Success()) {
+open class BaseState<out T : Any>(private val result: Result<T> = Result.Success()) {
     object Initial : BaseState<Any>()
     class Error(failure: Failure) : BaseState<Any>(Result.Error(failure))
     object InProgress : BaseState<Any>(Result.InProgress())
 
-    // fun isFailure() = _result is Result.Error
-    // fun inProgress() = _result is Result.InProgress
-    // fun isSuccess() = _result is Result.Success
+    // fun isFailure() = result is Result.Error
+    // fun inProgress() = result is Result.InProgress
+    // fun isSuccess() = result is Result.Success
 
     val data: T?
-        get() = _result.data
+        get() = result.data
 
     fun handleResult(
         inProgress: ((ProgressType) -> Unit)? = null,
@@ -22,12 +22,12 @@ open class BaseState<out T : Any>(private val _result: Result<T> = Result.Succes
         onSuccess: (T?) -> Unit
     ) {
 
-        when (_result) {
+        when (result) {
             is Result.InProgress -> {
-                inProgress?.invoke(_result.type)
+                inProgress?.invoke(result.type)
             }
             is Result.Error -> {
-                onError?.invoke(_result.exception)
+                onError?.invoke(result.exception)
             }
             is Result.Success -> {
                 onSuccess.invoke(data)

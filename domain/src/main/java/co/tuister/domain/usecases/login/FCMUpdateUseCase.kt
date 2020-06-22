@@ -9,13 +9,13 @@ import co.tuister.domain.repositories.UserRepository
 
 class FCMUpdateUseCase(
     private val userRepository: UserRepository
-) : NoParamsUseCase<Boolean>() {
+) : NoParamsUseCase<Boolean> {
     override suspend fun run(): Either<Failure, Boolean> {
         return try {
             val result = userRepository.updateFCMToken()
             Right(result)
         } catch (e: Exception) {
-             Left(Failure.analyzeException(e))
+            Left(Failure.analyzeException(e))
         }
     }
 }

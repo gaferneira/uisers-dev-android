@@ -9,7 +9,13 @@ data class Task(
     var title: String = "",
     var description: String? = null,
     var dueDate: Long? = null,
-    //DO, DOING, DONE
+    // DO, DOING, DONE
     var status: Int = 0,
     var reminder: Int? = null
-) : Parcelable
+) : Parcelable {
+    companion object {
+        const val STATUS_DO = 0
+        const val STATUS_DOING = 1
+        const val STATUS_DONE = 1
+    }
+}

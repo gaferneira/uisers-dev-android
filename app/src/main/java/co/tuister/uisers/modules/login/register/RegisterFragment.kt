@@ -28,10 +28,6 @@ import java.util.Calendar.getInstance
 
 class RegisterFragment : BaseFragment() {
 
-    companion object {
-        const val RESULT_LOAD_IMAGE = 11
-    }
-
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var viewModel: RegisterViewModel
 
@@ -107,7 +103,7 @@ class RegisterFragment : BaseFragment() {
 
     private fun showYearOptions() {
         val currentYear = getInstance().get(YEAR) + 1
-        val valuesList = List(20) {
+        val valuesList = List(MAX_NUM_ROWS) {
             currentYear - (it)
         }
         val options = valuesList.map { yearOption(it) }.toTypedArray()
@@ -166,8 +162,8 @@ class RegisterFragment : BaseFragment() {
             onSuccess = {
                 binding.loginStatus.isVisible = false
                 showDialog(
-                    "Te hemos enviado un correo para que confirmes tu correo y puedas acceder a la aplicación a " + viewModel.userLive.value?.email,
-                    requireContext().getString(R.string.title_dialog_view_register)
+                    getString(R.string.register_confirm_email, viewModel.userLive.value?.email),
+                    getString(R.string.title_dialog_view_register)
                 ) {
                     viewModel.doLogout {
                         goToLogin()
@@ -229,5 +225,10 @@ class RegisterFragment : BaseFragment() {
                 }
             }
         }
+    }
+
+    companion object {
+        const val RESULT_LOAD_IMAGE = 11
+        const val MAX_NUM_ROWS = 20
     }
 }

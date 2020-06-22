@@ -20,7 +20,8 @@ import co.tuister.uisers.utils.extensions.nullCheck2
 class SectionDecorator(private val context: Context) : RecyclerView.ItemDecoration() {
 
     private val headerVerticalOffset by lazy {
-        context.resources.getDimensionPixelSize(R.dimen.section_decorator_header_vertical_offset).toFloat()
+        context.resources.getDimensionPixelSize(R.dimen.section_decorator_header_vertical_offset)
+            .toFloat()
     }
 
     private val linePaint = Paint()
@@ -33,7 +34,8 @@ class SectionDecorator(private val context: Context) : RecyclerView.ItemDecorati
     init {
         linePaint.color = ContextCompat.getColor(context, android.R.color.black)
         linePaint.strokeWidth =
-            context.resources.getDimensionPixelSize(R.dimen.section_decorator_divider_size).toFloat()
+            context.resources.getDimensionPixelSize(R.dimen.section_decorator_divider_size)
+                .toFloat()
     }
 
     fun setLineColor(@ColorRes color: Int) {
@@ -79,13 +81,15 @@ class SectionDecorator(private val context: Context) : RecyclerView.ItemDecorati
         nullCheck2(painter, headerView) { painter, headerView ->
             sectionsList.forEachIndexed { index, (sectionTitle, sectionsVisibleElements) ->
                 painter.paint(
-                    canvas,
-                    index,
-                    sectionTitle,
-                    sectionsVisibleElements,
-                    headerView,
-                    sectionsList.size,
-                    parent
+                    VerticalPainter.Params(
+                        canvas,
+                        index,
+                        sectionTitle,
+                        sectionsVisibleElements,
+                        headerView,
+                        sectionsList.size,
+                        parent
+                    )
                 )
             }
         }
@@ -122,7 +126,8 @@ class SectionDecorator(private val context: Context) : RecyclerView.ItemDecorati
 
     /**
      * Measures the headerTitle view to make sure its size is greater than 0 and will be drawn
-     * [RecyclerView item decorations](https://yoda.entelect.co.za/view/9627/how-to-android-recyclerview-item-decorations)
+     * [RecyclerView item decorations]
+     * (https://yoda.entelect.co.za/view/9627/how-to-android-recyclerview-item-decorations)
      */
     private fun fixLayoutSize(view: View, parent: ViewGroup) {
         val widthSpec = View.MeasureSpec.makeMeasureSpec(parent.width, View.MeasureSpec.EXACTLY)

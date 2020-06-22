@@ -6,7 +6,7 @@ import co.tuister.uisers.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DateUtils {
+class DateUtils private constructor() {
 
     companion object {
 
@@ -47,9 +47,9 @@ class DateUtils {
 
         fun minutesToString(resources: Resources, timeInMinutes: Int): String {
 
-            val minutes = timeInMinutes % 60
-            val hours = ((timeInMinutes - minutes) / 60) % 24
-            val days = (timeInMinutes - (hours * 60) - minutes) / (60 * 24)
+            val minutes = timeInMinutes % MINUTES_HOUR
+            val hours = ((timeInMinutes - minutes) / MINUTES_HOUR) % HOURS_DAY
+            val days = (timeInMinutes - (hours * MINUTES_HOUR) - minutes) / (MINUTES_HOUR * HOURS_DAY)
 
             val builder = StringBuilder()
 
@@ -63,6 +63,8 @@ class DateUtils {
             return builder.toString()
         }
 
+        private const val MINUTES_HOUR = 60
+        private const val HOURS_DAY = 24
         private val DATE_TIME_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
         private val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd")
     }

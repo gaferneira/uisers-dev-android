@@ -11,5 +11,5 @@ interface LoginRepository {
     suspend fun hasSessionActive(): Boolean
     suspend fun recoverPassword(email: String): Boolean
     suspend fun register(user: User, password: String): Either<Failure, Boolean>
-    suspend fun uploadImage(uri: Uri,email: String): Either<Failure, Boolean>
+    suspend fun uploadImage(uri: Uri, email: String): Either<Failure, Boolean>
 }

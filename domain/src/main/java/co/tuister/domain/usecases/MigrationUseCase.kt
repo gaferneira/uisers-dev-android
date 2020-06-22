@@ -7,7 +7,7 @@ import co.tuister.domain.repositories.MigrationRepository
 
 class MigrationUseCase(
     private val migrationRepository: MigrationRepository
-) : NoParamsUseCase<Boolean>() {
+) : NoParamsUseCase<Boolean> {
     override suspend fun run(): Either<Failure, Boolean> {
         return migrationRepository.migrate()
     }

@@ -8,13 +8,12 @@ import co.tuister.domain.repositories.MapRepository
 
 class GetSitesUseCase(
     private val repository: MapRepository
-) : NoParamsUseCase<List<Site>>() {
+) : NoParamsUseCase<List<Site>> {
     override suspend fun run(): Either<Failure, List<Site>> {
         return try {
             Either.Right(repository.getSites())
         } catch (e: Exception) {
-            Either. Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
-
     }
 }

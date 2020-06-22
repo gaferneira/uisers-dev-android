@@ -1,9 +1,18 @@
 package co.tuister.data.migration
 
-import co.tuister.data.utils.await
-import co.tuister.data.dto.*
+import co.tuister.data.dto.DataTasksUserDto
+import co.tuister.data.dto.NoteDto
+import co.tuister.data.dto.SchedulePeriodDto
+import co.tuister.data.dto.SemesterUserDto
+import co.tuister.data.dto.SubjectUserDto
+import co.tuister.data.dto.TaskDto
 import co.tuister.data.repositories.MyCareerRepository
-import co.tuister.data.utils.*
+import co.tuister.data.utils.BackupCollection
+import co.tuister.data.utils.SemestersCollection
+import co.tuister.data.utils.TaskManagerCollection
+import co.tuister.data.utils.UsersCollection
+import co.tuister.data.utils.await
+import co.tuister.data.utils.objectToMap
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.repositories.MigrationRepository
@@ -12,7 +21,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
-import java.util.*
+import java.util.Date
 
 class MigrationRepositoryImpl(
     private val gson: Gson,
@@ -32,11 +41,14 @@ class MigrationRepositoryImpl(
             val migration = usersCollection.getByEmail(email)
                 ?.getBoolean(UsersCollection.FIELD_USER_MIGRATION) ?: false
 
-            if (migration) {
-                return Either.Right(true)
+            val text = when {
+                migration -> null
+                else -> backupCollection.getUserBackup(email)
             }
 
-            val text = backupCollection.getUserBackup(email) ?: return Either.Right(true)
+            if (text.isNullOrEmpty()) {
+                return Either.Right(true)
+            }
 
             val migrationData = gson.fromJson(text, MigrationData::class.java)
 
@@ -58,7 +70,8 @@ class MigrationRepositoryImpl(
             val materias = migrationData.materiaEstudianteList.groupBy {
                 it.fkSemestreEstudiante!!.fkSemestre!!.toString()
             }.map {
-                Pair(it.component1(),
+                Pair(
+                    it.component1(),
                     it.component2().map { sub ->
                         SubjectUserDto(
                             sub.fkMateriaCarrera!!.fkMateria!!.idMateria.toString(),
@@ -72,9 +85,11 @@ class MigrationRepositoryImpl(
             }.toMap()
 
             val notas = migrationData.notaList.groupBy {
-                it.fkMateriaEstudiante!!.fkSemestreEstudiante!!.fkSemestre!!.toString() + "///" + it.fkMateriaEstudiante!!.fkMateriaCarrera!!.fkMateria!!.idMateria
+                it.fkMateriaEstudiante!!.fkSemestreEstudiante!!.fkSemestre!!.toString() + "///"
+                + it.fkMateriaEstudiante!!.fkMateriaCarrera!!.fkMateria!!.idMateria
             }.map {
-                Pair(it.component1(),
+                Pair(
+                    it.component1(),
                     it.component2().map { item ->
                         NoteDto(
                             item.descripcion!!,
@@ -89,7 +104,8 @@ class MigrationRepositoryImpl(
             val bloques = migrationData.bloqueMateriaList.groupBy {
                 it.fkMateriaEstudiante!!.fkSemestreEstudiante!!.fkSemestre!!.toString()
             }.map {
-                Pair(it.component1(),
+                Pair(
+                    it.component1(),
                     it.component2().map { item ->
                         SchedulePeriodDto(
                             item.fkMateriaEstudiante!!.fkMateriaCarrera!!.fkMateria!!.nombreMateria!!,
@@ -182,7 +198,6 @@ class MigrationRepositoryImpl(
             "code", item.code
         ).get().await()?.documents?.firstOrNull()
 
-
         return oldSubject?.reference ?: semesterDoc.collection(SemestersCollection.COL_SUBJECTS)
             .add(
                 item.objectToMap()
@@ -222,7 +237,6 @@ class MigrationRepositoryImpl(
 
         backupCollection.deleteUserBackup(email)
     }
-
 
     private suspend fun getTaskDocument() = taskManagerCollection.document(getTaskDocumentsId())
 

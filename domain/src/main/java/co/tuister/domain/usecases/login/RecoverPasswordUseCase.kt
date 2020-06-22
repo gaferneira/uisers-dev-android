@@ -9,7 +9,7 @@ import co.tuister.domain.repositories.LoginRepository
 
 class RecoverPasswordUseCase(
     private val loginRepository: LoginRepository
-) : UseCase<Boolean, String>() {
+) : UseCase<Boolean, String> {
     override suspend fun run(params: String): Either<Failure, Boolean> {
         return try {
             val result = loginRepository.recoverPassword(params)

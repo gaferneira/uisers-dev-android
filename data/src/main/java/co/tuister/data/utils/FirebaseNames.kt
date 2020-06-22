@@ -24,7 +24,6 @@ class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
         const val FIELD_MAP_PLACES = "map_places"
         const val FIELD_MAP_SITES = "map_sites"
         const val FIELD_CALENDAR = "academico"
-
     }
 }
 
@@ -58,7 +57,6 @@ class SemestersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) 
         const val FIELD_PERIOD = "period"
         const val FIELD_SUBJECT_CODE = "code"
         const val COL_NOTES = "notes"
-
     }
 }
 

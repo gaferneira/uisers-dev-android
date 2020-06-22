@@ -21,7 +21,7 @@ sealed class Failure(val error: Exception?) {
     abstract class FeatureFailure(error: Exception?) : Failure(error)
 
     companion object {
-        fun analyzeException(exception : Exception?) : Failure{
+        fun analyzeException(exception: Exception?): Failure {
             // TODO Create cases
             return when (exception) {
                 is ConnectException -> NetworkConnection(exception)

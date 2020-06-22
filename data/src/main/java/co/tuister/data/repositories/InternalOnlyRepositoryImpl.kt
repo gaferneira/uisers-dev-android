@@ -1,15 +1,21 @@
 package co.tuister.data.repositories
 
 import android.content.Context
-import co.tuister.data.dto.*
-import co.tuister.data.utils.await
+import co.tuister.data.dto.CareerDto
+import co.tuister.data.dto.CareerSubjectDto
+import co.tuister.data.dto.EventDto
+import co.tuister.data.dto.PlaceDto
+import co.tuister.data.dto.SiteDto
+import co.tuister.data.dto.UserDataDto
+import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CALENDAR
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
-import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_MAP_PLACES
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_MAP_SITES
+import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS
 import co.tuister.data.utils.UsersCollection
+import co.tuister.data.utils.await
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
@@ -41,7 +47,7 @@ class InternalOnlyRepositoryImpl(
             }
             Either.Right(true)
         } catch (e: Exception) {
-             Either.Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -59,7 +65,7 @@ class InternalOnlyRepositoryImpl(
             }
             Either.Right(true)
         } catch (e: Exception) {
-              Either.Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -71,7 +77,7 @@ class InternalOnlyRepositoryImpl(
             }
             Either.Right(data)
         } catch (e: Exception) {
-             Either.Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -102,7 +108,7 @@ class InternalOnlyRepositoryImpl(
             }
             Either.Right(true)
         } catch (e: Exception) {
-             Either.Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 
@@ -122,7 +128,7 @@ class InternalOnlyRepositoryImpl(
             }
             Either.Right(true)
         } catch (e: Exception) {
-             Either.Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 }

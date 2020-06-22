@@ -115,7 +115,7 @@ class CalendarFragment : BaseFragment() {
         val closestEvent = adapter.list.minBy { abs(it.date - date.time) }
         closestEvent?.run {
             val position = adapter.list.indexOf(this)
-            layoutManager.scrollToPositionWithOffset(position, 100)
+            layoutManager.scrollToPositionWithOffset(position, OFFSET_SCROLL)
         }
     }
 
@@ -138,7 +138,7 @@ class CalendarFragment : BaseFragment() {
         handleState(state) {
             state.data?.run {
                 adapter.setItems(this)
-                binding.recyclerView.postDelayed(200) {
+                binding.recyclerView.postDelayed(LOAD_DELAY) {
                     goToDate(Calendar.getInstance().time)
                 }
             }
@@ -148,5 +148,10 @@ class CalendarFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         viewModel.refresh()
+    }
+
+    companion object {
+        private const val OFFSET_SCROLL = 100
+        private const val LOAD_DELAY: Long = 200
     }
 }

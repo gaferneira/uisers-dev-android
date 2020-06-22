@@ -1,12 +1,14 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.utils.await
-import co.tuister.data.dto.*
+import co.tuister.data.dto.NoteDto
+import co.tuister.data.dto.SubjectUserDto
+import co.tuister.data.dto.toDTO
+import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS
 import co.tuister.data.utils.SemestersCollection
+import co.tuister.data.utils.await
 import co.tuister.data.utils.objectToMap
-import co.tuister.domain.base.Either
 import co.tuister.domain.entities.CareerSubject
 import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
@@ -43,7 +45,6 @@ class SubjectRepositoryImpl(
         return subjects.sortedByDescending { it.credits }
     }
 
-
     override suspend fun save(subject: Subject): Subject {
         if (subject.id.isNotEmpty()) {
             val subjectDto = semestersCollection.documentByPath(subject.id).get().await()!!
@@ -64,10 +65,9 @@ class SubjectRepositoryImpl(
             semestersCollection.documentByPath(subject.id).delete().await()
             true
         } else {
-           false
+            false
         }
     }
-
 
     override suspend fun getNotes(subject: Subject): List<Note> {
         return semestersCollection.documentByPath(subject.id)
@@ -95,7 +95,6 @@ class SubjectRepositoryImpl(
         return item
     }
 
-
     override suspend fun removeNote(item: Note): Boolean {
         return if (item.id.isNotEmpty()) {
             semestersCollection.documentByPath(item.id).delete().await()
@@ -104,6 +103,4 @@ class SubjectRepositoryImpl(
             false
         }
     }
-
 }
-

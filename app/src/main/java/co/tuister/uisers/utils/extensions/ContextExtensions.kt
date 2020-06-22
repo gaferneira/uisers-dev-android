@@ -49,15 +49,16 @@ fun Context.checkRequireFormFields(vararg fields: TextView, showError: Boolean =
 
     var success = true
     fields.forEach {
-        if (it.text.isNullOrEmpty()) {
+        if (!it.text.isNullOrEmpty()) {
+            return@forEach
+        }
+        if (showError) {
+            it.error = getString(R.string.error_field_required)
+        }
+        if (success) {
+            success = false
             if (showError) {
-                it.error = getString(R.string.error_field_required)
-            }
-            if (success) {
-                success = false
-                if (showError) {
-                    it.requestFocus()
-                }
+                it.requestFocus()
             }
         }
     }

@@ -1,9 +1,9 @@
 package co.tuister.data.repositories
 
 import android.net.Uri
-import co.tuister.data.utils.await
 import co.tuister.data.dto.toDTO
 import co.tuister.data.utils.UsersCollection
+import co.tuister.data.utils.await
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.EmailNotVerifiedError
@@ -17,7 +17,7 @@ import com.google.firebase.storage.FirebaseStorage
 class LoginRepositoryImpl(
     firebaseAuth: FirebaseAuth,
     val db: FirebaseFirestore,
-    val firebaseStorage: FirebaseStorage
+    private val firebaseStorage: FirebaseStorage
 ) : MyCareerRepository(firebaseAuth, db), LoginRepository {
 
     private val usersCollection by lazy { UsersCollection(db) }
@@ -34,11 +34,10 @@ class LoginRepositoryImpl(
 
             val user = usersCollection.getByEmail(email)?.toObject(User::class.java)
 
-            //check if current semester exists
+            // check if current semester exists
             getCurrentSemesterPath()
 
             Either.Right(user)
-
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }
@@ -65,12 +64,10 @@ class LoginRepositoryImpl(
                 usersCollection.collection().add(user.toDTO()).await()
             }
             Either.Right(true)
+        } catch (e: FirebaseAuthWeakPasswordException) {
+            Either.Left(Failure.AuthWeakPasswordException(e))
         } catch (e: Exception) {
-            if (e is FirebaseAuthWeakPasswordException){
-                Either.Left(Failure.AuthWeakPasswordException(e))
-            } else {
-                Either.Left(Failure.analyzeException(e))
-            }
+            Either.Left(Failure.analyzeException(e))
         }
     }
 

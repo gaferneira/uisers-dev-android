@@ -8,7 +8,7 @@ import co.tuister.domain.repositories.InternalOnlyRepository
 
 class DataUserUseCase(
     private val internalOnlyRepository: InternalOnlyRepository
-) : NoParamsUseCase<List<User>>() {
+) : NoParamsUseCase<List<User>> {
     override suspend fun run(): Either<Failure, List<User>> {
         return internalOnlyRepository.getAllUserData()
     }

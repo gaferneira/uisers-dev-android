@@ -9,7 +9,7 @@ interface SubjectRepository {
     suspend fun getAll(): List<CareerSubject>
     suspend fun getMySubjects(): List<Subject>
     suspend fun remove(subject: Subject): Boolean
-    //Notes
+    // Notes
     suspend fun saveNote(item: Note, subject: Subject): Note
     suspend fun getNotes(subject: Subject): List<Note>
     suspend fun removeNote(item: Note): Boolean

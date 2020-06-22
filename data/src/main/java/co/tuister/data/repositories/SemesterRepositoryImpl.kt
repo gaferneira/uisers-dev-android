@@ -1,13 +1,11 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.utils.await
 import co.tuister.data.dto.SemesterUserDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.SemestersCollection
+import co.tuister.data.utils.await
 import co.tuister.data.utils.objectToMap
-import co.tuister.domain.base.Either
-import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.Semester
 import co.tuister.domain.repositories.SemesterRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -40,7 +38,6 @@ class SemesterRepositoryImpl(
         }
 
         return list.sortedByDescending { it.period }
-
     }
 
     override suspend fun save(semester: Semester): Semester {

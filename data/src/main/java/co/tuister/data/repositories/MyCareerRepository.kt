@@ -1,15 +1,15 @@
 package co.tuister.data.repositories
 
-import co.tuister.data.utils.await
 import co.tuister.data.dto.DataSemesterUserDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.utils.SemestersCollection
+import co.tuister.data.utils.await
 import co.tuister.domain.entities.Semester
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import timber.log.Timber
 
-abstract class MyCareerRepository(
+open class MyCareerRepository(
     protected val firebaseAuth: FirebaseAuth,
     private val db: FirebaseFirestore
 ) {
@@ -18,10 +18,11 @@ abstract class MyCareerRepository(
     private var userDocumentId: String? = null
     private var email: String = ""
 
-    protected suspend fun getUserDocument(defaultPeriod : String = DEFAULT_PERIOD) = semestersCollection.document(getUserDocumentsId(defaultPeriod))
+    protected suspend fun getUserDocument(defaultPeriod: String = DEFAULT_PERIOD) =
+        semestersCollection.document(getUserDocumentsId(defaultPeriod))
 
-    protected suspend fun getSemestersCollection(defaultPeriod : String = DEFAULT_PERIOD) = getUserDocument(defaultPeriod)
-        .collection(SemestersCollection.COL_SEMESTERS)
+    protected suspend fun getSemestersCollection(defaultPeriod: String = DEFAULT_PERIOD) =
+        getUserDocument(defaultPeriod).collection(SemestersCollection.COL_SEMESTERS)
 
     protected suspend fun getCurrentSemesterPath(): String {
 
@@ -33,10 +34,9 @@ abstract class MyCareerRepository(
             .await()
 
         return collection!!.documents.first().reference.path
-
     }
 
-    private suspend fun getUserDocumentsId(defaultPeriod : String = DEFAULT_PERIOD): String {
+    private suspend fun getUserDocumentsId(defaultPeriod: String = DEFAULT_PERIOD): String {
         if (userDocumentId.isNullOrEmpty() || email != firebaseAuth.currentUser!!.email!!) {
             email = firebaseAuth.currentUser!!.email!!
             val id = semestersCollection.collection()
@@ -73,5 +73,4 @@ abstract class MyCareerRepository(
     companion object {
         const val DEFAULT_PERIOD = "2020-2"
     }
-
 }

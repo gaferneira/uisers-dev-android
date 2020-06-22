@@ -5,7 +5,7 @@ import java.io.Serializable
 
 class SchedulePeriodDto(
     var description: String = "",
-    var day: Int = 2, //Monday
+    var day: Int = 2, // Monday
     var initialHour: String = "",
     var finalHour: String = "",
     var place: String? = null

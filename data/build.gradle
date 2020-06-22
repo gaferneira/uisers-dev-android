@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'org.jmailen.kotlinter'
 
 android {
     compileSdkVersion 29
@@ -42,10 +43,10 @@ dependencies {
     // Koin Implementation --------------------------------------------------------
 
     // Firebase Implementation ----------------------------------------------------
-    implementation 'com.google.firebase:firebase-messaging:20.2.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
     implementation 'com.google.firebase:firebase-core:17.4.3'
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
-    implementation 'com.google.firebase:firebase-database:19.3.0'
+    implementation 'com.google.firebase:firebase-database:19.3.1'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     // Firebase Implementation ----------------------------------------------------
@@ -63,4 +64,10 @@ dependencies {
 
     implementation project(path: ':domain')
 
+}
+
+kotlinter {
+    ignoreFailures = false
+    indentSize = 4
+    reporters = ['checkstyle', 'html']
 }

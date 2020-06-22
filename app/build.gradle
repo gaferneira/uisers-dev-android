@@ -120,7 +120,6 @@ androidExtensions {
 kotlinter {
     ignoreFailures = false
     indentSize = 4
-    disabledRules = ["no-wildcard-imports"]
     reporters = ['checkstyle', 'html']
 }
 

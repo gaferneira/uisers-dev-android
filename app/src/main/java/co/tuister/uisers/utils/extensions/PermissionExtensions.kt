@@ -96,15 +96,18 @@ sealed class AppPermission(
                 AccessCoarseLocation
             )
         }
+
+        const val REQUEST_CODE_ACCESS_FINE_LOCATION = 42
+        const val REQUEST_CODE_ACCESS_COARSE_LOCATION = 43
     }
 
     object AccessFineLocation : AppPermission(
-        Manifest.permission.ACCESS_FINE_LOCATION, 42,
+        Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_CODE_ACCESS_FINE_LOCATION,
         R.string.permission_location_required_text, R.string.permission_location_explanation
     )
 
     object AccessCoarseLocation : AppPermission(
-        Manifest.permission.ACCESS_COARSE_LOCATION, 43,
+        Manifest.permission.ACCESS_COARSE_LOCATION, REQUEST_CODE_ACCESS_COARSE_LOCATION,
         R.string.permission_location_required_text, R.string.permission_location_explanation
     )
 }

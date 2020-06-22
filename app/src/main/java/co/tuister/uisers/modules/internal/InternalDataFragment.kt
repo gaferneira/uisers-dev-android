@@ -13,7 +13,11 @@ import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInternalDataBinding
-import co.tuister.uisers.modules.internal.InternalUseViewModel.State.*
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateCalendarData
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateCareers
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateMapData
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateSubjects
+import co.tuister.uisers.modules.internal.InternalUseViewModel.State.ValidateUserDocument
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress

@@ -12,7 +12,9 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.ValidateUserDocument
 import co.tuister.uisers.utils.Result
-import co.tuister.uisers.utils.Result.*
+import co.tuister.uisers.utils.Result.Error
+import co.tuister.uisers.utils.Result.InProgress
+import co.tuister.uisers.utils.Result.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,18 +47,18 @@ class InternalUseViewModel(
                     },
                     { list ->
                         try {
-                            val HEADER = "carrera,correo,fcmId"
-                            val SEPARATOR = ","
+                            val header = "carrera,correo,fcmId"
+                            val separator = ","
                             val file = File(context.getExternalFilesDir("uisers"), "data_users.csv")
                             if (file.exists())
                                 file.delete()
                             file.createNewFile()
                             val fileWriter = file.bufferedWriter()
-                            fileWriter.append(HEADER)
+                            fileWriter.append(header)
                             fileWriter.appendln()
                             list.forEach { user ->
                                 user.run {
-                                    fileWriter.append(career + SEPARATOR + email + SEPARATOR + fcmId)
+                                    fileWriter.append(career + separator + email + separator + fcmId)
                                 }
                                 fileWriter.appendln()
                             }

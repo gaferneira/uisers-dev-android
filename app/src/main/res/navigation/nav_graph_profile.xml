@@ -11,7 +11,7 @@
         android:label="@string/title_menu_profile"
         tools:layout="@layout/fragment_profile">
         <argument
-            android:name="EXTRA_USER"
+            android:name="extraUser"
             app:argType="co.tuister.domain.entities.User" />
     </fragment>
 

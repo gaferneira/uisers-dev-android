@@ -15,15 +15,22 @@ class VerticalPainter(
     private val linePaint: Paint
 ) {
 
-    fun paint(
-        canvas: Canvas,
-        sectionIndex: Int,
-        sectionTitle: String,
-        sectionsVisibleElements: List<View>,
-        headerView: TextView,
-        sectionSize: Int,
-        parent: ViewGroup
-    ) {
+    data class Params(
+        val canvas: Canvas,
+        val sectionIndex: Int,
+        val sectionTitle: String,
+        val sectionsVisibleElements: List<View>,
+        val headerView: TextView,
+        val sectionSize: Int,
+        val parent: ViewGroup
+    )
+
+    fun paint(params: Params) {
+
+        val canvas = params.canvas
+        val sectionIndex = params.sectionIndex
+        val sectionsVisibleElements = params.sectionsVisibleElements
+        val sectionSize = params.sectionSize
 
         val lineStart = getLineStart(sectionIndex, sectionsVisibleElements.first())
         val lineEnd = getLineEnd(sectionIndex, sectionSize, canvas, sectionsVisibleElements.last())
@@ -38,9 +45,9 @@ class VerticalPainter(
             )
         }
 
-        headerView.apply {
-            text = sectionTitle
-            fixLayoutSize(this, parent)
+        params.headerView.apply {
+            text = params.sectionTitle
+            fixLayoutSize(this, params.parent)
 
             val headerWidth = with(this) {
                 width + paddingStart + paddingEnd +

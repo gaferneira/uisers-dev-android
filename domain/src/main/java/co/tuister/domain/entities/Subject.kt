@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Subject(
-    var id : String = "",
-    var code : String = "",
+    var id: String = "",
+    var code: String = "",
     var name: String = "",
     var teacher: String = "",
     var note: Float = 0f,
@@ -15,8 +15,8 @@ data class Subject(
 
 @Parcelize
 data class CareerSubject(
-    var career : String,
-    var id : String = "",
-    var name : String = "",
-    var credits : Int = 1
+    var career: String,
+    var id: String = "",
+    var name: String = "",
+    var credits: Int = 1
 ) : Parcelable

@@ -9,7 +9,7 @@ import co.tuister.domain.repositories.UserRepository
 
 class SendVerifyLinkUseCase(
     private val userRepository: UserRepository
-) : NoParamsUseCase<Boolean>() {
+) : NoParamsUseCase<Boolean> {
     override suspend fun run(): Either<Failure, Boolean> {
         val result = userRepository.reSendVerifyEmail()
         return if (result) {
