@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import co.tuister.uisers.utils.extensions.setImageFromUrl
 
-class BindingAdapters {
+class BindingAdapters private constructor() {
     companion object {
         @BindingAdapter("image_url")
         @JvmStatic

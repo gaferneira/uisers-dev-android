@@ -9,14 +9,17 @@ import java.util.*
 
 class GetMainTasks(
     private val repository: TasksRepository
-) : UseCase<List<Task>, Date>() {
+) : UseCase<List<Task>, Date> {
     override suspend fun run(params: Date): Either<Failure, List<Task>> {
         return try {
             val result = repository.getTasks()
-            Either.Right(result.filter { it.status != 2 }.take(5))
+            Either.Right(result.filter { it.status != Task.STATUS_DONE }.take(MAX_ROWS))
+        } catch (e: Exception) {
+            Either.Left(Failure.analyzeException(e))
         }
-        catch (e: Exception) {
-            Either. Left(Failure.analyzeException(e))
-        }
+    }
+
+    companion object {
+        private const val MAX_ROWS = 5
     }
 }

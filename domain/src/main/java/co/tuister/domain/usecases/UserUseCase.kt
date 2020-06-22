@@ -8,7 +8,7 @@ import co.tuister.domain.repositories.UserRepository
 
 class UserUseCase(
     private val userRepository: UserRepository
-) : NoParamsUseCase<User>() {
+) : NoParamsUseCase<User> {
     override suspend fun run(): Either<Failure, User> {
         return userRepository.getUser()
     }

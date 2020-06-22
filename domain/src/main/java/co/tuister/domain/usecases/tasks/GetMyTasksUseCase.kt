@@ -8,12 +8,12 @@ import co.tuister.domain.repositories.TasksRepository
 
 class GetMyTasksUseCase(
     private val repository: TasksRepository
-) : NoParamsUseCase<List<Task>>() {
+) : NoParamsUseCase<List<Task>> {
     override suspend fun run(): Either<Failure, List<Task>> {
         return try {
             Either.Right(repository.getTasks())
         } catch (e: Exception) {
-            Either. Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 }

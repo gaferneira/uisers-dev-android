@@ -7,7 +7,7 @@ import co.tuister.domain.repositories.InternalOnlyRepository
 
 class UpdateDataSubjectsUseCase(
     private val internalOnlyRepository: InternalOnlyRepository
-) : NoParamsUseCase<Boolean>() {
+) : NoParamsUseCase<Boolean> {
     override suspend fun run(): Either<Failure, Boolean> {
         return internalOnlyRepository.loadDataSubjects()
     }

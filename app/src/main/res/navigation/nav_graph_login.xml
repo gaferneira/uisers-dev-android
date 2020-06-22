@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/forgot_password_fragment_dest"
-        android:name="co.tuister.uisers.modules.login.forgot_password.ForgotPasswordFragment"
+        android:name="co.tuister.uisers.modules.login.forgotpassword.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment"
         tools:layout="@layout/fragment_forgot_password" />
 </navigation>

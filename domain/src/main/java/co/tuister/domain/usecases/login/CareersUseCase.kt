@@ -8,12 +8,12 @@ import co.tuister.domain.repositories.UserRepository
 
 class CareersUseCase(
     private val userRepository: UserRepository
-) : NoParamsUseCase<List<Career>>() {
+) : NoParamsUseCase<List<Career>> {
     override suspend fun run(): Either<Failure, List<Career>> {
         return try {
             Either.Right(userRepository.getCareers())
         } catch (e: Exception) {
-            Either. Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 }

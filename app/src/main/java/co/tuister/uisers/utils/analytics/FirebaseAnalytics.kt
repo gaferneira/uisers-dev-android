@@ -10,38 +10,38 @@ class FirebaseAnalytics(
     context: Context
 ) : Analytics {
 
-    private val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
+    private val instance = FirebaseAnalytics.getInstance(context)
 
     override fun trackScreenView(activity: Activity, screenName: String, screenClassName: String) {
-        firebaseAnalytics.setCurrentScreen(activity, screenName, screenClassName)
+        instance.setCurrentScreen(activity, screenName, screenClassName)
     }
 
     override fun trackUserLogin() {
-        firebaseAnalytics.logEvent(Analytics.EVENT_LOGIN) {
+        instance.logEvent(Analytics.EVENT_LOGIN) {
             param("date", getCurrentDate())
         }
     }
 
     override fun trackUserLogout() {
-        firebaseAnalytics.logEvent(Analytics.EVENT_LOGOUT) {
+        instance.logEvent(Analytics.EVENT_LOGOUT) {
             param("date", getCurrentDate())
         }
     }
 
     override fun trackUserSignUp() {
-        firebaseAnalytics.logEvent(Analytics.EVENT_SIGN_UP) {
+        instance.logEvent(Analytics.EVENT_SIGN_UP) {
             param("date", getCurrentDate())
         }
     }
 
     override fun trackForgotPassword() {
-        firebaseAnalytics.logEvent(Analytics.EVENT_FORGOT_PASSWORD) {
+        instance.logEvent(Analytics.EVENT_FORGOT_PASSWORD) {
             param("date", getCurrentDate())
         }
     }
 
     override fun trackEvent(eventName: String) {
-        firebaseAnalytics.logEvent(eventName) {
+        instance.logEvent(eventName) {
             param("date", getCurrentDate())
         }
     }

@@ -11,7 +11,7 @@ import co.tuister.domain.repositories.LoginRepository
 
 class RegisterUseCase(
     private val loginRepository: LoginRepository
-) : UseCase<Boolean, RegisterUseCase.Params>() {
+) : UseCase<Boolean, RegisterUseCase.Params> {
     override suspend fun run(params: Params): Either<Failure, Boolean> {
         return try {
             return when (val result = loginRepository.register(params.user, params.password)) {
@@ -22,7 +22,7 @@ class RegisterUseCase(
                 }
             }
         } catch (e: Exception) {
-             Left(Failure.analyzeException(e))
+            Left(Failure.analyzeException(e))
         }
     }
 
@@ -31,5 +31,4 @@ class RegisterUseCase(
     }
 
     data class Params(val user: User, val password: String)
-
 }

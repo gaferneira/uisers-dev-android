@@ -11,18 +11,18 @@ import co.tuister.domain.repositories.LoginRepository
 
 class LoginUseCase(
     private val loginRepository: LoginRepository
-) : UseCase<Boolean, LoginUseCase.Params>() {
+) : UseCase<Boolean, LoginUseCase.Params> {
     override suspend fun run(params: Params): Either<Failure, Boolean> {
         return try {
-             val value = when ( val result = loginRepository.login(params.email, params.password)) {
-                 is Right -> {
-                     result.value?.also { createSession(it) }
-                 }
-                 else -> null
-             }
+            val value = when (val result = loginRepository.login(params.email, params.password)) {
+                is Right -> {
+                    result.value?.also { createSession(it) }
+                }
+                else -> null
+            }
             Right(value != null)
         } catch (e: Exception) {
-             Left(Failure.analyzeException(e))
+            Left(Failure.analyzeException(e))
         }
     }
 
@@ -31,5 +31,4 @@ class LoginUseCase(
     }
 
     data class Params(val email: String, val password: String)
-
 }

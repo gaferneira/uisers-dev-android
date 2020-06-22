@@ -8,12 +8,12 @@ import co.tuister.domain.repositories.UserRepository
 
 class FeedbackUseCase(
     private val repository: UserRepository
-) : UseCase<Boolean, String>() {
+) : UseCase<Boolean, String> {
     override suspend fun run(params: String): Either<Failure, Boolean> {
         return try {
             Right(repository.sendFeedback(params))
         } catch (e: Exception) {
-            Either. Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 }

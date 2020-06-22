@@ -77,7 +77,7 @@ class ProfileFragment : BaseFragment() {
                 update(it)
             }
         }
-        viewModel.initialize(safeArgs.EXTRAUSER)
+        viewModel.initialize(safeArgs.extraUser)
         binding.viewModel = viewModel
         binding.activity = activity as BaseActivity
     }

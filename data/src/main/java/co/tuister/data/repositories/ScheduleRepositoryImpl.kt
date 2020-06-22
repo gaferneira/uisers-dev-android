@@ -10,6 +10,7 @@ import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.repositories.ScheduleRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Calendar
 
 class ScheduleRepositoryImpl(
     firebaseAuth: FirebaseAuth,
@@ -40,7 +41,7 @@ class ScheduleRepositoryImpl(
                 val path = it.reference.path
                 it.toObject(SchedulePeriodDto::class.java)!!.toEntity(path)
             }
-        return periods.sortedBy { (it.day - 2) % 8 } // First day monday
+        return periods.sortedBy { (it.day - Calendar.MONDAY) % DAYS_WEEK } // First day monday
     }
 
     override suspend fun remove(item: SchedulePeriod): Boolean {
@@ -52,4 +53,7 @@ class ScheduleRepositoryImpl(
         }
     }
 
+    companion object {
+        private const val DAYS_WEEK = 7
+    }
 }

@@ -39,7 +39,9 @@ class SplashFragment : BaseFragment() {
             viewLifecycleOwner,
             Observer {
                 when (it) {
-                    is GoToLogin -> findNavController().navigate(R.id.action_splash_fragment_dest_to_login_fragment_dest)
+                    is GoToLogin ->
+                        findNavController()
+                            .navigate(R.id.action_splash_fragment_dest_to_login_fragment_dest)
                     is GoToMain -> goToMain(it.user)
                 }
             }

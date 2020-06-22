@@ -24,7 +24,7 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    open fun getTitle(): CharSequence? = findNavController()?.currentDestination?.label
+    open fun getTitle(): CharSequence? = findNavController().currentDestination?.label
 
     override fun onResume() {
         super.onResume()

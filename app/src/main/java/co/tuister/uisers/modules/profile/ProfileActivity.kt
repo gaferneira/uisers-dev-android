@@ -17,7 +17,7 @@ class ProfileActivity : BaseActivity() {
     private lateinit var user: User
 
     companion object {
-        private val EXTRA_USER = "EXTRA_USER"
+        private const val EXTRA_USER = "extraUser"
 
         fun start(context: Context, user: User) {
             val intent = Intent(context, ProfileActivity::class.java)

@@ -8,13 +8,13 @@ import co.tuister.domain.repositories.LoginRepository
 
 class LogoutUseCase(
     private val loginRepository: LoginRepository
-) : NoParamsUseCase<Boolean>() {
+) : NoParamsUseCase<Boolean> {
     override suspend fun run(): Either<Failure, Boolean> {
         return try {
             loginRepository.logout()
             Right(true)
         } catch (e: Exception) {
-            Either. Left(Failure.analyzeException(e))
+            Either.Left(Failure.analyzeException(e))
         }
     }
 }

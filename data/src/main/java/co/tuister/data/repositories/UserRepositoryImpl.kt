@@ -1,18 +1,22 @@
 package co.tuister.data.repositories
 
 import android.net.Uri
-import co.tuister.data.utils.await
 import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
-import co.tuister.data.utils.*
+import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
+import co.tuister.data.utils.FeedbackCollection
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_DATE
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_EMAIL
+import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
+import co.tuister.data.utils.await
+import co.tuister.data.utils.castToList
+import co.tuister.data.utils.objectToMap
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.AuthenticationError
@@ -126,7 +130,6 @@ class UserRepositoryImpl(
     override suspend fun getCampus(): List<String> {
         val data = baseCollection.getBaseDocument()
         return data?.get(FIELD_CAMPUS).castToList<String>() ?: listOf()
-
     }
 
     override suspend fun downloadImage(email: String): Uri {

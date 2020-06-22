@@ -18,7 +18,9 @@ import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result
-import co.tuister.uisers.utils.Result.*
+import co.tuister.uisers.utils.Result.Error
+import co.tuister.uisers.utils.Result.InProgress
+import co.tuister.uisers.utils.Result.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

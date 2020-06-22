@@ -52,9 +52,9 @@ class MapFragment : BaseFragment() {
     }
 
     private fun initMap() {
-        val uis = Pair(7.139014, -73.120622) // default
+        val uis = Pair(DEFAULT_LAT, DEFAULT_LON)
         with(mapController) {
-            setCenter(uis, 16f)
+            setCenter(uis, DEFAULT_ZOOM)
         }
         checkLocationPermission()
     }
@@ -108,7 +108,7 @@ class MapFragment : BaseFragment() {
                     binding.editTextPlace.text = null
                     selectedSite = site
                     with(mapController) {
-                        setCenter(site.latlng, 16f)
+                        setCenter(site.latlng, DEFAULT_ZOOM)
                     }
                 }
             }
@@ -130,7 +130,7 @@ class MapFragment : BaseFragment() {
                 val place = filterPlaces?.get(which) ?: return@setItems
                 with(mapController) {
                     mapController.setMarker(place.latlng, TAG_MARKER_PLACE, place.title)
-                    setCenter(place.latlng, 18f)
+                    setCenter(place.latlng, DEFAULT_ZOOM_SELECTED)
                 }
             }
             .create()
@@ -169,5 +169,9 @@ class MapFragment : BaseFragment() {
 
     companion object {
         private const val TAG_MARKER_PLACE = "TAG_MARKER_PLACE"
+        private const val DEFAULT_LAT = 7.139014
+        private const val DEFAULT_LON = -73.120622
+        private const val DEFAULT_ZOOM = 16f
+        private const val DEFAULT_ZOOM_SELECTED = 18f
     }
 }

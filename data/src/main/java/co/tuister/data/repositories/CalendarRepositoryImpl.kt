@@ -22,7 +22,7 @@ class CalendarRepositoryImpl(
         val field = document?.get(BaseCollection.FIELD_CALENDAR)
         val json = gson.toJson(field)
         return gson.fromJson(json, Array<EventDto>::class.java).toList().map {
-           Event(it.title, it.description, stringToDateTime(it.date)?.time ?: 0, it.duration)
+            Event(it.title, it.description, stringToDateTime(it.date)?.time ?: 0, it.duration)
         }
     }
 
@@ -51,6 +51,5 @@ class CalendarRepositoryImpl(
     companion object {
         private val DATE_TIME_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
         private val DATE_TIME = SimpleDateFormat("yyyy-MM-dd")
-
     }
 }

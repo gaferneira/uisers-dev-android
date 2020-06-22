@@ -240,6 +240,7 @@
     <string name="about_title_working_together">Working together</string>
     <string name="about_repository">uisers-dev-android</string>
     <string name="about_repository_url">https://github.com/gaferneira/uisers-dev-android/</string>
+    <string name="register_confirm_email">Te hemos enviado un correo para que confirmes tu correo y puedas acceder a la aplicación a %s</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>
