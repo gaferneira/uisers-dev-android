@@ -107,6 +107,7 @@ dependencies {
     implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
     // Utils -------------------------------------------------------------
 
     implementation project(path: ':data')

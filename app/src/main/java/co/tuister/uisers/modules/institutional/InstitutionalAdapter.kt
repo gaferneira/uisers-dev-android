@@ -8,11 +8,10 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import kotlinx.android.synthetic.main.item_institutional_menu.*
 
-class InstitutionalAdapter(
-    private val listener: InstitutionalListener
-) : RecyclerView.Adapter<InstitutionalAdapter.InstitutionalViewHolder>() {
+class InstitutionalAdapter : RecyclerView.Adapter<InstitutionalAdapter.InstitutionalViewHolder>() {
 
     var list = listOf<InstitutionalMenu>()
+    var listener: InstitutionalListener? = null
 
     interface InstitutionalListener {
         fun onClickMenu(position: Int)
@@ -40,13 +39,13 @@ class InstitutionalAdapter(
         fun bind(
             position: Int,
             menu: InstitutionalMenu,
-            listener: InstitutionalListener
+            listener: InstitutionalListener?
         ) {
             text_view_institutional_menu.setText(menu.title)
             image_view_institutional_menu.setImageResource(menu.icon)
             container_institutional.setBackgroundResource(menu.backgroundColor)
             itemView.setOnClickListener {
-                listener.onClickMenu(position)
+                listener?.onClickMenu(position)
             }
         }
     }

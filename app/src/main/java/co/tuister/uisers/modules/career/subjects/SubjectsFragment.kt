@@ -46,8 +46,9 @@ class SubjectsFragment : BaseFragment() {
 
     private fun initViews() {
         if (!this::adapter.isInitialized) {
-            adapter = SubjectsAdapter(listener)
+            adapter = SubjectsAdapter()
         }
+        adapter.listener = listener
         if (!this::footerAdapter.isInitialized) {
             footerAdapter = FooterAdapter()
         }
@@ -98,6 +99,11 @@ class SubjectsFragment : BaseFragment() {
 
     fun refresh() {
         viewModel.refresh()
+    }
+
+    override fun onDestroyView() {
+        adapter.listener = null
+        super.onDestroyView()
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
