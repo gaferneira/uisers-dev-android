@@ -1,7 +1,6 @@
 package co.tuister.uisers.modules.main
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.User
@@ -19,6 +18,7 @@ import co.tuister.uisers.utils.Result.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class MainViewModel(
     private val logoutUseCase: LogoutUseCase,
@@ -32,10 +32,6 @@ class MainViewModel(
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class ValidateLogout(val result: Result<Boolean>) : State<Boolean>(result)
         class DownloadedImage(val result: Result<Uri>) : State<Uri>(result)
-    }
-
-    sealed class Event {
-        object GoToLogin : Event()
     }
 
     val title: MutableLiveData<String> = MutableLiveData("Inicio")
@@ -60,7 +56,7 @@ class MainViewModel(
                 migration = true
                 withContext(Dispatchers.IO) {
                     val success = migrationUseCase.run()
-                    Log.i("migration", "Result " + success)
+                    Timber.i("Result %s", success)
                 }
             }
         }
@@ -76,7 +72,7 @@ class MainViewModel(
         }
     }
 
-    fun downloadImage() {
+    private fun downloadImage() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData = downloadImageUseCase.run(DownloadImageUseCase.Params(user.email))
@@ -96,10 +92,12 @@ class MainViewModel(
                 val resultData = userUseCase.run()
                 resultData.fold(
                     { _ ->
-                        // No op
+                        // logout
+                        setState(State.ValidateLogout(Success(true)))
                     },
                     {
                         setUserData(it)
+                        downloadImage()
                     }
                 )
             }

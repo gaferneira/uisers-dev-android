@@ -21,12 +21,14 @@
         android:label="@string/title_fragment_add_task"
         tools:layout="@layout/fragment_tasks">
 
+        <deepLink app:uri="uisers://main/tasks/add" />
+
         <argument
             android:name="task"
+            android:defaultValue="@null"
             app:argType="co.tuister.domain.entities.Task"
             app:nullable="true" />
 
     </fragment>
-
 
 </navigation>

@@ -15,9 +15,19 @@ class LoginActivity : BaseActivity() {
     private lateinit var navController: NavController
 
     companion object {
+        const val EXTRA_DEEP_LINK = "EXTRA_DEEP_LINK"
+
         fun start(context: Context) {
             val intent = Intent(context, LoginActivity::class.java)
             context.startActivity(intent)
+        }
+
+        fun createIntent(context: Context, deepLink: String? = null): Intent {
+            return Intent(context, LoginActivity::class.java).apply {
+                if (!deepLink.isNullOrEmpty()) {
+                    putExtra(EXTRA_DEEP_LINK, deepLink)
+                }
+            }
         }
     }
 

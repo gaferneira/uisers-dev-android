@@ -2,6 +2,7 @@ package co.tuister.uisers.modules.main
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.core.view.GravityCompat.START
 import androidx.core.view.isVisible
@@ -11,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.ui.setupActionBarWithNavController
-import co.tuister.domain.entities.User
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseState
@@ -37,11 +37,8 @@ class MainActivity :
     private lateinit var viewModel: MainViewModel
 
     companion object {
-        private const val EXTRA_USER = "EXTRA_USER"
-
-        fun start(context: Context, user: User?) {
+        fun start(context: Context) {
             val intent = Intent(context, MainActivity::class.java)
-            intent.putExtra(EXTRA_USER, user)
             context.startActivity(intent)
         }
     }
@@ -67,7 +64,6 @@ class MainActivity :
 
     override fun onResume() {
         super.onResume()
-        viewModel.downloadImage()
         viewModel.downloadUserData()
     }
 
@@ -106,7 +102,7 @@ class MainActivity :
             }
             true
         }
-        viewModel.setUserData(intent.getSerializableExtra(EXTRA_USER) as User?)
+
         viewModel.version.value =
             applicationContext.packageManager.getPackageInfo(packageName, 0).versionName
         lifecycleScope.launchWhenStarted {
@@ -159,6 +155,25 @@ class MainActivity :
                 currentNavController?.addOnDestinationChangedListener(this)
             }
         )
+
+        // Deep links tabs
+        intent.data?.run {
+            manageDeeLinkTabs(this)
+        }
+    }
+
+    private fun manageDeeLinkTabs(uri: Uri) {
+        if (uri.pathSegments?.size == 1) {
+            val itemId = when (uri.pathSegments.first()) {
+                "career" -> R.id.nav_graph_my_career
+                "tasks" -> R.id.nav_graph_task_manager
+                "institution" -> R.id.nav_graph_institution
+                else -> null
+            }
+            itemId?.let {
+                binding.bottomNavView.selectedItemId = it
+            }
+        }
     }
 
     override fun onDestinationChanged(

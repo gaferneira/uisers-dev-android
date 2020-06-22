@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure.AuthenticationError
 import co.tuister.domain.entities.User
-import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.LoginUseCase
 import co.tuister.domain.usecases.login.LoginUseCase.Params
 import co.tuister.domain.usecases.login.LogoutUseCase
@@ -19,7 +18,6 @@ import kotlinx.coroutines.withContext
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
-    private val userUseCase: UserUseCase,
     private val logoutUseCase: LogoutUseCase,
     private val sendVerifyLinkUseCase: SendVerifyLinkUseCase
 ) :
@@ -45,7 +43,7 @@ class LoginViewModel(
                     },
                     {
                         if (it) {
-                            doLoadUserData(emailText)
+                            setState(State.ValidateLogin(Result.Success()))
                         } else {
                             // password incorrect
                             setState(State.ValidateLogin(Error(AuthenticationError())))
@@ -61,22 +59,6 @@ class LoginViewModel(
             withContext(Dispatchers.Main) {
                 sendVerifyLinkUseCase.run()
                 logoutUseCase.run()
-            }
-        }
-    }
-
-    private fun doLoadUserData(emailText: String) {
-        viewModelScope.launch {
-            withContext(Dispatchers.Main) {
-                val resultData = userUseCase.run()
-                resultData.fold(
-                    { _ ->
-                        setState(State.ValidateLogin(Result.Success(User(emailText, emailText))))
-                    },
-                    {
-                        setState(State.ValidateLogin(Result.Success(it)))
-                    }
-                )
             }
         }
     }

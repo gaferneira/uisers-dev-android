@@ -25,19 +25,24 @@
         android:id="@+id/map_fragment_dest"
         android:name="co.tuister.uisers.modules.institutional.map.MapFragment"
         android:label="@string/title_fragment_map"
-        tools:layout="@layout/fragment_institutional_map" />
+        tools:layout="@layout/fragment_institutional_map">
+        <deepLink app:uri="uisers://main/institution/map" />
+    </fragment>
 
     <fragment
         android:id="@+id/calendar_fragment_dest"
         android:name="co.tuister.uisers.modules.institutional.calendar.CalendarFragment"
         android:label="@string/title_fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar">
+        <deepLink app:uri="uisers://main/institution/calendar" />
+    </fragment>
 
     <fragment
         android:id="@+id/wheels_fragment_dest"
         android:name="co.tuister.uisers.modules.institutional.wheels.WheelsFragment"
         android:label="@string/title_fragment_wheels"
-        tools:layout="@layout/fragment_wheels" />
-
+        tools:layout="@layout/fragment_wheels">
+        <deepLink app:uri="uisers://main/institution/wheels" />
+    </fragment>
 
 </navigation>

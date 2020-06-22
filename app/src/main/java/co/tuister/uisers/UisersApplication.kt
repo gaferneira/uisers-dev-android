@@ -1,5 +1,8 @@
 package co.tuister.uisers
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
@@ -26,6 +29,18 @@ class UisersApplication : MultiDexApplication(), LifecycleObserver {
             Timber.plant(Timber.DebugTree())
         } else {
             Timber.plant(CrashlyticsLogTree())
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create channel to show notifications.
+            val channelId = getString(R.string.default_notification_channel_id)
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(
+                NotificationChannel(
+                    channelId, "Default channel",
+                    NotificationManager.IMPORTANCE_DEFAULT
+                )
+            )
         }
 
         startKoin {

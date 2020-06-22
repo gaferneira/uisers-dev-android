@@ -8,7 +8,6 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import co.tuister.domain.base.Failure.EmailNotVerifiedError
-import co.tuister.domain.entities.User
 import co.tuister.uisers.BuildConfig
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
@@ -105,14 +104,14 @@ class LoginFragment : BaseFragment() {
             onSuccess = {
                 binding.loginStatus.isVisible = false
                 analytics.trackUserLogin()
-                goToMain(it)
+                goToMain()
             }
         )
     }
 
-    private fun goToMain(user: User?) {
+    private fun goToMain() {
         activity?.let {
-            MainActivity.start(requireContext(), user)
+            MainActivity.start(requireContext())
             it.finish()
         }
     }
