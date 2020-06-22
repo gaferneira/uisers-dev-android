@@ -12,6 +12,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInstitutionalBinding
 import co.tuister.uisers.modules.institutional.InstitutionalViewModel.State
+import co.tuister.uisers.utils.analytics.Analytics
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -67,11 +68,13 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
 
     override fun onClickMenu(position: Int) {
         val action = when (position) {
-            0 -> R.id.action_institutional_to_map
-            1 -> R.id.action_institutional_to_calendar
-            2 -> R.id.action_institutional_to_map
-            else -> R.id.action_institutional_to_wheels
+            0 -> Pair(R.id.action_institutional_to_map, Analytics.EVENT_CLICK_MAP)
+            1 -> Pair(R.id.action_institutional_to_calendar, Analytics.EVENT_CLICK_CALENDAR)
+            2 -> Pair(R.id.action_institutional_to_wheels, Analytics.EVENT_CLICK_WHEELS)
+            else -> Pair(R.id.action_institutional_to_map, Analytics.EVENT_CLICK_MAP)
         }
-        findNavController().navigate(action)
+
+        findNavController().navigate(action.first)
+        analytics.trackEvent(action.second)
     }
 }

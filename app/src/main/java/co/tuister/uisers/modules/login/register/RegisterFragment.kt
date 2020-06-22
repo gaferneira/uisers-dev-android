@@ -173,6 +173,7 @@ class RegisterFragment : BaseFragment() {
                         goToLogin()
                     }
                 }
+                analytics.trackUserSignUp()
             }
         )
     }

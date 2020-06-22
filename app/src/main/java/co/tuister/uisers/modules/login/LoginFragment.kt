@@ -17,6 +17,7 @@ import co.tuister.uisers.databinding.FragmentLoginBinding
 import co.tuister.uisers.modules.internal.InternalActivity
 import co.tuister.uisers.modules.login.LoginViewModel.State
 import co.tuister.uisers.modules.main.MainActivity
+import co.tuister.uisers.utils.analytics.Analytics
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -57,6 +58,7 @@ class LoginFragment : BaseFragment() {
         binding.loginSignInButton.setOnClickListener {
             hideKeyboard()
             viewModel.doLogIn()
+            analytics.trackEvent(Analytics.EVENT_CLICK_LOGIN)
         }
 
         binding.loginRegisterButton.setOnClickListener {
@@ -77,7 +79,6 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun validateLogin(state: State.ValidateLogin) {
-
         handleState(
             state,
             inProgress = {
@@ -103,6 +104,7 @@ class LoginFragment : BaseFragment() {
             },
             onSuccess = {
                 binding.loginStatus.isVisible = false
+                analytics.trackUserLogin()
                 goToMain(it)
             }
         )

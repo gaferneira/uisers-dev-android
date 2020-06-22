@@ -18,6 +18,8 @@ import co.tuister.uisers.modules.my_career.subjects.subject_details.SubjectDetai
 import co.tuister.uisers.modules.profile.ProfileViewModel
 import co.tuister.uisers.modules.task_manager.TasksViewModel
 import co.tuister.uisers.modules.task_manager.add_task.AddTaskViewModel
+import co.tuister.uisers.utils.analytics.Analytics
+import co.tuister.uisers.utils.analytics.FirebaseAnalytics
 import co.tuister.uisers.utils.maps.GoogleMapsController
 import co.tuister.uisers.utils.maps.MapController
 import org.koin.android.viewmodel.dsl.viewModel
@@ -58,4 +60,5 @@ val viewModelModule = module {
 
 val presentationModule = module {
     single<MapController> { GoogleMapsController() }
+    single<Analytics> { FirebaseAnalytics(get()) }
 }
