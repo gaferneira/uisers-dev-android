@@ -11,6 +11,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenLocal()
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots/"
             url = uri("https://maven.google.com")
@@ -34,6 +35,7 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        mavenLocal()
     }
 }
 
