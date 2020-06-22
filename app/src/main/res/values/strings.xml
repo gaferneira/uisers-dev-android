@@ -226,6 +226,21 @@
     <string name="confirm_remove_task">Do you want to remove this task?</string>
     <string name="confirm_remove_note">Do you want to remove this note?</string>
 
+
+    <string name="about_title_founders">Founders</string>
+    <string name="about_founder_1">Gabriel Fernando Neira</string>
+    <string name="about_founder_1_linked_in">gabriel-fernando-neira-bermudez-419b2265</string>
+    <string name="about_founder_2">Vidal Javier Ramirez</string>
+    <string name="about_founder_2_linked_in">vidal-javier-ramirez-mendoza-23737482</string>
+    <string name="about_title_write_to_us">Write to us</string>
+    <string name="about_write_to_us_desc">We value your suggestions</string>
+    <string name="about_email">gabrielfneira@gmail.com</string>
+    <string name="about_whatsapp">+57 318 879 9237</string>
+    <string name="about_whatsapp_number">+573188799237</string>
+    <string name="about_title_working_together">Working together</string>
+    <string name="about_repository">uisers-dev-android</string>
+    <string name="about_repository_url">https://github.com/gaferneira/uisers-dev-android/</string>
+
     <plurals name="minutes">
         <item quantity="one">1 minute</item>
         <item quantity="other">%d minutes</item>

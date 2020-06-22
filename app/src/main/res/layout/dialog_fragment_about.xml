@@ -28,19 +28,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_margin_normal"
-            android:text="Creators"
+            android:text="@string/about_title_founders"
             android:textAppearance="?textAppearanceSubtitle1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/text_view_founder_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minWidth="240dp"
-            android:text="Gabriel Neira"
             android:drawableStart="@drawable/ic_linkedin"
             android:drawablePadding="@dimen/padding_margin_extra_small"
+            android:paddingVertical="@dimen/padding_margin_extra_small"
+            android:text="@string/about_founder_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_founder_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_linkedin"
+            android:drawablePadding="@dimen/padding_margin_extra_small"
+            android:paddingVertical="@dimen/padding_margin_extra_small"
+            android:text="@string/about_founder_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,19 +61,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minWidth="240dp"
-            android:text="Vidal Ramirez"
-            android:drawableStart="@drawable/ic_linkedin"
-            android:drawablePadding="@dimen/padding_margin_extra_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_normal"
-            android:text="Write to us"
+            android:layout_marginTop="@dimen/padding_margin_normal_smaller"
+            android:text="@string/about_title_write_to_us"
             android:textAppearance="?textAppearanceSubtitle1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,28 +72,32 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="We value your suggestions"
+            android:text="@string/about_write_to_us_desc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/text_view_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_email_24"
             android:drawablePadding="@dimen/padding_margin_extra_small"
-            android:text="correo@gmail.com"
+            android:paddingVertical="@dimen/padding_margin_extra_small"
+            android:text="@string/about_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/text_view_whatsapp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_margin_micro"
             android:drawableStart="@drawable/ic_whatsapp"
             android:drawablePadding="@dimen/padding_margin_extra_small"
-            android:layout_marginStart="@dimen/padding_margin_micro"
-            android:text="+57 318 879 9237"
+            android:paddingVertical="@dimen/padding_margin_extra_small"
+            android:text="@string/about_whatsapp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -100,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_margin_normal"
-            android:text="Working together"
+            android:text="@string/about_title_working_together"
             android:textAppearance="?textAppearanceSubtitle1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,12 +114,13 @@
 
 
         <TextView
+            android:id="@+id/text_view_repository"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minWidth="240dp"
             android:drawableStart="@drawable/ic_github"
             android:drawablePadding="@dimen/padding_margin_extra_small"
-            android:text="uisers-dev-android"
+            android:paddingVertical="@dimen/padding_margin_extra_small"
+            android:text="@string/about_repository"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
