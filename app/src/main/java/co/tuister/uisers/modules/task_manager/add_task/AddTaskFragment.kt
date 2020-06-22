@@ -1,5 +1,6 @@
 package co.tuister.uisers.modules.task_manager.add_task
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import co.tuister.domain.entities.Task
+import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksAddBinding
@@ -16,6 +18,9 @@ import co.tuister.uisers.modules.task_manager.add_task.AddTaskViewModel.State
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.pickDateTime
+import com.github.razir.progressbutton.bindProgressButton
+import com.github.razir.progressbutton.hideProgress
+import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.*
@@ -67,9 +72,28 @@ class AddTaskFragment : BaseFragment() {
     }
 
     private fun onSaveTask(state: State.Save) {
-        handleState(state) {
-            findNavController().popBackStack()
-        }
+        handleState(
+            state,
+            inProgress = {
+                with(binding.buttonSave) {
+                    showProgress {
+                        buttonTextRes = R.string.progress_updating
+                        progressColor = Color.WHITE
+                        isEnabled = false
+                    }
+                }
+            },
+            onError = {
+                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.isEnabled = true
+                manageFailure(it)
+            },
+            onSuccess = {
+                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.isEnabled = true
+                findNavController().popBackStack()
+            }
+        )
     }
 
     private fun initViews() {
@@ -106,6 +130,7 @@ class AddTaskFragment : BaseFragment() {
             updateSeekBar(2)
         }
 
+        bindProgressButton(binding.buttonSave)
         binding.buttonSave.setOnClickListener {
             hideKeyboard()
             if (requireContext().checkRequireFormFields(binding.editTextTitleTask)) {

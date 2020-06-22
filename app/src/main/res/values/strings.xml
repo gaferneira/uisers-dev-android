@@ -65,6 +65,7 @@
     <string name="start_progress">Starting app...</string>
     <string name="progress_downloading_data">Downloading&#8230;</string>
     <string name="progress_updating">Updating&#8230;</string>
+    <string name="progress_loading">Loading&#8230;</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_invalid_match_password">The password is different</string>

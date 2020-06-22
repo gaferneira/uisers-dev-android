@@ -75,12 +75,6 @@ dependencies {
     implementation "org.koin:koin-android-ext:$koin_version"
     // Koin Implementation --------------------------------------------------------
 
-    // Retrofit Implementation ----------------------------------------------------
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    // Retrofit Implementation ----------------------------------------------------
-
     // ViewModel and LiveData -----------------------------------------------------
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
@@ -100,19 +94,20 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     // Play Services -------------------------------------------------------------
 
-    //Firebase
-    // Recommended: Add the Firebase SDK for Google Analytics.
+    // Firebase  -------------------------------------------------------------
     implementation 'com.google.firebase:firebase-analytics-ktx:17.4.3'
-    // Add the Firebase Crashlytics SDK.
     implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+    // Firebase  -------------------------------------------------------------
 
-    //Utils
+    // Utils -------------------------------------------------------------
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'jp.co.recruit_mp:LightCalendarView:1.0.1'
     implementation 'com.github.androdocs:Android-Circle-ImageView:0.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    // Utils -------------------------------------------------------------
 
     implementation project(path: ':data')
     implementation project(path: ':domain')

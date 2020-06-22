@@ -15,7 +15,6 @@ import co.tuister.domain.usecases.profile.ProfileUseCase
 import co.tuister.uisers.BuildConfig
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
-import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.Result
@@ -33,7 +32,9 @@ class ProfileViewModel(
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
+        class DownloadedImage(val result: Result<Uri>) : State<Uri>(result)
         class ValidateProfileUpdate(val result: Result<Boolean>) : State<Boolean>(result)
+        class LoadData(val result: Result<Boolean>) : State<Boolean>(result)
     }
 
     private val _user: MutableLiveData<User> = MutableLiveData()
@@ -70,7 +71,7 @@ class ProfileViewModel(
                     { _ ->
                     },
                     {
-                        setState(DownloadedImage(Success(it)))
+                        setState(State.DownloadedImage(Success(it)))
                     }
                 )
             }
@@ -79,16 +80,17 @@ class ProfileViewModel(
 
     fun getCareers(unit: () -> Unit) {
         if (listCareers.isEmpty()) {
-            setState(ValidateProfileUpdate(InProgress(DOWNLOADING)))
+            setState(State.LoadData(InProgress(DOWNLOADING)))
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
                         careersUseCase.run()
                     result.fold(
                         { fail ->
-                            setState(ValidateProfileUpdate(Error(fail)))
+                            setState(State.LoadData(Error(fail)))
                         },
                         { res ->
+                            setState(State.LoadData(Success()))
                             listCareers.addAll(res)
                             unit.invoke()
                         }
@@ -119,16 +121,17 @@ class ProfileViewModel(
 
     fun getCampus(unit: () -> Unit) {
         if (listCampus.isEmpty()) {
-            setState(ValidateProfileUpdate(InProgress(DOWNLOADING)))
+            setState(State.LoadData(InProgress(DOWNLOADING)))
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
                         campusUseCase.run()
                     result.fold(
                         { fail ->
-                            setState(ValidateProfileUpdate(Error(fail)))
+                            setState(State.LoadData(Error(fail)))
                         },
                         { res ->
+                            setState(State.LoadData(Success()))
                             listCampus.addAll(res)
                             unit.invoke()
                         }

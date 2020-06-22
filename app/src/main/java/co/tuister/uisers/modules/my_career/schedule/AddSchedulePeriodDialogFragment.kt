@@ -32,7 +32,7 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
     lateinit var binding: DialogFragmentSchedulePeriodBinding
     lateinit var subjects: List<Subject>
     lateinit var period: SchedulePeriod
-    lateinit var requireTextViews: Array<TextView>
+    private lateinit var requireTextViews: Array<TextView>
 
     val calendar = Calendar.getInstance()
     private var listener: AddSchedulePeriodDialogListener? = null

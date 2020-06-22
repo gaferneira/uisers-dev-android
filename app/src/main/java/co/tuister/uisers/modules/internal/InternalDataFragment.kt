@@ -1,10 +1,11 @@
 package co.tuister.uisers.modules.internal
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import android.widget.Button
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import co.tuister.uisers.R
@@ -14,6 +15,8 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentInternalDataBinding
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.*
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
+import com.github.razir.progressbutton.hideProgress
+import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -76,103 +79,54 @@ class InternalDataFragment : BaseFragment() {
     }
 
     private fun processDocument(state: ValidateUserDocument) {
+        handleButtonState(state, binding.buttonDownloadUsesCsv)
+    }
+
+    private fun updateSubjects(state: UpdateSubjects) {
+        handleButtonState(state, binding.buttonUpdateSubjects)
+    }
+
+    private fun updateCareers(state: UpdateCareers) {
+        handleButtonState(state, binding.buttonUpdateCareers)
+    }
+
+    private fun updateMapData(state: UpdateMapData) {
+        handleButtonState(state, binding.buttonUpdateMapData)
+    }
+
+    private fun updateCalendarData(state: UpdateCalendarData) {
+        handleButtonState(state, binding.buttonCalendarData)
+    }
+
+    private fun <T : Any> handleButtonState(
+        state: BaseState<T>,
+        button: Button
+    ) {
         handleState(
             state,
             inProgress = {
-                if (it == DOWNLOADING) {
-                    binding.loadingStatusMessage.text =
-                        context?.getString(R.string.progress_downloading_data)
-                } else {
-                    binding.loadingStatusMessage.text =
-                        context?.getString(R.string.profile_progress_updating)
+                with(button) {
+                    if (button.tag !is String) {
+                        button.tag = text.toString()
+                    }
+                    showProgress {
+                        buttonTextRes = if (it == DOWNLOADING)
+                            R.string.progress_downloading_data
+                        else
+                            R.string.progress_updating
+                        progressColor = Color.DKGRAY
+                    }
+                    isEnabled = false
                 }
-                binding.loadingStatus.isVisible = true
             },
             onError = {
-                binding.loadingStatus.isVisible = false
-            },
-            onSuccess = {
-                binding.loadingStatus.isVisible = false
-            }
-        )
-    }
-
-    private fun updateSubjects(status: UpdateSubjects) {
-        handleState(
-            status,
-            inProgress = {
-                binding.loadingStatus.isVisible = true
-                binding.buttonUpdateSubjects.isEnabled = false
-                binding.loadingStatusMessage.text = context?.getString(R.string.progress_updating)
-            },
-            onError = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonUpdateSubjects.isEnabled = true
+                button.hideProgress(button.tag.toString())
+                button.isEnabled = true
                 manageFailure(it, true)
             },
             onSuccess = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonUpdateSubjects.isEnabled = true
-            }
-        )
-    }
-
-    private fun updateCareers(status: UpdateCareers) {
-        handleState(
-            status,
-            inProgress = {
-                binding.loadingStatus.isVisible = true
-                binding.buttonUpdateCareers.isEnabled = false
-                context?.getString(R.string.progress_updating)
-            },
-            onError = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonUpdateCareers.isEnabled = true
-                manageFailure(it, true)
-            },
-            onSuccess = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonUpdateCareers.isEnabled = true
-            }
-        )
-    }
-
-    private fun updateMapData(status: UpdateMapData) {
-        handleState(
-            status,
-            inProgress = {
-                binding.loadingStatus.isVisible = true
-                binding.buttonUpdateMapData.isEnabled = false
-                context?.getString(R.string.progress_updating)
-            },
-            onError = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonUpdateMapData.isEnabled = true
-                manageFailure(it, true)
-            },
-            onSuccess = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonUpdateMapData.isEnabled = true
-            }
-        )
-    }
-
-    private fun updateCalendarData(status: UpdateCalendarData) {
-        handleState(
-            status,
-            inProgress = {
-                binding.loadingStatus.isVisible = true
-                binding.buttonCalendarData.isEnabled = false
-                context?.getString(R.string.progress_updating)
-            },
-            onError = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonCalendarData.isEnabled = true
-                manageFailure(it, true)
-            },
-            onSuccess = {
-                binding.loadingStatus.isVisible = false
-                binding.buttonCalendarData.isEnabled = true
+                button.hideProgress(button.tag.toString())
+                button.isEnabled = true
             }
         )
     }
