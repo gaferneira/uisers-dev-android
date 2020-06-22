@@ -35,7 +35,8 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
     }
 
     private fun initViews() {
-        adapter = InstitutionalAdapter(this)
+        adapter = InstitutionalAdapter()
+        adapter.listener = this
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = this@InstitutionalFragment.adapter
@@ -64,6 +65,11 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
                 adapter.setItems(this)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        adapter.listener = null
+        super.onDestroyView()
     }
 
     override fun onClickMenu(position: Int) {

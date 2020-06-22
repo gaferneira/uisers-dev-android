@@ -11,7 +11,7 @@ import co.tuister.uisers.common.BaseViewHolder
 import kotlinx.android.synthetic.main.item_tasks_task.*
 
 class TasksAdapter(
-    private val listener: TasksListener?
+    var listener: TasksListener?
 ) : RecyclerView.Adapter<TasksAdapter.TasksViewHolder>() {
 
     var list = listOf<Task>()

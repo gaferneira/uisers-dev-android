@@ -99,6 +99,11 @@ class TasksListFragment : BaseFragment() {
         return true
     }
 
+    override fun onDestroyView() {
+        adapter.listener = null
+        super.onDestroyView()
+    }
+
     companion object {
 
         private const val ARG_STATUS = "status"

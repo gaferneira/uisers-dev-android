@@ -85,8 +85,10 @@ class MigrationRepositoryImpl(
             }.toMap()
 
             val notas = migrationData.notaList.groupBy {
-                it.fkMateriaEstudiante!!.fkSemestreEstudiante!!.fkSemestre!!.toString() + "///"
-                + it.fkMateriaEstudiante!!.fkMateriaCarrera!!.fkMateria!!.idMateria
+                (
+                    it.fkMateriaEstudiante!!.fkSemestreEstudiante!!.fkSemestre!!.toString() + DELIMITER +
+                        it.fkMateriaEstudiante!!.fkMateriaCarrera!!.fkMateria!!.idMateria
+                    )
             }.map {
                 Pair(
                     it.component1(),
@@ -146,7 +148,8 @@ class MigrationRepositoryImpl(
                 val doc: DocumentReference = addSemester(semesterCol, it)
                 materias[it.period]?.forEach { sub ->
                     val docMateria = addSubject(doc, sub)
-                    notas[it.period + "///" + sub.code]?.forEach { note ->
+                    val index: String = it.period + DELIMITER + sub.code
+                    notas[index]?.forEach { note ->
                         addNote(docMateria, note)
                     }
                 }
@@ -259,5 +262,9 @@ class MigrationRepositoryImpl(
             exception.printStackTrace()
             ""
         }
+    }
+
+    companion object {
+        private const val DELIMITER = "/////"
     }
 }

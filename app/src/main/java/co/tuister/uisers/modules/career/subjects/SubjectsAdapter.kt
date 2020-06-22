@@ -12,11 +12,10 @@ import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
 import kotlinx.android.synthetic.main.item_my_career_subject.*
 
-class SubjectsAdapter(
-    private val listener: SubjectListener?
-) : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>() {
+class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>() {
 
     var list = listOf<Subject>()
+    var listener: SubjectListener? = null
 
     interface SubjectListener {
         fun onClickSubject(subject: Subject)

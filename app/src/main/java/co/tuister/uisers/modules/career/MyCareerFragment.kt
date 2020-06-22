@@ -42,6 +42,7 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
     }
 
     private fun initViews() {
+        binding.pager.isSaveFromParentEnabled = true
         binding.pager.apply {
             offscreenPageLimit = 2
             adapter = TasksPagerAdapter(requireActivity())
@@ -107,6 +108,10 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
         }
     }
 
+    override fun onDestroy() {
+        subjectFragment?.listener = null
+        super.onDestroy()
+    }
     override fun onResume() {
         super.onResume()
         if (currentPosition == 0) {
