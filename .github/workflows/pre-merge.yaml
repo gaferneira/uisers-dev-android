@@ -25,11 +25,6 @@ jobs:
         with:
           path: ~/.gradle/wrapper/
           key: cache-gradle-wrapper
-       # Decode Google services configuration file
-      - name: Decode google-services.json
-        env:
-          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-        run: echo $FIREBASE_CONFIG
       - name: Run Gradle tasks
         run: ./gradlew build
       - name: Stop Gradle

@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "",
-    "firebase_url": "",
-    "project_id": "",
-    "storage_bucket": ""
+    "project_number": "111111111111",
+    "firebase_url": "https://uisers-2-111111111111111.firebaseio.com",
+    "project_id": "uisers-2-11111111111111111",
+    "storage_bucket": "uisers-2-11111111111.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "",
+        "mobilesdk_app_id": "1:111111111111:android:e4e57862cb3a8bbb",
         "android_client_info": {
           "package_name": "co.tuister.uisers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "",
+          "client_id": "1111111111111-1111111111111111111111.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "co.tuister.uisers",
-            "certificate_hash": ""
+            "certificate_hash": "11111111111111111111"
           }
         },
         {
-          "client_id": "",
+          "client_id": "111111111111111111111111",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": ""
+          "current_key": "AI111111111111111111111111111111111111"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "",
+              "client_id": "11111111111111111111111111111.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
