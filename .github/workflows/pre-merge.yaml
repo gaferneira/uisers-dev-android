@@ -25,7 +25,7 @@ jobs:
         with:
           path: ~/.gradle/wrapper/
           key: cache-gradle-wrapper
-      - name: Run Gradle tasks
-        run: ./gradlew build
+      #- name: Run Gradle tasks
+      #  run: ./gradlew build
       - name: Stop Gradle
         run: ./gradlew --stop
