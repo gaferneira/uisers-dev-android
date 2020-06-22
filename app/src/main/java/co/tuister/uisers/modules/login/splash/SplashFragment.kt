@@ -56,8 +56,6 @@ class SplashFragment : BaseFragment() {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.intent.getStringExtra(EXTRA_DEEP_LINK)))
                 startActivity(intent)
             } else {
-                // val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.deep_link_home) + "career"))
-                // startActivity(intent)
                 MainActivity.start(requireContext())
             }
             it.finish()
