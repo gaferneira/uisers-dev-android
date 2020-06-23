@@ -1,9 +1,11 @@
 package co.tuister.uisers.modules.main
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.animation.AnimationUtils.loadAnimation
 import androidx.core.view.GravityCompat.START
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -18,12 +20,16 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.ActivityMainBinding
 import co.tuister.uisers.databinding.LeftHomeMenuHeaderLayoutBinding
 import co.tuister.uisers.modules.login.LoginActivity
+import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
+import co.tuister.uisers.modules.main.MainViewModel.State.FirsTime
 import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
 import co.tuister.uisers.utils.analytics.Analytics
+import co.tuister.uisers.utils.extensions.launchImagePicker
 import co.tuister.uisers.utils.extensions.setImageFromUri
 import co.tuister.uisers.utils.extensions.setupWithNavController
+import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -75,6 +81,12 @@ class MainActivity :
         binding.circleImagePhoto.setOnClickListener {
             analytics.trackEvent(Analytics.EVENT_CLICK_DRAWER_MENU)
             binding.drawerLayout.openDrawer(START)
+            viewModel.disableFirstTime()
+        }
+
+        bindingMenu.circleImagePhoto.setOnClickListener {
+            launchImagePicker()
+            stopAnimatedIconsFirstTime()
         }
 
         binding.navigationView.addHeaderView(bindingMenu.root)
@@ -110,6 +122,23 @@ class MainActivity :
                 update(it)
             }
         }
+
+        viewModel.checkAnimationFirstTime()
+    }
+
+    private fun animateIconsFirstTime() {
+        val animation = loadAnimation(
+            this,
+            R.anim.scale
+        )
+
+        binding.circleImagePhoto.startAnimation(animation)
+        bindingMenu.circleImagePhoto.startAnimation(animation)
+    }
+
+    private fun stopAnimatedIconsFirstTime() {
+        binding.circleImagePhoto.clearAnimation()
+        bindingMenu.circleImagePhoto.clearAnimation()
     }
 
     /**
@@ -200,6 +229,15 @@ class MainActivity :
         when (state) {
             is ValidateLogout -> validateLogout(state)
             is DownloadedImage -> downloadImage(state)
+            is FirsTime -> {
+                handleState(state) {
+                    if (it == true) {
+                        animateIconsFirstTime()
+                    } else {
+                        stopAnimatedIconsFirstTime()
+                    }
+                }
+            }
         }
     }
 
@@ -231,5 +269,26 @@ class MainActivity :
     override fun onSendFeedback(feedback: String) {
         viewModel.sendFeedback(feedback)
         showDialog(R.string.feedback_result_message, R.string.feedback_result_title)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                RegisterFragment.RESULT_LOAD_IMAGE -> {
+                    val uri = data?.data
+                    CropImage.activity(uri)
+                        .setAspectRatio(1, 1)
+                        .setFixAspectRatio(true)
+                        .start(this)
+                }
+                CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                    val result = CropImage.getActivityResult(data)
+                    viewModel.uploadImage(result.uri)
+                    binding.circleImagePhoto.setImageURI(result.uri)
+                    bindingMenu.circleImagePhoto.setImageURI(result.uri)
+                }
+            }
+        }
     }
 }

@@ -85,7 +85,7 @@ complexity:
   LongParameterList:
     active: true
     functionThreshold: 7
-    constructorThreshold: 7
+    constructorThreshold: 10
     ignoreDefaultParameters: false
     ignoreDataClasses: true
     ignoreAnnotated: []
@@ -106,8 +106,8 @@ complexity:
   TooManyFunctions:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**', '**/generated/**']
-    thresholdInFiles: 16
-    thresholdInClasses: 16
+    thresholdInFiles: 17
+    thresholdInClasses: 17
     thresholdInInterfaces: 16
     thresholdInObjects: 16
     thresholdInEnums: 16

@@ -7,6 +7,7 @@ import co.tuister.data.repositories.LoginRepositoryImpl
 import co.tuister.data.repositories.MapRepositoryImpl
 import co.tuister.data.repositories.ScheduleRepositoryImpl
 import co.tuister.data.repositories.SemesterRepositoryImpl
+import co.tuister.data.repositories.SharePreferencesRepositoryImpl
 import co.tuister.data.repositories.SubjectRepositoryImpl
 import co.tuister.data.repositories.TasksRepositoryImpl
 import co.tuister.data.repositories.UserRepositoryImpl
@@ -17,6 +18,7 @@ import co.tuister.domain.repositories.MapRepository
 import co.tuister.domain.repositories.MigrationRepository
 import co.tuister.domain.repositories.ScheduleRepository
 import co.tuister.domain.repositories.SemesterRepository
+import co.tuister.domain.repositories.SharedPreferencesRepository
 import co.tuister.domain.repositories.SubjectRepository
 import co.tuister.domain.repositories.TasksRepository
 import co.tuister.domain.repositories.UserRepository
@@ -44,10 +46,11 @@ val dataModule = module {
     }
     single { FirebaseStorage.getInstance() }
     single<LoginRepository> { LoginRepositoryImpl(get(), get(), get()) }
+    single<SharedPreferencesRepository> { SharePreferencesRepositoryImpl(get()) }
     single<SemesterRepository> { SemesterRepositoryImpl(get(), get()) }
     single<SubjectRepository> { SubjectRepositoryImpl(get(), get(), get()) }
     single<TasksRepository> { TasksRepositoryImpl(get(), get()) }
-    single<UserRepository> { UserRepositoryImpl(get(), get(), get()) }
+    single<UserRepository> { UserRepositoryImpl(get(), get(), get(), get()) }
     single<ScheduleRepository> { ScheduleRepositoryImpl(get(), get()) }
     single<MapRepository> { MapRepositoryImpl(get(), get()) }
     single<CalendarRepository> { CalendarRepositoryImpl(get(), get()) }

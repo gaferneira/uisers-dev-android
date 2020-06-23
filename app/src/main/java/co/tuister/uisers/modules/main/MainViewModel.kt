@@ -10,8 +10,12 @@ import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.DownloadImageUseCase
 import co.tuister.domain.usecases.login.FCMUpdateUseCase
 import co.tuister.domain.usecases.login.LogoutUseCase
+import co.tuister.domain.usecases.login.UploadImageUseCase
+import co.tuister.domain.usecases.profile.DisableFirstTimeUseCase
+import co.tuister.domain.usecases.profile.FirstTimeUseCase
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
+import co.tuister.uisers.modules.main.MainViewModel.State.FirsTime
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
 import co.tuister.uisers.utils.Result.Success
@@ -26,12 +30,16 @@ class MainViewModel(
     private val userUseCase: UserUseCase,
     private val fcmUpdateUseCase: FCMUpdateUseCase,
     private val migrationUseCase: MigrationUseCase,
-    private val feedbackUserCase: FeedbackUseCase
+    private val feedbackUserCase: FeedbackUseCase,
+    private val uploadImageUseCase: UploadImageUseCase,
+    private val firstTimeUseCase: FirstTimeUseCase,
+    private val disableFirstTimeUseCase: DisableFirstTimeUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class ValidateLogout(val result: Result<Boolean>) : State<Boolean>(result)
         class DownloadedImage(val result: Result<Uri>) : State<Uri>(result)
+        class FirsTime(val result: Result<Boolean>) : State<Boolean>(result)
     }
 
     val title: MutableLiveData<String> = MutableLiveData("Inicio")
@@ -58,6 +66,14 @@ class MainViewModel(
                     val success = migrationUseCase.run()
                     Timber.i("Result %s", success)
                 }
+            }
+        }
+    }
+
+    fun uploadImage(uri: Uri) {
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                uploadImageUseCase.run(UploadImageUseCase.Params(uri, email.value!!))
             }
         }
     }
@@ -101,6 +117,28 @@ class MainViewModel(
                     }
                 )
             }
+        }
+    }
+
+    fun disableFirstTime() {
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                disableFirstTimeUseCase.run()
+            }
+        }
+    }
+
+    fun checkAnimationFirstTime() = viewModelScope.launch {
+        withContext(Dispatchers.Main) {
+            val resultData = firstTimeUseCase.run()
+            resultData.fold(
+                {
+                    setState(FirsTime(Success(true)))
+                },
+                {
+                    setState(FirsTime(Success(it)))
+                }
+            )
         }
     }
 
