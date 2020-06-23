@@ -1,5 +1,6 @@
 package co.tuister.uisers.modules.login.splash
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,6 +8,7 @@ import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.UserUseCase
+import co.tuister.uisers.R
 import co.tuister.uisers.common.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -15,7 +17,8 @@ import kotlinx.coroutines.withContext
 import kotlin.system.measureTimeMillis
 
 class SplashViewModel(
-    private val userUseCase: UserUseCase
+    private val userUseCase: UserUseCase,
+    val context: Context
 ) : ViewModel() {
 
     sealed class Event {
@@ -29,7 +32,7 @@ class SplashViewModel(
     fun runInitialChecks() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                message.value = "Verificando tu sesion..."
+                message.value = context.getString(R.string.splash_progress_checking_session)
 
                 lateinit var userResult: Either<Failure, User>
                 val checkTime = measureTimeMillis {
@@ -41,12 +44,12 @@ class SplashViewModel(
 
                 when (val it = userResult) {
                     is Either.Left -> {
-                        message.value = "Vamos al Login..."
+                        message.value = context.getString(R.string.splash_progress_go_to_login)
                         delay(delayTime)
                         events.value = Event.GoToLogin
                     }
                     is Either.Right -> {
-                        message.value = "Vamos a ver tus notas..."
+                        message.value = context.getString(R.string.splash_progress_check_notes)
                         delay(delayTime)
                         events.value = Event.GoToMain(it.value)
                     }
@@ -56,6 +59,6 @@ class SplashViewModel(
     }
 
     companion object {
-        const val MIN_SPLASH_TIME = 3000
+        const val MIN_SPLASH_TIME = 2000
     }
 }

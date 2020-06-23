@@ -28,13 +28,17 @@
         android:id="@+id/subject_add_fragment_dest"
         android:name="co.tuister.uisers.modules.career.subjects.add.AddSubjectFragment"
         android:label="@string/title_fragment_add_subject"
-        tools:layout="@layout/fragment_subject_add" />
+        tools:layout="@layout/fragment_subject_add">
+        <deepLink app:uri="uisers://main/career/subjects/add" />
+    </fragment>
 
     <fragment
         android:id="@+id/schedule_fragment_dest"
         android:name="co.tuister.uisers.modules.career.schedule.ScheduleFragment"
         android:label="@string/title_fragment_schedule"
-        tools:layout="@layout/fragment_schedule" />
+        tools:layout="@layout/fragment_schedule">
+        <deepLink app:uri="uisers://main/career/schedule" />
+    </fragment>
 
     <fragment
         android:id="@+id/subject_details_fragment_dest"
@@ -52,7 +56,9 @@
         android:id="@+id/semesters_fragment_dest"
         android:name="co.tuister.uisers.modules.career.semesters.SemestersFragment"
         android:label="@string/title_fragment_semester"
-        tools:layout="@layout/fragment_semesters" />
+        tools:layout="@layout/fragment_semesters">
+        <deepLink app:uri="uisers://main/career/semesters" />
+    </fragment>
 
 
 </navigation>
