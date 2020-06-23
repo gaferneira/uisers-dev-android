@@ -1,8 +1,11 @@
 package co.tuister.data.utils
 
 import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
+import java.net.ConnectException
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
@@ -37,5 +40,13 @@ suspend fun <T> Task<T>.await(): T? {
         }
         addOnFailureListener {
         }
+    }
+}
+
+fun Exception.translateFirebaseException(): java.lang.Exception {
+    return when (this) {
+        is FirebaseFirestoreException,
+        is FirebaseNetworkException -> ConnectException(message)
+        else -> this
     }
 }

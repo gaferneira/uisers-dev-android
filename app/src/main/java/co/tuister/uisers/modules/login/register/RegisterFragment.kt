@@ -19,6 +19,7 @@ import co.tuister.uisers.databinding.FragmentRegisterBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterViewModel.State.ValidateRegister
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 import kotlinx.coroutines.flow.collect
@@ -46,8 +47,16 @@ class RegisterFragment : BaseFragment() {
 
     private fun initViews() {
         binding.btnRegister.setOnClickListener {
-            hideKeyboard()
-            viewModel.doRegister()
+            if (requireContext().checkRequireFormFields(
+                binding.etRegisterEmail,
+                binding.etRegisterName,
+                binding.etRegisterPassword,
+                binding.etRegisterConfirmPassword
+            )
+            ) {
+                hideKeyboard()
+                viewModel.doRegister()
+            }
         }
 
         binding.editTextCareer.setOnClickListener {
@@ -192,6 +201,7 @@ class RegisterFragment : BaseFragment() {
             else -> {
                 if (!manageFailure(it)) {
                     showDialog(
+                        it?.error?.localizedMessage ?:
                         "Lo sentimos no pudimos crear una cuenta con ese correo. Intenta colocando uno nuevo.",
                         requireContext().getString(R.string.title_dialog_view_register)
                     )

@@ -71,19 +71,18 @@ open class BaseActivity : AppCompatActivity() {
 
     fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
         when (failure) {
-            is Failure.ServerError -> showConfirmDialog(R.string.alert_error_server, R.string.alert)
-            is Failure.NetworkConnection -> showConfirmDialog(
+            is Failure.ServerError -> showDialog(R.string.alert_error_server, R.string.alert)
+            is Failure.NetworkConnection -> showDialog(
                 R.string.alert_check_internet,
                 R.string.alert
             )
             else -> {
-
                 failure?.error?.run {
                     Timber.e(this)
                 }
 
                 if (showGenericMessage) {
-                    showConfirmDialog(R.string.alert_error_try_again, R.string.alert)
+                    showDialog(R.string.alert_error_try_again, R.string.alert)
                 } else {
                     return false
                 }
