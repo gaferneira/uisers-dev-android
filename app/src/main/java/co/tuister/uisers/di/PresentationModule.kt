@@ -28,7 +28,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
 
     // login
-    viewModel { LoginViewModel(get(), get(), get()) }
+    viewModel { LoginViewModel(get(), get(), get(), get()) }
     viewModel { SplashViewModel(get(), get()) }
     viewModel { RegisterViewModel(get(), get(), get(), get(), get()) }
     viewModel { ForgotPasswordViewModel(get()) }

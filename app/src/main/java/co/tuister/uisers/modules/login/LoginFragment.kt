@@ -17,6 +17,7 @@ import co.tuister.uisers.modules.internal.InternalActivity
 import co.tuister.uisers.modules.login.LoginViewModel.State
 import co.tuister.uisers.modules.main.MainActivity
 import co.tuister.uisers.utils.analytics.Analytics
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -25,6 +26,11 @@ class LoginFragment : BaseFragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initViewModel()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,7 +38,7 @@ class LoginFragment : BaseFragment() {
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        initViewModel()
+        binding.loginViewModel = viewModel
         initViews()
         return binding.root
     }
@@ -44,7 +50,6 @@ class LoginFragment : BaseFragment() {
                 update(it)
             }
         }
-        binding.loginViewModel = viewModel
     }
 
     private fun initViews() {
@@ -55,9 +60,11 @@ class LoginFragment : BaseFragment() {
         }
 
         binding.loginSignInButton.setOnClickListener {
-            hideKeyboard()
-            viewModel.doLogIn()
-            analytics.trackEvent(Analytics.EVENT_CLICK_LOGIN)
+            if (requireContext().checkRequireFormFields(binding.loginEmail, binding.loginPassword)) {
+                hideKeyboard()
+                viewModel.doLogIn()
+                analytics.trackEvent(Analytics.EVENT_CLICK_LOGIN)
+            }
         }
 
         binding.loginRegisterButton.setOnClickListener {
@@ -88,8 +95,8 @@ class LoginFragment : BaseFragment() {
                 when (it) {
                     is EmailNotVerifiedError -> {
                         showConfirmDialog(
-                            R.string.error_result_login_message_not_verified_email,
-                            R.string.title_login,
+                            getString(R.string.error_result_login_message_not_verified_email),
+                            it.error?.message ?: getString(R.string.title_login),
                             R.string.action_resend,
                             {
                                 viewModel.reSendConfirmEmail()
@@ -97,7 +104,12 @@ class LoginFragment : BaseFragment() {
                         )
                     }
                     else -> {
-                        showDialog(R.string.error_result_login_message, R.string.title_login)
+                        if (!manageFailure(it)) {
+                            showDialog(
+                                it?.error?.localizedMessage ?: getString(R.string.error_result_login_message),
+                                getString(R.string.title_login)
+                            )
+                        }
                     }
                 }
             },

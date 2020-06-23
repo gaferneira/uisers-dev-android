@@ -17,6 +17,7 @@ import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
 import co.tuister.data.utils.await
 import co.tuister.data.utils.castToList
 import co.tuister.data.utils.objectToMap
+import co.tuister.data.utils.translateFirebaseException
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.AuthenticationError
@@ -45,7 +46,7 @@ class UserRepositoryImpl(
         val current = firebaseAuth.currentUser ?: return Either.Left(AuthenticationError())
 
         if (firebaseAuth.currentUser?.isEmailVerified != true) {
-            return Either.Left(AuthenticationError())
+            return Either.Left(Failure.EmailNotVerifiedError(Exception(firebaseAuth.currentUser?.email ?: "")))
         }
 
         val data = usersCollection.collection()
@@ -118,22 +119,29 @@ class UserRepositoryImpl(
     }
 
     override suspend fun getCareers(): List<Career> {
-        val data = baseCollection.getBaseDocument()
+        try {
+            val data = baseCollection.getBaseDocument()
 
-        val result: List<HashMap<String, String>> =
-            data?.get(FIELD_CAREERS)?.castToList() ?: listOf()
-        return result.map {
-            Career(it["id"]!!, it["name"]!!)
+            val result: List<HashMap<String, String>> =
+                data?.get(FIELD_CAREERS)?.castToList() ?: listOf()
+            return result.map {
+                Career(it["id"]!!, it["name"]!!)
+            }
+        } catch (e: Exception) {
+            throw e.translateFirebaseException()
         }
     }
 
     override suspend fun getCampus(): List<String> {
-        val data = baseCollection.getBaseDocument()
-        return data?.get(FIELD_CAMPUS).castToList<String>() ?: listOf()
+        try {
+            val data = baseCollection.getBaseDocument()
+            return data?.get(FIELD_CAMPUS).castToList() ?: listOf()
+        } catch (e: Exception) {
+            throw e.translateFirebaseException()
+        }
     }
 
     override suspend fun downloadImage(email: String): Uri {
-
         val url = firebaseStorage.reference.child("$email/profile.jpg").downloadUrl.await()
         return url!!
     }

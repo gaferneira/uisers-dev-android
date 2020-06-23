@@ -13,6 +13,7 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentForgotPasswordBinding
 import co.tuister.uisers.modules.login.forgotpassword.ForgotPasswordViewModel.State
 import co.tuister.uisers.utils.analytics.Analytics
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -45,9 +46,11 @@ class ForgotPasswordFragment : BaseFragment() {
 
     private fun initViews() {
         binding.btnRecover.setOnClickListener {
-            hideKeyboard()
-            analytics.trackEvent(Analytics.EVENT_FORGOT_PASSWORD)
-            viewModel.doRecover()
+            if (requireContext().checkRequireFormFields(binding.tvLoginEmail)) {
+                hideKeyboard()
+                analytics.trackEvent(Analytics.EVENT_FORGOT_PASSWORD)
+                viewModel.doRecover()
+            }
         }
     }
 
@@ -66,7 +69,10 @@ class ForgotPasswordFragment : BaseFragment() {
             onError = {
                 binding.loginStatus.isVisible = false
                 if (!manageFailure(it)) {
-                    showDialog(R.string.error_result_forget_message, R.string.title_forget_title)
+                    showDialog(
+                        it?.error?.localizedMessage ?: getString(R.string.error_result_login_message),
+                        getString(R.string.title_forget_title)
+                    )
                 }
             },
             onSuccess = {
