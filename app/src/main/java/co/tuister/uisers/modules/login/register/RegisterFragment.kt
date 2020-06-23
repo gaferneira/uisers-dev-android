@@ -13,6 +13,7 @@ import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.FormError
 import co.tuister.domain.entities.Career
 import co.tuister.uisers.R
+import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentRegisterBinding
@@ -20,6 +21,7 @@ import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterViewModel.State.ValidateRegister
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.launchImagePicker
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 import kotlinx.coroutines.flow.collect
@@ -48,11 +50,11 @@ class RegisterFragment : BaseFragment() {
     private fun initViews() {
         binding.btnRegister.setOnClickListener {
             if (requireContext().checkRequireFormFields(
-                binding.etRegisterEmail,
-                binding.etRegisterName,
-                binding.etRegisterPassword,
-                binding.etRegisterConfirmPassword
-            )
+                    binding.etRegisterEmail,
+                    binding.etRegisterName,
+                    binding.etRegisterPassword,
+                    binding.etRegisterConfirmPassword
+                )
             ) {
                 hideKeyboard()
                 viewModel.doRegister()
@@ -78,7 +80,7 @@ class RegisterFragment : BaseFragment() {
         }
 
         binding.circleImagePhoto.setOnClickListener {
-            launchImagePicker()
+            (requireActivity() as BaseActivity).launchImagePicker()
         }
     }
 

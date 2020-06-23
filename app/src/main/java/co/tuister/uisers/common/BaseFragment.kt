@@ -80,16 +80,6 @@ open class BaseFragment : Fragment() {
         )
     }
 
-    protected fun launchImagePicker() {
-        val photoPickerIntent = Intent(Intent.ACTION_GET_CONTENT)
-        photoPickerIntent.type = "image/*"
-
-        startActivityForResult(
-            Intent.createChooser(photoPickerIntent, "Select Picture"),
-            RegisterFragment.RESULT_LOAD_IMAGE
-        )
-    }
-
     protected fun <T : Any> handleState(
         state: BaseState<T>,
         inProgress: ((ProgressType) -> Unit)? = null,

@@ -36,6 +36,8 @@ import co.tuister.domain.usecases.login.RecoverPasswordUseCase
 import co.tuister.domain.usecases.login.RegisterUseCase
 import co.tuister.domain.usecases.login.SendVerifyLinkUseCase
 import co.tuister.domain.usecases.login.UploadImageUseCase
+import co.tuister.domain.usecases.profile.DisableFirstTimeUseCase
+import co.tuister.domain.usecases.profile.FirstTimeUseCase
 import co.tuister.domain.usecases.profile.ProfileUseCase
 import co.tuister.domain.usecases.tasks.GetMainTasks
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
@@ -94,6 +96,8 @@ val domainModule = module {
     single { ProfileUseCase(get()) }
     single { FCMUpdateUseCase(get()) }
     single { SendVerifyLinkUseCase(get()) }
+    single { DisableFirstTimeUseCase(get()) }
+    single { FirstTimeUseCase(get()) }
 
     // Use case
     single { MigrationUseCase(get()) }

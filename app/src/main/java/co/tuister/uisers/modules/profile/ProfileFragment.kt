@@ -22,6 +22,7 @@ import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.LoadData
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
+import co.tuister.uisers.utils.extensions.launchImagePicker
 import co.tuister.uisers.utils.extensions.setImageFromUri
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
@@ -52,7 +53,7 @@ class ProfileFragment : BaseFragment() {
         bindProgressButton(binding.buttonSave)
 
         binding.buttonUploadPicture.setOnClickListener {
-            launchImagePicker()
+            (requireActivity() as BaseActivity).launchImagePicker()
         }
         binding.buttonInternal.setOnClickListener {
             InternalActivity.start(requireContext())
