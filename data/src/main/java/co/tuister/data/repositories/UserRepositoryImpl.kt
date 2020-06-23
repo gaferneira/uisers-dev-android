@@ -5,14 +5,20 @@ import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
 import co.tuister.data.repositories.SharePreferencesRepositoryImpl.Companion.KEY_FIRST_TIME
-import co.tuister.data.utils.*
+import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
+import co.tuister.data.utils.FeedbackCollection
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_DATE
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_EMAIL
+import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
+import co.tuister.data.utils.await
+import co.tuister.data.utils.castToList
+import co.tuister.data.utils.objectToMap
+import co.tuister.data.utils.translateFirebaseException
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.AuthenticationError
@@ -24,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.storage.FirebaseStorage
-import java.util.*
+import java.util.Date
 
 class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,

@@ -19,7 +19,9 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentProfileBinding
 import co.tuister.uisers.modules.internal.InternalActivity
 import co.tuister.uisers.modules.login.register.RegisterFragment
-import co.tuister.uisers.modules.profile.ProfileViewModel.State.*
+import co.tuister.uisers.modules.profile.ProfileViewModel.State.DownloadedImage
+import co.tuister.uisers.modules.profile.ProfileViewModel.State.LoadData
+import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
 import co.tuister.uisers.utils.extensions.launchImagePicker
 import co.tuister.uisers.utils.extensions.setImageFromUri
 import com.github.razir.progressbutton.bindProgressButton

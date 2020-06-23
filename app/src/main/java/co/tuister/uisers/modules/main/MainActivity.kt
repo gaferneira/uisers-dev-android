@@ -21,7 +21,9 @@ import co.tuister.uisers.databinding.ActivityMainBinding
 import co.tuister.uisers.databinding.LeftHomeMenuHeaderLayoutBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterFragment
-import co.tuister.uisers.modules.main.MainViewModel.State.*
+import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
+import co.tuister.uisers.modules.main.MainViewModel.State.FirsTime
+import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
 import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.launchImagePicker
@@ -227,16 +229,14 @@ class MainActivity :
         when (state) {
             is ValidateLogout -> validateLogout(state)
             is DownloadedImage -> downloadImage(state)
-            is FirsTime -> handleFirsTimeResult(state)
-        }
-    }
-
-    private fun handleFirsTimeResult(state: FirsTime) {
-        handleState(state) {
-            if (it == true) {
-                animateIconsFirstTime()
-            } else {
-                stopAnimatedIconsFirstTime()
+            is FirsTime -> {
+                handleState(state) {
+                    if (it == true) {
+                        animateIconsFirstTime()
+                    } else {
+                        stopAnimatedIconsFirstTime()
+                    }
+                }
             }
         }
     }
