@@ -201,8 +201,8 @@ class RegisterFragment : BaseFragment() {
             else -> {
                 if (!manageFailure(it)) {
                     showDialog(
-                        it?.error?.localizedMessage ?:
-                        "Lo sentimos no pudimos crear una cuenta con ese correo. Intenta colocando uno nuevo.",
+                        it?.error?.localizedMessage
+                            ?: "Lo sentimos no pudimos crear una cuenta con ese correo. Intenta colocando uno nuevo.",
                         requireContext().getString(R.string.title_dialog_view_register)
                     )
                 }
