@@ -1,8 +1,6 @@
 package co.tuister.uisers.common
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import co.tuister.domain.base.Failure
 import co.tuister.uisers.R
 import co.tuister.uisers.utils.ProgressType
@@ -15,11 +13,6 @@ import timber.log.Timber
 open class BaseActivity : AppCompatActivity() {
 
     protected val analytics: Analytics by inject()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-    }
 
     protected fun showDialog(message: Int, title: Int, unit: (() -> Unit)? = null) {
         supportFragmentManager.showDialog(this, message, title, unit)
