@@ -3,39 +3,14 @@ package co.tuister.uisers.di
 import co.tuister.domain.usecases.FeedbackUseCase
 import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
-import co.tuister.domain.usecases.career.ChangeCurrentSemesterUseCase
-import co.tuister.domain.usecases.career.GetAllSemestersUseCase
-import co.tuister.domain.usecases.career.GetAllSubjectsUseCase
-import co.tuister.domain.usecases.career.GetCurrentSemesterUseCase
-import co.tuister.domain.usecases.career.GetMySubjectsUseCase
-import co.tuister.domain.usecases.career.GetNotesUseCase
-import co.tuister.domain.usecases.career.GetScheduleByDateUseCase
-import co.tuister.domain.usecases.career.GetScheduleUseCase
-import co.tuister.domain.usecases.career.RemoveNoteUseCase
-import co.tuister.domain.usecases.career.RemoveSchedulePeriodUseCase
-import co.tuister.domain.usecases.career.RemoveSubjectUseCase
-import co.tuister.domain.usecases.career.SaveNoteUseCase
-import co.tuister.domain.usecases.career.SaveSchedulePeriodUseCase
-import co.tuister.domain.usecases.career.SaveSemesterUseCase
-import co.tuister.domain.usecases.career.SaveSubjectUseCase
+import co.tuister.domain.usecases.career.*
 import co.tuister.domain.usecases.institutional.GetEventsUseCase
 import co.tuister.domain.usecases.institutional.GetPlacesUseCase
 import co.tuister.domain.usecases.institutional.GetSitesUseCase
-import co.tuister.domain.usecases.internal.DataUserUseCase
-import co.tuister.domain.usecases.internal.UpdateDataCalendarUseCase
-import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
-import co.tuister.domain.usecases.internal.UpdateDataMapUseCase
-import co.tuister.domain.usecases.internal.UpdateDataSubjectsUseCase
-import co.tuister.domain.usecases.login.CampusUseCase
-import co.tuister.domain.usecases.login.CareersUseCase
-import co.tuister.domain.usecases.login.DownloadImageUseCase
-import co.tuister.domain.usecases.login.FCMUpdateUseCase
-import co.tuister.domain.usecases.login.LoginUseCase
-import co.tuister.domain.usecases.login.LogoutUseCase
-import co.tuister.domain.usecases.login.RecoverPasswordUseCase
-import co.tuister.domain.usecases.login.RegisterUseCase
-import co.tuister.domain.usecases.login.SendVerifyLinkUseCase
-import co.tuister.domain.usecases.login.UploadImageUseCase
+import co.tuister.domain.usecases.internal.*
+import co.tuister.domain.usecases.login.*
+import co.tuister.domain.usecases.profile.DisableFirstTimeUseCase
+import co.tuister.domain.usecases.profile.FirstTimeUseCase
 import co.tuister.domain.usecases.profile.ProfileUseCase
 import co.tuister.domain.usecases.tasks.GetMainTasks
 import co.tuister.domain.usecases.tasks.GetMyTasksUseCase
@@ -94,6 +69,8 @@ val domainModule = module {
     single { ProfileUseCase(get()) }
     single { FCMUpdateUseCase(get()) }
     single { SendVerifyLinkUseCase(get()) }
+    single { DisableFirstTimeUseCase(get()) }
+    single { FirstTimeUseCase(get()) }
 
     // Use case
     single { MigrationUseCase(get()) }

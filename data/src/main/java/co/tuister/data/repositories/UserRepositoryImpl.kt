@@ -4,37 +4,33 @@ import android.net.Uri
 import co.tuister.data.dto.UserDataDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
-import co.tuister.data.utils.BaseCollection
+import co.tuister.data.repositories.SharePreferencesRepositoryImpl.Companion.KEY_FIRST_TIME
+import co.tuister.data.utils.*
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
-import co.tuister.data.utils.FeedbackCollection
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_DATE
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_EMAIL
-import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
-import co.tuister.data.utils.await
-import co.tuister.data.utils.castToList
-import co.tuister.data.utils.objectToMap
-import co.tuister.data.utils.translateFirebaseException
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.AuthenticationError
 import co.tuister.domain.entities.Career
 import co.tuister.domain.entities.User
+import co.tuister.domain.repositories.SharedPreferencesRepository
 import co.tuister.domain.repositories.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
-import kotlin.collections.HashMap
 
 class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
     private val db: FirebaseFirestore,
-    private val firebaseStorage: FirebaseStorage
+    private val firebaseStorage: FirebaseStorage,
+    private val sharedPreferencesRepository: SharedPreferencesRepository
 ) :
     UserRepository {
 
@@ -46,7 +42,13 @@ class UserRepositoryImpl(
         val current = firebaseAuth.currentUser ?: return Either.Left(AuthenticationError())
 
         if (firebaseAuth.currentUser?.isEmailVerified != true) {
-            return Either.Left(Failure.EmailNotVerifiedError(Exception(firebaseAuth.currentUser?.email ?: "")))
+            return Either.Left(
+                Failure.EmailNotVerifiedError(
+                    Exception(
+                        firebaseAuth.currentUser?.email ?: ""
+                    )
+                )
+            )
         }
 
         val data = usersCollection.collection()
@@ -116,6 +118,13 @@ class UserRepositoryImpl(
         )
         feedbackCollection.collection().add(feedback).await()
         return true
+    }
+
+    override suspend fun checkFirstTime(): Boolean =
+        sharedPreferencesRepository.getBoolean(KEY_FIRST_TIME)
+
+    override suspend fun disableFirstTime() {
+        sharedPreferencesRepository.saveData(KEY_FIRST_TIME, false)
     }
 
     override suspend fun getCareers(): List<Career> {

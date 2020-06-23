@@ -15,4 +15,6 @@ interface UserRepository {
     suspend fun updateFCMToken(): Boolean
     suspend fun reSendVerifyEmail(): Boolean
     suspend fun sendFeedback(comment: String): Boolean
+    suspend fun checkFirstTime(): Boolean
+    suspend fun disableFirstTime()
 }
