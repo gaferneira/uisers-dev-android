@@ -9,7 +9,7 @@
         android:id="@+id/text_view_home_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today"
+        android:text="@string/label_home_today"
         android:textAppearance="?textAppearanceHeadline6"
         android:textColor="?colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
