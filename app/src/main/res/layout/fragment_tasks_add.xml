@@ -93,7 +93,6 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -101,7 +100,6 @@
                     android:text="@string/task_label_status"
                     android:textAppearance="?textAppearanceSubtitle1"
                     android:textColor="?colorOnSurface" />
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -147,15 +145,22 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <SeekBar
-                    android:id="@+id/seek_bar"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_margin_normal"
-                    android:max="2"
-                    android:progress="@={taskBinding.status}"
-                    android:thumb="@drawable/ic_home"
-                    android:thumbTint="@color/blue_grey_600" />
+                    android:text="@string/label_color"
+                    android:textAppearance="?textAppearanceSubtitle1"
+                    android:textColor="?colorOnSurface" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_margin_normal"
+                    android:layout_marginBottom="@dimen/padding_margin_normal"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_credits"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
             </LinearLayout>
 

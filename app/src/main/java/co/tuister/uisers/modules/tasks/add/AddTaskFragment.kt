@@ -1,11 +1,13 @@
 package co.tuister.uisers.modules.tasks.add
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,7 +19,9 @@ import co.tuister.uisers.databinding.FragmentTasksAddBinding
 import co.tuister.uisers.modules.tasks.add.AddTaskViewModel.State
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.getColorFromHex
 import co.tuister.uisers.utils.extensions.pickDateTime
+import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
@@ -25,12 +29,14 @@ import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.*
 
-class AddTaskFragment : BaseFragment() {
+class AddTaskFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorDialogListener {
 
     private lateinit var binding: FragmentTasksAddBinding
     private lateinit var viewModel: AddTaskViewModel
 
     private lateinit var task: Task
+
+    private lateinit var colors: IntArray
 
     private val safeArgs by navArgs<AddTaskFragmentArgs>()
 
@@ -114,20 +120,31 @@ class AddTaskFragment : BaseFragment() {
             }
         }
 
+        updateProgress(task.status)
         binding.editTextReminder.setOnClickListener {
             showReminderOptions()
         }
 
+        colors = resources.getIntArray(R.array.colors_300)
+        val backgroundColor = task.color?.getColorFromHex()
+            ?: ContextCompat.getColor(requireContext(), R.color.grey_300)
+        binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+
+        binding.fabColor.setOnClickListener {
+            ColorPaletteDialogFragment.create(colors, this)
+                .show(parentFragmentManager, ColorPaletteDialogFragment.TAG)
+        }
+
         binding.chipStatus1.setOnClickListener {
-            updateSeekBar(0)
+            updateProgress(Task.STATUS_DO)
         }
 
         binding.chipStatus2.setOnClickListener {
-            updateSeekBar(1)
+            updateProgress(Task.STATUS_DOING)
         }
 
         binding.chipStatus3.setOnClickListener {
-            updateSeekBar(2)
+            updateProgress(Task.STATUS_DONE)
         }
 
         bindProgressButton(binding.buttonSave)
@@ -140,9 +157,15 @@ class AddTaskFragment : BaseFragment() {
         }
     }
 
-    private fun updateSeekBar(progress: Int) {
-        binding.taskBinding = task.apply {
-            status = progress
+    private fun updateProgress(progress: Int) {
+        task.status = progress
+        val chips = arrayOf(binding.chipStatus1, binding.chipStatus2, binding.chipStatus3)
+        chips.forEachIndexed { index, chip ->
+            if (index == progress) {
+                chip.setChipIconResource(R.drawable.ic_done_24)
+            } else {
+                chip.chipIcon = null
+            }
         }
     }
 
@@ -156,7 +179,7 @@ class AddTaskFragment : BaseFragment() {
 
         // setup the alert builder
         val dialog = AlertDialog.Builder(requireContext())
-            .setTitle("Set reminder")
+            .setTitle(R.string.title_task_set_reminder)
             .setItems(options) { _, which ->
                 task.reminder = valuesList[which]
                 binding.editTextReminder.setText(options[which])
@@ -167,10 +190,11 @@ class AddTaskFragment : BaseFragment() {
     }
 
     private fun reminderOption(value: Int?): String {
+        val before = getString(R.string.label_before)
         return when (value) {
-            null -> "No reminder"
-            0 -> "At time of Due date"
-            else -> DateUtils.minutesToString(resources, value) + " before"
+            null -> getString(R.string.label_task_no_reminder)
+            0 -> getString(R.string.label_task_reminder_at_time)
+            else -> DateUtils.minutesToString(resources, value) + " " + before
         }
     }
 
@@ -181,5 +205,10 @@ class AddTaskFragment : BaseFragment() {
         private const val MINUTES_HOUR = 60
         private const val HOURS_DAY = 24
         private const val INTERVAL_MINUTES = 5
+    }
+
+    override fun onSelectColor(color: Int) {
+        binding.fabColor.backgroundTintList = ColorStateList.valueOf(color)
+        task.color = Integer.toHexString(color)
     }
 }

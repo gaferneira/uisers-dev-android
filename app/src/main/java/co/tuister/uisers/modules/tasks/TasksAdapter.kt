@@ -4,10 +4,12 @@ import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
+import co.tuister.uisers.utils.extensions.getColorFromHex
 import kotlinx.android.synthetic.main.item_tasks_task.*
 
 class TasksAdapter(
@@ -45,6 +47,8 @@ class TasksAdapter(
         ) {
             text_view_task_name.text = task.title
             text_view_task_desc.text = task.description
+            val backgroundColor = task.color?.getColorFromHex() ?: ContextCompat.getColor(context, R.color.grey_300)
+            content_view.setBackgroundColor(backgroundColor)
             itemView.setOnClickListener {
                 listener?.onClickTask(task)
             }
@@ -57,7 +61,7 @@ class TasksAdapter(
             v: View,
             menuInfo: ContextMenu.ContextMenuInfo?
         ) {
-            menu.add(bindingAdapterPosition, v.id, 0, "Remove")
+            menu.add(bindingAdapterPosition, v.id, 0, v.context.getString(R.string.action_remove))
         }
     }
 }

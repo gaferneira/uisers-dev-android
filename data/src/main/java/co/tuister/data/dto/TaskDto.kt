@@ -9,9 +9,10 @@ class TaskDto(
     var dueDate: Long? = null,
     // DO, DOING, DONE
     var status: Int = 0,
-    var reminder: Int? = null
+    var reminder: Int? = null,
+    var color: String? = null
 ) : Serializable
 
-fun TaskDto.toEntity(path: String) = Task(path, title, description, dueDate, status, reminder)
+fun TaskDto.toEntity(path: String) = Task(path, title, description, dueDate, status, reminder, color)
 
-fun Task.toDTO() = TaskDto(title, description, dueDate, status, reminder)
+fun Task.toDTO() = TaskDto(title, description, dueDate, status, reminder, color)
