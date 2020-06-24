@@ -12,6 +12,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
 import co.tuister.uisers.utils.extensions.getColorFromHex
+import co.tuister.uisers.utils.extensions.setTextOrGone
 import kotlinx.android.synthetic.main.item_my_career_subject.*
 
 class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>() {
@@ -48,13 +49,13 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
             listener: SubjectListener?
         ) {
             text_view_subject_name.text = subject.name
-            text_view_subject_desc.text = subject.teacher
+            text_view_subject_desc.setTextOrGone(subject.teacher)
             text_view_subject_note.text = subject.note.format()
             itemView.setOnClickListener {
                 listener?.onClickSubject(subject)
             }
 
-            val backgroundColor = subject.color?.getColorFromHex() ?: ContextCompat.getColor(context, R.color.green_100)
+            val backgroundColor = context.resources.getIntArray(R.array.colors_100)[subject.materialColor]
             content_view.setBackgroundColor(backgroundColor)
             itemView.setOnCreateContextMenuListener(this)
         }

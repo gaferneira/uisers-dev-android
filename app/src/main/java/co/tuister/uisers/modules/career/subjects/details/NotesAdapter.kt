@@ -49,7 +49,7 @@ class NotesAdapter(
             text_view_note_desc.text = note.title
             text_view_note_grade.text = note.grade.format(2, true)
             text_view_note_percentage.text = note.percentage.format(1)
-            text_view_note_total.text = note.grade.format(2, true)
+            text_view_note_total.text = note.total.format(2, true)
 
             val color = if (note.grade >= MIN_ACCEPTED_NOTE) R.color.green_700 else R.color.red_700
 

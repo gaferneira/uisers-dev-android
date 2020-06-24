@@ -2,6 +2,7 @@ package co.tuister.uisers.modules.home.viewholders
 
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
@@ -9,9 +10,11 @@ import co.tuister.uisers.modules.home.HomeAdapter
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeTasks
 import co.tuister.uisers.utils.DateUtils
+import co.tuister.uisers.utils.extensions.getColorFromHex
+import co.tuister.uisers.utils.extensions.setTextOrGone
 import kotlinx.android.synthetic.main.item_home_schedule.view.*
 import kotlinx.android.synthetic.main.item_home_task.view.*
-import java.util.*
+import java.util.Date
 
 class TasksViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
@@ -56,7 +59,9 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
         return view.apply {
             text_view_task_name.text = task.title
             text_view_task_hour.text = task.dueDate?.let { DateUtils.dateTimeToString(Date(it), "MMM dd HH:mm") }
-            text_view_task_desc.text = task.description
+            text_view_task_desc.setTextOrGone(task.description)
+            val backgroundColor = context.resources.getIntArray(R.array.colors_300)[task.materialColor]
+            content_view.setBackgroundColor(backgroundColor)
         }
     }
 }

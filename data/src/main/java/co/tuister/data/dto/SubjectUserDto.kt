@@ -9,12 +9,12 @@ class SubjectUserDto(
     var teacher: String = "",
     var note: Float = 0f,
     val credits: Int = 0,
-    val color: String? = null,
+    var materialColor: Int = 0,
     val path: String = ""
 ) : Serializable
 
-fun SubjectUserDto.toEntity(path: String) = Subject(path, code, name, teacher, note, credits, color)
+fun SubjectUserDto.toEntity(path: String) = Subject(path, code, name, teacher, note, credits, materialColor)
 
 fun Subject.toDTO() = SubjectUserDto(
-    code, name, teacher, note, credits, color, id
+    code, name, teacher, note, credits, materialColor, id
 )

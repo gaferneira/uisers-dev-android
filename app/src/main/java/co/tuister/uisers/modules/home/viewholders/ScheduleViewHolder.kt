@@ -59,8 +59,7 @@ class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
             text_view_subject_name.text = period.description
             text_view_subject_hour.text = period.initialHour + "-" + period.finalHour
             text_view_subject_desc.text = period.place
-            val backgroundColor = period.color?.getColorFromHex()
-                ?: ContextCompat.getColor(view.context, R.color.green_100)
+            val backgroundColor = context.resources.getIntArray(R.array.colors_100)[period.materialColor]
             content_view.setBackgroundColor(backgroundColor)
         }
     }

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:theme="@style/ThemeOverlay.MyApp.Light">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/text_view_task_hour"
@@ -30,9 +29,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?colorSecondaryVariant"
+            android:background="?colorSecondary"
             android:paddingTop="@dimen/padding_margin_small"
             android:paddingBottom="@dimen/padding_margin_small">
 

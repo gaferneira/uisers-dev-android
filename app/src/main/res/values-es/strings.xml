@@ -164,5 +164,12 @@
         <item quantity="one">1 día</item>
         <item quantity="other">%d días</item>
     </plurals>
+    <string name="action_remove">Eliminar</string>
+    <string name="action_edit">Editar</string>
+    <string name="label_color">Color</string>
+    <string name="label_before">antes</string>
+    <string name="title_task_set_reminder">Recordatorio</string>
+    <string name="label_task_no_reminder">Sin recordatorio</string>
+    <string name="label_task_reminder_at_time">En la hora exacta</string>
 
 </resources>

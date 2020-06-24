@@ -1,6 +1,8 @@
 package co.tuister.uisers.utils.extensions
 
 import android.graphics.Color
+import android.widget.TextView
+import androidx.core.view.isVisible
 
 fun <R, T> Map<R, List<T>>.addToValueList(key: R, element: T): Map<R, List<T>> {
     val mutable = this.toMutableMap()
@@ -20,4 +22,9 @@ fun String.getColorFromHex(): Int? {
     } catch (e: Exception) {
         null
     }
+}
+
+fun TextView.setTextOrGone(string: String?) {
+    text = string
+    isVisible = !string.isNullOrBlank()
 }

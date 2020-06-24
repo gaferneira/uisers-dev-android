@@ -19,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class ColorPaletteDialogFragment : AppCompatDialogFragment() {
 
     interface PaletteColorDialogListener {
-        fun onSelectColor(color: Int)
+        fun onSelectColor(index: Int)
     }
 
     lateinit var binding: DialogFragmentPaletteColorBinding
@@ -50,11 +50,11 @@ class ColorPaletteDialogFragment : AppCompatDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        colors.forEach { color ->
+        colors.forEachIndexed { index, color ->
             val fab = FloatingActionButton(requireContext()).apply {
                 backgroundTintList = ColorStateList.valueOf(color)
                 setOnClickListener {
-                    listener?.onSelectColor(color)
+                    listener?.onSelectColor(index)
                     dismiss()
                 }
             }

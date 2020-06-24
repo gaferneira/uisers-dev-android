@@ -259,7 +259,7 @@
 
     <integer-array name="colors_100">
         <item> @color/green_100 </item>
-        <item> @color/grey_100 </item>
+        <item> @color/blue_grey_100 </item>
         <item> @color/red_100 </item>
         <item> @color/pink_100 </item>
         <item> @color/purple_100 </item>
@@ -276,7 +276,30 @@
         <item> @color/orange_100 </item>
         <item> @color/deep_orange_100 </item>
         <item> @color/brown_100 </item>
-        <item> @color/blue_grey_100 </item>
+        <item> @color/grey_100 </item>
     </integer-array>
+
+    <integer-array name="colors_300">
+        <item> @color/green_300 </item>
+        <item> @color/blue_grey_300 </item>
+        <item> @color/red_300 </item>
+        <item> @color/pink_300 </item>
+        <item> @color/purple_300 </item>
+        <item> @color/deep_purple_300 </item>
+        <item> @color/indigo_300 </item>
+        <item> @color/blue_300 </item>
+        <item> @color/light_blue_300 </item>
+        <item> @color/cyan_300 </item>
+        <item> @color/teal_300 </item>
+        <item> @color/light_green_300 </item>
+        <item> @color/lime_300 </item>
+        <item> @color/yellow_300 </item>
+        <item> @color/amber_300 </item>
+        <item> @color/orange_300 </item>
+        <item> @color/deep_orange_300 </item>
+        <item> @color/brown_300 </item>
+        <item> @color/grey_300 </item>
+    </integer-array>
+
 
 </resources>

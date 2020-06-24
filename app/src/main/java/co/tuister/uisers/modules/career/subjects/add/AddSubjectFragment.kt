@@ -73,8 +73,7 @@ class AddSubjectFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteCol
         }
 
         colors = resources.getIntArray(R.array.colors_100)
-        val backgroundColor = subject.color?.getColorFromHex()
-            ?: ContextCompat.getColor(requireContext(), R.color.green_100)
+        val backgroundColor = colors[subject.materialColor]
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
         binding.fabColor.setOnClickListener {
@@ -148,8 +147,8 @@ class AddSubjectFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteCol
         )
     }
 
-    override fun onSelectColor(color: Int) {
-        binding.fabColor.backgroundTintList = ColorStateList.valueOf(color)
-        subject.color = Integer.toHexString(color)
+    override fun onSelectColor(index: Int) {
+        binding.fabColor.backgroundTintList = ColorStateList.valueOf(colors[index])
+        subject.materialColor = index
     }
 }

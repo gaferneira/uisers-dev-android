@@ -160,6 +160,10 @@
     <string name="action_remove">Remove</string>
     <string name="action_edit">Edit</string>
     <string name="label_color">Color</string>
+    <string name="label_before">before</string>
+    <string name="label_task_no_reminder">No reminder</string>
+    <string name="label_task_reminder_at_time">At time of Due date</string>
+    <string name="title_task_set_reminder">Set reminder</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>

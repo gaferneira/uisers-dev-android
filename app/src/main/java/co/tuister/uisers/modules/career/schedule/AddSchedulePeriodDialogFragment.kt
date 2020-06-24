@@ -39,6 +39,7 @@ class AddSchedulePeriodDialogFragment :
     lateinit var subjects: List<Subject>
     lateinit var period: SchedulePeriod
 
+
     private lateinit var requireTextViews: Array<TextView>
 
     private lateinit var colors: IntArray
@@ -92,14 +93,14 @@ class AddSchedulePeriodDialogFragment :
                     (adapterView.adapter as AutoCompleteSubjectsAdapter).getItem(position)
                 binding.periodBinding = period.apply {
                     description = selectedItem.name
-                    color = selectedItem.color
+                    materialColor = selectedItem.materialColor
                     updateFabColor()
                 }
             }
         }
 
-        updateFabColor()
         colors = resources.getIntArray(R.array.colors_100)
+        updateFabColor()
         binding.fabColor.setOnClickListener {
             ColorPaletteDialogFragment.create(colors, this)
                 .show(parentFragmentManager, ColorPaletteDialogFragment.TAG)
@@ -178,13 +179,12 @@ class AddSchedulePeriodDialogFragment :
     }
 
     private fun updateFabColor() {
-        val backgroundColor = period.color?.getColorFromHex()
-            ?: ContextCompat.getColor(requireContext(), R.color.green_100)
+        val backgroundColor = colors[period.materialColor]
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
     }
 
-    override fun onSelectColor(color: Int) {
-        period.color = Integer.toHexString(color)
+    override fun onSelectColor(index: Int) {
+        period.materialColor = index
         updateFabColor()
     }
 
