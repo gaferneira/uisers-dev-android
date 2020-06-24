@@ -127,7 +127,7 @@ class AddTaskFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorD
 
         colors = resources.getIntArray(R.array.colors_300)
         val backgroundColor = task.color?.getColorFromHex()
-            ?: ContextCompat.getColor(requireContext(), R.color.grey_300)
+            ?: ContextCompat.getColor(requireContext(), R.color.blue_grey_300)
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
         binding.fabColor.setOnClickListener {

@@ -281,7 +281,7 @@
 
     <integer-array name="colors_300">
         <item> @color/green_300 </item>
-        <item> @color/grey_300 </item>
+        <item> @color/blue_grey_300 </item>
         <item> @color/red_300 </item>
         <item> @color/pink_300 </item>
         <item> @color/purple_300 </item>
@@ -298,7 +298,7 @@
         <item> @color/orange_300 </item>
         <item> @color/deep_orange_300 </item>
         <item> @color/brown_300 </item>
-        <item> @color/blue_grey_300 </item>
+        <item> @color/grey_300 </item>
     </integer-array>
 
 

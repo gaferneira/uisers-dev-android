@@ -159,6 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/padding_margin_normal"
                     android:layout_marginBottom="@dimen/padding_margin_normal"
+                    android:layout_marginStart="@dimen/padding_margin_extra_small"
                     app:layout_constraintTop_toBottomOf="@id/text_input_credits"
                     app:layout_constraintStart_toStartOf="parent"/>
 
