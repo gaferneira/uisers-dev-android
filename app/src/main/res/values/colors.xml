@@ -259,7 +259,7 @@
 
     <integer-array name="colors_100">
         <item> @color/green_100 </item>
-        <item> @color/grey_100 </item>
+        <item> @color/blue_grey_100 </item>
         <item> @color/red_100 </item>
         <item> @color/pink_100 </item>
         <item> @color/purple_100 </item>
@@ -276,7 +276,7 @@
         <item> @color/orange_100 </item>
         <item> @color/deep_orange_100 </item>
         <item> @color/brown_100 </item>
-        <item> @color/blue_grey_100 </item>
+        <item> @color/grey_100 </item>
     </integer-array>
 
     <integer-array name="colors_300">

@@ -9,7 +9,7 @@ class SchedulePeriodDto(
     var initialHour: String = "",
     var finalHour: String = "",
     var place: String? = null,
-    var color: String? = null
+    var materialColor: Int = 0
 ) : Serializable
 
 fun SchedulePeriodDto.toEntity(path: String) = SchedulePeriod(
@@ -19,9 +19,9 @@ fun SchedulePeriodDto.toEntity(path: String) = SchedulePeriod(
     initialHour,
     finalHour,
     place,
-    color
+    materialColor
 )
 
 fun SchedulePeriod.toDTO() = SchedulePeriodDto(
-    description, day, initialHour, finalHour, place, color
+    description, day, initialHour, finalHour, place, materialColor
 )

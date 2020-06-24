@@ -47,8 +47,7 @@ class TasksAdapter(
         ) {
             text_view_task_name.text = task.title
             text_view_task_desc.text = task.description
-            val backgroundColor = task.color?.getColorFromHex()
-                ?: ContextCompat.getColor(context, R.color.blue_grey_300)
+            val backgroundColor = context.resources.getIntArray(R.array.colors_300)[task.materialColor]
             content_view.setBackgroundColor(backgroundColor)
             itemView.setOnClickListener {
                 listener?.onClickTask(task)

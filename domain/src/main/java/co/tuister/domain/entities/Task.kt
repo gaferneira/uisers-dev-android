@@ -12,7 +12,7 @@ data class Task(
     // DO, DOING, DONE
     var status: Int = 0,
     var reminder: Int? = null,
-    var color: String? = null
+    var materialColor: Int = 0
 ) : Parcelable {
     companion object {
         const val STATUS_DO = 0

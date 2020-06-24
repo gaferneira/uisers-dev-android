@@ -60,8 +60,7 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
             text_view_task_name.text = task.title
             text_view_task_hour.text = task.dueDate?.let { DateUtils.dateTimeToString(Date(it), "MMM dd HH:mm") }
             text_view_task_desc.setTextOrGone(task.description)
-            val backgroundColor = task.color?.getColorFromHex()
-                ?: ContextCompat.getColor(context, R.color.blue_grey_300)
+            val backgroundColor = context.resources.getIntArray(R.array.colors_300)[task.materialColor]
             content_view.setBackgroundColor(backgroundColor)
         }
     }

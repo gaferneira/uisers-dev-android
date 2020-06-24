@@ -12,5 +12,5 @@ data class SchedulePeriod(
     var initialHour: String = "",
     var finalHour: String = "",
     var place: String? = null,
-    var color: String? = null
+    var materialColor: Int = 0
 ) : Parcelable

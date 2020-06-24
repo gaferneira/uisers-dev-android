@@ -55,7 +55,7 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
                 listener?.onClickSubject(subject)
             }
 
-            val backgroundColor = subject.color?.getColorFromHex() ?: ContextCompat.getColor(context, R.color.green_100)
+            val backgroundColor = context.resources.getIntArray(R.array.colors_100)[subject.materialColor]
             content_view.setBackgroundColor(backgroundColor)
             itemView.setOnCreateContextMenuListener(this)
         }

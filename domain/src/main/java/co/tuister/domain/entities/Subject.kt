@@ -11,7 +11,7 @@ data class Subject(
     var teacher: String = "",
     var note: Float = 0f,
     var credits: Int = 1,
-    var color: String? = null
+    var materialColor: Int = 0
 ) : Parcelable
 
 @Parcelize

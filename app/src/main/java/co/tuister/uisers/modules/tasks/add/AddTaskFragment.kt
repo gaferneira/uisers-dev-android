@@ -126,8 +126,7 @@ class AddTaskFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorD
         }
 
         colors = resources.getIntArray(R.array.colors_300)
-        val backgroundColor = task.color?.getColorFromHex()
-            ?: ContextCompat.getColor(requireContext(), R.color.blue_grey_300)
+        val backgroundColor = colors[task.materialColor]
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
         binding.fabColor.setOnClickListener {
@@ -207,8 +206,8 @@ class AddTaskFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorD
         private const val INTERVAL_MINUTES = 5
     }
 
-    override fun onSelectColor(color: Int) {
-        binding.fabColor.backgroundTintList = ColorStateList.valueOf(color)
-        task.color = Integer.toHexString(color)
+    override fun onSelectColor(index: Int) {
+        binding.fabColor.backgroundTintList = ColorStateList.valueOf(colors[index])
+        task.materialColor = index
     }
 }
