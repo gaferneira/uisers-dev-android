@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.core.os.bundleOf
+import androidx.core.view.setMargins
 import androidx.databinding.DataBindingUtil
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentPaletteColorBinding
@@ -60,14 +61,9 @@ class PaletteColorDialogFragment : AppCompatDialogFragment() {
             binding.flexbox.addView(
                 fab,
                 LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT
                 ).apply {
-                    setMargins(
-                        resources.getDimension(R.dimen.padding_margin_micro).toInt(),
-                        resources.getDimension(R.dimen.padding_margin_micro).toInt(),
-                        0,
-                        0
-                    )
+                    setMargins(resources.getDimension(R.dimen.padding_margin_micro).toInt())
                 }
             )
         }

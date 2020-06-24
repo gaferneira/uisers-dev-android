@@ -54,7 +54,7 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
         )
         binding.lifecycleOwner = this
         subjects = arguments?.getParcelableArray(ARGUMENT_SUBJECTS)?.map { it as Subject } ?: listOf()
-        period = arguments?.getParcelable(ARGUMENT_PERIOD) ?: SchedulePeriod(color = null)
+        period = arguments?.getParcelable(ARGUMENT_PERIOD) ?: SchedulePeriod()
         requireTextViews = arrayOf(
             binding.autocompleteSubject,
             binding.editTextPlace,
