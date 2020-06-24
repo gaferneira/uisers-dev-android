@@ -14,8 +14,8 @@ android {
         applicationId "co.tuister.uisers"
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 44
-        versionName "2.1.0-alpha01"
+        versionCode 45
+        versionName "2.1.0-alpha02"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
