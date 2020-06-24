@@ -1,6 +1,7 @@
 package co.tuister.uisers.modules.career.schedule
 
 import android.app.Dialog
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
@@ -20,10 +22,14 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentSchedulePeriodBinding
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.getColorFromHex
 import co.tuister.uisers.utils.extensions.pickTime
+import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import java.util.*
 
-class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
+class AddSchedulePeriodDialogFragment :
+    AppCompatDialogFragment(),
+    ColorPaletteDialogFragment.PaletteColorDialogListener {
 
     interface AddSchedulePeriodDialogListener {
         fun onSavePeriod(period: SchedulePeriod)
@@ -32,7 +38,10 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
     lateinit var binding: DialogFragmentSchedulePeriodBinding
     lateinit var subjects: List<Subject>
     lateinit var period: SchedulePeriod
+
     private lateinit var requireTextViews: Array<TextView>
+
+    private lateinit var colors: IntArray
 
     val calendar = Calendar.getInstance()
     private var listener: AddSchedulePeriodDialogListener? = null
@@ -84,8 +93,16 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
                 binding.periodBinding = period.apply {
                     description = selectedItem.name
                     color = selectedItem.color
+                    updateFabColor()
                 }
             }
+        }
+
+        updateFabColor()
+        colors = resources.getIntArray(R.array.colors_100)
+        binding.fabColor.setOnClickListener {
+            ColorPaletteDialogFragment.create(colors, this)
+                .show(parentFragmentManager, ColorPaletteDialogFragment.TAG)
         }
 
         binding.editTextDay.setOnClickListener {
@@ -158,6 +175,17 @@ class AddSchedulePeriodDialogFragment : AppCompatDialogFragment() {
     private fun updateButtonState() {
         binding.buttonSave.isEnabled =
             requireContext().checkRequireFormFields(*requireTextViews, showError = false)
+    }
+
+    private fun updateFabColor() {
+        val backgroundColor = period.color?.getColorFromHex()
+            ?: ContextCompat.getColor(requireContext(), R.color.green_100)
+        binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+    }
+
+    override fun onSelectColor(color: Int) {
+        period.color = Integer.toHexString(color)
+        updateFabColor()
     }
 
     companion object {

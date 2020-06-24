@@ -16,10 +16,10 @@ import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentPaletteColorBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class PaletteColorDialogFragment : AppCompatDialogFragment() {
+class ColorPaletteDialogFragment : AppCompatDialogFragment() {
 
     interface PaletteColorDialogListener {
-        fun onSelectColor(index: Int)
+        fun onSelectColor(color: Int)
     }
 
     lateinit var binding: DialogFragmentPaletteColorBinding
@@ -50,11 +50,11 @@ class PaletteColorDialogFragment : AppCompatDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        colors.forEachIndexed { index, color ->
+        colors.forEach { color ->
             val fab = FloatingActionButton(requireContext()).apply {
                 backgroundTintList = ColorStateList.valueOf(color)
                 setOnClickListener {
-                    listener?.onSelectColor(index)
+                    listener?.onSelectColor(color)
                     dismiss()
                 }
             }
@@ -77,9 +77,9 @@ class PaletteColorDialogFragment : AppCompatDialogFragment() {
         fun create(
             colors: IntArray,
             listener: PaletteColorDialogListener
-        ): PaletteColorDialogFragment {
+        ): ColorPaletteDialogFragment {
             val dialog =
-                PaletteColorDialogFragment()
+                ColorPaletteDialogFragment()
             dialog.arguments = bundleOf(
                 Pair(ARGUMENT_COLORS, colors)
             )

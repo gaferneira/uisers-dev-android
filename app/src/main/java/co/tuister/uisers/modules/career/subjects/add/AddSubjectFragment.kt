@@ -19,14 +19,14 @@ import co.tuister.uisers.modules.career.subjects.add.AddSubjectViewModel.State
 import co.tuister.uisers.utils.StringUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.getColorFromHex
-import co.tuister.uisers.utils.view.PaletteColorDialogFragment
+import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class AddSubjectFragment : BaseFragment(), PaletteColorDialogFragment.PaletteColorDialogListener {
+class AddSubjectFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorDialogListener {
 
     private lateinit var binding: FragmentSubjectAddBinding
     private lateinit var viewModel: AddSubjectViewModel
@@ -78,8 +78,8 @@ class AddSubjectFragment : BaseFragment(), PaletteColorDialogFragment.PaletteCol
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
         binding.fabColor.setOnClickListener {
-            PaletteColorDialogFragment.create(colors, this)
-                .show(parentFragmentManager, PaletteColorDialogFragment.TAG)
+            ColorPaletteDialogFragment.create(colors, this)
+                .show(parentFragmentManager, ColorPaletteDialogFragment.TAG)
         }
 
         bindProgressButton(binding.buttonSave)
@@ -148,8 +148,7 @@ class AddSubjectFragment : BaseFragment(), PaletteColorDialogFragment.PaletteCol
         )
     }
 
-    override fun onSelectColor(index: Int) {
-        val color = colors[index]
+    override fun onSelectColor(color: Int) {
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(color)
         subject.color = Integer.toHexString(color)
     }

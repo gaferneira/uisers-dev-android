@@ -67,9 +67,9 @@
 
     <style name="ThemeOverlay.MyApp.Light" parent="">
         <item name="colorPrimary">@color/green_50</item>
-        <item name="colorOnPrimary">@color/grey_900</item>
+        <item name="colorOnPrimary">@color/grey_700</item>
         <item name="colorSecondary">@color/grey_50</item>
-        <item name="colorOnSecondary">@color/grey_900</item>
+        <item name="colorOnSecondary">@color/grey_700</item>
         <item name="colorPrimaryVariant">@color/green_100</item>
         <item name="colorSecondaryVariant">@color/grey_300</item>
     </style>
