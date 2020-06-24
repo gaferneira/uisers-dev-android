@@ -87,6 +87,14 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
         findNavController().navigate(action)
     }
 
+    override fun onClickEdit(subject: Subject) {
+        val action =
+            MyCareerFragmentDirections.actionSubjectsToSubjectAdd(
+                subject
+            )
+        findNavController().navigate(action)
+    }
+
     private inner class TasksPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = 3
 
@@ -112,6 +120,7 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
         subjectFragment?.listener = null
         super.onDestroy()
     }
+
     override fun onResume() {
         super.onResume()
         if (currentPosition == 0) {

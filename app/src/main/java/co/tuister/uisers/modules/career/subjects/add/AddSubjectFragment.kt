@@ -1,12 +1,15 @@
 package co.tuister.uisers.modules.career.subjects.add
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
@@ -15,18 +18,24 @@ import co.tuister.uisers.databinding.FragmentSubjectAddBinding
 import co.tuister.uisers.modules.career.subjects.add.AddSubjectViewModel.State
 import co.tuister.uisers.utils.StringUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.getColorFromHex
+import co.tuister.uisers.utils.view.PaletteColorDialogFragment
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class AddSubjectFragment : BaseFragment() {
+class AddSubjectFragment : BaseFragment(), PaletteColorDialogFragment.PaletteColorDialogListener {
 
     private lateinit var binding: FragmentSubjectAddBinding
     private lateinit var viewModel: AddSubjectViewModel
 
     private lateinit var subject: Subject
+
+    private lateinit var colors: IntArray
+
+    private val safeArgs by navArgs<AddSubjectFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +43,7 @@ class AddSubjectFragment : BaseFragment() {
     }
 
     private fun loadArguments() {
-        subject = arguments?.getParcelable(SUBJECT_ARG) ?: Subject()
+        subject = safeArgs.subject ?: Subject()
     }
 
     override fun onCreateView(
@@ -53,7 +62,6 @@ class AddSubjectFragment : BaseFragment() {
     private fun initViews() {
 
         with(binding.autocompleteSubject) {
-            isEnabled = subject.name.isEmpty()
             setOnItemClickListener { adapterView, _, position, _ ->
                 val selectedItem =
                     (adapterView.adapter as AutoCompleteSubjectsAdapter).getItem(position)
@@ -62,6 +70,16 @@ class AddSubjectFragment : BaseFragment() {
                     code = selectedItem.id
                 }
             }
+        }
+
+        colors = resources.getIntArray(R.array.colors_100)
+        val backgroundColor = subject.color?.getColorFromHex()
+            ?: ContextCompat.getColor(requireContext(), R.color.green_100)
+        binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+
+        binding.fabColor.setOnClickListener {
+            PaletteColorDialogFragment.create(colors, this)
+                .show(parentFragmentManager, PaletteColorDialogFragment.TAG)
         }
 
         bindProgressButton(binding.buttonSave)
@@ -130,7 +148,9 @@ class AddSubjectFragment : BaseFragment() {
         )
     }
 
-    companion object {
-        const val SUBJECT_ARG = "SUBJECT_ARG"
+    override fun onSelectColor(index: Int) {
+        val color = colors[index]
+        binding.fabColor.backgroundTintList = ColorStateList.valueOf(color)
+        subject.color = Integer.toHexString(color)
     }
 }

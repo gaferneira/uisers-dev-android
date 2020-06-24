@@ -56,7 +56,7 @@
     <string name="select_a_semester">Selecciona un semestre</string>
     <string name="semester_set_current">Seleccionar como actual</string>
 
-    <string name="prompt_details_grade">Detalles</string>
+    <string name="prompt_details_grade">Escriba el detalle</string>
     <string name="prompt_name_subject">Nombre de la materia</string>
     <string name="prompt_name_teacher">Nombre del profesor</string>
 
@@ -125,6 +125,7 @@
     <string name="feedback_result_title">Comentarios</string>
     <string name="title_dialog_about">Acerca de UISers</string>
     <string name="confirm_remove_subject">¿Quieres eliminar la materia?</string>
+    <string name="confirm_remove_period">¿Quieres eliminar el bloque?</string>
     <string name="confirm_remove_task">¿Quieres eliminar la tarea?</string>
     <string name="confirm_remove_note">¿Quieres eliminar la nota?</string>
 

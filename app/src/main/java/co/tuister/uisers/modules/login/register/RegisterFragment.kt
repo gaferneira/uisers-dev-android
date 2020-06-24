@@ -50,11 +50,11 @@ class RegisterFragment : BaseFragment() {
     private fun initViews() {
         binding.btnRegister.setOnClickListener {
             if (requireContext().checkRequireFormFields(
-                    binding.etRegisterEmail,
-                    binding.etRegisterName,
-                    binding.etRegisterPassword,
-                    binding.etRegisterConfirmPassword
-                )
+                binding.etRegisterEmail,
+                binding.etRegisterName,
+                binding.etRegisterPassword,
+                binding.etRegisterConfirmPassword
+            )
             ) {
                 hideKeyboard()
                 viewModel.doRegister()

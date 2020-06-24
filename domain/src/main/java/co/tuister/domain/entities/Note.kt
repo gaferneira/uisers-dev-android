@@ -9,5 +9,5 @@ data class Note(
     var title: String = "",
     var grade: Float = 0f,
     var percentage: Float = 0f,
-    var total: Float = 1f
+    var total: Float = 0f
 ) : Parcelable
