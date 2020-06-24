@@ -123,11 +123,11 @@ class ScheduleFragment :
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        if (lifecycle.currentState != Lifecycle.State.RESUMED) return false
+        if (lifecycle.currentState != Lifecycle.State.RESUMED || !isVisible) return false
 
         val adapterPosition = item.groupId
         val period = adapter.list.getOrNull(adapterPosition)?.second ?: return false
-        showConfirmDialog(getString(R.string.confirm_remove_subject), period.description) {
+        showConfirmDialog(getString(R.string.confirm_remove_period), period.description) {
             viewModel.removePeriod(period)
         }
         return true

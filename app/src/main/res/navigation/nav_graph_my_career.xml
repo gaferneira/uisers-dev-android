@@ -29,7 +29,15 @@
         android:name="co.tuister.uisers.modules.career.subjects.add.AddSubjectFragment"
         android:label="@string/title_fragment_add_subject"
         tools:layout="@layout/fragment_subject_add">
+
         <deepLink app:uri="uisers://main/career/subjects/add" />
+
+        <argument
+            android:name="subject"
+            android:defaultValue="@null"
+            app:argType="co.tuister.domain.entities.Subject"
+            app:nullable="true" />
+
     </fragment>
 
     <fragment

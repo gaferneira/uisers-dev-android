@@ -212,6 +212,9 @@ class MainActivity :
     ) {
         val backButtonVisible = drawerToggleDelegate?.isNavigationVisible ?: false
         binding.circleImagePhoto.isVisible = !backButtonVisible
+        if (backButtonVisible) {
+            binding.circleImagePhoto.clearAnimation()
+        }
     }
 
     override fun setTitle(title: CharSequence?) {

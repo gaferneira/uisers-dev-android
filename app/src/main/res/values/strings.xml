@@ -57,7 +57,7 @@
     <string name="select_a_semester">Select a semester</string>
     <string name="semester_set_current">Set as current</string>
 
-    <string name="prompt_details_grade">Details</string>
+    <string name="prompt_details_grade">Enter description</string>
     <string name="prompt_name_subject">Name subject</string>
     <string name="prompt_name_teacher">Name teacher</string>
 
@@ -133,6 +133,7 @@
     <string name="feedback_result_title">Feedback</string>
     <string name="title_dialog_about">About UISers</string>
     <string name="confirm_remove_subject">Do you want to remove this subject?</string>
+    <string name="confirm_remove_period">Do you want to remove this period?</string>
     <string name="confirm_remove_task">Do you want to remove this task?</string>
     <string name="confirm_remove_note">Do you want to remove this note?</string>
 
@@ -156,6 +157,9 @@
     <string name="splash_progress_checking_session">Checking session…</string>
     <string name="splash_progress_go_to_login">Let\'s go to Login</string>
     <string name="splash_progress_check_notes">Let\'s go check you notes…</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_edit">Edit</string>
+    <string name="label_color">Color</string>
 
     <plurals name="minutes">
         <item quantity="one">1 minute</item>

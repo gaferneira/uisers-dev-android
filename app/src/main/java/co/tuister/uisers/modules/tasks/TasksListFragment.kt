@@ -88,7 +88,7 @@ class TasksListFragment : BaseFragment() {
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        if (lifecycle.currentState != Lifecycle.State.RESUMED) return false
+        if (lifecycle.currentState != Lifecycle.State.RESUMED || !isVisible) return false
         val adapterPosition = item.groupId
         val task = adapter.list.getOrNull(adapterPosition)
         task?.run {

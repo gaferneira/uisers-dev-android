@@ -5,11 +5,13 @@ import android.view.ContextMenu.ContextMenuInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
+import co.tuister.uisers.utils.extensions.getColorFromHex
 import kotlinx.android.synthetic.main.item_my_career_subject.*
 
 class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>() {
@@ -19,6 +21,7 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
 
     interface SubjectListener {
         fun onClickSubject(subject: Subject)
+        fun onClickEdit(subject: Subject)
     }
 
     override fun getItemCount(): Int = list.size
@@ -50,6 +53,9 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
             itemView.setOnClickListener {
                 listener?.onClickSubject(subject)
             }
+
+            val backgroundColor = subject.color?.getColorFromHex() ?: ContextCompat.getColor(context, R.color.green_100)
+            content_view.setBackgroundColor(backgroundColor)
             itemView.setOnCreateContextMenuListener(this)
         }
 
@@ -58,7 +64,8 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
             v: View,
             menuInfo: ContextMenuInfo?
         ) {
-            menu.add(bindingAdapterPosition, v.id, 0, "Remove")
+            menu.add(bindingAdapterPosition, 0, 0, v.context.getString(R.string.action_edit))
+            menu.add(bindingAdapterPosition, 1, 1, v.context.getString(R.string.action_remove))
         }
     }
 }

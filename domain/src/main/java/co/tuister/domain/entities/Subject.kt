@@ -10,7 +10,8 @@ data class Subject(
     var name: String = "",
     var teacher: String = "",
     var note: Float = 0f,
-    var credits: Int = 1
+    var credits: Int = 1,
+    var color: String? = null
 ) : Parcelable
 
 @Parcelize

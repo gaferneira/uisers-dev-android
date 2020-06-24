@@ -107,13 +107,17 @@ class SubjectsFragment : BaseFragment() {
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        if (lifecycle.currentState != Lifecycle.State.RESUMED) return false
+        if (lifecycle.currentState != Lifecycle.State.RESUMED || !isVisible) return false
 
         val adapterPosition = item.groupId
         val subject = adapter.list.getOrNull(adapterPosition)
         subject?.run {
-            showConfirmDialog(getString(R.string.confirm_remove_subject), name) {
-                viewModel.removeSubject(this)
+            if (item.itemId == 0) {
+                listener?.onClickEdit(subject)
+            } else {
+                showConfirmDialog(getString(R.string.confirm_remove_subject), name) {
+                    viewModel.removeSubject(this)
+                }
             }
         }
         return true
