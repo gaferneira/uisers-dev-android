@@ -165,6 +165,18 @@
     <string name="label_task_reminder_at_time">At time of Due date</string>
     <string name="title_task_set_reminder">Set reminder</string>
 
+    <string name="deep_link_home" translatable="false">uisers://main/</string>
+    <string name="deep_link_career" translatable="false">uisers://main/career</string>
+    <string name="deep_link_tasks" translatable="false">uisers://main/tasks</string>
+    <string name="deep_link_institution" translatable="false">uisers://main/institution</string>
+    <string name="deep_link_institution_map" translatable="false">uisers://main/institution/map</string>
+    <string name="deep_link_institution_calendar" translatable="false">uisers://main/institution/calendar</string>
+    <string name="deep_link_institution_wheels" translatable="false">uisers://main/institution/wheels</string>
+    <string name="deep_link_career_subject_add" translatable="false">uisers://main/career/subjects/add</string>
+    <string name="deep_link_career_schedule" translatable="false">uisers://main/career/schedule</string>
+    <string name="deep_link_career_semesters" translatable="false">uisers://main/career/semesters</string>
+    <string name="deep_link_tasks_add" translatable="false">uisers://main/tasks/add</string>
+
     <plurals name="minutes">
         <item quantity="one">1 minute</item>
         <item quantity="other">%d minutes</item>

@@ -1,17 +1,10 @@
 package co.tuister.uisers.services
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
-import android.media.RingtoneManager
 import android.net.Uri
-import android.os.Build
-import androidx.core.app.NotificationCompat
-import co.tuister.uisers.R
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.main.MainActivity
+import co.tuister.uisers.utils.NotificationsUtil
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import timber.log.Timber
@@ -34,7 +27,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             // Check if message contains a notification payload.
             remoteMessage.notification?.let {
                 val id: Int = Random.nextInt()
-                showNotification(id, it.title, it.body, Intent(this, MainActivity::class.java))
+                NotificationsUtil.showNotification(applicationContext,
+                    id, it.title, it.body, Intent(this, MainActivity::class.java))
             }
         }
     }
@@ -59,7 +53,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
         } ?: LoginActivity.createIntent(baseContext, deepLink)
 
-        showNotification(notificationId, title, description, newIntent)
+        NotificationsUtil.showNotification(applicationContext, notificationId, title, description, newIntent)
     }
     // [END receive_message]
 
@@ -73,43 +67,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         Timber.d("Refreshed token: $token")
     }
     // [END on_new_token]
-
-    /**
-     * Create and show a simple notification containing the received FCM message.
-     *
-     * @param messageBody FCM message body received.
-     */
-    private fun showNotification(id: Int, title: String?, messageBody: String?, intent: Intent) {
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent = PendingIntent.getActivity(
-            this, 0 /* Request code */, intent,
-            PendingIntent.FLAG_ONE_SHOT
-        )
-
-        val channelId = getString(R.string.default_notification_channel_id)
-        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-        val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_stat_name)
-            .setContentTitle(title)
-            .setContentText(messageBody)
-            .setAutoCancel(true)
-            .setSound(defaultSoundUri)
-            .setContentIntent(pendingIntent)
-
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        // Since android Oreo notification channel is needed.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId,
-                "Default channel",
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            notificationManager.createNotificationChannel(channel)
-        }
-
-        notificationManager.notify(id, notificationBuilder.build())
-    }
 
     companion object {
         private const val NOTIFICATION_ID = "id"
