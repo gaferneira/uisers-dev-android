@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,9 +16,9 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksAddBinding
 import co.tuister.uisers.modules.tasks.add.AddTaskViewModel.State
+import co.tuister.uisers.services.NotifyWork
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
-import co.tuister.uisers.utils.extensions.getColorFromHex
 import co.tuister.uisers.utils.extensions.pickDateTime
 import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import com.github.razir.progressbutton.bindProgressButton
@@ -94,9 +93,12 @@ class AddTaskFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorD
                 binding.buttonSave.isEnabled = true
                 manageFailure(it)
             },
-            onSuccess = {
+            onSuccess = { task ->
                 binding.buttonSave.hideProgress(R.string.action_save)
                 binding.buttonSave.isEnabled = true
+                task?.let {
+                    NotifyWork.scheduleTaskNotification(requireContext(), it)
+                }
                 findNavController().popBackStack()
             }
         )

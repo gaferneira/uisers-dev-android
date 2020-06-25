@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -18,7 +17,6 @@ import co.tuister.uisers.databinding.FragmentSubjectAddBinding
 import co.tuister.uisers.modules.career.subjects.add.AddSubjectViewModel.State
 import co.tuister.uisers.utils.StringUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
-import co.tuister.uisers.utils.extensions.getColorFromHex
 import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress

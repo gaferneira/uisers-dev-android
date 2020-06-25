@@ -12,7 +12,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
@@ -22,7 +21,6 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentSchedulePeriodBinding
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
-import co.tuister.uisers.utils.extensions.getColorFromHex
 import co.tuister.uisers.utils.extensions.pickTime
 import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import java.util.*
@@ -38,7 +36,6 @@ class AddSchedulePeriodDialogFragment :
     lateinit var binding: DialogFragmentSchedulePeriodBinding
     lateinit var subjects: List<Subject>
     lateinit var period: SchedulePeriod
-
 
     private lateinit var requireTextViews: Array<TextView>
 

@@ -5,13 +5,11 @@ import android.view.ContextMenu.ContextMenuInfo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
-import co.tuister.uisers.utils.extensions.getColorFromHex
 import co.tuister.uisers.utils.extensions.setTextOrGone
 import kotlinx.android.synthetic.main.item_my_career_subject.*
 

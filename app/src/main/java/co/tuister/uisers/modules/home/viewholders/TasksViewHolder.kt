@@ -2,7 +2,6 @@ package co.tuister.uisers.modules.home.viewholders
 
 import android.view.LayoutInflater
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
@@ -10,7 +9,6 @@ import co.tuister.uisers.modules.home.HomeAdapter
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeTasks
 import co.tuister.uisers.utils.DateUtils
-import co.tuister.uisers.utils.extensions.getColorFromHex
 import co.tuister.uisers.utils.extensions.setTextOrGone
 import kotlinx.android.synthetic.main.item_home_schedule.view.*
 import kotlinx.android.synthetic.main.item_home_task.view.*

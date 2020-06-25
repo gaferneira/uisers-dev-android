@@ -4,12 +4,10 @@ import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
-import co.tuister.uisers.utils.extensions.getColorFromHex
 import kotlinx.android.synthetic.main.item_tasks_task.*
 
 class TasksAdapter(
