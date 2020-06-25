@@ -16,11 +16,10 @@ import co.tuister.uisers.modules.tasks.TasksViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class TasksListFragment : BaseFragment() {
+class TasksListFragment : BaseFragment<FragmentTasksListBinding>() {
 
     private lateinit var adapter: TasksAdapter
 
-    private lateinit var binding: FragmentTasksListBinding
     private val viewModel by sharedViewModel<TasksViewModel>(from = { requireActivity() })
 
     private var status: Int = 0
@@ -100,7 +99,7 @@ class TasksListFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        adapter.listener = null
+        binding.recyclerView.adapter = null
         super.onDestroyView()
     }
 

@@ -9,9 +9,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.databinding.FragmentInternalMaterialBinding
 
-class InternalMaterialFragment : BaseFragment() {
-
-    private lateinit var binding: FragmentInternalMaterialBinding
+class InternalMaterialFragment : BaseFragment<FragmentInternalMaterialBinding>() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

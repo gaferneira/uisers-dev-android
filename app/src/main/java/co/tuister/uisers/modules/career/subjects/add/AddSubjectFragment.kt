@@ -24,9 +24,8 @@ import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class AddSubjectFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorDialogListener {
+class AddSubjectFragment : BaseFragment<FragmentSubjectAddBinding>(), ColorPaletteDialogFragment.PaletteColorDialogListener {
 
-    private lateinit var binding: FragmentSubjectAddBinding
     private lateinit var viewModel: AddSubjectViewModel
 
     private lateinit var subject: Subject

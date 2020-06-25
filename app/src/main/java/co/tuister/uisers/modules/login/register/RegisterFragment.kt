@@ -29,9 +29,8 @@ import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.Calendar.YEAR
 import java.util.Calendar.getInstance
 
-class RegisterFragment : BaseFragment() {
+class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
-    private lateinit var binding: FragmentRegisterBinding
     private lateinit var viewModel: RegisterViewModel
 
     override fun onCreateView(

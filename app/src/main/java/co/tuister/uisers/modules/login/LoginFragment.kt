@@ -21,9 +21,8 @@ import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class LoginFragment : BaseFragment() {
+class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
-    private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

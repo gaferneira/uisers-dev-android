@@ -16,11 +16,10 @@ import co.tuister.uisers.utils.analytics.Analytics
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.InstitutionalListener {
+class InstitutionalFragment : BaseFragment<FragmentInstitutionalBinding>(), InstitutionalAdapter.InstitutionalListener {
 
     private lateinit var adapter: InstitutionalAdapter
 
-    private lateinit var binding: FragmentInstitutionalBinding
     private lateinit var viewModel: InstitutionalViewModel
 
     override fun onCreateView(
@@ -35,7 +34,9 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
     }
 
     private fun initViews() {
-        adapter = InstitutionalAdapter()
+        if (!this::adapter.isInitialized) {
+            adapter = InstitutionalAdapter()
+        }
         adapter.listener = this
         binding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)
@@ -68,7 +69,7 @@ class InstitutionalFragment : BaseFragment(), InstitutionalAdapter.Institutional
     }
 
     override fun onDestroyView() {
-        adapter.listener = null
+        binding.recyclerView.adapter = null
         super.onDestroyView()
     }
 

@@ -31,9 +31,8 @@ import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class ProfileFragment : BaseFragment() {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
-    private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: ProfileViewModel
     private val safeArgs by navArgs<ProfileFragmentArgs>()
 

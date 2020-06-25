@@ -15,9 +15,8 @@ import co.tuister.uisers.modules.home.HomeViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeAdapter.HomeListener {
 
-    private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
 
     private lateinit var adapter: HomeAdapter
@@ -64,6 +63,11 @@ class HomeFragment : BaseFragment(), HomeAdapter.HomeListener {
     override fun onResume() {
         super.onResume()
         refresh()
+    }
+
+    override fun onDestroyView() {
+        binding.recyclerView.adapter = null
+        super.onDestroyView()
     }
 
     private fun refresh() {

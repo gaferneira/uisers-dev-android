@@ -19,11 +19,10 @@ import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class ScheduleFragment :
-    BaseFragment(),
+    BaseFragment<FragmentScheduleBinding>(),
     AddSchedulePeriodDialogFragment.AddSchedulePeriodDialogListener,
     ScheduleAdapter.ScheduleListener {
 
-    private lateinit var binding: FragmentScheduleBinding
     private lateinit var viewModel: ScheduleViewModel
 
     private lateinit var adapter: ScheduleAdapter
@@ -120,6 +119,11 @@ class ScheduleFragment :
         handleState(state) {
             viewModel.refresh()
         }
+    }
+
+    override fun onDestroyView() {
+        binding.recyclerView.adapter = null
+        super.onDestroyView()
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {

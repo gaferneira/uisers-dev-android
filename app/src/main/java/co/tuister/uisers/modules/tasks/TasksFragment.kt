@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -17,9 +16,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
+class TasksFragment : BaseFragment<FragmentTasksBinding>(), TasksAdapter.TasksListener {
 
-    private lateinit var binding: FragmentTasksBinding
     private val viewModel by sharedViewModel<TasksViewModel>(from = { requireActivity() })
 
     override fun onCreateView(
@@ -36,7 +34,7 @@ class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
     private fun initViews() {
         binding.pager.apply {
             offscreenPageLimit = 2
-            adapter = TasksPagerAdapter(requireActivity())
+            adapter = TasksPagerAdapter()
         }
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = when (position) {
@@ -72,7 +70,7 @@ class TasksFragment : BaseFragment(), TasksAdapter.TasksListener {
         findNavController().navigate(action)
     }
 
-    private inner class TasksPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+    private inner class TasksPagerAdapter : FragmentStateAdapter(childFragmentManager, viewLifecycleOwner.lifecycle) {
         override fun getItemCount(): Int = 3
 
         override fun createFragment(position: Int): Fragment =

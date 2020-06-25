@@ -17,9 +17,8 @@ import co.tuister.uisers.modules.login.splash.SplashViewModel.Event.GoToMain
 import co.tuister.uisers.modules.main.MainActivity
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class SplashFragment : BaseFragment() {
+class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
-    private lateinit var binding: FragmentSplashBinding
     private lateinit var splashViewModel: SplashViewModel
 
     override fun onCreateView(

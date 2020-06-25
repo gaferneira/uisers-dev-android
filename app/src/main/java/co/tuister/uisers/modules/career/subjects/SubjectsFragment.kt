@@ -18,12 +18,10 @@ import co.tuister.uisers.modules.career.subjects.SubjectsViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class SubjectsFragment : BaseFragment() {
+class SubjectsFragment : BaseFragment<FragmentSubjectsBinding>() {
 
     private lateinit var adapter: SubjectsAdapter
     private lateinit var footerAdapter: FooterAdapter
-
-    private lateinit var binding: FragmentSubjectsBinding
 
     private lateinit var viewModel: SubjectsViewModel
 
@@ -102,7 +100,7 @@ class SubjectsFragment : BaseFragment() {
     }
 
     override fun onDestroyView() {
-        adapter.listener = null
+        binding.recyclerView.adapter = null
         super.onDestroyView()
     }
 

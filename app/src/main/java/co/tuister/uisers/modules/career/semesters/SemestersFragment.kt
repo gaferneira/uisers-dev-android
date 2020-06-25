@@ -18,11 +18,10 @@ import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class SemestersFragment :
-    BaseFragment(),
+    BaseFragment<FragmentSemestersBinding>(),
     SemestersAdapter.SemesterListener,
     AddSemesterDialogFragment.AddSemesterDialogListener {
 
-    private lateinit var binding: FragmentSemestersBinding
     private lateinit var viewModel: SemestersViewModel
 
     private lateinit var adapter: SemestersAdapter
@@ -103,6 +102,11 @@ class SemestersFragment :
         handleState(state) {
             viewModel.refresh()
         }
+    }
+
+    override fun onDestroyView() {
+        binding.recyclerView.adapter = null
+        super.onDestroyView()
     }
 
     override fun onClickSemester(semester: Semester) {

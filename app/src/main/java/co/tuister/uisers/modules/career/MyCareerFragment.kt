@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -19,11 +18,9 @@ import co.tuister.uisers.modules.career.semesters.SemestersFragment
 import co.tuister.uisers.modules.career.subjects.SubjectsAdapter
 import co.tuister.uisers.modules.career.subjects.SubjectsFragment
 import com.google.android.material.tabs.TabLayoutMediator
-import java.util.*
+import java.util.Locale
 
-class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
-
-    private lateinit var binding: FragmentMyCareerBinding
+class MyCareerFragment : BaseFragment<FragmentMyCareerBinding>(), SubjectsAdapter.SubjectListener {
 
     private var subjectFragment: SubjectsFragment? = null
     private var scheduleFragment: ScheduleFragment? = null
@@ -45,7 +42,7 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
         binding.pager.isSaveFromParentEnabled = true
         binding.pager.apply {
             offscreenPageLimit = 2
-            adapter = TasksPagerAdapter(requireActivity())
+            adapter = TasksPagerAdapter()
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
@@ -95,7 +92,7 @@ class MyCareerFragment : BaseFragment(), SubjectsAdapter.SubjectListener {
         findNavController().navigate(action)
     }
 
-    private inner class TasksPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
+    private inner class TasksPagerAdapter : FragmentStateAdapter(childFragmentManager, viewLifecycleOwner.lifecycle) {
         override fun getItemCount(): Int = 3
 
         override fun createFragment(position: Int): Fragment {
