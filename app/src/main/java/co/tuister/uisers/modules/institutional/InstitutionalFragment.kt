@@ -69,7 +69,6 @@ class InstitutionalFragment : BaseFragment<FragmentInstitutionalBinding>(), Inst
     }
 
     override fun onDestroyView() {
-        adapter.listener = null
         binding.recyclerView.adapter = null
         super.onDestroyView()
     }

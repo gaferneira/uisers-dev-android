@@ -45,7 +45,7 @@ class MapFragment : BaseFragment<FragmentInstitutionalMapBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mapController.setup(childFragmentManager, R.id.fragment_container_view_map) {
+        mapController.setup(childFragmentManager, lifecycle, R.id.fragment_container_view_map) {
             initMap()
         }
     }

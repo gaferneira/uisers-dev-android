@@ -99,7 +99,6 @@ class TasksListFragment : BaseFragment<FragmentTasksListBinding>() {
     }
 
     override fun onDestroyView() {
-        adapter.listener = null
         binding.recyclerView.adapter = null
         super.onDestroyView()
     }
