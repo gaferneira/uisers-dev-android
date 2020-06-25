@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
 import co.tuister.domain.base.Failure
 import co.tuister.uisers.utils.ProgressType
 import co.tuister.uisers.utils.analytics.Analytics
@@ -11,7 +12,14 @@ import co.tuister.uisers.utils.extensions.showConfirmDialog
 import co.tuister.uisers.utils.extensions.showDialog
 import org.koin.android.ext.android.inject
 
-open class BaseFragment : Fragment() {
+open class BaseFragment<T : ViewBinding> : Fragment() {
+
+    private var _binding: T? = null
+    protected var binding
+        get() = _binding!!
+        set(value) {
+            _binding = value
+        }
 
     protected val analytics: Analytics by inject()
 
@@ -36,12 +44,17 @@ open class BaseFragment : Fragment() {
         imm.hideSoftInputFromWindow(view?.windowToken, 0)
     }
 
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
     protected fun showDialog(message: Int, title: Int, unit: (() -> Unit)? = null) {
-        parentFragmentManager.showDialog(requireContext(), message, title, unit)
+        childFragmentManager.showDialog(requireContext(), message, title, unit)
     }
 
     protected fun showDialog(message: String, title: String, unit: (() -> Unit)? = null) {
-        parentFragmentManager.showDialog(requireContext(), message, title, unit)
+        childFragmentManager.showDialog(requireContext(), message, title, unit)
     }
 
     protected fun showConfirmDialog(
@@ -51,7 +64,7 @@ open class BaseFragment : Fragment() {
         unitNegative: (() -> Unit)? = null,
         unitPositive: (() -> Unit)? = null
     ) {
-        parentFragmentManager.showConfirmDialog(
+        childFragmentManager.showConfirmDialog(
             requireContext(),
             message,
             title,
@@ -68,7 +81,7 @@ open class BaseFragment : Fragment() {
         unitNegative: (() -> Unit)? = null,
         unitPositive: (() -> Unit)? = null
     ) {
-        parentFragmentManager.showConfirmDialog(
+        childFragmentManager.showConfirmDialog(
             requireContext(),
             message,
             title,

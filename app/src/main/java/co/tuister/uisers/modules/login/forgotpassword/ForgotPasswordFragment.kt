@@ -17,9 +17,8 @@ import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class ForgotPasswordFragment : BaseFragment() {
+class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
 
-    private lateinit var binding: FragmentForgotPasswordBinding
     private lateinit var viewModel: ForgotPasswordViewModel
 
     override fun onCreateView(

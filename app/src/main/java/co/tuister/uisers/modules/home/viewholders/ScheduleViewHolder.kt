@@ -16,7 +16,7 @@ class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
         position: Int,
         homeData: HomeData,
-        listener: HomeAdapter.HomeListener,
+        listener: HomeAdapter.HomeListener?,
         isLastIndex: Boolean
     ) {
         super.bind(position, homeData, listener, isLastIndex)
@@ -45,7 +45,7 @@ class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
             container.addView(
                 configChildView(viewsList[i], period).apply {
                     setOnClickListener {
-                        listener.onClickSchedulePeriod(period)
+                        listener?.onClickSchedulePeriod(period)
                     }
                 }
             )

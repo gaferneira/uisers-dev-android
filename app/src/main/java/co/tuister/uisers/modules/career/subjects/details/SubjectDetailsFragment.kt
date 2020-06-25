@@ -21,14 +21,13 @@ import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class SubjectDetailsFragment :
-    BaseFragment(),
+    BaseFragment<FragmentSubjectDetailsBinding>(),
     NotesAdapter.NoteListener,
     AddNoteDialogFragment.AddNoteDialogListener {
 
     private lateinit var adapter: NotesAdapter
     private lateinit var footerAdapter: FooterAdapter
 
-    private lateinit var binding: FragmentSubjectDetailsBinding
     private lateinit var viewModel: SubjectDetailsViewModel
 
     private lateinit var subject: Subject

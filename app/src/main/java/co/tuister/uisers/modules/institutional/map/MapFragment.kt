@@ -22,9 +22,8 @@ import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class MapFragment : BaseFragment() {
+class MapFragment : BaseFragment<FragmentInstitutionalMapBinding>() {
 
-    private lateinit var binding: FragmentInstitutionalMapBinding
     private lateinit var viewModel: MapViewModel
 
     private val mapController: MapController by inject()

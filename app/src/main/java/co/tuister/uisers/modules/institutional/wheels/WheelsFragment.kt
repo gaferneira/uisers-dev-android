@@ -10,9 +10,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.databinding.FragmentWheelsBinding
 import co.tuister.uisers.utils.analytics.Analytics
 
-class WheelsFragment : BaseFragment() {
-
-    private lateinit var binding: FragmentWheelsBinding
+class WheelsFragment : BaseFragment<FragmentWheelsBinding>() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

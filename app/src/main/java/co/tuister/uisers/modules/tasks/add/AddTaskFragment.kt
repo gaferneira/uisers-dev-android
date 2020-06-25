@@ -28,9 +28,8 @@ import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.*
 
-class AddTaskFragment : BaseFragment(), ColorPaletteDialogFragment.PaletteColorDialogListener {
+class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDialogFragment.PaletteColorDialogListener {
 
-    private lateinit var binding: FragmentTasksAddBinding
     private lateinit var viewModel: AddTaskViewModel
 
     private lateinit var task: Task

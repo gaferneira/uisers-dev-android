@@ -24,9 +24,8 @@ import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class InternalDataFragment : BaseFragment() {
+class InternalDataFragment : BaseFragment<FragmentInternalDataBinding>() {
 
-    private lateinit var binding: FragmentInternalDataBinding
     private lateinit var viewModel: InternalUseViewModel
 
     override fun onCreateView(

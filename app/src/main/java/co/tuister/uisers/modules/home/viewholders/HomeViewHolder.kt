@@ -9,11 +9,11 @@ open class HomeViewHolder(gngView: View) : RecyclerView.ViewHolder(gngView) {
     open fun bind(
         position: Int,
         homeData: HomeData,
-        listener: HomeAdapter.HomeListener,
+        listener: HomeAdapter.HomeListener?,
         isLastIndex: Boolean
     ) {
         itemView.setOnClickListener {
-            listener.onClickRow(position)
+            listener?.onClickRow(position)
         }
     }
 }

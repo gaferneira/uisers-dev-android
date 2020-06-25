@@ -24,9 +24,8 @@ import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.*
 import kotlin.math.abs
 
-class CalendarFragment : BaseFragment() {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
 
-    private lateinit var binding: FragmentCalendarBinding
     private lateinit var viewModel: CalendarViewModel
 
     private lateinit var adapter: CalendarAdapter

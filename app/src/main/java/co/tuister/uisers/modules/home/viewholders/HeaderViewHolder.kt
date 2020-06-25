@@ -12,7 +12,7 @@ class HeaderViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
         position: Int,
         homeData: HomeData,
-        listener: HomeAdapter.HomeListener,
+        listener: HomeAdapter.HomeListener?,
         isLastIndex: Boolean
     ) {
         super.bind(position, homeData, listener, isLastIndex)

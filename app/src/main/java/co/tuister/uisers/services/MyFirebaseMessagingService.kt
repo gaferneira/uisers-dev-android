@@ -27,8 +27,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             // Check if message contains a notification payload.
             remoteMessage.notification?.let {
                 val id: Int = Random.nextInt()
-                NotificationsUtil.showNotification(applicationContext,
-                    id, it.title, it.body, Intent(this, MainActivity::class.java))
+                NotificationsUtil.showNotification(
+                    applicationContext,
+                    id, it.title, it.body, Intent(this, MainActivity::class.java)
+                )
             }
         }
     }
