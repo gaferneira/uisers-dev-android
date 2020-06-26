@@ -13,17 +13,15 @@ class CrashlyticsLogTree : Timber.Tree() {
             return
         }
 
-        FirebaseCrashlytics.getInstance().setCustomKey(CRASHLYTICS_KEY_PRIORITY, priority)
-        FirebaseCrashlytics.getInstance().setCustomKey(CRASHLYTICS_KEY_MESSAGE, message)
-
-        tag?.let {
-            FirebaseCrashlytics.getInstance().setCustomKey(CRASHLYTICS_KEY_TAG, it)
-        }
-
-        if (t == null) {
-            FirebaseCrashlytics.getInstance().recordException(Exception(message))
-        } else {
-            FirebaseCrashlytics.getInstance().recordException(t)
+        with(FirebaseCrashlytics.getInstance()) {
+            if (t == null) {
+                log(priority, tag, message)
+            } else {
+                setCustomKey(CRASHLYTICS_KEY_PRIORITY, priority)
+                setCustomKey(CRASHLYTICS_KEY_MESSAGE, message)
+                setCustomKey(CRASHLYTICS_KEY_TAG, tag ?: "")
+                recordException(t)
+            }
         }
     }
 
