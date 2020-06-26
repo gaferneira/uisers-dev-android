@@ -16,7 +16,7 @@ import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentTasksAddBinding
 import co.tuister.uisers.modules.tasks.add.AddTaskViewModel.State
-import co.tuister.uisers.services.NotifyWork
+import co.tuister.uisers.services.AlarmReceiver
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.pickDateTime
@@ -96,7 +96,7 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
                 binding.buttonSave.hideProgress(R.string.action_save)
                 binding.buttonSave.isEnabled = true
                 task?.let {
-                    NotifyWork.scheduleTaskNotification(requireContext(), it)
+                    AlarmReceiver.createTaskAlarm(requireContext(), it)
                 }
                 findNavController().popBackStack()
             }
@@ -203,6 +203,7 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
         private const val NUM_ROWS_HOURS = 4
         private const val NUM_ROWS_DAYS = 2
         private const val MINUTES_HOUR = 60
+        private const val MILLISECONDS_MINUTE = 60000
         private const val HOURS_DAY = 24
         private const val INTERVAL_MINUTES = 5
     }

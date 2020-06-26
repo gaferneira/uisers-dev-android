@@ -19,6 +19,7 @@ import co.tuister.uisers.modules.main.MainViewModel.State.FirsTime
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
 import co.tuister.uisers.utils.Result.Success
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -78,13 +79,14 @@ class MainViewModel(
         }
     }
 
-    fun setUserData(user: User?) {
+    private fun setUserData(user: User?) {
         user?.let {
             email.value = it.email
             name.value = it.name
             career.value = it.career
             semester.value = it.semester
             this.user = it
+            FirebaseCrashlytics.getInstance().setUserId(user.fcmId)
         }
     }
 

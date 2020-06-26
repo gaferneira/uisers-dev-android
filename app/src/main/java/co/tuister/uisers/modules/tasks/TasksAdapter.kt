@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
+import co.tuister.uisers.utils.extensions.setTextOrGone
 import kotlinx.android.synthetic.main.item_tasks_task.*
 
 class TasksAdapter(
@@ -44,7 +45,7 @@ class TasksAdapter(
             listener: TasksListener?
         ) {
             text_view_task_name.text = task.title
-            text_view_task_desc.text = task.description
+            text_view_task_desc.setTextOrGone(task.description)
             val backgroundColor = context.resources.getIntArray(R.array.colors_300)[task.materialColor]
             content_view.setBackgroundColor(backgroundColor)
             itemView.setOnClickListener {
