@@ -8,7 +8,7 @@ import co.tuister.domain.entities.Semester
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
-import kotlinx.android.synthetic.main.item_my_career_semester.*
+import kotlinx.android.synthetic.main.item_career_semester.*
 
 class SemestersAdapter(
     private val listener: SemesterListener?
@@ -24,7 +24,7 @@ class SemestersAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SemesterViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_my_career_semester, parent, false)
+            .inflate(R.layout.item_career_semester, parent, false)
         return SemesterViewHolder(view)
     }
 

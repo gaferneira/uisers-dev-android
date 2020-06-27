@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/padding_margin_normal"
         android:layout_marginTop="@dimen/padding_margin_normal"
-        android:text="@string/empty_list_tasks"
+        android:text="@string/career_label_empty_list_tasks"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

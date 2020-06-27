@@ -38,9 +38,9 @@ class TasksFragment : BaseFragment<FragmentTasksBinding>(), TasksAdapter.TasksLi
         }
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = when (position) {
-                0 -> resources.getString(R.string.task_status_todo).toUpperCase()
-                1 -> resources.getString(R.string.task_status_in_progress).toUpperCase()
-                2 -> resources.getString(R.string.task_status_done).toUpperCase()
+                0 -> resources.getString(R.string.tasks_label_status_todo).toUpperCase()
+                1 -> resources.getString(R.string.tasks_label_status_in_progress).toUpperCase()
+                2 -> resources.getString(R.string.tasks_label_status_done).toUpperCase()
                 else -> ""
             }
         }.attach()

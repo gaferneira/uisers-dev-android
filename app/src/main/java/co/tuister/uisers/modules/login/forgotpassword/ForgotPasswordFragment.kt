@@ -70,13 +70,13 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>() {
                 if (!manageFailure(it)) {
                     showDialog(
                         it?.error?.localizedMessage ?: getString(R.string.error_result_login_message),
-                        getString(R.string.title_forget_title)
+                        getString(R.string.login_title_login_forget_title)
                     )
                 }
             },
             onSuccess = {
                 binding.loginStatus.isVisible = false
-                showDialog(R.string.success_result_forget_message, R.string.title_forget_title) {
+                showDialog(R.string.login_message_result_forget_message, R.string.login_title_login_forget_title) {
                     goBackToLogin()
                 }
             }

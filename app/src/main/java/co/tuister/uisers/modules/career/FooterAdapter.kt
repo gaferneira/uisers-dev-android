@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
-import kotlinx.android.synthetic.main.item_my_career_footer.*
+import kotlinx.android.synthetic.main.item_career_footer.*
 
 class FooterAdapter : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {
 
@@ -23,7 +23,7 @@ class FooterAdapter : RecyclerView.Adapter<FooterAdapter.FooterViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FooterViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_my_career_footer, parent, false)
+            .inflate(R.layout.item_career_footer, parent, false)
         return FooterViewHolder(view)
     }
 

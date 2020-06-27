@@ -114,9 +114,9 @@ class InternalDataFragment : BaseFragment<FragmentInternalDataBinding>() {
                     }
                     showProgress {
                         buttonTextRes = if (it == DOWNLOADING)
-                            R.string.progress_downloading_data
+                            R.string.base_progress_downloading
                         else
-                            R.string.progress_updating
+                            R.string.base_progress_updating
                         progressColor = Color.DKGRAY
                     }
                     isEnabled = false

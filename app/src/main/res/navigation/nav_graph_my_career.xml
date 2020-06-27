@@ -9,7 +9,7 @@
         android:id="@+id/my_career_fragment_dest"
         android:name="co.tuister.uisers.modules.career.MyCareerFragment"
         android:label="@string/title_menu_subjects"
-        tools:layout="@layout/fragment_subjects">
+        tools:layout="@layout/fragment_career_subjects">
         <action
             android:id="@+id/action_subjects_to_semesters"
             app:destination="@id/semesters_fragment_dest" />
@@ -27,8 +27,8 @@
     <fragment
         android:id="@+id/subject_add_fragment_dest"
         android:name="co.tuister.uisers.modules.career.subjects.add.AddSubjectFragment"
-        android:label="@string/title_fragment_add_subject"
-        tools:layout="@layout/fragment_subject_add">
+        android:label="@string/career_title_fragment_add_subject"
+        tools:layout="@layout/fragment_career_subject_add">
 
         <deepLink app:uri="uisers://main/career/subjects/add" />
 
@@ -43,16 +43,16 @@
     <fragment
         android:id="@+id/schedule_fragment_dest"
         android:name="co.tuister.uisers.modules.career.schedule.ScheduleFragment"
-        android:label="@string/title_fragment_schedule"
-        tools:layout="@layout/fragment_schedule">
+        android:label="@string/career_title_fragment_career_schedule"
+        tools:layout="@layout/fragment_career_schedule">
         <deepLink app:uri="uisers://main/career/schedule" />
     </fragment>
 
     <fragment
         android:id="@+id/subject_details_fragment_dest"
         android:name="co.tuister.uisers.modules.career.subjects.details.SubjectDetailsFragment"
-        android:label="@string/title_fragment_details_subject"
-        tools:layout="@layout/fragment_subject_details">
+        android:label="@string/career_title_fragment_details_subject"
+        tools:layout="@layout/fragment_career_subject_details">
 
         <argument
             android:name="subject"
@@ -63,8 +63,8 @@
     <fragment
         android:id="@+id/semesters_fragment_dest"
         android:name="co.tuister.uisers.modules.career.semesters.SemestersFragment"
-        android:label="@string/title_fragment_semester"
-        tools:layout="@layout/fragment_semesters">
+        android:label="@string/institutional_title_fragment_semester"
+        tools:layout="@layout/fragment_career_semesters">
         <deepLink app:uri="uisers://main/career/semesters" />
     </fragment>
 

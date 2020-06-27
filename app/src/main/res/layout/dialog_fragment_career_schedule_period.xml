@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
                 android:ems="10"
-                android:hint="@string/prompt_schedule_details"
+                android:hint="@string/career_hint_schedule_details"
                 android:text="@={periodBinding.description}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/prompt_place"
+                android:hint="@string/institutional_hint_place"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:text="@={periodBinding.place}" />
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
                 android:focusable="false"
-                android:hint="@string/prompt_week_day"
+                android:hint="@string/career_hint_week_day"
                 android:textColor="@android:color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:ems="5"
                 android:focusable="false"
-                android:hint="@string/init_block"
+                android:hint="@string/career_label_init_block"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="5"
                 android:text="@={periodBinding.initialHour}" />
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:ems="5"
                 android:focusable="false"
-                android:hint="@string/finish_block"
+                android:hint="@string/career_label_finish_block"
                 android:importantForAutofill="no"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="5"
@@ -139,7 +139,7 @@
             android:id="@+id/button_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_save"
+            android:text="@string/base_action_save"
             app:layout_constraintTop_toTopOf="@id/fab_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

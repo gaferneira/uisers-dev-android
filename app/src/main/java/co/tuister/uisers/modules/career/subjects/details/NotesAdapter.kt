@@ -10,7 +10,7 @@ import co.tuister.domain.entities.Note
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
-import kotlinx.android.synthetic.main.item_my_career_note.*
+import kotlinx.android.synthetic.main.item_career_note.*
 
 class NotesAdapter(
     private val listener: NoteListener
@@ -26,7 +26,7 @@ class NotesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_my_career_note, parent, false)
+            .inflate(R.layout.item_career_note, parent, false)
         return NoteViewHolder(view)
     }
 

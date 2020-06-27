@@ -21,7 +21,7 @@ class NotificationsUtil private constructor() {
                 PendingIntent.FLAG_ONE_SHOT
             )
 
-            val channelId = context.getString(R.string.default_notification_channel_id)
+            val channelId = context.getString(R.string.channel_default_notification_id)
             val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             val notificationBuilder = NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_stat_name)

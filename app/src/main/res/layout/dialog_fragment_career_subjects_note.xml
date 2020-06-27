@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/prompt_details_grade"
+                android:hint="@string/career_hint_details_grade"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:text="@={noteBinding.title}" />
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="4"
-                android:hint="@string/grade"
+                android:hint="@string/career_label_grade"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="4"
                 android:text="@={`` + noteBinding.grade}" />
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="4"
-                android:hint="@string/percentage"
+                android:hint="@string/base_label_percentage_sign"
                 android:importantForAutofill="no"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="4"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
-                android:hint="@string/grade_total"
+                android:hint="@string/career_label_grade_total"
                 android:importantForAutofill="no"
                 android:inputType="text" />
 
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
-                android:hint="@string/note_subject"
+                android:hint="@string/career_label_note_subject"
                 android:importantForAutofill="no"
                 android:inputType="text" />
 
@@ -137,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/action_save"
+            android:text="@string/base_action_save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

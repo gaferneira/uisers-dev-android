@@ -13,7 +13,7 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.databinding.FragmentSubjectAddBinding
+import co.tuister.uisers.databinding.FragmentCareerSubjectAddBinding
 import co.tuister.uisers.modules.career.subjects.add.AddSubjectViewModel.State
 import co.tuister.uisers.utils.StringUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
@@ -24,7 +24,7 @@ import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class AddSubjectFragment : BaseFragment<FragmentSubjectAddBinding>(), ColorPaletteDialogFragment.PaletteColorDialogListener {
+class AddSubjectFragment : BaseFragment<FragmentCareerSubjectAddBinding>(), ColorPaletteDialogFragment.PaletteColorDialogListener {
 
     private lateinit var viewModel: AddSubjectViewModel
 
@@ -48,7 +48,7 @@ class AddSubjectFragment : BaseFragment<FragmentSubjectAddBinding>(), ColorPalet
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSubjectAddBinding.inflate(inflater)
+        binding = FragmentCareerSubjectAddBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.subjectBinding = subject
         initViews()
@@ -125,19 +125,19 @@ class AddSubjectFragment : BaseFragment<FragmentSubjectAddBinding>(), ColorPalet
             inProgress = {
                 with(binding.buttonSave) {
                     showProgress {
-                        buttonTextRes = R.string.progress_updating
+                        buttonTextRes = R.string.base_progress_updating
                         progressColor = Color.WHITE
                         isEnabled = false
                     }
                 }
             },
             onError = {
-                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.hideProgress(R.string.base_action_save)
                 binding.buttonSave.isEnabled = true
                 manageFailure(it)
             },
             onSuccess = {
-                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.hideProgress(R.string.base_action_save)
                 binding.buttonSave.isEnabled = true
                 findNavController().popBackStack()
             }

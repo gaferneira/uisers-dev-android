@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:ems="8"
             android:focusable="false"
-            android:hint="@string/institutional_map_hint_sites"
+            android:hint="@string/institutional_hint_map_sites"
             android:inputType="date" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:ems="8"
             android:focusable="false"
-            android:hint="@string/institutional_map_hint_place"
+            android:hint="@string/institutional_hint_map_place"
             android:inputType="date" />
 
     </com.google.android.material.textfield.TextInputLayout>

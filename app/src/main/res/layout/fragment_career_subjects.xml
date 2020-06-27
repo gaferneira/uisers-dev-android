@@ -13,7 +13,7 @@
         android:layout_marginStart="@dimen/padding_margin_normal"
         android:layout_marginTop="@dimen/padding_margin_normal"
         android:gravity="center_vertical|center_horizontal"
-        android:text="@string/empty_list_subjects"
+        android:text="@string/career_label_empty_list_subjects"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_my_career_subject" />
+        tools:listitem="@layout/item_career_subject" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

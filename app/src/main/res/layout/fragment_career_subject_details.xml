@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_margin_micro"
             android:lines="1"
-            android:text="@string/details"
+            android:text="@string/career_label_details"
             android:textAppearance="?textAppearanceSubtitle2"
             android:textColor="?colorOnPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_margin_micro"
             android:lines="1"
-            android:text="@string/grade"
+            android:text="@string/career_label_grade"
             android:textAlignment="textStart"
             android:textAppearance="?textAppearanceSubtitle2"
             android:textColor="?colorOnPrimary"
@@ -66,7 +66,7 @@
             android:layout_width="@dimen/my_career_note_width_total"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="@string/subject_list_header_total"
+            android:text="@string/career_label_total"
             android:textAlignment="textEnd"
             android:textAppearance="?textAppearanceSubtitle2"
             android:textColor="?colorOnPrimary"
@@ -85,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/container_header"
-        tools:listitem="@layout/item_my_career_note" />
+        tools:listitem="@layout/item_career_note" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add"

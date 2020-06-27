@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:lines="1"
-            android:text="@string/welcome_message"
+            android:text="@string/home_label_welcome_message"
             android:textAppearance="?textAppearanceHeadline4"
             android:textColor="@color/black_800"
             app:layout_constraintEnd_toStartOf="@id/circle_image_photo"

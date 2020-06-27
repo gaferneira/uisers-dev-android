@@ -81,19 +81,19 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
             inProgress = {
                 with(binding.buttonSave) {
                     showProgress {
-                        buttonTextRes = R.string.progress_updating
+                        buttonTextRes = R.string.base_progress_updating
                         progressColor = Color.WHITE
                         isEnabled = false
                     }
                 }
             },
             onError = {
-                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.hideProgress(R.string.base_action_save)
                 binding.buttonSave.isEnabled = true
                 manageFailure(it)
             },
             onSuccess = { task ->
-                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.hideProgress(R.string.base_action_save)
                 binding.buttonSave.isEnabled = true
                 task?.let {
                     AlarmReceiver.createTaskAlarm(requireContext(), it)
@@ -179,7 +179,7 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
 
         // setup the alert builder
         val dialog = AlertDialog.Builder(requireContext())
-            .setTitle(R.string.title_task_set_reminder)
+            .setTitle(R.string.tasks_label_set_reminder)
             .setItems(options) { _, which ->
                 task.reminder = valuesList[which]
                 binding.editTextReminder.setText(options[which])
@@ -190,10 +190,10 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
     }
 
     private fun reminderOption(value: Int?): String {
-        val before = getString(R.string.label_before)
+        val before = getString(R.string.career_label_before)
         return when (value) {
-            null -> getString(R.string.label_task_no_reminder)
-            0 -> getString(R.string.label_task_reminder_at_time)
+            null -> getString(R.string.tasks_label_no_reminder)
+            0 -> getString(R.string.tasks_label_reminder_at_time)
             else -> DateUtils.minutesToString(resources, value) + " " + before
         }
     }

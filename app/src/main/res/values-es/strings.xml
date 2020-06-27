@@ -1,175 +1,137 @@
 <resources>
-    <string name="action_sign_in_register">Acceder</string>
-    <string name="action_go_register">Registrarse</string>
-    <string name="olvidar_pass"><u>¿Olvidaste la contraseña?</u></string>
-
-    <string name="label_home_today">Hoy</string>
-    <string name="label_home_no_subjects">No hay materias para hoy</string>
-    <string name="label_home_no_tasks">No hay tareas para hoy</string>
-
-    <string name="title_fragment_schedule">Horario</string>
-    <string name="title_fragment_calendar">Calendario</string>
-    <string name="title_fragment_wheels">Wheels</string>
-    <string name="title_fragment_semester">Semestre</string>
-    <string name="title_fragment_map">Mapa</string>
-    <string name="title_fragment_add_subject">Agregar materia</string>
-    <string name="title_fragment_add_task">Agregar tarea</string>
-    <string name="title_fragment_details_subject">Detalles de materias</string>
-    <string name="title_dialog_view_register">Registro</string>
-
-    <!-- ACTIONS -->
-    <string name="ok">Ok</string>
-
-    <!-- LOGIN AND REGISTER -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_student_code">Codigo</string>
-    <string name="prompt_name">Nombre</string>
-    <string name="prompt_career">Carrera</string>
-    <string name="prompt_campus">Campus</string>
-    <string name="prompt_year">Año</string>
-    <string name="prompt_password">Contraseña</string>
-    <string name="prompt_confirm_password">Confirmar contraseña</string>
-    <string name="action_register">Registrar</string>
-    <string name="action_resend">Re enviar</string>
-    <string name="login_progress_signing_in">Iniciando sesión&#8230;</string>
-    <string name="profile_progress_updating">Actualizando perfil&#8230;</string>
-    <string name="progress_downloading_data">Descargando&#8230;</string>
-    <string name="progress_updating">Actualizando&#8230;</string>
+    <string name="base_action_edit">Editar</string>
+    <string name="base_action_remove">Eliminar</string>
+    <string name="base_action_resend">Re enviar</string>
+    <string name="base_action_save">Guardar</string>
+    <string name="base_action_send">Enviar</string>
+    <string name="base_hint_email">Email</string>
+    <string name="base_hint_student_code">Codigo</string>
+    <string name="base_label_alert">Alerta</string>
+    <string name="base_label_color">Color</string>
+    <string name="base_label_description">Descripción</string>
+    <string name="base_label_percentage_sign">%</string>
+    <string name="base_progress_downloading">Descargando&#8230;</string>
+    <string name="base_progress_updating">Actualizando&#8230;</string>
+    <string name="career_label_semester_set_current">Seleccionar como actual</string>
+    <string name="career_confirm_change_current_semester">¿Estás seguro de cambiar el semestre actual?</string>
+    <string name="career_confirm_remove_note">¿Quieres eliminar la nota?</string>
+    <string name="career_confirm_remove_period">¿Quieres eliminar el bloque?</string>
+    <string name="career_confirm_remove_subject">¿Quieres eliminar la materia?</string>
+    <string name="career_hint_credits">Numero de creditos</string>
+    <string name="career_hint_details_grade">Escriba el detalle</string>
+    <string name="career_hint_name_subject">Nombre de la materia</string>
+    <string name="career_hint_name_teacher">Nombre del profesor</string>
+    <string name="career_hint_schedule_details">Materia / Actividad</string>
+    <string name="career_hint_week_day">Día</string>
+    <string name="career_label_before">antes</string>
+    <string name="career_label_details">Detalles</string>
+    <string name="career_label_empty_list_subjects">Para agregar materias usa la opción "+" ubicada en la parte superior derecha</string>
+    <string name="career_label_empty_list_tasks">No hay tareas para mostrar. Para agregar tareas usa la opción "+" ubicada en la parte superior derecha</string>
+    <string name="career_label_empty_schedule">Para crear tu horario debes agregar cada bloque por materia. Si la materia ya está creada la puedes editar haciendo click sostenido sobre el nombre en el menu Materias</string>
+    <string name="career_label_finish_block">Final</string>
+    <string name="career_label_grade_total">Total</string>
+    <string name="career_label_grade">Nota</string>
+    <string name="career_label_init_block">Inicio</string>
+    <string name="career_label_note_subject">Nota de materia</string>
+    <string name="career_label_semesters_average">Promedio ponderado</string>
+    <string name="career_label_text_final_grade">Nota final</string>
+    <string name="career_label_text_semester_average">Promedio semestral</string>
+    <string name="career_label_total">Total</string>
+    <string name="career_title_fragment_add_subject">Agregar materia</string>
+    <string name="career_title_fragment_career_schedule">Horario</string>
+    <string name="career_title_fragment_details_subject">Detalles de materias</string>
+    <string name="career_title_schedule">Horario</string>
+    <string name="career_title_semesters">Semestres</string>
+    <string name="career_title_subjects">Materias</string>
+    <string name="channel_default_notification_id">Default channel</string>
+    <string name="error_check_internet">Verifica tu conexión a internet</string>
     <string name="error_field_required">Este campo es requerido</string>
-    <string name="title_forget_title">Recuperar</string>
-    <string name="title_login">Inicio</string>
-    <string name="error_result_login_message">Lo sentimos, no pudimos encontrar una cuenta vinculada a ese correo electrónico.</string>
-    <string name="error_result_login_message_not_verified_email">Tu correo no ha sido verificado, ve a tu bandeja y has click en el enlace que te enviamos.</string>
-    <string name="success_result_forget_message">Te hemos enviado un correo para recuperar tu contraseña.</string>
     <string name="error_result_forget_message">Lo sentimos, no pudimos encontrar una cuenta vinculada a ese correo electrónico.</string>
-
-
-    <!-- TEXTVIEWS -->
-    <string name="init_block">Inicio</string>
-    <string name="finish_block">Final</string>
-    <string name="grade">Nota</string>
-
-    <string name="percentage">%</string>
-    <string name="grade_total">Total</string>
-    <string name="note_subject">Nota de materia</string>
-    <string name="details">Detalles</string>
-    <string name="select_a_semester">Selecciona un semestre</string>
-    <string name="semester_set_current">Seleccionar como actual</string>
-
-    <string name="prompt_details_grade">Escriba el detalle</string>
-    <string name="prompt_name_subject">Nombre de la materia</string>
-    <string name="prompt_name_teacher">Nombre del profesor</string>
-
-    <string name="subject_list_header_total">Total</string>
+    <string name="error_result_login_message_not_verified_email">Tu correo no ha sido verificado, ve a tu bandeja y has click en el enlace que te enviamos.</string>
+    <string name="error_result_login_message">Lo sentimos, no pudimos encontrar una cuenta vinculada a ese correo electrónico.</string>
+    <string name="error_server">"Error en el servidor, intentalo más tarde"</string>
+    <string name="error_try_again">"Hubo un error, intentalo más tarde"</string>
+    <string name="home_about_email">gabrielfneira@gmail.com</string>
+    <string name="home_about_founder_1_linked_in">gabriel-fernando-neira-bermudez-419b2265</string>
+    <string name="home_about_founder_1">Gabriel Fernando Neira</string>
+    <string name="home_about_founder_2_linked_in">vidal-javier-ramirez-mendoza-23737482</string>
+    <string name="home_about_founder_2">Vidal Javier Ramirez</string>
+    <string name="home_about_founders">Creadores</string>
+    <string name="home_about_repository_url">https://github.com/gaferneira/uisers-dev-android/</string>
+    <string name="home_about_repository">uisers-dev-android</string>
+    <string name="home_about_whatsapp_number">+573188799237</string>
+    <string name="home_about_whatsapp">+57 318 879 9237</string>
+    <string name="home_about_working_together">Trabajemos juntos</string>
+    <string name="home_about_write_to_us_desc">Apreciamos tus sugerencias</string>
+    <string name="home_about_write_to_us">Escribenos</string>
+    <string name="home_action_close_session"><u>Salir</u></string>
+    <string name="home_hint_feedback">Dejanos tus comentarios aquí</string>
+    <string name="home_label_no_subjects">No hay materias para hoy</string>
+    <string name="home_label_no_tasks">No hay tareas para hoy</string>
+    <string name="home_label_today">Hoy</string>
+    <string name="home_label_welcome_message">Hola,</string>
+    <string name="home_message_feedback_result">Gracias por tus comentarios.</string>
+    <string name="home_progress_profile_updating">Actualizando perfil&#8230;</string>
+    <string name="home_text_feedback_description">¿Tienes problemas, o solo quieres enviarnos comentario?. Cuentanos sobre lo bueno y lo malo</string>
+    <string name="home_about_title_dialog">Acerca de UISers</string>
+    <string name="home_title_dialog_feedback">Envíanos tus comentarios. Nos encantaría escucharte!</string>
+    <string name="home_title_home_feedback_result">Comentarios</string>
+    <string name="home_title_home_tasks">Tareas</string>
+    <string name="institutional_action_institutional_wheels_open">Abrir Wheels</string>
+    <string name="institutional_hint_map_place">Seleccione un lugar</string>
+    <string name="institutional_hint_map_sites">Seleccione un sitio</string>
+    <string name="institutional_hint_place">Lugar</string>
+    <string name="institutional_title_fragment_calendar">Calendario</string>
+    <string name="institutional_title_fragment_map">Mapa</string>
+    <string name="institutional_title_fragment_semester">Semestre</string>
+    <string name="institutional_title_fragment_wheels">Wheels</string>
+    <string name="login_action_forgot_pass"><u>¿Olvidaste la contraseña?</u></string>
+    <string name="login_action_login_go_register">Registrarse</string>
+    <string name="login_action_login_sign_in_register">Acceder</string>
+    <string name="login_action_register">Registrar</string>
+    <string name="login_hint_campus">Campus</string>
+    <string name="login_hint_career">Carrera</string>
+    <string name="login_hint_confirm_password">Confirmar contraseña</string>
+    <string name="login_hint_name">Nombre</string>
+    <string name="login_hint_password">Contraseña</string>
+    <string name="login_hint_year">Año</string>
+    <string name="login_message_login_register_confirm_email">Te hemos enviado un correo a %s . Confirmalo para que puedas acceder a la aplicación</string>
+    <string name="login_message_result_forget_message">Te hemos enviado un correo para recuperar tu contraseña.</string>
+    <string name="login_message_splash_progress_check_notes">Vamos a ver tus notas…</string>
+    <string name="login_message_splash_progress_checking_session">Verificando la sesión…</string>
+    <string name="login_message_splash_progress_go_to_login">Vamos al inicio…</string>
+    <string name="login_progress_signing_in">Iniciando sesión&#8230;</string>
+    <string name="login_register_initial_semester">Periodo en el cual ingresó</string>
+    <string name="login_register_select_a_semester">Selecciona un semestre</string>
+    <string name="login_title_dialog_login_register">Registro</string>
+    <string name="login_title_login_forget_title">Recuperar</string>
+    <string name="login_title">Inicio</string>
+    <string name="permission_location_explanation">Permitir a UISers acceder a la ubicación del dispositivo </string>
+    <string name="permission_location_required_text">Permiso de unbicación requerido</string>
+    <string name="tasks_confirm_remove_task">¿Quieres eliminar la tarea?</string>
+    <string name="tasks_hint_reminder">Crear recordatorio</string>
     <string name="tasks_hint_add_task">Titulo</string>
-    <string name="add_task_day">Día</string>
-    <string name="add_task_description">Descripción</string>
-
-    <string name="empty_list_tasks">No hay tareas para mostrar. Para agregar tareas usa la opción "+" ubicada en la parte superior derecha</string>
-    <string name="empty_list_subjects">Para agregar materias usa la opción "+" ubicada en la parte superior derecha</string>
-    <string name="empty_schedule">Para crear tu horario debes agregar cada bloque por materia. Si la materia ya está creada la puedes editar haciendo click sostenido sobre el nombre en el menu Materias</string>
-
-    <!-- Varios -->
-    <string name="text_final_grade">Nota final</string>
-    <string name="text_semester_average">Promedio semestral</string>
-
-    <!-- ALERTS -->
-    <string name="alert">Alerta</string>
-    <string name="alert_check_internet">Verifica tu conexión a internet</string>
-    <string name="alert_error_server">"Error en el servidor, intentalo más tarde"</string>
-    <string name="alert_error_try_again">"Hubo un error, intentalo más tarde"</string>
-
-    <!-- SETTINGS -->
-
-    <string name="action_save">Guardar</string>
-
-    <!-- Bottom Menu -->
+    <string name="tasks_label_label_status">Estado</string>
+    <string name="tasks_label_no_reminder">Sin recordatorio</string>
+    <string name="tasks_label_reminder_at_time">En la hora exacta</string>
+    <string name="tasks_label_status_done">Listo</string>
+    <string name="tasks_label_status_in_progress">En progreso</string>
+    <string name="tasks_label_status_todo">Por hacer</string>
+    <string name="tasks_label_add_day">Día</string>
+    <string name="tasks_label_set_reminder">Recordatorio</string>
+    <string name="tasks_title_fragment_tasks_add_task">Agregar tarea</string>
+    <string name="title_menu_about">Acerca de</string>
+    <string name="title_menu_feedback">Comentarios</string>
     <string name="title_menu_home">Inicio</string>
+    <string name="title_menu_institution">Institución</string>
+    <string name="title_menu_profile">Perfil</string>
     <string name="title_menu_subjects">Mi carrera</string>
     <string name="title_menu_task">Tareas</string>
-    <string name="title_menu_institution">Institución</string>
-
-    <!-- Left side menu -->
-    <string name="welcome_message">Hola,</string>
-    <string name="close_session"><u>Salir</u></string>
-    <string name="title_menu_profile">Perfil</string>
-    <string name="title_menu_about">Acerca de</string>
-    <string name="my_career_semesters_average">Promedio ponderado</string>
-    <string name="institutional_wheels_open">Abrir Wheels</string>
-    <string name="prompt_credits">Numero de creditos</string>
-    <string name="prompt_reminder">Crear recordatorio</string>
-    <string name="task_status_todo">Por hacer</string>
-    <string name="task_status_in_progress">En progreso</string>
-    <string name="task_status_done">Listo</string>
-    <string name="task_label_status">Estado</string>
-
-    <string name="title_my_career_subjects">Materias</string>
-    <string name="title_my_career_schedule">Horario</string>
-    <string name="title_my_career_semesters">Semestres</string>
-    <string name="prompt_schedule_details">Materia / Actividad</string>
-    <string name="prompt_place">Lugar</string>
-    <string name="home_title_tasks">Tareas</string>
-    <string name="confirm_change_current_semester">¿Estás seguro de cambiar el semestre actual?</string>
-    <string name="institutional_map_hint_sites">Seleccione un sitio</string>
-    <string name="institutional_map_hint_place">Seleccione un lugar</string>
-    <string name="title_menu_feedback">Comentarios</string>
-    <string name="prompt_week_day">Día</string>
-
-    <string name="permission_location_required_text">Permiso de unbicación requerido</string>
-    <string name="permission_location_explanation">Permitir a UISers acceder a la ubicación del dispositivo </string>
-    <string name="title_dialog_feedback">Envíanos tus comentarios. Nos encantaría escucharte!</string>
-    <string name="feedback_description">¿Tienes problemas, o solo quieres enviarnos comentario?. Cuentanos sobre lo bueno y lo malo</string>
-    <string name="prompt_feedback">Dejanos tus comentarios aquí</string>
-    <string name="action_send">Enviar</string>
-    <string name="feedback_result_message">Gracias por tus comentarios.</string>
-    <string name="feedback_result_title">Comentarios</string>
-    <string name="title_dialog_about">Acerca de UISers</string>
-    <string name="confirm_remove_subject">¿Quieres eliminar la materia?</string>
-    <string name="confirm_remove_period">¿Quieres eliminar el bloque?</string>
-    <string name="confirm_remove_task">¿Quieres eliminar la tarea?</string>
-    <string name="confirm_remove_note">¿Quieres eliminar la nota?</string>
-
-
-    <string name="about_title_founders">Creadores</string>
-    <string name="about_founder_1">Gabriel Fernando Neira</string>
-    <string name="about_founder_1_linked_in">gabriel-fernando-neira-bermudez-419b2265</string>
-    <string name="about_founder_2">Vidal Javier Ramirez</string>
-    <string name="about_founder_2_linked_in">vidal-javier-ramirez-mendoza-23737482</string>
-    <string name="about_title_write_to_us">Escribenos</string>
-    <string name="about_write_to_us_desc">Apreciamos tus sugerencias</string>
-    <string name="about_email">gabrielfneira@gmail.com</string>
-    <string name="about_whatsapp">+57 318 879 9237</string>
-    <string name="about_whatsapp_number">+573188799237</string>
-    <string name="about_title_working_together">Trabajemos juntos</string>
-    <string name="about_repository">uisers-dev-android</string>
-    <string name="about_repository_url">https://github.com/gaferneira/uisers-dev-android/</string>
-    <string name="register_confirm_email">Te hemos enviado un correo a %s . Confirmalo para que puedas acceder a la aplicación</string>
-
-    <string name="default_notification_channel_id">Default channel</string>
-    <string name="splash_progress_checking_session">Verificando la sesión…</string>
-    <string name="splash_progress_go_to_login">Vamos al inicio…</string>
-    <string name="splash_progress_check_notes">Vamos a ver tus notas…</string>
-
-    <plurals name="minutes">
-        <item quantity="one">1 minuto</item>
-        <item quantity="other">%d minutos</item>
-    </plurals>
-
-    <plurals name="hours">
-        <item quantity="one">1 hora</item>
-        <item quantity="other">%d horas</item>
-    </plurals>
-
-    <plurals name="days">
-        <item quantity="one">1 día</item>
-        <item quantity="other">%d días</item>
-    </plurals>
-    <string name="action_remove">Eliminar</string>
-    <string name="action_edit">Editar</string>
-    <string name="label_color">Color</string>
-    <string name="label_before">antes</string>
-    <string name="title_task_set_reminder">Recordatorio</string>
-    <string name="label_task_no_reminder">Sin recordatorio</string>
-    <string name="label_task_reminder_at_time">En la hora exacta</string>
-
+    <string name="internal_message_enter_again">Ingrese de nuevo para ver el cambio de theme</string>
+    <string name="internal_only_update_calendar">Actualizar Calendario</string>
+    <string name="internal_only_update_map_data">Actualizar data mapa</string>
+    <string name="internal_only_update_subjects">Actualizar materias</string>
+    <string name="internal_only_update_careers">Actualizar carreras</string>
+    <string name="internal_only_download_csv_file">Descargar csv</string>
+    <string name="internal_only_material">Material</string>
 </resources>

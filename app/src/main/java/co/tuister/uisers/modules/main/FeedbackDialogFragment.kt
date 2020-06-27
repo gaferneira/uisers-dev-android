@@ -11,7 +11,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import co.tuister.uisers.R
-import co.tuister.uisers.databinding.DialogFragmentFeedbackBinding
+import co.tuister.uisers.databinding.DialogFragmentHomeFeedbackBinding
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 
 class FeedbackDialogFragment : AppCompatDialogFragment() {
@@ -20,7 +20,7 @@ class FeedbackDialogFragment : AppCompatDialogFragment() {
         fun onSendFeedback(feedback: String)
     }
 
-    lateinit var binding: DialogFragmentFeedbackBinding
+    lateinit var binding: DialogFragmentHomeFeedbackBinding
 
     private var listener: FeedbackDialogListener? = null
 
@@ -35,7 +35,7 @@ class FeedbackDialogFragment : AppCompatDialogFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.dialog_fragment_feedback,
+            R.layout.dialog_fragment_home_feedback,
             null,
             false
         )

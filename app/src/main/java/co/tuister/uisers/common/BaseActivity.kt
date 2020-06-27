@@ -18,10 +18,6 @@ open class BaseActivity : AppCompatActivity() {
         supportFragmentManager.showDialog(this, message, title, unit)
     }
 
-    protected fun showDialog(message: String, title: String, unit: (() -> Unit)? = null) {
-        supportFragmentManager.showDialog(this, message, title, unit)
-    }
-
     protected fun showConfirmDialog(
         message: Int,
         title: Int,
@@ -64,10 +60,10 @@ open class BaseActivity : AppCompatActivity() {
 
     fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
         when (failure) {
-            is Failure.ServerError -> showDialog(R.string.alert_error_server, R.string.alert)
+            is Failure.ServerError -> showDialog(R.string.error_server, R.string.base_label_alert)
             is Failure.NetworkConnection -> showDialog(
-                R.string.alert_check_internet,
-                R.string.alert
+                R.string.error_check_internet,
+                R.string.base_label_alert
             )
             else -> {
                 failure?.error?.run {
@@ -75,7 +71,7 @@ open class BaseActivity : AppCompatActivity() {
                 }
 
                 if (showGenericMessage) {
-                    showDialog(R.string.alert_error_try_again, R.string.alert)
+                    showDialog(R.string.error_try_again, R.string.base_label_alert)
                 } else {
                     return false
                 }

@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
-import kotlinx.android.synthetic.main.item_my_career_schedule.*
-import kotlinx.android.synthetic.main.item_my_career_schedule_title.*
+import kotlinx.android.synthetic.main.item_career_schedule.*
+import kotlinx.android.synthetic.main.item_career_schedule_title.*
 import java.util.*
 
 class ScheduleAdapter(
@@ -32,9 +32,9 @@ class ScheduleAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         val layout = if (viewType == 0) {
-            R.layout.item_my_career_schedule_title
+            R.layout.item_career_schedule_title
         } else {
-            R.layout.item_my_career_schedule
+            R.layout.item_career_schedule
         }
         val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return ScheduleViewHolder(view)

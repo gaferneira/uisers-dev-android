@@ -18,7 +18,7 @@ fun FragmentManager.showConfirmDialog(
         .setTitle(title)
         .setMessage(message)
         .setPositiveButton(
-            R.string.ok,
+            android.R.string.ok,
             View.OnClickListener {
                 unitPositive?.invoke()
             }
@@ -42,7 +42,7 @@ fun FragmentManager.showDialog(
         .setTitle(title)
         .setMessage(message)
         .setPositiveButton(
-            R.string.ok,
+            android.R.string.ok,
             View.OnClickListener {
                 unit?.invoke()
             }

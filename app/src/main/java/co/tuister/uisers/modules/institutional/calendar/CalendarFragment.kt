@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.databinding.FragmentCalendarBinding
+import co.tuister.uisers.databinding.FragmentInstitutionalCalendarBinding
 import co.tuister.uisers.modules.institutional.calendar.CalendarViewModel.State
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.sectionsDecorator.SectionDecorator
@@ -24,7 +24,7 @@ import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.*
 import kotlin.math.abs
 
-class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
+class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>() {
 
     private lateinit var viewModel: CalendarViewModel
 
@@ -40,7 +40,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCalendarBinding.inflate(inflater)
+        binding = FragmentInstitutionalCalendarBinding.inflate(inflater)
         initViews()
         initViewModel()
         return binding.root

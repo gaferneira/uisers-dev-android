@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.MergeAdapter
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.databinding.FragmentSubjectsBinding
+import co.tuister.uisers.databinding.FragmentCareerSubjectsBinding
 import co.tuister.uisers.modules.career.FooterAdapter
 import co.tuister.uisers.modules.career.subjects.SubjectsViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class SubjectsFragment : BaseFragment<FragmentSubjectsBinding>() {
+class SubjectsFragment : BaseFragment<FragmentCareerSubjectsBinding>() {
 
     private lateinit var adapter: SubjectsAdapter
     private lateinit var footerAdapter: FooterAdapter
@@ -37,7 +37,7 @@ class SubjectsFragment : BaseFragment<FragmentSubjectsBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSubjectsBinding.inflate(inflater)
+        binding = FragmentCareerSubjectsBinding.inflate(inflater)
         initViews()
         return binding.root
     }
@@ -71,7 +71,7 @@ class SubjectsFragment : BaseFragment<FragmentSubjectsBinding>() {
             is State.LoadSubjects -> loadItems(state)
             is State.RemoveSubject -> removeItem(state)
             is State.LoadSemesterAverage -> {
-                footerAdapter.setData(R.string.text_semester_average, state.data)
+                footerAdapter.setData(R.string.career_label_text_semester_average, state.data)
             }
         }
     }
@@ -113,7 +113,7 @@ class SubjectsFragment : BaseFragment<FragmentSubjectsBinding>() {
             if (item.itemId == 0) {
                 listener?.onClickEdit(subject)
             } else {
-                showConfirmDialog(getString(R.string.confirm_remove_subject), name) {
+                showConfirmDialog(getString(R.string.career_confirm_remove_subject), name) {
                     viewModel.removeSubject(this)
                 }
             }

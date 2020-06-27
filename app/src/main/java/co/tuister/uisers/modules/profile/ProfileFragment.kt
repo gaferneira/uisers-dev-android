@@ -125,7 +125,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             state,
             inProgress = {
                 binding.loadingStatusMessage.text =
-                    context?.getString(R.string.progress_downloading_data)
+                    context?.getString(R.string.base_progress_downloading)
                 binding.loadingStatus.isVisible = true
             },
             onError = {
@@ -143,7 +143,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             inProgress = {
                 with(binding.buttonSave) {
                     showProgress {
-                        buttonTextRes = R.string.profile_progress_updating
+                        buttonTextRes = R.string.home_progress_profile_updating
                         progressColor = Color.WHITE
                         isEnabled = false
                     }
@@ -151,11 +151,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             },
             onError = {
                 manageFailure(it)
-                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.hideProgress(R.string.base_action_save)
                 binding.buttonSave.isEnabled = true
             },
             onSuccess = {
-                binding.buttonSave.hideProgress(R.string.action_save)
+                binding.buttonSave.hideProgress(R.string.base_action_save)
                 binding.buttonSave.isEnabled = true
             }
         )

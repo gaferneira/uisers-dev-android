@@ -95,8 +95,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     is EmailNotVerifiedError -> {
                         showConfirmDialog(
                             getString(R.string.error_result_login_message_not_verified_email),
-                            it.error?.message ?: getString(R.string.title_login),
-                            R.string.action_resend,
+                            it.error?.message ?: getString(R.string.login_title),
+                            R.string.base_action_resend,
                             {
                                 viewModel.reSendConfirmEmail()
                             }
@@ -106,7 +106,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                         if (!manageFailure(it)) {
                             showDialog(
                                 it?.error?.localizedMessage ?: getString(R.string.error_result_login_message),
-                                getString(R.string.title_login)
+                                getString(R.string.login_title)
                             )
                         }
                     }

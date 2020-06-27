@@ -16,7 +16,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.databinding.FragmentRegisterBinding
+import co.tuister.uisers.databinding.FragmentLoginRegisterBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.login.register.RegisterViewModel.State.ValidateRegister
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
@@ -29,7 +29,7 @@ import org.koin.android.viewmodel.ext.android.getViewModel
 import java.util.Calendar.YEAR
 import java.util.Calendar.getInstance
 
-class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
+class RegisterFragment : BaseFragment<FragmentLoginRegisterBinding>() {
 
     private lateinit var viewModel: RegisterViewModel
 
@@ -38,7 +38,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRegisterBinding.inflate(inflater)
+        binding = FragmentLoginRegisterBinding.inflate(inflater)
         binding.lifecycleOwner = this
         initViewModel()
         binding.registerViewModel = viewModel
@@ -159,7 +159,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             inProgress = {
                 if (it == DOWNLOADING) {
                     binding.loginStatusMessage.text =
-                        context?.getString(R.string.progress_downloading_data)
+                        context?.getString(R.string.base_progress_downloading)
                 } else {
                     binding.loginStatusMessage.text =
                         context?.getString(R.string.login_progress_signing_in)
@@ -172,8 +172,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             onSuccess = {
                 binding.loginStatus.isVisible = false
                 showDialog(
-                    getString(R.string.register_confirm_email, viewModel.userLive.value?.email),
-                    getString(R.string.title_dialog_view_register)
+                    getString(R.string.login_message_login_register_confirm_email, viewModel.userLive.value?.email),
+                    getString(R.string.login_title_dialog_login_register)
                 ) {
                     viewModel.doLogout {
                         goToLogin()
@@ -190,13 +190,13 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
             is FormError -> {
                 showDialog(
                     it.error!!.message!!,
-                    requireContext().getString(R.string.title_dialog_view_register)
+                    requireContext().getString(R.string.login_title_dialog_login_register)
                 )
             }
             is Failure.AuthWeakPasswordException -> {
                 showDialog(
                     "Password is to weak to create a account",
-                    requireContext().getString(R.string.title_dialog_view_register)
+                    requireContext().getString(R.string.login_title_dialog_login_register)
                 )
             }
             else -> {
@@ -204,7 +204,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     showDialog(
                         it?.error?.localizedMessage
                             ?: "Lo sentimos no pudimos crear una cuenta con ese correo. Intenta colocando uno nuevo.",
-                        requireContext().getString(R.string.title_dialog_view_register)
+                        requireContext().getString(R.string.login_title_dialog_login_register)
                     )
                 }
             }

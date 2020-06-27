@@ -271,7 +271,7 @@ class MainActivity :
 
     override fun onSendFeedback(feedback: String) {
         viewModel.sendFeedback(feedback)
-        showDialog(R.string.feedback_result_message, R.string.feedback_result_title)
+        showDialog(R.string.home_message_feedback_result, R.string.home_title_home_feedback_result)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

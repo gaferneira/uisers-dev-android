@@ -60,7 +60,7 @@ class TasksAdapter(
             v: View,
             menuInfo: ContextMenu.ContextMenuInfo?
         ) {
-            menu.add(bindingAdapterPosition, v.id, 0, v.context.getString(R.string.action_remove))
+            menu.add(bindingAdapterPosition, v.id, 0, v.context.getString(R.string.base_action_remove))
         }
     }
 }

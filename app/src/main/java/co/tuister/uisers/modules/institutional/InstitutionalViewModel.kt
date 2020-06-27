@@ -15,17 +15,17 @@ class InstitutionalViewModel : BaseViewModel() {
     fun initialize() {
         val menus = listOf(
             InstitutionalMenu(
-                R.string.title_fragment_map,
+                R.string.institutional_title_fragment_map,
                 R.drawable.institutional_menu_map,
                 R.color.grey_600
             ),
             InstitutionalMenu(
-                R.string.title_fragment_calendar,
+                R.string.institutional_title_fragment_calendar,
                 R.drawable.institutional_menu_calendar,
                 R.color.green_600
             ),
             InstitutionalMenu(
-                R.string.title_fragment_wheels,
+                R.string.institutional_title_fragment_wheels,
                 R.drawable.institutional_menu_wheels,
                 R.color.blue_600
             )

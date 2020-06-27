@@ -32,7 +32,7 @@ class SplashViewModel(
     fun runInitialChecks() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                message.value = context.getString(R.string.splash_progress_checking_session)
+                message.value = context.getString(R.string.login_message_splash_progress_checking_session)
 
                 lateinit var userResult: Either<Failure, User>
                 val checkTime = measureTimeMillis {
@@ -44,12 +44,12 @@ class SplashViewModel(
 
                 when (val it = userResult) {
                     is Either.Left -> {
-                        message.value = context.getString(R.string.splash_progress_go_to_login)
+                        message.value = context.getString(R.string.login_message_splash_progress_go_to_login)
                         delay(delayTime)
                         events.value = Event.GoToLogin
                     }
                     is Either.Right -> {
-                        message.value = context.getString(R.string.splash_progress_check_notes)
+                        message.value = context.getString(R.string.login_message_splash_progress_check_notes)
                         delay(delayTime)
                         events.value = Event.GoToMain(it.value)
                     }

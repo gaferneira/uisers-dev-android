@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?colorSurface"
-                android:text="Material"
+                android:text="@string/internal_only_material"
                 android:textColor="?colorOnSurface" />
 
             <Button
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?colorSurface"
-                android:text="DOWNLOAD CSV FILE"
+                android:text="@string/internal_only_download_csv_file"
                 android:textColor="?colorOnSurface" />
 
             <Button
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?colorSurface"
-                android:text="Update Careers"
+                android:text="@string/internal_only_update_careers"
                 android:textColor="?colorOnSurface" />
 
             <Button
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?colorSurface"
-                android:text="Update Subjects"
+                android:text="@string/internal_only_update_subjects"
                 android:textColor="?colorOnSurface" />
 
             <Button
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?colorSurface"
-                android:text="Update map data"
+                android:text="@string/internal_only_update_map_data"
                 android:textColor="?colorOnSurface" />
 
             <Button
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="?colorSurface"
-                android:text="Update calendar"
+                android:text="@string/internal_only_update_calendar"
                 android:textColor="?colorOnSurface" />
 
         </LinearLayout>
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/padding_margin_normal"
 
-                android:text="@string/progress_downloading_data"
+                android:text="@string/base_progress_downloading"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@android:color/black" />
         </LinearLayout>
