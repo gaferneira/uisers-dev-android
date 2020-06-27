@@ -3,8 +3,9 @@ package co.tuister.uisers
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build.VERSION.SDK_INT
-import android.os.Build.VERSION_CODES
-import android.os.Build.VERSION_CODES.*
+import android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH
+import android.os.Build.VERSION_CODES.KITKAT
+import android.os.Build.VERSION_CODES.O
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
