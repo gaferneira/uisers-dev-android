@@ -41,7 +41,7 @@
         android:id="@+id/register_fragment_dest"
         android:name="co.tuister.uisers.modules.login.register.RegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_login_register" />
 
     <fragment
         android:id="@+id/forgot_password_fragment_dest"

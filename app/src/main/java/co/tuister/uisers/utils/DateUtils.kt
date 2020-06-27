@@ -54,11 +54,11 @@ class DateUtils private constructor() {
             val builder = StringBuilder()
 
             if (days > 0)
-                builder.append(resources.getQuantityString(R.plurals.days, days, days))
+                builder.append(resources.getQuantityString(R.plurals.plurals_days, days, days))
             if (hours > 0)
-                builder.append(resources.getQuantityString(R.plurals.hours, hours, hours))
+                builder.append(resources.getQuantityString(R.plurals.plurals_hours, hours, hours))
             if (minutes > 0)
-                builder.append(resources.getQuantityString(R.plurals.minutes, minutes, minutes))
+                builder.append(resources.getQuantityString(R.plurals.plurals_minutes, minutes, minutes))
 
             return builder.toString()
         }

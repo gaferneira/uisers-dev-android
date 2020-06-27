@@ -33,7 +33,7 @@ class UisersApplication : MultiDexApplication(), LifecycleObserver {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.
-            val channelId = getString(R.string.default_notification_channel_id)
+            val channelId = getString(R.string.channel_default_notification_id)
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager?.createNotificationChannel(
                 NotificationChannel(

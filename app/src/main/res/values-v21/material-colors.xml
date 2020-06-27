@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="colorPrimary">?colorPrimary</color>
-    <color name="colorPrimaryVariant">?colorPrimaryVariant</color>
-    <color name="colorPrimaryDark">?colorPrimaryDark</color>
-
-    <color name="colorSecondary">?colorSecondary</color>
-    <color name="colorSecondaryVariant">?colorSecondaryVariant</color>
-
     <color name="colorSurface">?colorSurface</color>
-    <color name="colorError">?colorError</color>
-
-    <color name="colorOnPrimary">?colorOnPrimary</color>
-    <color name="colorOnSecondary">?colorOnSecondary</color>
-    <color name="colorOnBackground">?colorOnBackground</color>
-    <color name="colorOnSurface">?colorOnSurface</color>
-    <color name="colorOnError">?colorOnError</color>
-
 </resources>

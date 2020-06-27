@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="@{()->viewModel.doLogOut()}"
-                    android:text="@string/close_session"
+                    android:text="@string/home_action_close_session"
                     android:textAppearance="?textAppearanceButton"
                     android:textColor="?colorOnSurface" />
 
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="@{String.format(@string/version_label,viewModel.version)}"
+                    android:text="@{String.format(@string/home_label_version,viewModel.version)}"
                     android:textColor="@color/grey_500" />
             </LinearLayout>
 

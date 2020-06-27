@@ -13,13 +13,13 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.databinding.FragmentScheduleBinding
+import co.tuister.uisers.databinding.FragmentCareerScheduleBinding
 import co.tuister.uisers.modules.career.schedule.ScheduleViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class ScheduleFragment :
-    BaseFragment<FragmentScheduleBinding>(),
+    BaseFragment<FragmentCareerScheduleBinding>(),
     AddSchedulePeriodDialogFragment.AddSchedulePeriodDialogListener,
     ScheduleAdapter.ScheduleListener {
 
@@ -39,7 +39,7 @@ class ScheduleFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentScheduleBinding.inflate(inflater)
+        binding = FragmentCareerScheduleBinding.inflate(inflater)
         initViews()
         return binding.root
     }
@@ -131,7 +131,7 @@ class ScheduleFragment :
 
         val adapterPosition = item.groupId
         val period = adapter.list.getOrNull(adapterPosition)?.second ?: return false
-        showConfirmDialog(getString(R.string.confirm_remove_period), period.description) {
+        showConfirmDialog(getString(R.string.career_confirm_remove_period), period.description) {
             viewModel.removePeriod(period)
         }
         return true

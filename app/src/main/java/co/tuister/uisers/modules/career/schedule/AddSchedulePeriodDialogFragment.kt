@@ -19,7 +19,7 @@ import androidx.fragment.app.FragmentManager
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
-import co.tuister.uisers.databinding.DialogFragmentSchedulePeriodBinding
+import co.tuister.uisers.databinding.DialogFragmentCareerSchedulePeriodBinding
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.pickTime
 import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
@@ -33,7 +33,7 @@ class AddSchedulePeriodDialogFragment :
         fun onSavePeriod(period: SchedulePeriod)
     }
 
-    lateinit var binding: DialogFragmentSchedulePeriodBinding
+    lateinit var binding: DialogFragmentCareerSchedulePeriodBinding
     lateinit var subjects: List<Subject>
     lateinit var period: SchedulePeriod
 
@@ -55,7 +55,7 @@ class AddSchedulePeriodDialogFragment :
     ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.dialog_fragment_schedule_period,
+            R.layout.dialog_fragment_career_schedule_period,
             null,
             false
         )

@@ -15,11 +15,11 @@ import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import co.tuister.uisers.R
-import co.tuister.uisers.databinding.DialogFragmentAboutBinding
+import co.tuister.uisers.databinding.DialogFragmentHomeAboutBinding
 
 class AboutDialogFragment : AppCompatDialogFragment() {
 
-    lateinit var binding: DialogFragmentAboutBinding
+    lateinit var binding: DialogFragmentHomeAboutBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return AppCompatDialog(context)
@@ -32,7 +32,7 @@ class AboutDialogFragment : AppCompatDialogFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.dialog_fragment_about,
+            R.layout.dialog_fragment_home_about,
             null,
             false
         )
@@ -44,23 +44,23 @@ class AboutDialogFragment : AppCompatDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.textViewFounder1.setOnClickListener {
-            openLinkedInPage(getString(R.string.about_founder_1_linked_in))
+            openLinkedInPage(getString(R.string.home_about_founder_1_linked_in))
         }
 
         binding.textViewFounder2.setOnClickListener {
-            openLinkedInPage(getString(R.string.about_founder_2_linked_in))
+            openLinkedInPage(getString(R.string.home_about_founder_2_linked_in))
         }
 
         binding.textViewEmail.setOnClickListener {
-            sendEmail(getString(R.string.about_email))
+            sendEmail(getString(R.string.home_about_email))
         }
 
         binding.textViewWhatsapp.setOnClickListener {
-            openWhatsapp(getString(R.string.about_whatsapp_number))
+            openWhatsapp(getString(R.string.home_about_whatsapp_number))
         }
 
         binding.textViewRepository.setOnClickListener {
-            openUrl(getString(R.string.about_repository_url))
+            openUrl(getString(R.string.home_about_repository_url))
         }
     }
 

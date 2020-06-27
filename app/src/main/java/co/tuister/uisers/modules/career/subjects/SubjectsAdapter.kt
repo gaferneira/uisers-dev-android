@@ -11,7 +11,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
 import co.tuister.uisers.utils.extensions.setTextOrGone
-import kotlinx.android.synthetic.main.item_my_career_subject.*
+import kotlinx.android.synthetic.main.item_career_subject.*
 
 class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>() {
 
@@ -27,7 +27,7 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubjectViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_my_career_subject, parent, false)
+            .inflate(R.layout.item_career_subject, parent, false)
         return SubjectViewHolder(view)
     }
 
@@ -63,8 +63,8 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
             v: View,
             menuInfo: ContextMenuInfo?
         ) {
-            menu.add(bindingAdapterPosition, 0, 0, v.context.getString(R.string.action_edit))
-            menu.add(bindingAdapterPosition, 1, 1, v.context.getString(R.string.action_remove))
+            menu.add(bindingAdapterPosition, 0, 0, v.context.getString(R.string.base_action_edit))
+            menu.add(bindingAdapterPosition, 1, 1, v.context.getString(R.string.base_action_remove))
         }
     }
 }

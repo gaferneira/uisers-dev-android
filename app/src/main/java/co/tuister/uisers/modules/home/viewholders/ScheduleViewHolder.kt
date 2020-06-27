@@ -8,9 +8,9 @@ import co.tuister.uisers.R
 import co.tuister.uisers.modules.home.HomeAdapter
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeSchedule
+import kotlinx.android.synthetic.main.item_career_subject.*
 import kotlinx.android.synthetic.main.item_home_schedule.view.*
 import kotlinx.android.synthetic.main.item_home_schedule_period.view.*
-import kotlinx.android.synthetic.main.item_my_career_subject.*
 
 class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(

@@ -99,7 +99,7 @@ class MapFragment : BaseFragment<FragmentInstitutionalMapBinding>() {
     private fun showSitesDialog() {
         val options = sites?.map { it.name } ?: return
         val dialog = AlertDialog.Builder(requireContext())
-            .setTitle(R.string.institutional_map_hint_sites)
+            .setTitle(R.string.institutional_hint_map_sites)
             .setItems(options.toTypedArray()) { _, which ->
                 binding.editTextSite.setText(options[which])
                 val site = sites?.get(which) ?: return@setItems
@@ -123,7 +123,7 @@ class MapFragment : BaseFragment<FragmentInstitutionalMapBinding>() {
 
         val options = filterPlaces?.map { it.title } ?: return
         val dialog = AlertDialog.Builder(requireContext())
-            .setTitle(R.string.institutional_map_hint_sites)
+            .setTitle(R.string.institutional_hint_map_sites)
             .setItems(options.toTypedArray()) { _, which ->
                 binding.editTextPlace.setText(options[which])
                 val place = filterPlaces?.get(which) ?: return@setItems

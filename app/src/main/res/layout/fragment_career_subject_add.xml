@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
                 android:ems="10"
-                android:hint="@string/prompt_name_subject"
+                android:hint="@string/career_hint_name_subject"
                 android:text="@={subjectBinding.name}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
                 android:ems="10"
-                android:hint="@string/prompt_name_teacher"
+                android:hint="@string/career_hint_name_teacher"
                 android:inputType="textPersonName"
                 android:text="@={subjectBinding.teacher}" />
 
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
-                android:hint="@string/prompt_credits"
+                android:hint="@string/career_hint_credits"
                 android:inputType="numberSigned"
                 android:text="@={`` + subjectBinding.credits}" />
 
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_margin_normal_smaller"
-            android:text="@string/label_color"
+            android:text="@string/base_label_color"
             android:textAppearance="?textAppearanceSubtitle1"
             android:textColor="?colorOnSurface"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_margin_normal"
-            android:text="@string/action_save"
+            android:text="@string/base_action_save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

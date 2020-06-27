@@ -1,195 +1,182 @@
 <resources>
     <string name="app_name" translatable="false">UISers</string>
-    <string name="action_sign_in_register">Login</string>
-    <string name="action_go_register">Sign In</string>
-    <string name="olvidar_pass"><u>Forgot your password?</u></string>
 
-    <string name="label_home_today">Today</string>
-    <string name="label_home_no_subjects">The are no subjects for today</string>
-    <string name="label_home_no_tasks">The are no tasks for today</string>
+    <string name="channel_default_notification_id">Default channel</string>
 
-    <string name="title_fragment_schedule">Schedule</string>
-    <string name="title_fragment_calendar">Calendar</string>
-    <string name="title_fragment_wheels">Wheels</string>
-    <string name="title_fragment_semester">Semester</string>
-    <string name="title_fragment_map">Map</string>
-    <string name="title_fragment_add_subject">Add subject</string>
-    <string name="title_fragment_add_task">Add task</string>
-    <string name="title_fragment_details_subject">Details subject</string>
-    <string name="title_dialog_view_register">Register</string>
+    <!-- BASE -->
+    <string name="base_action_edit">Edit</string>
+    <string name="base_action_remove">Remove</string>
+    <string name="base_action_resend">Re send</string>
+    <string name="base_action_save">Save</string>
+    <string name="base_action_send">Send</string>
+    <string name="base_hint_email">Email</string>
+    <string name="base_hint_student_code">Student code</string>
+    <string name="base_label_alert">Alert</string>
+    <string name="base_label_color">Color</string>
+    <string name="base_label_description">Description</string>
+    <string name="base_label_percentage_sign">%</string>
+    <string name="base_progress_downloading">Downloading&#8230;</string>
+    <string name="base_progress_updating">Updating&#8230;</string>
 
-    <!-- ACTIONS -->
-    <string name="ok">Ok</string>
-
-    <!-- LOGIN AND REGISTER -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_student_code">Student code</string>
-    <string name="prompt_name">Name</string>
-    <string name="prompt_career">Career</string>
-    <string name="prompt_campus">Campus</string>
-    <string name="prompt_year">Year</string>
-    <string name="prompt_password">Password</string>
-    <string name="prompt_confirm_password">Confirm password</string>
-    <string name="action_register">Register</string>
-    <string name="action_resend">Re send</string>
-    <string name="login_progress_signing_in">Signing in&#8230;</string>
-    <string name="profile_progress_updating">Updating profile&#8230;</string>
-    <string name="progress_downloading_data">Downloading&#8230;</string>
-    <string name="progress_updating">Updating&#8230;</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="title_forget_title">Recover</string>
-    <string name="title_login">Login</string>
-    <string name="error_result_login_message">We are sorry, we could not find and account linked to that email.</string>
-    <string name="error_result_login_message_not_verified_email">We have found that your email has not been verified, go to your email and click in the link we have sent you.</string>
-    <string name="success_result_forget_message">We have sent you an email to recover your password.</string>
-    <string name="error_result_forget_message">We are sorry we could not find and account linked to that email.</string>
-
-
-    <!-- TEXTVIEWS -->
-    <string name="init_block">Init</string>
-    <string name="finish_block">Finish</string>
-    <string name="grade">Grade</string>
-
-    <string name="percentage">%</string>
-    <string name="grade_total">Total</string>
-    <string name="note_subject">Note subject</string>
-    <string name="details">Details</string>
-    <string name="select_a_semester">Select a semester</string>
-    <string name="semester_set_current">Set as current</string>
-
-    <string name="prompt_details_grade">Enter description</string>
-    <string name="prompt_name_subject">Name subject</string>
-    <string name="prompt_name_teacher">Name teacher</string>
-
-    <string name="subject_list_header_total">Total</string>
-    <string name="tasks_hint_add_task">Title</string>
-    <string name="add_task_day">Day</string>
-    <string name="add_task_description">Description</string>
-
-    <string name="empty_list_tasks">There are no tasks to show. To add tasks use the "+" placed on the top right</string>
-    <string name="empty_list_subjects">To add subjects use the "+" placed on the top right</string>
-    <string name="empty_schedule">To create your schedule you must add each block per subject. If the subject is already added you can edit it by a long press over the name in the Subjects menu</string>
-
-    <!-- Varios -->
-    <string name="text_final_grade">Final grade</string>
-    <string name="text_semester_average">Semester average</string>
-
-    <!-- ALERTS -->
-    <string name="alert">Alert</string>
-    <string name="alert_check_internet">Check your internet connection</string>
-    <string name="alert_error_server">"Server error, please try again later"</string>
-    <string name="alert_error_try_again">"There was an error, please try again later"</string>
-
-    <!-- SETTINGS -->
-
-    <string name="action_save">Save</string>
-
-    <!-- Bottom Menu -->
+    <!-- MENUS -->
+    <string name="title_menu_about">About</string>
+    <string name="title_menu_feedback">Feedback</string>
     <string name="title_menu_home">Home</string>
+    <string name="title_menu_institution">Institution</string>
+    <string name="title_menu_profile">Profile</string>
     <string name="title_menu_subjects">My Career</string>
     <string name="title_menu_task">Tasks</string>
-    <string name="title_menu_institution">Institution</string>
 
-    <!-- Left side menu -->
-    <string name="welcome_message">Hi,</string>
-    <string name="close_session"><u>Exit</u></string>
-    <string name="version_label" translatable="false">Version %s</string>
-    <string name="title_menu_profile">Profile</string>
-    <string name="title_menu_about">About</string>
-    <string name="my_career_semesters_average">GPA</string>
-    <string name="institutional_wheels_title" translatable="false">Con Wheels podremos promover el uso sostenible de los medios de transporte y ayudar al medio ambiente</string>
-    <string name="institutional_wheels_description" translatable="false">Para crear la cuenta usa el correo institucional <b>@correo.uis.edu.co</b> y así verás las rutas de todos los usuarios de la UIS></string>
-    <string name="institutional_wheels_details" translatable="false">Podrás realizar lo siguiente: \n
+    <!-- LOGIN !-->
+    <string name="login_action_forgot_pass"><u>Forgot your password?</u></string>
+    <string name="login_action_login_go_register">Sign In</string>
+    <string name="login_action_login_sign_in_register">Login</string>
+    <string name="login_action_register">Register</string>
+    <string name="login_hint_campus">Campus</string>
+    <string name="login_hint_career">Career</string>
+    <string name="login_hint_confirm_password">Confirm password</string>
+    <string name="login_hint_name">Name</string>
+    <string name="login_hint_password">Password</string>
+    <string name="login_hint_year">Year</string>
+    <string name="login_message_login_register_confirm_email">We have sent you an email to %s . Please confirm your email so you can access the application</string>
+    <string name="login_message_result_forget_message">We have sent you an email to recover your password.</string>
+    <string name="login_message_splash_progress_check_notes">Let\'s go check you notes…</string>
+    <string name="login_message_splash_progress_checking_session">Checking session…</string>
+    <string name="login_message_splash_progress_go_to_login">Let\'s go to Login</string>
+    <string name="login_progress_signing_in">Signing in&#8230;</string>
+    <string name="login_register_initial_semester">Initial semester</string>
+    <string name="login_register_select_a_semester">Select a semester</string>
+    <string name="login_title_dialog_login_register">Register</string>
+    <string name="login_title_login_forget_title">Recover</string>
+    <string name="login_title">Login</string>
+
+    <!-- HOME !-->
+    <string name="home_about_title_dialog">About UISers</string>
+    <string name="home_about_email">gabrielfneira@gmail.com</string>
+    <string name="home_about_founder_1_linked_in">gabriel-fernando-neira-bermudez-419b2265</string>
+    <string name="home_about_founder_1">Gabriel Fernando Neira</string>
+    <string name="home_about_founder_2_linked_in">vidal-javier-ramirez-mendoza-23737482</string>
+    <string name="home_about_founder_2">Vidal Javier Ramirez</string>
+    <string name="home_about_founders">Founders</string>
+    <string name="home_about_repository_url">https://github.com/gaferneira/uisers-dev-android/</string>
+    <string name="home_about_repository">uisers-dev-android</string>
+    <string name="home_about_whatsapp_number">+573188799237</string>
+    <string name="home_about_whatsapp">+57 318 879 9237</string>
+    <string name="home_about_working_together">Working together</string>
+    <string name="home_about_write_to_us_desc">We value your suggestions</string>
+    <string name="home_about_write_to_us">Write to us</string>
+    <string name="home_action_close_session"><u>Exit</u></string>
+    <string name="home_hint_feedback">Leave feedback here</string>
+    <string name="home_label_no_subjects">The are no subjects for today</string>
+    <string name="home_label_no_tasks">The are no tasks for today</string>
+    <string name="home_label_today">Today</string>
+    <string name="home_label_version" translatable="false">Version %s</string>
+    <string name="home_label_welcome_message">Hi,</string>
+    <string name="home_message_feedback_result">Thanks for the feedback.</string>
+    <string name="home_progress_profile_updating">Updating profile&#8230;</string>
+    <string name="home_title_dialog_feedback">Give us feedback. We\'d love to hear from you!</string>
+    <string name="home_title_home_feedback_result">Feedback</string>
+    <string name="home_title_home_tasks">Tasks</string>
+    <string name="home_text_feedback_description">Having issues, or just want to give us some feedback?. Tell us the good and the bad</string>
+
+    <!-- CAREER -->
+    <string name="career_confirm_change_current_semester">Are you sure to change the current semester?</string>
+    <string name="career_confirm_remove_note">Do you want to remove this note?</string>
+    <string name="career_confirm_remove_period">Do you want to remove this period?</string>
+    <string name="career_confirm_remove_subject">Do you want to remove this subject?</string>
+    <string name="career_hint_credits">Credit numbers</string>
+    <string name="career_hint_details_grade">Enter description</string>
+    <string name="career_hint_name_subject">Name subject</string>
+    <string name="career_hint_name_teacher">Name teacher</string>
+    <string name="career_hint_schedule_details">Subject / Activity</string>
+    <string name="career_hint_week_day">Day</string>
+    <string name="career_label_before">before</string>
+    <string name="career_label_details">Details</string>
+    <string name="career_label_empty_list_subjects">To add subjects use the "+" placed on the top right</string>
+    <string name="career_label_empty_list_tasks">There are no tasks to show. To add tasks use the "+" placed on the top right</string>
+    <string name="career_label_empty_schedule">To create your schedule you must add each block per subject. If the subject is already added you can edit it by a long press over the name in the Subjects menu</string>
+    <string name="career_label_finish_block">Finish</string>
+    <string name="career_label_grade_total">Total</string>
+    <string name="career_label_grade">Grade</string>
+    <string name="career_label_init_block">Init</string>
+    <string name="career_label_note_subject">Note subject</string>
+    <string name="career_label_semesters_average">GPA</string>
+    <string name="career_label_semester_set_current">Set as current</string>
+    <string name="career_label_text_final_grade">Final grade</string>
+    <string name="career_label_text_semester_average">Semester average</string>
+    <string name="career_label_total">Total</string>
+    <string name="career_title_fragment_add_subject">Add subject</string>
+    <string name="career_title_fragment_career_schedule">Schedule</string>
+    <string name="career_title_fragment_details_subject">Details subject</string>
+    <string name="career_title_schedule">Schedule</string>
+    <string name="career_title_semesters">Semesters</string>
+    <string name="career_title_subjects">Subjects</string>
+
+    <!-- TASKS -->
+    <string name="tasks_confirm_remove_task">Do you want to remove this task?</string>
+    <string name="tasks_hint_reminder">Set reminder</string>
+    <string name="tasks_hint_add_task">Title</string>
+    <string name="tasks_label_label_status">Status</string>
+    <string name="tasks_label_no_reminder">No reminder</string>
+    <string name="tasks_label_reminder_at_time">At time of Due date</string>
+    <string name="tasks_label_status_done">Done</string>
+    <string name="tasks_label_status_in_progress">In progress</string>
+    <string name="tasks_label_status_todo">To do</string>
+    <string name="tasks_label_add_day">Day</string>
+    <string name="tasks_label_set_reminder">Set reminder</string>
+    <string name="tasks_title_fragment_tasks_add_task">Add task</string>
+
+    <!-- INSTITUTIONAL -->
+    <string name="institutional_action_institutional_wheels_open">Open Wheels</string>
+    <string name="institutional_hint_map_place">Select a place</string>
+    <string name="institutional_hint_map_sites">Select a site</string>
+    <string name="institutional_hint_place">Place</string>
+    <string name="institutional_title_fragment_calendar">Calendar</string>
+    <string name="institutional_title_fragment_map">Map</string>
+    <string name="institutional_title_fragment_semester">Semester</string>
+    <string name="institutional_title_fragment_wheels">Wheels</string>
+    <string name="institutional_text_wheels_description" translatable="false">Para crear la cuenta usa el correo institucional <b>@correo.uis.edu.co</b> y así verás las rutas de todos los usuarios de la UIS></string>
+    <string name="institutional_text_wheels" translatable="false">Con Wheels podremos promover el uso sostenible de los medios de transporte y ayudar al medio ambiente</string>
+    <string name="institutional_text_wheels_details" translatable="false">Podrás realizar lo siguiente: \n
         \n•Comparte tus vehículos o servicios de taxi para ir a la universidad o para volver a casa.
         \n\n• Si eres PASAJERO puedes cambiar la incomodidad e inseguridad del servicio público por la comodidad de los vehículos o servicios de taxi en el que se transportan tus compañeros UIS o allegados.
         \n\n• Si eres CONDUCTOR o COMPARTIDOR DE TAXI puedes compartir tus trayectos y recibir apoyo monetario de tus acompañantes para pagar la gasolina, el estacionamiento o la tarifa misma del servicio de taxi.</string>
-    <string name="institutional_wheels_open">Open Wheels</string>
-    <string name="prompt_credits">Credit numbers</string>
-    <string name="prompt_reminder">Set reminder</string>
-    <string name="task_status_todo">To do</string>
-    <string name="task_status_in_progress">In progress</string>
-    <string name="task_status_done">Done</string>
-    <string name="task_label_status">Status</string>
 
-    <string name="title_my_career_subjects">Subjects</string>
-    <string name="title_my_career_schedule">Schedule</string>
-    <string name="title_my_career_semesters">Semesters</string>
-    <string name="prompt_schedule_details">Subject / Activity</string>
-    <string name="prompt_place">Place</string>
-    <string name="home_title_tasks">Tasks</string>
-    <string name="confirm_change_current_semester">Are you sure to change the current semester?</string>
-    <string name="institutional_map_hint_sites">Select a site</string>
-    <string name="institutional_map_hint_place">Select a place</string>
-    <string name="title_menu_feedback">Feedback</string>
-    <string name="prompt_week_day">Day</string>
 
-    <string name="permission_location_required_text">Location permission required</string>
+    <!-- INTERNAL ONLY -->
+    <string name="internal_message_enter_again">Ingrese de nuevo para ver el cambio de theme</string>
+    <string name="internal_only_update_calendar">Update calendar</string>
+    <string name="internal_only_update_map_data">Update map data</string>
+    <string name="internal_only_update_subjects">Update Subjects</string>
+    <string name="internal_only_update_careers">Update Careers</string>
+    <string name="internal_only_download_csv_file">DOWNLOAD CSV FILE</string>
+    <string name="internal_only_material">Material</string>
+
+    <!-- ERRORS -->
+    <string name="error_field_required">This field is required</string>
+    <string name="error_result_forget_message">We are sorry we could not find and account linked to that email.</string>
+    <string name="error_result_login_message_not_verified_email">We have found that your email has not been verified, go to your email and click in the link we have sent you.</string>
+    <string name="error_result_login_message">We are sorry, we could not find and account linked to that email.</string>
+    <string name="error_server">"Server error, please try again later"</string>
+    <string name="error_try_again">"There was an error, please try again later"</string>
+    <string name="error_check_internet">Check your internet connection</string>
+
+    <!-- PERMISSION -->
     <string name="permission_location_explanation">Allow UISers to access this device\'s location </string>
-    <string name="title_dialog_feedback">Give us feedback. We\'d love to hear from you!</string>
-    <string name="feedback_description">Having issues, or just want to give us some feedback?. Tell us the good and the bad</string>
-    <string name="prompt_feedback">Leave feedback here</string>
-    <string name="action_send">Send</string>
-    <string name="feedback_result_message">Thanks for the feedback.</string>
-    <string name="feedback_result_title">Feedback</string>
-    <string name="title_dialog_about">About UISers</string>
-    <string name="confirm_remove_subject">Do you want to remove this subject?</string>
-    <string name="confirm_remove_period">Do you want to remove this period?</string>
-    <string name="confirm_remove_task">Do you want to remove this task?</string>
-    <string name="confirm_remove_note">Do you want to remove this note?</string>
+    <string name="permission_location_required_text">Location permission required</string>
 
-
-    <string name="about_title_founders">Founders</string>
-    <string name="about_founder_1">Gabriel Fernando Neira</string>
-    <string name="about_founder_1_linked_in">gabriel-fernando-neira-bermudez-419b2265</string>
-    <string name="about_founder_2">Vidal Javier Ramirez</string>
-    <string name="about_founder_2_linked_in">vidal-javier-ramirez-mendoza-23737482</string>
-    <string name="about_title_write_to_us">Write to us</string>
-    <string name="about_write_to_us_desc">We value your suggestions</string>
-    <string name="about_email">gabrielfneira@gmail.com</string>
-    <string name="about_whatsapp">+57 318 879 9237</string>
-    <string name="about_whatsapp_number">+573188799237</string>
-    <string name="about_title_working_together">Working together</string>
-    <string name="about_repository">uisers-dev-android</string>
-    <string name="about_repository_url">https://github.com/gaferneira/uisers-dev-android/</string>
-    <string name="register_confirm_email">We have sent you an email to %s . Please confirm your email so you can access the application</string>
-
-    <string name="default_notification_channel_id">Default channel</string>
-    <string name="splash_progress_checking_session">Checking session…</string>
-    <string name="splash_progress_go_to_login">Let\'s go to Login</string>
-    <string name="splash_progress_check_notes">Let\'s go check you notes…</string>
-    <string name="action_remove">Remove</string>
-    <string name="action_edit">Edit</string>
-    <string name="label_color">Color</string>
-    <string name="label_before">before</string>
-    <string name="label_task_no_reminder">No reminder</string>
-    <string name="label_task_reminder_at_time">At time of Due date</string>
-    <string name="title_task_set_reminder">Set reminder</string>
-
-    <string name="deep_link_home" translatable="false">uisers://main/</string>
-    <string name="deep_link_career" translatable="false">uisers://main/career</string>
-    <string name="deep_link_tasks" translatable="false">uisers://main/tasks</string>
-    <string name="deep_link_institution" translatable="false">uisers://main/institution</string>
-    <string name="deep_link_institution_map" translatable="false">uisers://main/institution/map</string>
-    <string name="deep_link_institution_calendar" translatable="false">uisers://main/institution/calendar</string>
-    <string name="deep_link_institution_wheels" translatable="false">uisers://main/institution/wheels</string>
-    <string name="deep_link_career_subject_add" translatable="false">uisers://main/career/subjects/add</string>
+    <!-- DEEP LINKS -->
     <string name="deep_link_career_schedule" translatable="false">uisers://main/career/schedule</string>
     <string name="deep_link_career_semesters" translatable="false">uisers://main/career/semesters</string>
+    <string name="deep_link_career_subject_add" translatable="false">uisers://main/career/subjects/add</string>
+    <string name="deep_link_career" translatable="false">uisers://main/career</string>
+    <string name="deep_link_home" translatable="false">uisers://main/</string>
+    <string name="deep_link_institution_calendar" translatable="false">uisers://main/institution/calendar</string>
+    <string name="deep_link_institution_map" translatable="false">uisers://main/institution/map</string>
+    <string name="deep_link_institution_wheels" translatable="false">uisers://main/institution/wheels</string>
+    <string name="deep_link_institution" translatable="false">uisers://main/institution</string>
     <string name="deep_link_tasks_add" translatable="false">uisers://main/tasks/add</string>
+    <string name="deep_link_tasks" translatable="false">uisers://main/tasks</string>
 
-    <plurals name="minutes">
-        <item quantity="one">1 minute</item>
-        <item quantity="other">%d minutes</item>
-    </plurals>
-
-    <plurals name="hours">
-        <item quantity="one">1 hour</item>
-        <item quantity="other">%d hours</item>
-    </plurals>
-
-    <plurals name="days">
-        <item quantity="one">1 day</item>
-        <item quantity="other">%d days</item>
-    </plurals>
 
 </resources>

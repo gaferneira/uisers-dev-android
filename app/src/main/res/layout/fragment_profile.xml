@@ -79,7 +79,7 @@
                     android:id="@+id/et_register_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_student_code"
+                    android:hint="@string/base_hint_student_code"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -99,7 +99,7 @@
                     android:ellipsize="end"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="@string/prompt_career"
+                    android:hint="@string/login_hint_career"
                     android:lines="1"
                     android:text="@={viewModel.user.career}"
                     android:textColor="@android:color/black" />
@@ -118,7 +118,7 @@
                     android:ellipsize="end"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="@string/prompt_campus"
+                    android:hint="@string/login_hint_campus"
                     android:lines="1"
                     android:text="@={viewModel.user.campus}"
                     android:textColor="@android:color/black" />
@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/padding_margin_normal"
 
-                android:text="@string/progress_downloading_data"
+                android:text="@string/base_progress_downloading"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@android:color/black" />
         </LinearLayout>

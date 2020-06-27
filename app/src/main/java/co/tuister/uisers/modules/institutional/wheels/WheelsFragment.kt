@@ -7,17 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import co.tuister.uisers.common.BaseFragment
-import co.tuister.uisers.databinding.FragmentWheelsBinding
+import co.tuister.uisers.databinding.FragmentInstitutionalWheelsBinding
 import co.tuister.uisers.utils.analytics.Analytics
 
-class WheelsFragment : BaseFragment<FragmentWheelsBinding>() {
+class WheelsFragment : BaseFragment<FragmentInstitutionalWheelsBinding>() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWheelsBinding.inflate(inflater)
+        binding = FragmentInstitutionalWheelsBinding.inflate(inflater)
         initViews()
         return binding.root
     }

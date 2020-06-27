@@ -34,7 +34,7 @@ class InternalMaterialFragment : BaseFragment<FragmentInternalMaterialBinding>()
             } else {
                 R.style.ThemeOverlay_MyApp_Light
             }
-            showDialog("Ingrese de nuevo para ver el cambio de theme", "") {
+            showDialog(R.string.internal_message_enter_again, 0) {
                 findNavController().popBackStack()
             }
         }

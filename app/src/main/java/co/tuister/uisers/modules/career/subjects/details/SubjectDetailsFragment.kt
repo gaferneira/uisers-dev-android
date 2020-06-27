@@ -14,14 +14,14 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.databinding.FragmentSubjectDetailsBinding
+import co.tuister.uisers.databinding.FragmentCareerSubjectDetailsBinding
 import co.tuister.uisers.modules.career.FooterAdapter
 import co.tuister.uisers.modules.career.subjects.details.SubjectDetailsViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class SubjectDetailsFragment :
-    BaseFragment<FragmentSubjectDetailsBinding>(),
+    BaseFragment<FragmentCareerSubjectDetailsBinding>(),
     NotesAdapter.NoteListener,
     AddNoteDialogFragment.AddNoteDialogListener {
 
@@ -51,7 +51,7 @@ class SubjectDetailsFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSubjectDetailsBinding.inflate(inflater)
+        binding = FragmentCareerSubjectDetailsBinding.inflate(inflater)
         initViews()
         return binding.root
     }
@@ -90,7 +90,7 @@ class SubjectDetailsFragment :
                 viewModel.refresh()
             }
             is State.LoadAverage -> handleState(state) {
-                footerAdapter.setData(R.string.text_final_grade, state.data)
+                footerAdapter.setData(R.string.career_label_text_final_grade, state.data)
             }
         }
     }
@@ -134,7 +134,7 @@ class SubjectDetailsFragment :
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val adapterPosition = item.groupId
         val note = adapter.list[adapterPosition]
-        showConfirmDialog(getString(R.string.confirm_remove_note), note.title) {
+        showConfirmDialog(getString(R.string.career_confirm_remove_note), note.title) {
             viewModel.removeNote(note)
         }
         return true

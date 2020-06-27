@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
-import co.tuister.uisers.databinding.FragmentMyCareerBinding
+import co.tuister.uisers.databinding.FragmentCareerBinding
 import co.tuister.uisers.modules.career.schedule.ScheduleFragment
 import co.tuister.uisers.modules.career.semesters.SemestersFragment
 import co.tuister.uisers.modules.career.subjects.SubjectsAdapter
@@ -20,7 +20,7 @@ import co.tuister.uisers.modules.career.subjects.SubjectsFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.Locale
 
-class MyCareerFragment : BaseFragment<FragmentMyCareerBinding>(), SubjectsAdapter.SubjectListener {
+class MyCareerFragment : BaseFragment<FragmentCareerBinding>(), SubjectsAdapter.SubjectListener {
 
     private var subjectFragment: SubjectsFragment? = null
     private var scheduleFragment: ScheduleFragment? = null
@@ -33,7 +33,7 @@ class MyCareerFragment : BaseFragment<FragmentMyCareerBinding>(), SubjectsAdapte
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyCareerBinding.inflate(inflater)
+        binding = FragmentCareerBinding.inflate(inflater)
         initViews()
         return binding.root
     }
@@ -60,9 +60,9 @@ class MyCareerFragment : BaseFragment<FragmentMyCareerBinding>(), SubjectsAdapte
 
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = when (position) {
-                0 -> resources.getString(R.string.title_my_career_subjects).toUpperCase(Locale.getDefault())
-                1 -> resources.getString(R.string.title_my_career_schedule).toUpperCase(Locale.getDefault())
-                2 -> resources.getString(R.string.title_my_career_semesters).toUpperCase(Locale.getDefault())
+                0 -> resources.getString(R.string.career_title_subjects).toUpperCase(Locale.getDefault())
+                1 -> resources.getString(R.string.career_title_schedule).toUpperCase(Locale.getDefault())
+                2 -> resources.getString(R.string.career_title_semesters).toUpperCase(Locale.getDefault())
                 else -> ""
             }
         }.attach()

@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentManager
 import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
-import co.tuister.uisers.databinding.DialogFragmentSubjectsAddNoteBinding
+import co.tuister.uisers.databinding.DialogFragmentCareerSubjectsNoteBinding
 import co.tuister.uisers.utils.extensions.format
 import java.text.DecimalFormat
 
@@ -27,7 +27,7 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
         fun onSaveNote(note: Note)
     }
 
-    lateinit var binding: DialogFragmentSubjectsAddNoteBinding
+    lateinit var binding: DialogFragmentCareerSubjectsNoteBinding
     lateinit var note: Note
     lateinit var subject: Subject
 
@@ -48,7 +48,7 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(context),
-            R.layout.dialog_fragment_subjects_add_note,
+            R.layout.dialog_fragment_career_subjects_note,
             null,
             false
         )

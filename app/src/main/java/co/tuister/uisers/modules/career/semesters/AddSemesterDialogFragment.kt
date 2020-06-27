@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import co.tuister.domain.entities.Semester
-import co.tuister.uisers.databinding.DialogFragmentSemesterBinding
+import co.tuister.uisers.databinding.DialogFragmentCareerSemesterBinding
 import java.util.*
 
 class AddSemesterDialogFragment : AppCompatDialogFragment() {
@@ -20,7 +20,7 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
         fun onSaveSemester(semester: Semester)
     }
 
-    lateinit var binding: DialogFragmentSemesterBinding
+    lateinit var binding: DialogFragmentCareerSemesterBinding
     private lateinit var semesters: List<Semester>
 
     var semester: Semester? = null
@@ -36,7 +36,7 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DialogFragmentSemesterBinding.inflate(LayoutInflater.from(context))
+        binding = DialogFragmentCareerSemesterBinding.inflate(LayoutInflater.from(context))
         semesters =
             arguments?.getParcelableArray(ARGUMENT_SEMESTERS)?.map { it as Semester } ?: listOf()
         return binding.root

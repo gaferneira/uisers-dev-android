@@ -91,7 +91,7 @@ class TasksListFragment : BaseFragment<FragmentTasksListBinding>() {
         val adapterPosition = item.groupId
         val task = adapter.list.getOrNull(adapterPosition)
         task?.run {
-            showConfirmDialog(getString(R.string.confirm_remove_task), title) {
+            showConfirmDialog(getString(R.string.tasks_confirm_remove_task), title) {
                 viewModel.remove(this)
             }
         }

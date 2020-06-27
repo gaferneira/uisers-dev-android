@@ -35,7 +35,7 @@
                 android:textColor="?colorOnPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/text_semester_average" />
+                tools:text="@string/career_label_text_semester_average" />
 
             <TextView
                 android:id="@+id/text_view_footer_total"

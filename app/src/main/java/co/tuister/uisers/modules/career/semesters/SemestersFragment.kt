@@ -11,14 +11,14 @@ import co.tuister.domain.entities.Semester
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
-import co.tuister.uisers.databinding.FragmentSemestersBinding
+import co.tuister.uisers.databinding.FragmentCareerSemestersBinding
 import co.tuister.uisers.modules.career.FooterAdapter
 import co.tuister.uisers.modules.career.semesters.SemestersViewModel.State
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class SemestersFragment :
-    BaseFragment<FragmentSemestersBinding>(),
+    BaseFragment<FragmentCareerSemestersBinding>(),
     SemestersAdapter.SemesterListener,
     AddSemesterDialogFragment.AddSemesterDialogListener {
 
@@ -36,7 +36,7 @@ class SemestersFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSemestersBinding.inflate(inflater)
+        binding = FragmentCareerSemestersBinding.inflate(inflater)
         initViews()
         initViewModel()
         return binding.root
@@ -87,7 +87,7 @@ class SemestersFragment :
                     map { it.average * it.credits }.sum() / credits
                 } else 0f
 
-                footerAdapter.setData(R.string.my_career_semesters_average, average)
+                footerAdapter.setData(R.string.career_label_semesters_average, average)
             }
         }
     }
@@ -110,7 +110,7 @@ class SemestersFragment :
     }
 
     override fun onClickSemester(semester: Semester) {
-        showConfirmDialog(R.string.confirm_change_current_semester, R.string.title_my_career_semesters) {
+        showConfirmDialog(R.string.career_confirm_change_current_semester, R.string.career_title_semesters) {
             viewModel.changeCurrentSemester(semester)
         }
     }
