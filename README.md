@@ -36,7 +36,7 @@ Vidal Javier Ramirez [linkedIn](https://www.linkedin.com/in/vidal-javier-ramirez
 * [ImageCropper](https://github.com/ArthurHub/Android-Image-Cropper)
 * [LeakCanary](https://github.com/square/leakcanary)
 
-License
+### License
 
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
