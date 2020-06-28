@@ -2,7 +2,7 @@
   {
     "career": 22,
     "id": 23364,
-    "name": "Accionamientos electricos",
+    "name": "Accionamientos eléctricos",
     "credits": 4
   },
   {
@@ -62,13 +62,13 @@
   {
     "career": 21,
     "id": 24094,
-    "name": "Analisis estructural",
+    "name": "Análisis estructural",
     "credits": 5
   },
   {
     "career": 11,
     "id": 22962,
-    "name": "Analisis numerico",
+    "name": "Análisis numérico",
     "credits": 4
   },
   {
@@ -80,13 +80,13 @@
   {
     "career": 11,
     "id": 22958,
-    "name": "Automatas y lenguajes formales",
+    "name": "Autómatas y lenguajes formales",
     "credits": 4
   },
   {
     "career": 26,
     "id": 27143,
-    "name": "Automatizacion de procesos",
+    "name": "Automatización de procesos",
     "credits": 4
   },
   {
@@ -104,19 +104,19 @@
   {
     "career": 11,
     "id": 22952,
-    "name": "Biologia para ingenieros",
+    "name": "Biología para ingenieros",
     "credits": 2
   },
   {
     "career": 24,
     "id": 22952,
-    "name": "Biologia para ingenieros",
+    "name": "Biología para ingenieros",
     "credits": 2
   },
   {
     "career": 23,
     "id": 22952,
-    "name": "Biologia para ingenieros",
+    "name": "Biología para ingenieros",
     "credits": 2
   },
   {
@@ -128,133 +128,133 @@
   {
     "career": 11,
     "id": 20252,
-    "name": "Calculo I",
+    "name": "Cálculo I",
     "credits": 4
   },
   {
     "career": 24,
     "id": 20252,
-    "name": "Calculo I",
+    "name": "Cálculo I",
     "credits": 4
   },
   {
     "career": 23,
     "id": 20252,
-    "name": "Calculo I",
+    "name": "Cálculo I",
     "credits": 4
   },
   {
     "career": 26,
     "id": 20252,
-    "name": "Calculo I",
+    "name": "Cálculo I",
     "credits": 4
   },
   {
     "career": 22,
     "id": 20252,
-    "name": "Calculo I",
+    "name": "Cálculo I",
     "credits": 4
   },
   {
     "career": 21,
     "id": 20252,
-    "name": "Calculo I",
+    "name": "Cálculo I",
     "credits": 4
   },
   {
     "career": 27,
     "id": 20252,
-    "name": "Calculo I",
+    "name": "Cálculo I",
     "credits": 4
   },
   {
     "career": 11,
     "id": 20253,
-    "name": "Calculo II",
+    "name": "Cálculo II",
     "credits": 4
   },
   {
     "career": 24,
     "id": 20253,
-    "name": "Calculo II",
+    "name": "Cálculo II",
     "credits": 4
   },
   {
     "career": 23,
     "id": 20253,
-    "name": "Calculo II",
+    "name": "Cálculo II",
     "credits": 4
   },
   {
     "career": 26,
     "id": 20253,
-    "name": "Calculo II",
+    "name": "Cálculo II",
     "credits": 4
   },
   {
     "career": 22,
     "id": 20253,
-    "name": "Calculo II",
+    "name": "Cálculo II",
     "credits": 4
   },
   {
     "career": 21,
     "id": 20253,
-    "name": "Calculo II",
+    "name": "Cálculo II",
     "credits": 4
   },
   {
     "career": 27,
     "id": 20253,
-    "name": "Calculo II",
+    "name": "Cálculo II",
     "credits": 4
   },
   {
     "career": 11,
     "id": 20254,
-    "name": "Calculo III",
+    "name": "Cálculo III",
     "credits": 4
   },
   {
     "career": 24,
     "id": 20254,
-    "name": "Calculo III",
+    "name": "Cálculo III",
     "credits": 4
   },
   {
     "career": 23,
     "id": 20254,
-    "name": "Calculo III",
+    "name": "Cálculo III",
     "credits": 4
   },
   {
     "career": 26,
     "id": 20254,
-    "name": "Calculo III",
+    "name": "Cálculo III",
     "credits": 4
   },
   {
     "career": 22,
     "id": 20254,
-    "name": "Calculo III",
+    "name": "Cálculo III",
     "credits": 4
   },
   {
     "career": 21,
     "id": 20254,
-    "name": "Calculo III",
+    "name": "Cálculo III",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24096,
-    "name": "Caracterizacion de materiales I",
+    "name": "Caracterización de materiales I",
     "credits": 1
   },
   {
     "career": 21,
     "id": 24102,
-    "name": "Caracterizacion de materiales II",
+    "name": "Caracterización de materiales II",
     "credits": 1
   },
   {
@@ -266,25 +266,25 @@
   {
     "career": 26,
     "id": 21619,
-    "name": "Circuitos electricos I",
+    "name": "Circuitos eléctricos I",
     "credits": 4
   },
   {
     "career": 22,
     "id": 21619,
-    "name": "Circuitos electricos I",
+    "name": "Circuitos eléctricos I",
     "credits": 4
   },
   {
     "career": 26,
     "id": 27134,
-    "name": "Circuitos electricos II",
+    "name": "Circuitos eléctricos II",
     "credits": 4
   },
   {
     "career": 22,
     "id": 27134,
-    "name": "Circuitos electricos II",
+    "name": "Circuitos eléctricos II",
     "credits": 4
   },
   {
@@ -302,13 +302,13 @@
   {
     "career": 21,
     "id": 24110,
-    "name": "Construccion",
+    "name": "Construcción",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27126,
-    "name": "Control de sistemas electricos",
+    "name": "Control de sistemas eléctricos",
     "credits": 4
   },
   {
@@ -332,139 +332,139 @@
   {
     "career": 11,
     "id": 23423,
-    "name": "Cultura fisica y deportiva",
+    "name": "Cultura física y deportiva",
     "credits": 1
   },
   {
     "career": 24,
     "id": 23423,
-    "name": "Cultura fisica y deportiva",
+    "name": "Cultura física y deportiva",
     "credits": 1
   },
   {
     "career": 23,
     "id": 23423,
-    "name": "Cultura fisica y deportiva",
+    "name": "Cultura física y deportiva",
     "credits": 1
   },
   {
     "career": 26,
     "id": 23423,
-    "name": "Cultura fisica y deportiva",
+    "name": "Cultura física y deportiva",
     "credits": 1
   },
   {
     "career": 22,
     "id": 23423,
-    "name": "Cultura fisica y deportiva",
+    "name": "Cultura física y deportiva",
     "credits": 1
   },
   {
     "career": 21,
     "id": 23423,
-    "name": "Cultura fisica y deportiva",
+    "name": "Cultura física y deportiva",
     "credits": 1
   },
   {
     "career": 27,
     "id": 23423,
-    "name": "Cultura fisica y deportiva",
+    "name": "Cultura física y deportiva",
     "credits": 1
   },
   {
     "career": 24,
     "id": 23017,
-    "name": "Dibujo de maquinas",
+    "name": "Dibujo de máquinas",
     "credits": 3
   },
   {
     "career": 26,
     "id": 23328,
-    "name": "Dibujo en ingenieria",
+    "name": "Dibujo en ingeniería",
     "credits": 3
   },
   {
     "career": 22,
     "id": 23328,
-    "name": "Dibujo en ingenieria",
+    "name": "Dibujo en ingeniería",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24591,
-    "name": "Dibujo mecanico",
+    "name": "Dibujo mecánico",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23021,
-    "name": "Dinamica",
+    "name": "Dinámica",
     "credits": 3
   },
   {
     "career": 26,
     "id": 27138,
-    "name": "Dinamica de procesos",
+    "name": "Dinámica de procesos",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24108,
-    "name": "Dinamica estructural",
+    "name": "Dinámica estructural",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29014,
-    "name": "Direccion de operaciones I",
+    "name": "Dirección de operaciones I",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29018,
-    "name": "Direccion de operaciones II",
+    "name": "Dirección de operaciones II",
     "credits": 3
   },
   {
     "career": 11,
     "id": 22964,
-    "name": "Direccion empresarial I",
+    "name": "Dirección empresarial I",
     "credits": 3
   },
   {
     "career": 24,
     "id": 22964,
-    "name": "Direccion empresarial I",
+    "name": "Dirección empresarial I",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29005,
-    "name": "Direccion empresarial I",
+    "name": "Dirección empresarial I",
     "credits": 3
   },
   {
     "career": 21,
     "id": 22964,
-    "name": "Direccion empresarial I",
+    "name": "Dirección empresarial I",
     "credits": 3
   },
   {
     "career": 27,
     "id": 22964,
-    "name": "Direccion empresarial I",
+    "name": "Dirección empresarial I",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29011,
-    "name": "Direccion empresarial II",
+    "name": "Dirección empresarial II",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23026,
-    "name": "Diseño basico",
+    "name": "Diseño básico",
     "credits": 4
   },
   {
@@ -476,31 +476,31 @@
   {
     "career": 21,
     "id": 24111,
-    "name": "Diseño de estructuras metalicas",
+    "name": "Diseño de estructuras metálicas",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24100,
-    "name": "Diseño de hormigon armado I",
+    "name": "Diseño de hormigón armado I",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24105,
-    "name": "Diseño de hormigon armado II",
+    "name": "Diseño de hormigón armado II",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23031,
-    "name": "Diseño de maquinas I",
+    "name": "Diseño de máquinas I",
     "credits": 5
   },
   {
     "career": 24,
     "id": 23037,
-    "name": "Diseño de maquinas II",
+    "name": "Diseño de máquinas II",
     "credits": 5
   },
   {
@@ -512,7 +512,7 @@
   {
     "career": 26,
     "id": 27146,
-    "name": "Diseño de sistemas electronicos",
+    "name": "Diseño de sistemas electrónicos",
     "credits": 4
   },
   {
@@ -524,25 +524,25 @@
   {
     "career": 24,
     "id": 23019,
-    "name": "Diseño grafico",
+    "name": "Diseño gráfico",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24588,
-    "name": "Diseño i creatividad",
+    "name": "Diseño I creatividad",
     "credits": 5
   },
   {
     "career": 27,
     "id": 24590,
-    "name": "Diseño ii lenguaje basico",
+    "name": "Diseño II lenguaje básico",
     "credits": 5
   },
   {
     "career": 27,
     "id": 24593,
-    "name": "Diseño III configuracion",
+    "name": "Diseño III configuración",
     "credits": 5
   },
   {
@@ -560,19 +560,19 @@
   {
     "career": 27,
     "id": 24614,
-    "name": "Diseño vIII interdisciplina",
+    "name": "Diseño VIII interdisciplina",
     "credits": 5
   },
   {
     "career": 26,
     "id": 23411,
-    "name": "Dispositivos electronicos",
+    "name": "Dispositivos electrónicos",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22978,
-    "name": "Economia empresarial",
+    "name": "Economía empresarial",
     "credits": 4
   },
   {
@@ -614,103 +614,103 @@
   {
     "career": 11,
     "id": 22957,
-    "name": "Electricidad y electronica",
+    "name": "Electricidad y electrónica",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23030,
-    "name": "Electricidad y electronica basica",
+    "name": "Electricidad y electrónica básica",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29001,
-    "name": "Electricidad y electronica basica",
+    "name": "Electricidad y electrónica básica",
     "credits": 3
   },
   {
     "career": 22,
     "id": 23361,
-    "name": "Electronica de potencia",
+    "name": "Electrónica de potencia",
     "credits": 4
   },
   {
     "career": 26,
     "id": 27142,
-    "name": "Electronica industrial",
+    "name": "Electrónica industrial",
     "credits": 4
   },
   {
     "career": 23,
     "id": 28999,
-    "name": "Entorno economico",
+    "name": "Entorno económico",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24603,
-    "name": "Ergonomia del producto",
+    "name": "Ergonomía del producto",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24595,
-    "name": "Ergonomia fisica",
+    "name": "Ergonomía física",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24095,
-    "name": "Estadistica aplicada a la ingenieria",
+    "name": "Estadística aplicada a la ingeniería",
     "credits": 3
   },
   {
     "career": 11,
     "id": 21857,
-    "name": "Estadistica I",
+    "name": "Estadística I",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29003,
-    "name": "Estadistica I",
+    "name": "Estadística I",
     "credits": 3
   },
   {
     "career": 11,
     "id": 21858,
-    "name": "Estadistica II",
+    "name": "Estadística II",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29006,
-    "name": "Estadistica II",
+    "name": "Estadística II",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29012,
-    "name": "Estadistica III",
+    "name": "Estadística III",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23018,
-    "name": "Estatica",
+    "name": "Estática",
     "credits": 4
   },
   {
     "career": 21,
     "id": 23018,
-    "name": "Estatica",
+    "name": "Estática",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22955,
-    "name": "Estruc.de.datos y analisis de algoritmos",
+    "name": "Estruc.de.datos y análisis de algoritmos",
     "credits": 4
   },
   {
@@ -752,25 +752,25 @@
   {
     "career": 27,
     "id": 24589,
-    "name": "Expresion i bocetacion",
+    "name": "Expresión I bocetación",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24594,
-    "name": "Expresion ii tridimensional",
+    "name": "Expresión II tridimensional",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24615,
-    "name": "Expresion V fotografia",
+    "name": "Expresión V fotografía",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24617,
-    "name": "Expresion VI composicion y edicion digital",
+    "name": "Expresión VI composición y edicion digital",
     "credits": 3
   },
   {
@@ -782,121 +782,121 @@
   {
     "career": 11,
     "id": 22950,
-    "name": "Fisica I",
+    "name": "Física I",
     "credits": 4
   },
   {
     "career": 24,
     "id": 22950,
-    "name": "Fisica I",
+    "name": "Física I",
     "credits": 4
   },
   {
     "career": 23,
     "id": 22950,
-    "name": "Fisica I",
+    "name": "Física I",
     "credits": 4
   },
   {
     "career": 26,
     "id": 22950,
-    "name": "Fisica I",
+    "name": "Física I",
     "credits": 4
   },
   {
     "career": 22,
     "id": 22950,
-    "name": "Fisica I",
+    "name": "Física I",
     "credits": 4
   },
   {
     "career": 21,
     "id": 22950,
-    "name": "Fisica I",
+    "name": "Física I",
     "credits": 4
   },
   {
     "career": 27,
     "id": 22950,
-    "name": "Fisica I",
+    "name": "Física I",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22953,
-    "name": "Fisica II",
+    "name": "Física II",
     "credits": 4
   },
   {
     "career": 24,
     "id": 22953,
-    "name": "Fisica II",
+    "name": "Física II",
     "credits": 4
   },
   {
     "career": 23,
     "id": 22953,
-    "name": "Fisica II",
+    "name": "Física II",
     "credits": 4
   },
   {
     "career": 26,
     "id": 22953,
-    "name": "Fisica II",
+    "name": "Física II",
     "credits": 4
   },
   {
     "career": 22,
     "id": 22953,
-    "name": "Fisica II",
+    "name": "Física II",
     "credits": 4
   },
   {
     "career": 21,
     "id": 22953,
-    "name": "Fisica II",
+    "name": "Física II",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22956,
-    "name": "Fisica III",
+    "name": "Física III",
     "credits": 4
   },
   {
     "career": 24,
     "id": 22956,
-    "name": "Fisica III",
+    "name": "Física III",
     "credits": 4
   },
   {
     "career": 23,
     "id": 22956,
-    "name": "Fisica III",
+    "name": "Física III",
     "credits": 4
   },
   {
     "career": 26,
     "id": 22956,
-    "name": "Fisica III",
+    "name": "Física III",
     "credits": 4
   },
   {
     "career": 22,
     "id": 22956,
-    "name": "Fisica III",
+    "name": "Física III",
     "credits": 4
   },
   {
     "career": 21,
     "id": 22956,
-    "name": "Fisica III",
+    "name": "Física III",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29021,
-    "name": "Formulacion y evaluacion de proyectos",
+    "name": "Formulación y evaluación de proyectos",
     "credits": 3
   },
   {
@@ -908,241 +908,241 @@
   {
     "career": 26,
     "id": 23414,
-    "name": "Fundamentos de circuitos analogicos",
+    "name": "Fundamentos de circuitos analógicos",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22948,
-    "name": "Fundamentos de programacion",
+    "name": "Fundamentos de programación",
     "credits": 4
   },
   {
     "career": 22,
     "id": 27129,
-    "name": "generacion de energia electrica",
+    "name": "Generación de energia eléctrica",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24091,
-    "name": "geologia para ingenieros",
+    "name": "Geología para ingenieros",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24097,
-    "name": "geomatica",
+    "name": "Geomática",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23015,
-    "name": "geometria descriptiva",
+    "name": "Geometría descriptiva",
     "credits": 4
   },
   {
     "career": 23,
     "id": 23015,
-    "name": "geometria descriptiva",
+    "name": "Geometría descriptiva",
     "credits": 4
   },
   {
     "career": 21,
     "id": 23015,
-    "name": "geometria descriptiva",
+    "name": "Geometría descriptiva",
     "credits": 4
   },
   {
     "career": 27,
     "id": 23015,
-    "name": "geometria descriptiva",
+    "name": "Geometría descriptiva",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29000,
-    "name": "gestion contable",
+    "name": "Gestión contable",
     "credits": 3
   },
   {
     "career": 26,
     "id": 27131,
-    "name": "gestion de proyectos de ingenieria",
+    "name": "Gestión de proyectos de ingeniería",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27131,
-    "name": "gestion de proyectos de ingenieria",
+    "name": "Gestión de proyectos de ingeniería",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24104,
-    "name": "hidraulica",
+    "name": "Hidraúlica",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24098,
-    "name": "hidrologia",
+    "name": "Hidrología",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24604,
-    "name": "historia del diseño",
+    "name": "Historia del diseño",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29017,
-    "name": "Ingenieria de calidad",
+    "name": "Ingeniería de calidad",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23040,
-    "name": "Ingenieria de control",
+    "name": "Ingeniería de control",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23041,
-    "name": "Ingenieria de mantenimiento",
+    "name": "Ingeniería de mantenimiento",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23032,
-    "name": "Ingenieria de manufactura",
+    "name": "Ingeniería de manufactura",
     "credits": 3
   },
   {
     "career": 11,
     "id": 22969,
-    "name": "Ingenieria del software I",
+    "name": "Ingeniería del software I",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22973,
-    "name": "Ingenieria del software II",
+    "name": "Ingeniería del software II",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24103,
-    "name": "Ingenieria del transito",
+    "name": "Ingeniería del tránsito",
     "credits": 2
   },
   {
     "career": 11,
     "id": 22976,
-    "name": "Ingenieria economica",
+    "name": "Ingeniería económica",
     "credits": 3
   },
   {
     "career": 24,
     "id": 22976,
-    "name": "Ingenieria economica",
+    "name": "Ingeniería económica",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29009,
-    "name": "Ingenieria economica",
+    "name": "Ingeniería económica",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24107,
-    "name": "Ingenieria economica",
+    "name": "Ingeniería económica",
     "credits": 3
   },
   {
     "career": 11,
     "id": 23424,
-    "name": "Ingles I",
+    "name": " Inglés I",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23424,
-    "name": "Ingles I",
+    "name": " Inglés I",
     "credits": 4
   },
   {
     "career": 23,
     "id": 23424,
-    "name": "Ingles I",
+    "name": " Inglés I",
     "credits": 4
   },
   {
     "career": 26,
     "id": 23424,
-    "name": "Ingles I",
+    "name": " Inglés I",
     "credits": 4
   },
   {
     "career": 22,
     "id": 23424,
-    "name": "Ingles I",
+    "name": " Inglés I",
     "credits": 4
   },
   {
     "career": 21,
     "id": 23424,
-    "name": "Ingles I",
+    "name": " Inglés I",
     "credits": 4
   },
   {
     "career": 11,
     "id": 23425,
-    "name": "Ingles II",
+    "name": " Inglés II",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23425,
-    "name": "Ingles II",
+    "name": " Inglés II",
     "credits": 4
   },
   {
     "career": 23,
     "id": 23425,
-    "name": "Ingles II",
+    "name": " Inglés II",
     "credits": 4
   },
   {
     "career": 26,
     "id": 23425,
-    "name": "Ingles II",
+    "name": " Inglés II",
     "credits": 4
   },
   {
     "career": 22,
     "id": 23425,
-    "name": "Ingles II",
+    "name": " Inglés II",
     "credits": 4
   },
   {
     "career": 21,
     "id": 23425,
-    "name": "Ingles II",
+    "name": " Inglés II",
     "credits": 4
   },
   {
     "career": 22,
     "id": 23360,
-    "name": "Instalaciones electricas",
+    "name": "Instalaciones eléctricas",
     "credits": 4
   },
   {
     "career": 26,
     "id": 23420,
-    "name": "Instrumentacion electronica",
+    "name": "Instrumentación electrónica",
     "credits": 4
   },
   {
@@ -1154,43 +1154,43 @@
   {
     "career": 26,
     "id": 27137,
-    "name": "Introduccion a ciencia de materiales",
+    "name": "Introducción a ciencia de materiales",
     "credits": 3
   },
   {
     "career": 26,
     "id": 27132,
-    "name": "Introduccion a la ingenieria",
+    "name": "Introducción a la ingeniería",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27132,
-    "name": "Introduccion a la ingenieria",
+    "name": "Introducción a la ingeniería",
     "credits": 3
   },
   {
     "career": 23,
     "id": 28998,
-    "name": "Introduccion a la ingenieria industrial",
+    "name": "Introducción a la ingeniería industrial",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29016,
-    "name": "Investigacion de mercados",
+    "name": "Investigación de mercados",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29007,
-    "name": "Investigacion de operaciones I",
+    "name": "Investigación de operaciones I",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29013,
-    "name": "Investigacion de operaciones II",
+    "name": "Investigación de operaciones II",
     "credits": 3
   },
   {
@@ -1208,37 +1208,37 @@
   {
     "career": 22,
     "id": 23352,
-    "name": "Lineas de transmision",
+    "name": "Líneas de transmisión",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29022,
-    "name": "Logistica integral",
+    "name": "Logística integral",
     "credits": 3
   },
   {
     "career": 22,
     "id": 21624,
-    "name": "Maquinas electricas I",
+    "name": "Máquinas eléctricas I",
     "credits": 4
   },
   {
     "career": 22,
     "id": 23356,
-    "name": "Maquinas electricas II",
+    "name": "Máquinas eléctricas II",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22954,
-    "name": "Matematicas discretas",
+    "name": "Matemáticas discretas",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24099,
-    "name": "Materiales de construccion",
+    "name": "Materiales de construcción",
     "credits": 2
   },
   {
@@ -1256,85 +1256,85 @@
   {
     "career": 27,
     "id": 24605,
-    "name": "Materiales y procesos ii polimeros",
+    "name": "Materiales y procesos II polímeros",
     "credits": 4
   },
   {
     "career": 27,
     "id": 24616,
-    "name": "Materiales y procesos V ceramicos/vidrios",
+    "name": "Materiales y procesos V cerámicos/vidrios",
     "credits": 4
   },
   {
     "career": 23,
     "id": 20113,
-    "name": "Mecanica analitica",
+    "name": "Mecánica analítica",
     "credits": 4
   },
   {
     "career": 22,
     "id": 27121,
-    "name": "Mecanica analitica",
+    "name": "Mecánica analítica",
     "credits": 3
   },
   {
     "career": 27,
     "id": 20113,
-    "name": "Mecanica analitica",
+    "name": "Mecánica analítica",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23024,
-    "name": "Mecanica de fluidos",
+    "name": "Mecánica de fluidos",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24093,
-    "name": "Mecanica de fluidos",
+    "name": "Mecánica de fluidos",
     "credits": 5
   },
   {
     "career": 24,
     "id": 23025,
-    "name": "Mecanica de maquinas",
+    "name": "Mecánica de máquinas",
     "credits": 4
   },
   {
     "career": 27,
     "id": 23025,
-    "name": "Mecanica de maquinas",
+    "name": "Mecánica de máquinas",
     "credits": 4
   },
   {
     "career": 21,
     "id": 23834,
-    "name": "Mecanica de solidos",
+    "name": "Mecánica de sólidos",
     "credits": 4
   },
   {
     "career": 21,
     "id": 24101,
-    "name": "Mecanica de suelos I",
+    "name": "Mecánica de suelos I",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27123,
-    "name": "Mediciones electricas",
+    "name": "Mediciones eléctricas",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27128,
-    "name": "Mediciones electricas avanzadas",
+    "name": "Mediciones eléctricas avanzadas",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23054,
-    "name": "Metodologia de la investigacion",
+    "name": "Metodologia de la investigación",
     "credits": 3
   },
   {
@@ -1346,481 +1346,481 @@
   {
     "career": 26,
     "id": 27120,
-    "name": "Metodos numericos",
+    "name": "Métodos numéricos",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27120,
-    "name": "Metodos numericos",
+    "name": "Métodos numéricos",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24092,
-    "name": "Metodos numericos",
+    "name": "Métodos numéricos",
     "credits": 3
   },
   {
     "career": 11,
     "id": 22963,
-    "name": "pensamiento sistemico y organizacional",
+    "name": "Pensamiento sistémico y organizacional",
     "credits": 4
   },
   {
     "career": 27,
     "id": 24618,
-    "name": "plan de negocios",
+    "name": "Plan de negocios",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23039,
-    "name": "potencia fluida",
+    "name": "Potencia fluida",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29010,
-    "name": "principios de mercadeo",
+    "name": "Principios de mercadeo",
     "credits": 3
   },
   {
     "career": 26,
     "id": 27125,
-    "name": "probabilidad y estadistica",
+    "name": "Probabilidad y estadística",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27125,
-    "name": "probabilidad y estadistica",
+    "name": "Probabilidad y estadística",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23028,
-    "name": "procesos de manufactura",
+    "name": "Procesos de manufactura",
     "credits": 3
   },
   {
     "career": 23,
     "id": 29008,
-    "name": "procesos industriales",
+    "name": "Procesos industriales",
     "credits": 3
   },
   {
     "career": 26,
     "id": 27133,
-    "name": "programacion de computadores I",
+    "name": "Programación de computadores I",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27133,
-    "name": "programacion de computadores I",
+    "name": "Programación de computadores I",
     "credits": 3
   },
   {
     "career": 26,
     "id": 27135,
-    "name": "programacion de computadores II",
+    "name": "Programación de computadores II",
     "credits": 3
   },
   {
     "career": 11,
     "id": 22967,
-    "name": "programacion en la web",
+    "name": "Programación en la web",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22951,
-    "name": "programacion orientada a objetos",
+    "name": "Programación orientada a objetos",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22949,
-    "name": "quimica basica",
+    "name": "Quimica básica",
     "credits": 4
   },
   {
     "career": 24,
     "id": 22949,
-    "name": "quimica basica",
+    "name": "Quimica básica",
     "credits": 4
   },
   {
     "career": 23,
     "id": 22949,
-    "name": "quimica basica",
+    "name": "Quimica básica",
     "credits": 4
   },
   {
     "career": 26,
     "id": 22949,
-    "name": "quimica basica",
+    "name": "Quimica básica",
     "credits": 4
   },
   {
     "career": 22,
     "id": 22949,
-    "name": "quimica basica",
+    "name": "Quimica básica",
     "credits": 4
   },
   {
     "career": 21,
     "id": 22949,
-    "name": "quimica basica",
+    "name": "Quimica básica",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22965,
-    "name": "redes de computadores I",
+    "name": "Redes de computadores I",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22970,
-    "name": "redes de computadores II",
+    "name": "Redes de computadores II",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23022,
-    "name": "resistencia de materiales",
+    "name": "Resistencia de materiales",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29019,
-    "name": "seguridad y salud en el trabajo",
+    "name": "Seguridad y salud en el trabajo",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24596,
-    "name": "semiotica",
+    "name": "Semiótica",
     "credits": 3
   },
   {
     "career": 11,
     "id": 22974,
-    "name": "simulacion digital",
+    "name": "Simulación digital",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23035,
-    "name": "sist.transp.aprovech.de.fluidos",
+    "name": "Sist.transp.aprovech.de.fluidos",
     "credits": 4
   },
   {
     "career": 22,
     "id": 27127,
-    "name": "sistemas de distribucion",
+    "name": "Sistemas de distribución",
     "credits": 3
   },
   {
     "career": 11,
     "id": 22968,
-    "name": "sistemas de informacion",
+    "name": "Sistemas de información",
     "credits": 4
   },
   {
     "career": 23,
     "id": 23527,
-    "name": "sistemas de informacion",
+    "name": "Sistemas de información",
     "credits": 3
   },
   {
     "career": 22,
     "id": 23359,
-    "name": "sistemas de potencia I",
+    "name": "Sistemas de potencia I",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22961,
-    "name": "sistemas digitales",
+    "name": "Sistemas digitales",
     "credits": 4
   },
   {
     "career": 26,
     "id": 27136,
-    "name": "sistemas digitales I",
+    "name": "Sistemas digitales I",
     "credits": 4
   },
   {
     "career": 26,
     "id": 27140,
-    "name": "sistemas digitales II",
+    "name": "Sistemas digitales II",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23036,
-    "name": "sistemas mecatronicos I",
+    "name": "Sistemas mecatrónicos I",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22972,
-    "name": "sistemas operacionales",
+    "name": "Sistemas operacionales",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23034,
-    "name": "sistemas termicos I",
+    "name": "Sistemas térmicos I",
     "credits": 4
   },
   {
     "career": 22,
     "id": 23363,
-    "name": "subestaciones",
+    "name": "Subestaciones",
     "credits": 4
   },
   {
     "career": 23,
     "id": 29020,
-    "name": "talento humano",
+    "name": "Talento humano",
     "credits": 3
   },
   {
     "career": 11,
     "id": 23427,
-    "name": "taller de lenguaje",
+    "name": "Taller de lenguaje",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23427,
-    "name": "taller de lenguaje",
+    "name": "Taller de lenguaje",
     "credits": 3
   },
   {
     "career": 23,
     "id": 23427,
-    "name": "taller de lenguaje",
+    "name": "Taller de lenguaje",
     "credits": 3
   },
   {
     "career": 21,
     "id": 23427,
-    "name": "taller de lenguaje",
+    "name": "Taller de lenguaje",
     "credits": 3
   },
   {
     "career": 27,
     "id": 23427,
-    "name": "taller de lenguaje",
+    "name": "Taller de lenguaje",
     "credits": 3
   },
   {
     "career": 24,
     "id": 23033,
-    "name": "taller de manufactura",
+    "name": "Taller de manufactura",
     "credits": 1
   },
   {
     "career": 22,
     "id": 27124,
-    "name": "tecnicas digitales y analogicas",
+    "name": "Técnicas digitales y analógicas",
     "credits": 4
   },
   {
     "career": 26,
     "id": 23330,
-    "name": "teoria electromagnetica",
+    "name": "Teoría electromagnética",
     "credits": 4
   },
   {
     "career": 22,
     "id": 23330,
-    "name": "teoria electromagnetica",
+    "name": "Teoría electromagnética",
     "credits": 4
   },
   {
     "career": 22,
     "id": 27122,
-    "name": "termodinamica",
+    "name": "Termodinámica",
     "credits": 4
   },
   {
     "career": 24,
     "id": 21802,
-    "name": "termodinamica I",
+    "name": "Termodinámica I",
     "credits": 4
   },
   {
     "career": 23,
     "id": 21802,
-    "name": "termodinamica I",
+    "name": "Termodinámica I",
     "credits": 4
   },
   {
     "career": 24,
     "id": 23059,
-    "name": "termodinamica II",
+    "name": "Termodinámica II",
     "credits": 3
   },
   {
     "career": 21,
     "id": 24090,
-    "name": "topografia",
+    "name": "Topografía",
     "credits": 4
   },
   {
     "career": 11,
     "id": 22975,
-    "name": "trabajo de grado I",
+    "name": "Trabajo de grado I",
     "credits": 3
   },
   {
     "career": 24,
     "id": 22975,
-    "name": "trabajo de grado I",
+    "name": "Trabajo de grado I",
     "credits": 3
   },
   {
     "career": 23,
     "id": 22975,
-    "name": "trabajo de grado I",
+    "name": "Trabajo de grado I",
     "credits": 3
   },
   {
     "career": 26,
     "id": 27130,
-    "name": "trabajo de grado I",
+    "name": "Trabajo de grado I",
     "credits": 3
   },
   {
     "career": 22,
     "id": 27130,
-    "name": "trabajo de grado I",
+    "name": "Trabajo de grado I",
     "credits": 3
   },
   {
     "career": 21,
     "id": 22975,
-    "name": "trabajo de grado I",
+    "name": "Trabajo de grado I",
     "credits": 3
   },
   {
     "career": 27,
     "id": 22975,
-    "name": "trabajo de grado I",
+    "name": "Trabajo de grado I",
     "credits": 3
   },
   {
     "career": 11,
     "id": 22977,
-    "name": "trabajo de grado II",
+    "name": "Trabajo de grado II",
     "credits": 7
   },
   {
     "career": 24,
     "id": 22977,
-    "name": "trabajo de grado II",
+    "name": "Trabajo de grado II",
     "credits": 7
   },
   {
     "career": 23,
     "id": 22977,
-    "name": "trabajo de grado II",
+    "name": "Trabajo de grado II",
     "credits": 7
   },
   {
     "career": 26,
     "id": 22977,
-    "name": "trabajo de grado II",
+    "name": "Trabajo de grado II",
     "credits": 7
   },
   {
     "career": 22,
     "id": 22977,
-    "name": "trabajo de grado II",
+    "name": "Trabajo de grado II",
     "credits": 7
   },
   {
     "career": 21,
     "id": 22977,
-    "name": "trabajo de grado II",
+    "name": "Trabajo de grado II",
     "credits": 7
   },
   {
     "career": 27,
     "id": 22977,
-    "name": "trabajo de grado II",
+    "name": "Trabajo de grado II",
     "credits": 7
   },
   {
     "career": 24,
     "id": 23029,
-    "name": "transferencia de calor",
+    "name": "Transferencia de calor",
     "credits": 4
   },
   {
     "career": 26,
     "id": 23332,
-    "name": "tratamiento de señales",
+    "name": "Tratamiento de señales",
     "credits": 4
   },
   {
     "career": 22,
     "id": 23332,
-    "name": "tratamiento de señales",
+    "name": "Tratamiento de señales",
     "credits": 4
   },
   {
     "career": 26,
     "id": 23413,
-    "name": "tratamiento de señales discretas",
+    "name": "Tratamiento de señales discretas",
     "credits": 3
   },
   {
     "career": 11,
     "id": 24948,
-    "name": "vida y cultura universitaria",
+    "name": "Vida y cultura universitaria",
     "credits": 0
   },
   {
     "career": 24,
     "id": 24948,
-    "name": "vida y cultura universitaria",
+    "name": "Vida y cultura universitaria",
     "credits": 0
   },
   {
     "career": 23,
     "id": 24948,
-    "name": "vida y cultura universitaria",
+    "name": "Vida y cultura universitaria",
     "credits": 0
   },
   {
     "career": 26,
     "id": 24948,
-    "name": "vida y cultura universitaria",
+    "name": "Vida y cultura universitaria",
     "credits": 0
   },
   {
     "career": 22,
     "id": 24948,
-    "name": "vida y cultura universitaria",
+    "name": "Vida y cultura universitaria",
     "credits": 0
   },
   {
     "career": 21,
     "id": 24948,
-    "name": "vida y cultura universitaria",
+    "name": "Vida y cultura universitaria",
     "credits": 0
   },
   {
     "career": 27,
     "id": 24948,
-    "name": "vida y cultura universitaria",
+    "name": "Vida y cultura universitaria",
     "credits": 0
   },
   {
@@ -1832,7 +1832,7 @@
   {
     "career": 27,
     "id": 24606,
-    "name": "Diseño VI bioenergia",
+    "name": "Diseño VI bioenergía",
     "credits": 5
   },
   {
@@ -1850,37 +1850,37 @@
   {
     "career": 27,
     "id": 24599,
-    "name": "Ergonomia cognitiva y ambiental",
+    "name": "Ergonomía cognitiva y ambiental",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24598,
-    "name": "Expresion III tecnicas - color",
+    "name": "Expresión III técnicas - color",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24611,
-    "name": "Expresion IV axonometria",
+    "name": "Expresión IV axonometría",
     "credits": 3
   },
   {
     "career": 27,
     "id": 24609,
-    "name": "Fundamentos del diseño mecatronico",
+    "name": "Fundamentos del diseño mecatrónico",
     "credits": 4
   },
   {
     "career": 27,
     "id": 23424,
-    "name": "Ingles I",
+    "name": " Inglés I",
     "credits": 4
   },
   {
     "career": 27,
     "id": 23425,
-    "name": "Ingles II",
+    "name": " Inglés II",
     "credits": 4
   },
   {
@@ -1904,13 +1904,13 @@
   {
     "career": 27,
     "id": 24601,
-    "name": "Mecanica de solidos",
+    "name": "Mecánica de sólidos",
     "credits": 4
   },
   {
     "career": 27,
     "id": 24607,
-    "name": "Sociologia",
+    "name": "Sociología",
     "credits": 3
   }
 ]
