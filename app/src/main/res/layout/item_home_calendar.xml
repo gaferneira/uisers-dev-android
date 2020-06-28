@@ -10,7 +10,7 @@
         android:id="@+id/text_view_home_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/home_label_today"
+        android:text="@string/home_label_upcoming_events"
         android:textAppearance="?textAppearanceHeadline6"
         android:textColor="?colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?colorPrimaryVariant"
+            android:background="?colorSecondaryVariant"
             android:paddingTop="@dimen/padding_margin_small"
             android:paddingBottom="@dimen/padding_margin_small"
             android:theme="@style/ThemeOverlay.MyApp.Light">
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_margin_normal_smaller"
                 android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
-                android:text="@string/home_label_no_subjects"
+                android:text="@string/home_label_no_events"
                 android:textAppearance="?textAppearanceBody1"
                 android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"

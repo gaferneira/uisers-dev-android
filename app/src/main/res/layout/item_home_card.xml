@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_margin_small"
+        android:background="@color/grey_300"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_card_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_normal"
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:textAppearance="?attr/textAppearanceOverline"
+        android:textColor="@color/material_on_surface_emphasis_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        tools:text="Overline" />
+
+    <TextView
+        android:id="@+id/text_card_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_normal"
+        android:firstBaselineToTopHeight="40dp"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/material_on_surface_emphasis_high_type"
+        app:layout_constraintEnd_toStartOf="@id/image_view_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_card_context"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/text_card_body"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_normal"
+        android:layout_marginEnd="@dimen/padding_margin_large"
+        android:textAppearance="?attr/textAppearanceBody2"
+        android:textColor="@color/material_on_surface_emphasis_medium"
+        app:layout_constraintEnd_toStartOf="@id/image_view_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_card_title"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt." />
+
+    <ImageView
+        android:id="@+id/image_view_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:layout_marginEnd="@dimen/padding_margin_normal"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:srcCompat="@color/grey_100"
+        app:tint="?attr/colorSurface"
+        app:tintMode="multiply" />
+
+    <Button
+        android:id="@+id/button_card_one"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_small"
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:layout_marginEnd="@dimen/padding_margin_micro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_card_body"
+        tools:text="Button1" />
+
+    <Button
+        android:id="@+id/button_card_two"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_margin_micro"
+        android:layout_marginTop="@dimen/padding_margin_normal"
+        android:layout_marginEnd="@dimen/padding_margin_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_card_one"
+        app:layout_constraintTop_toBottomOf="@id/text_card_body"
+        tools:text="Button2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

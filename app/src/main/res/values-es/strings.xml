@@ -134,4 +134,6 @@
     <string name="internal_only_update_careers">Actualizar carreras</string>
     <string name="internal_only_download_csv_file">Descargar csv</string>
     <string name="internal_only_material">Material</string>
+    <string name="home_label_upcoming_events">Próximos eventos</string>
+    <string name="home_label_no_events">No hay eventos</string>
 </resources>

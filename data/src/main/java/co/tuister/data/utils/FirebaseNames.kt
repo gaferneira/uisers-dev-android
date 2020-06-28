@@ -87,3 +87,9 @@ class FeedbackCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
         const val FIELD_FEEDBACK_DATE = "date"
     }
 }
+
+class FeedCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
+    companion object {
+        const val NAME = "feed"
+    }
+}

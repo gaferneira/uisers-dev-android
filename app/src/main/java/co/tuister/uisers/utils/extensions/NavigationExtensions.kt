@@ -19,8 +19,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 fun BottomNavigationView.setupWithNavController(
     navGraphIds: List<Int>,
     fragmentManager: FragmentManager,
-    containerId: Int,
-    intent: Intent
+    containerId: Int
 ): LiveData<NavController> {
 
     // Map of tags
@@ -130,9 +129,6 @@ fun BottomNavigationView.setupWithNavController(
     // Optional: on item reselected, pop back stack to the destination of the graph
     setupItemReselected(graphIdToTagMap, fragmentManager)
 
-    // Handle deep link
-    setupDeepLinks(navGraphIds, fragmentManager, containerId, intent)
-
     // Finally, ensure that we update our BottomNavigationView when the back stack changes
     fragmentManager.addOnBackStackChangedListener {
         if (!isOnFirstFragment && !fragmentManager.isOnBackStack(firstFragmentTag)) {
@@ -150,12 +146,12 @@ fun BottomNavigationView.setupWithNavController(
     return selectedNavController
 }
 
-private fun BottomNavigationView.setupDeepLinks(
+fun BottomNavigationView.manageDeepLink(
     navGraphIds: List<Int>,
     fragmentManager: FragmentManager,
     containerId: Int,
     intent: Intent
-) {
+): Boolean {
     navGraphIds.forEachIndexed { index, navGraphId ->
         val fragmentTag =
             getFragmentTag(index)
@@ -172,9 +168,11 @@ private fun BottomNavigationView.setupDeepLinks(
         if (navHostFragment.navController.handleDeepLink(intent) &&
             selectedItemId != navHostFragment.navController.graph.id
         ) {
-            this.selectedItemId = navHostFragment.navController.graph.id
+            selectedItemId = navHostFragment.navController.graph.id
+            return true
         }
     }
+    return false
 }
 
 private fun BottomNavigationView.setupItemReselected(

@@ -27,6 +27,7 @@ import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
 import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.launchImagePicker
+import co.tuister.uisers.utils.extensions.manageDeepLink
 import co.tuister.uisers.utils.extensions.setImageFromUri
 import co.tuister.uisers.utils.extensions.setupWithNavController
 import com.theartofdev.edmodo.cropper.CropImage
@@ -41,6 +42,8 @@ class MainActivity :
     private lateinit var binding: ActivityMainBinding
     private lateinit var bindingMenu: LeftHomeMenuHeaderLayoutBinding
     private lateinit var viewModel: MainViewModel
+
+    private lateinit var navGraphIds: List<Int>
 
     companion object {
         fun start(context: Context) {
@@ -146,7 +149,7 @@ class MainActivity :
      */
     private fun setupBottomNavigationBar() {
 
-        val navGraphIds = listOf(
+        navGraphIds = listOf(
             R.navigation.nav_graph_home,
             R.navigation.nav_graph_my_career,
             R.navigation.nav_graph_task_manager,
@@ -157,8 +160,7 @@ class MainActivity :
         val controller = binding.bottomNavView.setupWithNavController(
             navGraphIds,
             supportFragmentManager,
-            R.id.nav_host_container,
-            intent
+            R.id.nav_host_container
         )
 
         // Whenever the selected controller changes, setup the action bar.
@@ -187,11 +189,23 @@ class MainActivity :
 
         // Deep links tabs
         intent.data?.run {
-            manageDeeLinkTabs(this)
+            manageDeepLink(this)
         }
     }
 
-    private fun manageDeeLinkTabs(uri: Uri) {
+    fun manageDeepLink(uri: Uri) {
+
+        // Handle deep link
+        if (binding.bottomNavView.manageDeepLink(
+            navGraphIds, supportFragmentManager, R.id.nav_host_container,
+            Intent().apply {
+                data = uri
+            }
+        )
+        ) {
+            return
+        }
+
         if (uri.pathSegments?.size == 1) {
             val itemId = when (uri.pathSegments.first()) {
                 "career" -> R.id.nav_graph_my_career

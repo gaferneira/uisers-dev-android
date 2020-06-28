@@ -77,6 +77,8 @@ class SubjectRepositoryImpl(
             .map {
                 val path = it.reference.path
                 it.toObject(NoteDto::class.java)!!.toEntity(path)
+            }.sortedBy {
+                it.title
             }
     }
 

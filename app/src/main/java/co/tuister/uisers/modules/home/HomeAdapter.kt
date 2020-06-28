@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import co.tuister.domain.entities.SchedulePeriod
-import co.tuister.domain.entities.Task
+import co.tuister.domain.entities.FeedAction
 import co.tuister.uisers.R
+import co.tuister.uisers.modules.home.viewholders.CalendarViewHolder
+import co.tuister.uisers.modules.home.viewholders.CardViewHolder
 import co.tuister.uisers.modules.home.viewholders.HeaderViewHolder
 import co.tuister.uisers.modules.home.viewholders.HomeViewHolder
 import co.tuister.uisers.modules.home.viewholders.ScheduleViewHolder
@@ -19,21 +20,23 @@ class HomeAdapter(
     var list = mutableListOf<HomeData>()
 
     interface HomeListener {
-        fun onClickRow(position: Int)
-        fun onClickSchedulePeriod(period: SchedulePeriod)
-        fun onClickTask(task: Task)
+        fun onClickRow(position: Int, action: FeedAction?)
     }
 
     enum class HomeEnum {
         HEADER,
         SCHEDULE,
-        TASKS;
+        TASKS,
+        CALENDAR,
+        CARD;
 
         fun getLayoutId(): Int {
             return when (this) {
                 HEADER -> R.layout.item_home_header
                 SCHEDULE -> R.layout.item_home_schedule
                 TASKS -> R.layout.item_home_tasks
+                CALENDAR -> R.layout.item_home_calendar
+                CARD -> R.layout.item_home_card
             }
         }
 
@@ -42,6 +45,8 @@ class HomeAdapter(
                 HEADER -> HeaderViewHolder(view)
                 SCHEDULE -> ScheduleViewHolder(view)
                 TASKS -> TasksViewHolder(view)
+                CALENDAR -> CalendarViewHolder(view)
+                CARD -> CardViewHolder(view)
             }
         }
     }
@@ -72,6 +77,11 @@ class HomeAdapter(
         notifyDataSetChanged()
     }
 
+    fun addItems(items: List<HomeData>) {
+        list.addAll(items)
+        list.sortBy { it.template.ordinal }
+        notifyDataSetChanged()
+    }
     fun clearItems() {
         val itemCount = list.size
         list = mutableListOf()

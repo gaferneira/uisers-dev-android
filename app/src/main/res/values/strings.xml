@@ -40,7 +40,7 @@
     <string name="login_hint_year">Year</string>
     <string name="login_message_login_register_confirm_email">We have sent you an email to %s . Please confirm your email so you can access the application</string>
     <string name="login_message_result_forget_message">We have sent you an email to recover your password.</string>
-    <string name="login_message_splash_progress_check_notes">Let\'s go check you notes…</string>
+    <string name="login_message_splash_progress_check_notes">Let\'s go check your notes…</string>
     <string name="login_message_splash_progress_checking_session">Checking session…</string>
     <string name="login_message_splash_progress_go_to_login">Let\'s go to Login</string>
     <string name="login_progress_signing_in">Signing in&#8230;</string>
@@ -78,6 +78,8 @@
     <string name="home_title_home_feedback_result">Feedback</string>
     <string name="home_title_home_tasks">Tasks</string>
     <string name="home_text_feedback_description">Having issues, or just want to give us some feedback?. Tell us the good and the bad</string>
+    <string name="home_label_upcoming_events">Upcoming events</string>
+    <string name="home_label_no_events">There are no events</string>
 
     <!-- CAREER -->
     <string name="career_confirm_change_current_semester">Are you sure to change the current semester?</string>

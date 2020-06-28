@@ -1,6 +1,7 @@
 package co.tuister.uisers.di
 
 import co.tuister.domain.usecases.FeedbackUseCase
+import co.tuister.domain.usecases.GetFeedUseCase
 import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.career.ChangeCurrentSemesterUseCase
@@ -21,6 +22,7 @@ import co.tuister.domain.usecases.career.SaveSubjectUseCase
 import co.tuister.domain.usecases.institutional.GetEventsUseCase
 import co.tuister.domain.usecases.institutional.GetPlacesUseCase
 import co.tuister.domain.usecases.institutional.GetSitesUseCase
+import co.tuister.domain.usecases.institutional.GetUpcomingEventsUseCase
 import co.tuister.domain.usecases.internal.DataUserUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCalendarUseCase
 import co.tuister.domain.usecases.internal.UpdateDataCareersUseCase
@@ -60,6 +62,9 @@ val domainModule = module {
     single { UploadImageUseCase(get()) }
     single { DownloadImageUseCase(get()) }
 
+    // Home
+    single { GetFeedUseCase(get()) }
+
     // My Career
 
     single { SaveSemesterUseCase(get()) }
@@ -91,6 +96,7 @@ val domainModule = module {
     single { GetPlacesUseCase(get()) }
     single { GetSitesUseCase(get()) }
     single { GetEventsUseCase(get()) }
+    single { GetUpcomingEventsUseCase(get()) }
 
     // Profile
     single { ProfileUseCase(get()) }
