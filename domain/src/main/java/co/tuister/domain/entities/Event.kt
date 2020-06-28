@@ -11,4 +11,6 @@ data class Event(
     var duration: Long? = 0,
     var allDay: Boolean = false,
     var latLng: Pair<Double, Double>? = null
-) : Parcelable
+) : Parcelable {
+    fun isAllDay() = duration?.toInt() == -1
+}

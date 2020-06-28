@@ -1,17 +1,22 @@
 package co.tuister.uisers.modules.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import co.tuister.domain.entities.Event
+import co.tuister.domain.entities.FeedAction
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.entities.Task
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentHomeBinding
 import co.tuister.uisers.modules.home.HomeViewModel.State
+import co.tuister.uisers.modules.main.MainActivity
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -57,6 +62,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeAdapter.HomeListen
             is State.LoadHeader -> state.data?.run { addHeader(this) }
             is State.LoadTasks -> state.data?.run { updateListTasks(this) }
             is State.LoadSubjects -> state.data?.run { updateListSubjects(this) }
+            is State.LoadCalendar -> state.data?.run { updateListEvents(this) }
+            is State.LoadFeed -> state.data?.run { updateListCards(this) }
         }
     }
 
@@ -89,15 +96,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), HomeAdapter.HomeListen
         adapter.addItem(HomeTasks(list))
     }
 
-    override fun onClickRow(position: Int) {
-        // TODO
+    private fun updateListEvents(list: List<Event>) {
+        adapter.list.removeAll { it.template == HomeAdapter.HomeEnum.CALENDAR }
+        if (list.isNotEmpty()) {
+            adapter.addItem(HomeCalendar(list))
+        }
     }
 
-    override fun onClickSchedulePeriod(period: SchedulePeriod) {
-        // TODO
+    private fun updateListCards(list: List<HomeCard>) {
+        adapter.list.removeAll { it.template == HomeAdapter.HomeEnum.CARD }
+        if (list.isNotEmpty()) {
+            adapter.addItems(list)
+        }
     }
 
-    override fun onClickTask(task: Task) {
-        // TODO
+    override fun onClickRow(position: Int, action: FeedAction?) {
+        if (action != null) {
+            if (!action.deepLink.isNullOrBlank()) {
+                mainActivity()?.manageDeepLink(Uri.parse(action.deepLink))
+            } else if (!action.url.isNullOrEmpty()) {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(action.url)))
+            }
+        }
     }
+
+    private fun mainActivity(): MainActivity? = activity as? MainActivity
 }

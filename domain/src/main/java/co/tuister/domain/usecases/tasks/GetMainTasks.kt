@@ -13,7 +13,12 @@ class GetMainTasks(
     override suspend fun run(params: Date): Either<Failure, List<Task>> {
         return try {
             val result = repository.getTasks()
-            Either.Right(result.filter { it.status != Task.STATUS_DONE }.take(MAX_ROWS))
+            Either.Right(
+                result
+                    .sortedByDescending { it.status }
+                    .filter { it.status != Task.STATUS_DONE }
+                    .take(MAX_ROWS)
+            )
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

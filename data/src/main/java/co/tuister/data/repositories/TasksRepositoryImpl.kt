@@ -30,7 +30,7 @@ class TasksRepositoryImpl(
             it.toObject(TaskDto::class.java)!!.toEntity(path)
         }
 
-        return list.sortedBy { it.status }
+        return list.sortedBy { it.title }
     }
 
     override suspend fun save(task: Task): Task {

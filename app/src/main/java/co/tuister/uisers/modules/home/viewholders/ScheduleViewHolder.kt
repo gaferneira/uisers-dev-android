@@ -8,7 +8,6 @@ import co.tuister.uisers.R
 import co.tuister.uisers.modules.home.HomeAdapter
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeSchedule
-import kotlinx.android.synthetic.main.item_career_subject.*
 import kotlinx.android.synthetic.main.item_home_schedule.view.*
 import kotlinx.android.synthetic.main.item_home_schedule_period.view.*
 
@@ -45,7 +44,7 @@ class ScheduleViewHolder(view: View) : HomeViewHolder(view) {
             container.addView(
                 configChildView(viewsList[i], period).apply {
                     setOnClickListener {
-                        listener?.onClickSchedulePeriod(period)
+                        listener?.onClickRow(position, createDeepLink(context.getString(R.string.deep_link_career_schedule)))
                     }
                 }
             )

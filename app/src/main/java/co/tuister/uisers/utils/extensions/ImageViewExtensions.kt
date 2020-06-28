@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.widget.ImageView
+import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.utils.view.GlideApp
@@ -12,8 +13,8 @@ import com.androdocs.circleimagelibrary.CircleImageView
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 
-fun ImageView.setImageFromUrl(imageUrl: String) {
-    GlideApp.with(context).load(imageUrl).into(this)
+fun ImageView.setImageFromUrl(imageUrl: String?, placeHolder: Int = R.color.grey_100) {
+    GlideApp.with(context).load(imageUrl).placeholder(placeHolder).into(this)
 }
 
 fun BaseActivity.launchImagePicker() {

@@ -26,13 +26,14 @@ class CalendarRepositoryImpl(
         }
     }
 
-    override suspend fun getEventsByDate(date: Date): List<Event> {
+    override suspend fun getUpcomingEvents(date: Date): List<Event> {
         val document = baseCollection.getCalendarDocument()
         val field = document?.get(BaseCollection.FIELD_CALENDAR)
         val json = gson.toJson(field)
+        val stringDate = DATE_TIME.format(date)
         return gson.fromJson(json, Array<EventDto>::class.java).toList().filter {
-            it.date.startsWith(DATE_TIME.format(date))
-        }.map {
+            it.date >= stringDate
+        }.take(MAX_EVENTS).map {
             Event(it.title, it.description, stringToDateTime(it.date)?.time ?: 0, it.duration)
         }
     }
@@ -51,5 +52,6 @@ class CalendarRepositoryImpl(
     companion object {
         private val DATE_TIME_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
         private val DATE_TIME = SimpleDateFormat("yyyy-MM-dd")
+        private const val MAX_EVENTS = 3
     }
 }

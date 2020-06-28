@@ -1,65 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingHorizontal="@dimen/padding_margin_normal"
-    android:paddingTop="@dimen/padding_margin_small">
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/text_view_home_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_label_today"
-        android:textAppearance="?textAppearanceHeadline6"
+        android:id="@+id/text_view_event_date"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:paddingEnd="@dimen/padding_margin_small"
+        android:textAlignment="textEnd"
+        android:textAppearance="?textAppearanceCaption"
         android:textColor="?colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/container_home_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_margin_normal_smaller"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/text_view_home_title" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Jun 20 10:00" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/container_home_no_items"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="@dimen/padding_margin_extra_small"
+        android:layout_marginBottom="@dimen/padding_margin_small"
         android:paddingTop="@dimen/padding_margin_extra_small"
         app:cardCornerRadius="@dimen/round_corner_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/container_home_container">
+        app:layout_constraintStart_toEndOf="@id/text_view_event_date"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?colorPrimaryVariant"
+            android:background="?colorSecondaryVariant"
             android:paddingTop="@dimen/padding_margin_small"
             android:paddingBottom="@dimen/padding_margin_small"
             android:theme="@style/ThemeOverlay.MyApp.Light">
 
             <TextView
-                android:id="@+id/text_view_home_no_items"
+                android:id="@+id/text_view_event_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/padding_margin_normal_smaller"
                 android:layout_marginEnd="@dimen/padding_margin_normal_smaller"
-                android:text="@string/home_label_no_subjects"
-                android:textAppearance="?textAppearanceBody1"
+                android:textAppearance="?textAppearanceSubtitle1"
                 android:textColor="?colorOnPrimary"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/text_view_event_desc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Evento" />
+
+            <TextView
+                android:id="@+id/text_view_event_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?textAppearanceCaption"
+                android:textColor="?colorOnPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/text_view_event_name"
+                app:layout_constraintStart_toStartOf="@id/text_view_event_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_event_name"
+                tools:text="Descripción" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
