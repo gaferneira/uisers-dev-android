@@ -46,23 +46,6 @@ suspend fun <T> Task<T>.await(): T? {
     }
 }
 
-suspend fun Query.awaitRealtime() = suspendCancellableCoroutine<List<QueryDocumentSnapshot>> { continuation ->
-    addSnapshotListener { value, error ->
-        if (!continuation.isActive) {
-            return@addSnapshotListener
-        }
-
-        if (error == null) {
-            val contentList = value?.documentChanges?.map { doc ->
-                doc.document
-            } ?: listOf()
-            continuation.resume(contentList)
-        } else {
-            continuation.resumeWithException(error)
-        }
-    }
-}
-
 fun Exception.translateFirebaseException(): java.lang.Exception {
     return when (this) {
         is FirebaseFirestoreException,
