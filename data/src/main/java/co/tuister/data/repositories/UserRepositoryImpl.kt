@@ -32,6 +32,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageException
+import java.net.HttpURLConnection
 import java.util.Date
 
 class UserRepositoryImpl(
@@ -159,8 +161,20 @@ class UserRepositoryImpl(
         }
     }
 
-    override suspend fun downloadImage(email: String): Uri {
-        val url = firebaseStorage.reference.child("$email/profile.jpg").downloadUrl.await()
-        return url!!
+    override suspend fun downloadImage(email: String): Either<Failure, Uri> {
+        return try {
+            val url = firebaseStorage.reference.child("$email/profile.jpg").downloadUrl.await()
+            if (url != null) {
+                Either.Right(url)
+            } else {
+                Either.Left(Failure.DataNotFound())
+            }
+        } catch (exception: StorageException) {
+            if (exception.httpResultCode == HttpURLConnection.HTTP_NOT_FOUND) {
+                Either.Left(Failure.DataNotFound())
+            } else {
+                Either.Left(Failure.analyzeException(exception))
+            }
+        }
     }
 }

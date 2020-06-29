@@ -12,7 +12,7 @@ class DownloadImageUseCase(
 ) : UseCase<Uri, Params> {
     override suspend fun run(params: Params): Either<Failure, Uri> {
         return try {
-            Either.Right(userRepository.downloadImage(params.email))
+            userRepository.downloadImage(params.email)
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }
