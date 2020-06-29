@@ -2,8 +2,10 @@ package co.tuister.data.repositories
 
 import co.tuister.data.dto.DataSemesterUserDto
 import co.tuister.data.dto.toDTO
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getSource
 import co.tuister.domain.entities.Semester
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,7 +13,8 @@ import timber.log.Timber
 
 open class MyCareerRepository(
     protected val firebaseAuth: FirebaseAuth,
-    private val db: FirebaseFirestore
+    private val db: FirebaseFirestore,
+    private val connectivityUtil: ConnectivityUtil
 ) {
     protected val semestersCollection by lazy { SemestersCollection(db) }
 
@@ -26,11 +29,11 @@ open class MyCareerRepository(
 
     protected suspend fun getCurrentSemesterPath(): String {
 
-        val doc = getUserDocument().get().await()
+        val doc = getUserDocument().get(connectivityUtil.getSource()).await()
         val currentSemester = doc!!.toObject(DataSemesterUserDto::class.java)!!.currentSemester
         val collection = getSemestersCollection()
             .whereEqualTo(SemestersCollection.FIELD_PERIOD, currentSemester)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()
 
         return collection!!.documents.first().reference.path
@@ -41,7 +44,7 @@ open class MyCareerRepository(
             email = firebaseAuth.currentUser!!.email!!
             val id = semestersCollection.collection()
                 .whereEqualTo(SemestersCollection.FIELD_EMAIL, email)
-                .get()
+                .get(connectivityUtil.getSource())
                 .await()!!
                 .documents.firstOrNull()?.id
 

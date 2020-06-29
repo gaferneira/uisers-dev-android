@@ -8,6 +8,7 @@ import co.tuister.data.repositories.SharePreferencesRepositoryImpl.Companion.KEY
 import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAMPUS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.FeedbackCollection
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK
 import co.tuister.data.utils.FeedbackCollection.Companion.FIELD_FEEDBACK_DATE
@@ -17,6 +18,7 @@ import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_EMAIL
 import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
 import co.tuister.data.utils.await
 import co.tuister.data.utils.castToList
+import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
 import co.tuister.data.utils.translateFirebaseException
 import co.tuister.domain.base.Either
@@ -36,12 +38,13 @@ class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
     private val db: FirebaseFirestore,
     private val firebaseStorage: FirebaseStorage,
-    private val sharedPreferencesRepository: SharedPreferencesRepository
+    private val sharedPreferencesRepository: SharedPreferencesRepository,
+    private val connectivityUtil: ConnectivityUtil
 ) :
     UserRepository {
 
-    private val usersCollection by lazy { UsersCollection(db) }
-    private val baseCollection by lazy { BaseCollection(db) }
+    private val usersCollection by lazy { UsersCollection(db, connectivityUtil) }
+    private val baseCollection by lazy { BaseCollection(db, connectivityUtil) }
     private val feedbackCollection by lazy { FeedbackCollection(db) }
 
     override suspend fun getUser(): Either<Failure, User> {
@@ -59,7 +62,7 @@ class UserRepositoryImpl(
 
         val data = usersCollection.collection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()
 
         val userDataDto: UserDataDto? = data?.let {
@@ -78,7 +81,7 @@ class UserRepositoryImpl(
 
         val data = usersCollection.collection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!.documents.firstOrNull()
 
         val map = user.toDTO().objectToMap()
@@ -95,7 +98,7 @@ class UserRepositoryImpl(
 
         val data = usersCollection.collection()
             .whereEqualTo(FIELD_USER_EMAIL, current.email)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!.documents.firstOrNull()
         val token = FirebaseInstanceId.getInstance().instanceId.await()!!.token
 

@@ -12,6 +12,7 @@ import co.tuister.data.repositories.SharePreferencesRepositoryImpl
 import co.tuister.data.repositories.SubjectRepositoryImpl
 import co.tuister.data.repositories.TasksRepositoryImpl
 import co.tuister.data.repositories.UserRepositoryImpl
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.domain.repositories.CalendarRepository
 import co.tuister.domain.repositories.FeedRepository
 import co.tuister.domain.repositories.InternalOnlyRepository
@@ -35,6 +36,8 @@ import org.koin.dsl.module
 val dataModule = module {
     single { GsonBuilder().create() }
     single { FirebaseAuth.getInstance() }
+    single { ConnectivityUtil(get()) }
+
     single {
         FirebaseFirestore.getInstance().apply {
             firestoreSettings =
@@ -47,16 +50,16 @@ val dataModule = module {
         }
     }
     single { FirebaseStorage.getInstance() }
-    single<LoginRepository> { LoginRepositoryImpl(get(), get(), get()) }
+    single<LoginRepository> { LoginRepositoryImpl(get(), get(), get(), get()) }
     single<SharedPreferencesRepository> { SharePreferencesRepositoryImpl(get()) }
-    single<SemesterRepository> { SemesterRepositoryImpl(get(), get()) }
-    single<SubjectRepository> { SubjectRepositoryImpl(get(), get(), get()) }
-    single<TasksRepository> { TasksRepositoryImpl(get(), get()) }
-    single<UserRepository> { UserRepositoryImpl(get(), get(), get(), get()) }
-    single<ScheduleRepository> { ScheduleRepositoryImpl(get(), get()) }
-    single<MapRepository> { MapRepositoryImpl(get(), get()) }
-    single<CalendarRepository> { CalendarRepositoryImpl(get(), get()) }
-    single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get(), get()) }
-    single<MigrationRepository> { MigrationRepositoryImpl(get(), get(), get()) }
-    single<FeedRepository> { FeedRepositoryImpl(get()) }
+    single<FeedRepository> { FeedRepositoryImpl(get(), get()) }
+    single<SemesterRepository> { SemesterRepositoryImpl(get(), get(), get()) }
+    single<SubjectRepository> { SubjectRepositoryImpl(get(), get(), get(), get()) }
+    single<TasksRepository> { TasksRepositoryImpl(get(), get(), get()) }
+    single<UserRepository> { UserRepositoryImpl(get(), get(), get(), get(), get()) }
+    single<ScheduleRepository> { ScheduleRepositoryImpl(get(), get(), get()) }
+    single<MapRepository> { MapRepositoryImpl(get(), get(), get()) }
+    single<CalendarRepository> { CalendarRepositoryImpl(get(), get(), get()) }
+    single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get(), get(), get()) }
+    single<MigrationRepository> { MigrationRepositoryImpl(get(), get(), get(), get()) }
 }

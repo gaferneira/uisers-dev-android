@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,6 +81,7 @@ class SubjectsFragment : BaseFragment<FragmentCareerSubjectsBinding>() {
         handleState(state) {
             it?.run {
                 adapter.setItems(this)
+                binding.textViewNoData.isVisible = adapter.list.isEmpty()
             }
         }
     }

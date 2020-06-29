@@ -8,6 +8,7 @@ import co.tuister.data.dto.SubjectUserDto
 import co.tuister.data.dto.TaskDto
 import co.tuister.data.repositories.MyCareerRepository
 import co.tuister.data.utils.BackupCollection
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.TaskManagerCollection
 import co.tuister.data.utils.UsersCollection
@@ -26,12 +27,13 @@ import java.util.Date
 class MigrationRepositoryImpl(
     private val gson: Gson,
     val db: FirebaseFirestore,
-    val auth: FirebaseAuth
-) : MyCareerRepository(auth, db), MigrationRepository {
+    val auth: FirebaseAuth,
+    connectivityUtil: ConnectivityUtil
+) : MyCareerRepository(auth, db, connectivityUtil), MigrationRepository {
 
     private val taskManagerCollection by lazy { TaskManagerCollection(db) }
-    private val backupCollection by lazy { BackupCollection(db) }
-    private val usersCollection by lazy { UsersCollection(db) }
+    private val backupCollection by lazy { BackupCollection(db, connectivityUtil) }
+    private val usersCollection by lazy { UsersCollection(db, connectivityUtil) }
 
     override
     suspend fun migrate(): Either<Failure, Boolean> {

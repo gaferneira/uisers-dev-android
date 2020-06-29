@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import co.tuister.domain.base.Failure
+import co.tuister.uisers.R
 import co.tuister.uisers.utils.ProgressType
 import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.showConfirmDialog
 import co.tuister.uisers.utils.extensions.showDialog
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.ext.android.inject
 
 open class BaseFragment<T : ViewBinding> : Fragment() {
@@ -115,8 +117,27 @@ open class BaseFragment<T : ViewBinding> : Fragment() {
     }
 
     fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
-        return (activity as? BaseActivity)?.manageFailure(failure, showGenericMessage) ?: false
+        return baseActivity()?.manageFailure(failure, showGenericMessage) {
+            text, priority ->
+            displayMessage(text, R.string.base_label_alert, priority)
+        } ?: false
     }
+
+    protected fun displayMessage(text: Int, title: Int, priority: Int = 0) {
+        when (priority) {
+            0 -> {
+                view?.let {
+                    Snackbar.make(it, text, Snackbar.LENGTH_LONG).show()
+                }
+            }
+            1 -> {
+                baseActivity()?.showBanner(text)
+            }
+            2 -> showDialog(text, title)
+        }
+    }
+
+    private fun baseActivity() = (activity as? BaseActivity)
 
     open fun showDefaultProgress(show: Boolean) {
         // Optional

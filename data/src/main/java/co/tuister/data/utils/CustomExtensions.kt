@@ -3,6 +3,9 @@ package co.tuister.data.utils
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.Source
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.net.ConnectException
@@ -43,10 +46,35 @@ suspend fun <T> Task<T>.await(): T? {
     }
 }
 
+suspend fun Query.awaitRealtime() = suspendCancellableCoroutine<List<QueryDocumentSnapshot>> { continuation ->
+    addSnapshotListener { value, error ->
+        if (!continuation.isActive) {
+            return@addSnapshotListener
+        }
+
+        if (error == null) {
+            val contentList = value?.documentChanges?.map { doc ->
+                doc.document
+            } ?: listOf()
+            continuation.resume(contentList)
+        } else {
+            continuation.resumeWithException(error)
+        }
+    }
+}
+
 fun Exception.translateFirebaseException(): java.lang.Exception {
     return when (this) {
         is FirebaseFirestoreException,
         is FirebaseNetworkException -> ConnectException(message)
         else -> this
+    }
+}
+
+fun ConnectivityUtil.getSource(): Source {
+    return if (isConnected()) {
+        Source.SERVER
+    } else {
+        Source.CACHE
     }
 }

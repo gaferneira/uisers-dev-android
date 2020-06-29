@@ -4,6 +4,7 @@ import co.tuister.data.dto.PlaceDto
 import co.tuister.data.dto.SiteDto
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.BaseCollection
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.domain.entities.Place
 import co.tuister.domain.entities.Site
 import co.tuister.domain.repositories.MapRepository
@@ -12,10 +13,11 @@ import com.google.gson.Gson
 
 class MapRepositoryImpl(
     db: FirebaseFirestore,
-    private val gson: Gson
+    private val gson: Gson,
+    private val connectivityUtil: ConnectivityUtil
 ) : MapRepository {
 
-    private val baseCollection by lazy { BaseCollection(db) }
+    private val baseCollection by lazy { BaseCollection(db, connectivityUtil) }
 
     override suspend fun getPlaces(): List<Place> {
         val document = baseCollection.getMapDocument()

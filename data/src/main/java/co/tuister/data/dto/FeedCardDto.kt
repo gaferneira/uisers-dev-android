@@ -17,8 +17,10 @@ class FeedCardDto(
     val primaryAction2: FeedActionDto? = null
 ) : Serializable
 
-fun FeedCardDto.toEntity() = FeedCard(context, title, body, imageUrl, cardTemplate, date,
-    primaryAction1?.toEntity(), primaryAction2?.toEntity())
+fun FeedCardDto.toEntity() = FeedCard(
+    context, title, body, imageUrl, cardTemplate, date,
+    primaryAction1?.toEntity(), primaryAction2?.toEntity()
+)
 
 fun FeedCard.toDTO() = FeedCardDto(
     context, title, body, imageUrl, cardTemplate, date, primaryAction1?.toDTO(), primaryAction2?.toDTO()

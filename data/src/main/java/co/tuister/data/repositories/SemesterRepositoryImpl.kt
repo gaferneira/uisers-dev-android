@@ -3,8 +3,10 @@ package co.tuister.data.repositories
 import co.tuister.data.dto.SemesterUserDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.entities.Semester
 import co.tuister.domain.repositories.SemesterRepository
@@ -14,8 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class SemesterRepositoryImpl(
     firebaseAuth: FirebaseAuth,
-    db: FirebaseFirestore
-) : MyCareerRepository(firebaseAuth, db), SemesterRepository {
+    db: FirebaseFirestore,
+    private val connectivityUtil: ConnectivityUtil
+) : MyCareerRepository(firebaseAuth, db, connectivityUtil), SemesterRepository {
 
     override suspend fun getCurrent(): Semester {
         val semesterDocument = getCurrentSemester()
@@ -27,7 +30,7 @@ class SemesterRepositoryImpl(
 
         val currentSemester = getCurrentSemester().toObject(SemesterUserDto::class.java)!!
         val collection = getSemestersCollection()
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!
 
         val list = collection.documents.map {
@@ -42,7 +45,7 @@ class SemesterRepositoryImpl(
 
     override suspend fun save(semester: Semester): Semester {
         if (semester.id.isNotEmpty()) {
-            val subjectDto = semestersCollection.documentByPath(semester.id).get().await()!!
+            val subjectDto = semestersCollection.documentByPath(semester.id).get(connectivityUtil.getSource()).await()!!
             subjectDto.reference.update(semester.toDTO().objectToMap())
         } else {
             val id = getSemestersCollection()
@@ -70,7 +73,7 @@ class SemesterRepositoryImpl(
 
     private suspend fun getCurrentSemester(): DocumentSnapshot {
         return semestersCollection.documentByPath(getCurrentSemesterPath())
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!
     }
 }

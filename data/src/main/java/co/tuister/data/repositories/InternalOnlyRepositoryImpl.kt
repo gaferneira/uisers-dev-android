@@ -14,6 +14,7 @@ import co.tuister.data.utils.BaseCollection.Companion.FIELD_CAREERS
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_MAP_PLACES
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_MAP_SITES
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.await
 import co.tuister.data.utils.objectToMap
@@ -27,11 +28,12 @@ import com.google.gson.Gson
 class InternalOnlyRepositoryImpl(
     private val context: Context,
     private val gson: Gson,
-    private val db: FirebaseFirestore
+    private val db: FirebaseFirestore,
+    private val connectivityUtil: ConnectivityUtil
 ) : InternalOnlyRepository {
 
-    private val baseCollection by lazy { BaseCollection(db) }
-    private val usersCollection by lazy { UsersCollection(db) }
+    private val baseCollection by lazy { BaseCollection(db, connectivityUtil) }
+    private val usersCollection by lazy { UsersCollection(db, connectivityUtil) }
 
     override suspend fun loadDataCareers(): Either<Failure, Boolean> {
         return try {
