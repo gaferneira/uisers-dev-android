@@ -2,6 +2,7 @@ package co.tuister.data.repositories
 
 import co.tuister.data.dto.EventDto
 import co.tuister.data.utils.BaseCollection
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.domain.entities.Event
 import co.tuister.domain.repositories.CalendarRepository
 import com.google.firebase.firestore.FirebaseFirestore
@@ -12,10 +13,11 @@ import java.util.*
 
 class CalendarRepositoryImpl(
     val db: FirebaseFirestore,
-    private val gson: Gson
+    private val gson: Gson,
+    private val connectivityUtil: ConnectivityUtil
 ) : CalendarRepository {
 
-    private val baseCollection by lazy { BaseCollection(db) }
+    private val baseCollection by lazy { BaseCollection(db, connectivityUtil) }
 
     override suspend fun getEvents(): List<Event> {
         val document = baseCollection.getCalendarDocument()

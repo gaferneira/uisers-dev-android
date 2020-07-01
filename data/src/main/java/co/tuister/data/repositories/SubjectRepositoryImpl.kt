@@ -6,8 +6,10 @@ import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.BaseCollection.Companion.FIELD_SUBJECTS
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.entities.CareerSubject
 import co.tuister.domain.entities.Note
@@ -20,10 +22,11 @@ import com.google.gson.Gson
 class SubjectRepositoryImpl(
     firebaseAuth: FirebaseAuth,
     db: FirebaseFirestore,
-    private val gson: Gson
-) : MyCareerRepository(firebaseAuth, db), SubjectRepository {
+    private val gson: Gson,
+    private val connectivityUtil: ConnectivityUtil
+) : MyCareerRepository(firebaseAuth, db, connectivityUtil), SubjectRepository {
 
-    private val baseCollection by lazy { BaseCollection(db) }
+    private val baseCollection by lazy { BaseCollection(db, connectivityUtil) }
 
     override suspend fun getAll(): List<CareerSubject> {
         val document = baseCollection.getBaseDocument()
@@ -35,7 +38,7 @@ class SubjectRepositoryImpl(
     override suspend fun getMySubjects(): List<Subject> {
         val subjects = semestersCollection.documentByPath(getCurrentSemesterPath())
             .collection(SemestersCollection.COL_SUBJECTS)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!
             .documents.map {
                 val path = it.reference.path
@@ -47,7 +50,7 @@ class SubjectRepositoryImpl(
 
     override suspend fun save(subject: Subject): Subject {
         if (subject.id.isNotEmpty()) {
-            val subjectDto = semestersCollection.documentByPath(subject.id).get().await()!!
+            val subjectDto = semestersCollection.documentByPath(subject.id).get(connectivityUtil.getSource()).await()!!
             subjectDto.reference.update(subject.toDTO().objectToMap())
         } else {
             val id = semestersCollection.documentByPath(getCurrentSemesterPath())
@@ -72,7 +75,7 @@ class SubjectRepositoryImpl(
     override suspend fun getNotes(subject: Subject): List<Note> {
         return semestersCollection.documentByPath(subject.id)
             .collection(SemestersCollection.COL_NOTES)
-            .get().await()!!
+            .get(connectivityUtil.getSource()).await()!!
             .documents
             .map {
                 val path = it.reference.path
@@ -84,7 +87,7 @@ class SubjectRepositoryImpl(
 
     override suspend fun saveNote(item: Note, subject: Subject): Note {
         if (item.id.isNotEmpty()) {
-            val noteDto = semestersCollection.documentByPath(item.id).get().await()!!
+            val noteDto = semestersCollection.documentByPath(item.id).get(connectivityUtil.getSource()).await()!!
             noteDto.reference.update(item.toDTO().objectToMap())
         } else {
             val id = semestersCollection.documentByPath(subject.id)

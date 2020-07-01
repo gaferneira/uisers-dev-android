@@ -5,7 +5,6 @@ import co.tuister.domain.base.Failure
 import co.tuister.uisers.R
 import co.tuister.uisers.utils.ProgressType
 import co.tuister.uisers.utils.analytics.Analytics
-import co.tuister.uisers.utils.extensions.showConfirmDialog
 import co.tuister.uisers.utils.extensions.showDialog
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -16,23 +15,6 @@ open class BaseActivity : AppCompatActivity() {
 
     protected fun showDialog(message: Int, title: Int, unit: (() -> Unit)? = null) {
         supportFragmentManager.showDialog(this, message, title, unit)
-    }
-
-    protected fun showConfirmDialog(
-        message: Int,
-        title: Int,
-        negativeMessage: Int = android.R.string.cancel,
-        unitNegative: (() -> Unit)? = null,
-        unitPositive: (() -> Unit)? = null
-    ) {
-        supportFragmentManager.showConfirmDialog(
-            this,
-            message,
-            title,
-            negativeMessage,
-            unitNegative,
-            unitPositive
-        )
     }
 
     protected fun <T : Any> handleState(
@@ -48,7 +30,9 @@ open class BaseActivity : AppCompatActivity() {
             onError = {
                 onError?.invoke(it) ?: run {
                     showDefaultProgress(false)
-                    manageFailure(it)
+                    manageFailure(it) { text, _ ->
+                        showBanner(text)
+                    }
                 }
             },
             onSuccess = {
@@ -58,20 +42,18 @@ open class BaseActivity : AppCompatActivity() {
         )
     }
 
-    fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false): Boolean {
+    fun manageFailure(failure: Failure?, showGenericMessage: Boolean = false, displayMessage: (text: Int, priority: Int) -> Unit): Boolean {
         when (failure) {
-            is Failure.ServerError -> showDialog(R.string.error_server, R.string.base_label_alert)
-            is Failure.NetworkConnection -> showDialog(
-                R.string.error_check_internet,
-                R.string.base_label_alert
-            )
+            is Failure.ServerError ->
+                displayMessage(R.string.error_server, 1)
+            is Failure.NetworkConnection ->
+                displayMessage(R.string.error_check_internet, 1)
             else -> {
                 failure?.error?.run {
                     Timber.e(this)
                 }
-
                 if (showGenericMessage) {
-                    showDialog(R.string.error_try_again, R.string.base_label_alert)
+                    displayMessage(R.string.error_try_again, 1)
                 } else {
                     return false
                 }
@@ -82,5 +64,10 @@ open class BaseActivity : AppCompatActivity() {
 
     open fun showDefaultProgress(show: Boolean) {
         // Optional
+    }
+
+    open fun showBanner(text: Int, textButton: Int = android.R.string.ok) {
+        // Replace with material banner
+        showDialog(text, R.string.base_label_alert)
     }
 }

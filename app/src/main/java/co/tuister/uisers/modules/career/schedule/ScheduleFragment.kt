@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -84,6 +85,7 @@ class ScheduleFragment :
                 items.addAll(entry.value.sortedBy { it.initialHour }.map { Pair(null, it) })
             }
             adapter.setItems(items)
+            binding.textViewNoData.isVisible = adapter.list.isEmpty()
         }
     }
 

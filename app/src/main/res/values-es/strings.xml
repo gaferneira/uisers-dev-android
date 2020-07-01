@@ -5,7 +5,7 @@
     <string name="base_action_save">Guardar</string>
     <string name="base_action_send">Enviar</string>
     <string name="base_hint_email">Email</string>
-    <string name="base_hint_student_code">Codigo</string>
+    <string name="base_hint_student_code">Código</string>
     <string name="base_label_alert">Alerta</string>
     <string name="base_label_color">Color</string>
     <string name="base_label_description">Descripción</string>
@@ -17,7 +17,7 @@
     <string name="career_confirm_remove_note">¿Quieres eliminar la nota?</string>
     <string name="career_confirm_remove_period">¿Quieres eliminar el bloque?</string>
     <string name="career_confirm_remove_subject">¿Quieres eliminar la materia?</string>
-    <string name="career_hint_credits">Numero de creditos</string>
+    <string name="career_hint_credits">Número de créditos</string>
     <string name="career_hint_details_grade">Escriba el detalle</string>
     <string name="career_hint_name_subject">Nombre de la materia</string>
     <string name="career_hint_name_teacher">Nombre del profesor</string>
@@ -50,7 +50,7 @@
     <string name="error_result_login_message_not_verified_email">Tu correo no ha sido verificado, ve a tu bandeja y has click en el enlace que te enviamos.</string>
     <string name="error_result_login_message">Lo sentimos, no pudimos encontrar una cuenta vinculada a ese correo electrónico.</string>
     <string name="error_server">"Error en el servidor, intentalo más tarde"</string>
-    <string name="error_try_again">"Hubo un error, intentalo más tarde"</string>
+    <string name="error_try_again">Hubo un error, inténtalo más tarde</string>
     <string name="home_about_email">gabrielfneira@gmail.com</string>
     <string name="home_about_founder_1_linked_in">gabriel-fernando-neira-bermudez-419b2265</string>
     <string name="home_about_founder_1">Gabriel Fernando Neira</string>
@@ -63,11 +63,11 @@
     <string name="home_about_whatsapp">+57 318 879 9237</string>
     <string name="home_about_working_together">Trabajemos juntos</string>
     <string name="home_about_write_to_us_desc">Apreciamos tus sugerencias</string>
-    <string name="home_about_write_to_us">Escribenos</string>
+    <string name="home_about_write_to_us">Escríbenos</string>
     <string name="home_action_close_session"><u>Salir</u></string>
-    <string name="home_hint_feedback">Dejanos tus comentarios aquí</string>
+    <string name="home_hint_feedback">Déjanos tus comentarios aquí</string>
     <string name="home_label_no_subjects">No hay materias para hoy</string>
-    <string name="home_label_no_tasks">No hay tareas para hoy</string>
+    <string name="home_label_no_tasks">No hay tareas pendientes</string>
     <string name="home_label_today">Hoy</string>
     <string name="home_label_welcome_message">Hola,</string>
     <string name="home_message_feedback_result">Gracias por tus comentarios.</string>
@@ -107,10 +107,10 @@
     <string name="login_title_login_forget_title">Recuperar</string>
     <string name="login_title">Inicio</string>
     <string name="permission_location_explanation">Permitir a UISers acceder a la ubicación del dispositivo </string>
-    <string name="permission_location_required_text">Permiso de unbicación requerido</string>
+    <string name="permission_location_required_text">Permiso de ubicación requerido</string>
     <string name="tasks_confirm_remove_task">¿Quieres eliminar la tarea?</string>
     <string name="tasks_hint_reminder">Crear recordatorio</string>
-    <string name="tasks_hint_add_task">Titulo</string>
+    <string name="tasks_hint_add_task">Título</string>
     <string name="tasks_label_label_status">Estado</string>
     <string name="tasks_label_no_reminder">Sin recordatorio</string>
     <string name="tasks_label_reminder_at_time">En la hora exacta</string>

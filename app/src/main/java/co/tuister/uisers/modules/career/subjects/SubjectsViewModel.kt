@@ -69,7 +69,7 @@ class SubjectsViewModel(
     }
 
     private fun calculateAverage(data: List<Subject>?): Float? {
-        return data?.let { subjects ->
+        return data?.takeIf { it.isNotEmpty() }?.let { subjects ->
             val total = subjects.map { it.credits * it.note }.sum()
             val sum = subjects.sumBy { it.credits }
             if (sum != 0) {

@@ -58,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/padding_margin_normal"
                 android:textAppearance="?textAppearanceHeadline6"
+                android:textAlignment="textEnd"
                 android:textColor="?colorOnPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

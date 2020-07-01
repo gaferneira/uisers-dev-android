@@ -17,6 +17,7 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentHomeBinding
 import co.tuister.uisers.modules.home.HomeViewModel.State
 import co.tuister.uisers.modules.main.MainActivity
+import kotlinx.android.synthetic.main.fragment_career_subject_add.view.*
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 

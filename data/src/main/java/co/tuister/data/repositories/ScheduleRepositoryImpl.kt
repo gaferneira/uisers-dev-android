@@ -3,8 +3,10 @@ package co.tuister.data.repositories
 import co.tuister.data.dto.SchedulePeriodDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.domain.repositories.ScheduleRepository
@@ -14,12 +16,13 @@ import java.util.Calendar
 
 class ScheduleRepositoryImpl(
     firebaseAuth: FirebaseAuth,
-    db: FirebaseFirestore
-) : MyCareerRepository(firebaseAuth, db), ScheduleRepository {
+    db: FirebaseFirestore,
+    private val connectivityUtil: ConnectivityUtil
+) : MyCareerRepository(firebaseAuth, db, connectivityUtil), ScheduleRepository {
 
     override suspend fun save(period: SchedulePeriod): SchedulePeriod {
         if (period.id.isNotEmpty()) {
-            val subjectDto = semestersCollection.documentByPath(period.id).get().await()!!
+            val subjectDto = semestersCollection.documentByPath(period.id).get(connectivityUtil.getSource()).await()!!
             subjectDto.reference.update(period.toDTO().objectToMap())
         } else {
             val id = semestersCollection.documentByPath(getCurrentSemesterPath())
@@ -35,7 +38,7 @@ class ScheduleRepositoryImpl(
     override suspend fun getSchedule(): List<SchedulePeriod> {
         val periods = semestersCollection.documentByPath(getCurrentSemesterPath())
             .collection(SemestersCollection.COL_SCHEDULE)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!
             .documents.map {
                 val path = it.reference.path

@@ -266,26 +266,16 @@ class MainActivity :
     }
 
     private fun validateLogout(state: ValidateLogout) {
-        handleState(
-            state,
-            inProgress = {
-                binding.loginStatus.isVisible = true
-            },
-            onError = {
-                binding.loginStatus.isVisible = false
-            },
-            onSuccess = {
-                binding.loginStatus.isVisible = false
-                analytics.trackUserLogout()
-                finish()
-                LoginActivity.start(this)
-            }
-        )
+        handleState(state) {
+            analytics.trackUserLogout()
+            finish()
+            LoginActivity.start(this)
+        }
     }
 
     override fun onSendFeedback(feedback: String) {
         viewModel.sendFeedback(feedback)
-        showDialog(R.string.home_message_feedback_result, R.string.home_title_home_feedback_result)
+        showBanner(R.string.home_message_feedback_result)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -306,6 +296,17 @@ class MainActivity :
                     bindingMenu.circleImagePhoto.setImageURI(result.uri)
                 }
             }
+        }
+    }
+
+    override fun showBanner(text: Int, textButton: Int) {
+        with(binding.contentView) {
+            textBanner.setText(text)
+            buttonBanner.setText(textButton)
+            buttonBanner.setOnClickListener {
+                motionView.transitionToStart()
+            }
+            motionView.transitionToEnd()
         }
     }
 }

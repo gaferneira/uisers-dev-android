@@ -8,10 +8,10 @@ sealed class FirebaseCollection(private val db: FirebaseFirestore, val name: Str
     fun documentByPath(path: String) = db.document(path)
 }
 
-class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
-    suspend fun getBaseDocument() = document(DOCUMENT).get().await()
-    suspend fun getMapDocument() = document(DOCUMENT_MAP).get().await()
-    suspend fun getCalendarDocument() = document(DOCUMENT_CALENDAR).get().await()
+class BaseCollection(db: FirebaseFirestore, private val connectivityUtil: ConnectivityUtil) : FirebaseCollection(db, NAME) {
+    suspend fun getBaseDocument() = document(DOCUMENT).get(connectivityUtil.getSource()).await()
+    suspend fun getMapDocument() = document(DOCUMENT_MAP).get(connectivityUtil.getSource()).await()
+    suspend fun getCalendarDocument() = document(DOCUMENT_CALENDAR).get(connectivityUtil.getSource()).await()
 
     companion object {
         const val NAME = "data_base"
@@ -27,15 +27,15 @@ class BaseCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
     }
 }
 
-class UsersCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
+class UsersCollection(db: FirebaseFirestore, private val connectivityUtil: ConnectivityUtil) : FirebaseCollection(db, NAME) {
     suspend fun getByEmail(email: String) =
         collection()
             .whereEqualTo(FIELD_USER_EMAIL, email)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()
             ?.documents?.firstOrNull()
 
-    suspend fun getAllUserData() = collection().get().await()?.documents
+    suspend fun getAllUserData() = collection().get(connectivityUtil.getSource()).await()?.documents
 
     companion object {
         const val NAME = "data_users"
@@ -69,8 +69,8 @@ class TaskManagerCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME
     }
 }
 
-class BackupCollection(db: FirebaseFirestore) : FirebaseCollection(db, NAME) {
-    suspend fun getUserBackup(email: String) = document(email).get().await()?.getString(FIELD_DATA)
+class BackupCollection(db: FirebaseFirestore, private val connectivityUtil: ConnectivityUtil) : FirebaseCollection(db, NAME) {
+    suspend fun getUserBackup(email: String) = document(email).get(connectivityUtil.getSource()).await()?.getString(FIELD_DATA)
     suspend fun deleteUserBackup(email: String) = document(email).delete().await()
 
     companion object {

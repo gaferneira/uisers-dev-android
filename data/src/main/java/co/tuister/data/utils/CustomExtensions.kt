@@ -3,6 +3,7 @@ package co.tuister.data.utils
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.Source
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.net.ConnectException
@@ -48,5 +49,13 @@ fun Exception.translateFirebaseException(): java.lang.Exception {
         is FirebaseFirestoreException,
         is FirebaseNetworkException -> ConnectException(message)
         else -> this
+    }
+}
+
+fun ConnectivityUtil.getSource(): Source {
+    return if (isConnected()) {
+        Source.SERVER
+    } else {
+        Source.CACHE
     }
 }

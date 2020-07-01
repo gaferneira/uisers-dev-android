@@ -16,6 +16,7 @@ sealed class Failure(val error: Exception?) {
     class AuthenticationError(error: Exception? = null) : Failure(error)
     class EmailNotVerifiedError(error: Exception? = null) : Failure(error)
     class FormError(error: Exception? = null) : Failure(error)
+    class DataNotFound(error: Exception? = null) : Failure(error)
 
     /** * Extend this class for feature specific failures.*/
     abstract class FeatureFailure(error: Exception?) : Failure(error)

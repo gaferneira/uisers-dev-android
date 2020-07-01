@@ -2,6 +2,7 @@ package co.tuister.data.repositories
 
 import android.net.Uri
 import co.tuister.data.dto.toDTO
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.await
 import co.tuister.data.utils.translateFirebaseException
@@ -20,10 +21,11 @@ import com.google.firebase.storage.FirebaseStorage
 class LoginRepositoryImpl(
     firebaseAuth: FirebaseAuth,
     val db: FirebaseFirestore,
-    private val firebaseStorage: FirebaseStorage
-) : MyCareerRepository(firebaseAuth, db), LoginRepository {
+    private val firebaseStorage: FirebaseStorage,
+    connectivityUtil: ConnectivityUtil
+) : MyCareerRepository(firebaseAuth, db, connectivityUtil), LoginRepository {
 
-    private val usersCollection by lazy { UsersCollection(db) }
+    private val usersCollection by lazy { UsersCollection(db, connectivityUtil) }
 
     override suspend fun login(email: String, password: String): Either<Failure, User?> {
         return try {

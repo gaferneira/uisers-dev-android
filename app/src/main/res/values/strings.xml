@@ -67,8 +67,8 @@
     <string name="home_about_write_to_us">Write to us</string>
     <string name="home_action_close_session"><u>Exit</u></string>
     <string name="home_hint_feedback">Leave feedback here</string>
-    <string name="home_label_no_subjects">The are no subjects for today</string>
-    <string name="home_label_no_tasks">The are no tasks for today</string>
+    <string name="home_label_no_subjects">There are no subjects for today</string>
+    <string name="home_label_no_tasks">There are no pending tasks</string>
     <string name="home_label_today">Today</string>
     <string name="home_label_version" translatable="false">Version %s</string>
     <string name="home_label_welcome_message">Hi,</string>
@@ -94,9 +94,9 @@
     <string name="career_hint_week_day">Day</string>
     <string name="career_label_before">before</string>
     <string name="career_label_details">Details</string>
-    <string name="career_label_empty_list_subjects">To add subjects use the "+" placed on the top right</string>
-    <string name="career_label_empty_list_tasks">There are no tasks to show. To add tasks use the "+" placed on the top right</string>
-    <string name="career_label_empty_schedule">To create your schedule you must add each block per subject. If the subject is already added you can edit it by a long press over the name in the Subjects menu</string>
+    <string name="career_label_empty_list_subjects">There are no subjects to show</string>
+    <string name="career_label_empty_list_tasks">There are no tasks to show.</string>
+    <string name="career_label_empty_schedule">There are no periods to show</string>
     <string name="career_label_finish_block">Finish</string>
     <string name="career_label_grade_total">Total</string>
     <string name="career_label_grade">Grade</string>
@@ -146,7 +146,7 @@
 
 
     <!-- INTERNAL ONLY -->
-    <string name="internal_message_enter_again">Ingrese de nuevo para ver el cambio de theme</string>
+    <string name="internal_message_enter_again">Enter again to see the changes</string>
     <string name="internal_only_update_calendar">Update calendar</string>
     <string name="internal_only_update_map_data">Update map data</string>
     <string name="internal_only_update_subjects">Update Subjects</string>

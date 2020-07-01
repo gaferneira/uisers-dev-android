@@ -4,8 +4,10 @@ import co.tuister.data.dto.DataTasksUserDto
 import co.tuister.data.dto.TaskDto
 import co.tuister.data.dto.toDTO
 import co.tuister.data.dto.toEntity
+import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.TaskManagerCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.entities.Task
 import co.tuister.domain.repositories.TasksRepository
@@ -15,14 +17,15 @@ import timber.log.Timber
 
 class TasksRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
-    private val db: FirebaseFirestore
+    private val db: FirebaseFirestore,
+    private val connectivityUtil: ConnectivityUtil
 ) : TasksRepository {
 
     private val taskManagerCollection by lazy { TaskManagerCollection(db) }
 
     override suspend fun getTasks(): List<Task> {
         val collection = getUserDocument().collection(TaskManagerCollection.COL_TASKS)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!
 
         val list = collection.documents.map {
@@ -35,7 +38,7 @@ class TasksRepositoryImpl(
 
     override suspend fun save(task: Task): Task {
         if (task.id.isNotEmpty()) {
-            val subjectDto = taskManagerCollection.documentByPath(task.id).get().await()!!
+            val subjectDto = taskManagerCollection.documentByPath(task.id).get(connectivityUtil.getSource()).await()!!
             subjectDto.reference.update(task.toDTO().objectToMap())
         } else {
             val id = getUserDocument()
@@ -62,7 +65,7 @@ class TasksRepositoryImpl(
         val email = firebaseAuth.currentUser!!.email!!
         val id = taskManagerCollection.collection()
             .whereEqualTo(TaskManagerCollection.FIELD_EMAIL, email)
-            .get()
+            .get(connectivityUtil.getSource())
             .await()!!
             .documents.firstOrNull()?.id
 

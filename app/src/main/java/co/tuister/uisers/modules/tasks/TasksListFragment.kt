@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,6 +72,7 @@ class TasksListFragment : BaseFragment<FragmentTasksListBinding>() {
         handleState(state) {
             state.data?.run {
                 adapter.setItems(this.filter { it.status == status })
+                binding.textViewTasksNoData.isVisible = adapter.list.isEmpty()
             }
         }
     }
