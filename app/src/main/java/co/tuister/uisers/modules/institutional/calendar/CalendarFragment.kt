@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.postDelayed
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,10 +22,11 @@ import jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
 import jp.co.recruit_mp.android.lightcalendarview.MonthView
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 import kotlin.math.abs
 
-class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>() {
+class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), MotionLayout.TransitionListener {
 
     private lateinit var viewModel: CalendarViewModel
 
@@ -86,26 +88,40 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>() {
                 goToDate(date)
             }
         })
+
+        binding.motionLayout.setTransitionListener(this)
+        binding.imageViewExpand.setOnClickListener {
+            with(binding.motionLayout) {
+                if (currentState == startState) {
+                    transitionToEnd()
+                } else {
+                    transitionToStart()
+                }
+            }
+        }
     }
 
     private fun checkMonthLabel() {
         val firstVisiblePosition = layoutManager.findFirstVisibleItemPosition()
         adapter.list.getOrNull(firstVisiblePosition)?.run {
             updatingDate = true
-            binding.viewCalendar.setSelectedDate(Date(date))
+            val newDate = Date(date)
+            updateMonthLabel(newDate)
+            binding.viewCalendar.setSelectedDate(newDate)
         }
     }
 
-    private fun goToDate(date: Date) {
-
-        currentDate = date
-
+    private fun updateMonthLabel(date: Date) {
         val month = DateUtils.dateToString(date, "MMM yyyy")
         if (month != binding.textViewCalendarDate.text.toString()) {
             binding.textViewCalendarDate.text = month
             binding.viewCalendar.monthCurrent = date
         }
+    }
 
+    private fun goToDate(date: Date) {
+        currentDate = date
+        updateMonthLabel(date)
         if (updatingDate) {
             updatingDate = false
             return
@@ -152,5 +168,24 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>() {
     companion object {
         private const val OFFSET_SCROLL = 100
         private const val LOAD_DELAY: Long = 200
+    }
+
+    // Transition Listener
+
+    override fun onTransitionTrigger(motionLayout: MotionLayout?, triggerdId: Int, positive: Boolean, progress: Float) {
+        // No op
+    }
+
+    override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {
+        // No op
+    }
+
+    override fun onTransitionChange(motionLayout: MotionLayout?, startId: Int, endId: Int, progress: Float) {
+        // No op
+    }
+
+    override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+        val enable = currentId == motionLayout?.startState
+        motionLayout?.getTransition(R.id.scroll_transition)?.setEnable(enable)
     }
 }

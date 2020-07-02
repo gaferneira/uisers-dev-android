@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
+        android:id="@+id/scroll_transition"
         app:constraintSetEnd="@id/collapsed"
-        app:constraintSetStart="@id/expanded">
+        app:constraintSetStart="@id/expanded"
+        app:duration="300">
         <OnSwipe
             app:dragDirection="dragUp"
             app:moveWhenScrollAtTop="false"
@@ -21,17 +23,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_view_calendar_date" />
+        <Constraint
+            android:id="@+id/image_view_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="0"
+            android:src="@drawable/ic_baseline_expand_more_24"
+            app:layout_constraintTop_toTopOf="@id/text_view_calendar_date"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_calendar_date"
+            app:layout_constraintStart_toEndOf="@id/text_view_calendar_date" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/collapsed">
         <Constraint
             android:id="@+id/view_calendar"
             android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="0dp"
             android:alpha="0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/text_view_calendar_date" />
+            app:layout_constraintTop_toBottomOf="@id/text_view_calendar_date" />
+        <Constraint
+            android:id="@+id/image_view_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:src="@drawable/ic_baseline_expand_more_24"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_calendar_date"
+            app:layout_constraintStart_toEndOf="@id/text_view_calendar_date"
+            app:layout_constraintTop_toTopOf="@id/text_view_calendar_date"
+            />
     </ConstraintSet>
 
 </MotionScene>
