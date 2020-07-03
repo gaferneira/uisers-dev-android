@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.MergeAdapter
 import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
@@ -65,7 +65,7 @@ class SubjectDetailsFragment :
         }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = MergeAdapter(this@SubjectDetailsFragment.adapter, footerAdapter)
+            adapter = ConcatAdapter(this@SubjectDetailsFragment.adapter, footerAdapter)
         }
         binding.buttonAdd.setOnClickListener {
             showNoteDialog()

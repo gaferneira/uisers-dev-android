@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.MergeAdapter
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
@@ -53,7 +53,7 @@ class SubjectsFragment : BaseFragment<FragmentCareerSubjectsBinding>() {
         }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = MergeAdapter(this@SubjectsFragment.adapter, footerAdapter)
+            adapter = ConcatAdapter(this@SubjectsFragment.adapter, footerAdapter)
         }
     }
 

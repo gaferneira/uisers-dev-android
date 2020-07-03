@@ -54,7 +54,7 @@ fun Exception.translateFirebaseException(): java.lang.Exception {
 
 fun ConnectivityUtil.getSource(): Source {
     return if (isConnected()) {
-        Source.SERVER
+        Source.DEFAULT
     } else {
         Source.CACHE
     }

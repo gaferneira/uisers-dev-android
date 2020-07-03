@@ -1,45 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layoutDescription="@xml/collapsing_calendar"
-    tools:showPaths="true">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_view_calendar_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding_margin_large"
-        android:paddingTop="@dimen/padding_margin_normal_smaller"
-        android:textColor="?colorOnSurface"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Jun 2020" />
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/collapsing_calendar"
+        tools:showPaths="true">
 
-    <jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
-        android:id="@+id/view_calendar"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:adjustViewBounds="true"
-        android:fitsSystemWindows="true"
-        android:scaleType="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_calendar_date"
-        app:lcv_dayTextSize="18sp"
-        app:lcv_firstDayOfWeek="@integer/lcv_monday"
-        app:lcv_weekDayTextSize="18sp" />
+        <TextView
+            android:id="@+id/text_view_calendar_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_margin_large"
+            android:paddingVertical="@dimen/padding_margin_normal_smaller"
+            android:textColor="?colorOnSurface"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Jun 2020" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_calendar" />
+        <ImageView
+            android:id="@+id/image_view_expand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_expand_more_24"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_calendar_date"
+            app:layout_constraintStart_toEndOf="@id/text_view_calendar_date"
+            app:layout_constraintTop_toTopOf="@id/text_view_calendar_date" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+        <jp.co.recruit_mp.android.lightcalendarview.LightCalendarView
+            android:id="@+id/view_calendar"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:fitsSystemWindows="true"
+            android:scaleType="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_calendar_date"
+            app:lcv_dayTextSize="18sp"
+            app:lcv_firstDayOfWeek="@integer/lcv_monday"
+            app:lcv_weekDayTextSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_calendar" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

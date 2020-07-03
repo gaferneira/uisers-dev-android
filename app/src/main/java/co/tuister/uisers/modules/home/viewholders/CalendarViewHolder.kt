@@ -12,7 +12,6 @@ import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.setTextOrGone
 import kotlinx.android.synthetic.main.item_home_calelendar_event.view.*
 import kotlinx.android.synthetic.main.item_home_calendar.view.*
-import java.util.Date
 
 class CalendarViewHolder(view: View) : HomeViewHolder(view) {
     override fun bind(
@@ -57,7 +56,7 @@ class CalendarViewHolder(view: View) : HomeViewHolder(view) {
         return view.apply {
             text_view_event_name.text = item.title
             text_view_event_date.text = DateUtils.dateTimeToString(
-                Date(item.date),
+                item.date,
                 if (item.isAllDay()) "MMM dd" else "MMM dd HH:mm"
             )
             text_view_event_desc.setTextOrGone(item.description)
