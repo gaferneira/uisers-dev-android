@@ -36,6 +36,7 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
 
     private lateinit var currentDate: Date
     private var updatingDate = false
+    private var updatingMonthDate = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -89,6 +90,10 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
             }
 
             override fun onMonthSelected(date: Date, view: MonthView) {
+                if (updatingMonthDate) {
+                    updatingMonthDate = false
+                    return
+                }
                 goToDate(date)
             }
         })
@@ -108,18 +113,21 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
     private fun checkMonthLabel() {
         val firstVisiblePosition = layoutManager.findFirstVisibleItemPosition()
         adapter.list.getOrNull(firstVisiblePosition)?.run {
-            updatingDate = true
-            updateMonthLabel(this.date)
-            binding.viewCalendar.setSelectedDate(this.date)
+            if (updateMonthLabel(this.date)) {
+                updatingDate = true
+                updatingMonthDate = true
+                binding.viewCalendar.setSelectedDate(this.date)
+            }
         }
     }
 
-    private fun updateMonthLabel(date: Date) {
+    private fun updateMonthLabel(date: Date): Boolean {
         val month = DateUtils.dateToString(date, "MMM yyyy")
-        if (month != binding.textViewCalendarDate.text.toString()) {
+        return if (month != binding.textViewCalendarDate.text.toString()) {
             binding.textViewCalendarDate.text = month
             binding.viewCalendar.monthCurrent = date
-        }
+            true
+        } else false
     }
 
     private fun goToDate(date: Date) {

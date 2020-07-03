@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.MergeAdapter
 import co.tuister.domain.entities.Semester
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
@@ -55,7 +55,7 @@ class SemestersFragment :
         }
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = MergeAdapter(this@SemestersFragment.adapter, footerAdapter)
+            adapter = ConcatAdapter(this@SemestersFragment.adapter, footerAdapter)
         }
     }
 
