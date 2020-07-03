@@ -81,6 +81,10 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
 
         binding.viewCalendar.setOnStateUpdatedListener(object : LightCalendarView.OnStateUpdatedListener {
             override fun onDateSelected(date: Date) {
+                if (updatingDate) {
+                    updatingDate = false
+                    return
+                }
                 goToDate(date)
             }
 
@@ -105,9 +109,8 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
         val firstVisiblePosition = layoutManager.findFirstVisibleItemPosition()
         adapter.list.getOrNull(firstVisiblePosition)?.run {
             updatingDate = true
-            val newDate = Date(date)
-            updateMonthLabel(newDate)
-            binding.viewCalendar.setSelectedDate(newDate)
+            updateMonthLabel(this.date)
+            binding.viewCalendar.setSelectedDate(this.date)
         }
     }
 
@@ -122,12 +125,7 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
     private fun goToDate(date: Date) {
         currentDate = date
         updateMonthLabel(date)
-        if (updatingDate) {
-            updatingDate = false
-            return
-        }
-
-        val closestEvent = adapter.list.minBy { abs(it.date - date.time) }
+        val closestEvent = adapter.list.minBy { abs(it.date.time - date.time) }
         closestEvent?.run {
             val position = adapter.list.indexOf(this)
             layoutManager.scrollToPositionWithOffset(position, OFFSET_SCROLL)

@@ -24,7 +24,7 @@ class CalendarRepositoryImpl(
         val field = document?.get(BaseCollection.FIELD_CALENDAR)
         val json = gson.toJson(field)
         return gson.fromJson(json, Array<EventDto>::class.java).toList().map {
-            Event(it.title, it.description, stringToDateTime(it.date)?.time ?: 0, it.duration)
+            Event(it.title, it.description, stringToDateTime(it.date) ?: Date(0), it.duration)
         }
     }
 
@@ -36,7 +36,7 @@ class CalendarRepositoryImpl(
         return gson.fromJson(json, Array<EventDto>::class.java).toList().filter {
             it.date >= stringDate
         }.take(MAX_EVENTS).map {
-            Event(it.title, it.description, stringToDateTime(it.date)?.time ?: 0, it.duration)
+            Event(it.title, it.description, stringToDateTime(it.date) ?: Date(0), it.duration)
         }
     }
 
