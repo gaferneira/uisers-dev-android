@@ -16,86 +16,87 @@
         android:paddingHorizontal="@dimen/screen_horizontal_margin"
         android:paddingVertical="@dimen/screen_vertical_margin">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_subject"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/text_input_teacher"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/button_save"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/autocomplete_subject"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="start"
-                android:ems="10"
-                android:hint="@string/career_hint_name_subject"
-                android:text="@={subjectBinding.name}" />
+                android:orientation="vertical">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_teacher"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_normal"
-            app:layout_constraintBottom_toTopOf="@+id/text_input_credits"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_input_subject">
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/autocomplete_subject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:hint="@string/career_hint_name_subject"
+                        android:text="@={subjectBinding.name}" />
 
-            <EditText
-                android:id="@+id/edit_text_teacher_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="start"
-                android:ems="10"
-                android:hint="@string/career_hint_name_teacher"
-                android:inputType="textPersonName"
-                android:text="@={subjectBinding.teacher}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_teacher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_margin_normal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_credits"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_input_teacher">
+                    <EditText
+                        android:id="@+id/edit_text_teacher_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="start"
+                        android:ems="10"
+                        android:hint="@string/career_hint_name_teacher"
+                        android:inputType="text"
+                        android:text="@={subjectBinding.teacher}" />
 
-            <EditText
-                android:id="@+id/edit_text_credits"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="start"
-                android:hint="@string/career_hint_credits"
-                android:inputType="numberSigned"
-                android:text="@={`` + subjectBinding.credits}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_credits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_margin_normal">
 
-        <TextView
-            android:id="@+id/text_view_label_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_normal_smaller"
-            android:text="@string/base_label_color"
-            android:textAppearance="?textAppearanceSubtitle1"
-            android:textColor="?colorOnSurface"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_input_credits" />
+                    <EditText
+                        android:id="@+id/edit_text_credits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="start"
+                        android:hint="@string/career_hint_credits"
+                        android:inputType="number"
+                        android:text="@={`` + subjectBinding.credits}" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_margin_extra_small"
-            android:layout_marginTop="@dimen/padding_margin_normal_smaller"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_label_color" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/text_view_label_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_margin_normal_smaller"
+                    android:text="@string/base_label_color"
+                    android:textAppearance="?textAppearanceSubtitle1"
+                    android:textColor="?colorOnSurface" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_margin_extra_small"
+                    android:layout_marginTop="@dimen/padding_margin_normal_smaller"
+                    android:layout_marginBottom="@dimen/padding_margin_small" />
+
+            </LinearLayout>
+        </ScrollView>
 
         <Button
             android:id="@+id/button_save"
