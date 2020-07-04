@@ -13,6 +13,7 @@
         android:id="@+id/text_input_semester"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/login_register_select_a_semester"
         android:minWidth="240dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:focusable="false"
-            android:hint="@string/login_register_select_a_semester" />
+            android:focusable="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -31,14 +31,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:hint="@string/tasks_hint_add_task">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_title_task"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/tasks_hint_add_task"
                         android:inputType="text"
                         android:text="@={taskBinding.title}" />
 
@@ -46,14 +46,14 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:hint="@string/base_label_description">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_description_task"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/base_label_description"
                         android:inputType="textMultiLine"
                         android:text="@={taskBinding.description}" />
 
@@ -62,7 +62,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/tasks_label_add_day">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_date"
@@ -70,7 +71,6 @@
                         android:layout_height="wrap_content"
                         android:ems="8"
                         android:focusable="false"
-                        android:hint="@string/tasks_label_add_day"
                         android:inputType="date"
                         android:text="@={DateConverter.dateToString(taskBinding.dueDate)}" />
 
@@ -79,7 +79,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/tasks_hint_reminder">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_reminder"
@@ -88,7 +89,6 @@
                         android:ellipsize="start"
                         android:ems="10"
                         android:focusable="false"
-                        android:hint="@string/tasks_hint_reminder"
                         android:textColor="@android:color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -157,11 +157,11 @@
                     android:id="@+id/fab_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/padding_margin_extra_small"
                     android:layout_marginTop="@dimen/padding_margin_normal"
                     android:layout_marginBottom="@dimen/padding_margin_normal"
-                    android:layout_marginStart="@dimen/padding_margin_extra_small"
-                    app:layout_constraintTop_toBottomOf="@id/text_input_credits"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_credits" />
 
             </LinearLayout>
 

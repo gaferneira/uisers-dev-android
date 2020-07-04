@@ -25,6 +25,7 @@
             android:id="@+id/text_input_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/career_hint_details_grade"
             android:minWidth="240dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/career_hint_details_grade"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:text="@={noteBinding.title}" />
@@ -46,6 +46,7 @@
             android:id="@+id/text_input_grade"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="@string/career_label_grade"
             android:paddingEnd="@dimen/padding_margin_normal"
             app:layout_constraintEnd_toStartOf="@id/text_input_percentage"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="4"
-                android:hint="@string/career_label_grade"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="4"
                 android:text="@={`` + noteBinding.grade}" />
@@ -68,6 +68,7 @@
             android:id="@+id/text_input_percentage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="@string/base_label_percentage_sign"
             android:paddingStart="@dimen/padding_margin_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_input_grade"
@@ -79,7 +80,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="4"
-                android:hint="@string/base_label_percentage_sign"
                 android:importantForAutofill="no"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="4"
@@ -94,6 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:focusable="false"
+            android:hint="@string/career_label_grade_total"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_input_percentage">
@@ -104,7 +105,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
-                android:hint="@string/career_label_grade_total"
                 android:importantForAutofill="no"
                 android:inputType="text" />
 
@@ -116,6 +116,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:focusable="false"
+            android:hint="@string/career_label_note_subject"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_input_total">
@@ -126,7 +127,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
-                android:hint="@string/career_label_note_subject"
                 android:importantForAutofill="no"
                 android:inputType="text" />
 

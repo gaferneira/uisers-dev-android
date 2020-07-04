@@ -9,6 +9,7 @@
         android:id="@+id/text_input_site"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/institutional_hint_map_sites"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -17,7 +18,6 @@
             android:layout_height="wrap_content"
             android:ems="8"
             android:focusable="false"
-            android:hint="@string/institutional_hint_map_sites"
             android:inputType="date" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -26,6 +26,7 @@
         android:id="@+id/text_input_place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/institutional_hint_map_place"
         app:layout_constraintTop_toBottomOf="@id/text_input_site">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -34,7 +35,6 @@
             android:layout_height="wrap_content"
             android:ems="8"
             android:focusable="false"
-            android:hint="@string/institutional_hint_map_place"
             android:inputType="date" />
 
     </com.google.android.material.textfield.TextInputLayout>

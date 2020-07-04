@@ -2,6 +2,7 @@
 <layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="activity"
             type="co.tuister.uisers.common.BaseActivity" />
@@ -73,13 +74,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="@string/base_hint_student_code">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_register_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/base_hint_student_code"
                     android:inputType="text"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -90,7 +91,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="@string/login_hint_career">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_career"
@@ -99,7 +101,6 @@
                     android:ellipsize="end"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="@string/login_hint_career"
                     android:lines="1"
                     android:text="@={viewModel.user.career}"
                     android:textColor="@android:color/black" />
@@ -109,7 +110,8 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="@string/login_hint_campus">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_text_campus"
@@ -118,7 +120,6 @@
                     android:ellipsize="end"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="@string/login_hint_campus"
                     android:lines="1"
                     android:text="@={viewModel.user.campus}"
                     android:textColor="@android:color/black" />

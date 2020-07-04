@@ -30,7 +30,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_subject"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/career_hint_name_subject">
 
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/autocomplete_subject"
@@ -38,7 +39,6 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="start"
                         android:ems="10"
-                        android:hint="@string/career_hint_name_subject"
                         android:text="@={subjectBinding.name}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -47,15 +47,15 @@
                     android:id="@+id/text_input_teacher"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_margin_normal">
+                    android:layout_marginTop="@dimen/padding_margin_normal"
+                    android:hint="@string/career_hint_name_teacher">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_teacher_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="start"
                         android:ems="10"
-                        android:hint="@string/career_hint_name_teacher"
                         android:inputType="text"
                         android:text="@={subjectBinding.teacher}" />
 
@@ -65,14 +65,14 @@
                     android:id="@+id/text_input_credits"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/padding_margin_normal">
+                    android:layout_marginTop="@dimen/padding_margin_normal"
+                    android:hint="@string/career_hint_credits">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edit_text_credits"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="start"
-                        android:hint="@string/career_hint_credits"
                         android:inputType="number"
                         android:text="@={`` + subjectBinding.credits}" />
 
