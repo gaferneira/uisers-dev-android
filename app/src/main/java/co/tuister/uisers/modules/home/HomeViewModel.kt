@@ -50,7 +50,7 @@ class HomeViewModel(
             val result = withContext(Dispatchers.IO) { getCurrentSemesterCase.run() }
             result.fold(
                 {
-                    // left --> error
+                    setState(State.LoadHeader(Result.Error(it)))
                 },
                 { semester ->
                     val period = semester.period
