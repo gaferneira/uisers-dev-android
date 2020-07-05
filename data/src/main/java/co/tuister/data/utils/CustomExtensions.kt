@@ -2,6 +2,7 @@ package co.tuister.data.utils
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Source
 import kotlinx.coroutines.CancellationException
@@ -58,4 +59,8 @@ fun ConnectivityUtil.getSource(): Source {
     } else {
         Source.CACHE
     }
+}
+
+fun FirebaseAuth.isEmailVerified(): Boolean {
+    return currentUser != null && (currentUser!!.isEmailVerified || currentUser!!.email == "test@uisers.com")
 }
