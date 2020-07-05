@@ -5,31 +5,24 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
+import kotlin.coroutines.ContinuationInterceptor
 
 @ExperimentalCoroutinesApi
-class TestCoroutineRule : TestRule {
+class TestCoroutineRule : TestRule, TestCoroutineScope by TestCoroutineScope() {
+    val dispatcher = coroutineContext[ContinuationInterceptor] as TestCoroutineDispatcher
 
-    private val testCoroutineDispatcher = TestCoroutineDispatcher()
-
-    private val testCoroutineScope = TestCoroutineScope(testCoroutineDispatcher)
-
-    override fun apply(base: Statement, description: Description?) = object : Statement() {
-        @Throws(Throwable::class)
+    override fun apply(
+        base: Statement,
+        description: Description?
+    ) = object : Statement() {
         override fun evaluate() {
-            Dispatchers.setMain(testCoroutineDispatcher)
-
+            Dispatchers.setMain(dispatcher)
             base.evaluate()
-
             Dispatchers.resetMain()
-            testCoroutineScope.cleanupTestCoroutines()
         }
     }
-
-    fun runBlockingTest(block: suspend TestCoroutineScope.() -> Unit) =
-        testCoroutineScope.runBlockingTest { block() }
 }
