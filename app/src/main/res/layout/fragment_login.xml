@@ -54,18 +54,18 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/loginEmail_Input"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:hint="@string/base_hint_email">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/loginEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:autofillHints="email"
                             android:ems="10"
-                            android:hint="@string/base_hint_email"
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:autofillHints="email"
                             android:text="@={loginViewModel.email}">
 
                             <requestFocus />
@@ -81,20 +81,20 @@
                         android:layout_alignStart="@+id/loginEmail_Input"
                         android:layout_alignParentBottom="true"
                         android:layout_marginTop="10dp"
+                        android:hint="@string/login_hint_password"
                         app:passwordToggleEnabled="true">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/loginPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:autofillHints="emailAddress"
                             android:ems="10"
-                            android:hint="@string/login_hint_password"
                             android:imeActionLabel="@string/login_action_login_sign_in_register"
                             android:imeOptions="actionUnspecified"
                             android:inputType="textPassword"
                             android:maxLines="1"
                             android:singleLine="true"
-                            android:autofillHints="emailAddress"
                             android:text="@={loginViewModel.password}" />
 
                     </com.google.android.material.textfield.TextInputLayout>

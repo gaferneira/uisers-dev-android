@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="periodBinding"
             type="co.tuister.domain.entities.SchedulePeriod" />
@@ -21,6 +22,7 @@
             android:id="@+id/text_input_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/career_hint_schedule_details"
             android:minWidth="240dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
                 android:ems="10"
-                android:hint="@string/career_hint_schedule_details"
                 android:text="@={periodBinding.description}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -41,6 +42,7 @@
             android:id="@+id/text_input_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/institutional_hint_place"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_input_activity">
@@ -50,7 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/institutional_hint_place"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:text="@={periodBinding.place}" />
@@ -61,6 +62,7 @@
             android:id="@+id/text_input_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/career_hint_week_day"
             app:layout_constraintTop_toBottomOf="@+id/text_input_place">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -69,7 +71,6 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
                 android:focusable="false"
-                android:hint="@string/career_hint_week_day"
                 android:textColor="@android:color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +79,7 @@
             android:id="@+id/text_input_initial"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="@string/career_label_init_block"
             android:paddingEnd="@dimen/padding_margin_normal"
             app:layout_constraintEnd_toStartOf="@id/text_input_final"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +92,6 @@
                 android:layout_height="wrap_content"
                 android:ems="5"
                 android:focusable="false"
-                android:hint="@string/career_label_init_block"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="5"
                 android:text="@={periodBinding.initialHour}" />
@@ -101,6 +102,7 @@
             android:id="@+id/text_input_final"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="@string/career_label_finish_block"
             android:paddingStart="@dimen/padding_margin_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/text_input_initial"
@@ -113,7 +115,6 @@
                 android:layout_height="wrap_content"
                 android:ems="5"
                 android:focusable="false"
-                android:hint="@string/career_label_finish_block"
                 android:importantForAutofill="no"
                 android:inputType="numberSigned|numberDecimal"
                 android:maxLength="5"
@@ -127,23 +128,22 @@
             android:id="@+id/fab_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_normal"
             android:layout_marginStart="@dimen/padding_margin_extra_small"
-            app:layout_constraintTop_toBottomOf="@id/text_input_final"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/padding_margin_normal"
             android:layout_marginBottom="@dimen/padding_margin_small"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_input_final" />
 
         <Button
             android:id="@+id/button_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/base_action_save"
-            app:layout_constraintTop_toTopOf="@id/fab_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fab_color" />
+            app:layout_constraintTop_toBottomOf="@id/fab_color"
+            app:layout_constraintTop_toTopOf="@id/fab_color" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
