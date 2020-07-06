@@ -31,7 +31,7 @@ fun User.toDTO() = UserDataDto(
     career,
     idCareer,
     campus,
-    email,
+    email.toLowerCase(),
     semester,
     period,
     code
