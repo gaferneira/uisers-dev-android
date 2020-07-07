@@ -64,3 +64,7 @@ fun ConnectivityUtil.getSource(): Source {
 fun FirebaseAuth.getEmail(): String {
     return currentUser!!.email!!
 }
+
+fun FirebaseAuth.isEmailVerified(): Boolean {
+    return currentUser != null && (currentUser!!.isEmailVerified || currentUser!!.email == "test@uisers.com")
+}

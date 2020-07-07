@@ -3,7 +3,6 @@ package co.tuister.uisers.utils.extensions
 import android.content.Context
 import android.view.View
 import androidx.fragment.app.FragmentManager
-import co.tuister.uisers.R
 import co.tuister.uisers.utils.view.UisersDialogFragment
 
 fun FragmentManager.showConfirmDialog(
