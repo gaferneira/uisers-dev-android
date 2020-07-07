@@ -82,9 +82,11 @@
     <string name="home_label_no_events">There are no events</string>
 
     <!-- CAREER -->
+    <string name="career_alert_remove_current_semester">It\'s not possible to remove the current semester.</string>
     <string name="career_confirm_change_current_semester">Are you sure to change the current semester?</string>
     <string name="career_confirm_remove_note">Do you want to remove this note?</string>
     <string name="career_confirm_remove_period">Do you want to remove this period?</string>
+    <string name="career_confirm_remove_semester">Do you want to remove this semester?</string>
     <string name="career_confirm_remove_subject">Do you want to remove this subject?</string>
     <string name="career_hint_credits">Credit numbers</string>
     <string name="career_hint_details_grade">Enter description</string>
@@ -179,6 +181,5 @@
     <string name="deep_link_institution" translatable="false">uisers://main/institution</string>
     <string name="deep_link_tasks_add" translatable="false">uisers://main/tasks/add</string>
     <string name="deep_link_tasks" translatable="false">uisers://main/tasks</string>
-
 
 </resources>

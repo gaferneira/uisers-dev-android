@@ -11,6 +11,7 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
 import co.tuister.uisers.utils.Result.InProgress
+import co.tuister.uisers.utils.extensions.round
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -51,7 +52,7 @@ class SubjectDetailsViewModel(
                     setState(State.LoadItems(Result.Success(it)))
                     val average = calculateAverage(it)?.toFloat()
                     setState(State.LoadAverage(Result.Success(average)))
-                    updateAverage(average)
+                    updateAverage(average?.round())
                 }
             )
         }

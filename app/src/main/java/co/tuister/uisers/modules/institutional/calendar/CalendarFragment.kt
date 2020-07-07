@@ -99,15 +99,6 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
         })
 
         binding.motionLayout.setTransitionListener(this)
-        binding.imageViewExpand.setOnClickListener {
-            with(binding.motionLayout) {
-                if (currentState == startState) {
-                    transitionToEnd()
-                } else {
-                    transitionToStart()
-                }
-            }
-        }
     }
 
     private fun checkMonthLabel() {

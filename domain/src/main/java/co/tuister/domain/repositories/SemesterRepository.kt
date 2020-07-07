@@ -7,4 +7,5 @@ interface SemesterRepository {
     suspend fun getAll(): List<Semester>
     suspend fun save(semester: Semester): Semester
     suspend fun changeCurrentSemester(semester: Semester): Semester
+    suspend fun remove(item: Semester): Boolean
 }

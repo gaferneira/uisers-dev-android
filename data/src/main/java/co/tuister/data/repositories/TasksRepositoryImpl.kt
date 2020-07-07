@@ -7,6 +7,7 @@ import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.TaskManagerCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getEmail
 import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.entities.Task
@@ -62,7 +63,7 @@ class TasksRepositoryImpl(
     private suspend fun getUserDocument() = taskManagerCollection.document(getUserDocumentsId())
 
     private suspend fun getUserDocumentsId(): String {
-        val email = firebaseAuth.currentUser!!.email!!
+        val email = firebaseAuth.getEmail()
         val id = taskManagerCollection.collection()
             .whereEqualTo(TaskManagerCollection.FIELD_EMAIL, email)
             .get(connectivityUtil.getSource())
