@@ -1,5 +1,6 @@
 package co.tuister.uisers.modules.career.semesters
 
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +44,7 @@ class SemestersAdapter(
         holder.unbind()
     }
 
-    class SemesterViewHolder(view: View) : BaseViewHolder(view) {
+    class SemesterViewHolder(view: View) : BaseViewHolder(view), View.OnCreateContextMenuListener {
 
         fun bind(
             semester: Semester,
@@ -61,12 +62,22 @@ class SemestersAdapter(
             itemView.setOnClickListener {
                 listener?.onClickSemester(semester)
             }
+            itemView.setOnCreateContextMenuListener(this)
         }
 
         override fun unbind() {
             super.unbind()
             radio_button.setOnCheckedChangeListener(null)
             itemView.setOnClickListener(null)
+            itemView.setOnCreateContextMenuListener(null)
+        }
+
+        override fun onCreateContextMenu(
+            menu: ContextMenu,
+            v: View,
+            menuInfo: ContextMenu.ContextMenuInfo?
+        ) {
+            menu.add(bindingAdapterPosition, v.id, 0, v.context.getString(R.string.base_action_remove))
         }
     }
 }

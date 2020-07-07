@@ -10,6 +10,7 @@ import co.tuister.domain.usecases.career.SaveSemesterUseCase
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
 import co.tuister.uisers.utils.Result
+import co.tuister.uisers.utils.extensions.round
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -46,21 +47,23 @@ class SubjectsViewModel(
                 {
                     setState(State.LoadSubjects(Result.Success(it)))
                     val average = calculateAverage(it)
-                    setState(State.LoadSemesterAverage(Result.Success(average)))
+                    setState(State.LoadSemesterAverage(Result.Success(average?.second)))
                     getCurrentSemester(average)
                 }
             )
         }
     }
 
-    private fun getCurrentSemester(newAverage: Float?) {
+    private fun getCurrentSemester(newAverage: Pair<Int, Float>?) {
         viewModelScope.launch {
             when (val result = withContext(Dispatchers.IO) { getCurrentSemester.run() }) {
                 is Either.Right -> {
                     val semester = result.value
                     val oldAverage = semester.average
-                    if (newAverage != null && newAverage != oldAverage) {
-                        semester.average = newAverage
+                    val oldCredits = semester.credits
+                    if (newAverage != null && (newAverage.first != oldCredits || newAverage.second != oldAverage)) {
+                        semester.credits = newAverage.first
+                        semester.average = newAverage.second
                         updateSemester.run(semester)
                     }
                 }
@@ -68,15 +71,16 @@ class SubjectsViewModel(
         }
     }
 
-    private fun calculateAverage(data: List<Subject>?): Float? {
+    private fun calculateAverage(data: List<Subject>?): Pair<Int, Float>? {
         return data?.takeIf { it.isNotEmpty() }?.let { subjects ->
             val total = subjects.map { it.credits * it.note }.sum()
-            val sum = subjects.sumBy { it.credits }
-            if (sum != 0) {
-                total / sum
+            val totalCredits = subjects.sumBy { it.credits }
+            val average = if (totalCredits != 0) {
+                total / totalCredits
             } else {
                 0f
             }
+            Pair(totalCredits, average.round())
         }
     }
 

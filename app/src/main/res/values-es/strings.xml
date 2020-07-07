@@ -136,4 +136,6 @@
     <string name="internal_only_material">Material</string>
     <string name="home_label_upcoming_events">Próximos eventos</string>
     <string name="home_label_no_events">No hay eventos</string>
+    <string name="career_alert_remove_current_semester">No puedes eliminar el semestre actual. Cambiar el semestre actual primero</string>
+    <string name="career_confirm_remove_semester">¿Quieres eliminar el semestre?</string>
 </resources>

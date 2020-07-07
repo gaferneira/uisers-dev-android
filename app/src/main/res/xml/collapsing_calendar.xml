@@ -7,11 +7,17 @@
         app:constraintSetEnd="@id/collapsed"
         app:constraintSetStart="@id/expanded"
         app:duration="300">
+
         <OnSwipe
             app:dragDirection="dragUp"
             app:moveWhenScrollAtTop="false"
             app:touchAnchorId="@id/recycler_view"
             app:touchAnchorSide="top" />
+
+        <OnClick
+            app:targetId="@id/image_view_expand"
+            app:clickAction="toggle" />
+
     </Transition>
 
     <ConstraintSet android:id="@+id/expanded">

@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.Semester
 import co.tuister.domain.usecases.career.ChangeCurrentSemesterUseCase
 import co.tuister.domain.usecases.career.GetAllSemestersUseCase
+import co.tuister.domain.usecases.career.RemoveSemesterUseCase
 import co.tuister.domain.usecases.career.SaveSemesterUseCase
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.common.BaseViewModel
@@ -15,13 +16,15 @@ import kotlinx.coroutines.withContext
 class SemestersViewModel(
     private val getAllSemesters: GetAllSemestersUseCase,
     private val saveSemester: SaveSemesterUseCase,
-    private val changeCurrentSemester: ChangeCurrentSemesterUseCase
+    private val changeCurrentSemester: ChangeCurrentSemesterUseCase,
+    private val removeUseCase: RemoveSemesterUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
         class LoadItems(result: Result<List<Semester>>) : State<List<Semester>>(result)
         class SaveSemester(result: Result<Nothing>) : State<Nothing>(result)
         class ChangeCurrentSemester(result: Result<Nothing>) : State<Nothing>(result)
+        class RemoveItem(result: Result<Nothing>) : State<Nothing>(result)
     }
 
     fun initialize() {
@@ -72,6 +75,20 @@ class SemestersViewModel(
                 },
                 {
                     setState(State.ChangeCurrentSemester(Result.Success()))
+                }
+            )
+        }
+    }
+
+    fun removeSemester(item: Semester) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) { removeUseCase.run(item) }
+            result.fold(
+                {
+                    setState(State.RemoveItem(Result.Error(it)))
+                },
+                {
+                    setState(State.RemoveItem(Result.Success()))
                 }
             )
         }

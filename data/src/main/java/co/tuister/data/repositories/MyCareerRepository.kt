@@ -5,6 +5,7 @@ import co.tuister.data.dto.toDTO
 import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getEmail
 import co.tuister.data.utils.getSource
 import co.tuister.domain.entities.Semester
 import com.google.firebase.auth.FirebaseAuth
@@ -40,8 +41,8 @@ open class MyCareerRepository(
     }
 
     private suspend fun getUserDocumentsId(defaultPeriod: String = DEFAULT_PERIOD): String {
-        if (userDocumentId.isNullOrEmpty() || email != firebaseAuth.currentUser!!.email!!) {
-            email = firebaseAuth.currentUser!!.email!!
+        if (userDocumentId.isNullOrEmpty() || email != firebaseAuth.getEmail()) {
+            email = firebaseAuth.getEmail()
             val id = semestersCollection.collection()
                 .whereEqualTo(SemestersCollection.FIELD_EMAIL, email)
                 .get(connectivityUtil.getSource())

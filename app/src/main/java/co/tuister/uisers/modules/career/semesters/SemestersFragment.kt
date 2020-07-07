@@ -2,8 +2,10 @@ package co.tuister.uisers.modules.career.semesters
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -74,6 +76,7 @@ class SemestersFragment :
             is State.LoadItems -> loadItems(state)
             is State.SaveSemester -> resultSaveSemester(state)
             is State.ChangeCurrentSemester -> resultChangeCurrentSemester(state)
+            is State.RemoveItem -> removeItem(state)
         }
     }
 
@@ -104,6 +107,12 @@ class SemestersFragment :
         }
     }
 
+    private fun removeItem(state: State.RemoveItem) {
+        handleState(state) {
+            viewModel.refresh()
+        }
+    }
+
     override fun onDestroyView() {
         binding.recyclerView.adapter = null
         super.onDestroyView()
@@ -122,5 +131,22 @@ class SemestersFragment :
 
     override fun onSaveSemester(semester: Semester) {
         viewModel.saveSemester(semester)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        if (lifecycle.currentState != Lifecycle.State.RESUMED || !isVisible) return false
+
+        val adapterPosition = item.groupId
+        val semester = adapter.list.getOrNull(adapterPosition) ?: return false
+
+        if (semester.current) {
+            displayMessage(R.string.career_alert_remove_current_semester, R.string.base_action_remove, 1)
+            return false
+        }
+
+        showConfirmDialog(getString(R.string.career_confirm_remove_semester), semester.period) {
+            viewModel.removeSemester(semester)
+        }
+        return true
     }
 }

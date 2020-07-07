@@ -14,6 +14,7 @@ import co.tuister.domain.usecases.career.GetScheduleByDateUseCase
 import co.tuister.domain.usecases.career.GetScheduleUseCase
 import co.tuister.domain.usecases.career.RemoveNoteUseCase
 import co.tuister.domain.usecases.career.RemoveSchedulePeriodUseCase
+import co.tuister.domain.usecases.career.RemoveSemesterUseCase
 import co.tuister.domain.usecases.career.RemoveSubjectUseCase
 import co.tuister.domain.usecases.career.SaveNoteUseCase
 import co.tuister.domain.usecases.career.SaveSchedulePeriodUseCase
@@ -71,6 +72,7 @@ val domainModule = module {
     single { GetCurrentSemesterUseCase(get()) }
     single { GetAllSemestersUseCase(get()) }
     single { ChangeCurrentSemesterUseCase(get()) }
+    single { RemoveSemesterUseCase(get()) }
 
     single { SaveSchedulePeriodUseCase(get()) }
     single { GetScheduleUseCase(get()) }

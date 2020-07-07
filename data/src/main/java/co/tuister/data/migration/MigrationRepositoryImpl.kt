@@ -13,6 +13,7 @@ import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.TaskManagerCollection
 import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.getEmail
 import co.tuister.data.utils.objectToMap
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
@@ -39,7 +40,7 @@ class MigrationRepositoryImpl(
     suspend fun migrate(): Either<Failure, Boolean> {
         try {
 
-            val email = firebaseAuth.currentUser!!.email!!
+            val email = firebaseAuth.getEmail()
             val migration = usersCollection.getByEmail(email)
                 ?.getBoolean(UsersCollection.FIELD_USER_MIGRATION) ?: false
 
@@ -246,7 +247,7 @@ class MigrationRepositoryImpl(
     private suspend fun getTaskDocument() = taskManagerCollection.document(getTaskDocumentsId())
 
     private suspend fun getTaskDocumentsId(): String {
-        val email = firebaseAuth.currentUser!!.email!!
+        val email = firebaseAuth.getEmail()
         val id = taskManagerCollection.collection()
             .whereEqualTo(TaskManagerCollection.FIELD_EMAIL, email)
             .get()

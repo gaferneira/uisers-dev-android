@@ -71,6 +71,15 @@ class SemesterRepositoryImpl(
         return semester
     }
 
+    override suspend fun remove(item: Semester): Boolean {
+        return if (item.id.isNotEmpty()) {
+            semestersCollection.documentByPath(item.id).delete().await()
+            true
+        } else {
+            false
+        }
+    }
+
     private suspend fun getCurrentSemester(): DocumentSnapshot {
         return semestersCollection.documentByPath(getCurrentSemesterPath())
             .get(connectivityUtil.getSource())

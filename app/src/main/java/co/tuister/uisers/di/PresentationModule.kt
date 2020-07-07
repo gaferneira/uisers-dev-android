@@ -43,7 +43,7 @@ val viewModelModule = module {
     viewModel { SubjectDetailsViewModel(get(), get(), get(), get()) }
     viewModel { AddSubjectViewModel(get(), get()) }
     viewModel { ScheduleViewModel(get(), get(), get(), get()) }
-    viewModel { SemestersViewModel(get(), get(), get()) }
+    viewModel { SemestersViewModel(get(), get(), get(), get()) }
 
     // Tasks
     viewModel { TasksViewModel(get(), get()) }
