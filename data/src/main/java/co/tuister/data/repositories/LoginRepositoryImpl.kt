@@ -5,6 +5,7 @@ import co.tuister.data.dto.toDTO
 import co.tuister.data.utils.ConnectivityUtil
 import co.tuister.data.utils.UsersCollection
 import co.tuister.data.utils.await
+import co.tuister.data.utils.isEmailVerified
 import co.tuister.data.utils.translateFirebaseException
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
@@ -33,7 +34,7 @@ class LoginRepositoryImpl(
                 .signInWithEmailAndPassword(email, password)
                 .await()
 
-            if (firebaseAuth.currentUser?.isEmailVerified != true) {
+            if (!firebaseAuth.isEmailVerified()) {
                 return Either.Left(EmailNotVerifiedError())
             }
 

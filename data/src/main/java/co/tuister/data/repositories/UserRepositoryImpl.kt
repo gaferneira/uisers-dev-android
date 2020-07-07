@@ -19,6 +19,7 @@ import co.tuister.data.utils.UsersCollection.Companion.FIELD_USER_FCM
 import co.tuister.data.utils.await
 import co.tuister.data.utils.castToList
 import co.tuister.data.utils.getSource
+import co.tuister.data.utils.isEmailVerified
 import co.tuister.data.utils.objectToMap
 import co.tuister.data.utils.translateFirebaseException
 import co.tuister.domain.base.Either
@@ -52,7 +53,7 @@ class UserRepositoryImpl(
     override suspend fun getUser(): Either<Failure, User> {
         val current = firebaseAuth.currentUser ?: return Either.Left(AuthenticationError())
 
-        if (firebaseAuth.currentUser?.isEmailVerified != true) {
+        if (!firebaseAuth.isEmailVerified()) {
             return Either.Left(
                 Failure.EmailNotVerifiedError(
                     Exception(
@@ -77,7 +78,7 @@ class UserRepositoryImpl(
     override suspend fun updateUser(user: User): Either<Failure, Boolean> {
         val current = firebaseAuth.currentUser ?: return Either.Left(AuthenticationError())
 
-        if (firebaseAuth.currentUser?.isEmailVerified != true) {
+        if (!firebaseAuth.isEmailVerified()) {
             return Either.Left(AuthenticationError())
         }
 
@@ -94,7 +95,7 @@ class UserRepositoryImpl(
     override suspend fun updateFCMToken(): Boolean {
         val current = firebaseAuth.currentUser ?: return false
 
-        if (firebaseAuth.currentUser?.isEmailVerified != true) {
+        if (!firebaseAuth.isEmailVerified()) {
             return false
         }
 
