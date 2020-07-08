@@ -14,6 +14,7 @@ import androidx.core.view.setMargins
 import androidx.databinding.DataBindingUtil
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentPaletteColorBinding
+import co.tuister.uisers.utils.extensions.singleClick
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ColorPaletteDialogFragment : AppCompatDialogFragment() {
@@ -53,7 +54,7 @@ class ColorPaletteDialogFragment : AppCompatDialogFragment() {
         colors.forEachIndexed { index, color ->
             val fab = FloatingActionButton(requireContext()).apply {
                 backgroundTintList = ColorStateList.valueOf(color)
-                setOnClickListener {
+                singleClick {
                     listener?.onSelectColor(index)
                     dismiss()
                 }

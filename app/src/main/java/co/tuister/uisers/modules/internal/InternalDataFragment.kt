@@ -19,6 +19,7 @@ import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateMapDa
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.UpdateSubjects
 import co.tuister.uisers.modules.internal.InternalUseViewModel.State.ValidateUserDocument
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
+import co.tuister.uisers.utils.extensions.singleClick
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
 import kotlinx.coroutines.flow.collect
@@ -40,22 +41,22 @@ class InternalDataFragment : BaseFragment<FragmentInternalDataBinding>() {
     }
 
     private fun initViews() {
-        binding.buttonDownloadUsesCsv.setOnClickListener {
+        binding.buttonDownloadUsesCsv.singleClick {
             viewModel.generateUserCSVData(requireContext())
         }
-        binding.buttonUpdateSubjects.setOnClickListener {
+        binding.buttonUpdateSubjects.singleClick {
             viewModel.updateSubjects()
         }
-        binding.buttonUpdateCareers.setOnClickListener {
+        binding.buttonUpdateCareers.singleClick {
             viewModel.updateCareers()
         }
-        binding.buttonUpdateMapData.setOnClickListener {
+        binding.buttonUpdateMapData.singleClick {
             viewModel.updateMapData()
         }
-        binding.buttonCalendarData.setOnClickListener {
+        binding.buttonCalendarData.singleClick {
             viewModel.updateCalendarData()
         }
-        binding.buttonMaterial.setOnClickListener {
+        binding.buttonMaterial.singleClick {
             findNavController().navigate(R.id.action_internal_to_material)
         }
     }

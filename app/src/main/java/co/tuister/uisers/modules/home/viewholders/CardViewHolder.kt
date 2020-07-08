@@ -7,6 +7,7 @@ import co.tuister.uisers.modules.home.HomeCard
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.utils.extensions.setImageFromUrl
 import co.tuister.uisers.utils.extensions.setTextOrGone
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_home_card.view.*
 
 class CardViewHolder(view: View) : HomeViewHolder(view) {
@@ -34,11 +35,11 @@ class CardViewHolder(view: View) : HomeViewHolder(view) {
             button_card_one.text = data.primaryAction1?.text
             button_card_two.text = data.primaryAction2?.text
 
-            button_card_one.setOnClickListener {
+            button_card_one.singleClick {
                 listener?.onClickRow(position, data.primaryAction1)
             }
 
-            button_card_two.setOnClickListener {
+            button_card_two.singleClick {
                 listener?.onClickRow(position, data.primaryAction2)
             }
         }

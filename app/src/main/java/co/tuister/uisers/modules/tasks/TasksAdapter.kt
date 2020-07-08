@@ -9,6 +9,7 @@ import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.setTextOrGone
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_tasks_task.*
 
 class TasksAdapter(
@@ -48,7 +49,7 @@ class TasksAdapter(
             text_view_task_desc.setTextOrGone(task.description)
             val backgroundColor = context.resources.getIntArray(R.array.colors_300)[task.materialColor]
             content_view.setBackgroundColor(backgroundColor)
-            itemView.setOnClickListener {
+            itemView.singleClick {
                 listener?.onClickTask(task)
             }
 

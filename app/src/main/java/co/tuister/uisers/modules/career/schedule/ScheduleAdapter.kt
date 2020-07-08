@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_career_schedule.*
 import kotlinx.android.synthetic.main.item_career_schedule_title.*
 import java.util.*
@@ -78,7 +79,7 @@ class ScheduleAdapter(
                     text_view_class_name.text = it.description
                     text_view_description.text = it.place
                     text_view_hour.text = it.initialHour + "-" + it.finalHour
-                    itemView.setOnClickListener { _ ->
+                    itemView.singleClick { _ ->
                         listener?.onClickPeriod(it)
                     }
                 }

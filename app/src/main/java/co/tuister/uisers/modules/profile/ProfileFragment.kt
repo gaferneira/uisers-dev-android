@@ -24,6 +24,7 @@ import co.tuister.uisers.modules.profile.ProfileViewModel.State.LoadData
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
 import co.tuister.uisers.utils.extensions.launchImagePicker
 import co.tuister.uisers.utils.extensions.setImageFromUri
+import co.tuister.uisers.utils.extensions.singleClick
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
 import com.github.razir.progressbutton.showProgress
@@ -51,19 +52,19 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         bindProgressButton(binding.buttonSave)
 
-        binding.buttonUploadPicture.setOnClickListener {
+        binding.buttonUploadPicture.singleClick {
             (requireActivity() as BaseActivity).launchImagePicker()
         }
-        binding.buttonInternal.setOnClickListener {
+        binding.buttonInternal.singleClick {
             InternalActivity.start(requireContext())
         }
-        binding.editTextCareer.setOnClickListener {
+        binding.editTextCareer.singleClick {
             viewModel.getCareers {
                 showCareerOptions()
             }
         }
 
-        binding.editTextCampus.setOnClickListener {
+        binding.editTextCampus.singleClick {
             viewModel.getCampus {
                 showCampusOptions()
             }

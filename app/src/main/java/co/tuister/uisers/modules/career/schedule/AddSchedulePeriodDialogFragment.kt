@@ -22,6 +22,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentCareerSchedulePeriodBinding
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.pickTime
+import co.tuister.uisers.utils.extensions.singleClick
 import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import java.util.*
 
@@ -98,20 +99,20 @@ class AddSchedulePeriodDialogFragment :
 
         colors = resources.getIntArray(R.array.colors_100)
         updateFabColor()
-        binding.fabColor.setOnClickListener {
+        binding.fabColor.singleClick {
             ColorPaletteDialogFragment.create(colors, this)
                 .show(parentFragmentManager, ColorPaletteDialogFragment.TAG)
         }
 
-        binding.editTextDay.setOnClickListener {
+        binding.editTextDay.singleClick {
             showWeekDays()
         }
 
-        binding.editTextInitial.setOnClickListener {
+        binding.editTextInitial.singleClick {
             showTimeDialog(binding.editTextInitial)
         }
 
-        binding.editTextFinal.setOnClickListener {
+        binding.editTextFinal.singleClick {
             showTimeDialog(binding.editTextFinal)
         }
 
@@ -158,7 +159,7 @@ class AddSchedulePeriodDialogFragment :
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.buttonSave.setOnClickListener {
+        binding.buttonSave.singleClick {
             listener?.onSavePeriod(period)
             dismiss()
         }

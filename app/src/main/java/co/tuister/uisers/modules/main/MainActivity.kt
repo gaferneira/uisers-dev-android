@@ -30,6 +30,7 @@ import co.tuister.uisers.utils.extensions.launchImagePicker
 import co.tuister.uisers.utils.extensions.manageDeepLink
 import co.tuister.uisers.utils.extensions.setImageFromUri
 import co.tuister.uisers.utils.extensions.setupWithNavController
+import co.tuister.uisers.utils.extensions.singleClick
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
@@ -81,13 +82,13 @@ class MainActivity :
         supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.toolbar.navigationIcon = null
 
-        binding.circleImagePhoto.setOnClickListener {
+        binding.circleImagePhoto.singleClick {
             analytics.trackEvent(Analytics.EVENT_CLICK_DRAWER_MENU)
             binding.drawerLayout.openDrawer(START)
             viewModel.disableFirstTime()
         }
 
-        bindingMenu.circleImagePhoto.setOnClickListener {
+        bindingMenu.circleImagePhoto.singleClick {
             launchImagePicker()
             stopAnimatedIconsFirstTime()
         }
@@ -303,7 +304,7 @@ class MainActivity :
         with(binding.contentView) {
             textBanner.setText(text)
             buttonBanner.setText(textButton)
-            buttonBanner.setOnClickListener {
+            buttonBanner.singleClick {
                 motionView.transitionToStart()
             }
             motionView.transitionToEnd()

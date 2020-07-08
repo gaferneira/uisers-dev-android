@@ -20,6 +20,7 @@ import co.tuister.uisers.services.AlarmReceiver
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.pickDateTime
+import co.tuister.uisers.utils.extensions.singleClick
 import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
@@ -109,7 +110,7 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
             binding.editTextReminder.setText(reminderOption(this))
         }
 
-        binding.editTextDate.setOnClickListener {
+        binding.editTextDate.singleClick {
             val calendar = Calendar.getInstance()
             task.dueDate?.run {
                 calendar.timeInMillis = this
@@ -122,7 +123,7 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
         }
 
         updateProgress(task.status)
-        binding.editTextReminder.setOnClickListener {
+        binding.editTextReminder.singleClick {
             showReminderOptions()
         }
 
@@ -130,25 +131,25 @@ class AddTaskFragment : BaseFragment<FragmentTasksAddBinding>(), ColorPaletteDia
         val backgroundColor = colors[task.materialColor]
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
-        binding.fabColor.setOnClickListener {
+        binding.fabColor.singleClick {
             ColorPaletteDialogFragment.create(colors, this)
                 .show(parentFragmentManager, ColorPaletteDialogFragment.TAG)
         }
 
-        binding.chipStatus1.setOnClickListener {
+        binding.chipStatus1.singleClick {
             updateProgress(Task.STATUS_DO)
         }
 
-        binding.chipStatus2.setOnClickListener {
+        binding.chipStatus2.singleClick {
             updateProgress(Task.STATUS_DOING)
         }
 
-        binding.chipStatus3.setOnClickListener {
+        binding.chipStatus3.singleClick {
             updateProgress(Task.STATUS_DONE)
         }
 
         bindProgressButton(binding.buttonSave)
-        binding.buttonSave.setOnClickListener {
+        binding.buttonSave.singleClick {
             hideKeyboard()
             if (requireContext().checkRequireFormFields(binding.editTextTitleTask)) {
                 it.isEnabled = false

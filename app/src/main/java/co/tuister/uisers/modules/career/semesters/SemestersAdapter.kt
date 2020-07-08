@@ -9,6 +9,7 @@ import co.tuister.domain.entities.Semester
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_career_semester.*
 
 class SemestersAdapter(
@@ -59,7 +60,7 @@ class SemestersAdapter(
                     listener?.onClickSemester(semester)
                 }
             }
-            itemView.setOnClickListener {
+            itemView.singleClick {
                 listener?.onClickSemester(semester)
             }
             itemView.setOnCreateContextMenuListener(this)

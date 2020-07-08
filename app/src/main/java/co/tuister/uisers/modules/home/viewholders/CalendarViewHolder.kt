@@ -10,6 +10,7 @@ import co.tuister.uisers.modules.home.HomeCalendar
 import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.setTextOrGone
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_home_calelendar_event.view.*
 import kotlinx.android.synthetic.main.item_home_calendar.view.*
 
@@ -44,7 +45,7 @@ class CalendarViewHolder(view: View) : HomeViewHolder(view) {
         list.forEachIndexed { i, item ->
             container.addView(
                 configChildView(viewsList[i], item).apply {
-                    setOnClickListener {
+                    singleClick {
                         listener?.onClickRow(position, createDeepLink(context.getString(R.string.deep_link_institution_calendar)))
                     }
                 }

@@ -10,6 +10,7 @@ import co.tuister.domain.entities.Note
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_career_note.*
 
 class NotesAdapter(
@@ -61,7 +62,7 @@ class NotesAdapter(
                 )
             )
 
-            itemView.setOnClickListener {
+            itemView.singleClick {
                 listener.onClickNote(note)
             }
             itemView.setOnCreateContextMenuListener(this)

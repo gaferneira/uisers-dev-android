@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_institutional_menu.*
 
 class InstitutionalAdapter : RecyclerView.Adapter<InstitutionalAdapter.InstitutionalViewHolder>() {
@@ -44,7 +45,7 @@ class InstitutionalAdapter : RecyclerView.Adapter<InstitutionalAdapter.Instituti
             text_view_institutional_menu.setText(menu.title)
             image_view_institutional_menu.setImageResource(menu.icon)
             container_institutional.setBackgroundResource(menu.backgroundColor)
-            itemView.setOnClickListener {
+            itemView.singleClick {
                 listener?.onClickMenu(position)
             }
         }

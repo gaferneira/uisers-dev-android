@@ -17,6 +17,7 @@ import co.tuister.uisers.utils.extensions.AppPermission
 import co.tuister.uisers.utils.extensions.handlePermission
 import co.tuister.uisers.utils.extensions.handlePermissionsResult
 import co.tuister.uisers.utils.extensions.requestPermission
+import co.tuister.uisers.utils.extensions.singleClick
 import co.tuister.uisers.utils.maps.MapController
 import kotlinx.coroutines.flow.collect
 import org.koin.android.ext.android.inject
@@ -59,8 +60,8 @@ class MapFragment : BaseFragment<FragmentInstitutionalMapBinding>() {
     }
 
     private fun initViews() {
-        binding.editTextSite.setOnClickListener { showSitesDialog() }
-        binding.editTextPlace.setOnClickListener { showPlacesDialog() }
+        binding.editTextSite.singleClick { showSitesDialog() }
+        binding.editTextPlace.singleClick { showPlacesDialog() }
     }
 
     private fun initViewModel() {

@@ -11,6 +11,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.extensions.format
 import co.tuister.uisers.utils.extensions.setTextOrGone
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_career_subject.*
 
 class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>() {
@@ -49,7 +50,7 @@ class SubjectsAdapter : RecyclerView.Adapter<SubjectsAdapter.SubjectViewHolder>(
             text_view_subject_name.text = subject.name
             text_view_subject_desc.setTextOrGone(subject.teacher)
             text_view_subject_note.text = subject.note.format()
-            itemView.setOnClickListener {
+            itemView.singleClick {
                 listener?.onClickSubject(subject)
             }
 

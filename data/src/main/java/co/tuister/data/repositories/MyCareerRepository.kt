@@ -10,6 +10,7 @@ import co.tuister.data.utils.getSource
 import co.tuister.domain.entities.Semester
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import timber.log.Timber
 
 open class MyCareerRepository(
@@ -29,15 +30,24 @@ open class MyCareerRepository(
         getUserDocument(defaultPeriod).collection(SemestersCollection.COL_SEMESTERS)
 
     protected suspend fun getCurrentSemesterPath(): String {
-
         val doc = getUserDocument().get(connectivityUtil.getSource()).await()
         val currentSemester = doc!!.toObject(DataSemesterUserDto::class.java)!!.currentSemester
-        val collection = getSemestersCollection()
+        var collection = getSemestersCollection()
             .whereEqualTo(SemestersCollection.FIELD_PERIOD, currentSemester)
             .get(connectivityUtil.getSource())
             .await()
 
-        return collection!!.documents.first().reference.path
+        if (collection!!.documents.isNotEmpty()) {
+            return collection.documents.first().reference.path
+        }
+
+        // return last semester
+        collection = getSemestersCollection()
+            .orderBy(SemestersCollection.FIELD_PERIOD, Query.Direction.DESCENDING)
+            .get(connectivityUtil.getSource())
+            .await()!!
+
+        return collection.documents.first().reference.path
     }
 
     private suspend fun getUserDocumentsId(defaultPeriod: String = DEFAULT_PERIOD): String {
@@ -75,6 +85,6 @@ open class MyCareerRepository(
     }
 
     companion object {
-        const val DEFAULT_PERIOD = "2020-2"
+        const val DEFAULT_PERIOD = "2020-1"
     }
 }

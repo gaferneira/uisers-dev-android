@@ -17,6 +17,7 @@ import co.tuister.uisers.databinding.FragmentCareerSubjectAddBinding
 import co.tuister.uisers.modules.career.subjects.add.AddSubjectViewModel.State
 import co.tuister.uisers.utils.StringUtils
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.singleClick
 import co.tuister.uisers.utils.view.ColorPaletteDialogFragment
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
@@ -73,13 +74,13 @@ class AddSubjectFragment : BaseFragment<FragmentCareerSubjectAddBinding>(), Colo
         val backgroundColor = colors[subject.materialColor]
         binding.fabColor.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
-        binding.fabColor.setOnClickListener {
-            ColorPaletteDialogFragment.create(colors, this)
+        binding.fabColor.singleClick {
+            ColorPaletteDialogFragment.create(colors, this@AddSubjectFragment)
                 .show(parentFragmentManager, ColorPaletteDialogFragment.TAG)
         }
 
         bindProgressButton(binding.buttonSave)
-        binding.buttonSave.setOnClickListener {
+        binding.buttonSave.singleClick {
             hideKeyboard()
             if (requireContext().checkRequireFormFields(
                 binding.autocompleteSubject,
