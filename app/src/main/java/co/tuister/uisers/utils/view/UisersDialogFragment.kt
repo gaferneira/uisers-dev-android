@@ -17,6 +17,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentUisersBinding
+import co.tuister.uisers.utils.extensions.singleClick
 import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_CANCELABLE
 import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_MESSAGE
 import co.tuister.uisers.utils.view.UisersDialogFragment.Builder.Companion.ARGUMENT_MESSAGE_PARAMS
@@ -134,12 +135,12 @@ class UisersDialogFragment : AppCompatDialogFragment() {
             isCancelable = getBoolean(ARGUMENT_CANCELABLE)
         }
 
-        binding.buttonPositive.setOnClickListener {
+        binding.buttonPositive.singleClick {
             dismiss()
             onPositiveButtonClickListener?.onClick(it)
         }
 
-        binding.buttonNegative.setOnClickListener {
+        binding.buttonNegative.singleClick {
             dismiss()
             onNegativeButtonClickListener?.onClick(it)
         }

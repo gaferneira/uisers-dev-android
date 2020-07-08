@@ -17,6 +17,7 @@ import co.tuister.uisers.modules.career.schedule.ScheduleFragment
 import co.tuister.uisers.modules.career.semesters.SemestersFragment
 import co.tuister.uisers.modules.career.subjects.SubjectsAdapter
 import co.tuister.uisers.modules.career.subjects.SubjectsFragment
+import co.tuister.uisers.utils.extensions.singleClick
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.Locale
 
@@ -67,7 +68,7 @@ class MyCareerFragment : BaseFragment<FragmentCareerBinding>(), SubjectsAdapter.
             }
         }.attach()
 
-        binding.buttonAdd.setOnClickListener {
+        binding.buttonAdd.singleClick {
             when (currentPosition) {
                 0 -> findNavController().navigate(R.id.action_subjects_to_subject_add)
                 1 -> scheduleFragment?.addNewItem()

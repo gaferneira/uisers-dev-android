@@ -16,6 +16,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentHomeAboutBinding
+import co.tuister.uisers.utils.extensions.singleClick
 
 class AboutDialogFragment : AppCompatDialogFragment() {
 
@@ -43,23 +44,23 @@ class AboutDialogFragment : AppCompatDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textViewFounder1.setOnClickListener {
+        binding.textViewFounder1.singleClick {
             openLinkedInPage(getString(R.string.home_about_founder_1_linked_in))
         }
 
-        binding.textViewFounder2.setOnClickListener {
+        binding.textViewFounder2.singleClick {
             openLinkedInPage(getString(R.string.home_about_founder_2_linked_in))
         }
 
-        binding.textViewEmail.setOnClickListener {
+        binding.textViewEmail.singleClick {
             sendEmail(getString(R.string.home_about_email))
         }
 
-        binding.textViewWhatsapp.setOnClickListener {
+        binding.textViewWhatsapp.singleClick {
             openWhatsapp(getString(R.string.home_about_whatsapp_number))
         }
 
-        binding.textViewRepository.setOnClickListener {
+        binding.textViewRepository.singleClick {
             openUrl(getString(R.string.home_about_repository_url))
         }
     }

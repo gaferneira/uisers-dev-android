@@ -12,6 +12,7 @@ import co.tuister.domain.entities.Task
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.databinding.FragmentTasksBinding
+import co.tuister.uisers.utils.extensions.singleClick
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -45,7 +46,7 @@ class TasksFragment : BaseFragment<FragmentTasksBinding>(), TasksAdapter.TasksLi
             }
         }.attach()
 
-        binding.buttonAdd.setOnClickListener {
+        binding.buttonAdd.singleClick {
             val action = TasksFragmentDirections.actionTasksToTasksAdd(null)
             findNavController().navigate(action)
         }

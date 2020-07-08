@@ -19,6 +19,7 @@ import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentCareerSubjectsNoteBinding
 import co.tuister.uisers.utils.extensions.format
+import co.tuister.uisers.utils.extensions.singleClick
 import java.text.DecimalFormat
 
 class AddNoteDialogFragment : AppCompatDialogFragment() {
@@ -90,7 +91,7 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.buttonSave.setOnClickListener {
+        binding.buttonSave.singleClick {
             listener?.onSaveNote(note)
             dismiss()
         }

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.databinding.FragmentInstitutionalWheelsBinding
 import co.tuister.uisers.utils.analytics.Analytics
+import co.tuister.uisers.utils.extensions.singleClick
 
 class WheelsFragment : BaseFragment<FragmentInstitutionalWheelsBinding>() {
 
@@ -23,7 +24,7 @@ class WheelsFragment : BaseFragment<FragmentInstitutionalWheelsBinding>() {
     }
 
     private fun initViews() {
-        binding.buttonOpen.setOnClickListener {
+        binding.buttonOpen.singleClick {
             val appPackageName = "org.co.wheels"
             try {
                 val intent =

@@ -22,6 +22,7 @@ import co.tuister.uisers.modules.login.register.RegisterViewModel.State.Validate
 import co.tuister.uisers.utils.ProgressType.DOWNLOADING
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.launchImagePicker
+import co.tuister.uisers.utils.extensions.singleClick
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 import kotlinx.coroutines.flow.collect
@@ -47,7 +48,7 @@ class RegisterFragment : BaseFragment<FragmentLoginRegisterBinding>() {
     }
 
     private fun initViews() {
-        binding.btnRegister.setOnClickListener {
+        binding.btnRegister.singleClick {
             if (requireContext().checkRequireFormFields(
                 binding.etRegisterEmail,
                 binding.etRegisterName,
@@ -60,25 +61,25 @@ class RegisterFragment : BaseFragment<FragmentLoginRegisterBinding>() {
             }
         }
 
-        binding.editTextCareer.setOnClickListener {
+        binding.editTextCareer.singleClick {
             viewModel.getCareers {
                 binding.loginStatus.isVisible = false
                 showCareerOptions()
             }
         }
 
-        binding.editTextCampus.setOnClickListener {
+        binding.editTextCampus.singleClick {
             viewModel.getCampus {
                 binding.loginStatus.isVisible = false
                 showCampusOptions()
             }
         }
 
-        binding.editTextYear.setOnClickListener {
+        binding.editTextYear.singleClick {
             showYearOptions()
         }
 
-        binding.circleImagePhoto.setOnClickListener {
+        binding.circleImagePhoto.singleClick {
             (requireActivity() as BaseActivity).launchImagePicker()
         }
     }

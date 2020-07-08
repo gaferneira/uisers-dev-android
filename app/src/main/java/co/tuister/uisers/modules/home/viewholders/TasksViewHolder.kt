@@ -10,6 +10,7 @@ import co.tuister.uisers.modules.home.HomeData
 import co.tuister.uisers.modules.home.HomeTasks
 import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.setTextOrGone
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_home_task.view.*
 import kotlinx.android.synthetic.main.item_home_tasks.view.*
 import java.util.Date
@@ -45,7 +46,7 @@ class TasksViewHolder(view: View) : HomeViewHolder(view) {
         list.forEachIndexed { i, task ->
             container.addView(
                 configChildView(viewsList[i], task).apply {
-                    setOnClickListener {
+                    singleClick {
                         listener?.onClickRow(position, createDeepLink(context.getString(R.string.deep_link_tasks)))
                     }
                 }

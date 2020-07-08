@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import co.tuister.domain.entities.Semester
 import co.tuister.uisers.databinding.DialogFragmentCareerSemesterBinding
+import co.tuister.uisers.utils.extensions.singleClick
 import java.util.*
 
 class AddSemesterDialogFragment : AppCompatDialogFragment() {
@@ -46,7 +47,7 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSave.isEnabled = false
-        binding.editTextSemester.setOnClickListener {
+        binding.editTextSemester.singleClick {
             showListDialog()
         }
     }
@@ -62,7 +63,7 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
                     (2 - (it % 2)).toString()
                 )
             }.filter { pair ->
-                semesters.firstOrNull { it.period == pair.first } == null
+                semesters.firstOrNull { it.period == pair.first + "-" + pair.second } == null
             }
 
         val options = semestersAvailable.map { it.first + "-" + it.second }.toTypedArray()
@@ -83,7 +84,7 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.buttonSave.setOnClickListener {
+        binding.buttonSave.singleClick {
             semester?.run {
                 current = binding.switchCurrent.isChecked
                 listener?.onSaveSemester(this)

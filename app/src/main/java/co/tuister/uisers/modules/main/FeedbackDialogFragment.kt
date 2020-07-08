@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentHomeFeedbackBinding
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.singleClick
 
 class FeedbackDialogFragment : AppCompatDialogFragment() {
 
@@ -51,7 +52,7 @@ class FeedbackDialogFragment : AppCompatDialogFragment() {
                 requireContext().checkRequireFormFields(binding.editTextFeedback, showError = false)
         }
 
-        binding.buttonSend.setOnClickListener {
+        binding.buttonSend.singleClick {
             listener?.onSendFeedback(binding.editTextFeedback.text.toString())
             dismiss()
         }

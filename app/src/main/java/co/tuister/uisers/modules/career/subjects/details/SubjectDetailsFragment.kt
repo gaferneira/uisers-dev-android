@@ -17,6 +17,7 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentCareerSubjectDetailsBinding
 import co.tuister.uisers.modules.career.FooterAdapter
 import co.tuister.uisers.modules.career.subjects.details.SubjectDetailsViewModel.State
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -67,7 +68,7 @@ class SubjectDetailsFragment :
             layoutManager = LinearLayoutManager(context)
             adapter = ConcatAdapter(this@SubjectDetailsFragment.adapter, footerAdapter)
         }
-        binding.buttonAdd.setOnClickListener {
+        binding.buttonAdd.singleClick {
             showNoteDialog()
         }
     }

@@ -18,6 +18,7 @@ import co.tuister.uisers.modules.login.LoginViewModel.State
 import co.tuister.uisers.modules.main.MainActivity
 import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.checkRequireFormFields
+import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.coroutines.flow.collect
 import org.koin.android.viewmodel.ext.android.getViewModel
 
@@ -54,11 +55,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     private fun initViews() {
 
         binding.buttonInternal.isVisible = BuildConfig.DEBUG
-        binding.buttonInternal.setOnClickListener {
+        binding.buttonInternal.singleClick {
             InternalActivity.start(requireContext())
         }
 
-        binding.loginSignInButton.setOnClickListener {
+        binding.loginSignInButton.singleClick {
             if (requireContext().checkRequireFormFields(binding.loginEmail, binding.loginPassword)) {
                 hideKeyboard()
                 viewModel.doLogIn()
@@ -66,12 +67,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         }
 
-        binding.loginRegisterButton.setOnClickListener {
+        binding.loginRegisterButton.singleClick {
             hideKeyboard()
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentDestToRegisterFragmentDest())
         }
 
-        binding.forgotPass.setOnClickListener {
+        binding.forgotPass.singleClick {
             hideKeyboard()
             findNavController().navigate(R.id.action_login_fragment_dest_to_forgot_password_fragment_dest)
         }

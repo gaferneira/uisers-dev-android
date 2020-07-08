@@ -10,6 +10,7 @@ import co.tuister.domain.entities.Event
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
 import co.tuister.uisers.utils.DateUtils
+import co.tuister.uisers.utils.extensions.singleClick
 import co.tuister.uisers.utils.sectionsDecorator.SectionsAdapterInterface
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.item_institutional_calendar.*
@@ -110,7 +111,7 @@ class CalendarAdapter(
             val event = item as Event
             text_view_title.text = event.title
             text_view_desc.text = event.description
-            itemView.setOnClickListener {
+            itemView.singleClick {
                 listener?.onClickEvent(event)
             }
         }
