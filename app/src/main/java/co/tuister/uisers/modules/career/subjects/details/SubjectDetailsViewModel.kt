@@ -43,7 +43,7 @@ class SubjectDetailsViewModel(
     private fun updateNotes() {
         viewModelScope.launch {
             setState(State.LoadItems(InProgress()))
-            val result = withContext(Dispatchers.IO) { getNotes.run(subject) }
+            val result = withContext(Dispatchers.IO) { getNotes(subject) }
             result.fold(
                 {
                     setState(State.LoadItems(Result.Error(it)))
@@ -63,7 +63,7 @@ class SubjectDetailsViewModel(
             val oldAverage = subject.note
             if (newNote != null && newNote != oldAverage) {
                 subject.note = newNote
-                saveSubject.run(subject)
+                saveSubject(subject)
             }
         }
     }
@@ -74,7 +74,7 @@ class SubjectDetailsViewModel(
 
     fun saveNote(note: Note) {
         viewModelScope.launch {
-            saveNote.run(Pair(note, subject)).fold(
+            saveNote(Pair(note, subject)).fold(
                 {
                     setState(State.SaveNote(Result.Error(it)))
                 },
@@ -87,7 +87,7 @@ class SubjectDetailsViewModel(
 
     fun removeNote(item: Note) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { removeUseCase.run(item) }
+            val result = withContext(Dispatchers.IO) { removeUseCase(item) }
             result.fold(
                 {
                     setState(State.RemoveItem(Result.Error(it)))

@@ -29,7 +29,7 @@ class CalendarViewModel(
     private fun updateEvents() {
         viewModelScope.launch {
             setState(State.LoadItems(Result.InProgress()))
-            val result = withContext(Dispatchers.IO) { getEvents.run() }
+            val result = withContext(Dispatchers.IO) { getEvents() }
             result.fold(
                 {
                     setState(State.LoadItems(Result.Error(it)))

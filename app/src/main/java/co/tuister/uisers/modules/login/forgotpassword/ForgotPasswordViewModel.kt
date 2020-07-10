@@ -25,7 +25,7 @@ class ForgotPasswordViewModel(
         setState(State.ValidateEmail(Result.InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                val sentRecover = recoverPassword.run(email.value!!)
+                val sentRecover = recoverPassword(email.value!!)
                 sentRecover.fold(
                     {
                         setState(State.ValidateEmail(Result.Error(it)))

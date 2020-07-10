@@ -10,6 +10,8 @@ import co.tuister.data.utils.await
 import co.tuister.data.utils.getEmail
 import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
+import co.tuister.domain.base.Either
+import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.Task
 import co.tuister.domain.repositories.TasksRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -20,43 +22,49 @@ class TasksRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
     private val db: FirebaseFirestore,
     private val connectivityUtil: ConnectivityUtil
-) : TasksRepository {
+) : BaseRepositoryImpl(), TasksRepository {
 
     private val taskManagerCollection by lazy { TaskManagerCollection(db) }
 
-    override suspend fun getTasks(): List<Task> {
-        val collection = getUserDocument().collection(TaskManagerCollection.COL_TASKS)
-            .get(connectivityUtil.getSource())
-            .await()!!
+    override suspend fun getTasks(): Either<Failure, List<Task>> {
+        return eitherResult {
+            val collection = getUserDocument().collection(TaskManagerCollection.COL_TASKS)
+                .get(connectivityUtil.getSource())
+                .await()!!
 
-        val list = collection.documents.map {
-            val path = it.reference.path
-            it.toObject(TaskDto::class.java)!!.toEntity(path)
+            val list = collection.documents.map {
+                val path = it.reference.path
+                it.toObject(TaskDto::class.java)!!.toEntity(path)
+            }
+
+            list.sortedBy { it.title }
         }
-
-        return list.sortedBy { it.title }
     }
 
-    override suspend fun save(task: Task): Task {
-        if (task.id.isNotEmpty()) {
-            val subjectDto = taskManagerCollection.documentByPath(task.id).get(connectivityUtil.getSource()).await()!!
-            subjectDto.reference.update(task.toDTO().objectToMap())
-        } else {
-            val id = getUserDocument()
-                .collection(TaskManagerCollection.COL_TASKS)
-                .add(task.toDTO())
-                .await()!!.path
-            task.id = id
+    override suspend fun save(task: Task): Either<Failure, Task> {
+        return eitherResult {
+            if (task.id.isNotEmpty()) {
+                val subjectDto = taskManagerCollection.documentByPath(task.id).get(connectivityUtil.getSource()).await()!!
+                subjectDto.reference.update(task.toDTO().objectToMap())
+            } else {
+                val id = getUserDocument()
+                    .collection(TaskManagerCollection.COL_TASKS)
+                    .add(task.toDTO())
+                    .await()!!.path
+                task.id = id
+            }
+            task
         }
-        return task
     }
 
-    override suspend fun remove(item: Task): Boolean {
-        return if (item.id.isNotEmpty()) {
-            taskManagerCollection.documentByPath(item.id).delete().await()
-            true
-        } else {
-            false
+    override suspend fun remove(item: Task): Either<Failure, Boolean> {
+        return eitherResult {
+            if (item.id.isNotEmpty()) {
+                taskManagerCollection.documentByPath(item.id).delete().await()
+                true
+            } else {
+                false
+            }
         }
     }
 

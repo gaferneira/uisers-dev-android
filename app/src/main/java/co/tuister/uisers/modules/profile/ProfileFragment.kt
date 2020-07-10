@@ -14,11 +14,11 @@ import androidx.navigation.fragment.navArgs
 import co.tuister.domain.entities.Career
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
+import co.tuister.uisers.common.BaseActivity.Companion.RESULT_LOAD_IMAGE
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentProfileBinding
 import co.tuister.uisers.modules.internal.InternalActivity
-import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.LoadData
 import co.tuister.uisers.modules.profile.ProfileViewModel.State.ValidateProfileUpdate
@@ -53,7 +53,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         bindProgressButton(binding.buttonSave)
 
         binding.buttonUploadPicture.singleClick {
-            (requireActivity() as BaseActivity).launchImagePicker()
+            launchImagePicker()
         }
         binding.buttonInternal.singleClick {
             InternalActivity.start(requireContext())
@@ -172,7 +172,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                RegisterFragment.RESULT_LOAD_IMAGE -> {
+                RESULT_LOAD_IMAGE -> {
                     val uri = data?.data
                     CropImage.activity(uri)
                         .setAspectRatio(1, 1)

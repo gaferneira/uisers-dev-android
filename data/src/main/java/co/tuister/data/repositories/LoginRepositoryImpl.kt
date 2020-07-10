@@ -13,9 +13,7 @@ import co.tuister.domain.base.Failure.EmailNotVerifiedError
 import co.tuister.domain.entities.User
 import co.tuister.domain.repositories.LoginRepository
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
@@ -28,7 +26,7 @@ class LoginRepositoryImpl(
 
     private val usersCollection by lazy { UsersCollection(db, connectivityUtil) }
 
-    override suspend fun login(email: String, password: String): Either<Failure, User?> {
+    override suspend fun login(email: String, password: String): Either<Failure, User> {
         return try {
             firebaseAuth
                 .signInWithEmailAndPassword(email, password)
@@ -43,33 +41,34 @@ class LoginRepositoryImpl(
             // check if current semester exists
             getCurrentSemesterPath()
 
-            Either.Right(user)
-        } catch (e: FirebaseAuthInvalidCredentialsException) {
-            Either.Left(Failure.AuthenticationError(e))
+            Either.Right(user!!)
         } catch (e: Exception) {
-            Either.Left(Failure.analyzeException(e.translateFirebaseException()))
+            Either.Left(e.translateFirebaseException())
         }
     }
 
-    override suspend fun recoverPassword(email: String): Boolean {
+    override suspend fun recoverPassword(email: String): Either<Failure, Boolean> {
         return try {
             firebaseAuth
                 .sendPasswordResetEmail(email)
                 .await()
-            true
+            Either.Right(true)
         } catch (e: FirebaseAuthInvalidUserException) {
-            false
+            Either.Right(false)
         } catch (e: Exception) {
-            throw(e.translateFirebaseException())
+            Either.Left(e.translateFirebaseException())
         }
     }
 
-    override suspend fun logout() {
-        firebaseAuth.signOut()
+    override suspend fun logout(): Either<Failure, Boolean> {
+        return eitherResult {
+            firebaseAuth.signOut()
+            true
+        }
     }
 
     override suspend fun register(user: User, password: String): Either<Failure, Boolean> {
-        return try {
+        return eitherResult {
             val data = firebaseAuth
                 .createUserWithEmailAndPassword(user.email, password)
                 .await()
@@ -77,23 +76,21 @@ class LoginRepositoryImpl(
                 it.sendEmailVerification().await()
                 usersCollection.collection().add(user.toDTO()).await()
             }
-            Either.Right(true)
-        } catch (e: FirebaseAuthWeakPasswordException) {
-            Either.Left(Failure.AuthWeakPasswordException(e))
-        } catch (e: Exception) {
-            Either.Left(Failure.analyzeException(e.translateFirebaseException()))
+            true
         }
     }
 
-    override suspend fun hasSessionActive(): Boolean = firebaseAuth.currentUser != null
+    override suspend fun hasSessionActive(): Either<Failure, Boolean> {
+        return eitherResult {
+            firebaseAuth.currentUser != null
+        }
+    }
 
     override suspend fun uploadImage(uri: Uri, email: String): Either<Failure, Boolean> {
         val profileRef = firebaseStorage.reference.child("$email/profile.jpg")
-        return try {
+        return eitherResult {
             profileRef.putFile(uri).await()
-            Either.Right(true)
-        } catch (e: Exception) {
-            Either.Left(Failure.analyzeException(e.translateFirebaseException()))
+            true
         }
     }
 }

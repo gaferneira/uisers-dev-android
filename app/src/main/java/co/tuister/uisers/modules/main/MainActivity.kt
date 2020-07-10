@@ -20,7 +20,6 @@ import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.ActivityMainBinding
 import co.tuister.uisers.databinding.LeftHomeMenuHeaderLayoutBinding
 import co.tuister.uisers.modules.login.LoginActivity
-import co.tuister.uisers.modules.login.register.RegisterFragment
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.main.MainViewModel.State.FirsTime
 import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
@@ -283,7 +282,7 @@ class MainActivity :
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                RegisterFragment.RESULT_LOAD_IMAGE -> {
+                RESULT_LOAD_IMAGE -> {
                     val uri = data?.data
                     CropImage.activity(uri)
                         .setAspectRatio(1, 1)
@@ -309,5 +308,9 @@ class MainActivity :
             }
             motionView.transitionToEnd()
         }
+    }
+
+    fun logout() {
+        viewModel.doLogOut()
     }
 }

@@ -11,6 +11,8 @@ import co.tuister.data.utils.SemestersCollection
 import co.tuister.data.utils.await
 import co.tuister.data.utils.getSource
 import co.tuister.data.utils.objectToMap
+import co.tuister.domain.base.Either
+import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.CareerSubject
 import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
@@ -28,84 +30,96 @@ class SubjectRepositoryImpl(
 
     private val baseCollection by lazy { BaseCollection(db, connectivityUtil) }
 
-    override suspend fun getAll(): List<CareerSubject> {
-        val document = baseCollection.getBaseDocument()
-        val field = document?.get(FIELD_SUBJECTS)
-        val json = gson.toJson(field)
-        return gson.fromJson(json, Array<CareerSubject>::class.java).toList()
+    override suspend fun getAll(): Either<Failure, List<CareerSubject>> {
+        return eitherResult {
+            val document = baseCollection.getBaseDocument()
+            val field = document?.get(FIELD_SUBJECTS)
+            val json = gson.toJson(field)
+            gson.fromJson(json, Array<CareerSubject>::class.java).toList()
+        }
     }
 
-    override suspend fun getMySubjects(): List<Subject> {
-        val subjects = semestersCollection.documentByPath(getCurrentSemesterPath())
-            .collection(SemestersCollection.COL_SUBJECTS)
-            .get(connectivityUtil.getSource())
-            .await()!!
-            .documents.map {
-                val path = it.reference.path
-                it.toObject(SubjectUserDto::class.java)!!.toEntity(path)
-            }
-
-        return subjects.sortedByDescending { it.credits }
-    }
-
-    override suspend fun save(subject: Subject): Subject {
-        if (subject.id.isNotEmpty()) {
-            val subjectDto = semestersCollection.documentByPath(subject.id).get(connectivityUtil.getSource()).await()!!
-            subjectDto.reference.update(subject.toDTO().objectToMap())
-        } else {
-            val id = semestersCollection.documentByPath(getCurrentSemesterPath())
+    override suspend fun getMySubjects(): Either<Failure, List<Subject>> {
+        return eitherResult {
+            val subjects = semestersCollection.documentByPath(getCurrentSemesterPath())
                 .collection(SemestersCollection.COL_SUBJECTS)
-                .add(subject.toDTO())
-                .await()!!.path
-            subject.id = id
-        }
+                .get(connectivityUtil.getSource())
+                .await()!!
+                .documents.map {
+                    val path = it.reference.path
+                    it.toObject(SubjectUserDto::class.java)!!.toEntity(path)
+                }
 
-        return subject
-    }
-
-    override suspend fun remove(subject: Subject): Boolean {
-        return if (subject.id.isNotEmpty()) {
-            semestersCollection.documentByPath(subject.id).delete().await()
-            true
-        } else {
-            false
+            subjects.sortedByDescending { it.credits }
         }
     }
 
-    override suspend fun getNotes(subject: Subject): List<Note> {
-        return semestersCollection.documentByPath(subject.id)
-            .collection(SemestersCollection.COL_NOTES)
-            .get(connectivityUtil.getSource()).await()!!
-            .documents
-            .map {
-                val path = it.reference.path
-                it.toObject(NoteDto::class.java)!!.toEntity(path)
-            }.sortedBy {
-                it.title
+    override suspend fun save(subject: Subject): Either<Failure, Subject> {
+        return eitherResult {
+            if (subject.id.isNotEmpty()) {
+                val subjectDto = semestersCollection.documentByPath(subject.id).get(connectivityUtil.getSource()).await()!!
+                subjectDto.reference.update(subject.toDTO().objectToMap())
+            } else {
+                val id = semestersCollection.documentByPath(getCurrentSemesterPath())
+                    .collection(SemestersCollection.COL_SUBJECTS)
+                    .add(subject.toDTO())
+                    .await()!!.path
+                subject.id = id
             }
-    }
-
-    override suspend fun saveNote(item: Note, subject: Subject): Note {
-        if (item.id.isNotEmpty()) {
-            val noteDto = semestersCollection.documentByPath(item.id).get(connectivityUtil.getSource()).await()!!
-            noteDto.reference.update(item.toDTO().objectToMap())
-        } else {
-            val id = semestersCollection.documentByPath(subject.id)
-                .collection(SemestersCollection.COL_NOTES)
-                .add(item.toDTO())
-                .await()!!.path
-            item.id = id
+            subject
         }
-
-        return item
     }
 
-    override suspend fun removeNote(item: Note): Boolean {
-        return if (item.id.isNotEmpty()) {
-            semestersCollection.documentByPath(item.id).delete().await()
-            true
-        } else {
-            false
+    override suspend fun remove(subject: Subject): Either<Failure, Boolean> {
+        return eitherResult {
+            if (subject.id.isNotEmpty()) {
+                semestersCollection.documentByPath(subject.id).delete().await()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    override suspend fun getNotes(subject: Subject): Either<Failure, List<Note>> {
+        return eitherResult {
+            semestersCollection.documentByPath(subject.id)
+                .collection(SemestersCollection.COL_NOTES)
+                .get(connectivityUtil.getSource()).await()!!
+                .documents
+                .map {
+                    val path = it.reference.path
+                    it.toObject(NoteDto::class.java)!!.toEntity(path)
+                }.sortedBy {
+                    it.title
+                }
+        }
+    }
+
+    override suspend fun saveNote(item: Note, subject: Subject): Either<Failure, Note> {
+        return eitherResult {
+            if (item.id.isNotEmpty()) {
+                val noteDto = semestersCollection.documentByPath(item.id).get(connectivityUtil.getSource()).await()!!
+                noteDto.reference.update(item.toDTO().objectToMap())
+            } else {
+                val id = semestersCollection.documentByPath(subject.id)
+                    .collection(SemestersCollection.COL_NOTES)
+                    .add(item.toDTO())
+                    .await()!!.path
+                item.id = id
+            }
+            item
+        }
+    }
+
+    override suspend fun removeNote(item: Note): Either<Failure, Boolean> {
+        return eitherResult {
+            if (item.id.isNotEmpty()) {
+                semestersCollection.documentByPath(item.id).delete().await()
+                true
+            } else {
+                false
+            }
         }
     }
 }

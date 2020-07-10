@@ -119,6 +119,7 @@ class SemestersFragment :
     }
 
     override fun onClickSemester(semester: Semester) {
+        if (semester.current) return
         showConfirmDialog(R.string.career_confirm_change_current_semester, R.string.career_title_semesters) {
             viewModel.changeCurrentSemester(semester)
         }

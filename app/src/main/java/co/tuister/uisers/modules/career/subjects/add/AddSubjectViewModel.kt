@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 
 class AddSubjectViewModel(
     private val getAllSubject: GetAllSubjectsUseCase,
-    private val saveSubject: SaveSubjectUseCase
+    private val saveSubjectUseCase: SaveSubjectUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -31,7 +31,7 @@ class AddSubjectViewModel(
     private fun getDefaultsSubjects() {
         viewModelScope.launch {
             setState(State.LoadDefaultSubjects(InProgress()))
-            val result = withContext(Dispatchers.IO) { getAllSubject.run() }
+            val result = withContext(Dispatchers.IO) { getAllSubject() }
             result.fold(
                 {
                     setState(State.LoadDefaultSubjects(Result.Error(it)))
@@ -47,7 +47,7 @@ class AddSubjectViewModel(
         setState(State.Save(InProgress()))
         viewModelScope.launch {
             setState(State.Save(InProgress()))
-            val result = withContext(Dispatchers.IO) { saveSubject.run(subject) }
+            val result = withContext(Dispatchers.IO) { saveSubjectUseCase(subject) }
             result.fold(
                 {
                     setState(State.Save(Result.Error(it)))

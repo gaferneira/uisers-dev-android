@@ -5,6 +5,8 @@ import co.tuister.data.dto.SiteDto
 import co.tuister.data.dto.toEntity
 import co.tuister.data.utils.BaseCollection
 import co.tuister.data.utils.ConnectivityUtil
+import co.tuister.domain.base.Either
+import co.tuister.domain.base.Failure
 import co.tuister.domain.entities.Place
 import co.tuister.domain.entities.Site
 import co.tuister.domain.repositories.MapRepository
@@ -15,25 +17,29 @@ class MapRepositoryImpl(
     db: FirebaseFirestore,
     private val gson: Gson,
     private val connectivityUtil: ConnectivityUtil
-) : MapRepository {
+) : BaseRepositoryImpl(), MapRepository {
 
     private val baseCollection by lazy { BaseCollection(db, connectivityUtil) }
 
-    override suspend fun getPlaces(): List<Place> {
-        val document = baseCollection.getMapDocument()
-        val field = document?.get(BaseCollection.FIELD_MAP_PLACES)
-        val json = gson.toJson(field)
-        return gson.fromJson(json, Array<PlaceDto>::class.java).toList().map {
-            it.toEntity()
+    override suspend fun getPlaces(): Either<Failure, List<Place>> {
+        return eitherResult {
+            val document = baseCollection.getMapDocument()
+            val field = document?.get(BaseCollection.FIELD_MAP_PLACES)
+            val json = gson.toJson(field)
+            gson.fromJson(json, Array<PlaceDto>::class.java).toList().map {
+                it.toEntity()
+            }
         }
     }
 
-    override suspend fun getSites(): List<Site> {
-        val document = baseCollection.getMapDocument()
-        val field = document?.get(BaseCollection.FIELD_MAP_SITES)
-        val json = gson.toJson(field)
-        return gson.fromJson(json, Array<SiteDto>::class.java).toList().map {
-            it.toEntity()
+    override suspend fun getSites(): Either<Failure, List<Site>> {
+        return eitherResult {
+            val document = baseCollection.getMapDocument()
+            val field = document?.get(BaseCollection.FIELD_MAP_SITES)
+            val json = gson.toJson(field)
+            gson.fromJson(json, Array<SiteDto>::class.java).toList().map {
+                it.toEntity()
+            }
         }
     }
 }

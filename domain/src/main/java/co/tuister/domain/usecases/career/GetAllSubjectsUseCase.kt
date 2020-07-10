@@ -3,6 +3,7 @@ package co.tuister.domain.usecases.career
 import co.tuister.domain.base.Either
 import co.tuister.domain.base.Failure
 import co.tuister.domain.base.NoParamsUseCase
+import co.tuister.domain.base.getOrElse
 import co.tuister.domain.entities.CareerSubject
 import co.tuister.domain.repositories.SubjectRepository
 import co.tuister.domain.repositories.UserRepository
@@ -12,9 +13,9 @@ class GetAllSubjectsUseCase(
     private val userRepository: UserRepository
 ) : NoParamsUseCase<List<CareerSubject>> {
 
-    override suspend fun run(): Either<Failure, List<CareerSubject>> {
+    override suspend fun invoke(): Either<Failure, List<CareerSubject>> {
         return try {
-            val list = repository.getAll()
+            val list = repository.getAll().getOrElse(listOf())
             val userCareer = userCareer()
             val filterList = list.groupBy { it.id }.map { map ->
                 val item = if (map.component2().size == 1) {

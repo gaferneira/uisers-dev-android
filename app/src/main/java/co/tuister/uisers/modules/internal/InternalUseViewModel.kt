@@ -22,9 +22,9 @@ import java.io.File
 
 class InternalUseViewModel(
     val dataUserUseCase: DataUserUseCase,
-    val updateSubjects: UpdateDataSubjectsUseCase,
-    val updateCareers: UpdateDataCareersUseCase,
-    val updateMapData: UpdateDataMapUseCase,
+    val updateSubjectsUseCase: UpdateDataSubjectsUseCase,
+    val updateCareersUseCase: UpdateDataCareersUseCase,
+    val updateMapDataUseCase: UpdateDataMapUseCase,
     val updateCalendar: UpdateDataCalendarUseCase
 ) : BaseViewModel() {
 
@@ -40,7 +40,7 @@ class InternalUseViewModel(
         setState(ValidateUserDocument(InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                val result = dataUserUseCase.run()
+                val result = dataUserUseCase()
                 result.fold(
                     {
                         setState(ValidateUserDocument(Error(it)))
@@ -77,7 +77,7 @@ class InternalUseViewModel(
     fun updateSubjects() {
         viewModelScope.launch {
             setState(State.UpdateSubjects(InProgress()))
-            val result = updateSubjects.run()
+            val result = updateSubjectsUseCase()
             result.fold(
                 {
                     setState(State.UpdateSubjects(Error(it)))
@@ -92,7 +92,7 @@ class InternalUseViewModel(
     fun updateCareers() {
         viewModelScope.launch {
             setState(State.UpdateCareers(InProgress()))
-            val result = updateCareers.run()
+            val result = updateCareersUseCase()
             result.fold(
                 {
                     setState(State.UpdateCareers(Error(it)))
@@ -107,7 +107,7 @@ class InternalUseViewModel(
     fun updateMapData() {
         viewModelScope.launch {
             setState(State.UpdateMapData(InProgress()))
-            val result = updateMapData.run()
+            val result = updateMapDataUseCase()
             result.fold(
                 {
                     setState(State.UpdateMapData(Error(it)))
@@ -122,7 +122,7 @@ class InternalUseViewModel(
     fun updateCalendarData() {
         viewModelScope.launch {
             setState(State.UpdateCalendarData(InProgress()))
-            val result = updateCalendar.run()
+            val result = updateCalendar()
             result.fold(
                 {
                     setState(State.UpdateCalendarData(Error(it)))

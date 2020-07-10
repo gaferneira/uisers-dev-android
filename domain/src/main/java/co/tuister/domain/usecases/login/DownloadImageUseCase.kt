@@ -10,7 +10,7 @@ import co.tuister.domain.usecases.login.DownloadImageUseCase.Params
 class DownloadImageUseCase(
     private val userRepository: UserRepository
 ) : UseCase<Uri, Params> {
-    override suspend fun run(params: Params): Either<Failure, Uri> {
+    override suspend fun invoke(params: Params): Either<Failure, Uri> {
         return try {
             userRepository.downloadImage(params.email)
         } catch (e: Exception) {

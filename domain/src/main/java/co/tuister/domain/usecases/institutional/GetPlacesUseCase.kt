@@ -9,9 +9,9 @@ import co.tuister.domain.repositories.MapRepository
 class GetPlacesUseCase(
     private val repository: MapRepository
 ) : NoParamsUseCase<List<Place>> {
-    override suspend fun run(): Either<Failure, List<Place>> {
+    override suspend fun invoke(): Either<Failure, List<Place>> {
         return try {
-            Either.Right(repository.getPlaces())
+            repository.getPlaces()
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

@@ -9,8 +9,12 @@ import co.tuister.domain.repositories.UserRepository
 class ProfileUseCase(
     private val userRepository: UserRepository
 ) : UseCase<Boolean, ProfileUseCase.Params> {
-    override suspend fun run(params: Params): Either<Failure, Boolean> {
-        return userRepository.updateUser(params.user)
+    override suspend fun invoke(params: Params): Either<Failure, Boolean> {
+        return try {
+            userRepository.updateUser(params.user)
+        } catch (e: Exception) {
+            Either.Left(Failure.analyzeException(e))
+        }
     }
 
     data class Params(val user: User)

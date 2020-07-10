@@ -19,7 +19,7 @@ class SubjectsViewModel(
     private val getMySubjects: GetMySubjectsUseCase,
     private val getCurrentSemester: GetCurrentSemesterUseCase,
     private val updateSemester: SaveSemesterUseCase,
-    private val removeSubject: RemoveSubjectUseCase
+    private val removeSubjectUseCase: RemoveSubjectUseCase
 ) : BaseViewModel() {
 
     sealed class State<out T : Any>(result: Result<T>) : BaseState<T>(result) {
@@ -39,7 +39,7 @@ class SubjectsViewModel(
     private fun updateSubjects() {
         viewModelScope.launch {
             setState(State.LoadSubjects(Result.InProgress()))
-            val result = withContext(Dispatchers.IO) { getMySubjects.run() }
+            val result = withContext(Dispatchers.IO) { getMySubjects() }
             result.fold(
                 {
                     setState(State.LoadSubjects(Result.Error(it)))
@@ -56,7 +56,7 @@ class SubjectsViewModel(
 
     private fun getCurrentSemester(newAverage: Pair<Int, Float>?) {
         viewModelScope.launch {
-            when (val result = withContext(Dispatchers.IO) { getCurrentSemester.run() }) {
+            when (val result = withContext(Dispatchers.IO) { getCurrentSemester() }) {
                 is Either.Right -> {
                     val semester = result.value
                     val oldAverage = semester.average
@@ -64,7 +64,7 @@ class SubjectsViewModel(
                     if (newAverage != null && (newAverage.first != oldCredits || newAverage.second != oldAverage)) {
                         semester.credits = newAverage.first
                         semester.average = newAverage.second
-                        updateSemester.run(semester)
+                        updateSemester(semester)
                     }
                 }
             }
@@ -86,7 +86,7 @@ class SubjectsViewModel(
 
     fun removeSubject(subject: Subject) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { removeSubject.run(subject) }
+            val result = withContext(Dispatchers.IO) { removeSubjectUseCase(subject) }
             result.fold(
                 {
                     setState(State.RemoveSubject(Result.Error(it)))

@@ -3,7 +3,6 @@ package co.tuister.uisers.modules.login
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.base.Failure
-import co.tuister.domain.base.Failure.AuthenticationError
 import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.LoginUseCase
@@ -36,7 +35,7 @@ class LoginViewModel(
 
     init {
         viewModelScope.launch {
-            userUseCase.run().fold(
+            userUseCase().fold(
                 {
                     if (it is Failure.EmailNotVerifiedError) {
                         setState(State.ValidateLogin(Error(it)))
@@ -54,19 +53,14 @@ class LoginViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val emailText = email.value!!
-                val result = loginUseCase.run(Params(emailText, password.value!!))
+                val result = loginUseCase(Params(emailText, password.value!!))
                 result.fold(
                     {
                         // manage error
                         setState(State.ValidateLogin(Error(it)))
                     },
                     {
-                        if (it) {
-                            setState(State.ValidateLogin(Result.Success()))
-                        } else {
-                            // password incorrect
-                            setState(State.ValidateLogin(Error(AuthenticationError())))
-                        }
+                        setState(State.ValidateLogin(Result.Success()))
                     }
                 )
             }
@@ -76,8 +70,8 @@ class LoginViewModel(
     fun reSendConfirmEmail() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                sendVerifyLinkUseCase.run()
-                logoutUseCase.run()
+                sendVerifyLinkUseCase()
+                logoutUseCase()
             }
         }
     }

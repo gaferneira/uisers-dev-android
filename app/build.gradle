@@ -14,8 +14,8 @@ android {
         applicationId "co.tuister.uisers"
         minSdkVersion 18
         targetSdkVersion 29
-        versionCode 53
-        versionName "2.1.2"
+        versionCode 54
+        versionName "2.1.3"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -103,9 +103,9 @@ dependencies {
     // Play Services -------------------------------------------------------------
 
     // Firebase  -------------------------------------------------------------
-    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
-    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
-    implementation 'com.google.firebase:firebase-messaging:20.2.2'
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.3'
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
     implementation 'org.conscrypt:conscrypt-android:2.4.0'
     // Firebase  -------------------------------------------------------------
 

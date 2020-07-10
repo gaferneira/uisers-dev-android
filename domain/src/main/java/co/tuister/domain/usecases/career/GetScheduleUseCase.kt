@@ -9,9 +9,9 @@ import co.tuister.domain.repositories.ScheduleRepository
 class GetScheduleUseCase(
     private val repository: ScheduleRepository
 ) : NoParamsUseCase<List<SchedulePeriod>> {
-    override suspend fun run(): Either<Failure, List<SchedulePeriod>> {
+    override suspend fun invoke(): Either<Failure, List<SchedulePeriod>> {
         return try {
-            Either.Right(repository.getSchedule())
+            repository.getSchedule()
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

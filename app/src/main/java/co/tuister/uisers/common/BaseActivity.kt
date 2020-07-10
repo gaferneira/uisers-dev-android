@@ -3,6 +3,7 @@ package co.tuister.uisers.common
 import androidx.appcompat.app.AppCompatActivity
 import co.tuister.domain.base.Failure
 import co.tuister.uisers.R
+import co.tuister.uisers.modules.main.MainActivity
 import co.tuister.uisers.utils.ProgressType
 import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.showDialog
@@ -48,6 +49,11 @@ open class BaseActivity : AppCompatActivity() {
                 displayMessage(R.string.error_server, 1)
             is Failure.NetworkConnection ->
                 displayMessage(R.string.error_check_internet, 1)
+            is Failure.AuthenticationError ->
+                when (val activity = this) {
+                    is MainActivity -> activity.logout()
+                    else -> return false
+                }
             else -> {
                 failure?.error?.run {
                     Timber.e(this)
@@ -69,5 +75,9 @@ open class BaseActivity : AppCompatActivity() {
     open fun showBanner(text: Int, textButton: Int = android.R.string.ok) {
         // Replace with material banner
         showDialog(text, R.string.base_label_alert)
+    }
+
+    companion object {
+        const val RESULT_LOAD_IMAGE = 11
     }
 }

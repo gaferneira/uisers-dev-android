@@ -43,11 +43,11 @@ dependencies {
     // Koin Implementation --------------------------------------------------------
 
     // Firebase Implementation ----------------------------------------------------
-    implementation 'com.google.firebase:firebase-messaging:20.2.2'
-    implementation 'com.google.firebase:firebase-core:17.4.4'
-    implementation 'com.google.firebase:firebase-firestore:21.5.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
+    implementation 'com.google.firebase:firebase-core:17.4.3'
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
     implementation 'com.google.firebase:firebase-database:19.3.1'
-    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     // Firebase Implementation ----------------------------------------------------
 
