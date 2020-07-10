@@ -59,7 +59,7 @@ class ProfileViewModel(
     fun uploadImage(uri: Uri) {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                uploadImageUseCase.run(UploadImageUseCase.Params(uri, _user.value!!.email))
+                uploadImageUseCase(UploadImageUseCase.Params(uri, _user.value!!.email))
             }
         }
     }
@@ -68,7 +68,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
                 val resultData =
-                    downloadImageUseCase.run(DownloadImageUseCase.Params(user.value!!.email))
+                    downloadImageUseCase(DownloadImageUseCase.Params(user.value!!.email))
                 resultData.fold(
                     { _ ->
                     },
@@ -86,7 +86,7 @@ class ProfileViewModel(
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
-                        careersUseCase.run()
+                        careersUseCase()
                     result.fold(
                         { fail ->
                             setState(State.LoadData(Error(fail)))
@@ -108,7 +108,7 @@ class ProfileViewModel(
         setState(ValidateProfileUpdate(InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                val result = profileUseCase.run(ProfileUseCase.Params(_user.value!!))
+                val result = profileUseCase(ProfileUseCase.Params(_user.value!!))
                 result.fold(
                     { fail ->
                         setState(ValidateProfileUpdate(Error(fail)))
@@ -127,7 +127,7 @@ class ProfileViewModel(
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
-                        campusUseCase.run()
+                        campusUseCase()
                     result.fold(
                         { fail ->
                             setState(State.LoadData(Error(fail)))

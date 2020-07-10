@@ -56,7 +56,7 @@ class MainViewModel(
     init {
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
-                fcmUpdateUseCase.run()
+                fcmUpdateUseCase()
             }
         }
 
@@ -64,7 +64,7 @@ class MainViewModel(
             if (!migration) {
                 migration = true
                 withContext(Dispatchers.IO) {
-                    val success = migrationUseCase.run()
+                    val success = migrationUseCase()
                     Timber.i("Result %s", success)
                 }
             }
@@ -74,7 +74,7 @@ class MainViewModel(
     fun uploadImage(uri: Uri) {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                uploadImageUseCase.run(UploadImageUseCase.Params(uri, email.value!!))
+                uploadImageUseCase(UploadImageUseCase.Params(uri, email.value!!))
             }
         }
     }
@@ -93,7 +93,7 @@ class MainViewModel(
     private fun downloadImage() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                val resultData = downloadImageUseCase.run(DownloadImageUseCase.Params(user.email))
+                val resultData = downloadImageUseCase(DownloadImageUseCase.Params(user.email))
                 resultData.fold(
                     {},
                     {
@@ -107,7 +107,7 @@ class MainViewModel(
     fun downloadUserData() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                val resultData = userUseCase.run()
+                val resultData = userUseCase()
                 resultData.fold(
                     { _ ->
                         // logout
@@ -125,14 +125,14 @@ class MainViewModel(
     fun disableFirstTime() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                disableFirstTimeUseCase.run()
+                disableFirstTimeUseCase()
             }
         }
     }
 
     fun checkAnimationFirstTime() = viewModelScope.launch {
         withContext(Dispatchers.Main) {
-            val resultData = firstTimeUseCase.run()
+            val resultData = firstTimeUseCase()
             resultData.fold(
                 {
                     setState(FirsTime(Success(true)))
@@ -148,7 +148,7 @@ class MainViewModel(
         setState(State.ValidateLogout(InProgress()))
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                logoutUseCase.run()
+                logoutUseCase()
                 setState(State.ValidateLogout(Success(true)))
             }
         }
@@ -156,7 +156,7 @@ class MainViewModel(
 
     fun sendFeedback(feedback: String) {
         viewModelScope.launch {
-            feedbackUserCase.run(feedback)
+            feedbackUserCase(feedback)
         }
     }
 }

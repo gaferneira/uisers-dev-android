@@ -9,10 +9,9 @@ import co.tuister.domain.repositories.FeedRepository
 class GetFeedUseCase(
     private val repository: FeedRepository
 ) : NoParamsUseCase<List<FeedCard>> {
-    override suspend fun run(): Either<Failure, List<FeedCard>> {
+    override suspend fun invoke(): Either<Failure, List<FeedCard>> {
         return try {
-            val result = repository.getFeed()
-            Either.Right(result)
+            repository.getFeed()
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

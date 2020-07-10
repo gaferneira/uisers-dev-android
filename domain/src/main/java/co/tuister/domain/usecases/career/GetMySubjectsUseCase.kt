@@ -9,9 +9,9 @@ import co.tuister.domain.repositories.SubjectRepository
 class GetMySubjectsUseCase(
     private val repository: SubjectRepository
 ) : NoParamsUseCase<List<Subject>> {
-    override suspend fun run(): Either<Failure, List<Subject>> {
+    override suspend fun invoke(): Either<Failure, List<Subject>> {
         return try {
-            Either.Right(repository.getMySubjects())
+            repository.getMySubjects()
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

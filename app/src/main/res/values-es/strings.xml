@@ -48,7 +48,7 @@
     <string name="error_field_required">Este campo es requerido</string>
     <string name="error_result_forget_message">Lo sentimos, no pudimos encontrar una cuenta vinculada a ese correo electrónico.</string>
     <string name="error_result_login_message_not_verified_email">Tu correo no ha sido verificado, ve a tu bandeja y has click en el enlace que te enviamos.</string>
-    <string name="error_result_login_message">Lo sentimos, no pudimos encontrar una cuenta vinculada a ese correo electrónico.</string>
+    <string name="error_result_login_message">Correo o contraseña incorrecta</string>
     <string name="error_server">"Error en el servidor, intentalo más tarde"</string>
     <string name="error_try_again">Hubo un error, inténtalo más tarde</string>
     <string name="home_about_email">gabrielfneira@gmail.com</string>

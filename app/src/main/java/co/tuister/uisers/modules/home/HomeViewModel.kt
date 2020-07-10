@@ -47,7 +47,7 @@ class HomeViewModel(
 
     private fun updateLabels() {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { getCurrentSemesterCase.run() }
+            val result = withContext(Dispatchers.IO) { getCurrentSemesterCase() }
             result.fold(
                 {
                     setState(State.LoadHeader(Result.Error(it)))
@@ -65,7 +65,7 @@ class HomeViewModel(
         viewModelScope.launch {
             val calendar = Calendar.getInstance()
             val result = withContext(Dispatchers.IO) {
-                getMainTasks.run(calendar.time)
+                getMainTasks(calendar.time)
             }
             result.fold(
                 {
@@ -81,7 +81,7 @@ class HomeViewModel(
     private fun updateSubjects() {
         viewModelScope.launch {
             val calendar = Calendar.getInstance()
-            val result = withContext(Dispatchers.IO) { scheduleByUseCase.run(calendar.time) }
+            val result = withContext(Dispatchers.IO) { scheduleByUseCase(calendar.time) }
             result.fold(
                 {
                     setState(State.LoadSubjects(Result.Error(it)))
@@ -100,7 +100,7 @@ class HomeViewModel(
                 set(Calendar.MINUTE, 0)
                 set(Calendar.SECOND, 0)
             }
-            val result = withContext(Dispatchers.IO) { upcomingEventsUseCase.run(calendar.time) }
+            val result = withContext(Dispatchers.IO) { upcomingEventsUseCase(calendar.time) }
             result.fold(
                 {
                     setState(State.LoadCalendar(Result.Error(it)))
@@ -114,7 +114,7 @@ class HomeViewModel(
 
     private fun updateFeed() {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { getFeedUseCase.run() }
+            val result = withContext(Dispatchers.IO) { getFeedUseCase() }
             result.fold(
                 {
                     setState(State.LoadFeed(Result.Error(it)))

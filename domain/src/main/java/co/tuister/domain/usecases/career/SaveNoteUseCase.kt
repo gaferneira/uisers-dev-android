@@ -10,9 +10,9 @@ import co.tuister.domain.repositories.SubjectRepository
 class SaveNoteUseCase(
     private val repository: SubjectRepository
 ) : UseCase<Note, Pair<Note, Subject>> {
-    override suspend fun run(params: Pair<Note, Subject>): Either<Failure, Note> {
+    override suspend fun invoke(params: Pair<Note, Subject>): Either<Failure, Note> {
         return try {
-            Either.Right(repository.saveNote(params.first, params.second))
+            repository.saveNote(params.first, params.second)
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

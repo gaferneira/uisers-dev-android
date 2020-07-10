@@ -9,9 +9,9 @@ import co.tuister.domain.repositories.SemesterRepository
 class GetCurrentSemesterUseCase(
     private val repository: SemesterRepository
 ) : NoParamsUseCase<Semester> {
-    override suspend fun run(): Either<Failure, Semester> {
+    override suspend fun invoke(): Either<Failure, Semester> {
         return try {
-            Either.Right(repository.getCurrent())
+            repository.getCurrent()
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

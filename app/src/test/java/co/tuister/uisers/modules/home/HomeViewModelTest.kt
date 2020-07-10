@@ -61,23 +61,23 @@ class HomeViewModelTest {
         MockKAnnotations.init(this, relaxUnitFun = true)
 
         getCurrentSemesterCase = relaxedMockk {
-            coEvery { run() } returns Either.Right(Semester(period = "2020-2"))
+            coEvery { this@relaxedMockk() } returns Either.Right(Semester(period = "2020-2"))
         }
 
         getMainTasks = relaxedMockk {
-            coEvery { this@relaxedMockk.run(any()) } returns Either.Right(listOf())
+            coEvery { this@relaxedMockk(any()) } returns Either.Right(listOf())
         }
 
         scheduleByUseCase = relaxedMockk {
-            coEvery { this@relaxedMockk.run(any()) } returns Either.Right(listOf())
+            coEvery { this@relaxedMockk(any()) } returns Either.Right(listOf())
         }
 
         upcomingEventsUseCase = relaxedMockk {
-            coEvery { this@relaxedMockk.run(any()) } returns Either.Right(listOf())
+            coEvery { this@relaxedMockk(any()) } returns Either.Right(listOf())
         }
 
         getFeedUseCase = relaxedMockk {
-            coEvery { run() } returns Either.Right(listOf())
+            coEvery { this@relaxedMockk() } returns Either.Right(listOf())
         }
     }
 
@@ -125,7 +125,7 @@ class HomeViewModelTest {
         testCoroutineRule.runBlockingTest {
             // given
             getCurrentSemesterCase = relaxedMockk {
-                coEvery { run() } returns Either.Left(Failure.UnknownException())
+                coEvery { this@relaxedMockk() } returns Either.Left(Failure.UnknownException())
             }
 
             val viewModel = HomeViewModel(getCurrentSemesterCase, getMainTasks, scheduleByUseCase, upcomingEventsUseCase, getFeedUseCase)
@@ -164,7 +164,7 @@ class HomeViewModelTest {
         testCoroutineRule.runBlockingTest {
             // given
             getMainTasks = relaxedMockk {
-                coEvery { this@relaxedMockk.run(any()) } returns Either.Left(Failure.UnknownException())
+                coEvery { this@relaxedMockk(any()) } returns Either.Left(Failure.UnknownException())
             }
 
             val viewModel = HomeViewModel(getCurrentSemesterCase, getMainTasks, scheduleByUseCase, upcomingEventsUseCase, getFeedUseCase)
@@ -203,7 +203,7 @@ class HomeViewModelTest {
         testCoroutineRule.runBlockingTest {
             // given
             scheduleByUseCase = relaxedMockk {
-                coEvery { this@relaxedMockk.run(any()) } returns Either.Left(Failure.UnknownException())
+                coEvery { this@relaxedMockk(any()) } returns Either.Left(Failure.UnknownException())
             }
 
             val viewModel = HomeViewModel(getCurrentSemesterCase, getMainTasks, scheduleByUseCase, upcomingEventsUseCase, getFeedUseCase)
@@ -242,7 +242,7 @@ class HomeViewModelTest {
         testCoroutineRule.runBlockingTest {
             // given
             upcomingEventsUseCase = relaxedMockk {
-                coEvery { this@relaxedMockk.run(any()) } returns Either.Left(Failure.UnknownException())
+                coEvery { this@relaxedMockk(any()) } returns Either.Left(Failure.UnknownException())
             }
 
             val viewModel = HomeViewModel(getCurrentSemesterCase, getMainTasks, scheduleByUseCase, upcomingEventsUseCase, getFeedUseCase)
@@ -281,7 +281,7 @@ class HomeViewModelTest {
         testCoroutineRule.runBlockingTest {
             // given
             getFeedUseCase = relaxedMockk {
-                coEvery { run() } returns Either.Left(Failure.UnknownException())
+                coEvery { this@relaxedMockk() } returns Either.Left(Failure.UnknownException())
             }
 
             val viewModel = HomeViewModel(getCurrentSemesterCase, getMainTasks, scheduleByUseCase, upcomingEventsUseCase, getFeedUseCase)

@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 class ScheduleViewModel(
     private val getMySubjects: GetMySubjectsUseCase,
     private val getSchedule: GetScheduleUseCase,
-    private val savePeriod: SaveSchedulePeriodUseCase,
+    private val savePeriodUseCase: SaveSchedulePeriodUseCase,
     private val removeUseCase: RemoveSchedulePeriodUseCase
 ) : BaseViewModel() {
 
@@ -42,7 +42,7 @@ class ScheduleViewModel(
             setState(
                 State.LoadItems(Result.InProgress())
             )
-            val result = withContext(Dispatchers.IO) { getSchedule.run() }
+            val result = withContext(Dispatchers.IO) { getSchedule() }
             result.fold(
                 {
                     setState(State.LoadItems(Result.Error(it)))
@@ -57,7 +57,7 @@ class ScheduleViewModel(
     private fun updateSubjects() {
         viewModelScope.launch {
             setState(State.LoadSubjects(Result.InProgress()))
-            val result = withContext(Dispatchers.IO) { getMySubjects.run() }
+            val result = withContext(Dispatchers.IO) { getMySubjects() }
             result.fold(
                 {
                     setState(State.LoadSubjects(Result.Error(it)))
@@ -72,7 +72,7 @@ class ScheduleViewModel(
     fun savePeriod(period: SchedulePeriod) {
         setState(State.SavePeriod(Result.InProgress()))
         viewModelScope.launch {
-            savePeriod.run(period).fold(
+            savePeriodUseCase(period).fold(
                 {
                     setState(State.SavePeriod(Result.Error(it)))
                 },
@@ -85,7 +85,7 @@ class ScheduleViewModel(
 
     fun removePeriod(item: SchedulePeriod) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { removeUseCase.run(item) }
+            val result = withContext(Dispatchers.IO) { removeUseCase(item) }
             result.fold(
                 {
                     setState(State.RemoveItem(Result.Error(it)))

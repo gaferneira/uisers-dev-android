@@ -10,9 +10,9 @@ import java.util.Date
 class GetUpcomingEventsUseCase(
     private val repository: CalendarRepository
 ) : UseCase<List<Event>, Date> {
-    override suspend fun run(params: Date): Either<Failure, List<Event>> {
+    override suspend fun invoke(params: Date): Either<Failure, List<Event>> {
         return try {
-            Either.Right(repository.getUpcomingEvents(params))
+            repository.getUpcomingEvents(params)
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

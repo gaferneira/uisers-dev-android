@@ -8,13 +8,13 @@ import co.tuister.domain.entities.User
 
 interface UserRepository {
     suspend fun getUser(): Either<Failure, User>
-    suspend fun getCareers(): List<Career>
-    suspend fun getCampus(): List<String>
+    suspend fun getCareers(): Either<Failure, List<Career>>
+    suspend fun getCampus(): Either<Failure, List<String>>
     suspend fun downloadImage(email: String): Either<Failure, Uri>
     suspend fun updateUser(user: User): Either<Failure, Boolean>
-    suspend fun updateFCMToken(): Boolean
-    suspend fun reSendVerifyEmail(): Boolean
-    suspend fun sendFeedback(comment: String): Boolean
+    suspend fun updateFCMToken(): Either<Failure, Boolean>
+    suspend fun reSendVerifyEmail(): Either<Failure, Boolean>
+    suspend fun sendFeedback(comment: String): Either<Failure, Boolean>
     suspend fun checkFirstTime(): Boolean
-    suspend fun disableFirstTime()
+    suspend fun disableFirstTime(): Boolean
 }

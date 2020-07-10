@@ -17,7 +17,8 @@ open class MyCareerRepository(
     protected val firebaseAuth: FirebaseAuth,
     private val db: FirebaseFirestore,
     private val connectivityUtil: ConnectivityUtil
-) {
+) : BaseRepositoryImpl() {
+
     protected val semestersCollection by lazy { SemestersCollection(db) }
 
     private var userDocumentId: String? = null

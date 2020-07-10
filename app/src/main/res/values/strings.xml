@@ -160,7 +160,7 @@
     <string name="error_field_required">This field is required</string>
     <string name="error_result_forget_message">We are sorry we could not find and account linked to that email.</string>
     <string name="error_result_login_message_not_verified_email">We have found that your email has not been verified, go to your email and click in the link we have sent you.</string>
-    <string name="error_result_login_message">We are sorry, we could not find and account linked to that email.</string>
+    <string name="error_result_login_message">Email or password is incorrect</string>
     <string name="error_server">"Server error, please try again later"</string>
     <string name="error_try_again">"There was an error, please try again later"</string>
     <string name="error_check_internet">Check your internet connection</string>

@@ -12,11 +12,12 @@ sealed class Failure(val error: Exception?) {
     class UnknownException(error: Exception? = null) : Failure(error)
     class NetworkConnection(error: Exception? = null) : Failure(error)
     class ServerError(error: Exception? = null) : Failure(error)
-    class AuthWeakPasswordException(error: Exception? = null) : Failure(error)
+    class AuthWeakPasswordException(error: Exception? = null) : FeatureFailure(error)
     class AuthenticationError(error: Exception? = null) : Failure(error)
     class EmailNotVerifiedError(error: Exception? = null) : Failure(error)
     class FormError(error: Exception? = null) : Failure(error)
     class DataNotFound(error: Exception? = null) : Failure(error)
+    class TooManyRequests(error: Exception? = null) : Failure(error)
 
     /** * Extend this class for feature specific failures.*/
     abstract class FeatureFailure(error: Exception?) : Failure(error)

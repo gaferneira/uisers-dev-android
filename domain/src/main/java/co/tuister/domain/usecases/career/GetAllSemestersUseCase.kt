@@ -10,9 +10,9 @@ class GetAllSemestersUseCase(
     private val repository: SemesterRepository
 ) : NoParamsUseCase<List<Semester>> {
 
-    override suspend fun run(): Either<Failure, List<Semester>> {
+    override suspend fun invoke(): Either<Failure, List<Semester>> {
         return try {
-            Either.Right(repository.getAll())
+            repository.getAll()
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }

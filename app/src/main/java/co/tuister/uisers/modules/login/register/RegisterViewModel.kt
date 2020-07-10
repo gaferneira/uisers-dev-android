@@ -82,7 +82,7 @@ class RegisterViewModel(
     private fun registerUser() {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                val result = registerUseCase.run(Params(userLive.value!!, password1.value!!))
+                val result = registerUseCase(Params(userLive.value!!, password1.value!!))
                 result.fold(
                     { fail ->
                         setState(State.ValidateRegister(Error(fail)))
@@ -101,7 +101,7 @@ class RegisterViewModel(
         uri?.let {
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
-                    uploadImageUseCase.run(
+                    uploadImageUseCase(
                         UploadImageUseCase.Params(
                             it,
                             userLive.value!!.email
@@ -120,7 +120,7 @@ class RegisterViewModel(
     fun doLogout(unit: () -> Unit) {
         viewModelScope.launch {
             withContext(Dispatchers.Main) {
-                logoutUseCase.run()
+                logoutUseCase()
                 unit.invoke()
             }
         }
@@ -153,7 +153,7 @@ class RegisterViewModel(
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
-                        careersUseCase.run()
+                        careersUseCase()
                     result.fold(
                         { fail ->
                             setState(State.ValidateRegister(Error(fail)))
@@ -176,7 +176,7 @@ class RegisterViewModel(
             viewModelScope.launch {
                 withContext(Dispatchers.Main) {
                     val result =
-                        campusUseCase.run()
+                        campusUseCase()
                     result.fold(
                         { fail ->
                             setState(State.ValidateRegister(Error(fail)))

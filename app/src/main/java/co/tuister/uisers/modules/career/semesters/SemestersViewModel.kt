@@ -15,8 +15,8 @@ import kotlinx.coroutines.withContext
 
 class SemestersViewModel(
     private val getAllSemesters: GetAllSemestersUseCase,
-    private val saveSemester: SaveSemesterUseCase,
-    private val changeCurrentSemester: ChangeCurrentSemesterUseCase,
+    private val saveSemesterUseCase: SaveSemesterUseCase,
+    private val changeCurrentSemesterUseCase: ChangeCurrentSemesterUseCase,
     private val removeUseCase: RemoveSemesterUseCase
 ) : BaseViewModel() {
 
@@ -40,7 +40,7 @@ class SemestersViewModel(
             setState(
                 State.LoadItems(Result.InProgress())
             )
-            val result = withContext(Dispatchers.IO) { getAllSemesters.run() }
+            val result = withContext(Dispatchers.IO) { getAllSemesters() }
             result.fold(
                 {
                     setState(State.LoadItems(Result.Error(it)))
@@ -55,7 +55,7 @@ class SemestersViewModel(
     fun saveSemester(semester: Semester) {
         setState(State.SaveSemester(Result.InProgress()))
         viewModelScope.launch {
-            saveSemester.run(semester).fold(
+            saveSemesterUseCase(semester).fold(
                 {
                     setState(State.SaveSemester(Result.Error(it)))
                 },
@@ -69,7 +69,7 @@ class SemestersViewModel(
     fun changeCurrentSemester(semester: Semester) {
         setState(State.ChangeCurrentSemester(Result.InProgress()))
         viewModelScope.launch {
-            changeCurrentSemester.run(semester).fold(
+            changeCurrentSemesterUseCase(semester).fold(
                 {
                     setState(State.ChangeCurrentSemester(Result.Error(it)))
                 },
@@ -82,7 +82,7 @@ class SemestersViewModel(
 
     fun removeSemester(item: Semester) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { removeUseCase.run(item) }
+            val result = withContext(Dispatchers.IO) { removeUseCase(item) }
             result.fold(
                 {
                     setState(State.RemoveItem(Result.Error(it)))

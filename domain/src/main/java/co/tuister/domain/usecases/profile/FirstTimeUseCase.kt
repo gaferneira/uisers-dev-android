@@ -8,8 +8,11 @@ import co.tuister.domain.repositories.UserRepository
 class FirstTimeUseCase(
     private val userRepository: UserRepository
 ) : NoParamsUseCase<Boolean> {
-    override suspend fun run(): Either<Failure, Boolean> {
-        val result = userRepository.checkFirstTime()
-        return Either.Right(result)
+    override suspend fun invoke(): Either<Failure, Boolean> {
+        return try {
+            Either.Right(userRepository.checkFirstTime())
+        } catch (e: Exception) {
+            Either.Left(Failure.analyzeException(e))
+        }
     }
 }

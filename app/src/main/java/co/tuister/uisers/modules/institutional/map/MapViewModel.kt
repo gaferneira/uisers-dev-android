@@ -30,7 +30,7 @@ class MapViewModel(
     private fun updateSites() {
         viewModelScope.launch {
             setState(State.LoadSites(Result.InProgress()))
-            val result = withContext(Dispatchers.IO) { getSites.run() }
+            val result = withContext(Dispatchers.IO) { getSites() }
             result.fold(
                 {
                     setState(State.LoadSites(Result.Error(it)))
@@ -45,7 +45,7 @@ class MapViewModel(
     private fun updatePlaces() {
         viewModelScope.launch {
             setState(State.LoadPlaces(Result.InProgress()))
-            val result = withContext(Dispatchers.IO) { getPlaces.run() }
+            val result = withContext(Dispatchers.IO) { getPlaces() }
             result.fold(
                 {
                     setState(State.LoadPlaces(Result.Error(it)))

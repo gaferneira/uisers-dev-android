@@ -13,7 +13,7 @@ import co.tuister.domain.base.Failure
 import co.tuister.domain.base.Failure.FormError
 import co.tuister.domain.entities.Career
 import co.tuister.uisers.R
-import co.tuister.uisers.common.BaseActivity
+import co.tuister.uisers.common.BaseActivity.Companion.RESULT_LOAD_IMAGE
 import co.tuister.uisers.common.BaseFragment
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.FragmentLoginRegisterBinding
@@ -80,7 +80,7 @@ class RegisterFragment : BaseFragment<FragmentLoginRegisterBinding>() {
         }
 
         binding.circleImagePhoto.singleClick {
-            (requireActivity() as BaseActivity).launchImagePicker()
+            requireActivity().launchImagePicker()
         }
     }
 
@@ -240,7 +240,6 @@ class RegisterFragment : BaseFragment<FragmentLoginRegisterBinding>() {
     }
 
     companion object {
-        const val RESULT_LOAD_IMAGE = 11
         const val MAX_NUM_ROWS = 20
     }
 }

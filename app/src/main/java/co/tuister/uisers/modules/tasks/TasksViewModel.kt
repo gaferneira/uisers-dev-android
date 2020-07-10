@@ -33,7 +33,7 @@ class TasksViewModel(
     private fun updateTasks() {
         viewModelScope.launch {
             setState(State.LoadItems(InProgress()))
-            val result = withContext(Dispatchers.IO) { getMyTasks.run() }
+            val result = withContext(Dispatchers.IO) { getMyTasks() }
             result.fold(
                 {
                     setState(State.LoadItems(Result.Error(it)))
@@ -47,7 +47,7 @@ class TasksViewModel(
 
     fun remove(item: Task) {
         viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { removeUseCase.run(item) }
+            val result = withContext(Dispatchers.IO) { removeUseCase(item) }
             result.fold(
                 {
                     setState(State.RemoveItem(Result.Error(it)))

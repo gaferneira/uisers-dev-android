@@ -1,13 +1,19 @@
 package co.tuister.data.utils
 
+import co.tuister.domain.base.Failure
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.Source
+import com.google.firebase.storage.StorageException
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
-import java.net.ConnectException
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
@@ -45,11 +51,19 @@ suspend fun <T> Task<T>.await(): T? {
     }
 }
 
-fun Exception.translateFirebaseException(): java.lang.Exception {
+fun Exception.translateFirebaseException(): Failure {
     return when (this) {
+        is FirebaseAuthWeakPasswordException -> Failure.AuthWeakPasswordException(this)
+        is FirebaseTooManyRequestsException -> Failure.TooManyRequests(this)
+        // Network connection
         is FirebaseFirestoreException,
-        is FirebaseNetworkException -> ConnectException(message)
-        else -> this
+        is FirebaseNetworkException,
+        is StorageException -> Failure.NetworkConnection(this)
+        // Authentication
+        is FirebaseAuthInvalidCredentialsException,
+        is FirebaseAuthInvalidUserException,
+        is FirebaseAuthUserCollisionException -> Failure.AuthenticationError(this)
+        else -> Failure.analyzeException(this)
     }
 }
 

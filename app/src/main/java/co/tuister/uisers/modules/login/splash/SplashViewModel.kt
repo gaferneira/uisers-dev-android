@@ -36,7 +36,7 @@ class SplashViewModel(
 
                 lateinit var userResult: Either<Failure, User>
                 val checkTime = measureTimeMillis {
-                    userResult = userUseCase.run()
+                    userResult = userUseCase()
                 }
 
                 val delayTime = if (checkTime > MIN_SPLASH_TIME) 0

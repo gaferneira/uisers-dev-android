@@ -9,7 +9,11 @@ import co.tuister.domain.repositories.UserRepository
 class UserUseCase(
     private val userRepository: UserRepository
 ) : NoParamsUseCase<User> {
-    override suspend fun run(): Either<Failure, User> {
-        return userRepository.getUser()
+    override suspend fun invoke(): Either<Failure, User> {
+        return try {
+            userRepository.getUser()
+        } catch (e: Exception) {
+            Either.Left(Failure.analyzeException(e))
+        }
     }
 }
