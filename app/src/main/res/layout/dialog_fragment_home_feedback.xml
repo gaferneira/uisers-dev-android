@@ -50,8 +50,7 @@
                 android:ellipsize="start"
                 android:inputType="textMultiLine"
                 android:lines="4"
-                android:scrollbars="vertical"
-                android:textColor="@android:color/black" />
+                android:scrollbars="vertical"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

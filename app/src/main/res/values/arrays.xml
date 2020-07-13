@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themes_entries">
+        <item>@string/home_theme_system_default</item>
+        <item>@string/home_theme_dark</item>
+        <item>@string/home_theme_light</item>
+    </string-array>
+</resources>

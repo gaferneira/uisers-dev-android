@@ -88,8 +88,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="start"
                         android:ems="10"
-                        android:focusable="false"
-                        android:textColor="@android:color/black" />
+                        android:focusable="false"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 

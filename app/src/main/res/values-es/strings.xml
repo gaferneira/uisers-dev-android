@@ -138,4 +138,9 @@
     <string name="home_label_no_events">No hay eventos</string>
     <string name="career_alert_remove_current_semester">No puedes eliminar el semestre actual. Cambiar el semestre actual primero</string>
     <string name="career_confirm_remove_semester">¿Quieres eliminar el semestre?</string>
+    <string name="title_menu_theme">Tema</string>
+    <string name="home_message_enter_again">Ingrese de nuevo para ver los cambios</string>
+    <string name="home_theme_dark">Modo oscuro</string>
+    <string name="home_theme_light">Modo normal</string>
+    <string name="home_theme_system_default">Por defecto del sistema</string>
 </resources>

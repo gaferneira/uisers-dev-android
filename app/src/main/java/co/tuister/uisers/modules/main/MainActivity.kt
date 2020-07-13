@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.animation.AnimationUtils.loadAnimation
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat.START
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -30,8 +31,10 @@ import co.tuister.uisers.utils.extensions.manageDeepLink
 import co.tuister.uisers.utils.extensions.setImageFromUri
 import co.tuister.uisers.utils.extensions.setupWithNavController
 import co.tuister.uisers.utils.extensions.singleClick
+import co.tuister.uisers.utils.view.ThemeProvider
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.coroutines.flow.collect
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.getViewModel
 
 class MainActivity :
@@ -45,9 +48,13 @@ class MainActivity :
 
     private lateinit var navGraphIds: List<Int>
 
+    private val themeProvider: ThemeProvider by inject()
+
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, MainActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
+            }
             context.startActivity(intent)
         }
     }
@@ -94,27 +101,38 @@ class MainActivity :
 
         binding.navigationView.addHeaderView(bindingMenu.root)
         binding.navigationView.setNavigationItemSelectedListener { menu ->
-            when (menu.title) {
-                resources.getString(R.string.title_menu_profile) -> {
-                    ProfileActivity.start(
-                        this,
-                        viewModel.user
-                    )
+            when (menu.itemId) {
+                R.id.option_profile -> {
+                    ProfileActivity.start(this, viewModel.user)
                     analytics.trackEvent(Analytics.EVENT_CLICK_PROFILE)
                 }
-                resources.getString(R.string.title_menu_about) -> {
+                R.id.option_about -> {
                     AboutDialogFragment.create()
                         .show(supportFragmentManager, AboutDialogFragment.TAG)
-                    binding.drawerLayout.closeDrawers()
                     analytics.trackEvent(Analytics.EVENT_CLICK_ABOUT)
                 }
-                resources.getString(R.string.title_menu_feedback) -> {
+                R.id.option_feedback -> {
                     FeedbackDialogFragment.create(this)
                         .show(supportFragmentManager, FeedbackDialogFragment.TAG)
-                    binding.drawerLayout.closeDrawers()
                     analytics.trackEvent(Analytics.EVENT_CLICK_FEEDBACK)
                 }
+                R.id.option_theme -> {
+                    val dialog = AlertDialog.Builder(this)
+                        .setTitle(R.string.title_menu_theme)
+                        .setItems(R.array.themes_entries) { _, which ->
+                            if (themeProvider.setTheme(which)) {
+                                showDialog(R.string.home_message_enter_again, 0) {
+                                    LoginActivity.start(this@MainActivity)
+                                    finish()
+                                }
+                            }
+                        }
+                        .create()
+                    dialog.show()
+                    analytics.trackEvent(Analytics.EVENT_CLICK_THEME)
+                }
             }
+            binding.drawerLayout.closeDrawers()
             true
         }
 
