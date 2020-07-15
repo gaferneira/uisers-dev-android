@@ -108,8 +108,7 @@
                         android:ellipsize="end"
                         android:ems="10"
                         android:focusable="false"
-                        android:lines="1"
-                        android:textColor="@android:color/black" />
+                        android:lines="1"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,8 +125,7 @@
                         android:ellipsize="end"
                         android:ems="10"
                         android:focusable="false"
-                        android:lines="1"
-                        android:textColor="@android:color/black" />
+                        android:lines="1"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -196,8 +194,7 @@
                             android:ellipsize="start"
                             android:ems="10"
                             android:focusable="false"
-                            android:inputType="number"
-                            android:textColor="@android:color/black" />
+                            android:inputType="number"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 

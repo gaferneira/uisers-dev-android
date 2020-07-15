@@ -22,6 +22,7 @@ import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.analytics.FirebaseAnalytics
 import co.tuister.uisers.utils.maps.GoogleMapsController
 import co.tuister.uisers.utils.maps.MapController
+import co.tuister.uisers.utils.view.ThemeProvider
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -29,7 +30,7 @@ val viewModelModule = module {
 
     // login
     viewModel { LoginViewModel(get(), get(), get(), get()) }
-    viewModel { SplashViewModel(get(), get()) }
+    viewModel { SplashViewModel(get(), get(), get()) }
     viewModel { RegisterViewModel(get(), get(), get(), get(), get()) }
     viewModel { ForgotPasswordViewModel(get()) }
 
@@ -61,4 +62,5 @@ val viewModelModule = module {
 val presentationModule = module {
     single<MapController> { GoogleMapsController() }
     single<Analytics> { FirebaseAnalytics(get()) }
+    single { ThemeProvider(get()) }
 }

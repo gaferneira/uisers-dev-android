@@ -70,8 +70,8 @@ fun FragmentManager.showConfirmDialog(
 fun FragmentManager.showDialog(
     context: Context,
     message: Int,
-    title: Int,
+    title: Int = 0,
     unit: (() -> Unit)? = null
 ) {
-    showDialog(context, context.getString(message), context.getString(title), unit)
+    showDialog(context, context.getString(message), if (title == 0) "" else context.getString(title), unit)
 }

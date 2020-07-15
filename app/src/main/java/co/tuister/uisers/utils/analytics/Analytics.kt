@@ -33,6 +33,7 @@ interface Analytics {
         const val EVENT_CLICK_PROFILE = "option_profile"
         const val EVENT_CLICK_ABOUT = "option_about"
         const val EVENT_CLICK_FEEDBACK = "option_Feedback"
+        const val EVENT_CLICK_THEME = "option_change_theme"
 
         const val EVENT_CLICK_MAP = "option_map"
         const val EVENT_CLICK_CALENDAR = "option_calendar"

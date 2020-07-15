@@ -1,6 +1,7 @@
 package co.tuister.uisers.modules.login.splash
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,6 +11,7 @@ import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.uisers.R
 import co.tuister.uisers.common.SingleLiveEvent
+import co.tuister.uisers.utils.view.ThemeProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -18,7 +20,8 @@ import kotlin.system.measureTimeMillis
 
 class SplashViewModel(
     private val userUseCase: UserUseCase,
-    val context: Context
+    private val themeProvider: ThemeProvider,
+    private val context: Context
 ) : ViewModel() {
 
     sealed class Event {
@@ -38,6 +41,10 @@ class SplashViewModel(
                 val checkTime = measureTimeMillis {
                     userResult = userUseCase()
                 }
+
+                // Theme
+                val theme = themeProvider.getThemeFromPreferences()
+                AppCompatDelegate.setDefaultNightMode(theme)
 
                 val delayTime = if (checkTime > MIN_SPLASH_TIME) 0
                 else MIN_SPLASH_TIME - checkTime

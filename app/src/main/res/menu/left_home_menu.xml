@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/option_home"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/option_profile"
+        android:icon="@drawable/ic_baseline_person_24"
         android:iconTint="@color/green_600"
         android:title="@string/title_menu_profile" />
     <item
         android:id="@+id/option_feedback"
-        android:icon="@drawable/ic_semester"
+        android:icon="@drawable/ic_baseline_feedback_24"
         android:iconTint="@color/green_600"
         android:title="@string/title_menu_feedback" />
     <item
         android:id="@+id/option_about"
-        android:icon="@drawable/ic_semester"
+        android:icon="@drawable/ic_baseline_info_24"
         android:iconTint="@color/green_600"
         android:title="@string/title_menu_about" />
+    <item
+        android:id="@+id/option_theme"
+        android:icon="@drawable/ic_baseline_brightness_medium_24"
+        android:iconTint="@color/green_600"
+        android:title="@string/title_menu_theme" />
 </menu>

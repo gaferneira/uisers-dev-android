@@ -102,8 +102,7 @@
                     android:ems="10"
                     android:focusable="false"
                     android:lines="1"
-                    android:text="@={viewModel.user.career}"
-                    android:textColor="@android:color/black" />
+                    android:text="@={viewModel.user.career}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,8 +120,7 @@
                     android:ems="10"
                     android:focusable="false"
                     android:lines="1"
-                    android:text="@={viewModel.user.campus}"
-                    android:textColor="@android:color/black" />
+                    android:text="@={viewModel.user.campus}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
