@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import co.tuister.domain.entities.Semester
 import co.tuister.uisers.databinding.DialogFragmentCareerSemesterBinding
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.singleClick
 import java.util.*
 
@@ -46,7 +47,6 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSave.isEnabled = false
         binding.editTextSemester.singleClick {
             showListDialog()
         }
@@ -75,7 +75,6 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
                 val selected = semestersAvailable[which]
                 semester = Semester("", selected.first + "-" + selected.second)
                 binding.editTextSemester.setText(options[which])
-                binding.buttonSave.isEnabled = true
             }
             .create()
 
@@ -85,10 +84,13 @@ class AddSemesterDialogFragment : AppCompatDialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.buttonSave.singleClick {
-            semester?.run {
-                current = binding.switchCurrent.isChecked
-                listener?.onSaveSemester(this)
-                dismiss()
+            val validateFields = requireContext().checkRequireFormFields(binding.editTextSemester)
+            if (validateFields) {
+                semester?.run {
+                    current = binding.switchCurrent.isChecked
+                    listener?.onSaveSemester(this)
+                    dismiss()
+                }
             }
         }
     }

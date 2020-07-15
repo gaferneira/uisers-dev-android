@@ -8,12 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.core.os.bundleOf
-import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import co.tuister.domain.entities.SchedulePeriod
@@ -38,8 +36,6 @@ class AddSchedulePeriodDialogFragment :
     lateinit var subjects: List<Subject>
     lateinit var period: SchedulePeriod
 
-    private lateinit var requireTextViews: Array<TextView>
-
     private lateinit var colors: IntArray
 
     val calendar = Calendar.getInstance()
@@ -63,26 +59,12 @@ class AddSchedulePeriodDialogFragment :
         binding.lifecycleOwner = this
         subjects = arguments?.getParcelableArray(ARGUMENT_SUBJECTS)?.map { it as Subject } ?: listOf()
         period = arguments?.getParcelable(ARGUMENT_PERIOD) ?: SchedulePeriod()
-        requireTextViews = arrayOf(
-            binding.autocompleteSubject,
-            binding.editTextPlace,
-            binding.editTextDay,
-            binding.editTextInitial,
-            binding.editTextFinal
-        )
         binding.periodBinding = period
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        updateButtonState()
-        requireTextViews.forEach {
-            it.addTextChangedListener {
-                updateButtonState()
-            }
-        }
 
         with(binding.autocompleteSubject) {
             setAdapter(AutoCompleteSubjectsAdapter(requireContext(), subjects))
@@ -160,8 +142,18 @@ class AddSchedulePeriodDialogFragment :
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.buttonSave.singleClick {
-            listener?.onSavePeriod(period)
-            dismiss()
+            val validateFields = requireContext().checkRequireFormFields(
+                binding.autocompleteSubject,
+                binding.editTextPlace,
+                binding.editTextDay,
+                binding.editTextInitial,
+                binding.editTextFinal
+            )
+
+            if (validateFields) {
+                listener?.onSavePeriod(period)
+                dismiss()
+            }
         }
     }
 
@@ -169,11 +161,6 @@ class AddSchedulePeriodDialogFragment :
         val ft = manager.beginTransaction()
         ft.add(this, tag)
         ft.commitAllowingStateLoss()
-    }
-
-    private fun updateButtonState() {
-        binding.buttonSave.isEnabled =
-            requireContext().checkRequireFormFields(*requireTextViews, showError = false)
     }
 
     private fun updateFabColor() {

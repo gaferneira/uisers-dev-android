@@ -37,11 +37,12 @@ class LoginRepositoryImpl(
             }
 
             val user = usersCollection.getByEmail(email)?.toObject(User::class.java)
+                ?: throw(Exception("Email" + email + "not found into the user collection. Please contact the admin"))
 
             // check if current semester exists
             getCurrentSemesterPath()
 
-            Either.Right(user!!)
+            Either.Right(user)
         } catch (e: Exception) {
             Either.Left(e.translateFirebaseException())
         }

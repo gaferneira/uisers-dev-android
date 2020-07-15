@@ -25,6 +25,7 @@ import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.main.MainViewModel.State.FirsTime
 import co.tuister.uisers.modules.main.MainViewModel.State.ValidateLogout
 import co.tuister.uisers.modules.profile.ProfileActivity
+import co.tuister.uisers.utils.ShortcutsManager
 import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.extensions.launchImagePicker
 import co.tuister.uisers.utils.extensions.manageDeepLink
@@ -49,6 +50,7 @@ class MainActivity :
     private lateinit var navGraphIds: List<Int>
 
     private val themeProvider: ThemeProvider by inject()
+    private val shortcutsManager: ShortcutsManager by inject()
 
     companion object {
         fun start(context: Context) {
@@ -76,6 +78,8 @@ class MainActivity :
             setupBottomNavigationBar()
         }
         initViews()
+
+        shortcutsManager.enableShortcuts()
     }
 
     override fun onResume() {
@@ -286,6 +290,7 @@ class MainActivity :
     private fun validateLogout(state: ValidateLogout) {
         handleState(state) {
             analytics.trackUserLogout()
+            shortcutsManager.disableShortcuts()
             finish()
             LoginActivity.start(this)
         }
