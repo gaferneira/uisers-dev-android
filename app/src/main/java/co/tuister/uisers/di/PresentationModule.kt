@@ -18,6 +18,7 @@ import co.tuister.uisers.modules.main.MainViewModel
 import co.tuister.uisers.modules.profile.ProfileViewModel
 import co.tuister.uisers.modules.tasks.TasksViewModel
 import co.tuister.uisers.modules.tasks.add.AddTaskViewModel
+import co.tuister.uisers.utils.ShortcutsManager
 import co.tuister.uisers.utils.analytics.Analytics
 import co.tuister.uisers.utils.analytics.FirebaseAnalytics
 import co.tuister.uisers.utils.maps.GoogleMapsController
@@ -63,4 +64,5 @@ val presentationModule = module {
     single<MapController> { GoogleMapsController() }
     single<Analytics> { FirebaseAnalytics(get()) }
     single { ThemeProvider(get()) }
+    single { ShortcutsManager(get()) }
 }

@@ -18,6 +18,7 @@ import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentCareerSubjectsNoteBinding
+import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.format
 import co.tuister.uisers.utils.extensions.singleClick
 import java.text.DecimalFormat
@@ -82,11 +83,6 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
                 updateValues()
             }
         )
-
-        binding.buttonSave.isEnabled = note.title.isNotEmpty()
-        binding.editTextDetail.addTextChangedListener {
-            binding.buttonSave.isEnabled = it?.isNotEmpty() == true
-        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
