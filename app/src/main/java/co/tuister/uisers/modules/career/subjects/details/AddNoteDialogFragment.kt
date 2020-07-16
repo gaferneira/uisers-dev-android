@@ -88,11 +88,8 @@ class AddNoteDialogFragment : AppCompatDialogFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.buttonSave.singleClick {
-            val validateFields = requireContext().checkRequireFormFields(binding.editTextDetail)
-            if (validateFields) {
-                listener?.onSaveNote(note)
-                dismiss()
-            }
+            listener?.onSaveNote(note)
+            dismiss()
         }
     }
 
