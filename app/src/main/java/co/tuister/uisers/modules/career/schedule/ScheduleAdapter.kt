@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import co.tuister.domain.entities.SchedulePeriod
 import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseViewHolder
+import co.tuister.uisers.utils.DateUtils
 import co.tuister.uisers.utils.extensions.singleClick
 import kotlinx.android.synthetic.main.item_career_schedule.*
 import kotlinx.android.synthetic.main.item_career_schedule_title.*
@@ -69,7 +70,7 @@ class ScheduleAdapter(
                 val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
                 calendar.set(Calendar.DAY_OF_WEEK, it)
 
-                val today = if (dayOfWeek == it) " (Today)" else ""
+                val today = if (dayOfWeek == it % DateUtils.DAYS_WEEK) " (Today)" else ""
                 text_view_day.text = "" + DateFormat.format("EEEE", calendar.time) + today
 
                 itemView.setOnCreateContextMenuListener(null)

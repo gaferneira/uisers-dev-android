@@ -20,12 +20,16 @@ class GetScheduleByDateUseCase(
             val result = repository.getSchedule()
             if (result.isRight) {
                 val list = result.getOrElse(listOf())
-                Either.Right(list.filter { it.day == day }.sortedBy { it.initialHour })
+                Either.Right(list.filter { it.day % DAYS_WEEK == day }.sortedBy { it.initialHour })
             } else {
                 result
             }
         } catch (e: Exception) {
             Either.Left(Failure.analyzeException(e))
         }
+    }
+
+    companion object {
+        private const val DAYS_WEEK = 7
     }
 }

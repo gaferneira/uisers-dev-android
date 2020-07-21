@@ -143,4 +143,5 @@
     <string name="home_theme_dark">Modo oscuro</string>
     <string name="home_theme_light">Modo normal</string>
     <string name="home_theme_system_default">Por defecto del sistema</string>
+    <string name="base_progress_loading">Cargando&#8230;</string>
 </resources>

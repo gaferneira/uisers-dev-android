@@ -1,6 +1,8 @@
 package co.tuister.uisers.utils.extensions
 
 import android.graphics.Color
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 fun <R, T> Map<R, List<T>>.addToValueList(key: R, element: T): Map<R, List<T>> {
     val mutable = this.toMutableMap()
@@ -20,4 +22,10 @@ fun String.getColorFromHex(): Int? {
     } catch (e: Exception) {
         null
     }
+}
+
+inline fun <reified T : Any> getKoinInstance(): T {
+    return object : KoinComponent {
+        val value: T by inject()
+    }.value
 }

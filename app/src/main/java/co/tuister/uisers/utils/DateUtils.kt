@@ -67,6 +67,7 @@ class DateUtils private constructor() {
         private const val HOURS_DAY = 24
         private val DATE_TIME_FORMAT = SimpleDateFormat("yyyy-MM-dd HH:mm")
         private val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd")
+        const val DAYS_WEEK = 7
     }
 }
 
