@@ -9,6 +9,7 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
 import co.tuister.uisers.R
+import co.tuister.uisers.modules.login.LoginActivity
 
 /**
  * Implementation of App Widget functionality.
@@ -41,6 +42,10 @@ class SmallScheduleWidget : AppWidgetProvider() {
     private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
 
         val views = RemoteViews(context.packageName, R.layout.widget_small_schedule)
+
+        val clickIntent = LoginActivity.createIntent(context, context.getString(R.string.deep_link_career))
+        val startActivityPendingIntent = PendingIntent.getActivity(context, 0, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        views.setPendingIntentTemplate(R.id.listview, startActivityPendingIntent)
 
         val adapterIntent = Intent(context, SmallScheduleWidgetService::class.java).apply {
             // Add the app widget ID to the intent extras.

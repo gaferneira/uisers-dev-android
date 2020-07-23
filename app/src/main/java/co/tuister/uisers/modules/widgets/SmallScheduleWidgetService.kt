@@ -89,6 +89,7 @@ class SmallScheduleRemoteViewsFactory(
                     val backgroundColor = context.resources.getIntArray(R.array.colors_100)[materialColor]
                     it.setInt(R.id.container_widget_item, "setBackgroundColor", backgroundColor)
                 }
+                it.setOnClickFillInIntent(R.id.container_widget_item, Intent().apply { putExtra("position", position); })
             }
         }
     }

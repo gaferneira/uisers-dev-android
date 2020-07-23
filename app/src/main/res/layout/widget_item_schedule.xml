@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_widget_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -25,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="Subject" />
 
             <TextView
@@ -33,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -41,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -49,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="Place" />
 
         </LinearLayout>
@@ -67,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -75,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -83,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -91,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
         </LinearLayout>
@@ -109,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -117,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -125,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -133,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
         </LinearLayout>
@@ -151,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -159,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -167,7 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -175,7 +176,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
         </LinearLayout>
@@ -193,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -201,7 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -209,7 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -217,7 +218,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
         </LinearLayout>
@@ -235,7 +236,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -243,7 +244,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -251,7 +252,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -259,7 +260,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
         </LinearLayout>
@@ -277,7 +278,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -285,7 +286,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
             <TextView
@@ -293,7 +294,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="10:00" />
 
             <TextView
@@ -301,7 +302,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:textSize="12sp"
+                android:textSize="@dimen/widget_font_size"
                 tools:text="" />
 
         </LinearLayout>

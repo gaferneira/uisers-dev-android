@@ -86,6 +86,8 @@ class ScheduleRemoteViewsFactory(
             view.setInt(containersIds[index], "setBackgroundColor", Color.WHITE)
         }
 
+        view.setOnClickFillInIntent(R.id.container_widget_item, Intent().apply { putExtra("position", position); })
+
         return view
     }
 
