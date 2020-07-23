@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.MyApp.Light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/padding_margin_micro"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/container_sunday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="Subject" />
+
+            <TextView
+                android:id="@+id/text_view_hour_sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_hour_final_sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_place_sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="Place" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_monday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_final_monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_place_monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_tuesday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_final_tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_place_tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_wednesday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_final_wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_place_wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_thursday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_final_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_place_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_friday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_final_friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_place_friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_saturday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_view_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/text_view_hour_final_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="10:00" />
+
+            <TextView
+                android:id="@+id/text_view_place_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textSize="12sp"
+                tools:text="" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

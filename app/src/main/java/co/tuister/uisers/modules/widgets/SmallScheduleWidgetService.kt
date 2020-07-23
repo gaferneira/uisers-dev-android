@@ -18,13 +18,13 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.runBlocking
 import java.util.Calendar
 
-class StackWidgetService : RemoteViewsService() {
+class SmallScheduleWidgetService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
-        return StackRemoteViewsFactory(this.applicationContext, intent)
+        return SmallScheduleRemoteViewsFactory(this.applicationContext, intent)
     }
 }
 
-class StackRemoteViewsFactory(
+class SmallScheduleRemoteViewsFactory(
     private val context: Context,
     private val intent: Intent
 ) : RemoteViewsService.RemoteViewsFactory {

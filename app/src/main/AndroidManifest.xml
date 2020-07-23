@@ -72,9 +72,10 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/channel_default_notification_id" />
 
-        <!-- WIDGET -->
+        <!-- WIDGETS -->
+
         <service
-            android:name=".modules.widgets.StackWidgetService"
+            android:name=".modules.widgets.SmallScheduleWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <receiver android:name="co.tuister.uisers.modules.widgets.SmallScheduleWidget">
@@ -84,7 +85,22 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/schedule_list_widget_info" />
+                android:resource="@xml/schedule_small_widget_info" />
+        </receiver>
+
+
+        <service
+            android:name=".modules.widgets.ScheduleWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver android:name="co.tuister.uisers.modules.widgets.ScheduleWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/schedule_widget_info" />
         </receiver>
 
     </application>
