@@ -18,7 +18,6 @@ import co.tuister.domain.entities.Note
 import co.tuister.domain.entities.Subject
 import co.tuister.uisers.R
 import co.tuister.uisers.databinding.DialogFragmentCareerSubjectsNoteBinding
-import co.tuister.uisers.utils.extensions.checkRequireFormFields
 import co.tuister.uisers.utils.extensions.format
 import co.tuister.uisers.utils.extensions.singleClick
 import java.text.DecimalFormat

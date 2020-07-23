@@ -43,4 +43,7 @@
     <dimen name="section_decorator_header_vertical_offset">48dp</dimen>
     <dimen name="section_decorator_divider_size">1dp</dimen>
 
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="widget_font_size">11sp</dimen>
+
 </resources>

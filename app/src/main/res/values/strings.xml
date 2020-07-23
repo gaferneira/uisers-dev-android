@@ -17,6 +17,7 @@
     <string name="base_label_description">Description</string>
     <string name="base_label_percentage_sign">%</string>
     <string name="base_progress_downloading">Downloading&#8230;</string>
+    <string name="base_progress_loading">Loading&#8230;</string>
     <string name="base_progress_updating">Updating&#8230;</string>
 
     <!-- MENUS -->

@@ -19,7 +19,7 @@ import co.tuister.uisers.R
 import co.tuister.uisers.common.BaseActivity
 import co.tuister.uisers.common.BaseState
 import co.tuister.uisers.databinding.ActivityMainBinding
-import co.tuister.uisers.databinding.LeftHomeMenuHeaderLayoutBinding
+import co.tuister.uisers.databinding.LayoutLeftHomeMenuHeaderBinding
 import co.tuister.uisers.modules.login.LoginActivity
 import co.tuister.uisers.modules.main.MainViewModel.State.DownloadedImage
 import co.tuister.uisers.modules.main.MainViewModel.State.FirsTime
@@ -44,7 +44,7 @@ class MainActivity :
     FeedbackDialogFragment.FeedbackDialogListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var bindingMenu: LeftHomeMenuHeaderLayoutBinding
+    private lateinit var bindingMenu: LayoutLeftHomeMenuHeaderBinding
     private lateinit var viewModel: MainViewModel
 
     private lateinit var navGraphIds: List<Int>
@@ -67,7 +67,7 @@ class MainActivity :
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         bindingMenu =
-            LeftHomeMenuHeaderLayoutBinding.inflate(layoutInflater, binding.drawerLayout, false)
+            LayoutLeftHomeMenuHeaderBinding.inflate(layoutInflater, binding.drawerLayout, false)
         viewModel = getViewModel()
         binding.lifecycleOwner = this
         bindingMenu.lifecycleOwner = this

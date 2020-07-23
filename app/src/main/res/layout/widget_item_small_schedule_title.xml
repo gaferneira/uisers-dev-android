@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingHorizontal="@dimen/padding_margin_extra_small"
+    android:layout_height="20dp">
+
+    <TextView
+        android:id="@+id/text_view_day"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:text="Lunes" />
+
+</LinearLayout>
