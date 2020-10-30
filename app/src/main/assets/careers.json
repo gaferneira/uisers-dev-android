@@ -13,7 +13,7 @@
   },
   {
     "id": "16",
-    "name": "Licenciatura en Matemáticas"
+    "name": "Lic. en Matemáticas"
   },
   {
     "id": "18",
@@ -21,31 +21,31 @@
   },
   {
     "id": "19",
-    "name": "Lic en Educ básica con enfas ciencias nat edu ambi"
+    "name": "Lic. en Educación Básica con Énfasis en Ciencias Naturales y Educación Ambiental"
   },
   {
     "id": "20",
-    "name": "Licenciatura en Inglés"
+    "name": "Lic. en Inglés"
   },
   {
     "id": "21",
-    "name": "Ingeniería civil"
+    "name": "Ingeniería Civil"
   },
   {
     "id": "22",
-    "name": "Ingeniería eléctrica"
+    "name": "Ingeniería de Eléctrica"
   },
   {
     "id": "23",
-    "name": "Ingeniería industrial"
+    "name": "Ingeniería Industrial"
   },
   {
     "id": "24",
-    "name": "Ingeniería mecánica"
+    "name": "Ingeniería Mecánica"
   },
   {
     "id": "26",
-    "name": "Ingeniería electrónica"
+    "name": "Ingeniería de Electrónica"
   },
   {
     "id": "27",
@@ -53,35 +53,31 @@
   },
   {
     "id": "28",
-    "name": "Lic.en educ.basica enfas.en lengua castellana"
+    "name": "Lic. en Educación Básica con Énfasis en Lengua Castellana"
   },
   {
     "id": "29",
-    "name": "Licenciatura en español y literatura"
+    "name": "Lic. en Español y Literatura"
   },
   {
     "id": "30",
-    "name": "Licenciatura en musica"
+    "name": "Lic. en Música"
   },
   {
     "id": "31",
-    "name": "Ingeniería metalúrgica"
+    "name": "Ingeniería Metalúrgica"
   },
   {
     "id": "32",
-    "name": "Ingeniería de petroleos"
+    "name": "Ingeniería de Petróleos"
   },
   {
     "id": "33",
-    "name": "Ingeniería química"
+    "name": "Ingeniería Química"
   },
   {
     "id": "34",
     "name": "Geología"
-  },
-  {
-    "id": "35",
-    "name": "Licenciatura en matemáticas"
   },
   {
     "id": "37",
@@ -92,20 +88,8 @@
     "name": "Matemáticas"
   },
   {
-    "id": "40",
-    "name": "Física"
-  },
-  {
     "id": "41",
-    "name": "Trabajo social"
-  },
-  {
-    "id": "43",
-    "name": "Licenciatura en música"
-  },
-  {
-    "id": "44",
-    "name": "Historia"
+    "name": "Trabajo Social"
   },
   {
     "id": "45",
@@ -127,28 +111,77 @@
     "id": "56",
     "name": "Fisioterapia"
   },
+
   {
     "id": "57",
-    "name": "Nutrición y dietética"
+    "name": "Nutrición y Dietética"
   },
   {
     "id": "58",
-    "name": "Microbiología y bioanalisis"
+    "name": "Microbiología y Bioanálisis"
   },
   {
     "id": "60",
-    "name": "Historia y archivistica"
-  },
-  {
-    "id": "63",
-    "name": "Lic.lenguas extranjeras con énfasis en Inglés"
-  },
-  {
-    "id": "64",
-    "name": "Licenciatura en literatura y lengua castellana"
+    "name": "Historia y Archivística"
   },
   {
     "id": "68",
-    "name": "Licenciatura en educación básica primaria"
+    "name": "Lic. en Educación Básica Primaria"
+  },
+  {
+    "id": "63",
+    "name": "Lic. en Lenguas Extranjeras con énfasis en Inglés"
+  },
+  {
+    "id": "64",
+    "name": "Lic. en Literatura y Lengua Castellana"
+  },
+  {
+    "id": "683",
+    "name": "Tecnología Empresarial"
+  },
+  {
+    "id": "694",
+    "name": "Gestión Empresarial"
+  },
+  {
+    "id": "5428",
+    "name": "Ingeniería Forestal"
+  },
+  {
+    "id": "54745",
+    "name": "Técnica Profesional en Producción Agropecuaria"
+  },
+  {
+    "id": "54746",
+    "name": "Tecnología Agroindustrial"
+  },
+  {
+    "id": "106789",
+    "name": "Administración Agroindustrial"
+  },
+  {
+    "id": "53779",
+    "name": "Zootecnia"
+  },
+  {
+    "id": "101718",
+    "name": "Turismo"
+  },
+  {
+    "id": "102151",
+    "name": "Artes Plásticas"
+  },
+  {
+    "id": "10073",
+    "name": "Tecnología en Regencia de Farmacia"
+  },
+  {
+    "id": "10333",
+    "name": "Producción Agroindustrial"
+  },
+  {
+    "id": "90815",
+    "name": "Tecnología en Gestión Judicial y Criminalística"
   }
 ]
