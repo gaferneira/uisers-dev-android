@@ -1,1916 +1,4562 @@
 [
   {
-    "career": 22,
-    "id": 23364,
-    "name": "Accionamientos eléctricos",
-    "credits": 4
+    "career": "5428",
+    "id": "29108",
+    "name": "Introduccion A La Geologia Y Geomorfologia",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24109,
-    "name": "Acueductos y alcantarillados",
-    "credits": 4
+    "career": "52",
+    "id": "22929",
+    "name": "Abordaje Integral Del Trauma",
+    "credits": "2"
   },
   {
-    "career": 11,
-    "id": 22979,
-    "name": "Algebra lineal I",
-    "credits": 4
+    "career": "22",
+    "id": "23364",
+    "name": "Accionamientos Electricos",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 22979,
-    "name": "Algebra lineal I",
-    "credits": 4
+    "career": "53",
+    "id": "22338",
+    "name": "Acondicionamiento Fisico",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 22979,
-    "name": "Algebra lineal I",
-    "credits": 4
+    "career": "21",
+    "id": "24109",
+    "name": "Acueductos Y Alcantarillados",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 22979,
-    "name": "Algebra lineal I",
-    "credits": 4
+    "career": "54745",
+    "id": "28190",
+    "name": "Adecuacion Y Conservacion De Suelos",
+    "credits": "2"
   },
   {
-    "career": 22,
-    "id": 22979,
-    "name": "Algebra lineal I",
-    "credits": 4
+    "career": "54745",
+    "id": "24634",
+    "name": "Administracion Del Recurso Hidrico Agropecuario",
+    "credits": "2"
   },
   {
-    "career": 21,
-    "id": 22979,
-    "name": "Algebra lineal I",
-    "credits": 4
+    "career": "53779",
+    "id": "23754",
+    "name": "Administracion Empresarial",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 23272,
-    "name": "Algebra lineal II",
-    "credits": 4
+    "career": "53",
+    "id": "22337",
+    "name": "Administracion En Fisioterapia",
+    "credits": "2"
   },
   {
-    "career": 22,
-    "id": 23272,
-    "name": "Algebra lineal II",
-    "credits": 4
+    "career": "694",
+    "id": "27486",
+    "name": "Administracion Financiera",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 24094,
-    "name": "Análisis estructural",
-    "credits": 5
+    "career": "51",
+    "id": "29050",
+    "name": "Administracion Financiera",
+    "credits": "1"
   },
   {
-    "career": 11,
-    "id": 22962,
-    "name": "Análisis numérico",
-    "credits": 4
+    "career": "58",
+    "id": "24982",
+    "name": "Administracion General",
+    "credits": "2"
   },
   {
-    "career": 11,
-    "id": 22966,
-    "name": "Arquitectura de computadores",
-    "credits": 4
+    "career": "51",
+    "id": "29045",
+    "name": "Administracion Y Salud",
+    "credits": "1"
   },
   {
-    "career": 11,
-    "id": 22958,
-    "name": "Autómatas y lenguajes formales",
-    "credits": 4
+    "career": "101718",
+    "id": "26464",
+    "name": "Agroturismo",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27143,
-    "name": "Automatización de procesos",
-    "credits": 4
+    "career": "11",
+    "id": "22979",
+    "name": "Algebra Lineal I",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22959,
-    "name": "Bases de datos I",
-    "credits": 4
+    "career": "26",
+    "id": "23272",
+    "name": "Algebra Lineal Ii",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22960,
-    "name": "Bases de datos II",
-    "credits": 4
+    "career": "53779",
+    "id": "23762",
+    "name": "Alimentacion",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22952,
-    "name": "Biología para ingenieros",
-    "credits": 2
+    "career": "55",
+    "id": "23456",
+    "name": "Alimentacion Colectiva",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 22952,
-    "name": "Biología para ingenieros",
-    "credits": 2
+    "career": "55",
+    "id": "23455",
+    "name": "Alimentacion En El Proceso Vital Humano",
+    "credits": "7"
   },
   {
-    "career": 23,
-    "id": 22952,
-    "name": "Biología para ingenieros",
-    "credits": 2
+    "career": "5428",
+    "id": "29104",
+    "name": "Analisis De Datos Basicos Y Aplicados Usando R...",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 22952,
-    "name": "Biologia para ingenieros",
-    "credits": 2
+    "career": "694",
+    "id": "27508",
+    "name": "Analisis De Inversion Y Credito",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 20252,
-    "name": "Cálculo I",
-    "credits": 4
+    "career": "32",
+    "id": "28055",
+    "name": "Analisis De Presiones",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 20252,
-    "name": "Cálculo I",
-    "credits": 4
+    "career": "33",
+    "id": "23233",
+    "name": "Analisis De Procesos",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 20252,
-    "name": "Cálculo I",
-    "credits": 4
+    "career": "33",
+    "id": "27536",
+    "name": "Analisis De Variables De Proceso",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 20252,
-    "name": "Cálculo I",
-    "credits": 4
+    "career": "21",
+    "id": "24094",
+    "name": "Analisis Estructural",
+    "credits": "5"
   },
   {
-    "career": 22,
-    "id": 20252,
-    "name": "Cálculo I",
-    "credits": 4
+    "career": "694",
+    "id": "27480",
+    "name": "Analisis Macroeconomico",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 20252,
-    "name": "Cálculo I",
-    "credits": 4
+    "career": "694",
+    "id": "27489",
+    "name": "Analisis Microeconomico",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 20252,
-    "name": "Cálculo I",
-    "credits": 4
+    "career": "11",
+    "id": "22962",
+    "name": "Analisis Numerico",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 20253,
-    "name": "Cálculo II",
-    "credits": 4
+    "career": "31",
+    "id": "27172",
+    "name": "Analisis Numerico",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 20253,
-    "name": "Cálculo II",
-    "credits": 4
+    "career": "32",
+    "id": "28039",
+    "name": "Analisis Petrofisicos",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 20253,
-    "name": "Cálculo II",
-    "credits": 4
+    "career": "53779",
+    "id": "23742",
+    "name": "Anatomia",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 20253,
-    "name": "Cálculo II",
-    "credits": 4
+    "career": "5428",
+    "id": "26045",
+    "name": "Anatomia De Maderas",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 20253,
-    "name": "Cálculo II",
-    "credits": 4
+    "career": "5428",
+    "id": "29113",
+    "name": "Aprovechamiento Forestal",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 20253,
-    "name": "Cálculo II",
-    "credits": 4
+    "career": "54746",
+    "id": "28205",
+    "name": "Aprovechamientos De Subproductos Agropecuarios Y Agroindustriales",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 20253,
-    "name": "Cálculo II",
-    "credits": 4
+    "career": "11",
+    "id": "22966",
+    "name": "Arquitectura De Computadores",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 20254,
-    "name": "Cálculo III",
-    "credits": 4
+    "career": "102151",
+    "id": "26780",
+    "name": "Arte Y Arquitectura Del Renacimiento Y Del Barroco",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 20254,
-    "name": "Cálculo III",
-    "credits": 4
+    "career": "102151",
+    "id": "26806",
+    "name": "Arte Y Comunidad",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 20254,
-    "name": "Cálculo III",
-    "credits": 4
+    "career": "102151",
+    "id": "26802",
+    "name": "Arte Y Percepcion",
+    "credits": "2"
   },
   {
-    "career": 26,
-    "id": 20254,
-    "name": "Cálculo III",
-    "credits": 4
+    "career": "694",
+    "id": "27482",
+    "name": "Asociaciones Empresariales",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 20254,
-    "name": "Cálculo III",
-    "credits": 4
+    "career": "106789",
+    "id": "24641",
+    "name": "Atencion A La Salud En Productividad Pecuaria",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 20254,
-    "name": "Cálculo III",
-    "credits": 4
+    "career": "54745",
+    "id": "24641",
+    "name": "Atencion A La Salud Para La Producctividad Pecuaria",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24096,
-    "name": "Caracterización de materiales I",
-    "credits": 1
+    "career": "101718",
+    "id": "26443",
+    "name": "Atencion Al Cliente",
+    "credits": "2"
   },
   {
-    "career": 21,
-    "id": 24102,
-    "name": "Caracterización de materiales II",
-    "credits": 1
+    "career": "11",
+    "id": "22958",
+    "name": "Automatas Y Lenguajes Formales",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29002,
-    "name": "Ciencia de los materiales",
-    "credits": 3
+    "career": "26",
+    "id": "27143",
+    "name": "Automatizacion De Procesos",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 21619,
-    "name": "Circuitos eléctricos I",
-    "credits": 4
+    "career": "58",
+    "id": "24981",
+    "name": "Bacteriologia Determinativa",
+    "credits": "5"
   },
   {
-    "career": 22,
-    "id": 21619,
-    "name": "Circuitos eléctricos I",
-    "credits": 4
+    "career": "31",
+    "id": "23123",
+    "name": "Balanc.materia.y.energia.procesos Metalurgicos",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27134,
-    "name": "Circuitos eléctricos II",
-    "credits": 4
+    "career": "32",
+    "id": "28037",
+    "name": "Balance Y Transferencia De Masa Y Energia",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 27134,
-    "name": "Circuitos eléctricos II",
-    "credits": 4
+    "career": "11",
+    "id": "22959",
+    "name": "Bases De Datos I",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 27139,
+    "career": "11",
+    "id": "22960",
+    "name": "Bases De Datos Ii",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "27535",
+    "name": "Bases Informaticas",
+    "credits": "2"
+  },
+  {
+    "career": "31",
+    "id": "23132",
+    "name": "Beneficio De Minerales",
+    "credits": "4"
+  },
+  {
+    "career": "51",
+    "id": "20422",
+    "name": "Biociencias I",
+    "credits": "6"
+  },
+  {
+    "career": "51",
+    "id": "22356",
+    "name": "Biociencias Ii",
+    "credits": "5"
+  },
+  {
+    "career": "55",
+    "id": "23472",
+    "name": "Biociencias Ii",
+    "credits": "6"
+  },
+  {
+    "career": "52",
+    "id": "22893",
+    "name": "Biociencias Medicas I",
+    "credits": "5"
+  },
+  {
+    "career": "52",
+    "id": "23607",
+    "name": "Biociencias Medicas Ii",
+    "credits": "5"
+  },
+  {
+    "career": "58",
+    "id": "24979",
+    "name": "Bioestadistica",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "23741",
+    "name": "Bioestadistica I",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "23745",
+    "name": "Bioestadistica Ii",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24988",
+    "name": "Bioetica",
+    "credits": "2"
+  },
+  {
+    "career": "53779",
+    "id": "24446",
+    "name": "Biofisica",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "23733",
+    "name": "Biologia",
+    "credits": "4"
+  },
+  {
+    "career": "101718",
+    "id": "26436",
+    "name": "Biologia",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "23604",
+    "name": "Biologia Celular",
+    "credits": "5"
+  },
+  {
+    "career": "58",
+    "id": "24974",
+    "name": "Biologia Molecular",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23083",
+    "name": "Biologia Para Geologia",
+    "credits": "2"
+  },
+  {
+    "career": "11",
+    "id": "22952",
+    "name": "Biologia Para Ingenieros",
+    "credits": "2"
+  },
+  {
+    "career": "52",
+    "id": "22903",
+    "name": "Biometria Poblacional",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "27541",
+    "name": "Bioprocesos I",
+    "credits": "3"
+  },
+  {
+    "career": "33",
+    "id": "27544",
+    "name": "Bioprocesos Ii",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "24448",
+    "name": "Bioquimica",
+    "credits": "4"
+  },
+  {
+    "career": "58",
+    "id": "24980",
+    "name": "Bioquimica I",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24984",
+    "name": "Bioquimica Ii",
+    "credits": "3"
+  },
+  {
+    "career": "5428",
+    "id": "26019",
+    "name": "Botanica Taxonomica",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "20252",
+    "name": "Calculo I",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "20253",
+    "name": "Calculo Ii",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "20254",
+    "name": "Calculo Iii",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23095",
+    "name": "Campo I",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23099",
+    "name": "Campo Ii",
+    "credits": "4"
+  },
+  {
+    "career": "21",
+    "id": "24096",
+    "name": "Caracterizacion De Materiales I",
+    "credits": "1"
+  },
+  {
+    "career": "21",
+    "id": "24102",
+    "name": "Caracterizacion De Materiales Ii",
+    "credits": "1"
+  },
+  {
+    "career": "34",
+    "id": "23082",
+    "name": "Cartografia",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26821",
+    "name": "Certificaciones En Agronegocios",
+    "credits": "2"
+  },
+  {
+    "career": "23",
+    "id": "29002",
+    "name": "Ciencia De Los Materiales",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "27165",
+    "name": "Ciencia De Materiales",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "23127",
+    "name": "Cinetica Y Fisicoquimica De Superficies",
+    "credits": "4"
+  },
+  {
+    "career": "26",
+    "id": "21619",
+    "name": "Circuitos Electricos I",
+    "credits": "4"
+  },
+  {
+    "career": "26",
+    "id": "27134",
+    "name": "Circuitos Electricos Ii",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22927",
+    "name": "Cirugia",
+    "credits": "13"
+  },
+  {
+    "career": "52",
+    "id": "25784",
+    "name": "Cirugia (internado)",
+    "credits": "8"
+  },
+  {
+    "career": "5428",
+    "id": "29106",
+    "name": "Clasificacion De Coberturas Vegetales En Sig...",
+    "credits": "3"
+  },
+  {
+    "career": "5428",
+    "id": "29115",
+    "name": "Climatologia E Hidrologia",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27532",
+    "name": "Comercio Electronico",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27530",
+    "name": "Comercio Internacional",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28052",
+    "name": "Completamiento De Pozos",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27533",
+    "name": "Comportamiento Organizacional",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22930",
+    "name": "Comunicacion Cientifica",
+    "credits": "1"
+  },
+  {
+    "career": "26",
+    "id": "27139",
     "name": "Comunicaciones I",
-    "credits": 4
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 27145,
-    "name": "Comunicaciones II",
-    "credits": 4
+    "career": "26",
+    "id": "27145",
+    "name": "Comunicaciones Ii",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24110,
-    "name": "Construcción",
-    "credits": 3
+    "career": "54745",
+    "id": "24621",
+    "name": "Condiciones Agroecologicas",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 27126,
-    "name": "Control de sistemas eléctricos",
-    "credits": 4
+    "career": "31",
+    "id": "23138",
+    "name": "Conformado De Metales",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27141,
+    "career": "21",
+    "id": "24110",
+    "name": "Construccion",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27474",
+    "name": "Contabilidad Empresarial",
+    "credits": "3"
+  },
+  {
+    "career": "33",
+    "id": "23229",
+    "name": "Control De Procesos Quimicos",
+    "credits": "4"
+  },
+  {
+    "career": "22",
+    "id": "27126",
+    "name": "Control De Sistemas Electricos",
+    "credits": "4"
+  },
+  {
+    "career": "26",
+    "id": "27141",
     "name": "Control I",
-    "credits": 3
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27144,
-    "name": "Control II",
-    "credits": 4
+    "career": "26",
+    "id": "27144",
+    "name": "Control Ii",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29004,
+    "career": "53",
+    "id": "23587",
+    "name": "Control Motor",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "27179",
+    "name": "Corrosion",
+    "credits": "3"
+  },
+  {
+    "career": "23",
+    "id": "29004",
     "name": "Costos",
-    "credits": 3
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 23423,
-    "name": "Cultura física y deportiva",
-    "credits": 1
+    "career": "694",
+    "id": "27499",
+    "name": "Costos Para La Gerencia",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23423,
-    "name": "Cultura física y deportiva",
-    "credits": 1
+    "career": "33",
+    "id": "27549",
+    "name": "Creacion De Empresas",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 23423,
-    "name": "Cultura física y deportiva",
-    "credits": 1
+    "career": "102151",
+    "id": "26794",
+    "name": "Cuerpo Y Acciones Espacio-temporales",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 23423,
-    "name": "Cultura física y deportiva",
-    "credits": 1
+    "career": "51",
+    "id": "29046",
+    "name": "Cuidado Del Adulto I",
+    "credits": "13"
   },
   {
-    "career": 22,
-    "id": 23423,
-    "name": "Cultura física y deportiva",
-    "credits": 1
+    "career": "51",
+    "id": "29049",
+    "name": "Cuidado Del Adulto Ii",
+    "credits": "13"
   },
   {
-    "career": 21,
-    "id": 23423,
-    "name": "Cultura física y deportiva",
-    "credits": 1
+    "career": "51",
+    "id": "29044",
+    "name": "Cuidado Del Niño Y El Adolescente",
+    "credits": "13"
   },
   {
-    "career": 27,
-    "id": 23423,
-    "name": "Cultura física y deportiva",
-    "credits": 1
+    "career": "51",
+    "id": "29041",
+    "name": "Cuidado Familia Gestante,puerpera Y Recien Nacido",
+    "credits": "8"
   },
   {
-    "career": 24,
-    "id": 23017,
-    "name": "Dibujo de máquinas",
-    "credits": 3
+    "career": "51",
+    "id": "29037",
+    "name": "Cuidado Y Familia",
+    "credits": "2"
   },
   {
-    "career": 26,
-    "id": 23328,
-    "name": "Dibujo en ingeniería",
-    "credits": 3
+    "career": "11",
+    "id": "23423",
+    "name": "Cultura Fisica Y Deportiva",
+    "credits": "1"
   },
   {
-    "career": 22,
-    "id": 23328,
-    "name": "Dibujo en ingeniería",
-    "credits": 3
+    "career": "5428",
+    "id": "23423",
+    "name": "Cultura Fisica Y Deportiva",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24591,
-    "name": "Dibujo mecánico",
-    "credits": 3
+    "career": "5428",
+    "id": "26030",
+    "name": "Dendrologia",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23021,
-    "name": "Dinámica",
-    "credits": 3
+    "career": "694",
+    "id": "27476",
+    "name": "Derecho Empresarial",
+    "credits": "2"
   },
   {
-    "career": 26,
-    "id": 27138,
-    "name": "Dinámica de procesos",
-    "credits": 4
+    "career": "52",
+    "id": "22917",
+    "name": "Desarr.humano Y Medio Ambiente I",
+    "credits": "1"
   },
   {
-    "career": 21,
-    "id": 24108,
-    "name": "Dinámica estructural",
-    "credits": 3
+    "career": "52",
+    "id": "22921",
+    "name": "Desarr.humano Y Medio Ambiente Ii",
+    "credits": "1"
   },
   {
-    "career": 23,
-    "id": 29014,
-    "name": "Dirección de operaciones I",
-    "credits": 3
+    "career": "52",
+    "id": "22900",
+    "name": "Desarrol.human Y Sexualidad Ii",
+    "credits": "1"
   },
   {
-    "career": 23,
-    "id": 29018,
-    "name": "Dirección de operaciones II",
-    "credits": 3
+    "career": "694",
+    "id": "27473",
+    "name": "Desarrollo De Productos Y Servicios",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22964,
-    "name": "Dirección empresarial I",
-    "credits": 3
+    "career": "102151",
+    "id": "26785",
+    "name": "Desarrollo Del Pensamiento Artistico",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 22964,
-    "name": "Dirección empresarial I",
-    "credits": 3
+    "career": "51",
+    "id": "22130",
+    "name": "Desarrollo Human Y Ejer Prof Ii",
+    "credits": "1"
   },
   {
-    "career": 23,
-    "id": 29005,
-    "name": "Dirección empresarial I",
-    "credits": 3
+    "career": "53",
+    "id": "22325",
+    "name": "Desarrollo Humano I",
+    "credits": "1"
   },
   {
-    "career": 21,
-    "id": 22964,
-    "name": "Dirección empresarial I",
-    "credits": 3
+    "career": "53",
+    "id": "22326",
+    "name": "Desarrollo Humano Ii",
+    "credits": "1"
   },
   {
-    "career": 27,
-    "id": 22964,
-    "name": "Dirección empresarial I",
-    "credits": 3
+    "career": "51",
+    "id": "22126",
+    "name": "Desarrollo Humano Y Ejerc Prof I",
+    "credits": "1"
   },
   {
-    "career": 23,
-    "id": 29011,
-    "name": "Dirección empresarial II",
-    "credits": 3
+    "career": "51",
+    "id": "29043",
+    "name": "Desarrollo Humano Y Medio Ambiente",
+    "credits": "1"
   },
   {
-    "career": 24,
-    "id": 23026,
-    "name": "Diseño básico",
-    "credits": 4
+    "career": "51",
+    "id": "21958",
+    "name": "Desarrollo Humano Y Sexualidad I",
+    "credits": "1"
   },
   {
-    "career": 27,
-    "id": 24619,
-    "name": "Diseño de empaques",
-    "credits": 4
+    "career": "51",
+    "id": "22110",
+    "name": "Desarrollo Humano Y Sexualidad Ii",
+    "credits": "1"
   },
   {
-    "career": 21,
-    "id": 24111,
-    "name": "Diseño de estructuras metálicas",
-    "credits": 3
+    "career": "51",
+    "id": "29048",
+    "name": "Desarrollo Organizacional",
+    "credits": "1"
   },
   {
-    "career": 21,
-    "id": 24100,
-    "name": "Diseño de hormigón armado I",
-    "credits": 4
+    "career": "55",
+    "id": "23437",
+    "name": "Desarrollo Psicologico",
+    "credits": "2"
   },
   {
-    "career": 21,
-    "id": 24105,
-    "name": "Diseño de hormigón armado II",
-    "credits": 3
+    "career": "53",
+    "id": "22335",
+    "name": "Diagnostico Fisioterapeutico",
+    "credits": "6"
   },
   {
-    "career": 24,
-    "id": 23031,
-    "name": "Diseño de máquinas I",
-    "credits": 5
+    "career": "24",
+    "id": "23017",
+    "name": "Dibujo De Maquinas",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23037,
-    "name": "Diseño de máquinas II",
-    "credits": 5
+    "career": "26",
+    "id": "23328",
+    "name": "Dibujo En Ingenieria",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 24113,
-    "name": "Diseño de pavimentos",
-    "credits": 3
+    "career": "27",
+    "id": "24591",
+    "name": "Dibujo Mecanico",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27146,
-    "name": "Diseño de sistemas electrónicos",
-    "credits": 4
+    "career": "24",
+    "id": "23021",
+    "name": "Dinamica",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 29023,
-    "name": "Diseño de sistemas productivos",
-    "credits": 3
+    "career": "26",
+    "id": "27138",
+    "name": "Dinamica De Procesos",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23019,
-    "name": "Diseño gráfico",
-    "credits": 3
+    "career": "21",
+    "id": "24108",
+    "name": "Dinamica Estructural",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24588,
-    "name": "Diseño I creatividad",
-    "credits": 5
+    "career": "23",
+    "id": "29014",
+    "name": "Direccion De Operaciones I",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24590,
-    "name": "Diseño II lenguaje básico",
-    "credits": 5
+    "career": "23",
+    "id": "29018",
+    "name": "Direccion De Operaciones Ii",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24593,
-    "name": "Diseño III configuración",
-    "credits": 5
+    "career": "101718",
+    "id": "26474",
+    "name": "Direccion Empresarial",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24602,
-    "name": "Diseño V objeto/significado",
-    "credits": 5
+    "career": "11",
+    "id": "22964",
+    "name": "Direccion Empresarial I",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 24112,
-    "name": "Diseño vial",
-    "credits": 4
+    "career": "23",
+    "id": "29011",
+    "name": "Direccion Empresarial Ii",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24614,
-    "name": "Diseño VIII interdisciplina",
-    "credits": 5
+    "career": "24",
+    "id": "23026",
+    "name": "Diseño Basico",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 23411,
-    "name": "Dispositivos electrónicos",
-    "credits": 4
+    "career": "27",
+    "id": "24619",
+    "name": "Diseño De Empaques",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22978,
-    "name": "Economía empresarial",
-    "credits": 4
+    "career": "21",
+    "id": "24111",
+    "name": "Diseño De Estructuras Metalicas",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 20255,
-    "name": "Ecuaciones diferenciales",
-    "credits": 4
+    "career": "21",
+    "id": "24100",
+    "name": "Diseño De Hormigon Armado I",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 20255,
-    "name": "Ecuaciones diferenciales",
-    "credits": 4
+    "career": "21",
+    "id": "24105",
+    "name": "Diseño De Hormigon Armado Ii",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 20255,
-    "name": "Ecuaciones diferenciales",
-    "credits": 4
+    "career": "106789",
+    "id": "26816",
+    "name": "Diseño De La Investigación En Agronegocios C3",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 20255,
-    "name": "Ecuaciones diferenciales",
-    "credits": 4
+    "career": "24",
+    "id": "23031",
+    "name": "Diseño De Maquinas I",
+    "credits": "5"
   },
   {
-    "career": 22,
-    "id": 20255,
-    "name": "Ecuaciones diferenciales",
-    "credits": 4
+    "career": "24",
+    "id": "23037",
+    "name": "Diseño De Maquinas Ii",
+    "credits": "5"
   },
   {
-    "career": 21,
-    "id": 20255,
-    "name": "Ecuaciones diferenciales",
-    "credits": 4
+    "career": "21",
+    "id": "24113",
+    "name": "Diseño De Pavimentos",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 22957,
-    "name": "Electricidad y electrónica",
-    "credits": 4
+    "career": "101718",
+    "id": "26471",
+    "name": "Diseño De Productos Turisticos",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 23030,
-    "name": "Electricidad y electrónica básica",
-    "credits": 4
+    "career": "33",
+    "id": "23228",
+    "name": "Diseño De Reactores",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29001,
-    "name": "Electricidad y electrónica básica",
-    "credits": 3
+    "career": "26",
+    "id": "27146",
+    "name": "Diseño De Sistemas Electronicos",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 23361,
-    "name": "Electrónica de potencia",
-    "credits": 4
+    "career": "23",
+    "id": "29023",
+    "name": "Diseño De Sistemas Productivos",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27142,
-    "name": "Electrónica industrial",
-    "credits": 4
+    "career": "694",
+    "id": "27469",
+    "name": "Diseño Del Modelo De Negocios",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 28999,
-    "name": "Entorno económico",
-    "credits": 3
+    "career": "54745",
+    "id": "24962",
+    "name": "Diseño Del Sistema Productivo Agroindustrial",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24603,
-    "name": "Ergonomía del producto",
-    "credits": 3
+    "career": "106789",
+    "id": "24962",
+    "name": "Diseño Del Sistema Productivo Agropecuario",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24595,
-    "name": "Ergonomía física",
-    "credits": 3
+    "career": "5428",
+    "id": "29105",
+    "name": "Diseño Experimental",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 24095,
-    "name": "Estadística aplicada a la ingeniería",
-    "credits": 3
+    "career": "24",
+    "id": "23019",
+    "name": "Diseño Grafico",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 21857,
-    "name": "Estadística I",
-    "credits": 4
+    "career": "27",
+    "id": "24588",
+    "name": "Diseño I Creatividad",
+    "credits": "5"
   },
   {
-    "career": 23,
-    "id": 29003,
-    "name": "Estadística I",
-    "credits": 3
+    "career": "27",
+    "id": "24590",
+    "name": "Diseño Ii Lenguaje Basico",
+    "credits": "5"
   },
   {
-    "career": 11,
-    "id": 21858,
-    "name": "Estadística II",
-    "credits": 4
+    "career": "27",
+    "id": "24593",
+    "name": "Diseño Iii Configuracion",
+    "credits": "5"
   },
   {
-    "career": 23,
-    "id": 29006,
-    "name": "Estadística II",
-    "credits": 3
+    "career": "27",
+    "id": "24597",
+    "name": "Diseño Iv Bioforma",
+    "credits": "5"
   },
   {
-    "career": 23,
-    "id": 29012,
-    "name": "Estadística III",
-    "credits": 3
+    "career": "27",
+    "id": "24602",
+    "name": "Diseño V Objeto/significado",
+    "credits": "5"
   },
   {
-    "career": 24,
-    "id": 23018,
-    "name": "Estática",
-    "credits": 4
+    "career": "27",
+    "id": "24606",
+    "name": "Diseño Vi Bioenergia",
+    "credits": "5"
   },
   {
-    "career": 21,
-    "id": 23018,
-    "name": "Estática",
-    "credits": 4
+    "career": "21",
+    "id": "24112",
+    "name": "Diseño Vial",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22955,
-    "name": "Estruc.de.datos y análisis de algoritmos",
-    "credits": 4
+    "career": "27",
+    "id": "24610",
+    "name": "Diseño Vii Producto",
+    "credits": "5"
   },
   {
-    "career": 24,
-    "id": 23016,
-    "name": "Estructuras computacionales",
-    "credits": 4
+    "career": "27",
+    "id": "24614",
+    "name": "Diseño Viii Interdisciplina",
+    "credits": "5"
   },
   {
-    "career": 23,
-    "id": 28997,
-    "name": "Estructuras computacionales",
-    "credits": 3
+    "career": "26",
+    "id": "23411",
+    "name": "Dispositivos Electronicos",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22109,
-    "name": "Etica ciudadana",
-    "credits": 3
+    "career": "27",
+    "id": "24612",
+    "name": "Ecodiseño",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 22109,
-    "name": "Etica ciudadana",
-    "credits": 3
+    "career": "5428",
+    "id": "29107",
+    "name": "Ecologia Forestal",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 22109,
-    "name": "Etica ciudadana",
-    "credits": 3
+    "career": "101718",
+    "id": "26441",
+    "name": "Ecologia I",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 22109,
-    "name": "Etica ciudadana",
-    "credits": 3
+    "career": "101718",
+    "id": "26451",
+    "name": "Ecologia Ii",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24589,
-    "name": "Expresión I bocetación",
-    "credits": 3
+    "career": "53779",
+    "id": "23743",
+    "name": "Ecologia Y Fisiologia Ambiental",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24594,
-    "name": "Expresión II tridimensional",
-    "credits": 3
+    "career": "34",
+    "id": "23102",
+    "name": "Economia De Los Georecursos",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24615,
-    "name": "Expresión V fotografía",
-    "credits": 3
+    "career": "11",
+    "id": "22978",
+    "name": "Economia Empresarial",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24617,
-    "name": "Expresión VI composición y edicion digital",
-    "credits": 3
+    "career": "53779",
+    "id": "24450",
+    "name": "Economia Empresarial",
+    "credits": "2"
   },
   {
-    "career": 23,
-    "id": 29015,
-    "name": "Finanzas y presupuestos",
-    "credits": 3
+    "career": "55",
+    "id": "23441",
+    "name": "Economia En Alimentacion Y Nutricion",
+    "credits": "2"
   },
   {
-    "career": 11,
-    "id": 22950,
-    "name": "Física I",
-    "credits": 4
+    "career": "101718",
+    "id": "26450",
+    "name": "Economia Turistica",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 22950,
-    "name": "Física I",
-    "credits": 4
+    "career": "5428",
+    "id": "29116",
+    "name": "Economia Y Valoracion De Bosques",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 22950,
-    "name": "Física I",
-    "credits": 4
+    "career": "101718",
+    "id": "26457",
+    "name": "Ecoturismo",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 22950,
-    "name": "Física I",
-    "credits": 4
+    "career": "11",
+    "id": "20255",
+    "name": "Ecuaciones Diferenciales",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 22950,
-    "name": "Física I",
-    "credits": 4
+    "career": "52",
+    "id": "22925",
+    "name": "Ejercicio Profesional I",
+    "credits": "1"
   },
   {
-    "career": 21,
-    "id": 22950,
-    "name": "Física I",
-    "credits": 4
+    "career": "52",
+    "id": "22931",
+    "name": "Ejercicio Profesional Ii",
+    "credits": "1"
   },
   {
-    "career": 27,
-    "id": 22950,
-    "name": "Física I",
-    "credits": 4
+    "career": "102151",
+    "id": "26778",
+    "name": "El Objeto En El Espacio Bi Y Tridimensional",
+    "credits": "7"
   },
   {
-    "career": 11,
-    "id": 22953,
-    "name": "Física II",
-    "credits": 4
+    "career": "106789",
+    "id": "26813",
+    "name": "El Plan De Negocios En Los Agronegocios",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 22953,
-    "name": "Física II",
-    "credits": 4
+    "career": "106789",
+    "id": "26820",
+    "name": "El Proyecto De Emprendimiento En Agronegocios",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 22953,
-    "name": "Física II",
-    "credits": 4
+    "career": "54746",
+    "id": "28202",
+    "name": "Elaboracion De Productos No Alimentarios A Partir De Materias Primas Agricolas Y Pe",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 22953,
-    "name": "Física II",
-    "credits": 4
+    "career": "106789",
+    "id": "28202",
+    "name": "Elaboracion De Productos No Alimentarios A Partir De Materias Primas Agrícolas Y Pecuarías",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 22953,
-    "name": "Física II",
-    "credits": 4
+    "career": "52",
+    "id": "25786",
+    "name": "Electiva De Internado",
+    "credits": "12"
   },
   {
-    "career": 21,
-    "id": 22953,
-    "name": "Física II",
-    "credits": 4
+    "career": "11",
+    "id": "22957",
+    "name": "Electricidad Y Electronica",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22956,
-    "name": "Física III",
-    "credits": 4
+    "career": "24",
+    "id": "23030",
+    "name": "Electricidad Y Electronica Basica",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 22956,
-    "name": "Física III",
-    "credits": 4
+    "career": "23",
+    "id": "29001",
+    "name": "Electricidad Y Electronica Basica",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 22956,
-    "name": "Física III",
-    "credits": 4
+    "career": "22",
+    "id": "23361",
+    "name": "Electronica De Potencia",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 22956,
-    "name": "Física III",
-    "credits": 4
+    "career": "26",
+    "id": "27142",
+    "name": "Electronica Industrial",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 22956,
-    "name": "Física III",
-    "credits": 4
+    "career": "51",
+    "id": "29052",
+    "name": "Enfasis Del Cuidado",
+    "credits": "12"
   },
   {
-    "career": 21,
-    "id": 22956,
-    "name": "Física III",
-    "credits": 4
+    "career": "51",
+    "id": "29054",
+    "name": "Enfermeria Y Gerencia",
+    "credits": "1"
   },
   {
-    "career": 23,
-    "id": 29021,
-    "name": "Formulación y evaluación de proyectos",
-    "credits": 3
+    "career": "51",
+    "id": "29055",
+    "name": "Enfermeria Y Sociedad I",
+    "credits": "14"
   },
   {
-    "career": 21,
-    "id": 24106,
+    "career": "51",
+    "id": "29056",
+    "name": "Enfermeria Y Sociedad Ii",
+    "credits": "14"
+  },
+  {
+    "career": "31",
+    "id": "27180",
+    "name": "Ensayos No Destructivos",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26799",
+    "name": "Enseñanza Del Arte",
+    "credits": "3"
+  },
+  {
+    "career": "23",
+    "id": "28999",
+    "name": "Entorno Economico",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24983",
+    "name": "Epidemiologia",
+    "credits": "2"
+  },
+  {
+    "career": "52",
+    "id": "22912",
+    "name": "Epidemiologia Analitica",
+    "credits": "2"
+  },
+  {
+    "career": "52",
+    "id": "22935",
+    "name": "Epidemiologia Aplicada",
+    "credits": "2"
+  },
+  {
+    "career": "55",
+    "id": "23451",
+    "name": "Epidemiologia Nutricional",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24599",
+    "name": "Ergonomia Cognitiva Y Ambiental",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24603",
+    "name": "Ergonomia Del Producto",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24595",
+    "name": "Ergonomia Fisica",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28044",
+    "name": "Estadistica",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "27171",
+    "name": "Estadistica Aplicada",
+    "credits": "2"
+  },
+  {
+    "career": "694",
+    "id": "27472",
+    "name": "Estadistica Aplicada",
+    "credits": "3"
+  },
+  {
+    "career": "21",
+    "id": "24095",
+    "name": "Estadistica Aplicada A La Ingenieria",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27496",
+    "name": "Estadistica Aplicada A Los Negocios",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26453",
+    "name": "Estadistica Descriptiva",
+    "credits": "2"
+  },
+  {
+    "career": "11",
+    "id": "21857",
+    "name": "Estadistica I",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "29003",
+    "name": "Estadistica I",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "21858",
+    "name": "Estadistica Ii",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "29006",
+    "name": "Estadistica Ii",
+    "credits": "3"
+  },
+  {
+    "career": "23",
+    "id": "29012",
+    "name": "Estadistica Iii",
+    "credits": "3"
+  },
+  {
+    "career": "54746",
+    "id": "28204",
+    "name": "Estandarizacion De Procesos Agroindustriales Y Evaluacion De Productos",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "28204",
+    "name": "Estandarizacion De Procesos Agroindustriales Y Evaluacion De Productos",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23018",
+    "name": "Estatica",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "21413",
+    "name": "Estequiometria",
+    "credits": "4"
+  },
+  {
+    "career": "55",
+    "id": "23453",
+    "name": "Estrategia De Educacion Y Comunicacion",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27526",
+    "name": "Estrategias De Negociacion",
+    "credits": "3"
+  },
+  {
+    "career": "34",
+    "id": "23089",
+    "name": "Estratigrafia",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22955",
+    "name": "Estruc.de.datos Y Analisis De Algoritmos",
+    "credits": "4"
+  },
+  {
+    "career": "694",
+    "id": "27484",
+    "name": "Estructura De Costos",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "21428",
+    "name": "Estructura Y Prop. De Los Materiales",
+    "credits": "4"
+  },
+  {
+    "career": "24",
+    "id": "23016",
+    "name": "Estructuras Computacionales",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "28997",
+    "name": "Estructuras Computacionales",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26801",
+    "name": "Estudios Culturales",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "22109",
+    "name": "Etica Ciudadana",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "25913",
+    "name": "Etica Ciudadana",
+    "credits": "2"
+  },
+  {
+    "career": "51",
+    "id": "29030",
+    "name": "Etica En Enfermeria",
+    "credits": "1"
+  },
+  {
+    "career": "52",
+    "id": "22908",
+    "name": "Etica Medica",
+    "credits": "1"
+  },
+  {
+    "career": "53",
+    "id": "22332",
+    "name": "Etica Profesional",
+    "credits": "1"
+  },
+  {
+    "career": "32",
+    "id": "28047",
+    "name": "Evaluacion De Formaciones",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28049",
+    "name": "Evaluacion De Proyectos",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26472",
+    "name": "Excursiones Nacionales E Internacionales",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26458",
+    "name": "Exploracion Del Entorno",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "24627",
+    "name": "Exploracion Y Desarrollo De Los Mercados Agropecuarios",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "24627",
+    "name": "Exploracion Y Desarrollo Del Mercadeo Agropecuario",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24589",
+    "name": "Expresion I Bocetacion",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24594",
+    "name": "Expresion Ii Tridimensional",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24598",
+    "name": "Expresion Iii Tecnicas - Color",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24611",
+    "name": "Expresion Iv Axonometria",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24615",
+    "name": "Expresion V Fotografia",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24617",
+    "name": "Expresion Vi Composicion Y Edicion Digital",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "23764",
+    "name": "Extensión Y Desarrollo Rural",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28059",
+    "name": "Facilidades De Superficie",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22933",
+    "name": "Factores Riesgo Cardiovascular",
+    "credits": "2"
+  },
+  {
+    "career": "53",
+    "id": "22344",
+    "name": "Farmacologia",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22911",
+    "name": "Farmacologia General",
+    "credits": "5"
+  },
+  {
+    "career": "52",
+    "id": "22916",
+    "name": "Farmacologia Y Terapeutica",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "27555",
+    "name": "Farmacologia Y Toxicologia",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "23126",
+    "name": "Fenomenos De Transporte",
+    "credits": "5"
+  },
+  {
+    "career": "32",
+    "id": "28043",
+    "name": "Fenomenos De Transporte De Hidrocarburos",
+    "credits": "3"
+  },
+  {
+    "career": "33",
+    "id": "21416",
+    "name": "Fenomenos De Transporte I",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "21417",
+    "name": "Fenomenos De Transporte Ii",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "29015",
+    "name": "Finanzas Y Presupuestos",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24967",
+    "name": "Fisica",
+    "credits": "4"
+  },
+  {
+    "career": "101718",
+    "id": "26440",
+    "name": "Fisica",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "22950",
+    "name": "Fisica I",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22953",
+    "name": "Fisica Ii",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22956",
+    "name": "Fisica Iii",
+    "credits": "4"
+  },
+  {
+    "career": "58",
+    "id": "24971",
+    "name": "Fisico Quimica",
+    "credits": "3"
+  },
+  {
+    "career": "33",
+    "id": "27540",
+    "name": "Fisicoquimica",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "22330",
+    "name": "Fisiologia Del Ejercicio",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24977",
+    "name": "Fisiologia Microbiana",
+    "credits": "3"
+  },
+  {
+    "career": "5428",
+    "id": "29101",
+    "name": "Fisiologia Vegetal",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "24449",
+    "name": "Fisiologia Zootecnia I",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "23752",
+    "name": "Fisiologia Zootecnia Ii",
+    "credits": "4"
+  },
+  {
+    "career": "51",
+    "id": "29042",
+    "name": "Fisiopatologia Y Terapeutica",
+    "credits": "7"
+  },
+  {
+    "career": "53",
+    "id": "23584",
+    "name": "Fisioterapia Cardiorrespiratoria",
+    "credits": "6"
+  },
+  {
+    "career": "694",
+    "id": "27504",
+    "name": "Formulacion Y Evaluacion De Proyectos",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26783",
+    "name": "Fotografia Y Concepto",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27479",
+    "name": "Fuentes De Ingreso",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "22345",
+    "name": "Funcion Y Discapacidad",
+    "credits": "5"
+  },
+  {
+    "career": "21",
+    "id": "24106",
     "name": "Fundaciones I",
-    "credits": 3
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 23414,
-    "name": "Fundamentos de circuitos analógicos",
-    "credits": 4
+    "career": "53",
+    "id": "22327",
+    "name": "Fundamentos De Biomecanica I",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22948,
-    "name": "Fundamentos de programación",
-    "credits": 4
+    "career": "53",
+    "id": "22331",
+    "name": "Fundamentos De Biomecanica Ii",
+    "credits": "6"
   },
   {
-    "career": 22,
-    "id": 27129,
-    "name": "Generación de energia eléctrica",
-    "credits": 3
+    "career": "26",
+    "id": "23414",
+    "name": "Fundamentos De Circuitos Analogicos",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24091,
-    "name": "Geología para ingenieros",
-    "credits": 3
+    "career": "102151",
+    "id": "26777",
+    "name": "Fundamentos De La Composicion Bi Y Tridimensional",
+    "credits": "7"
   },
   {
-    "career": 21,
-    "id": 24097,
-    "name": "Geomática",
-    "credits": 3
+    "career": "102151",
+    "id": "26788",
+    "name": "Fundamentos De La Grafica Artistica",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23015,
-    "name": "Geometría descriptiva",
-    "credits": 4
+    "career": "52",
+    "id": "22895",
+    "name": "Fundamentos De Medicina I",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 23015,
-    "name": "Geometría descriptiva",
-    "credits": 4
+    "career": "52",
+    "id": "22899",
+    "name": "Fundamentos De Medicina Ii",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 23015,
-    "name": "Geometría descriptiva",
-    "credits": 4
+    "career": "55",
+    "id": "23450",
+    "name": "Fundamentos De Mercadeo",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 23015,
-    "name": "Geometría descriptiva",
-    "credits": 4
+    "career": "53",
+    "id": "23582",
+    "name": "Fundamentos De Neurofisiologia",
+    "credits": "5"
   },
   {
-    "career": 23,
-    "id": 29000,
-    "name": "Gestión contable",
-    "credits": 3
+    "career": "11",
+    "id": "22948",
+    "name": "Fundamentos De Programacion",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 27131,
-    "name": "Gestión de proyectos de ingeniería",
-    "credits": 3
+    "career": "27",
+    "id": "24609",
+    "name": "Fundamentos Del Diseño Mecatronico",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 27131,
-    "name": "Gestión de proyectos de ingeniería",
-    "credits": 3
+    "career": "102151",
+    "id": "26773",
+    "name": "Fundamentos Generales De La Historia Del Arte",
+    "credits": "2"
   },
   {
-    "career": 21,
-    "id": 24104,
-    "name": "Hidraúlica",
-    "credits": 4
+    "career": "22",
+    "id": "27129",
+    "name": "Generacion De Energia Electrica",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 24098,
-    "name": "Hidrología",
-    "credits": 3
+    "career": "58",
+    "id": "24986",
+    "name": "Genetica",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24604,
-    "name": "Historia del diseño",
-    "credits": 3
+    "career": "53779",
+    "id": "23751",
+    "name": "Genetica Animal",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29017,
-    "name": "Ingeniería de calidad",
-    "credits": 3
+    "career": "52",
+    "id": "22907",
+    "name": "Genetica Y Biologia Molecular",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 23040,
-    "name": "Ingeniería de control",
-    "credits": 3
+    "career": "5428",
+    "id": "26087",
+    "name": "Genetica Y Mej De Arboles Forestales",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23041,
-    "name": "Ingeniería de mantenimiento",
-    "credits": 4
+    "career": "34",
+    "id": "23096",
+    "name": "Geoestadistica",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23032,
-    "name": "Ingeniería de manufactura",
-    "credits": 3
+    "career": "101718",
+    "id": "26446",
+    "name": "Geografia Turistica",
+    "credits": "2"
   },
   {
-    "career": 11,
-    "id": 22969,
-    "name": "Ingeniería del software I",
-    "credits": 4
+    "career": "34",
+    "id": "23101",
+    "name": "Geologia Ambiental",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22973,
-    "name": "Ingeniería del software II",
-    "credits": 4
+    "career": "34",
+    "id": "23105",
+    "name": "Geologia De Colombia",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24103,
-    "name": "Ingeniería del tránsito",
-    "credits": 2
+    "career": "34",
+    "id": "23104",
+    "name": "Geologia De Hidrocarburos",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22976,
-    "name": "Ingeniería económica",
-    "credits": 3
+    "career": "34",
+    "id": "23091",
+    "name": "Geologia Estructural",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 22976,
-    "name": "Ingeniería económica",
-    "credits": 3
+    "career": "32",
+    "id": "28038",
+    "name": "Geologia Estructural De Hidrocarburos",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 29009,
-    "name": "Ingeniería económica",
-    "credits": 3
+    "career": "32",
+    "id": "28035",
+    "name": "Geologia General De Hidrocarburos",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 24107,
-    "name": "Ingeniería económica",
-    "credits": 3
+    "career": "34",
+    "id": "23093",
+    "name": "Geologia Historica",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 23424,
-    "name": " Inglés I",
-    "credits": 4
+    "career": "21",
+    "id": "24091",
+    "name": "Geologia Para Ingenieros",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23424,
-    "name": " Inglés I",
-    "credits": 4
+    "career": "21",
+    "id": "24097",
+    "name": "Geomatica",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 23424,
-    "name": " Inglés I",
-    "credits": 4
+    "career": "5428",
+    "id": "29103",
+    "name": "Geomatica",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 23424,
-    "name": " Inglés I",
-    "credits": 4
+    "career": "24",
+    "id": "23015",
+    "name": "Geometria Descriptiva",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 23424,
-    "name": " Inglés I",
-    "credits": 4
+    "career": "34",
+    "id": "23090",
+    "name": "Geomorfologia",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 23424,
-    "name": " Inglés I",
-    "credits": 4
+    "career": "34",
+    "id": "23098",
+    "name": "Geoquimica",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 23425,
-    "name": " Inglés II",
-    "credits": 4
+    "career": "55",
+    "id": "23459",
+    "name": "Gerencia De La Calidad",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23425,
-    "name": " Inglés II",
-    "credits": 4
+    "career": "101718",
+    "id": "26466",
+    "name": "Gerencia De La Calidad",
+    "credits": "2"
   },
   {
-    "career": 23,
-    "id": 23425,
-    "name": " Inglés II",
-    "credits": 4
+    "career": "694",
+    "id": "27528",
+    "name": "Gerencia Estrategia De Mercados",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 23425,
-    "name": " Inglés II",
-    "credits": 4
+    "career": "102151",
+    "id": "26803",
+    "name": "Gestion Artistica Y Cultural",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 23425,
-    "name": " Inglés II",
-    "credits": 4
+    "career": "23",
+    "id": "29000",
+    "name": "Gestion Contable",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 23425,
-    "name": " Inglés II",
-    "credits": 4
+    "career": "101718",
+    "id": "26456",
+    "name": "Gestion Contable Y Financiera",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 23360,
-    "name": "Instalaciones eléctricas",
-    "credits": 4
+    "career": "694",
+    "id": "27487",
+    "name": "Gestion De La Calidad",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 23420,
-    "name": "Instrumentación electrónica",
-    "credits": 4
+    "career": "54746",
+    "id": "28203",
+    "name": "Gestion De La Empresa Agroindustrial",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22971,
-    "name": "Inteligencia artificial I",
-    "credits": 4
+    "career": "106789",
+    "id": "28203",
+    "name": "Gestion De La Empresa Agroindustrial",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27137,
-    "name": "Introducción a ciencia de materiales",
-    "credits": 3
+    "career": "694",
+    "id": "27502",
+    "name": "Gestion De La Innovacion",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27132,
-    "name": "Introducción a la ingeniería",
-    "credits": 3
+    "career": "694",
+    "id": "27507",
+    "name": "Gestion De La Inteligencia Empresarial",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 27132,
-    "name": "Introducción a la ingeniería",
-    "credits": 3
+    "career": "694",
+    "id": "27510",
+    "name": "Gestion De La Tecnologia",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 28998,
-    "name": "Introducción a la ingeniería industrial",
-    "credits": 3
+    "career": "694",
+    "id": "27503",
+    "name": "Gestion De Las Operaciones",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 29016,
-    "name": "Investigación de mercados",
-    "credits": 3
+    "career": "694",
+    "id": "27494",
+    "name": "Gestion De Modelos De Negocios",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29007,
-    "name": "Investigación de operaciones I",
-    "credits": 3
+    "career": "694",
+    "id": "27506",
+    "name": "Gestion De Negocios Internacionales",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29013,
-    "name": "Investigación de operaciones II",
-    "credits": 3
+    "career": "694",
+    "id": "27483",
+    "name": "Gestion De Procesos Operacionales",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23038,
+    "career": "33",
+    "id": "27546",
+    "name": "Gestion De Proyectos",
+    "credits": "3"
+  },
+  {
+    "career": "26",
+    "id": "27131",
+    "name": "Gestion De Proyectos De Ingenieria",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27478",
+    "name": "Gestion De Recursos Empresariales",
+    "credits": "4"
+  },
+  {
+    "career": "694",
+    "id": "27470",
+    "name": "Gestion Del Conocimiento",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27495",
+    "name": "Gestion Del Riesgo",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26465",
+    "name": "Gestion Del Servicio A Clientes",
+    "credits": "2"
+  },
+  {
+    "career": "101718",
+    "id": "26454",
+    "name": "Gestion Del Talento Humano",
+    "credits": "2"
+  },
+  {
+    "career": "694",
+    "id": "27488",
+    "name": "Gestion Del Talento Humano",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27497",
+    "name": "Gestion Estrategica Y Liderazgo Organizacional",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28054",
+    "name": "Gestion Integral De La Industria Petrolera",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "23458",
+    "name": "Gestion Local",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22922",
+    "name": "Ginecobstetricia",
+    "credits": "14"
+  },
+  {
+    "career": "52",
+    "id": "25783",
+    "name": "Ginecobstetricia (internado)",
+    "credits": "8"
+  },
+  {
+    "career": "694",
+    "id": "27527",
+    "name": "Habilidades Gerenciales",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24991",
+    "name": "Hematologia I",
+    "credits": "5"
+  },
+  {
+    "career": "58",
+    "id": "24994",
+    "name": "Hematologia Ii",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "26817",
+    "name": "Herramientas Tecnologicas Aplicadas A Los Agronegocios C3",
+    "credits": "3"
+  },
+  {
+    "career": "21",
+    "id": "24104",
+    "name": "Hidraulica",
+    "credits": "4"
+  },
+  {
+    "career": "31",
+    "id": "23139",
+    "name": "Hidro Y Electrometalurgia",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23097",
+    "name": "Hidrogeologia",
+    "credits": "4"
+  },
+  {
+    "career": "21",
+    "id": "24098",
+    "name": "Hidrologia",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "22321",
+    "name": "Historia De La Ciencia",
+    "credits": "1"
+  },
+  {
+    "career": "102151",
+    "id": "26784",
+    "name": "Historia Del Arte Siglo Xx",
+    "credits": "2"
+  },
+  {
+    "career": "27",
+    "id": "24604",
+    "name": "Historia Del Diseño",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22913",
+    "name": "Historia Social De La Ciencia",
+    "credits": "1"
+  },
+  {
+    "career": "101718",
+    "id": "26437",
+    "name": "Historia Turistica I",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26442",
+    "name": "Historia Turistica Ii",
+    "credits": "2"
+  },
+  {
+    "career": "102151",
+    "id": "26781",
+    "name": "Hombre Arte Y Sociedad",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "22324",
+    "name": "Hombre Y Movimiento",
+    "credits": "1"
+  },
+  {
+    "career": "53779",
+    "id": "24459",
+    "name": "Icp. Introduccion A Las Ciencias Pecuarias",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26790",
+    "name": "Imagen En Movimiento",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26779",
+    "name": "Imagen Fotografica Digital",
+    "credits": "3"
+  },
+  {
+    "career": "5428",
+    "id": "29118",
+    "name": "Impacto Ambiental",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22919",
+    "name": "Infeccion Respiratoria",
+    "credits": "2"
+  },
+  {
+    "career": "101718",
+    "id": "26455",
+    "name": "Informatica Aplicada",
+    "credits": "3"
+  },
+  {
+    "career": "33",
+    "id": "27543",
+    "name": "Ingenieria Computacional",
+    "credits": "3"
+  },
+  {
+    "career": "23",
+    "id": "29017",
+    "name": "Ingenieria De Calidad",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23040",
+    "name": "Ingenieria De Control",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23041",
+    "name": "Ingenieria De Mantenimiento",
+    "credits": "4"
+  },
+  {
+    "career": "24",
+    "id": "23032",
+    "name": "Ingenieria De Manufactura",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28053",
+    "name": "Ingenieria De Yacimientos",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28057",
+    "name": "Ingenieria Del Gas",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "22969",
+    "name": "Ingenieria Del Software I",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22973",
+    "name": "Ingenieria Del Software Ii",
+    "credits": "4"
+  },
+  {
+    "career": "21",
+    "id": "24103",
+    "name": "Ingenieria Del Transito",
+    "credits": "2"
+  },
+  {
+    "career": "11",
+    "id": "22976",
+    "name": "Ingenieria Economica",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "23424",
+    "name": "Ingles I",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "23425",
+    "name": "Ingles Ii",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "23755",
+    "name": "Ingles  Ii",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "23749",
+    "name": "Ingles I",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "23424",
+    "name": "Ingles I",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "23425",
+    "name": "Ingles Ii",
+    "credits": "4"
+  },
+  {
+    "career": "58",
+    "id": "24978",
+    "name": "Inmunologia",
+    "credits": "4"
+  },
+  {
+    "career": "22",
+    "id": "23360",
+    "name": "Instalaciones Electricas",
+    "credits": "4"
+  },
+  {
+    "career": "26",
+    "id": "23420",
+    "name": "Instrumentacion Electronica",
+    "credits": "4"
+  },
+  {
+    "career": "694",
+    "id": "27529",
+    "name": "Instrumentos De Cooperacion",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26830",
+    "name": "Instrumentos De Cooperación En Agronegocios",
+    "credits": "2"
+  },
+  {
+    "career": "11",
+    "id": "22971",
+    "name": "Inteligencia Artificial I",
+    "credits": "4"
+  },
+  {
+    "career": "53",
+    "id": "23590",
+    "name": "Intervencion Fisioterapeutica",
+    "credits": "12"
+  },
+  {
+    "career": "34",
+    "id": "23051",
+    "name": "Introduc. A Las Geociencias",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "23050",
+    "name": "Introducc.a.la.ing.de Petroleos",
+    "credits": "3"
+  },
+  {
+    "career": "26",
+    "id": "27137",
+    "name": "Introduccion A Ciencia De Materiales",
+    "credits": "3"
+  },
+  {
+    "career": "5428",
+    "id": "25362",
+    "name": "Introduccion A La Biologia",
+    "credits": "5"
+  },
+  {
+    "career": "101718",
+    "id": "26445",
+    "name": "Introduccion A La Economia",
+    "credits": "2"
+  },
+  {
+    "career": "51",
+    "id": "21961",
+    "name": "Introduccion A La Enfermeria",
+    "credits": "1"
+  },
+  {
+    "career": "53",
+    "id": "22322",
+    "name": "Introduccion A La Fisioterapia",
+    "credits": "1"
+  },
+  {
+    "career": "33",
+    "id": "27534",
+    "name": "Introduccion A La Ing Quimica",
+    "credits": "2"
+  },
+  {
+    "career": "31",
+    "id": "23049",
+    "name": "Introduccion A La Ing. Metalurgica",
+    "credits": "3"
+  },
+  {
+    "career": "26",
+    "id": "27132",
+    "name": "Introduccion A La Ingenieria",
+    "credits": "3"
+  },
+  {
+    "career": "23",
+    "id": "28998",
+    "name": "Introduccion A La Ingenieria Industrial",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "23508",
+    "name": "Introduccion A La Nutricion",
+    "credits": "2"
+  },
+  {
+    "career": "58",
+    "id": "24968",
+    "name": "Introduccion A La Profesion",
+    "credits": "1"
+  },
+  {
+    "career": "58",
+    "id": "24997",
+    "name": "Introduccion A Practica Profesional",
+    "credits": "3"
+  },
+  {
+    "career": "51",
+    "id": "29047",
+    "name": "Investigacion De Enfermeria",
+    "credits": "1"
+  },
+  {
+    "career": "23",
+    "id": "29016",
+    "name": "Investigacion De Mercados",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27498",
+    "name": "Investigacion De Operaciones",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "29007",
+    "name": "Investigacion De Operaciones I",
+    "credits": "3"
+  },
+  {
+    "career": "23",
+    "id": "29013",
+    "name": "Investigacion De Operaciones Ii",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27500",
+    "name": "Investigacion Empresarial",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "22339",
+    "name": "Investigacion I",
+    "credits": "4"
+  },
+  {
+    "career": "53",
+    "id": "22343",
+    "name": "Investigacion Ii",
+    "credits": "4"
+  },
+  {
+    "career": "102151",
+    "id": "26789",
+    "name": "La Escultura En La Expansion",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26824",
+    "name": "La Inocuidad Aplicada A Los Agronegocios",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26825",
+    "name": "La Trazabilidad Rastreabilidad Aplicada A Los Agronegocios",
+    "credits": "2"
+  },
+  {
+    "career": "33",
+    "id": "27542",
+    "name": "Lab De Procesos I",
+    "credits": "2"
+  },
+  {
+    "career": "24",
+    "id": "23038",
     "name": "Lab.sit.transp.ap.de.fluidos",
-    "credits": 1
+    "credits": "1"
   },
   {
-    "career": 24,
-    "id": 23027,
-    "name": "Laboratorio de materiales",
-    "credits": 1
+    "career": "32",
+    "id": "23183",
+    "name": "Laboratorio De Fluidos",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 23352,
-    "name": "Líneas de transmisión",
-    "credits": 4
+    "career": "24",
+    "id": "23027",
+    "name": "Laboratorio De Materiales",
+    "credits": "1"
   },
   {
-    "career": 23,
-    "id": 29022,
-    "name": "Logística integral",
-    "credits": 3
+    "career": "33",
+    "id": "27548",
+    "name": "Laboratorio De Procesos Ii",
+    "credits": "2"
   },
   {
-    "career": 22,
-    "id": 21624,
-    "name": "Máquinas eléctricas I",
-    "credits": 4
+    "career": "31",
+    "id": "27166",
+    "name": "Laboratorio De Quimica",
+    "credits": "2"
   },
   {
-    "career": 22,
-    "id": 23356,
-    "name": "Máquinas eléctricas II",
-    "credits": 4
+    "career": "54745",
+    "id": "24629",
+    "name": "Labores Complementarias Agricolas",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22954,
-    "name": "Matemáticas discretas",
-    "credits": 4
+    "career": "106789",
+    "id": "24629",
+    "name": "Labores Complementarias Agricolas",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 24099,
-    "name": "Materiales de construcción",
-    "credits": 2
+    "career": "102151",
+    "id": "26774",
+    "name": "Lectura Y Composicion De Textos",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 23020,
+    "career": "55",
+    "id": "23442",
+    "name": "Legislacion Y Estandarizacion En Alimentos",
+    "credits": "4"
+  },
+  {
+    "career": "22",
+    "id": "23352",
+    "name": "Lineas De Transmision",
+    "credits": "4"
+  },
+  {
+    "career": "32",
+    "id": "28042",
+    "name": "Lodos De Perforacion",
+    "credits": "3"
+  },
+  {
+    "career": "23",
+    "id": "29022",
+    "name": "Logistica Integral",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26828",
+    "name": "Logistica Y Servicios De Apoyo A La Exportación",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "26829",
+    "name": "Los Mercados Verdes Y El Biocomercio Sostenible",
+    "credits": "2"
+  },
+  {
+    "career": "5428",
+    "id": "26090",
+    "name": "Manejo De Areas Silvestres",
+    "credits": "3"
+  },
+  {
+    "career": "33",
+    "id": "27538",
+    "name": "Manejo De Fluidos Y Solidos",
+    "credits": "4"
+  },
+  {
+    "career": "54745",
+    "id": "24628",
+    "name": "Manejo De Material Genetico",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "24631",
+    "name": "Manejo De Nutricion Animal",
+    "credits": "4"
+  },
+  {
+    "career": "54745",
+    "id": "24964",
+    "name": "Manejo De Nutricion Vegetal",
+    "credits": "4"
+  },
+  {
+    "career": "54746",
+    "id": "28201",
+    "name": "Manejo De Posproduccion De Productos Pecuarios",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "28201",
+    "name": "Manejo De Posproduccion De Productos Pecuarios",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "24452",
+    "name": "Manejo De Praderas",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "24965",
+    "name": "Manejo De Viveros",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "24965",
+    "name": "Manejo De Viveros",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "28192",
+    "name": "Manejo,beneficio Y Acopio De Cosecha De Perecederos Y De Gra",
+    "credits": "5"
+  },
+  {
+    "career": "106789",
+    "id": "28192",
+    "name": "Manejo,beneficio Y Acopio De Cosecha De Perecederos Y De Granos",
+    "credits": "3"
+  },
+  {
+    "career": "22",
+    "id": "21624",
+    "name": "Maquinas Electricas I",
+    "credits": "4"
+  },
+  {
+    "career": "22",
+    "id": "23356",
+    "name": "Maquinas Electricas Ii",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "23735",
+    "name": "Matematicas",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26435",
+    "name": "Matematicas",
+    "credits": "4"
+  },
+  {
+    "career": "694",
+    "id": "27466",
+    "name": "Matematicas Aplicadas",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "22954",
+    "name": "Matematicas Discretas",
+    "credits": "4"
+  },
+  {
+    "career": "694",
+    "id": "27481",
+    "name": "Matematicas Financieras",
+    "credits": "3"
+  },
+  {
+    "career": "21",
+    "id": "24099",
+    "name": "Materiales De Construccion",
+    "credits": "2"
+  },
+  {
+    "career": "55",
+    "id": "27557",
+    "name": "Materiales De Educacion Y Comunicacion",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23020",
     "name": "Materiales I",
-    "credits": 3
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23023,
-    "name": "Materiales II",
-    "credits": 3
+    "career": "24",
+    "id": "23023",
+    "name": "Materiales Ii",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24605,
-    "name": "Materiales y procesos II polímeros",
-    "credits": 4
+    "career": "31",
+    "id": "27168",
+    "name": "Materiales Refractarios",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24616,
-    "name": "Materiales y procesos V cerámicos/vidrios",
-    "credits": 4
+    "career": "27",
+    "id": "24600",
+    "name": "Materiales Y Procesos I Madera",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 20113,
-    "name": "Mecánica analítica",
-    "credits": 4
+    "career": "27",
+    "id": "24605",
+    "name": "Materiales Y Procesos Ii Polimeros",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 27121,
-    "name": "Mecánica analítica",
-    "credits": 3
+    "career": "27",
+    "id": "24608",
+    "name": "Materiales Y Procesos Iii- Metales",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 20113,
-    "name": "Mecánica analítica",
-    "credits": 4
+    "career": "27",
+    "id": "24613",
+    "name": "Materiales Y Procesos Iv Cueros",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23024,
-    "name": "Mecánica de fluidos",
-    "credits": 4
+    "career": "27",
+    "id": "24616",
+    "name": "Materiales Y Procesos V Ceramicos/vidrios",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24093,
-    "name": "Mecánica de fluidos",
-    "credits": 5
+    "career": "23",
+    "id": "20113",
+    "name": "Mecanica Analitica",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23025,
-    "name": "Mecánica de máquinas",
-    "credits": 4
+    "career": "22",
+    "id": "27121",
+    "name": "Mecanica Analitica",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 23025,
-    "name": "Mecánica de máquinas",
-    "credits": 4
+    "career": "24",
+    "id": "23024",
+    "name": "Mecanica De Fluidos",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 23834,
-    "name": "Mecánica de sólidos",
-    "credits": 4
+    "career": "21",
+    "id": "24093",
+    "name": "Mecanica De Fluidos",
+    "credits": "5"
   },
   {
-    "career": 21,
-    "id": 24101,
-    "name": "Mecánica de suelos I",
-    "credits": 3
+    "career": "24",
+    "id": "23025",
+    "name": "Mecanica De Maquinas",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 27123,
-    "name": "Mediciones eléctricas",
-    "credits": 3
+    "career": "21",
+    "id": "23834",
+    "name": "Mecanica De Solidos",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 27128,
-    "name": "Mediciones eléctricas avanzadas",
-    "credits": 3
+    "career": "21",
+    "id": "24101",
+    "name": "Mecanica De Suelos I",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23054,
-    "name": "Metodologia de la investigación",
-    "credits": 3
+    "career": "52",
+    "id": "22926",
+    "name": "Medicina Basada En La Evidencia",
+    "credits": "1"
   },
   {
-    "career": 27,
-    "id": 24592,
-    "name": "Metodologia del diseño",
-    "credits": 3
+    "career": "52",
+    "id": "22914",
+    "name": "Medicina Interna",
+    "credits": "14"
   },
   {
-    "career": 26,
-    "id": 27120,
-    "name": "Métodos numéricos",
-    "credits": 3
+    "career": "52",
+    "id": "25781",
+    "name": "Medicina Interna(internado)",
+    "credits": "8"
   },
   {
-    "career": 22,
-    "id": 27120,
-    "name": "Métodos numéricos",
-    "credits": 3
+    "career": "52",
+    "id": "22923",
+    "name": "Medicina Legal",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24092,
-    "name": "Métodos numéricos",
-    "credits": 3
+    "career": "52",
+    "id": "22941",
+    "name": "Medicina Legal(internado)",
+    "credits": "2"
   },
   {
-    "career": 11,
-    "id": 22963,
-    "name": "Pensamiento sistémico y organizacional",
-    "credits": 4
+    "career": "22",
+    "id": "27123",
+    "name": "Mediciones Electricas",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24618,
-    "name": "Plan de negocios",
-    "credits": 3
+    "career": "22",
+    "id": "27128",
+    "name": "Mediciones Electricas Avanzadas",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23039,
-    "name": "Potencia fluida",
-    "credits": 4
+    "career": "5428",
+    "id": "26048",
+    "name": "Mediciones Forestales",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29010,
-    "name": "Principios de mercadeo",
-    "credits": 3
+    "career": "106789",
+    "id": "26819",
+    "name": "Medidas Sanitarias Y Fitosanitarias Con Fines De Agronegocio Para Exportación",
+    "credits": "2"
   },
   {
-    "career": 26,
-    "id": 27125,
-    "name": "Probabilidad y estadística",
-    "credits": 3
+    "career": "53779",
+    "id": "23757",
+    "name": "Mejoramiento Animal",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 27125,
-    "name": "Probabilidad y estadística",
-    "credits": 3
+    "career": "101718",
+    "id": "26462",
+    "name": "Mercadeo Turistico I",
+    "credits": "2"
   },
   {
-    "career": 24,
-    "id": 23028,
-    "name": "Procesos de manufactura",
-    "credits": 3
+    "career": "101718",
+    "id": "26467",
+    "name": "Mercadeo Turistico Ii",
+    "credits": "2"
   },
   {
-    "career": 23,
-    "id": 29008,
-    "name": "Procesos industriales",
-    "credits": 3
+    "career": "31",
+    "id": "27167",
+    "name": "Metalografia",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 27133,
-    "name": "Programación de computadores I",
-    "credits": 3
+    "career": "31",
+    "id": "27181",
+    "name": "Metalurgia Fisica",
+    "credits": "2"
   },
   {
-    "career": 22,
-    "id": 27133,
-    "name": "Programación de computadores I",
-    "credits": 3
+    "career": "31",
+    "id": "27174",
+    "name": "Metalurgia Mecanica",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 27135,
-    "name": "Programación de computadores II",
-    "credits": 3
+    "career": "24",
+    "id": "23054",
+    "name": "Metodologia De La Investigacion",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 22967,
-    "name": "Programación en la web",
-    "credits": 4
+    "career": "58",
+    "id": "24989",
+    "name": "Metodologia De La Investigacion",
+    "credits": "2"
   },
   {
-    "career": 11,
-    "id": 22951,
-    "name": "Programación orientada a objetos",
-    "credits": 4
+    "career": "101718",
+    "id": "26459",
+    "name": "Metodologia De La Investigacion",
+    "credits": "1"
   },
   {
-    "career": 11,
-    "id": 22949,
-    "name": "Quimica básica",
-    "credits": 4
+    "career": "27",
+    "id": "24592",
+    "name": "Metodologia Del Diseño",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 22949,
-    "name": "Quimica básica",
-    "credits": 4
+    "career": "32",
+    "id": "28056",
+    "name": "Metodos De Produccion",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 22949,
-    "name": "Quimica básica",
-    "credits": 4
+    "career": "32",
+    "id": "28060",
+    "name": "Metodos De Recobro",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 22949,
-    "name": "Quimica básica",
-    "credits": 4
+    "career": "33",
+    "id": "27537",
+    "name": "Metodos En Ing Quimica I",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 22949,
-    "name": "Quimica básica",
-    "credits": 4
+    "career": "34",
+    "id": "23084",
+    "name": "Metodos Geofisicos",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 22949,
-    "name": "Quimica básica",
-    "credits": 4
+    "career": "33",
+    "id": "27539",
+    "name": "Metodos Ing Quimica Ii",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 22965,
-    "name": "Redes de computadores I",
-    "credits": 4
+    "career": "21",
+    "id": "24092",
+    "name": "Metodos Numericos",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 22970,
-    "name": "Redes de computadores II",
-    "credits": 4
+    "career": "32",
+    "id": "28040",
+    "name": "Metodos Numericos",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23022,
-    "name": "Resistencia de materiales",
-    "credits": 4
+    "career": "58",
+    "id": "24985",
+    "name": "Micologia",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29019,
-    "name": "Seguridad y salud en el trabajo",
-    "credits": 3
+    "career": "55",
+    "id": "23443",
+    "name": "Microbiol.e Inocuidad De Alimentos",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24596,
-    "name": "Semiótica",
-    "credits": 3
+    "career": "53779",
+    "id": "24447",
+    "name": "Microbiologia",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 22974,
-    "name": "Simulación digital",
-    "credits": 4
+    "career": "58",
+    "id": "24995",
+    "name": "Microbiologia E Higiene De Los Alimentos",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23035,
+    "career": "58",
+    "id": "24973",
+    "name": "Microbiologia General",
+    "credits": "4"
+  },
+  {
+    "career": "58",
+    "id": "24998",
+    "name": "Microbiologia Industrial",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23080",
+    "name": "Mineralogia I",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23081",
+    "name": "Mineralogia Ii",
+    "credits": "4"
+  },
+  {
+    "career": "53",
+    "id": "23586",
+    "name": "Modalid.ejercicio Terapeutico I",
+    "credits": "4"
+  },
+  {
+    "career": "53",
+    "id": "23588",
+    "name": "Modalid.ejercicio Terapeutico Ii",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "23585",
+    "name": "Modalidades Fisicas I",
+    "credits": "4"
+  },
+  {
+    "career": "53",
+    "id": "23589",
+    "name": "Modalidades Fisicas Ii",
+    "credits": "4"
+  },
+  {
+    "career": "31",
+    "id": "23134",
+    "name": "Modelamiento Y Simulacion",
+    "credits": "3"
+  },
+  {
+    "career": "54746",
+    "id": "28200",
+    "name": "Modelos De Financiacion De Proyectos Agroindustriales",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26791",
+    "name": "Modernidad Y Postmodernidad",
+    "credits": "2"
+  },
+  {
+    "career": "58",
+    "id": "24975",
+    "name": "Morfofisiologia",
+    "credits": "4"
+  },
+  {
+    "career": "54745",
+    "id": "28194",
+    "name": "Morfofisiologia Comparada Para La Salud Animal",
+    "credits": "2"
+  },
+  {
+    "career": "51",
+    "id": "22323",
+    "name": "Morfofisiologia General",
+    "credits": "7"
+  },
+  {
+    "career": "52",
+    "id": "23605",
+    "name": "Morfofisiologia I",
+    "credits": "15"
+  },
+  {
+    "career": "52",
+    "id": "23606",
+    "name": "Morfofisiologia Ii Y Psicobiologia",
+    "credits": "8"
+  },
+  {
+    "career": "53779",
+    "id": "23753",
+    "name": "Morfofisiologia Vegetal",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "28194",
+    "name": "Morfologia Comparada Para La Salud Animal",
+    "credits": "2"
+  },
+  {
+    "career": "33",
+    "id": "23222",
+    "name": "Nanotecnologia",
+    "credits": "4"
+  },
+  {
+    "career": "55",
+    "id": "27556",
+    "name": "Nutraceutica",
+    "credits": "1"
+  },
+  {
+    "career": "55",
+    "id": "27554",
+    "name": "Nutricion Basica",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "23461",
+    "name": "Nutricion Clinica De Adultos",
+    "credits": "7"
+  },
+  {
+    "career": "55",
+    "id": "23460",
+    "name": "Nutricion Clinica Pediatrica",
+    "credits": "7"
+  },
+  {
+    "career": "53779",
+    "id": "23750",
+    "name": "Nutrición De Monogastricos",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "23756",
+    "name": "Nutrición De Rumiantes",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "23744",
+    "name": "Nutrición General",
+    "credits": "4"
+  },
+  {
+    "career": "55",
+    "id": "23448",
+    "name": "Nutricion Y Actividad Fisica",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "29112",
+    "name": "Nutricion Y Remediacion De Suelos",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "21419",
+    "name": "Operaciones Unitarias I",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "21420",
+    "name": "Operaciones Unitarias Ii",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "26095",
+    "name": "Ordenacion De Cuenas Hidrograficas",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "29114",
+    "name": "Ordenamiento De Bosques",
+    "credits": "4"
+  },
+  {
+    "career": "101718",
+    "id": "26470",
+    "name": "Organizacion De Eventos Y Convenciones",
+    "credits": "3"
+  },
+  {
+    "career": "34",
+    "id": "23086",
+    "name": "Paleontologia I",
+    "credits": "4"
+  },
+  {
+    "career": "58",
+    "id": "24990",
+    "name": "Parasitologia",
+    "credits": "5"
+  },
+  {
+    "career": "53779",
+    "id": "24454",
+    "name": "Pasantia",
+    "credits": "5"
+  },
+  {
+    "career": "53779",
+    "id": "24451",
+    "name": "Pastos Y Forrajes",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "22336",
+    "name": "Patologia Del Movimiento",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22904",
+    "name": "Patologia General",
+    "credits": "7"
+  },
+  {
+    "career": "52",
+    "id": "22905",
+    "name": "Patologia Infecciosa E Inmunologia I",
+    "credits": "5"
+  },
+  {
+    "career": "52",
+    "id": "22915",
+    "name": "Patologia Infecciosa E Inmunologia Ii",
+    "credits": "2"
+  },
+  {
+    "career": "101718",
+    "id": "26452",
+    "name": "Patrimonio Cultural",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22918",
+    "name": "Pediatria",
+    "credits": "14"
+  },
+  {
+    "career": "52",
+    "id": "25782",
+    "name": "Pediatria(internado)",
+    "credits": "8"
+  },
+  {
+    "career": "694",
+    "id": "27490",
+    "name": "Pensamiento Cientifico Y Comunicacion Digital",
+    "credits": "2"
+  },
+  {
+    "career": "694",
+    "id": "27501",
+    "name": "Pensamiento Estrategico Y Prospectivo",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22963",
+    "name": "Pensamiento Sistemico Y Organizacional",
+    "credits": "4"
+  },
+  {
+    "career": "32",
+    "id": "28048",
+    "name": "Perforacion De Pozos",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22944",
+    "name": "Periferico (internado)",
+    "credits": "12"
+  },
+  {
+    "career": "34",
+    "id": "23088",
+    "name": "Petrologia Ignea",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23094",
+    "name": "Petrologia Metamorfica",
+    "credits": "4"
+  },
+  {
+    "career": "31",
+    "id": "27175",
+    "name": "Pirometalurgia",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27505",
+    "name": "Plan De Investigacion Empresarial",
+    "credits": "3"
+  },
+  {
+    "career": "27",
+    "id": "24618",
+    "name": "Plan De Negocios",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "28191",
+    "name": "Planeacion Estrategica En Los Agronegocios",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "23769",
+    "name": "Planeacion Y Evaluacion De Proyectos",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "23452",
+    "name": "Planificacion De La Alimentacion",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22936",
+    "name": "Planificacion Y Gerencia En Salud",
+    "credits": "4"
+  },
+  {
+    "career": "32",
+    "id": "28050",
+    "name": "Politica Petrolera",
+    "credits": "2"
+  },
+  {
+    "career": "5428",
+    "id": "29098",
+    "name": "Politica Y Legislacion Forestal",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23039",
+    "name": "Potencia Fluida",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22920",
+    "name": "Ppios De Admon Y Seguridad Social",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "22354",
+    "name": "Practica Docencia Servicio I",
+    "credits": "17"
+  },
+  {
+    "career": "53",
+    "id": "22355",
+    "name": "Practica Docencia Servicio Ii",
+    "credits": "17"
+  },
+  {
+    "career": "58",
+    "id": "21925",
+    "name": "Practica Profesional I",
+    "credits": "17"
+  },
+  {
+    "career": "58",
+    "id": "21926",
+    "name": "Practica Profesional Ii",
+    "credits": "17"
+  },
+  {
+    "career": "55",
+    "id": "27558",
+    "name": "Practicas Integradas I",
+    "credits": "14"
+  },
+  {
+    "career": "55",
+    "id": "27559",
+    "name": "Practicas Integradas Ii",
+    "credits": "14"
+  },
+  {
+    "career": "55",
+    "id": "27560",
+    "name": "Practicas Integradas Iii",
+    "credits": "14"
+  },
+  {
+    "career": "55",
+    "id": "27561",
+    "name": "Practicas Integradas Iv",
+    "credits": "14"
+  },
+  {
+    "career": "53",
+    "id": "22334",
+    "name": "Prevencion De Desastres",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "24630",
+    "name": "Prevencion En Sanidad Vegetal",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "29010",
+    "name": "Principios De Mercadeo",
+    "credits": "3"
+  },
+  {
+    "career": "26",
+    "id": "27125",
+    "name": "Probabilidad Y Estadistica",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26823",
+    "name": "Procesamiento De Productos De Exportacion De Origen Animal",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "26818",
+    "name": "Procesamiento De Productos Exportación De Origen Vegetal",
+    "credits": "4"
+  },
+  {
+    "career": "51",
+    "id": "29035",
+    "name": "Proceso De Enfermeria I",
+    "credits": "2"
+  },
+  {
+    "career": "51",
+    "id": "22119",
+    "name": "Proceso De Enfermeria Ii",
+    "credits": "4"
+  },
+  {
+    "career": "31",
+    "id": "27176",
+    "name": "Proceso De Moldeo",
+    "credits": "3"
+  },
+  {
+    "career": "54746",
+    "id": "28206",
+    "name": "Procesos De Almacenamiento Y Transporte De Productos Agroindustriales",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "27177",
+    "name": "Procesos De Fundicion",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23028",
+    "name": "Procesos De Manufactura",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27477",
+    "name": "Procesos De Marketing",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "29008",
+    "name": "Procesos Industriales",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26787",
+    "name": "Procesos Pictoricos",
+    "credits": "3"
+  },
+  {
+    "career": "26",
+    "id": "27133",
+    "name": "Programacion De Computadores I",
+    "credits": "3"
+  },
+  {
+    "career": "26",
+    "id": "27135",
+    "name": "Programacion De Computadores Ii",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "22967",
+    "name": "Programacion En La Web",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22951",
+    "name": "Programacion Orientada A Objetos",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22928",
+    "name": "Prom.prev.diag.temprano.del.cancer",
+    "credits": "2"
+  },
+  {
+    "career": "51",
+    "id": "29039",
+    "name": "Promocion Y Prevencion",
+    "credits": "10"
+  },
+  {
+    "career": "53",
+    "id": "22348",
+    "name": "Promocion Y Prevencion En Fisioterapia",
+    "credits": "5"
+  },
+  {
+    "career": "32",
+    "id": "28046",
+    "name": "Propiedades De Los Fluidos",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27492",
+    "name": "Proyecciones Y Manejo De Recursos",
+    "credits": "3"
+  },
+  {
+    "career": "5428",
+    "id": "26099",
+    "name": "Proyecto De Grado Ii",
+    "credits": "7"
+  },
+  {
+    "career": "5428",
+    "id": "29119",
+    "name": "Proyecto De Grado I",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26814",
+    "name": "Proyectos De Exportación Y Cadena Agroindustrial C3",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26469",
+    "name": "Proyectos Turisticos",
+    "credits": "2"
+  },
+  {
+    "career": "52",
+    "id": "22906",
+    "name": "Psicopatologia",
+    "credits": "2"
+  },
+  {
+    "career": "52",
+    "id": "22932",
+    "name": "Psiquiatria",
+    "credits": "9"
+  },
+  {
+    "career": "52",
+    "id": "22942",
+    "name": "Psiquiatria (internado)",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24970",
+    "name": "Quimica",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "29099",
+    "name": "Quimica",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24976",
+    "name": "Quimica Analitica",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22949",
+    "name": "Quimica Basica",
+    "credits": "4"
+  },
+  {
+    "career": "58",
+    "id": "24992",
+    "name": "Quimica Clinica",
+    "credits": "5"
+  },
+  {
+    "career": "55",
+    "id": "23439",
+    "name": "Quimica De Alimentos",
+    "credits": "3"
+  },
+  {
+    "career": "34",
+    "id": "20314",
+    "name": "Quimica I",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23079",
+    "name": "Quimica Ii",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "23217",
+    "name": "Quimica Iii",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "23734",
+    "name": "Quimica Organica",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "26018",
+    "name": "Quimica Organica",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26796",
+    "name": "Recorridos Del Arte Colombiano Y Latinoamericano",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26447",
+    "name": "Recreacion Dirigida",
+    "credits": "2"
+  },
+  {
+    "career": "11",
+    "id": "22965",
+    "name": "Redes De Computadores I",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22970",
+    "name": "Redes De Computadores Ii",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22934",
+    "name": "Rehabilitacion",
+    "credits": "2"
+  },
+  {
+    "career": "102151",
+    "id": "26782",
+    "name": "Representacion Del Cuerpo En El Espacio Bi Y Tridimensional",
+    "credits": "7"
+  },
+  {
+    "career": "53779",
+    "id": "23758",
+    "name": "Reproducción Animal",
+    "credits": "4"
+  },
+  {
+    "career": "102151",
+    "id": "26793",
+    "name": "Reproductibilidad De La Imagen",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23022",
+    "name": "Resistencia De Materiales",
+    "credits": "4"
+  },
+  {
+    "career": "32",
+    "id": "28051",
+    "name": "Responsabilidad Social",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27493",
+    "name": "Responsabilidad Social Empresarial",
+    "credits": "3"
+  },
+  {
+    "career": "53779",
+    "id": "23761",
+    "name": "Salud Animal",
+    "credits": "3"
+  },
+  {
+    "career": "53",
+    "id": "21957",
+    "name": "Salud Mental",
+    "credits": "2"
+  },
+  {
+    "career": "52",
+    "id": "22924",
+    "name": "Salud Ocupacional",
+    "credits": "1"
+  },
+  {
+    "career": "55",
+    "id": "23440",
+    "name": "Salud Publica",
+    "credits": "4"
+  },
+  {
+    "career": "58",
+    "id": "24987",
+    "name": "Salud Publica",
+    "credits": "2"
+  },
+  {
+    "career": "52",
+    "id": "22943",
+    "name": "Salud Publica(internado)",
+    "credits": "1"
+  },
+  {
+    "career": "53",
+    "id": "23583",
+    "name": "Salud Y Comunidad",
+    "credits": "2"
+  },
+  {
+    "career": "51",
+    "id": "29031",
+    "name": "Salud Y Sociedad I",
+    "credits": "3"
+  },
+  {
+    "career": "51",
+    "id": "22111",
+    "name": "Salud Y Sociedad Ii",
+    "credits": "2"
+  },
+  {
+    "career": "5428",
+    "id": "26031",
+    "name": "Sanidad Forestal",
+    "credits": "3"
+  },
+  {
+    "career": "32",
+    "id": "28036",
+    "name": "Sedimentologia De Hidrocarburos",
+    "credits": "3"
+  },
+  {
+    "career": "34",
+    "id": "23085",
+    "name": "Sedimentologia Para Geologos",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "29019",
+    "name": "Seguridad Y Salud En El Trabajo",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "23444",
+    "name": "Seminario De Investigacion I",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "23447",
+    "name": "Seminario De Investigacion Ii",
+    "credits": "4"
+  },
+  {
+    "career": "53",
+    "id": "22347",
+    "name": "Seminario I",
+    "credits": "4"
+  },
+  {
+    "career": "53",
+    "id": "22352",
+    "name": "Seminario Ii",
+    "credits": "4"
+  },
+  {
+    "career": "52",
+    "id": "22910",
+    "name": "Semiologia Especial",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "22909",
+    "name": "Semiologia General",
+    "credits": "8"
+  },
+  {
+    "career": "27",
+    "id": "24596",
+    "name": "Semiotica",
+    "credits": "3"
+  },
+  {
+    "career": "102151",
+    "id": "26805",
+    "name": "Semiotica De La Imagen",
+    "credits": "2"
+  },
+  {
+    "career": "101718",
+    "id": "26448",
+    "name": "Servicios De Alimentacion",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26449",
+    "name": "Servicios De Alojamiento",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26461",
+    "name": "Servicios De Guianza",
+    "credits": "2"
+  },
+  {
+    "career": "5428",
+    "id": "29117",
+    "name": "Silvicultura Y Restauracion De Bosques Naturales",
+    "credits": "4"
+  },
+  {
+    "career": "32",
+    "id": "28058",
+    "name": "Simulacion De Yacimientos",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22974",
+    "name": "Simulacion Digital",
+    "credits": "4"
+  },
+  {
+    "career": "33",
+    "id": "27545",
+    "name": "Sintesis Y Anal De Procesos Quimicos",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23035",
     "name": "Sist.transp.aprovech.de.fluidos",
-    "credits": 4
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 27127,
-    "name": "Sistemas de distribución",
-    "credits": 3
+    "career": "53779",
+    "id": "23768",
+    "name": "Sistema De Producción Acuicola",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22968,
-    "name": "Sistemas de información",
-    "credits": 4
+    "career": "53779",
+    "id": "23771",
+    "name": "Sistema De Producción Avicola",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 23527,
-    "name": "Sistemas de información",
-    "credits": 3
+    "career": "54745",
+    "id": "28198",
+    "name": "Sistema De Produccion De Especies Menores",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 23359,
-    "name": "Sistemas de potencia I",
-    "credits": 4
+    "career": "53779",
+    "id": "23766",
+    "name": "Sistema De Producción De Ganado De Carne",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22961,
-    "name": "Sistemas digitales",
-    "credits": 4
+    "career": "53779",
+    "id": "23765",
+    "name": "Sistema De Producción De Ganado De Leche",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 27136,
-    "name": "Sistemas digitales I",
-    "credits": 4
+    "career": "53779",
+    "id": "23772",
+    "name": "Sistema De Producción Especies Menores",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 27140,
-    "name": "Sistemas digitales II",
-    "credits": 3
+    "career": "53779",
+    "id": "23773",
+    "name": "Sistema De Producción Especies Silvestres",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23036,
-    "name": "Sistemas mecatrónicos I",
-    "credits": 4
+    "career": "53779",
+    "id": "23767",
+    "name": "Sistema De Producción Ovinos Y Caprinos",
+    "credits": "4"
   },
   {
-    "career": 11,
-    "id": 22972,
-    "name": "Sistemas operacionales",
-    "credits": 4
+    "career": "53779",
+    "id": "23770",
+    "name": "Sistema De Producción Porcino",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23034,
-    "name": "Sistemas térmicos I",
-    "credits": 4
+    "career": "54745",
+    "id": "28199",
+    "name": "Sistema De Produccion Porcinos Y Acuicultura",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 23363,
+    "career": "54745",
+    "id": "28195",
+    "name": "Sistema De Produccion Rumiantes",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "28196",
+    "name": "Sistema Reproductivo De La Explotacion Pecuaria",
+    "credits": "3"
+  },
+  {
+    "career": "55",
+    "id": "23438",
+    "name": "Sistema Sociopolitico Colombiano",
+    "credits": "2"
+  },
+  {
+    "career": "5428",
+    "id": "29120",
+    "name": "Sistemas Agroforestales",
+    "credits": "4"
+  },
+  {
+    "career": "22",
+    "id": "27127",
+    "name": "Sistemas De Distribucion",
+    "credits": "3"
+  },
+  {
+    "career": "11",
+    "id": "22968",
+    "name": "Sistemas De Informacion",
+    "credits": "4"
+  },
+  {
+    "career": "23",
+    "id": "23527",
+    "name": "Sistemas De Informacion",
+    "credits": "3"
+  },
+  {
+    "career": "34",
+    "id": "23092",
+    "name": "Sistemas De Informacion Geografica(sig)",
+    "credits": "3"
+  },
+  {
+    "career": "22",
+    "id": "23359",
+    "name": "Sistemas De Potencia I",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22961",
+    "name": "Sistemas Digitales",
+    "credits": "4"
+  },
+  {
+    "career": "26",
+    "id": "27136",
+    "name": "Sistemas Digitales I",
+    "credits": "4"
+  },
+  {
+    "career": "26",
+    "id": "27140",
+    "name": "Sistemas Digitales Ii",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26473",
+    "name": "Sistemas Integrados De Gestion",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23036",
+    "name": "Sistemas Mecatronicos I",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "22972",
+    "name": "Sistemas Operacionales",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "28196",
+    "name": "Sistemas Reproductivos De La Explotacion Pecuaria",
+    "credits": "3"
+  },
+  {
+    "career": "24",
+    "id": "23034",
+    "name": "Sistemas Termicos I",
+    "credits": "4"
+  },
+  {
+    "career": "27",
+    "id": "24607",
+    "name": "Sociologia",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26822",
+    "name": "Software De Gestion Gerencial Aplicados A Los Agronegocios",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "27178",
+    "name": "Soldadura",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "23128",
+    "name": "Solidificacion Y Diagramas De Fase",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27531",
+    "name": "Soluciones Informaticas Aplicadas",
+    "credits": "3"
+  },
+  {
+    "career": "22",
+    "id": "23363",
     "name": "Subestaciones",
-    "credits": 4
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 29020,
-    "name": "Talento humano",
-    "credits": 3
+    "career": "53779",
+    "id": "23747",
+    "name": "Suelos",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 23427,
-    "name": "Taller de lenguaje",
-    "credits": 3
+    "career": "23",
+    "id": "29020",
+    "name": "Talento Humano",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23427,
-    "name": "Taller de lenguaje",
-    "credits": 3
+    "career": "11",
+    "id": "23427",
+    "name": "Taller De Lenguaje",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 23427,
-    "name": "Taller de lenguaje",
-    "credits": 3
+    "career": "694",
+    "id": "27471",
+    "name": "Taller De Lenguaje",
+    "credits": "2"
   },
   {
-    "career": 21,
-    "id": 23427,
-    "name": "Taller de lenguaje",
-    "credits": 3
+    "career": "24",
+    "id": "23033",
+    "name": "Taller De Manufactura",
+    "credits": "1"
   },
   {
-    "career": 27,
-    "id": 23427,
-    "name": "Taller de lenguaje",
-    "credits": 3
+    "career": "102151",
+    "id": "26804",
+    "name": "Taller Insterdisc V:poetica,espiritualidad Y Creacion",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23033,
-    "name": "Taller de manufactura",
-    "credits": 1
+    "career": "102151",
+    "id": "26807",
+    "name": "Taller Interdic Vi:apropiacion E Intervencion Artistica",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 27124,
-    "name": "Técnicas digitales y analógicas",
-    "credits": 4
+    "career": "102151",
+    "id": "26786",
+    "name": "Taller Interdis I.realidad Y Creacion Artistica",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 23330,
-    "name": "Teoría electromagnética",
-    "credits": 4
+    "career": "102151",
+    "id": "26792",
+    "name": "Taller Interdisc Ii:cultura Popular Y Creacion Artistica",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 23330,
-    "name": "Teoría electromagnética",
-    "credits": 4
+    "career": "102151",
+    "id": "26800",
+    "name": "Taller Interdisc Iv:ilusion,utopia Y Creacion",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 27122,
-    "name": "Termodinámica",
-    "credits": 4
+    "career": "102151",
+    "id": "26798",
+    "name": "Taller Interdisc. Iii:arte Vivo",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 21802,
-    "name": "Termodinámica I",
-    "credits": 4
+    "career": "34",
+    "id": "23100",
+    "name": "Tecnicas De Analisis Instrumental",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 21802,
-    "name": "Termodinámica I",
-    "credits": 4
+    "career": "102151",
+    "id": "26776",
+    "name": "Tecnicas Digitales",
+    "credits": "3"
   },
   {
-    "career": 24,
-    "id": 23059,
-    "name": "Termodinámica II",
-    "credits": 3
+    "career": "22",
+    "id": "27124",
+    "name": "Tecnicas Digitales Y Analogicas",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 24090,
-    "name": "Topografía",
-    "credits": 4
+    "career": "102151",
+    "id": "26775",
+    "name": "Tecnicas Y Materiales Artisticos",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 22975,
-    "name": "Trabajo de grado I",
-    "credits": 3
+    "career": "55",
+    "id": "23445",
+    "name": "Tecnologia De Alimentos I",
+    "credits": "5"
   },
   {
-    "career": 24,
-    "id": 22975,
-    "name": "Trabajo de grado I",
-    "credits": 3
+    "career": "55",
+    "id": "23449",
+    "name": "Tecnologia De Alimentos Ii",
+    "credits": "3"
   },
   {
-    "career": 23,
-    "id": 22975,
-    "name": "Trabajo de grado I",
-    "credits": 3
+    "career": "53779",
+    "id": "23775",
+    "name": "Tecnologia De Carnes",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 27130,
-    "name": "Trabajo de grado I",
-    "credits": 3
+    "career": "53779",
+    "id": "23774",
+    "name": "Tecnologia De Leches",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 27130,
-    "name": "Trabajo de grado I",
-    "credits": 3
+    "career": "5428",
+    "id": "26083",
+    "name": "Tecnologia De Maderas",
+    "credits": "3"
   },
   {
-    "career": 21,
-    "id": 22975,
-    "name": "Trabajo de grado I",
-    "credits": 3
+    "career": "34",
+    "id": "23087",
+    "name": "Teledeteccion",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 22975,
-    "name": "Trabajo de grado I",
-    "credits": 3
+    "career": "102151",
+    "id": "26797",
+    "name": "Teoria Del Arte",
+    "credits": "2"
   },
   {
-    "career": 11,
-    "id": 22977,
-    "name": "Trabajo de grado II",
-    "credits": 7
+    "career": "26",
+    "id": "23330",
+    "name": "Teoria Electromagnetica",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 22977,
-    "name": "Trabajo de grado II",
-    "credits": 7
+    "career": "22",
+    "id": "27122",
+    "name": "Termodinamica",
+    "credits": "4"
   },
   {
-    "career": 23,
-    "id": 22977,
-    "name": "Trabajo de grado II",
-    "credits": 7
+    "career": "31",
+    "id": "27170",
+    "name": "Termodinamica",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 22977,
-    "name": "Trabajo de grado II",
-    "credits": 7
+    "career": "32",
+    "id": "28041",
+    "name": "Termodinamica De Hidrocarburos",
+    "credits": "3"
   },
   {
-    "career": 22,
-    "id": 22977,
-    "name": "Trabajo de grado II",
-    "credits": 7
+    "career": "24",
+    "id": "21802",
+    "name": "Termodinamica I",
+    "credits": "4"
   },
   {
-    "career": 21,
-    "id": 22977,
-    "name": "Trabajo de grado II",
-    "credits": 7
+    "career": "24",
+    "id": "23059",
+    "name": "Termodinamica Ii",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 22977,
-    "name": "Trabajo de grado II",
-    "credits": 7
+    "career": "33",
+    "id": "23226",
+    "name": "Termodinamica Ii",
+    "credits": "4"
   },
   {
-    "career": 24,
-    "id": 23029,
-    "name": "Transferencia de calor",
-    "credits": 4
+    "career": "21",
+    "id": "24090",
+    "name": "Topografia",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 23332,
-    "name": "Tratamiento de señales",
-    "credits": 4
+    "career": "58",
+    "id": "24996",
+    "name": "Toxicologia",
+    "credits": "4"
   },
   {
-    "career": 22,
-    "id": 23332,
-    "name": "Tratamiento de señales",
-    "credits": 4
+    "career": "5428",
+    "id": "29111",
+    "name": "Trabajabilidad De La Madera",
+    "credits": "3"
   },
   {
-    "career": 26,
-    "id": 23413,
-    "name": "Tratamiento de señales discretas",
-    "credits": 3
+    "career": "11",
+    "id": "22975",
+    "name": "Trabajo De Grado I",
+    "credits": "3"
   },
   {
-    "career": 11,
-    "id": 24948,
-    "name": "Vida y cultura universitaria",
-    "credits": 0
+    "career": "102151",
+    "id": "26808",
+    "name": "Trabajo De Grado I",
+    "credits": "8"
   },
   {
-    "career": 24,
-    "id": 24948,
-    "name": "Vida y cultura universitaria",
-    "credits": 0
+    "career": "31",
+    "id": "27169",
+    "name": "Trabajo De Grado I",
+    "credits": "2"
   },
   {
-    "career": 23,
-    "id": 24948,
-    "name": "Vida y cultura universitaria",
-    "credits": 0
+    "career": "694",
+    "id": "27509",
+    "name": "Trabajo De Grado I",
+    "credits": "4"
   },
   {
-    "career": 26,
-    "id": 24948,
-    "name": "Vida y cultura universitaria",
-    "credits": 0
+    "career": "33",
+    "id": "27547",
+    "name": "Trabajo De Grado I",
+    "credits": "1"
   },
   {
-    "career": 22,
-    "id": 24948,
-    "name": "Vida y cultura universitaria",
-    "credits": 0
+    "career": "11",
+    "id": "22977",
+    "name": "Trabajo De Grado Ii",
+    "credits": "7"
   },
   {
-    "career": 21,
-    "id": 24948,
-    "name": "Vida y cultura universitaria",
-    "credits": 0
+    "career": "102151",
+    "id": "26809",
+    "name": "Trabajo De Grado Ii",
+    "credits": "8"
   },
   {
-    "career": 27,
-    "id": 24948,
-    "name": "Vida y cultura universitaria",
-    "credits": 0
+    "career": "694",
+    "id": "27511",
+    "name": "Trabajo De Grado Ii",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24597,
-    "name": "Diseño IV bioforma",
-    "credits": 5
+    "career": "33",
+    "id": "27550",
+    "name": "Trabajo De Grado Ii",
+    "credits": "6"
   },
   {
-    "career": 27,
-    "id": 24606,
-    "name": "Diseño VI bioenergía",
-    "credits": 5
+    "career": "53779",
+    "id": "24455",
+    "name": "Trabajo De Gradoii",
+    "credits": "7"
   },
   {
-    "career": 27,
-    "id": 24610,
-    "name": "Diseño VII producto",
-    "credits": 5
+    "career": "101718",
+    "id": "22975",
+    "name": "Trabajo De Grado I",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24612,
-    "name": "EidISEÑO",
-    "credits": 3
+    "career": "106789",
+    "id": "26827",
+    "name": "Trabajo De Grado: Diseño",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24599,
-    "name": "Ergonomía cognitiva y ambiental",
-    "credits": 3
+    "career": "106789",
+    "id": "26831",
+    "name": "Trabajo De Grado: Implementación Y Evaluaación",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24598,
-    "name": "Expresión III técnicas - color",
-    "credits": 3
+    "career": "5428",
+    "id": "26156",
+    "name": "Trabajo Social En Grupos Y Redes",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24611,
-    "name": "Expresión IV axonometría",
-    "credits": 3
+    "career": "53779",
+    "id": "24453",
+    "name": "Trabajo De Gradoi",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24609,
-    "name": "Fundamentos del diseño mecatrónico",
-    "credits": 4
+    "career": "54746",
+    "id": "24651",
+    "name": "Transacciones Comerciales Agroindustriales",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 23424,
-    "name": " Inglés I",
-    "credits": 4
+    "career": "54745",
+    "id": "28193",
+    "name": "Transacciones Comerciales Agropecuarias",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 23425,
-    "name": " Inglés II",
-    "credits": 4
+    "career": "106789",
+    "id": "28193",
+    "name": "Transacciones Comerciales Agropecuarias",
+    "credits": "2"
   },
   {
-    "career": 27,
-    "id": 24600,
-    "name": "Materiales y procesos i madera",
-    "credits": 4
+    "career": "24",
+    "id": "23029",
+    "name": "Transferencia De Calor",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24608,
-    "name": "Materiales y procesos III- metales",
-    "credits": 4
+    "career": "106789",
+    "id": "26826",
+    "name": "Transferencia Tecnologica Para Proyectos Regionales",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24613,
-    "name": "Materiales y procesos IV cueros",
-    "credits": 4
+    "career": "54746",
+    "id": "24650",
+    "name": "Transformacion De Productos De Origen Animal",
+    "credits": "4"
   },
   {
-    "career": 27,
-    "id": 24601,
-    "name": "Mecánica de sólidos",
-    "credits": 4
+    "career": "106789",
+    "id": "24650",
+    "name": "Transformacion De Productos De Origen Animal",
+    "credits": "3"
   },
   {
-    "career": 27,
-    "id": 24607,
-    "name": "Sociología",
-    "credits": 3
+    "career": "54746",
+    "id": "24646",
+    "name": "Transformacion De Productos De Origen Vegetal",
+    "credits": "4"
+  },
+  {
+    "career": "106789",
+    "id": "24646",
+    "name": "Transformacion De Productos De Origen Vegetal",
+    "credits": "3"
+  },
+  {
+    "career": "106789",
+    "id": "26816",
+    "name": "Tratados Internacionales Y Agronegocios C2",
+    "credits": "2"
+  },
+  {
+    "career": "26",
+    "id": "23332",
+    "name": "Tratamiento De Señales",
+    "credits": "4"
+  },
+  {
+    "career": "26",
+    "id": "23413",
+    "name": "Tratamiento De Señales Discretas",
+    "credits": "3"
+  },
+  {
+    "career": "31",
+    "id": "27173",
+    "name": "Tratamientos Termicos",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26463",
+    "name": "Turismo De Aventura",
+    "credits": "3"
+  },
+  {
+    "career": "101718",
+    "id": "26468",
+    "name": "Turismo Sostenible",
+    "credits": "3"
+  },
+  {
+    "career": "52",
+    "id": "25785",
+    "name": "Urgencias(internado)",
+    "credits": "4"
+  },
+  {
+    "career": "11",
+    "id": "24948",
+    "name": "Vida Y Cultura Universitaria",
+    "credits": "0"
+  },
+  {
+    "career": "102151",
+    "id": "26795",
+    "name": "Videoperformancia",
+    "credits": "3"
+  },
+  {
+    "career": "58",
+    "id": "24993",
+    "name": "Virologia",
+    "credits": "3"
+  },
+  {
+    "career": "694",
+    "id": "27467",
+    "name": "Vision De La Gestion Empresarial",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "24963",
+    "name": "Vision De La Produccion Agroindustrial",
+    "credits": "3"
+  },
+  {
+    "career": "54745",
+    "id": "28197",
+    "name": "Vision De Los Agronegocios Internacionales",
+    "credits": "2"
+  },
+  {
+    "career": "101718",
+    "id": "26439",
+    "name": "Vision Del Turismo Mundial",
+    "credits": "2"
+  },
+  {
+    "career": "694",
+    "id": "27468",
+    "name": "Vision Sistemica De La Organizacion",
+    "credits": "4"
+  },
+  {
+    "career": "5428",
+    "id": "29110",
+    "name": "Viveros Y Plantaciones Forestales",
+    "credits": "4"
+  },
+  {
+    "career": "34",
+    "id": "23103",
+    "name": "Yacimientos Minerales",
+    "credits": "4"
+  },
+  {
+    "career": "53779",
+    "id": "24460",
+    "name": "Zootecnia General",
+    "credits": "3"
   }
 ]
