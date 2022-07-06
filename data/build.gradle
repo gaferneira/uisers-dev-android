@@ -5,14 +5,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.jmailen.kotlinter'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 32
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
-        minSdkVersion 18
-        targetSdkVersion 29
-        versionCode 36
-        versionName "2.0.0"
+        minSdkVersion 19
+        targetSdkVersion 32
+        versionCode 37
+        versionName "2.0.1"
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -43,12 +43,12 @@ dependencies {
     // Koin Implementation --------------------------------------------------------
 
     // Firebase Implementation ----------------------------------------------------
-    implementation 'com.google.firebase:firebase-messaging:20.2.1'
-    implementation 'com.google.firebase:firebase-core:17.4.3'
-    implementation 'com.google.firebase:firebase-firestore:21.4.3'
-    implementation 'com.google.firebase:firebase-database:19.3.1'
-    implementation 'com.google.firebase:firebase-auth:19.3.1'
-    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-messaging:23.0.6'
+    implementation 'com.google.firebase:firebase-core:21.0.0'
+    implementation 'com.google.firebase:firebase-firestore:24.2.0'
+    implementation 'com.google.firebase:firebase-database:20.0.5'
+    implementation 'com.google.firebase:firebase-auth:21.0.6'
+    implementation 'com.google.firebase:firebase-storage:20.0.1'
     // Firebase Implementation ----------------------------------------------------
 
     // ViewModel and LiveData -----------------------------------------------------
@@ -60,7 +60,7 @@ dependencies {
 
     //Utils
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.9'
 
     implementation project(path: ':domain')
 

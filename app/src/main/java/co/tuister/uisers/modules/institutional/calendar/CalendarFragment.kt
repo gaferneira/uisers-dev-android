@@ -124,8 +124,8 @@ class CalendarFragment : BaseFragment<FragmentInstitutionalCalendarBinding>(), M
     private fun goToDate(date: Date) {
         currentDate = date
         updateMonthLabel(date)
-        val closestEvent = adapter.list.minBy { abs(it.date.time - date.time) }
-        closestEvent?.run {
+        val closestEvent = adapter.list.minByOrNull { abs(it.date.time - date.time) }
+        closestEvent.run {
             val position = adapter.list.indexOf(this)
             layoutManager.scrollToPositionWithOffset(position, OFFSET_SCROLL)
         }

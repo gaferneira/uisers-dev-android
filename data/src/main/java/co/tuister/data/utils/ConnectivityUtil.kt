@@ -47,11 +47,11 @@ class ConnectivityUtil(val context: Context) {
         connectivityManager!!.registerNetworkCallback(
             builder.build(),
             object : NetworkCallback() {
-                override fun onAvailable(network: Network?) {
+                override fun onAvailable(network: Network) {
                     isConnected = checkInternetConnection()
                 }
 
-                override fun onLost(network: Network?) {
+                override fun onLost(network: Network) {
                     isConnected = false
                 }
             }
