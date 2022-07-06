@@ -19,22 +19,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp">
 
-        <activity android:name=".modules.login.LoginActivity">
+        <activity android:name=".modules.login.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".modules.main.MainActivity">
+        <activity
+            android:name=".modules.main.MainActivity"
+            android:exported="true">
             <nav-graph android:value="@navigation/nav_graph_home" />
             <nav-graph android:value="@navigation/nav_graph_my_career" />
             <nav-graph android:value="@navigation/nav_graph_task_manager" />
             <nav-graph android:value="@navigation/nav_graph_institution" />
+
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="uisers" android:host="main" />
+
+                <data
+                    android:host="main"
+                    android:scheme="uisers" />
             </intent-filter>
         </activity>
         <activity android:name=".modules.profile.ProfileActivity" />
@@ -78,7 +84,8 @@
             android:name=".modules.widgets.SmallScheduleWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <receiver android:name="co.tuister.uisers.modules.widgets.SmallScheduleWidget">
+        <receiver android:name="co.tuister.uisers.modules.widgets.SmallScheduleWidget"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -93,7 +100,8 @@
             android:name=".modules.widgets.ScheduleWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-        <receiver android:name="co.tuister.uisers.modules.widgets.ScheduleWidget">
+        <receiver android:name="co.tuister.uisers.modules.widgets.ScheduleWidget"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
