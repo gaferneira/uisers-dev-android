@@ -30,7 +30,7 @@ import co.tuister.domain.repositories.SharedPreferencesRepository
 import co.tuister.domain.repositories.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageException
 import java.net.HttpURLConnection
@@ -40,6 +40,7 @@ class UserRepositoryImpl(
     private val firebaseAuth: FirebaseAuth,
     private val db: FirebaseFirestore,
     private val firebaseStorage: FirebaseStorage,
+    private val firebaseMessaging: FirebaseMessaging,
     private val sharedPreferencesRepository: SharedPreferencesRepository,
     private val connectivityUtil: ConnectivityUtil
 ) : BaseRepositoryImpl(),
@@ -103,7 +104,7 @@ class UserRepositoryImpl(
                 .whereEqualTo(FIELD_USER_EMAIL, current.email)
                 .get(connectivityUtil.getSource())
                 .await()!!.documents.firstOrNull()
-            val token = FirebaseInstanceId.getInstance().instanceId.await()!!.token
+            val token = firebaseMessaging.token.await()!!
 
             if (data?.get(FIELD_USER_FCM) == token) {
                 true

@@ -2,7 +2,6 @@ package co.tuister.uisers.di
 
 import co.tuister.domain.usecases.FeedbackUseCase
 import co.tuister.domain.usecases.GetFeedUseCase
-import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.career.ChangeCurrentSemesterUseCase
 import co.tuister.domain.usecases.career.GetAllSemestersUseCase
@@ -106,9 +105,6 @@ val domainModule = module {
     single { SendVerifyLinkUseCase(get()) }
     single { DisableFirstTimeUseCase(get()) }
     single { FirstTimeUseCase(get()) }
-
-    // Use case
-    single { MigrationUseCase(get()) }
 
     // Internal
     single { DataUserUseCase(get()) }

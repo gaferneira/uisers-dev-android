@@ -5,17 +5,18 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'org.jmailen.kotlinter'
 apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 32
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "co.tuister.uisers"
-        minSdkVersion 18
-        targetSdkVersion 29
-        versionCode 56
-        versionName "2.1.5"
+        minSdkVersion 19
+        targetSdkVersion 32
+        versionCode 57
+        versionName "2.2.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -104,9 +105,10 @@ dependencies {
     // Play Services -------------------------------------------------------------
 
     // Firebase  -------------------------------------------------------------
-    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.3'
-    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
-    implementation 'com.google.firebase:firebase-messaging:20.2.1'
+    implementation platform('com.google.firebase:firebase-bom:30.2.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics:18.2.11'
+    implementation 'com.google.firebase:firebase-messaging:23.0.6'
     implementation 'org.conscrypt:conscrypt-android:2.4.0'
     // Firebase  -------------------------------------------------------------
 
