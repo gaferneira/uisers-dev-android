@@ -23,11 +23,6 @@ class InstitutionalViewModel : BaseViewModel() {
                 R.string.institutional_title_fragment_calendar,
                 R.drawable.institutional_menu_calendar,
                 R.color.green_600
-            ),
-            InstitutionalMenu(
-                R.string.institutional_title_fragment_wheels,
-                R.drawable.institutional_menu_wheels,
-                R.color.blue_600
             )
         )
         setState(State.LoadItems(Result.Success(menus)))

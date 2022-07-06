@@ -90,19 +90,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_view_whatsapp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_margin_micro"
-            android:drawableStart="@drawable/ic_whatsapp"
-            android:drawablePadding="@dimen/padding_margin_extra_small"
-            android:paddingVertical="@dimen/padding_margin_extra_small"
-            android:text="@string/home_about_whatsapp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_margin_normal"

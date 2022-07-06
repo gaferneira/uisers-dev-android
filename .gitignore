@@ -92,3 +92,8 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+*.DS_Store
+app/*.DS_Store
+data/*.DS_Store
+domain/*.DS_Store

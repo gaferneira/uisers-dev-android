@@ -56,10 +56,6 @@ class AboutDialogFragment : AppCompatDialogFragment() {
             sendEmail(getString(R.string.home_about_email))
         }
 
-        binding.textViewWhatsapp.singleClick {
-            openWhatsapp(getString(R.string.home_about_whatsapp_number))
-        }
-
         binding.textViewRepository.singleClick {
             openUrl(getString(R.string.home_about_repository_url))
         }
