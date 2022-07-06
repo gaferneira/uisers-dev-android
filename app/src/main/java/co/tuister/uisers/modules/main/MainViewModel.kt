@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import co.tuister.domain.entities.User
 import co.tuister.domain.usecases.FeedbackUseCase
-import co.tuister.domain.usecases.MigrationUseCase
 import co.tuister.domain.usecases.UserUseCase
 import co.tuister.domain.usecases.login.DownloadImageUseCase
 import co.tuister.domain.usecases.login.FCMUpdateUseCase
@@ -23,14 +22,12 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 
 class MainViewModel(
     private val logoutUseCase: LogoutUseCase,
     private val downloadImageUseCase: DownloadImageUseCase,
     private val userUseCase: UserUseCase,
     private val fcmUpdateUseCase: FCMUpdateUseCase,
-    private val migrationUseCase: MigrationUseCase,
     private val feedbackUserCase: FeedbackUseCase,
     private val uploadImageUseCase: UploadImageUseCase,
     private val firstTimeUseCase: FirstTimeUseCase,
@@ -51,22 +48,10 @@ class MainViewModel(
     val version: MutableLiveData<String> = MutableLiveData("")
     lateinit var user: User
 
-    private var migration = false
-
     init {
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
                 fcmUpdateUseCase()
-            }
-        }
-
-        viewModelScope.launch {
-            if (!migration) {
-                migration = true
-                withContext(Dispatchers.IO) {
-                    val success = migrationUseCase()
-                    Timber.i("Result %s", success)
-                }
             }
         }
     }

@@ -1,6 +1,5 @@
 package co.tuister.data.di
 
-import co.tuister.data.migration.MigrationRepositoryImpl
 import co.tuister.data.repositories.CalendarRepositoryImpl
 import co.tuister.data.repositories.FeedRepositoryImpl
 import co.tuister.data.repositories.InternalOnlyRepositoryImpl
@@ -18,7 +17,6 @@ import co.tuister.domain.repositories.FeedRepository
 import co.tuister.domain.repositories.InternalOnlyRepository
 import co.tuister.domain.repositories.LoginRepository
 import co.tuister.domain.repositories.MapRepository
-import co.tuister.domain.repositories.MigrationRepository
 import co.tuister.domain.repositories.ScheduleRepository
 import co.tuister.domain.repositories.SemesterRepository
 import co.tuister.domain.repositories.SharedPreferencesRepository
@@ -63,5 +61,4 @@ val dataModule = module {
     single<MapRepository> { MapRepositoryImpl(get(), get(), get()) }
     single<CalendarRepository> { CalendarRepositoryImpl(get(), get(), get()) }
     single<InternalOnlyRepository> { InternalOnlyRepositoryImpl(get(), get(), get(), get()) }
-    single<MigrationRepository> { MigrationRepositoryImpl(get(), get(), get(), get()) }
 }
